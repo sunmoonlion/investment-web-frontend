@@ -1,4 +1,4 @@
-# Tpl App SSR 镜像构建
+# Research App SSR 镜像构建
 
 ## 架构设计
 
@@ -6,7 +6,7 @@ SSR 镜像构建采用直接使用源代码的方式：
 
 - **源代码位置**：项目根目录的 `app/` 目录（源代码就在同一项目中）
 - **构建方式**：使用 `build-image.sh` 脚本构建镜像，Dockerfile 直接从 `../app/` 复制源代码
-- **镜像名称**：`tpl-web-frontend:1.0.0`（可在 build.conf 中配置）
+- **镜像名称**：`research-web-frontend:1.0.0`（可在 build.conf 中配置）
 - **优势**：代码和构建配置在一起，代码修改时自动同步，不需要手动复制源代码
 
 ## 文件说明
@@ -55,12 +55,12 @@ cd mybuild
 
 ```bash
 # 1. 构建并推送镜像（如果 PUSH_IMAGES_AFTER_BUILD=true）
-cd /home/zym/tpl-web-frontend/mybuild
+cd /home/zym/research-web-frontend/mybuild
 ./build-image.sh
 
 # 2. 部署服务（在 K8s 部署目录）
-cd /home/zym/k8s/sunmoonai/app-platform/business-apps/tpl-app/tpl-web-frontend/deploy-tpl-frontend
-./deploy-tpl-frontend.sh deploy dev
+cd /home/zym/k8s/sunmoonai/app-platform/business-apps/research-app/research-web-frontend/deploy-research-frontend
+./deploy-research-frontend.sh deploy dev
 ```
 
 ## 手动构建（不使用脚本）
@@ -69,13 +69,13 @@ cd /home/zym/k8s/sunmoonai/app-platform/business-apps/tpl-app/tpl-web-frontend/d
 
 ```bash
 # 在项目根目录执行（构建上下文是项目根目录）
-cd /home/zym/tpl-web-frontend
+cd /home/zym/research-web-frontend
 
 # 使用 docker
-docker build -f mybuild/Dockerfile -t tpl-web-frontend:1.0.0 .
+docker build -f mybuild/Dockerfile -t research-web-frontend:1.0.0 .
 
 # 或使用 nerdctl
-sudo nerdctl build -f mybuild/Dockerfile -t tpl-web-frontend:1.0.0 .
+sudo nerdctl build -f mybuild/Dockerfile -t research-web-frontend:1.0.0 .
 ```
 
 **注意**：
@@ -87,10 +87,10 @@ sudo nerdctl build -f mybuild/Dockerfile -t tpl-web-frontend:1.0.0 .
 
 ### build.conf 配置项
 
-- `TPL_SSR_IMAGE`: 镜像名称（默认: `tpl-web-frontend`）
-- `TPL_SSR_TAG`: 镜像标签（默认: `1.0.0`）
-- `TPL_SSR_IMAGE_REGISTRY`: 镜像仓库地址（默认: `harbor.sunmoonai.com:30443`）
-- `TPL_SSR_IMAGE_PROJECT`: 镜像项目名（默认: `k8s-images`）
+- `RESEARCH_SSR_IMAGE`: 镜像名称（默认: `research-web-frontend`）
+- `RESEARCH_SSR_TAG`: 镜像标签（默认: `1.0.0`）
+- `RESEARCH_SSR_IMAGE_REGISTRY`: 镜像仓库地址（默认: `harbor.sunmoonai.com:30443`）
+- `RESEARCH_SSR_IMAGE_PROJECT`: 镜像项目名（默认: `k8s-images`）
 - `PUSH_IMAGES_AFTER_BUILD`: 是否在构建后自动推送（默认: `false`）
 - `CONTAINER_RUNTIME`: 容器运行时选择（默认: `docker`）
   - `docker`: 使用 docker 命令
@@ -117,5 +117,5 @@ sudo nerdctl login harbor.sunmoonai.com:30443
 2. **依赖管理**：项目使用 pnpm 管理依赖，确保 `package.json` 和 `pnpm-lock.yaml` 存在于 `app/` 目录中
 3. **构建上下文**：构建时在项目根目录执行，使用 `-f mybuild/Dockerfile` 指定 Dockerfile，Dockerfile 中的 `COPY app/` 会从构建上下文（项目根目录）复制
 4. **版本控制**：`mybuild/` 目录应该在版本控制中，这样可以确保构建配置和代码同步
-5. **镜像分离**：镜像构建和部署已完全分离，构建使用 `build-image.sh`，部署使用 `deploy-tpl-frontend.sh`
+5. **镜像分离**：镜像构建和部署已完全分离，构建使用 `build-image.sh`，部署使用 `deploy-research-frontend.sh`
 
