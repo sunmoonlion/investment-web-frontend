@@ -19,10 +19,10 @@ if [ ! -f "$BUILD_CONF" ]; then log_error "build.conf 不存在"; exit 1; fi
 source "$BUILD_CONF"
 source "$SCRIPT_DIR/harbor-cluster.sh"
 
-IMAGE_NAME="${TPL_SSR_IMAGE:-tpl-web-frontend}"
-IMAGE_TAG="${TPL_SSR_TAG:-1.0.0}"
-IMAGE_REGISTRY="$(resolve_harbor_registry_for_push "${TPL_SSR_IMAGE_REGISTRY:-harbor.sunmoonai.com}")"
-IMAGE_PROJECT="${TPL_SSR_IMAGE_PROJECT:-app-images}"
+IMAGE_NAME="${INVESTMENT_SSR_IMAGE:-investment-web-frontend}"
+IMAGE_TAG="${INVESTMENT_SSR_TAG:-1.0.0}"
+IMAGE_REGISTRY="$(resolve_harbor_registry_for_push "${INVESTMENT_SSR_IMAGE_REGISTRY:-harbor.sunmoonai.com}")"
+IMAGE_PROJECT="${INVESTMENT_SSR_IMAGE_PROJECT:-app-images}"
 
 CONTAINER_RUNTIME="${CONTAINER_RUNTIME:-docker}"
 if [[ "$CONTAINER_RUNTIME" == "sudo nerdctl" || "$CONTAINER_RUNTIME" == "nerdctl" ]]; then
