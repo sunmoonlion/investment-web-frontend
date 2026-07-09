@@ -1,5 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 
+import { AgentConsole } from '@/components/agent/agent-console'
+
 const logoutUrl = `${process.env.NEXT_PUBLIC_API_URL}/auth/logout`
 
 export default async function DashboardPage() {
@@ -17,9 +19,8 @@ export default async function DashboardPage() {
           {t('logout')}
         </a>
       </header>
-      <main className="p-8">
-        <h1 className="text-2xl font-semibold tracking-tight">{tNav('dashboard')}</h1>
-        <p className="mt-2 text-muted-foreground">{t('dashboardWelcome')}</p>
+      <main>
+        <AgentConsole />
       </main>
     </div>
   )

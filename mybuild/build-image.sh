@@ -152,6 +152,8 @@ build_image() {
         -t "${RESEARCH_SSR_IMAGE}:${RESEARCH_SSR_TAG}" \
         --build-arg REGISTRY="${REGISTRY}" \
         --build-arg NPM_CONFIG_REGISTRY="${NPM_CONFIG_REGISTRY:-https://registry.npmmirror.com}" \
+        --build-arg NEXT_PUBLIC_APP_NAME="${NEXT_PUBLIC_APP_NAME:-research}" \
+        --build-arg NEXT_PUBLIC_API_URL="${NEXT_PUBLIC_API_URL:-https://research-admin-api.sunmoonai.com/api}" \
         .
     
     if [ $? -eq 0 ]; then
