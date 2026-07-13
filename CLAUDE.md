@@ -1,6 +1,6 @@
 # 用户端前端（research-web-frontend）— Claude Code 规则
 
-> 进入本目录时自动叠加，补充根目录 CLAUDE.md 的全局规则。
+> 进入本目录时自动叠加，补充根目录 CLAUDE.md 的全局规则。本文件只约束局部编码；若与代码/OpenAPI、父 App 的 `docs/README.md` 或 k8s v5 权威文档冲突，以后者为准。
 
 ## 技术栈
 
@@ -51,5 +51,5 @@ mybuild/
 ## 开始一个页面前
 
 1. 读对应后端路由，确认接口参数与响应结构
-2. 更新 `docs-claude/API_CONTRACT.md`（或等价文档）
-3. 确认页面在 `docs-claude/FRONTEND_PLAN.md` 路由表中已登记
+2. 从后端路由/OpenAPI 和 contract tests 更新 typed client/adapter；不维护手写的平行契约
+3. 确认页面范围已进入父 App `docs/README.md` 指向的权威计划，并补齐 route/contract/E2E 证据
