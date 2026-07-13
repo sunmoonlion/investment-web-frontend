@@ -1,6 +1,6 @@
 # 用户端前端（investment-web-frontend）— Claude Code 规则
 
-> 进入本目录时自动叠加，补充根目录 CLAUDE.md 的全局规则。本文件只约束局部编码；若与代码/OpenAPI、父 App 的 `docs/README.md` 或已生效的跨仓契约冲突，以后者为准。
+> 进入本目录时自动叠加，补充根目录 CLAUDE.md 的全局规则。本文件只约束局部编码；若与代码/OpenAPI、父 App 根 `README.md` 或已生效的跨仓契约冲突，以后者为准。
 
 ## 技术栈
 
@@ -52,4 +52,4 @@ mybuild/
 
 1. 读对应后端路由，确认接口参数与响应结构
 2. 从后端路由/OpenAPI 和 contract tests 更新 typed client/adapter；不维护手写的平行契约
-3. 确认页面范围已进入父 App `docs/README.md` 指向的权威计划，并补齐 route/contract/E2E 证据
+3. 确认页面范围已进入任务明确指定的权威计划，并补齐 route/contract/E2E 证据
