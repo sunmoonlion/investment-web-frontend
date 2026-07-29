@@ -1,4 +1,10 @@
 {
+  "meta": {
+    "title": "SunmoonAI Web",
+    "description": "与专属 Nest Web Backend 配对的生产级 Next.js 前端底座。",
+    "loginTitle": "登录",
+    "workspaceTitle": "工作区"
+  },
   "common": {
     "loading": "加载中...",
     "error": "出错了",
@@ -10,10 +16,22 @@
     "edit": "编辑",
     "back": "返回"
   },
+  "public": {
+    "title": "面向产品 Web 应用的可靠通用底座",
+    "description": "公开内容、受权工作区、API 访问和实时交互都采用明确的渲染、安全与数据归属边界。",
+    "login": "登录",
+    "workspace": "进入工作区"
+  },
+  "errors": {
+    "notFoundTitle": "页面不存在",
+    "notFoundDescription": "请求的页面不存在或已不可用。",
+    "returnHome": "返回首页"
+  },
   "auth": {
     "login": "登录",
     "signup": "注册账号",
     "logout": "退出登录",
+    "logoutFailed": "退出失败，请重试。",
     "username": "用户名",
     "password": "密码",
     "loginTitle": "欢迎回来",
@@ -23,12 +41,48 @@
     "errorAuthFailed": "登录未完成（与身份服务交换令牌失败）。若持续出现，请查看后端日志中的 Casdoor/Redis 报错，并确认 Casdoor 应用中的回调地址与 CASDOOR_REDIRECT_URI 完全一致。",
     "errorNoCode": "未收到授权码，请从本页重新点击登录。",
     "errorOAuthGeneric": "授权被拒绝或已取消，请重试。",
-    "dashboardWelcome": "欢迎使用 research 应用",
+    "dashboardWelcome": "欢迎使用 Research",
+    "signedInAs": "当前用户：{name}",
     "signupSuccessHint": "注册成功。请使用刚才的账号点击下方「登录」进入本站。"
   },
   "nav": {
     "home": "首页",
     "dashboard": "控制台",
     "settings": "设置"
+  },
+  "interaction": {
+    "loading": "正在加载参考运行…",
+    "loadFailed": "实时工作区加载失败",
+    "loadFailedHint": "配对后端不可用或返回了不兼容的契约。",
+    "referenceLabel": "契约参考面",
+    "answer": "回答时间线",
+    "answerPending": "正在等待流式输出…",
+    "citations": "引用",
+    "citationsPending": "暂时没有已验证引用。",
+    "citationFallback": "来源 {index}",
+    "confirmAction": "确认并继续",
+    "submitting": "正在提交…",
+    "actionFailed": "操作未被接受，请对账后重试。",
+    "responseLabel": "回复内容",
+    "responsePlaceholder": "请输入请求的回复内容",
+    "status": {
+      "queued": "排队中",
+      "running": "运行中",
+      "waiting_for_input": "等待输入",
+      "succeeded": "已完成",
+      "failed": "失败",
+      "cancelled": "已取消"
+    },
+    "stream": {
+      "connecting": "正在连接",
+      "open": "实时连接",
+      "reconciling": "正在对账",
+      "offline": "正在重连",
+      "closed": "已结束"
+    }
+  },
+  "Dashboard": {
+    "dashboardWelcome": "欢迎使用 Research",
+    "title": "控制台"
   }
 }

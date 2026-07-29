@@ -1,18 +1,30 @@
+import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import { redirect } from 'next/navigation'
 import { buttonVariants } from '@/components/ui/button'
-import { SessionRedirect } from '@/components/auth/session-redirect'
+import { clientEnv } from '@/env/client'
+import { getBrowserSession } from '@/lib/server/auth-session'
 import { cn } from '@/lib/utils'
 
-const loginUrl = `${process.env.NEXT_PUBLIC_API_URL}/auth/login`
-const signupUrl = `${process.env.NEXT_PUBLIC_API_URL}/auth/signup`
-const continueUrl = `${process.env.NEXT_PUBLIC_API_URL}/auth/continue`
+const continueUrl = `${clientEnv.NEXT_PUBLIC_API_URL}/auth/continue`
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('meta')
+
+  return {
+    title: t('loginTitle'),
+    robots: {
+      index: false,
+      follow: false,
+    },
+  }
+}
 
 type Props = {
   params: Promise<{ locale: string }>
   searchParams: Promise<{
     error?: string
-    error_hint?: string
-    error_description?: string
+    reason?: string
     /** 由 BFF /api/auth/after-signup 或 Casdoor 跳转带回 */
     registered?: string
   }>
@@ -22,28 +34,29 @@ export default async function LoginPage({ params, searchParams }: Props) {
   const { locale } = await params
   const t = await getTranslations('auth')
   const paramsQ = await searchParams
+  const session = await getBrowserSession()
+  if (session) redirect(`/${locale}/dashboard`)
+  const returnTo = `/${locale}/dashboard`
+  const loginUrl = `${clientEnv.NEXT_PUBLIC_API_URL}/auth/login?return_to=${encodeURIComponent(returnTo)}`
+  const signupUrl = `${clientEnv.NEXT_PUBLIC_API_URL}/auth/signup?return_to=${encodeURIComponent(returnTo)}`
 
   let errorText: string | null = null
   if (paramsQ.error === 'auth_failed') {
     errorText = t('errorAuthFailed')
-  } else if (paramsQ.error === 'no_code') {
-    errorText = t('errorNoCode')
-  } else if (paramsQ.error === 'oauth_error') {
-    const parts = [paramsQ.error_hint, paramsQ.error_description].filter(Boolean)
-    errorText = parts.length ? parts.join(' — ') : t('errorOAuthGeneric')
   }
 
-  const signupOk =
-    paramsQ.registered === '1' || paramsQ.registered === 'true'
+  const signupOk = paramsQ.registered === '1' || paramsQ.registered === 'true'
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <SessionRedirect locale={locale} />
+    <main
+      className="bg-background flex min-h-screen items-center justify-center"
+      data-route-class="login"
+    >
       <div className="w-full max-w-sm space-y-6 rounded-xl border p-8 shadow-sm">
         <div className="space-y-2 text-center">
           <h1 className="text-2xl font-semibold tracking-tight">{t('loginTitle')}</h1>
-          <p className="text-sm text-muted-foreground">{t('loginSubtitle')}</p>
-          <p className="text-xs text-muted-foreground">{t('loginCasdoorHint')}</p>
+          <p className="text-muted-foreground text-sm">{t('loginSubtitle')}</p>
+          <p className="text-muted-foreground text-xs">{t('loginCasdoorHint')}</p>
         </div>
         {signupOk ? (
           <p
@@ -56,7 +69,7 @@ export default async function LoginPage({ params, searchParams }: Props) {
         {errorText ? (
           <p
             role="alert"
-            className="rounded-lg border border-destructive/40 bg-destructive/5 px-3 py-2 text-center text-sm text-destructive"
+            className="border-destructive/40 bg-destructive/5 text-destructive rounded-lg border px-3 py-2 text-center text-sm"
           >
             {errorText}
           </p>
@@ -64,17 +77,20 @@ export default async function LoginPage({ params, searchParams }: Props) {
         <a href={loginUrl} className={cn(buttonVariants({ className: 'w-full' }))}>
           {t('login')}
         </a>
-        <p className="text-center text-sm text-muted-foreground">
-          <a href={signupUrl} className="font-medium text-primary underline-offset-4 hover:underline">
+        <p className="text-muted-foreground text-center text-sm">
+          <a
+            href={signupUrl}
+            className="text-primary font-medium underline-offset-4 hover:underline"
+          >
             {t('signup')}
           </a>
         </p>
-        <p className="text-center text-xs text-muted-foreground">
+        <p className="text-muted-foreground text-center text-xs">
           <a href={continueUrl} className="underline-offset-4 hover:underline">
             {t('continueToDashboard')}
           </a>
         </p>
       </div>
-    </div>
+    </main>
   )
 }
