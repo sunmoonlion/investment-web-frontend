@@ -3,7 +3,12 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect, useRef, useState } from 'react'
 import type { RunAction } from '@/contracts/interaction'
-import { fetchRunSnapshot, parseRunEventPayload, submitRunAction } from './client'
+import {
+  cancelRun,
+  fetchRunSnapshot,
+  parseRunEventPayload,
+  submitRunAction,
+} from './client'
 import { applyRunEvent, createRunProjection, type RunProjection } from './projection'
 
 export type StreamState = 'connecting' | 'open' | 'reconciling' | 'offline' | 'closed'
@@ -93,6 +98,19 @@ export function useRunProjection(runId: string, csrfToken: string) {
     mutationFn: (command: RunAction) => submitRunAction(runId, command, csrfToken),
     onSuccess: (snapshot) => queryClient.setQueryData(queryKey, snapshot),
   })
+  const cancel = useMutation({
+    mutationFn: (reason?: string) =>
+      cancelRun(
+        runId,
+        {
+          contract_version: 1,
+          idempotency_key: crypto.randomUUID(),
+          reason: reason || null,
+        },
+        csrfToken,
+      ),
+    onSuccess: (snapshot) => queryClient.setQueryData(queryKey, snapshot),
+  })
 
   const snapshot =
     query.data &&
@@ -106,6 +124,7 @@ export function useRunProjection(runId: string, csrfToken: string) {
     queryError: query.error,
     isLoading: query.isLoading,
     action,
+    cancel,
   }
 }
 

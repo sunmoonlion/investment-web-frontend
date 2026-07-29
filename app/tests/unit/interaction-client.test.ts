@@ -1,5 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import {
+  cancelRun,
+  createRun,
   fetchRunSnapshot,
   InteractionClientError,
   parseRunEventPayload,
@@ -74,6 +76,41 @@ describe('interaction client', () => {
       credentials: 'same-origin',
       headers: expect.objectContaining({ 'X-CSRF-Token': 'csrf-token' }),
     })
+  })
+
+  it('creates and cancels runs with exact browser contracts and CSRF', async () => {
+    const fetchImpl = vi.fn<typeof fetch>().mockImplementation(async () => jsonResponse(snapshot()))
+    await createRun(
+      {
+        contract_version: 1,
+        idempotency_key: crypto.randomUUID(),
+        title: 'Pilot',
+        input: { text: 'Use authorized evidence' },
+      },
+      'csrf-token',
+      fetchImpl,
+    )
+    await cancelRun(
+      runId,
+      {
+        contract_version: 1,
+        idempotency_key: crypto.randomUUID(),
+        reason: 'user request',
+      },
+      'csrf-token',
+      fetchImpl,
+    )
+
+    expect(fetchImpl.mock.calls[0][0]).toBe('/api/runs')
+    expect(fetchImpl.mock.calls[1][0]).toBe(`/api/runs/${runId}/cancel`)
+    for (const [, init] of fetchImpl.mock.calls) {
+      expect(init).toMatchObject({
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: expect.objectContaining({ 'X-CSRF-Token': 'csrf-token' }),
+      })
+      expect(JSON.stringify(init)).not.toMatch(/access_token|service_token/)
+    }
   })
 })
 

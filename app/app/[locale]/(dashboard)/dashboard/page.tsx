@@ -1,10 +1,8 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 
-import { AgentConsole } from '@/components/agent/agent-console'
 import { LogoutButton } from '@/components/auth/logout-button'
-import { ReferenceWorkspace } from '@/components/platform/reference-workspace'
-import { serverEnv } from '@/env/server'
+import { ResearchWorkspace } from '@/components/research/research-workspace'
 import { requireBrowserSession } from '@/lib/server/auth-session'
 
 export const dynamic = 'force-dynamic'
@@ -22,8 +20,15 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function DashboardPage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function DashboardPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string }>
+  searchParams: Promise<{ run?: string | string[] }>
+}) {
   const { locale } = await params
+  const { run } = await searchParams
   const session = await requireBrowserSession(locale)
   const t = await getTranslations('auth')
   const tNav = await getTranslations('nav')
@@ -49,14 +54,14 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
             })}
           </p>
         </div>
-        <AgentConsole />
-        {serverEnv.REFERENCE_UI_ENABLED ? (
-          <ReferenceWorkspace
-            runId="00000000-0000-5000-8000-000000000001"
-            csrfToken={session.csrf_token}
-          />
-        ) : null}
+        <ResearchWorkspace
+          initialRunId={typeof run === 'string' && UUID_PATTERN.test(run) ? run : null}
+          csrfToken={session.csrf_token}
+        />
       </main>
     </div>
   )
 }
+
+const UUID_PATTERN =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[45][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i

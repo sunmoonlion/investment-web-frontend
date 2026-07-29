@@ -93,6 +93,27 @@ export const runActionSchema = z
   })
   .strict()
 
+export const createRunRequestSchema = z
+  .object({
+    contract_version: z.literal(1),
+    idempotency_key: uuid,
+    title: z.string().min(1).max(512).nullable().optional(),
+    input: z
+      .object({
+        text: z.string().min(1).max(20000),
+      })
+      .strict(),
+  })
+  .strict()
+
+export const cancelRunRequestSchema = z
+  .object({
+    contract_version: z.literal(1),
+    idempotency_key: uuid,
+    reason: z.string().max(1000).nullable().optional(),
+  })
+  .strict()
+
 export const apiErrorSchema = z
   .object({
     error: z
@@ -109,3 +130,5 @@ export type Citation = z.infer<typeof citationSchema>
 export type RunSnapshot = z.infer<typeof runSnapshotSchema>
 export type RunEvent = z.infer<typeof runEventSchema>
 export type RunAction = z.infer<typeof runActionSchema>
+export type CreateRunRequest = z.infer<typeof createRunRequestSchema>
+export type CancelRunRequest = z.infer<typeof cancelRunRequestSchema>

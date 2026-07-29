@@ -1,7 +1,11 @@
 import {
   apiErrorSchema,
+  cancelRunRequestSchema,
+  createRunRequestSchema,
   runEventSchema,
   runSnapshotSchema,
+  type CancelRunRequest,
+  type CreateRunRequest,
   type RunAction,
   type RunEvent,
   type RunSnapshot,
@@ -26,6 +30,22 @@ export async function fetchRunSnapshot(
   return requestSnapshot(`/api/runs/${encodeURIComponent(runId)}`, { method: 'GET' }, fetchImpl)
 }
 
+export async function createRun(
+  command: CreateRunRequest,
+  csrfToken: string,
+  fetchImpl: typeof fetch = fetch,
+): Promise<RunSnapshot> {
+  return requestSnapshot(
+    '/api/runs',
+    {
+      method: 'POST',
+      headers: mutationHeaders(csrfToken),
+      body: JSON.stringify(createRunRequestSchema.parse(command)),
+    },
+    fetchImpl,
+  )
+}
+
 export async function submitRunAction(
   runId: string,
   action: RunAction,
@@ -36,11 +56,25 @@ export async function submitRunAction(
     `/api/runs/${encodeURIComponent(runId)}/actions`,
     {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': csrfToken,
-      },
+      headers: mutationHeaders(csrfToken),
       body: JSON.stringify(action),
+    },
+    fetchImpl,
+  )
+}
+
+export async function cancelRun(
+  runId: string,
+  command: CancelRunRequest,
+  csrfToken: string,
+  fetchImpl: typeof fetch = fetch,
+): Promise<RunSnapshot> {
+  return requestSnapshot(
+    `/api/runs/${encodeURIComponent(runId)}/cancel`,
+    {
+      method: 'POST',
+      headers: mutationHeaders(csrfToken),
+      body: JSON.stringify(cancelRunRequestSchema.parse(command)),
     },
     fetchImpl,
   )
@@ -95,4 +129,11 @@ async function requestSnapshot(
     throw new InteractionClientError('contract_invalid', undefined, { cause: parsed.error })
   }
   return parsed.data
+}
+
+function mutationHeaders(csrfToken: string): Record<string, string> {
+  return {
+    'Content-Type': 'application/json',
+    'X-CSRF-Token': csrfToken,
+  }
 }
