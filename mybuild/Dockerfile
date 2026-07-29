@@ -126,23 +126,7 @@ FROM ${NODE_IMAGE} AS run-minimal
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 --ingroup nodejs nextjs
 
-# ============================================================================
-# 代理配置（可选，与 build 阶段相同）
-# ============================================================================
-ARG HTTP_PROXY
-ARG HTTPS_PROXY
-ARG http_proxy
-ARG https_proxy
-ARG NO_PROXY
-ARG no_proxy
-
-# 设置代理环境变量（用于 apk、npm/pnpm 等）
-ENV HTTP_PROXY=${HTTP_PROXY} \
-    HTTPS_PROXY=${HTTPS_PROXY} \
-    http_proxy=${http_proxy} \
-    https_proxy=${https_proxy} \
-    NO_PROXY=${NO_PROXY} \
-    no_proxy=${no_proxy}
+# 构建代理只允许存在于 build 阶段，禁止固化到最终运行镜像。
 WORKDIR /app
 ENV NODE_ENV=production \
     APP_ENV=production \
