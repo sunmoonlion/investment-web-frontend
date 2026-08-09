@@ -101,8 +101,8 @@ describe('interaction client', () => {
       fetchImpl,
     )
 
-    expect(fetchImpl.mock.calls[0][0]).toBe('/api/runs')
-    expect(fetchImpl.mock.calls[1][0]).toBe(`/api/runs/${runId}/cancel`)
+    expect(fetchImpl.mock.calls[0][0]).toBe('/api/web/v1/runs')
+    expect(fetchImpl.mock.calls[1][0]).toBe(`/api/web/v1/runs/${runId}/cancel`)
     for (const [, init] of fetchImpl.mock.calls) {
       expect(init).toMatchObject({
         method: 'POST',

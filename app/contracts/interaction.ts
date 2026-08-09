@@ -24,13 +24,16 @@ export const citationSchema = z
     source_document_id: uuid,
     source_document_version_id: uuid,
     content_hash: z.string().regex(/^[a-f0-9]{64}$/),
-    source_href: z.string().max(128).regex(/^\/api\/citations\/[0-9a-fA-F-]{36}\/source$/),
+    source_href: z
+      .string()
+      .max(160)
+      .regex(/^\/api\/web\/v1\/citations\/[0-9a-fA-F-]{36}\/source$/),
   })
   .strict()
   .refine(
     (citation) =>
       citation.source_href.toLowerCase() ===
-      `/api/citations/${citation.evidence_id}/source`.toLowerCase(),
+      `/api/web/v1/citations/${citation.evidence_id}/source`.toLowerCase(),
     'source_href must identify evidence_id',
   )
 

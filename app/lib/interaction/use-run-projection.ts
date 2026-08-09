@@ -52,7 +52,7 @@ export function useRunProjection(runId: string, csrfToken: string) {
       const cursor = projectionRef.current?.snapshot.last_event_id
       const params = cursor ? `?last_event_id=${encodeURIComponent(cursor)}` : ''
       setStreamState(reconnectAttempt ? 'offline' : 'connecting')
-      source = new EventSource(`/api/runs/${encodeURIComponent(runId)}/events${params}`, {
+      source = new EventSource(`/api/web/v1/runs/${encodeURIComponent(runId)}/events${params}`, {
         withCredentials: true,
       })
       source.onopen = () => {

@@ -1,5 +1,18 @@
 import { expect, test } from '@playwright/test'
 
+test('runtime health endpoint is dynamic and non-cacheable', async ({ request }) => {
+  const response = await request.get('/healthz')
+
+  expect(response.status()).toBe(200)
+  expect(response.headers()['cache-control']).toContain('no-store')
+  expect(response.headers()['x-deployment-id']).toBe('arch-v2-r2-web-e2e')
+  expect(await response.json()).toMatchObject({
+    status: 'ok',
+    surface: 'web',
+    deployment_id: 'arch-v2-r2-web-e2e',
+  })
+})
+
 test('public route is rendered and indexable', async ({ page }) => {
   const response = await page.goto('/en')
 
@@ -28,7 +41,7 @@ test('workspace route renders only after the paired backend validates its opaque
 }) => {
   await context.addCookies([
     {
-      name: 'sunmoonai_info_web_sid',
+      name: 'sunmoonai_investment_web_sid',
       value: 'e2e-session',
       domain: '127.0.0.1',
       path: '/',
@@ -45,14 +58,14 @@ test('workspace route renders only after the paired backend validates its opaque
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/)
 })
 
-test('paired Nest contract streams, cites, reconciles and accepts HITL', async ({
+test('paired unified Backend contract streams, cites, reconciles and accepts HITL', async ({
   context,
   page,
   request,
 }) => {
   await context.addCookies([
     {
-      name: 'sunmoonai_info_web_sid',
+      name: 'sunmoonai_investment_web_sid',
       value: 'e2e-session',
       domain: '127.0.0.1',
       path: '/',
@@ -62,8 +75,11 @@ test('paired Nest contract streams, cites, reconciles and accepts HITL', async (
   ])
   await page.goto('/en/dashboard')
 
-  await expect(page.getByText('A streamed answer fragment.')).toBeVisible()
-  const source = page.getByRole('link', { name: 'Reference source' })
+  await page.getByLabel('Research question').fill('Use the authorized evidence')
+  await page.getByRole('button', { name: 'Start research' }).click()
+
+  await expect(page.getByText('A streamed FastAPI response fragment.')).toBeVisible()
+  const source = page.getByRole('link', { name: 'FastAPI authorized reference' })
   await expect(source).toBeVisible()
   await expect(page.getByTestId('run-status')).toHaveText('Waiting for input')
 
@@ -72,11 +88,11 @@ test('paired Nest contract streams, cites, reconciles and accepts HITL', async (
   const anonymousSource = await request.get(sourceHref, { maxRedirects: 0 })
   expect(anonymousSource.status()).toBe(401)
   const sourceResponse = await request.get(sourceHref, {
-    headers: { Cookie: 'sunmoonai_info_web_sid=e2e-session' },
+    headers: { Cookie: 'sunmoonai_investment_web_sid=e2e-session' },
     maxRedirects: 0,
   })
   expect(sourceResponse.status()).toBe(302)
-  expect(sourceResponse.headers().location).toContain('/api/reference/sources/')
+  expect(sourceResponse.headers().location).toContain('/api/web/v1/reference/sources/')
 
   await page.getByRole('button', { name: 'Confirm and continue' }).click()
   await expect(page.getByTestId('run-status')).toHaveText('Succeeded')

@@ -31,8 +31,8 @@ describe('loadBrowserSession', () => {
 
     await expect(
       loadBrowserSession({
-        backendUrl: 'http://tpl-web-backend:8000',
-        cookieHeader: 'sunmoonai_info_web_sid=opaque-session',
+        backendUrl: 'http://investment-backend:8000',
+        cookieHeader: 'sunmoonai_investment_web_sid=opaque-session',
         correlationId: 'correlation-1234',
         expectedApp: 'info',
         fetchImpl: fetchImpl as typeof fetch,
@@ -49,8 +49,8 @@ describe('loadBrowserSession', () => {
 
     await expect(
       loadBrowserSession({
-        backendUrl: 'http://tpl-web-backend:8000',
-        cookieHeader: 'sunmoonai_info_web_sid=opaque-session',
+        backendUrl: 'http://investment-backend:8000',
+        cookieHeader: 'sunmoonai_investment_web_sid=opaque-session',
         correlationId: 'correlation-1234',
         expectedApp: 'info',
         fetchImpl,
@@ -58,13 +58,13 @@ describe('loadBrowserSession', () => {
     ).resolves.toEqual(validSession)
 
     expect(fetchImpl).toHaveBeenCalledWith(
-      new URL('http://tpl-web-backend:8000/api/auth/me'),
+      new URL('http://investment-backend:8000/api/auth/web/me'),
       expect.objectContaining({
         cache: 'no-store',
         redirect: 'manual',
         headers: {
           Accept: 'application/json',
-          Cookie: 'sunmoonai_info_web_sid=opaque-session',
+          Cookie: 'sunmoonai_investment_web_sid=opaque-session',
           'x-correlation-id': 'correlation-1234',
         },
       }),
@@ -75,7 +75,7 @@ describe('loadBrowserSession', () => {
     const fetchImpl = vi.fn<typeof fetch>().mockResolvedValue(new Response(null, { status: 401 }))
     await expect(
       loadBrowserSession({
-        backendUrl: 'http://tpl-web-backend:8000',
+        backendUrl: 'http://investment-backend:8000',
         cookieHeader: '',
         correlationId: 'correlation-1234',
         expectedApp: 'info',
@@ -92,7 +92,7 @@ describe('loadBrowserSession', () => {
     const fetchImpl = vi.fn<typeof fetch>().mockResolvedValue(Response.json(payload))
     await expect(
       loadBrowserSession({
-        backendUrl: 'http://tpl-web-backend:8000',
+        backendUrl: 'http://investment-backend:8000',
         cookieHeader: '',
         correlationId: 'correlation-1234',
         expectedApp: 'info',
@@ -105,7 +105,7 @@ describe('loadBrowserSession', () => {
     const fetchImpl = vi.fn<typeof fetch>().mockResolvedValue(new Response(null, { status: 503 }))
     await expect(
       loadBrowserSession({
-        backendUrl: 'http://tpl-web-backend:8000',
+        backendUrl: 'http://investment-backend:8000',
         cookieHeader: '',
         correlationId: 'correlation-1234',
         expectedApp: 'info',

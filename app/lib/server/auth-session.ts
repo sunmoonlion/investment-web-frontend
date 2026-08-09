@@ -19,7 +19,7 @@ export async function getBrowserSession() {
       : randomUUID()
 
   return loadBrowserSession({
-    backendUrl: serverEnv.WEB_BACKEND_INTERNAL_URL,
+    backendUrl: serverEnv.BACKEND_INTERNAL_URL,
     cookieHeader,
     correlationId,
     expectedApp: serverEnv.AUTH_APP,

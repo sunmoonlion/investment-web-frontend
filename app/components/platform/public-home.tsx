@@ -22,7 +22,7 @@ export function PublicHome({
     >
       <section className="bg-card w-full max-w-2xl space-y-6 rounded-2xl border p-8 shadow-sm">
         <div className="space-y-3">
-          <p className="text-muted-foreground text-sm font-medium">SunmoonAI Web Platform</p>
+          <p className="text-muted-foreground text-sm font-medium">SunmoonAI Investment</p>
           <h1 className="text-3xl font-semibold tracking-tight">{title}</h1>
           <p className="text-muted-foreground max-w-xl">{description}</p>
         </div>

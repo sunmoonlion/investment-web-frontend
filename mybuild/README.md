@@ -6,7 +6,7 @@ SSR 镜像构建采用直接使用源代码的方式：
 
 - **源代码位置**：项目根目录的 `app/` 目录（源代码就在同一项目中）
 - **构建方式**：使用 `build-image.sh` 脚本构建镜像，Dockerfile 直接从 `../app/` 复制源代码
-- **镜像名称**：`tpl-web-frontend:1.0.0`（可在 build.conf 中配置）
+- **镜像名称**：`investment-web-frontend:1.0.0`（可在 build.conf 中配置）
 - **优势**：代码和构建配置在一起，代码修改时自动同步，不需要手动复制源代码
 
 ## 文件说明
@@ -55,11 +55,11 @@ cd mybuild
 
 ```bash
 # 1. 构建并推送镜像（如果 PUSH_IMAGES_AFTER_BUILD=true）
-cd /home/zym/tpl-web-frontend/mybuild
+cd /home/zym/investment-web-frontend/mybuild
 ./build-image.sh
 
 # 2. 部署服务（在 K8s 部署目录）
-cd /home/zym/k8s/sunmoonai/app-platform/business-apps/tpl-app/tpl-web-frontend/deploy-tpl-frontend
+cd /home/zym/k8s/sunmoonai/app-platform/business-apps/tpl-app/investment-web-frontend/deploy-tpl-frontend
 ./deploy-tpl-frontend.sh deploy dev
 ```
 
@@ -69,13 +69,13 @@ cd /home/zym/k8s/sunmoonai/app-platform/business-apps/tpl-app/tpl-web-frontend/d
 
 ```bash
 # 在项目根目录执行（构建上下文是项目根目录）
-cd /home/zym/tpl-web-frontend
+cd /home/zym/investment-web-frontend
 
 # 使用 docker
-docker build -f mybuild/Dockerfile -t tpl-web-frontend:1.0.0 .
+docker build -f mybuild/Dockerfile -t investment-web-frontend:1.0.0 .
 
 # 或使用 nerdctl
-sudo nerdctl build -f mybuild/Dockerfile -t tpl-web-frontend:1.0.0 .
+sudo nerdctl build -f mybuild/Dockerfile -t investment-web-frontend:1.0.0 .
 ```
 
 **注意**：
@@ -87,7 +87,7 @@ sudo nerdctl build -f mybuild/Dockerfile -t tpl-web-frontend:1.0.0 .
 
 ### build.conf 配置项
 
-- `TPL_SSR_IMAGE`: 镜像名称（默认: `tpl-web-frontend`）
+- `TPL_SSR_IMAGE`: 镜像名称（默认: `investment-web-frontend`）
 - `TPL_SSR_TAG`: 镜像标签（默认: `1.0.0`）
 - `TPL_SSR_IMAGE_REGISTRY`: 镜像仓库地址（默认: `harbor.sunmoonai.com:30443`）
 - `TPL_SSR_IMAGE_PROJECT`: 镜像项目名（默认: `k8s-images`）

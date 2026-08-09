@@ -1,10 +1,11 @@
-# tpl-web-frontend
+# investment-web-frontend
 
-SunmoonAI 的 Next Web 通用模板。B2~B4 期间它与当前 `tpl-web-backend`（Nest Web BFF）
+SunmoonAI Investment 的 Next Web 实例。它完整继承模板通用能力，并与统一 FastAPI
+`investment-backend`
 组成发布和验收单元；B5/B6 后默认配对同契约 FastAPI BFF，Nest 作为可选 profile。
-模板提供 App Router、明确的 public/authenticated 渲染边界、
+本实例提供 App Router、明确的 public/authenticated 渲染边界、
 next-intl、Tailwind/shadcn UI、同源 `/api` 接入和自托管 standalone 构建。
-本仓库不包含 Info、Knowledge 或 Research 的领域页面和 DTO。
+本仓库在共同底座之上承载 Investment 的 Research Agent 工作区与交互 DTO。
 
 ## 本地开发
 
@@ -21,7 +22,7 @@ corepack pnpm dev
 季度检查 LTS 生命周期，并在 EOL 前至少六个月启动下一次受控升级。
 
 首次使用时，从 `.env.example` 生成未提交的 `.env.local`。浏览器 API 固定为
-同源 `/api`；`DEPLOYMENT_ENV`、`AUTH_APP`、`APP_ORIGIN`、`WEB_BACKEND_INTERNAL_URL`、`DEPLOYMENT_ID`
+同源 `/api`；`DEPLOYMENT_ENV`、`AUTH_APP`、`APP_ORIGIN`、`BACKEND_INTERNAL_URL`、`DEPLOYMENT_ID`
 属于 server-only 运行时契约。不要把 Casdoor、Redis、服务 token 或其他凭据
 放进 `NEXT_PUBLIC_*` 或前端仓库。
 
@@ -56,8 +57,8 @@ Ingress 或受控 Node server 对外提供服务。发布前必须同时记录�
   `REFERENCE_UI_ENABLED=true` 时启用；生产默认关闭，fixture 不代表真实 Run 成功。
 - BFF、session/cookie、SSE cursor/reconcile、Citation DTO 和缓存归属以
   ADR-001/002/004/005/014 为准，不在模板中伪造业务成功。
-- 迁移到 Info、Knowledge、Research 时必须原地替换现有仓库，保留领域页面并按
-  迁移前 tag、候选镜像 digest、隔离部署和回滚证据串行执行。
+- 后续模板同步必须保留 Investment 领域页面，并按迁移前 tag、候选镜像 digest、
+  隔离部署和回滚证据串行执行。
 
 ## 参考
 

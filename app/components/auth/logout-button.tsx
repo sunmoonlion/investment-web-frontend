@@ -19,7 +19,7 @@ export function LogoutButton({ csrfToken, locale, label, errorLabel }: LogoutBut
     setPending(true)
     setFailed(false)
     try {
-      const response = await fetch('/api/auth/logout', {
+      const response = await fetch('/api/auth/web/logout', {
         method: 'POST',
         credentials: 'same-origin',
         cache: 'no-store',

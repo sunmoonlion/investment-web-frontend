@@ -3,7 +3,7 @@ import { z } from 'zod'
 const principalSchema = z
   .object({
     actor_id: z.uuid(),
-    app: z.enum(['info', 'knowledge', 'research']),
+    app: z.enum(['tpl', 'info', 'knowledge', 'research', 'investment']),
     surface: z.literal('web'),
     display_name: z.string().max(256).nullable().optional(),
     email: z.email().max(320).nullable().optional(),

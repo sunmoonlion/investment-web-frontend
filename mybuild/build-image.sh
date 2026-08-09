@@ -48,7 +48,7 @@ else
 fi
 
 # 镜像配置（从 build.conf 读取）
-TPL_SSR_IMAGE="${TPL_SSR_IMAGE:-tpl-web-frontend}"
+TPL_SSR_IMAGE="${TPL_SSR_IMAGE:-investment-web-frontend}"
 TPL_SSR_TAG="${TPL_SSR_TAG:-1.0.0}"
 
 # 镜像仓库配置（从 build.conf 读取）
@@ -97,6 +97,9 @@ fi
 # 镜像推送配置（从 build.conf 读取）
 PUSH_IMAGES_AFTER_BUILD="${PUSH_IMAGES_AFTER_BUILD:-false}"
 DOCKER_BUILD_NETWORK="${DOCKER_BUILD_NETWORK:-}"
+BUILD_HTTP_PROXY="${BUILD_HTTP_PROXY:-}"
+BUILD_HTTPS_PROXY="${BUILD_HTTPS_PROXY:-}"
+BUILD_NO_PROXY="${BUILD_NO_PROXY:-}"
 
 # 获取项目根目录（构建上下文）
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
@@ -143,12 +146,34 @@ build_image() {
     
     # 构建镜像（构建上下文是项目根目录，Dockerfile 在 mybuild/ 目录）
     local build_network_args=()
+    local build_proxy_args=()
     if [ -n "$DOCKER_BUILD_NETWORK" ]; then
         build_network_args=(--network "$DOCKER_BUILD_NETWORK")
         log_info "Docker build 网络模式: $DOCKER_BUILD_NETWORK"
     fi
+    if [ -n "$BUILD_HTTP_PROXY" ]; then
+        build_proxy_args+=(
+            --build-arg "HTTP_PROXY=$BUILD_HTTP_PROXY"
+            --build-arg "http_proxy=$BUILD_HTTP_PROXY"
+        )
+    fi
+    if [ -n "$BUILD_HTTPS_PROXY" ]; then
+        build_proxy_args+=(
+            --build-arg "HTTPS_PROXY=$BUILD_HTTPS_PROXY"
+            --build-arg "https_proxy=$BUILD_HTTPS_PROXY"
+        )
+    fi
+    if [ -n "$BUILD_NO_PROXY" ]; then
+        build_proxy_args+=(
+            --build-arg "NO_PROXY=$BUILD_NO_PROXY"
+            --build-arg "no_proxy=$BUILD_NO_PROXY"
+        )
+    fi
+    if [ "${#build_proxy_args[@]}" -gt 0 ]; then
+        log_info "Docker build 使用显式构建代理（不会进入运行镜像）"
+    fi
 
-    $RUNTIME_CMD build "${build_network_args[@]}" -f "$SCRIPT_DIR/$DOCKERFILE" \
+    $RUNTIME_CMD build "${build_network_args[@]}" "${build_proxy_args[@]}" -f "$SCRIPT_DIR/$DOCKERFILE" \
         -t "${TPL_SSR_IMAGE}:${TPL_SSR_TAG}" \
         --build-arg REGISTRY="${REGISTRY}" \
         --build-arg NODE_IMAGE="${REGISTRY}/node:24.18.0-alpine@sha256:4ba75f835bb8802193e4c114572113d4b26f95f6f094f4b5229d2a77773e0afc" \

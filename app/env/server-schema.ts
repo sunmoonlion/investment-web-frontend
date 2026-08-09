@@ -16,9 +16,9 @@ const httpOrigin = z.url().refine((value) => {
 const serverEnvSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   DEPLOYMENT_ENV: z.enum(['development', 'test', 'production']).optional(),
-  AUTH_APP: z.enum(['info', 'knowledge', 'research']).optional(),
+  AUTH_APP: z.enum(['tpl', 'info', 'knowledge', 'research', 'investment']).optional(),
   APP_ORIGIN: httpOrigin.optional(),
-  WEB_BACKEND_INTERNAL_URL: httpOrigin.optional(),
+  BACKEND_INTERNAL_URL: httpOrigin.optional(),
   DEPLOYMENT_ID: z.string().trim().min(1).optional(),
   REFERENCE_UI_ENABLED: z
     .enum(['true', 'false'])
@@ -28,9 +28,9 @@ const serverEnvSchema = z.object({
 
 export type ServerEnv = z.infer<typeof serverEnvSchema> & {
   DEPLOYMENT_ENV: 'development' | 'test' | 'production'
-  AUTH_APP: 'info' | 'knowledge' | 'research'
+  AUTH_APP: 'tpl' | 'info' | 'knowledge' | 'research' | 'investment'
   APP_ORIGIN: string
-  WEB_BACKEND_INTERNAL_URL: string
+  BACKEND_INTERNAL_URL: string
   DEPLOYMENT_ID: string
   REFERENCE_UI_ENABLED: boolean
 }
@@ -50,15 +50,15 @@ export function parseServerEnv(
     parsed.DEPLOYMENT_ENV ?? (allowLocalDefaults ? 'development' : undefined)
 
   const appOrigin = parsed.APP_ORIGIN ?? (allowLocalDefaults ? 'http://localhost:3000' : undefined)
-  const webBackendInternalUrl =
-    parsed.WEB_BACKEND_INTERNAL_URL ?? (allowLocalDefaults ? 'http://127.0.0.1:8000' : undefined)
+  const backendInternalUrl =
+    parsed.BACKEND_INTERNAL_URL ?? (allowLocalDefaults ? 'http://127.0.0.1:8000' : undefined)
   const deploymentId = parsed.DEPLOYMENT_ID ?? (allowLocalDefaults ? 'local' : undefined)
-  const authApp = parsed.AUTH_APP ?? (allowLocalDefaults ? 'info' : undefined)
+  const authApp = parsed.AUTH_APP ?? (allowLocalDefaults ? 'investment' : undefined)
   const referenceUiEnabled = parsed.REFERENCE_UI_ENABLED ?? false
 
-  if (!deploymentEnv || !appOrigin || !webBackendInternalUrl || !deploymentId || !authApp) {
+  if (!deploymentEnv || !appOrigin || !backendInternalUrl || !deploymentId || !authApp) {
     throw new Error(
-      'Invalid server environment: DEPLOYMENT_ENV, AUTH_APP, APP_ORIGIN, WEB_BACKEND_INTERNAL_URL and DEPLOYMENT_ID are required at production runtime',
+      'Invalid server environment: DEPLOYMENT_ENV, AUTH_APP, APP_ORIGIN, BACKEND_INTERNAL_URL and DEPLOYMENT_ID are required at production runtime',
     )
   }
   if (deploymentEnv === 'production' && !appOrigin.startsWith('https://')) {
@@ -76,7 +76,7 @@ export function parseServerEnv(
     DEPLOYMENT_ENV: deploymentEnv,
     AUTH_APP: authApp,
     APP_ORIGIN: appOrigin,
-    WEB_BACKEND_INTERNAL_URL: webBackendInternalUrl,
+    BACKEND_INTERNAL_URL: backendInternalUrl,
     DEPLOYMENT_ID: deploymentId,
     REFERENCE_UI_ENABLED: referenceUiEnabled,
   }

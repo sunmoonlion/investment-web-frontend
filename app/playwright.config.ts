@@ -5,6 +5,7 @@ const nextPort = Number(process.env.NEXT_PORT ?? 3008)
 const externalBaseURL = process.env.PLAYWRIGHT_BASE_URL
 const baseURL = externalBaseURL ?? `http://127.0.0.1:${gatewayPort}`
 const pairBackendPort = Number(process.env.PAIR_FIXTURE_PORT ?? 18080)
+const pairBackendProject = process.env.PAIR_BACKEND_PROJECT ?? '../../investment-backend/app'
 
 export default defineConfig({
   testDir: './tests/e2e',
@@ -23,7 +24,7 @@ export default defineConfig({
     ? undefined
     : [
         {
-          command: 'pnpm --dir ../../tpl-web-backend/app start:pair-fixture',
+          command: `uv run --project ${pairBackendProject} --frozen python -m uvicorn --app-dir ${pairBackendProject} scripts.pair_fixture:app --host 127.0.0.1 --port ${pairBackendPort}`,
           url: `http://127.0.0.1:${pairBackendPort}/api/health`,
           reuseExistingServer: !process.env.CI,
           timeout: 30_000,
@@ -39,10 +40,10 @@ export default defineConfig({
           timeout: 60_000,
           env: {
             DEPLOYMENT_ENV: 'test',
-            AUTH_APP: 'info',
+            AUTH_APP: 'investment',
             APP_ORIGIN: baseURL,
-            WEB_BACKEND_INTERNAL_URL: `http://127.0.0.1:${pairBackendPort}`,
-            DEPLOYMENT_ID: 'p0-008b-b3-e2e',
+            BACKEND_INTERNAL_URL: `http://127.0.0.1:${pairBackendPort}`,
+            DEPLOYMENT_ID: 'arch-v2-r2-web-e2e',
             REFERENCE_UI_ENABLED: 'true',
             HOSTNAME: '127.0.0.1',
             PORT: String(nextPort),

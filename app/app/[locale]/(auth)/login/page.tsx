@@ -6,7 +6,7 @@ import { clientEnv } from '@/env/client'
 import { getBrowserSession } from '@/lib/server/auth-session'
 import { cn } from '@/lib/utils'
 
-const continueUrl = `${clientEnv.NEXT_PUBLIC_API_URL}/auth/continue`
+const continueUrl = `${clientEnv.NEXT_PUBLIC_API_URL}/auth/web/continue`
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('meta')
@@ -37,8 +37,8 @@ export default async function LoginPage({ params, searchParams }: Props) {
   const session = await getBrowserSession()
   if (session) redirect(`/${locale}/dashboard`)
   const returnTo = `/${locale}/dashboard`
-  const loginUrl = `${clientEnv.NEXT_PUBLIC_API_URL}/auth/login?return_to=${encodeURIComponent(returnTo)}`
-  const signupUrl = `${clientEnv.NEXT_PUBLIC_API_URL}/auth/signup?return_to=${encodeURIComponent(returnTo)}`
+  const loginUrl = `${clientEnv.NEXT_PUBLIC_API_URL}/auth/web/login?return_to=${encodeURIComponent(returnTo)}`
+  const signupUrl = `${clientEnv.NEXT_PUBLIC_API_URL}/auth/web/signup?return_to=${encodeURIComponent(returnTo)}`
 
   let errorText: string | null = null
   if (paramsQ.error === 'auth_failed') {

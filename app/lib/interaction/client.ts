@@ -27,7 +27,7 @@ export async function fetchRunSnapshot(
   runId: string,
   fetchImpl: typeof fetch = fetch,
 ): Promise<RunSnapshot> {
-  return requestSnapshot(`/api/runs/${encodeURIComponent(runId)}`, { method: 'GET' }, fetchImpl)
+  return requestSnapshot(`/api/web/v1/runs/${encodeURIComponent(runId)}`, { method: 'GET' }, fetchImpl)
 }
 
 export async function createRun(
@@ -36,7 +36,7 @@ export async function createRun(
   fetchImpl: typeof fetch = fetch,
 ): Promise<RunSnapshot> {
   return requestSnapshot(
-    '/api/runs',
+    '/api/web/v1/runs',
     {
       method: 'POST',
       headers: mutationHeaders(csrfToken),
@@ -53,7 +53,7 @@ export async function submitRunAction(
   fetchImpl: typeof fetch = fetch,
 ): Promise<RunSnapshot> {
   return requestSnapshot(
-    `/api/runs/${encodeURIComponent(runId)}/actions`,
+    `/api/web/v1/runs/${encodeURIComponent(runId)}/actions`,
     {
       method: 'POST',
       headers: mutationHeaders(csrfToken),
@@ -70,7 +70,7 @@ export async function cancelRun(
   fetchImpl: typeof fetch = fetch,
 ): Promise<RunSnapshot> {
   return requestSnapshot(
-    `/api/runs/${encodeURIComponent(runId)}/cancel`,
+    `/api/web/v1/runs/${encodeURIComponent(runId)}/cancel`,
     {
       method: 'POST',
       headers: mutationHeaders(csrfToken),

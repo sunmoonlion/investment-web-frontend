@@ -15,7 +15,7 @@ type LoadBrowserSessionInput = {
   backendUrl: string
   cookieHeader: string
   correlationId: string
-  expectedApp: 'info' | 'knowledge' | 'research'
+  expectedApp: 'tpl' | 'info' | 'knowledge' | 'research' | 'investment'
   fetchImpl?: typeof fetch
 }
 
@@ -28,7 +28,7 @@ export async function loadBrowserSession({
 }: LoadBrowserSessionInput): Promise<BrowserSession | null> {
   let response: Response
   try {
-    response = await fetchImpl(new URL('/api/auth/me', backendUrl), {
+    response = await fetchImpl(new URL('/api/auth/web/me', backendUrl), {
       method: 'GET',
       cache: 'no-store',
       redirect: 'manual',

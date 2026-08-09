@@ -1,4 +1,4 @@
-# 用户端前端（research-web-frontend）— Claude Code 规则
+# 用户端前端（investment-web-frontend）— Claude Code 规则
 
 > 进入本目录时自动叠加，补充根目录 CLAUDE.md 的全局规则。本文件只约束局部编码；若与代码/OpenAPI、父 App 根 `README.md` 或 k8s v5 权威文档冲突，以后者为准。
 
