@@ -1,7 +1,7 @@
 # investment-web-frontend — 局部编码规则
 
 > 进入本目录时自动叠加。**本文件只约束局部编码。**
-> 项目全貌见 `../../k8s/sunmoonai/docs/overall-architecture.md`（§3.3 是前端形态）。
+> 项目全貌见 `../../k8s/sunmoonai/docs/architecture/overall-architecture.md`（§3.3 是前端形态）。
 > 与代码冲突时以代码为准。
 
 ## 技术栈
