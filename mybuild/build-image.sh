@@ -39,6 +39,10 @@ if [ -f "$BUILD_CONF" ]; then
     log_info "加载构建配置: $BUILD_CONF"
     # shellcheck source=/dev/null
     source "$BUILD_CONF"
+    source "$SCRIPT_DIR/release-tag.sh"
+    candidate_tag="${TPL_SSR_TAG:-architecture-v2-dev}"
+    if [[ "${1:-}" == "--tag" && -n "${2:-}" ]]; then candidate_tag="$2"; fi
+    require_development_tag "$candidate_tag" || exit 1
     source "$SCRIPT_DIR/harbor-cluster.sh"
 REGISTRY="$(resolve_k8s_images_registry)" || exit 1
 export REGISTRY
@@ -49,7 +53,7 @@ fi
 
 # 镜像配置（从 build.conf 读取）
 TPL_SSR_IMAGE="${TPL_SSR_IMAGE:-investment-web-frontend}"
-TPL_SSR_TAG="${TPL_SSR_TAG:-1.0.0}"
+TPL_SSR_TAG="${TPL_SSR_TAG:-architecture-v2-dev}"
 
 # 镜像仓库配置（从 build.conf 读取）
 TPL_SSR_IMAGE_REGISTRY="${TPL_SSR_IMAGE_REGISTRY:-harbor.sunmoonai.com}"
