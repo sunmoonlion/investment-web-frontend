@@ -119,6 +119,8 @@ function describe(e: SessionEvent, t: ReturnType<typeof useTranslations>): Line 
       return { label: t('ev.interactionOpened', { kind: String(p.kind) }), tone: 'bg-amber-50 dark:bg-amber-950/30' }
     case 'interaction/consumed':
       return { label: t('ev.interactionConsumed'), body: JSON.stringify(p.response ?? {}), tone: '' }
+    case 'interaction/expired':
+      return { label: t('ev.interactionExpired'), tone: 'bg-amber-50 dark:bg-amber-950/30' }
     case 'command/failed':
       return { label: t('ev.commandFailed'), body: String(p.error ?? ''), tone: 'bg-rose-50 dark:bg-rose-950/30' }
     case 'thread/environment/disconnected':

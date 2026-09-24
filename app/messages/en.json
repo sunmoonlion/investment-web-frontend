@@ -162,7 +162,8 @@
       "commandFailed": "Command failed",
       "envDown": "Your machine disconnected",
       "envUp": "Your machine connected",
-      "threadStarted": "Codex thread started"
+      "threadStarted": "Codex thread started",
+      "interactionExpired": "Approval voided (service restarted); Codex will ask again"
     },
     "dossier": {
       "title": "Dossier",

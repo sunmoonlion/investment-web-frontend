@@ -162,7 +162,8 @@
       "commandFailed": "命令失败",
       "envDown": "你的机器断开了",
       "envUp": "你的机器已连上",
-      "threadStarted": "Codex 会话已建立"
+      "threadStarted": "Codex 会话已建立",
+      "interactionExpired": "审批已作废（服务重启），Codex 会重新询问"
     },
     "dossier": {
       "title": "底稿",
