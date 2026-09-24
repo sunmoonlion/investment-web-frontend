@@ -204,7 +204,20 @@
       },
       "save": "保存",
       "saved": "已保存",
-      "error": "出错：{code}"
+      "error": "出错：{code}",
+      "sandbox": "我的沙箱",
+      "sandboxHint": "用你登记的模型 key 在云端拉起一个只属于你的 Codex 沙箱；第一次拉起会给你一条本地代理的接入命令，只显示这一次。",
+      "sandboxStatus": {
+        "absent": "还没有沙箱",
+        "starting": "启动中",
+        "ready": "运行中",
+        "deleted": "已回收"
+      },
+      "sandboxProvision": "拉起沙箱",
+      "sandboxUpdate": "更新沙箱",
+      "sandboxDelete": "回收沙箱",
+      "agentTokenTitle": "本地代理接入命令（只显示一次）",
+      "agentTokenHint": "复制到你的机器上运行；令牌不会再显示，丢了就回收沙箱重新拉起。"
     },
     "openDossier": "打开底稿",
     "settingsLink": "设置",

@@ -5,7 +5,16 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import type { Prefs } from '@/contracts/workbench'
-import { addCredential, fetchPrefs, listCredentials, revokeCredential, savePrefs } from '@/lib/workbench/client'
+import {
+  addCredential,
+  deprovisionSandbox,
+  fetchPrefs,
+  listCredentials,
+  provisionSandbox,
+  provisionedSandboxStatus,
+  revokeCredential,
+  savePrefs,
+} from '@/lib/workbench/client'
 
 const POLICIES: Prefs['approval_policy'][] = ['untrusted', 'on-request', 'on-failure', 'never']
 
@@ -15,6 +24,7 @@ export function SettingsPanel({ csrfToken }: { csrfToken: string }) {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
       <KeysSection csrfToken={csrfToken} />
+      <SandboxSection csrfToken={csrfToken} />
       {prefs.data ? (
         <ThreadSection key={`${prefs.data.model ?? ''}|${prefs.data.approval_policy}`} csrfToken={csrfToken} initial={prefs.data} />
       ) : (
@@ -144,3 +154,60 @@ function KeysSection({ csrfToken }: { csrfToken: string }) {
 
   )
 }
+
+function SandboxSection({ csrfToken }: { csrfToken: string }) {
+  const t = useTranslations('workbench.settings')
+  const queryClient = useQueryClient()
+  const status = useQuery({ queryKey: ['wb-provisioned'], queryFn: () => provisionedSandboxStatus(), refetchInterval: 5000 })
+  const [issued, setIssued] = useState<{ url: string; user: string; token: string } | null>(null)
+  const provision = useMutation({
+    mutationFn: () => provisionSandbox(csrfToken),
+    onSuccess: (result) => {
+      if (result.relay?.agent_token) setIssued({ url: result.relay.url, user: result.relay.user, token: result.relay.agent_token })
+      void queryClient.invalidateQueries({ queryKey: ['wb-provisioned'] })
+      void queryClient.invalidateQueries({ queryKey: ['wb-sandboxes'] })
+    },
+  })
+  const remove = useMutation({
+    mutationFn: () => deprovisionSandbox(csrfToken),
+    onSuccess: () => {
+      setIssued(null)
+      void queryClient.invalidateQueries({ queryKey: ['wb-provisioned'] })
+    },
+  })
+  const state = status.data?.status ?? 'absent'
+  return (
+    <section className="bg-card rounded-2xl border p-6 shadow-sm lg:col-span-2" aria-labelledby="settings-sandbox">
+      <h2 id="settings-sandbox" className="text-xl font-semibold">
+        {t('sandbox')}
+      </h2>
+      <p className="text-muted-foreground mt-1 text-sm">{t('sandboxHint')}</p>
+      <div className="mt-4 flex flex-wrap items-center gap-3">
+        <span className="rounded-full border px-3 py-1 text-xs" data-sandbox-status={state}>
+          {t(`sandboxStatus.${['absent', 'starting', 'ready', 'deleted'].includes(state) ? state : 'starting'}` as 'sandboxStatus.absent')}
+        </span>
+        <button type="button" className="bg-primary text-primary-foreground rounded-lg px-4 py-2 text-sm font-medium disabled:opacity-50" disabled={provision.isPending} onClick={() => provision.mutate()}>
+          {state === 'ready' || state === 'starting' ? t('sandboxUpdate') : t('sandboxProvision')}
+        </button>
+        {state === 'ready' || state === 'starting' ? (
+          <button type="button" className="rounded-lg border px-3 py-2 text-sm" disabled={remove.isPending} onClick={() => remove.mutate()}>
+            {t('sandboxDelete')}
+          </button>
+        ) : null}
+        {provision.error ? (
+          <p role="alert" className="text-destructive text-xs">
+            {t('error', { code: (provision.error as Error).message })}
+          </p>
+        ) : null}
+      </div>
+      {issued ? (
+        <div className="mt-4 rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm dark:bg-amber-950/30" data-agent-token-issued>
+          <p className="font-medium">{t('agentTokenTitle')}</p>
+          <p className="text-muted-foreground mt-1 text-xs">{t('agentTokenHint')}</p>
+          <pre className="mt-2 overflow-x-auto rounded bg-background p-2 text-xs">{`sunmoon-agent init --relay ${issued.url} --user ${issued.user} --token ${issued.token} --root <你的研究目录>`}</pre>
+        </div>
+      ) : null}
+    </section>
+  )
+}
+

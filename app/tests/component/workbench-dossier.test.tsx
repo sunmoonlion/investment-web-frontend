@@ -110,3 +110,27 @@ describe('settings', () => {
     expect(credentialSchema.safeParse({ id: '00000000-0000-5000-8000-000000000020', provider: 'kimi', hint: 'wxyz', status: 'active', api_key: 'sk-x' }).success).toBe(false)
   })
 })
+
+describe('sandbox provisioning', () => {
+  it('starts a sandbox and shows the agent command only when a token was issued', async () => {
+    let provisioned = false
+    const fetchMock = vi.spyOn(globalThis, 'fetch').mockImplementation(async (input, init) => {
+      const url = String(input)
+      if (url.endsWith('/prefs')) return json({ model: null, approval_policy: 'on-request' })
+      if (url.endsWith('/credentials')) return json({ credentials: [] })
+      if (url.endsWith('/sandboxes/provisioned')) return json({ status: provisioned ? 'starting' : 'absent', ready: false })
+      if (url.endsWith('/sandboxes/provision') && init?.method === 'POST') {
+        provisioned = true
+        return json({ sandbox_id: '00000000-0000-5000-8000-000000000030', app_server_url: 'ws://sandbox-u-1.sandbox-pool.svc:47800', status: 'starting', ready: false, relay: { url: 'wss://edge.test/relay', user: 'u-1bcbd3538e76', agent_token: 'agent-token-once-1234567890' } })
+      }
+      throw new Error(`unexpected ${url}`)
+    })
+    render(wrap(<SettingsPanel csrfToken={csrf} />))
+    fireEvent.click(await screen.findByRole('button', { name: '拉起沙箱' }))
+    await screen.findByText('本地代理接入命令（只显示一次）')
+    expect(document.body.textContent).toContain('--user u-1bcbd3538e76 --token agent-token-once-1234567890')
+    const post = fetchMock.mock.calls.find(([u, i]) => String(u).endsWith('/sandboxes/provision') && i?.method === 'POST')
+    expect((post?.[1]?.headers as Record<string, string>)['X-CSRF-Token']).toBe(csrf)
+    vi.restoreAllMocks()
+  })
+})

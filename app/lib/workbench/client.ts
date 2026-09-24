@@ -5,6 +5,7 @@ import {
   environmentSchema,
   eventsPageSchema,
   prefsSchema,
+  provisionedSandboxSchema,
   handoverResultSchema,
   problemSchema,
   sandboxSchema,
@@ -17,6 +18,7 @@ import {
   type Environment,
   type HandoverInput,
   type Prefs,
+  type ProvisionedSandbox,
   type InteractionResponse,
   type Sandbox,
   type Session,
@@ -208,6 +210,18 @@ export async function addCredential(
 
 export async function revokeCredential(credentialId: string, csrfToken: string, fetchImpl: Fetch = fetch): Promise<void> {
   await request(z.object({ status: z.literal('revoked') }).loose(), `/api/workbench/credentials/${encodeURIComponent(credentialId)}/revoke`, mutation(csrfToken, {}), fetchImpl)
+}
+
+export async function provisionSandbox(csrfToken: string, fetchImpl: Fetch = fetch): Promise<ProvisionedSandbox> {
+  return request(provisionedSandboxSchema, '/api/workbench/sandboxes/provision', mutation(csrfToken, {}), fetchImpl)
+}
+
+export async function provisionedSandboxStatus(fetchImpl: Fetch = fetch): Promise<ProvisionedSandbox> {
+  return request(provisionedSandboxSchema, '/api/workbench/sandboxes/provisioned', { method: 'GET' }, fetchImpl)
+}
+
+export async function deprovisionSandbox(csrfToken: string, fetchImpl: Fetch = fetch): Promise<void> {
+  await request(z.object({ status: z.string() }).loose(), '/api/workbench/sandboxes/provisioned', { ...mutation(csrfToken, {}), method: 'DELETE', body: undefined }, fetchImpl)
 }
 
 export function parseStreamEvent(data: string): SessionEvent {

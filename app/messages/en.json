@@ -204,7 +204,20 @@
       },
       "save": "Save",
       "saved": "Saved",
-      "error": "Error: {code}"
+      "error": "Error: {code}",
+      "sandbox": "My sandbox",
+      "sandboxHint": "Start a Codex sandbox of your own in the cloud with the model key you registered; the first start prints your local agent command once.",
+      "sandboxStatus": {
+        "absent": "No sandbox yet",
+        "starting": "Starting",
+        "ready": "Running",
+        "deleted": "Removed"
+      },
+      "sandboxProvision": "Start sandbox",
+      "sandboxUpdate": "Update sandbox",
+      "sandboxDelete": "Remove sandbox",
+      "agentTokenTitle": "Local agent command (shown once)",
+      "agentTokenHint": "Copy it to your machine and run it; the token is never shown again. If lost, remove the sandbox and start again."
     },
     "openDossier": "Open dossier",
     "settingsLink": "Settings",

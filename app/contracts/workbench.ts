@@ -161,6 +161,21 @@ export const credentialSchema = z
   .strict()
   .refine((c) => !('api_key' in c) && !('ciphertext' in c), { message: 'credential must not carry secrets' })
 
+export const provisionedSandboxSchema = z
+  .object({
+    sandbox_id: uuid.nullable().optional(),
+    app_server_url: z.string().optional(),
+    status: z.string().nullable().optional(),
+    ready: z.boolean().optional(),
+    relay: z
+      .object({ url: z.string(), user: z.string(), agent_token: z.string().nullable() })
+      .optional(),
+    relay_user: z.string().optional(),
+    credential_hint: z.string().optional(),
+  })
+  .loose()
+  .refine((s) => !('app_server_token' in s) && !('model_key' in s), { message: 'sandbox must not carry secrets' })
+
 export const problemSchema = z
   .object({
     code: z.string(),
@@ -182,6 +197,7 @@ export type TaskView = z.infer<typeof taskViewSchema>
 export type ArtifactWithContent = z.infer<typeof artifactWithContentSchema>
 export type Prefs = z.infer<typeof prefsSchema>
 export type Credential = z.infer<typeof credentialSchema>
+export type ProvisionedSandbox = z.infer<typeof provisionedSandboxSchema>
 
 export type HandoverInput = {
   idempotency_key: string
