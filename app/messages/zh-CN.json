@@ -163,6 +163,51 @@
       "envDown": "你的机器断开了",
       "envUp": "你的机器已连上",
       "threadStarted": "Codex 会话已建立"
-    }
+    },
+    "dossier": {
+      "title": "底稿",
+      "result": "结果",
+      "noResult": "还没有交回物。",
+      "conclusion": "结论（用户草稿）",
+      "conclusionHint": "顾问不写结论。这里的内容由你填写，保存为你的草稿；不含评级、目标价。",
+      "conclusionPlaceholder": "写下你的结论……",
+      "saveDraft": "保存草稿",
+      "draftVersion": "草稿第 {version} 版",
+      "draftEmpty": "尚未保存",
+      "evidence": "证据",
+      "noEvidence": "没有引用。",
+      "artifacts": "交回物",
+      "noArtifacts": "没有交回物。",
+      "workspace": "工作区变更",
+      "noWorkspaceChanges": "没有记录到工作区变更。"
+    },
+    "settings": {
+      "title": "设置",
+      "keys": "模型 key",
+      "keysHint": "key 只经 HTTPS 提交一次，服务端加密保存，页面不留、不回显；可随时撤换。",
+      "provider": "厂商",
+      "apiKey": "API key",
+      "submitKey": "提交 key",
+      "active": "有效",
+      "revoked": "已撤销",
+      "revoke": "撤销",
+      "noKeys": "还没有登记 key。",
+      "thread": "会话默认",
+      "threadHint": "新会话会带上这里的模型与审批策略。",
+      "model": "模型",
+      "approvalPolicy": "审批策略",
+      "policy": {
+        "untrusted": "不信任：每一步都问",
+        "on-request": "按需：Codex 请求时问",
+        "on-failure": "失败时：沙箱失败才问",
+        "never": "从不问"
+      },
+      "save": "保存",
+      "saved": "已保存",
+      "error": "出错：{code}"
+    },
+    "openDossier": "打开底稿",
+    "settingsLink": "设置",
+    "agentOffline": "本地代理未连上或未安装。安装后在你的机器上运行 `sunmoon-agent start`，这里会自动出现；浏览与设置不受影响。"
   }
 }

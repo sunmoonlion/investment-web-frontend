@@ -1,7 +1,10 @@
 // 工作台接口客户端（通道①）。同源 /api/workbench，浏览器会话 cookie，非安全方法带 CSRF；响应一律过 zod。
 import {
+  artifactsPageSchema,
+  credentialSchema,
   environmentSchema,
   eventsPageSchema,
+  prefsSchema,
   handoverResultSchema,
   problemSchema,
   sandboxSchema,
@@ -9,8 +12,11 @@ import {
   sessionSchema,
   sessionViewSchema,
   taskViewSchema,
+  type ArtifactWithContent,
+  type Credential,
   type Environment,
   type HandoverInput,
+  type Prefs,
   type InteractionResponse,
   type Sandbox,
   type Session,
@@ -165,6 +171,43 @@ export async function respondInteraction(
   fetchImpl: Fetch = fetch,
 ): Promise<void> {
   await request(z.object({ interaction_id: z.uuid() }).loose(), `/api/workbench/interactions/${encodeURIComponent(interactionId)}/respond`, mutation(csrfToken, body), fetchImpl)
+}
+
+export async function fetchArtifacts(taskId: string, fetchImpl: Fetch = fetch): Promise<ArtifactWithContent[]> {
+  return (await request(artifactsPageSchema, `/api/workbench/tasks/${encodeURIComponent(taskId)}/artifacts`, { method: 'GET' }, fetchImpl)).artifacts
+}
+
+export async function saveConclusion(taskId: string, text: string, csrfToken: string, fetchImpl: Fetch = fetch): Promise<{ version: number }> {
+  return request(
+    z.object({ version: z.number().int() }).loose(),
+    `/api/workbench/tasks/${encodeURIComponent(taskId)}/conclusion`,
+    { ...mutation(csrfToken, { text }), method: 'PUT' },
+    fetchImpl,
+  )
+}
+
+export async function fetchPrefs(fetchImpl: Fetch = fetch): Promise<Prefs> {
+  return request(prefsSchema, '/api/workbench/prefs', { method: 'GET' }, fetchImpl)
+}
+
+export async function savePrefs(prefs: Prefs, csrfToken: string, fetchImpl: Fetch = fetch): Promise<Prefs> {
+  return request(prefsSchema, '/api/workbench/prefs', { ...mutation(csrfToken, prefs), method: 'PUT' }, fetchImpl)
+}
+
+export async function listCredentials(fetchImpl: Fetch = fetch): Promise<Credential[]> {
+  return (await request(z.object({ credentials: z.array(credentialSchema) }), '/api/workbench/credentials', { method: 'GET' }, fetchImpl)).credentials
+}
+
+export async function addCredential(
+  input: { provider: string; api_key: string; sandbox_id?: string },
+  csrfToken: string,
+  fetchImpl: Fetch = fetch,
+): Promise<Credential> {
+  return request(credentialSchema, '/api/workbench/credentials', mutation(csrfToken, input), fetchImpl)
+}
+
+export async function revokeCredential(credentialId: string, csrfToken: string, fetchImpl: Fetch = fetch): Promise<void> {
+  await request(z.object({ status: z.literal('revoked') }).loose(), `/api/workbench/credentials/${encodeURIComponent(credentialId)}/revoke`, mutation(csrfToken, {}), fetchImpl)
 }
 
 export function parseStreamEvent(data: string): SessionEvent {

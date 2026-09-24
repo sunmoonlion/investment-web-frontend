@@ -21,7 +21,12 @@ export default async function WorkbenchPage({ params }: { params: Promise<{ loca
   return (
     <div className="bg-background min-h-screen" data-route-class="authenticated-workspace">
       <header className="flex items-center justify-between border-b px-6 py-3">
-        <span className="text-muted-foreground text-sm font-medium">{t('title')}</span>
+        <nav className="flex items-center gap-4">
+          <span className="text-muted-foreground text-sm font-medium">{t('title')}</span>
+          <a href={`/${locale}/workbench/settings`} className="text-sm font-medium hover:underline">
+            {t('settingsLink')}
+          </a>
+        </nav>
         <LogoutButton csrfToken={session.csrf_token} locale={locale} label={tAuth('logout')} errorLabel={tAuth('logoutFailed')} />
       </header>
       <main className="space-y-8 p-8">

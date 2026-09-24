@@ -1,25 +1,21 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 
 import { LogoutButton } from '@/components/auth/logout-button'
-import { SessionConsole } from '@/components/workbench/session-console'
+import { SettingsPanel } from '@/components/workbench/settings-panel'
 import { requireBrowserSession } from '@/lib/server/auth-session'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
-const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
-
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('workbench')
-  return { title: t('sessionTitle'), robots: { index: false, follow: false } }
+  const t = await getTranslations('workbench.settings')
+  return { title: t('title'), robots: { index: false, follow: false } }
 }
 
-export default async function SessionPage({ params }: { params: Promise<{ locale: string; sessionId: string }> }) {
-  const { locale, sessionId } = await params
-  if (!UUID.test(sessionId)) notFound()
+export default async function WorkbenchSettingsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
   const session = await requireBrowserSession(locale)
   const t = await getTranslations('workbench')
   const tAuth = await getTranslations('auth')
@@ -31,8 +27,9 @@ export default async function SessionPage({ params }: { params: Promise<{ locale
         </Link>
         <LogoutButton csrfToken={session.csrf_token} locale={locale} label={tAuth('logout')} errorLabel={tAuth('logoutFailed')} />
       </header>
-      <main className="p-8">
-        <SessionConsole sessionId={sessionId} csrfToken={session.csrf_token} locale={locale} />
+      <main className="space-y-6 p-8">
+        <h1 className="text-2xl font-semibold tracking-tight">{t('settings.title')}</h1>
+        <SettingsPanel csrfToken={session.csrf_token} />
       </main>
     </div>
   )

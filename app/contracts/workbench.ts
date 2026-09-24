@@ -137,6 +137,30 @@ export const handoverResultSchema = z.object({
   created: z.boolean(),
 })
 
+export const artifactWithContentSchema = artifactSchema.extend({ content: z.unknown() })
+export const artifactsPageSchema = z.object({
+  contract_version: z.literal(WORKBENCH_CONTRACT_VERSION),
+  artifacts: z.array(artifactWithContentSchema),
+})
+
+export const prefsSchema = z
+  .object({
+    model: z.string().nullable(),
+    approval_policy: z.enum(['untrusted', 'on-request', 'on-failure', 'never']),
+  })
+  .loose()
+
+export const credentialSchema = z
+  .object({
+    id: uuid,
+    provider: z.string(),
+    hint: z.string(),
+    status: z.enum(['active', 'revoked']),
+    sandbox_id: uuid.nullable().optional(),
+  })
+  .strict()
+  .refine((c) => !('api_key' in c) && !('ciphertext' in c), { message: 'credential must not carry secrets' })
+
 export const problemSchema = z
   .object({
     code: z.string(),
@@ -154,6 +178,10 @@ export type Task = z.infer<typeof taskSchema>
 export type Artifact = z.infer<typeof artifactSchema>
 export type SessionView = z.infer<typeof sessionViewSchema>
 export type TaskView = z.infer<typeof taskViewSchema>
+
+export type ArtifactWithContent = z.infer<typeof artifactWithContentSchema>
+export type Prefs = z.infer<typeof prefsSchema>
+export type Credential = z.infer<typeof credentialSchema>
 
 export type HandoverInput = {
   idempotency_key: string

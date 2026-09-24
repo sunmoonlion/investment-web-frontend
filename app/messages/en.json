@@ -163,6 +163,51 @@
       "envDown": "Your machine disconnected",
       "envUp": "Your machine connected",
       "threadStarted": "Codex thread started"
-    }
+    },
+    "dossier": {
+      "title": "Dossier",
+      "result": "Result",
+      "noResult": "No deliverable yet.",
+      "conclusion": "Conclusion (your draft)",
+      "conclusionHint": "The advisor never writes conclusions. Whatever you write here is saved as your draft; no ratings, no target prices.",
+      "conclusionPlaceholder": "Write your conclusion…",
+      "saveDraft": "Save draft",
+      "draftVersion": "Draft v{version}",
+      "draftEmpty": "Not saved yet",
+      "evidence": "Evidence",
+      "noEvidence": "No citations.",
+      "artifacts": "Deliverables",
+      "noArtifacts": "No deliverables.",
+      "workspace": "Workspace changes",
+      "noWorkspaceChanges": "No workspace changes recorded."
+    },
+    "settings": {
+      "title": "Settings",
+      "keys": "Model keys",
+      "keysHint": "A key is submitted once over HTTPS, stored encrypted server-side, never kept or echoed here; revoke any time.",
+      "provider": "Provider",
+      "apiKey": "API key",
+      "submitKey": "Submit key",
+      "active": "active",
+      "revoked": "revoked",
+      "revoke": "Revoke",
+      "noKeys": "No keys registered.",
+      "thread": "Session defaults",
+      "threadHint": "New sessions carry this model and approval policy.",
+      "model": "Model",
+      "approvalPolicy": "Approval policy",
+      "policy": {
+        "untrusted": "Untrusted: ask every step",
+        "on-request": "On request: ask when Codex asks",
+        "on-failure": "On failure: ask only when the sandbox fails",
+        "never": "Never ask"
+      },
+      "save": "Save",
+      "saved": "Saved",
+      "error": "Error: {code}"
+    },
+    "openDossier": "Open dossier",
+    "settingsLink": "Settings",
+    "agentOffline": "The local agent is not connected or not installed. Run `sunmoon-agent start` on your machine and it appears here; browsing and settings still work."
   }
 }

@@ -17,9 +17,9 @@ import { useSessionStream } from '@/lib/workbench/use-session-stream'
 
 const PROFILES = ['SMOKE', 'DATA_QUERY'] as const
 
-type Props = { sessionId: string; csrfToken: string }
+type Props = { sessionId: string; csrfToken: string; locale: string }
 
-export function SessionConsole({ sessionId, csrfToken }: Props) {
+export function SessionConsole({ sessionId, csrfToken, locale }: Props) {
   const queryClient = useQueryClient()
   const { events, state: streamState } = useSessionStream(sessionId)
   const view = useQuery({ queryKey: ['wb-session', sessionId], queryFn: () => fetchSessionView(sessionId), refetchInterval: 4000 })
@@ -50,7 +50,7 @@ export function SessionConsole({ sessionId, csrfToken }: Props) {
           csrfToken={csrfToken}
           onDone={invalidate}
         />
-        {task.data ? <TaskCard view={task.data} csrfToken={csrfToken} onDone={invalidate} /> : null}
+        {task.data ? <TaskCard view={task.data} csrfToken={csrfToken} onDone={invalidate} dossierHref={`/${locale}/workbench/${sessionId}/tasks/${task.data.task.id}`} /> : null}
         <HelpPanel sessionId={sessionId} csrfToken={csrfToken} view={view.data} events={events} onDone={invalidate} />
       </aside>
     </div>
@@ -239,7 +239,7 @@ export function Pending({ interactions, tokens, csrfToken, onDone }: { interacti
 }
 
 // ---------------- 任务卡 ----------------
-function TaskCard({ view, csrfToken, onDone }: { view: TaskView; csrfToken: string; onDone: () => void }) {
+function TaskCard({ view, csrfToken, onDone, dossierHref }: { view: TaskView; csrfToken: string; onDone: () => void; dossierHref: string }) {
   const t = useTranslations('workbench')
   const cancel = useMutation({ mutationFn: () => cancelTask(view.task.id, csrfToken), onSuccess: onDone })
   const terminal = ['SUCCEEDED', 'REJECTED', 'FAILED', 'CANCELLED'].includes(view.task.state)
@@ -272,11 +272,16 @@ function TaskCard({ view, csrfToken, onDone }: { view: TaskView; csrfToken: stri
           ))}
         </ul>
       ) : null}
-      {!terminal ? (
-        <button type="button" className="mt-3 rounded-lg border px-3 py-1.5 text-xs" onClick={() => cancel.mutate()} disabled={cancel.isPending}>
-          {t('cancel')}
-        </button>
-      ) : null}
+      <div className="mt-3 flex gap-2">
+        <a href={dossierHref} className="rounded-lg border px-3 py-1.5 text-xs">
+          {t('openDossier')}
+        </a>
+        {!terminal ? (
+          <button type="button" className="rounded-lg border px-3 py-1.5 text-xs" onClick={() => cancel.mutate()} disabled={cancel.isPending}>
+            {t('cancel')}
+          </button>
+        ) : null}
+      </div>
     </section>
   )
 }

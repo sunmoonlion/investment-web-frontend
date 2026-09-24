@@ -98,8 +98,10 @@ export function SessionList({ csrfToken, locale }: { csrfToken: string; locale: 
                 {t('error', { code: (create.error as Error).message })}
               </p>
             ) : null}
-            {envs.data && envs.data.length === 0 ? (
-              <p className="text-muted-foreground text-sm">{t('noEnvironments')}</p>
+            {envs.data && !envs.data.some((e) => e.status === 'online') ? (
+              <p className="text-muted-foreground text-sm" data-agent-guidance>
+                {envs.data.length === 0 ? t('noEnvironments') : null} {t('agentOffline')}
+              </p>
             ) : null}
           </div>
         </form>
