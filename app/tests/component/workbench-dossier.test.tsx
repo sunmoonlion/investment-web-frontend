@@ -12,7 +12,9 @@ const tid = '00000000-0000-5000-8000-000000000002'
 const csrf = 'csrf-token-value-that-is-long-enough-1234'
 
 function wrap(node: ReactNode) {
-  const client = new QueryClient({ defaultOptions: { queries: { retry: false }, mutations: { retry: false } } })
+  const client = new QueryClient({
+    defaultOptions: { queries: { retry: false }, mutations: { retry: false } },
+  })
   return (
     <NextIntlClientProvider locale="zh-CN" messages={messages}>
       <QueryClientProvider client={client}>{node}</QueryClientProvider>
@@ -21,11 +23,22 @@ function wrap(node: ReactNode) {
 }
 
 function json(body: unknown, status = 200) {
-  return new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } })
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { 'Content-Type': 'application/json' },
+  })
 }
 
 const taskView = {
-  task: { id: tid, session_id: sid, profile_id: 'DATA_QUERY', state: 'SUCCEEDED', waiting_reason: null, current_step: 5, budget: { currency: 'CNY', limit: '5', reserved: '0', used: '1.2' } },
+  task: {
+    id: tid,
+    session_id: sid,
+    profile_id: 'DATA_QUERY',
+    state: 'SUCCEEDED',
+    waiting_reason: null,
+    current_step: 5,
+    budget: { currency: 'CNY', limit: '5', reserved: '0', used: '1.2' },
+  },
   attempts: [],
   artifacts: [],
 }
@@ -47,13 +60,22 @@ const artifacts = {
         conclusion: '',
       },
     },
-    { id: '00000000-0000-5000-8000-000000000011', name: 'handback', version: 1, kind: 'handback', digest: '0123456789abcdef', content: { did: ['rewrite: COMPLETED'], workspace_restore: '没有改动' } },
+    {
+      id: '00000000-0000-5000-8000-000000000011',
+      name: 'handback',
+      version: 1,
+      kind: 'handback',
+      digest: '0123456789abcdef',
+      content: { did: ['rewrite: COMPLETED'], workspace_restore: '没有改动' },
+    },
   ],
 }
 
 describe('dossier', () => {
   it('strips rating and target price fields wherever they appear', () => {
-    expect(stripForbidden({ a: 1, rating: 'BUY', nested: [{ target_price: 3, keep: true }] })).toEqual({ a: 1, nested: [{ keep: true }] })
+    expect(
+      stripForbidden({ a: 1, rating: 'BUY', nested: [{ target_price: 3, keep: true }] }),
+    ).toEqual({ a: 1, nested: [{ keep: true }] })
   })
 
   it('renders result, evidence and a user-draft conclusion; never a rating', async () => {
@@ -61,7 +83,14 @@ describe('dossier', () => {
       const url = String(input)
       if (url.endsWith('/artifacts')) return json(artifacts)
       if (url.endsWith(`/tasks/${tid}`)) return json(taskView)
-      if (url.endsWith('/conclusion')) return json({ id: '00000000-0000-5000-8000-000000000012', name: 'conclusion', version: 1, kind: 'user_draft', digest: 'x' })
+      if (url.endsWith('/conclusion'))
+        return json({
+          id: '00000000-0000-5000-8000-000000000012',
+          name: 'conclusion',
+          version: 1,
+          kind: 'user_draft',
+          digest: 'x',
+        })
       throw new Error(`unexpected ${url}`)
     })
     render(wrap(<TaskDossier taskId={tid} csrfToken={csrf} />))
@@ -71,10 +100,14 @@ describe('dossier', () => {
     expect(screen.queryByText(/99/)).toBeNull()
     expect(screen.getByRole('heading', { name: '结论（用户草稿）' })).toBeInTheDocument()
     expect(screen.getByText('尚未保存')).toBeInTheDocument()
-    fireEvent.change(screen.getByRole('textbox', { name: '结论（用户草稿）' }), { target: { value: '我的结论' } })
+    fireEvent.change(screen.getByRole('textbox', { name: '结论（用户草稿）' }), {
+      target: { value: '我的结论' },
+    })
     fireEvent.click(screen.getByRole('button', { name: '保存草稿' }))
     await waitFor(() => {
-      const call = (globalThis.fetch as unknown as { mock: { calls: [string, RequestInit][] } }).mock.calls.find(([u]) => String(u).endsWith('/conclusion'))
+      const call = (
+        globalThis.fetch as unknown as { mock: { calls: [string, RequestInit][] } }
+      ).mock.calls.find(([u]) => String(u).endsWith('/conclusion'))
       expect(call).toBeDefined()
       expect(call?.[1].method).toBe('PUT')
       expect(JSON.parse(String(call?.[1].body))).toEqual({ text: '我的结论' })
@@ -88,8 +121,27 @@ describe('settings', () => {
     const fetchMock = vi.spyOn(globalThis, 'fetch').mockImplementation(async (input, init) => {
       const url = String(input)
       if (url.endsWith('/prefs')) return json({ model: null, approval_policy: 'on-request' })
-      if (url.endsWith('/credentials') && init?.method === 'POST') return json({ id: '00000000-0000-5000-8000-000000000020', provider: 'kimi', hint: 'wxyz', status: 'active' }, 201)
-      if (url.endsWith('/credentials')) return json({ credentials: [{ id: '00000000-0000-5000-8000-000000000020', provider: 'kimi', hint: 'wxyz', status: 'active' }] })
+      if (url.endsWith('/credentials') && init?.method === 'POST')
+        return json(
+          {
+            id: '00000000-0000-5000-8000-000000000020',
+            provider: 'kimi',
+            hint: 'wxyz',
+            status: 'active',
+          },
+          201,
+        )
+      if (url.endsWith('/credentials'))
+        return json({
+          credentials: [
+            {
+              id: '00000000-0000-5000-8000-000000000020',
+              provider: 'kimi',
+              hint: 'wxyz',
+              status: 'active',
+            },
+          ],
+        })
       throw new Error(`unexpected ${url}`)
     })
     render(wrap(<SettingsPanel csrfToken={csrf} />))
@@ -107,7 +159,15 @@ describe('settings', () => {
 
   it('rejects a credential payload that carries the secret back', async () => {
     const { credentialSchema } = await import('@/contracts/workbench')
-    expect(credentialSchema.safeParse({ id: '00000000-0000-5000-8000-000000000020', provider: 'kimi', hint: 'wxyz', status: 'active', api_key: 'sk-x' }).success).toBe(false)
+    expect(
+      credentialSchema.safeParse({
+        id: '00000000-0000-5000-8000-000000000020',
+        provider: 'kimi',
+        hint: 'wxyz',
+        status: 'active',
+        api_key: 'sk-x',
+      }).success,
+    ).toBe(false)
   })
 })
 
@@ -118,19 +178,61 @@ describe('sandbox provisioning', () => {
       const url = String(input)
       if (url.endsWith('/prefs')) return json({ model: null, approval_policy: 'on-request' })
       if (url.endsWith('/credentials')) return json({ credentials: [] })
-      if (url.endsWith('/sandboxes/provisioned')) return json({ status: provisioned ? 'starting' : 'absent', ready: false })
+      if (url.endsWith('/sandboxes/provisioned'))
+        return json({ status: provisioned ? 'starting' : 'absent', ready: false })
       if (url.endsWith('/sandboxes/provision') && init?.method === 'POST') {
         provisioned = true
-        return json({ sandbox_id: '00000000-0000-5000-8000-000000000030', app_server_url: 'ws://sandbox-u-1.sandbox-pool.svc:47800', status: 'starting', ready: false, relay: { url: 'wss://edge.test/relay', user: 'u-1bcbd3538e76', agent_token: 'agent-token-once-1234567890' } })
+        return json({
+          sandbox_id: '00000000-0000-5000-8000-000000000030',
+          app_server_url: 'ws://sandbox-u-1.sandbox-pool.svc:47800',
+          status: 'starting',
+          ready: false,
+          relay: {
+            url: 'wss://edge.test/relay',
+            user: 'u-1bcbd3538e76',
+            agent_token: 'agent-token-once-1234567890',
+          },
+        })
       }
       throw new Error(`unexpected ${url}`)
     })
     render(wrap(<SettingsPanel csrfToken={csrf} />))
     fireEvent.click(await screen.findByRole('button', { name: '拉起沙箱' }))
     await screen.findByText('本地代理接入命令（只显示一次）')
-    expect(document.body.textContent).toContain('--user u-1bcbd3538e76 --token agent-token-once-1234567890')
-    const post = fetchMock.mock.calls.find(([u, i]) => String(u).endsWith('/sandboxes/provision') && i?.method === 'POST')
+    expect(document.body.textContent).toContain(
+      '--user u-1bcbd3538e76 --token agent-token-once-1234567890',
+    )
+    const post = fetchMock.mock.calls.find(
+      ([u, i]) => String(u).endsWith('/sandboxes/provision') && i?.method === 'POST',
+    )
     expect((post?.[1]?.headers as Record<string, string>)['X-CSRF-Token']).toBe(csrf)
+    vi.restoreAllMocks()
+  })
+
+  it('offers token rotation once an identity exists and shows the new command once', async () => {
+    vi.spyOn(globalThis, 'fetch').mockImplementation(async (input, init) => {
+      const url = String(input)
+      if (url.endsWith('/prefs')) return json({ model: null, approval_policy: 'on-request' })
+      if (url.endsWith('/credentials')) return json({ credentials: [] })
+      if (url.endsWith('/sandboxes/provisioned'))
+        return json({ status: 'ready', ready: true, relay_user: 'u-1bcbd3538e76' })
+      if (url.endsWith('/sandboxes/relay-identity/rotate') && init?.method === 'POST') {
+        return json({
+          relay: {
+            url: 'wss://edge.test/relay',
+            user: 'u-1bcbd3538e76',
+            agent_token: 'rotated-token-0123456789',
+          },
+          revoked: 2,
+          sandbox_rolled: true,
+        })
+      }
+      throw new Error(`unexpected ${url}`)
+    })
+    render(wrap(<SettingsPanel csrfToken={csrf} />))
+    fireEvent.click(await screen.findByRole('button', { name: '换代理令牌' }))
+    await screen.findByText('本地代理接入命令（只显示一次）')
+    expect(document.body.textContent).toContain('--token rotated-token-0123456789')
     vi.restoreAllMocks()
   })
 })

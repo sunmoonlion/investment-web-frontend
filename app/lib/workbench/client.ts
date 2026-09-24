@@ -91,18 +91,28 @@ const listEnvsSchema = z.object({ environments: z.array(environmentSchema) })
 const listSandboxesSchema = z.object({ sandboxes: z.array(sandboxSchema) })
 const listSessionsSchema = z.object({ sessions: z.array(sessionSchema) })
 const createdSessionSchema = z.object({ session_id: z.uuid() })
-const turnAcceptedSchema = z.object({ request_id: z.string(), command_id: z.uuid(), cursor: z.number().int() })
+const turnAcceptedSchema = z.object({
+  request_id: z.string(),
+  command_id: z.uuid(),
+  cursor: z.number().int(),
+})
 
 export async function listEnvironments(fetchImpl: Fetch = fetch): Promise<Environment[]> {
-  return (await request(listEnvsSchema, '/api/workbench/environments', { method: 'GET' }, fetchImpl)).environments
+  return (
+    await request(listEnvsSchema, '/api/workbench/environments', { method: 'GET' }, fetchImpl)
+  ).environments
 }
 
 export async function listSandboxes(fetchImpl: Fetch = fetch): Promise<Sandbox[]> {
-  return (await request(listSandboxesSchema, '/api/workbench/sandboxes', { method: 'GET' }, fetchImpl)).sandboxes
+  return (
+    await request(listSandboxesSchema, '/api/workbench/sandboxes', { method: 'GET' }, fetchImpl)
+  ).sandboxes
 }
 
 export async function listSessions(fetchImpl: Fetch = fetch): Promise<Session[]> {
-  return (await request(listSessionsSchema, '/api/workbench/sessions', { method: 'GET' }, fetchImpl)).sessions
+  return (
+    await request(listSessionsSchema, '/api/workbench/sessions', { method: 'GET' }, fetchImpl)
+  ).sessions
 }
 
 export async function createSession(
@@ -110,11 +120,26 @@ export async function createSession(
   csrfToken: string,
   fetchImpl: Fetch = fetch,
 ): Promise<string> {
-  return (await request(createdSessionSchema, '/api/workbench/sessions', mutation(csrfToken, input), fetchImpl)).session_id
+  return (
+    await request(
+      createdSessionSchema,
+      '/api/workbench/sessions',
+      mutation(csrfToken, input),
+      fetchImpl,
+    )
+  ).session_id
 }
 
-export async function fetchSessionView(sessionId: string, fetchImpl: Fetch = fetch): Promise<SessionView> {
-  return request(sessionViewSchema, `/api/workbench/sessions/${encodeURIComponent(sessionId)}`, { method: 'GET' }, fetchImpl)
+export async function fetchSessionView(
+  sessionId: string,
+  fetchImpl: Fetch = fetch,
+): Promise<SessionView> {
+  return request(
+    sessionViewSchema,
+    `/api/workbench/sessions/${encodeURIComponent(sessionId)}`,
+    { method: 'GET' },
+    fetchImpl,
+  )
 }
 
 export async function fetchEvents(
@@ -145,8 +170,17 @@ export async function startTurn(
   )
 }
 
-export async function interruptTurn(sessionId: string, csrfToken: string, fetchImpl: Fetch = fetch): Promise<void> {
-  await request(z.object({ command_id: z.uuid() }), `/api/workbench/sessions/${encodeURIComponent(sessionId)}/interrupt`, mutation(csrfToken, {}), fetchImpl)
+export async function interruptTurn(
+  sessionId: string,
+  csrfToken: string,
+  fetchImpl: Fetch = fetch,
+): Promise<void> {
+  await request(
+    z.object({ command_id: z.uuid() }),
+    `/api/workbench/sessions/${encodeURIComponent(sessionId)}/interrupt`,
+    mutation(csrfToken, {}),
+    fetchImpl,
+  )
 }
 
 export async function handover(
@@ -155,15 +189,34 @@ export async function handover(
   csrfToken: string,
   fetchImpl: Fetch = fetch,
 ): Promise<{ task_id: string; state: string; created: boolean }> {
-  return request(handoverResultSchema, `/api/workbench/sessions/${encodeURIComponent(sessionId)}/handover`, mutation(csrfToken, input), fetchImpl)
+  return request(
+    handoverResultSchema,
+    `/api/workbench/sessions/${encodeURIComponent(sessionId)}/handover`,
+    mutation(csrfToken, input),
+    fetchImpl,
+  )
 }
 
 export async function fetchTask(taskId: string, fetchImpl: Fetch = fetch): Promise<TaskView> {
-  return request(taskViewSchema, `/api/workbench/tasks/${encodeURIComponent(taskId)}`, { method: 'GET' }, fetchImpl)
+  return request(
+    taskViewSchema,
+    `/api/workbench/tasks/${encodeURIComponent(taskId)}`,
+    { method: 'GET' },
+    fetchImpl,
+  )
 }
 
-export async function cancelTask(taskId: string, csrfToken: string, fetchImpl: Fetch = fetch): Promise<void> {
-  await request(z.object({ task_id: z.uuid() }).loose(), `/api/workbench/tasks/${encodeURIComponent(taskId)}/cancel`, mutation(csrfToken, {}), fetchImpl)
+export async function cancelTask(
+  taskId: string,
+  csrfToken: string,
+  fetchImpl: Fetch = fetch,
+): Promise<void> {
+  await request(
+    z.object({ task_id: z.uuid() }).loose(),
+    `/api/workbench/tasks/${encodeURIComponent(taskId)}/cancel`,
+    mutation(csrfToken, {}),
+    fetchImpl,
+  )
 }
 
 export async function respondInteraction(
@@ -172,14 +225,34 @@ export async function respondInteraction(
   csrfToken: string,
   fetchImpl: Fetch = fetch,
 ): Promise<void> {
-  await request(z.object({ interaction_id: z.uuid() }).loose(), `/api/workbench/interactions/${encodeURIComponent(interactionId)}/respond`, mutation(csrfToken, body), fetchImpl)
+  await request(
+    z.object({ interaction_id: z.uuid() }).loose(),
+    `/api/workbench/interactions/${encodeURIComponent(interactionId)}/respond`,
+    mutation(csrfToken, body),
+    fetchImpl,
+  )
 }
 
-export async function fetchArtifacts(taskId: string, fetchImpl: Fetch = fetch): Promise<ArtifactWithContent[]> {
-  return (await request(artifactsPageSchema, `/api/workbench/tasks/${encodeURIComponent(taskId)}/artifacts`, { method: 'GET' }, fetchImpl)).artifacts
+export async function fetchArtifacts(
+  taskId: string,
+  fetchImpl: Fetch = fetch,
+): Promise<ArtifactWithContent[]> {
+  return (
+    await request(
+      artifactsPageSchema,
+      `/api/workbench/tasks/${encodeURIComponent(taskId)}/artifacts`,
+      { method: 'GET' },
+      fetchImpl,
+    )
+  ).artifacts
 }
 
-export async function saveConclusion(taskId: string, text: string, csrfToken: string, fetchImpl: Fetch = fetch): Promise<{ version: number }> {
+export async function saveConclusion(
+  taskId: string,
+  text: string,
+  csrfToken: string,
+  fetchImpl: Fetch = fetch,
+): Promise<{ version: number }> {
   return request(
     z.object({ version: z.number().int() }).loose(),
     `/api/workbench/tasks/${encodeURIComponent(taskId)}/conclusion`,
@@ -192,12 +265,28 @@ export async function fetchPrefs(fetchImpl: Fetch = fetch): Promise<Prefs> {
   return request(prefsSchema, '/api/workbench/prefs', { method: 'GET' }, fetchImpl)
 }
 
-export async function savePrefs(prefs: Prefs, csrfToken: string, fetchImpl: Fetch = fetch): Promise<Prefs> {
-  return request(prefsSchema, '/api/workbench/prefs', { ...mutation(csrfToken, prefs), method: 'PUT' }, fetchImpl)
+export async function savePrefs(
+  prefs: Prefs,
+  csrfToken: string,
+  fetchImpl: Fetch = fetch,
+): Promise<Prefs> {
+  return request(
+    prefsSchema,
+    '/api/workbench/prefs',
+    { ...mutation(csrfToken, prefs), method: 'PUT' },
+    fetchImpl,
+  )
 }
 
 export async function listCredentials(fetchImpl: Fetch = fetch): Promise<Credential[]> {
-  return (await request(z.object({ credentials: z.array(credentialSchema) }), '/api/workbench/credentials', { method: 'GET' }, fetchImpl)).credentials
+  return (
+    await request(
+      z.object({ credentials: z.array(credentialSchema) }),
+      '/api/workbench/credentials',
+      { method: 'GET' },
+      fetchImpl,
+    )
+  ).credentials
 }
 
 export async function addCredential(
@@ -205,23 +294,73 @@ export async function addCredential(
   csrfToken: string,
   fetchImpl: Fetch = fetch,
 ): Promise<Credential> {
-  return request(credentialSchema, '/api/workbench/credentials', mutation(csrfToken, input), fetchImpl)
+  return request(
+    credentialSchema,
+    '/api/workbench/credentials',
+    mutation(csrfToken, input),
+    fetchImpl,
+  )
 }
 
-export async function revokeCredential(credentialId: string, csrfToken: string, fetchImpl: Fetch = fetch): Promise<void> {
-  await request(z.object({ status: z.literal('revoked') }).loose(), `/api/workbench/credentials/${encodeURIComponent(credentialId)}/revoke`, mutation(csrfToken, {}), fetchImpl)
+export async function revokeCredential(
+  credentialId: string,
+  csrfToken: string,
+  fetchImpl: Fetch = fetch,
+): Promise<void> {
+  await request(
+    z.object({ status: z.literal('revoked') }).loose(),
+    `/api/workbench/credentials/${encodeURIComponent(credentialId)}/revoke`,
+    mutation(csrfToken, {}),
+    fetchImpl,
+  )
 }
 
-export async function provisionSandbox(csrfToken: string, fetchImpl: Fetch = fetch): Promise<ProvisionedSandbox> {
-  return request(provisionedSandboxSchema, '/api/workbench/sandboxes/provision', mutation(csrfToken, {}), fetchImpl)
+export async function provisionSandbox(
+  csrfToken: string,
+  fetchImpl: Fetch = fetch,
+): Promise<ProvisionedSandbox> {
+  return request(
+    provisionedSandboxSchema,
+    '/api/workbench/sandboxes/provision',
+    mutation(csrfToken, {}),
+    fetchImpl,
+  )
 }
 
-export async function provisionedSandboxStatus(fetchImpl: Fetch = fetch): Promise<ProvisionedSandbox> {
-  return request(provisionedSandboxSchema, '/api/workbench/sandboxes/provisioned', { method: 'GET' }, fetchImpl)
+export async function provisionedSandboxStatus(
+  fetchImpl: Fetch = fetch,
+): Promise<ProvisionedSandbox> {
+  return request(
+    provisionedSandboxSchema,
+    '/api/workbench/sandboxes/provisioned',
+    { method: 'GET' },
+    fetchImpl,
+  )
 }
 
-export async function deprovisionSandbox(csrfToken: string, fetchImpl: Fetch = fetch): Promise<void> {
-  await request(z.object({ status: z.string() }).loose(), '/api/workbench/sandboxes/provisioned', { ...mutation(csrfToken, {}), method: 'DELETE', body: undefined }, fetchImpl)
+export async function deprovisionSandbox(
+  csrfToken: string,
+  fetchImpl: Fetch = fetch,
+): Promise<void> {
+  await request(
+    z.object({ status: z.string() }).loose(),
+    '/api/workbench/sandboxes/provisioned',
+    { ...mutation(csrfToken, {}), method: 'DELETE', body: undefined },
+    fetchImpl,
+  )
+}
+
+export async function rotateRelayIdentity(
+  csrfToken: string,
+  fetchImpl: Fetch = fetch,
+): Promise<ProvisionedSandbox> {
+  // D10：撤换会合点令牌；新代理令牌只在这次响应里
+  return request(
+    provisionedSandboxSchema,
+    '/api/workbench/sandboxes/relay-identity/rotate',
+    mutation(csrfToken, {}),
+    fetchImpl,
+  )
 }
 
 export function parseStreamEvent(data: string): SessionEvent {
@@ -232,6 +371,7 @@ export function parseStreamEvent(data: string): SessionEvent {
     throw new WorkbenchClientError('contract_invalid', undefined, { cause: error })
   }
   const parsed = sessionEventSchema.safeParse(value)
-  if (!parsed.success) throw new WorkbenchClientError('contract_invalid', undefined, { cause: parsed.error })
+  if (!parsed.success)
+    throw new WorkbenchClientError('contract_invalid', undefined, { cause: parsed.error })
   return parsed.data
 }
