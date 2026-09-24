@@ -48,7 +48,8 @@
   "nav": {
     "home": "Home",
     "dashboard": "Dashboard",
-    "settings": "Settings"
+    "settings": "Settings",
+    "workbench": "Workbench"
   },
   "interaction": {
     "loading": "Loading the research run...",
@@ -97,5 +98,71 @@
   "Dashboard": {
     "dashboardWelcome": "Welcome to Investment",
     "title": "Console"
+  },
+  "workbench": {
+    "title": "Workbench",
+    "subtitle": "Do research with your own Codex; hand the wheel to an expert when it falls short.",
+    "sessionTitle": "Session",
+    "newSession": "New session",
+    "newSessionHint": "Pick a machine with the local agent, a sandbox and a project directory. The directory must be under that machine's whitelisted roots.",
+    "environment": "Local machine",
+    "sandbox": "Sandbox",
+    "projectRoot": "Project directory",
+    "choose": "Choose…",
+    "create": "Create session",
+    "creating": "Creating…",
+    "noEnvironments": "No local agent registered yet.",
+    "sessions": "My sessions",
+    "noSessions": "No sessions yet.",
+    "open": "Open",
+    "wheel": "Wheel",
+    "wheelUser": "you",
+    "wheelAdvisor": "expert",
+    "timeline": "Timeline",
+    "noEvents": "No events yet.",
+    "stream": {
+      "connecting": "connecting",
+      "open": "live",
+      "offline": "offline, reconnecting"
+    },
+    "composer": "Talk to Codex",
+    "composerPlaceholder": "Tell Codex what to do…",
+    "composerLocked": "The expert is driving; you can watch, answer pending items or cancel.",
+    "send": "Send",
+    "pending": "Needs your decision",
+    "topupAmount": "Top-up amount",
+    "tokenMissing": "Token missing: reload the page to replay events.",
+    "task": "Task",
+    "state": "State",
+    "step": "Step",
+    "budget": "Budget",
+    "cancel": "Cancel task",
+    "askExpert": "Ask an expert",
+    "askExpertHint": "Hand the wheel to an expert: it drives the same Codex step by step, checks each step, and spends from your budget.",
+    "expertPack": "Expert pack",
+    "question": "Question",
+    "questionPlaceholder": "State the result you want and its boundaries.",
+    "budgetLimit": "Budget limit",
+    "handover": "Hand over the wheel",
+    "advisorDriving": "Expert driving",
+    "error": "Error: {code}",
+    "ev": {
+      "you": "You",
+      "codex": "Codex",
+      "command": "Command",
+      "fileChange": "File change",
+      "handover": "Wheel handed to the expert",
+      "return": "Wheel returned to you ({state})",
+      "taskState": "Task {from} → {to}",
+      "stepStarted": "Step started: {step}",
+      "stepAccepted": "Step accepted: {step}",
+      "stepRejected": "Step rejected: {step}",
+      "interactionOpened": "Waiting for you ({kind})",
+      "interactionConsumed": "You answered",
+      "commandFailed": "Command failed",
+      "envDown": "Your machine disconnected",
+      "envUp": "Your machine connected",
+      "threadStarted": "Codex thread started"
+    }
   }
 }

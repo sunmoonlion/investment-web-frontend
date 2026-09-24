@@ -48,7 +48,8 @@
   "nav": {
     "home": "首页",
     "dashboard": "控制台",
-    "settings": "设置"
+    "settings": "设置",
+    "workbench": "工作台"
   },
   "interaction": {
     "loading": "正在加载研究运行…",
@@ -97,5 +98,71 @@
   "Dashboard": {
     "dashboardWelcome": "欢迎使用 Investment",
     "title": "控制台"
+  },
+  "workbench": {
+    "title": "工作台",
+    "subtitle": "用你自己的 Codex 做研究；做不好时把方向盘交给专家。",
+    "sessionTitle": "会话",
+    "newSession": "新建会话",
+    "newSessionHint": "选一台已装本地代理的机器、一个沙箱和项目目录。项目目录必须在该机器的白名单根之下。",
+    "environment": "本地机器",
+    "sandbox": "沙箱",
+    "projectRoot": "项目目录",
+    "choose": "请选择",
+    "create": "建立会话",
+    "creating": "建立中…",
+    "noEnvironments": "还没有登记本地代理。",
+    "sessions": "我的会话",
+    "noSessions": "还没有会话。",
+    "open": "打开",
+    "wheel": "方向盘",
+    "wheelUser": "你",
+    "wheelAdvisor": "专家",
+    "timeline": "过程",
+    "noEvents": "还没有事件。",
+    "stream": {
+      "connecting": "连接中",
+      "open": "实时",
+      "offline": "离线，重连中"
+    },
+    "composer": "对 Codex 说",
+    "composerPlaceholder": "输入要 Codex 做的事…",
+    "composerLocked": "专家正在驾驶，你可以看进度、答复待办或取消。",
+    "send": "发送",
+    "pending": "待你决定",
+    "topupAmount": "追加金额",
+    "tokenMissing": "缺少令牌：刷新页面重新载入事件。",
+    "task": "委托",
+    "state": "状态",
+    "step": "步骤",
+    "budget": "预算",
+    "cancel": "取消委托",
+    "askExpert": "问专家",
+    "askExpertHint": "把方向盘交给专家：它按方法逐步驾驶同一个 Codex，每步验收，费用从你的预算扣。",
+    "expertPack": "专家包",
+    "question": "问题",
+    "questionPlaceholder": "写清你要什么结果、边界在哪。",
+    "budgetLimit": "预算上限（元）",
+    "handover": "交出方向盘",
+    "advisorDriving": "专家驾驶中",
+    "error": "出错：{code}",
+    "ev": {
+      "you": "你",
+      "codex": "Codex",
+      "command": "命令",
+      "fileChange": "改文件",
+      "handover": "方向盘交给专家",
+      "return": "方向盘交回你（{state}）",
+      "taskState": "委托 {from} → {to}",
+      "stepStarted": "开始步骤：{step}",
+      "stepAccepted": "步骤通过验收：{step}",
+      "stepRejected": "步骤未通过验收：{step}",
+      "interactionOpened": "等你决定（{kind}）",
+      "interactionConsumed": "你已答复",
+      "commandFailed": "命令失败",
+      "envDown": "你的机器断开了",
+      "envUp": "你的机器已连上",
+      "threadStarted": "Codex 会话已建立"
+    }
   }
 }

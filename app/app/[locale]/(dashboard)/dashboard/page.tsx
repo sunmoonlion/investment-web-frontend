@@ -36,7 +36,12 @@ export default async function DashboardPage({
   return (
     <div className="bg-background min-h-screen" data-route-class="authenticated-workspace">
       <header className="flex items-center justify-between border-b px-6 py-3">
-        <span className="text-muted-foreground text-sm font-medium">{tNav('dashboard')}</span>
+        <nav className="flex items-center gap-4">
+          <span className="text-muted-foreground text-sm font-medium">{tNav('dashboard')}</span>
+          <a href={`/${locale}/workbench`} className="text-sm font-medium hover:underline">
+            {tNav('workbench')}
+          </a>
+        </nav>
         <LogoutButton
           csrfToken={session.csrf_token}
           locale={locale}
