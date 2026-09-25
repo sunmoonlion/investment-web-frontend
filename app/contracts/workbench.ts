@@ -111,7 +111,13 @@ export const taskSchema = z
   .loose()
 
 export const artifactSchema = z
-  .object({ id: uuid, name: z.string(), version: z.number().int(), kind: z.string(), digest: z.string() })
+  .object({
+    id: uuid,
+    name: z.string(),
+    version: z.number().int(),
+    kind: z.string(),
+    digest: z.string(),
+  })
   .loose()
 
 export const sessionViewSchema = z.object({
@@ -157,9 +163,14 @@ export const credentialSchema = z
     hint: z.string(),
     status: z.enum(['active', 'revoked']),
     sandbox_id: uuid.nullable().optional(),
+    // 列表接口还带这两个时间（后端 list_credentials 的 select）；strict 仍然挡住任何多出来的字段，尤其是密钥
+    created_at: z.string().nullable().optional(),
+    revoked_at: z.string().nullable().optional(),
   })
   .strict()
-  .refine((c) => !('api_key' in c) && !('ciphertext' in c), { message: 'credential must not carry secrets' })
+  .refine((c) => !('api_key' in c) && !('ciphertext' in c), {
+    message: 'credential must not carry secrets',
+  })
 
 export const provisionedSandboxSchema = z
   .object({
@@ -174,7 +185,9 @@ export const provisionedSandboxSchema = z
     credential_hint: z.string().optional(),
   })
   .loose()
-  .refine((s) => !('app_server_token' in s) && !('model_key' in s), { message: 'sandbox must not carry secrets' })
+  .refine((s) => !('app_server_token' in s) && !('model_key' in s), {
+    message: 'sandbox must not carry secrets',
+  })
 
 export const problemSchema = z
   .object({

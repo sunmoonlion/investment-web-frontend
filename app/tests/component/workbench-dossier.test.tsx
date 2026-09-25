@@ -157,6 +157,28 @@ describe('settings', () => {
     vi.restoreAllMocks()
   })
 
+  it('accepts the credential list exactly as the backend returns it (KIND: strict schema rejected created_at/revoked_at)', async () => {
+    const { credentialSchema } = await import('@/contracts/workbench')
+    // 字段与 investment-backend 的 list_credentials select 一致：id, sandbox_id, provider, hint, status, created_at, revoked_at
+    const row = {
+      id: '00000000-0000-5000-8000-000000000020',
+      sandbox_id: null,
+      provider: 'kimi',
+      hint: 'utIN',
+      status: 'active',
+      created_at: '2026-09-25T14:03:28.123456+00:00',
+      revoked_at: null,
+    }
+    expect(credentialSchema.safeParse(row).success).toBe(true)
+    expect(
+      credentialSchema.safeParse({
+        ...row,
+        status: 'revoked',
+        revoked_at: '2026-09-25T15:00:00+00:00',
+      }).success,
+    ).toBe(true)
+  })
+
   it('rejects a credential payload that carries the secret back', async () => {
     const { credentialSchema } = await import('@/contracts/workbench')
     expect(
