@@ -283,7 +283,9 @@ function SandboxSection({ csrfToken }: { csrfToken: string }) {
         ) : null}
         {provision.error || rotate.error ? (
           <p role="alert" className="text-destructive text-xs">
-            {t('error', { code: ((provision.error ?? rotate.error) as Error).message })}
+            {((provision.error ?? rotate.error) as Error).message === 'sandbox_capacity_full'
+              ? t('sandboxCapacityFull')
+              : t('error', { code: ((provision.error ?? rotate.error) as Error).message })}
           </p>
         ) : null}
       </div>

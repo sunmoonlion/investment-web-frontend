@@ -209,6 +209,24 @@ describe('sandbox provisioning', () => {
     vi.restoreAllMocks()
   })
 
+  it('explains a full sandbox pool instead of showing the raw code', async () => {
+    vi.spyOn(globalThis, 'fetch').mockImplementation(async (input, init) => {
+      const url = String(input)
+      if (url.endsWith('/prefs')) return json({ model: null, approval_policy: 'on-request' })
+      if (url.endsWith('/credentials')) return json({ credentials: [] })
+      if (url.endsWith('/sandboxes/provisioned')) return json({ status: 'absent', ready: false })
+      if (url.endsWith('/sandboxes/provision') && init?.method === 'POST') {
+        return json({ code: 'sandbox_capacity_full', status: 503, detail: 'full' }, 503)
+      }
+      throw new Error(`unexpected ${url}`)
+    })
+    render(wrap(<SettingsPanel csrfToken={csrf} />))
+    fireEvent.click(await screen.findByRole('button', { name: '拉起沙箱' }))
+    await screen.findByText('云端沙箱暂时满了，请稍后再试。你已登记的 key 和设置都保留着。')
+    expect(document.body.textContent).not.toContain('sandbox_capacity_full')
+    vi.restoreAllMocks()
+  })
+
   it('offers token rotation once an identity exists and shows the new command once', async () => {
     vi.spyOn(globalThis, 'fetch').mockImplementation(async (input, init) => {
       const url = String(input)

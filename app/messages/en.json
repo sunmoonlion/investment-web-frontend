@@ -217,6 +217,7 @@
       "sandboxProvision": "Start sandbox",
       "sandboxUpdate": "Update sandbox",
       "sandboxDelete": "Remove sandbox",
+      "sandboxCapacityFull": "Cloud sandboxes are at capacity right now. Please try again later; your key and settings are kept.",
       "rotateToken": "Rotate agent token",
       "rotateHint": "The old tokens are revoked at the relay right away; the new command is shown once and a running sandbox rolls automatically.",
       "agentTokenTitle": "Local agent command (shown once)",

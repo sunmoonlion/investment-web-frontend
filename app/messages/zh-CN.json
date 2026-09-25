@@ -217,6 +217,7 @@
       "sandboxProvision": "拉起沙箱",
       "sandboxUpdate": "更新沙箱",
       "sandboxDelete": "回收沙箱",
+      "sandboxCapacityFull": "云端沙箱暂时满了，请稍后再试。你已登记的 key 和设置都保留着。",
       "rotateToken": "换代理令牌",
       "rotateHint": "旧令牌立即失效并推到会合点；新的接入命令只显示这一次，沙箱在线会自动滚动。",
       "agentTokenTitle": "本地代理接入命令（只显示一次）",
