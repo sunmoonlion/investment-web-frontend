@@ -271,8 +271,43 @@ describe('sandbox provisioning', () => {
     })
     render(wrap(<SettingsPanel csrfToken={csrf} />))
     fireEvent.click(await screen.findByRole('button', { name: '换代理令牌' }))
+    // 先要确认：说清后果；确认后才真的换
+    await screen.findByText(/旧令牌立即作废/)
+    fireEvent.click(screen.getByRole('button', { name: '确定更换' }))
     await screen.findByText('本地代理接入命令（只显示一次）')
+    await screen.findByText(/已更换：旧令牌已作废/)
     expect(document.body.textContent).toContain('--token rotated-token-0123456789')
+    vi.restoreAllMocks()
+  })
+
+  it('says what happened after updating, and cancel on removal does nothing', async () => {
+    const calls: string[] = []
+    vi.spyOn(globalThis, 'fetch').mockImplementation(async (input, init) => {
+      const url = String(input)
+      calls.push(`${init?.method ?? 'GET'} ${url}`)
+      if (url.endsWith('/prefs')) return json({ model: null, approval_policy: 'on-request' })
+      if (url.endsWith('/credentials')) return json({ credentials: [] })
+      if (url.endsWith('/sandboxes/provisioned'))
+        return json({ status: 'ready', ready: true, relay_user: 'u-1bcbd3538e76' })
+      if (url.endsWith('/sandboxes/provision') && init?.method === 'POST')
+        return json({
+          sandbox_id: '00000000-0000-5000-8000-000000000030',
+          app_server_url: 'ws://x:47800',
+          status: 'starting',
+          ready: false,
+          relay: { url: 'wss://edge.test/relay', user: 'u-1bcbd3538e76', agent_token: null },
+        })
+      throw new Error(`unexpected ${url}`)
+    })
+    render(wrap(<SettingsPanel csrfToken={csrf} />))
+    fireEvent.click(await screen.findByRole('button', { name: '更新沙箱' }))
+    await screen.findByText(/已更新：沙箱会按新设置重启/)
+    expect(document.querySelector('[data-agent-token-issued]')).toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: '回收沙箱' }))
+    await screen.findByText(/确定回收吗/)
+    fireEvent.click(screen.getByRole('button', { name: '取消' }))
+    await waitFor(() => expect(document.querySelector('[data-confirm]')).toBeNull())
+    expect(calls.some((c) => c.startsWith('DELETE'))).toBe(false)
     vi.restoreAllMocks()
   })
 })

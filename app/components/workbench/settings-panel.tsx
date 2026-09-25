@@ -203,28 +203,51 @@ function SandboxSection({ csrfToken }: { csrfToken: string }) {
     refetchInterval: 5000,
   })
   const [issued, setIssued] = useState<{ url: string; user: string; token: string } | null>(null)
+  // 每个动作做完都给一句人话（做了什么、接下来会看到什么）；失败也在这里说（KIND 09：点了没反应，用户不知道成没成）
+  const [notice, setNotice] = useState<{ tone: 'ok' | 'error'; text: string } | null>(null)
+  const [confirming, setConfirming] = useState<'rotate' | 'delete' | null>(null)
+  const errorText = (error: unknown) => {
+    const code = (error as Error).message
+    return code === 'sandbox_capacity_full' ? t('sandboxCapacityFull') : t('error', { code })
+  }
+  const refresh = () => {
+    void queryClient.invalidateQueries({ queryKey: ['wb-provisioned'] })
+    void queryClient.invalidateQueries({ queryKey: ['wb-sandboxes'] })
+  }
+  const state = status.data?.status ?? 'absent'
+  const live = state === 'ready' || state === 'starting'
   const provision = useMutation({
     mutationFn: () => provisionSandbox(csrfToken),
+    onMutate: () => setNotice(null),
     onSuccess: (result) => {
+      const fresh = Boolean(result.relay?.agent_token)
       if (result.relay?.agent_token)
         setIssued({
           url: result.relay.url,
           user: result.relay.user,
           token: result.relay.agent_token,
         })
-      void queryClient.invalidateQueries({ queryKey: ['wb-provisioned'] })
-      void queryClient.invalidateQueries({ queryKey: ['wb-sandboxes'] })
+      setNotice({
+        tone: 'ok',
+        text: fresh ? t('noticeProvisioned') : live ? t('noticeUpdated') : t('noticeRestored'),
+      })
+      refresh()
     },
+    onError: (error) => setNotice({ tone: 'error', text: errorText(error) }),
   })
   const remove = useMutation({
     mutationFn: () => deprovisionSandbox(csrfToken),
+    onMutate: () => setNotice(null),
     onSuccess: () => {
       setIssued(null)
-      void queryClient.invalidateQueries({ queryKey: ['wb-provisioned'] })
+      setNotice({ tone: 'ok', text: t('noticeDeleted') })
+      refresh()
     },
+    onError: (error) => setNotice({ tone: 'error', text: errorText(error) }),
   })
   const rotate = useMutation({
     mutationFn: () => rotateRelayIdentity(csrfToken),
+    onMutate: () => setNotice(null),
     onSuccess: (result) => {
       if (result.relay?.agent_token)
         setIssued({
@@ -232,11 +255,13 @@ function SandboxSection({ csrfToken }: { csrfToken: string }) {
           user: result.relay.user,
           token: result.relay.agent_token,
         })
-      void queryClient.invalidateQueries({ queryKey: ['wb-provisioned'] })
+      setNotice({ tone: 'ok', text: t('noticeRotated') })
+      refresh()
     },
+    onError: (error) => setNotice({ tone: 'error', text: errorText(error) }),
   })
-  const state = status.data?.status ?? 'absent'
   const hasIdentity = Boolean(status.data?.relay_user)
+  const busy = provision.isPending || remove.isPending || rotate.isPending
   return (
     <section
       className="bg-card rounded-2xl border p-6 shadow-sm lg:col-span-2"
@@ -255,40 +280,78 @@ function SandboxSection({ csrfToken }: { csrfToken: string }) {
         <button
           type="button"
           className="bg-primary text-primary-foreground rounded-lg px-4 py-2 text-sm font-medium disabled:opacity-50"
-          disabled={provision.isPending}
+          disabled={busy}
           onClick={() => provision.mutate()}
         >
-          {state === 'ready' || state === 'starting' ? t('sandboxUpdate') : t('sandboxProvision')}
+          {provision.isPending
+            ? live
+              ? t('updating')
+              : t('provisioning')
+            : live
+              ? t('sandboxUpdate')
+              : t('sandboxProvision')}
         </button>
-        {state === 'ready' || state === 'starting' ? (
+        {live ? (
           <button
             type="button"
-            className="rounded-lg border px-3 py-2 text-sm"
-            disabled={remove.isPending}
-            onClick={() => remove.mutate()}
+            className="rounded-lg border px-3 py-2 text-sm disabled:opacity-50"
+            disabled={busy}
+            onClick={() => setConfirming('delete')}
           >
-            {t('sandboxDelete')}
+            {remove.isPending ? t('deleting') : t('sandboxDelete')}
           </button>
         ) : null}
         {hasIdentity ? (
           <button
             type="button"
-            className="rounded-lg border px-3 py-2 text-sm"
-            disabled={rotate.isPending}
-            onClick={() => rotate.mutate()}
+            className="rounded-lg border px-3 py-2 text-sm disabled:opacity-50"
+            disabled={busy}
+            onClick={() => setConfirming('rotate')}
             title={t('rotateHint')}
           >
-            {t('rotateToken')}
+            {rotate.isPending ? t('rotating') : t('rotateToken')}
           </button>
         ) : null}
-        {provision.error || rotate.error ? (
-          <p role="alert" className="text-destructive text-xs">
-            {((provision.error ?? rotate.error) as Error).message === 'sandbox_capacity_full'
-              ? t('sandboxCapacityFull')
-              : t('error', { code: ((provision.error ?? rotate.error) as Error).message })}
-          </p>
-        ) : null}
       </div>
+      {confirming ? (
+        <div
+          className="mt-3 rounded-lg border border-amber-300 p-3 text-sm"
+          role="alertdialog"
+          data-confirm={confirming}
+        >
+          <p>{confirming === 'rotate' ? t('confirmRotate') : t('confirmDelete')}</p>
+          <div className="mt-2 flex gap-2">
+            <button
+              type="button"
+              className="bg-primary text-primary-foreground rounded-lg px-3 py-1.5 text-sm"
+              onClick={() => {
+                const action = confirming
+                setConfirming(null)
+                if (action === 'rotate') rotate.mutate()
+                else remove.mutate()
+              }}
+            >
+              {confirming === 'rotate' ? t('confirmRotateYes') : t('confirmDeleteYes')}
+            </button>
+            <button
+              type="button"
+              className="rounded-lg border px-3 py-1.5 text-sm"
+              onClick={() => setConfirming(null)}
+            >
+              {t('cancel')}
+            </button>
+          </div>
+        </div>
+      ) : null}
+      {notice ? (
+        <p
+          role={notice.tone === 'error' ? 'alert' : 'status'}
+          className={`mt-3 text-sm ${notice.tone === 'error' ? 'text-destructive' : 'text-emerald-700 dark:text-emerald-400'}`}
+          data-notice={notice.tone}
+        >
+          {notice.text}
+        </p>
+      ) : null}
       {issued ? (
         <div
           className="mt-4 rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm dark:bg-amber-950/30"
