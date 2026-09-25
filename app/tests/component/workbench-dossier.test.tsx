@@ -310,4 +310,41 @@ describe('sandbox provisioning', () => {
     expect(calls.some((c) => c.startsWith('DELETE'))).toBe(false)
     vi.restoreAllMocks()
   })
+
+  it('copies the one-time command with one click, and falls back to selecting it', async () => {
+    const writeText = vi
+      .fn()
+      .mockResolvedValueOnce(undefined)
+      .mockRejectedValueOnce(new Error('denied'))
+    Object.defineProperty(navigator, 'clipboard', { value: { writeText }, configurable: true })
+    vi.spyOn(globalThis, 'fetch').mockImplementation(async (input, init) => {
+      const url = String(input)
+      if (url.endsWith('/prefs')) return json({ model: null, approval_policy: 'on-request' })
+      if (url.endsWith('/credentials')) return json({ credentials: [] })
+      if (url.endsWith('/sandboxes/provisioned')) return json({ status: 'absent', ready: false })
+      if (url.endsWith('/sandboxes/provision') && init?.method === 'POST')
+        return json({
+          sandbox_id: '00000000-0000-5000-8000-000000000030',
+          app_server_url: 'ws://x:47800',
+          status: 'starting',
+          ready: false,
+          relay: {
+            url: 'wss://edge.test/relay',
+            user: 'u-1bcbd3538e76',
+            agent_token: 'agent-token-once-1234567890',
+          },
+        })
+      throw new Error(`unexpected ${url}`)
+    })
+    render(wrap(<SettingsPanel csrfToken={csrf} />))
+    fireEvent.click(await screen.findByRole('button', { name: '拉起沙箱' }))
+    fireEvent.click(await screen.findByRole('button', { name: '复制命令' }))
+    await screen.findByText(/已复制/)
+    expect(writeText).toHaveBeenCalledWith(
+      expect.stringContaining('--token agent-token-once-1234567890'),
+    )
+    fireEvent.click(screen.getByRole('button', { name: '复制命令' }))
+    await screen.findByText(/已为你选中整段命令/)
+    vi.restoreAllMocks()
+  })
 })

@@ -234,6 +234,9 @@
       "confirmRotateYes": "Rotate",
       "confirmDelete": "Removing stops the sandbox (your work is kept) and sessions pause until you start it again. Remove it?",
       "confirmDeleteYes": "Remove",
+      "copyCommand": "Copy command",
+      "copied": "Copied. Paste and keep it on your computer now; it will not be shown again.",
+      "copyManual": "Your browser blocked copying; the whole command is selected, press Ctrl+C (⌘+C on Mac).",
       "agentTokenTitle": "Local agent command (shown once)",
       "agentTokenHint": "Copy it to your machine and run it; the token is never shown again. If lost, remove the sandbox and start again."
     },

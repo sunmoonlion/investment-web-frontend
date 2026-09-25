@@ -234,6 +234,9 @@
       "confirmRotateYes": "确定更换",
       "confirmDelete": "回收后沙箱会停下（研究记录保留），会话暂时无法使用，需要时可以再拉起。确定回收吗？",
       "confirmDeleteYes": "确定回收",
+      "copyCommand": "复制命令",
+      "copied": "已复制。请马上粘贴保存到你的电脑上，这条命令不会再显示。",
+      "copyManual": "浏览器不允许自动复制，已为你选中整段命令，请按 Ctrl+C（Mac 上 ⌘+C）复制。",
       "agentTokenTitle": "本地代理接入命令（只显示一次）",
       "agentTokenHint": "复制到你的机器上运行；令牌不会再显示，丢了就回收沙箱重新拉起。"
     },

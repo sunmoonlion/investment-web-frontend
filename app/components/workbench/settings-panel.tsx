@@ -3,7 +3,7 @@
 // 设置（F-WEB-01）：key 只提交一次，页面不留、不回显；模型与审批策略进新会话的 thread 设置。
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import type { Prefs } from '@/contracts/workbench'
 import {
   addCredential,
@@ -359,9 +359,66 @@ function SandboxSection({ csrfToken }: { csrfToken: string }) {
         >
           <p className="font-medium">{t('agentTokenTitle')}</p>
           <p className="text-muted-foreground mt-1 text-xs">{t('agentTokenHint')}</p>
-          <pre className="bg-background mt-2 overflow-x-auto rounded p-2 text-xs">{`sunmoon-agent init --relay ${issued.url} --user ${issued.user} --token ${issued.token} --root <你的研究目录>`}</pre>
+          <IssuedCommand
+            command={`sunmoon-agent init --relay ${issued.url} --user ${issued.user} --token ${issued.token} --root <你的研究目录>`}
+          />
         </div>
       ) : null}
     </section>
+  )
+}
+
+// 只显示一次的接入命令：一键复制并给出"已复制"；浏览器不给剪贴板权限（如非 https）时退回为整段选中，让用户手动复制
+function IssuedCommand({ command }: { command: string }) {
+  const t = useTranslations('workbench.settings')
+  const [copied, setCopied] = useState<'ok' | 'manual' | null>(null)
+  const preRef = useRef<HTMLPreElement>(null)
+  const selectAll = () => {
+    const el = preRef.current
+    if (!el) return
+    const range = document.createRange()
+    range.selectNodeContents(el)
+    const sel = window.getSelection()
+    sel?.removeAllRanges()
+    sel?.addRange(range)
+  }
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(command)
+      setCopied('ok')
+    } catch {
+      selectAll()
+      setCopied('manual')
+    }
+  }
+  return (
+    <div className="mt-2">
+      <pre
+        ref={preRef}
+        className="bg-background overflow-x-auto rounded p-2 text-xs"
+        data-issued-command
+      >
+        {command}
+      </pre>
+      <div className="mt-2 flex items-center gap-3">
+        <button
+          type="button"
+          className="bg-primary text-primary-foreground rounded-lg px-3 py-1.5 text-sm font-medium"
+          onClick={() => void copy()}
+        >
+          {t('copyCommand')}
+        </button>
+        {copied === 'ok' ? (
+          <span role="status" className="text-sm text-emerald-700 dark:text-emerald-400">
+            {t('copied')}
+          </span>
+        ) : null}
+        {copied === 'manual' ? (
+          <span role="status" className="text-muted-foreground text-sm">
+            {t('copyManual')}
+          </span>
+        ) : null}
+      </div>
+    </div>
   )
 }
