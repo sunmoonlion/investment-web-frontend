@@ -15,7 +15,7 @@ import {
 } from '@/lib/workbench/client'
 import { useSessionStream } from '@/lib/workbench/use-session-stream'
 
-const PROFILES = ['SMOKE', 'DATA_QUERY'] as const
+const PROFILES = ['SMOKE', 'DATA_QUERY', 'FIN_REVIEW'] as const
 
 type Props = { sessionId: string; csrfToken: string; locale: string }
 
