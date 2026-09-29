@@ -49,6 +49,8 @@ app/                          ← 工程根在这一层（不是仓根）
 | 鉴权不得下放到 `proxy.ts` | 代码注释明示：鉴权绝不在此；最终授权在 Backend |
 | 非安全方法必须带 `X-CSRF-Token` | 后端拒绝 |
 | `BACKEND_INTERNAL_URL` 只能在 server-only 模块用 | 泄露内部地址 |
+| 去别的应用的链接只在 `app/lib/cross-app/` 拼，要去的页面登记在 `destinations.ts`；链接里不带身份、令牌、回去的地址 | 登记时就报错；规则见后端 `app/domain/cross_app.py` |
+| 「回到原处」的地址只用后端给的（`/api/web/v1/cross-app/origin`），不从地址栏里取 | 别人伪造链接就能把用户带到别处 |
 
 ## 三件套
 
