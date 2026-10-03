@@ -1,3 +1,20 @@
+## 新体系构建入口（2026-10-03）
+
+本目录 Dockerfile 仍是组件配方；配套的固定基础镜像、源码版本、国内下载失败后官方代理重试由五仓并列的 k8s/infrastructure 统一编排：
+
+```sh
+cd ../../k8s/infrastructure
+make application-source-plan APP=investment COMPONENT=web
+make application-build-web APP=investment
+make application-publish-web APP=investment
+```
+
+以上 cd 从本子仓根目录执行。默认国内直连，下载网络失败后自动检查 HTTPS_PROXY 并最多重试一次；不能连通即失败退出，保留 TLS、签名和锁文件完整性校验。构建/运行 Node 基镜像使用同一 libc 系列，版本与摘要由 k8s 物料锁确定。
+
+旧 build-image.sh 不作为新体系入口，本次未扩展其功能，按旧流程退役计划处理。下面保留旧流程说明，不能当作新体系日常操作。
+
+---
+
 # investment-web-frontend 镜像构建
 
 该目录构建 Next.js Web standalone 镜像。源码在子模块根的 `app/`，
