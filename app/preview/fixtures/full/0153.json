@@ -47,13 +47,13 @@
   "status": "waiting",
   "attempts": [
    {
-    "attempt_id": "8d8169d4-6f4a-5d52-bba7-8cf57924c7ef",
+    "attempt_id": "62e88bc8-3ac8-5baf-9413-64e774170022",
     "n": 1,
     "outcome": "rejected",
     "failure": "acceptance",
     "spent": "0.05",
-    "started_at": "2026-10-04T03:31:51.343566Z",
-    "ended_at": "2026-10-04T03:31:51.349883Z",
+    "started_at": "2026-10-04T03:51:13.486355Z",
+    "ended_at": "2026-10-04T03:51:13.494006Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -101,7 +101,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T03:31:51.321326Z",
+      "at": "2026-10-04T03:51:13.468859Z",
       "kind": "tool",
       "name": "list_datasets",
       "dataset": null,

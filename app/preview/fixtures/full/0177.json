@@ -39,13 +39,13 @@
   "status": "accepted",
   "attempts": [
    {
-    "attempt_id": "f517cceb-b3ad-58a5-b001-0478eaec6790",
+    "attempt_id": "f4e95d95-4175-5fb9-9cf5-1a1bdac8db38",
     "n": 1,
     "outcome": "accepted",
     "failure": null,
     "spent": "0.05",
-    "started_at": "2026-10-04T03:31:50.746412Z",
-    "ended_at": "2026-10-04T03:31:50.755120Z",
+    "started_at": "2026-10-04T03:51:12.889867Z",
+    "ended_at": "2026-10-04T03:51:12.898658Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -86,7 +86,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T03:31:50.722887Z",
+      "at": "2026-10-04T03:51:12.857917Z",
       "kind": "tool",
       "name": "describe_schema",
       "dataset": "sz000858-financials",
@@ -94,7 +94,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T03:31:50.726620Z",
+      "at": "2026-10-04T03:51:12.863049Z",
       "kind": "tool",
       "name": "metric_definitions",
       "dataset": "sz000858-financials",

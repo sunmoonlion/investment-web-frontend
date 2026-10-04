@@ -35,7 +35,7 @@
     "sz300750-financials-sample300750"
    ]
   },
-  "started_at": "2026-10-04T03:31:50.805356Z",
+  "started_at": "2026-10-04T03:51:12.942346Z",
   "ended_at": null,
   "seconds": 4,
   "active_interaction_id": "e622161e-278e-510c-a294-d321919a97e8"
@@ -79,13 +79,13 @@
    "status": "accepted",
    "attempts": [
     {
-     "attempt_id": "a8de8c0b-26f9-5ef3-a333-3dcc5f3959d5",
+     "attempt_id": "4e0f9c67-3218-5b0e-980f-cfd63f84cdf5",
      "n": 1,
      "outcome": "accepted",
      "failure": null,
      "spent": "0.05",
-     "started_at": "2026-10-04T03:31:50.909446Z",
-     "ended_at": "2026-10-04T03:31:50.919907Z",
+     "started_at": "2026-10-04T03:51:13.046866Z",
+     "ended_at": "2026-10-04T03:51:13.055994Z",
      "checks": [
       {
        "label": "交回的格式对",
@@ -162,13 +162,13 @@
    "status": "accepted",
    "attempts": [
     {
-     "attempt_id": "6ed27916-5574-5323-81ac-8996e2bf5712",
+     "attempt_id": "14a0c299-3bab-5967-ad46-0777deed091d",
      "n": 1,
      "outcome": "accepted",
      "failure": null,
      "spent": "0.05",
-     "started_at": "2026-10-04T03:31:51.012006Z",
-     "ended_at": "2026-10-04T03:31:51.020270Z",
+     "started_at": "2026-10-04T03:51:13.136693Z",
+     "ended_at": "2026-10-04T03:51:13.146274Z",
      "checks": [
       {
        "label": "交回的格式对",
@@ -261,13 +261,13 @@
    "status": "waiting",
    "attempts": [
     {
-     "attempt_id": "18be15af-4adf-5f4d-97fe-c211a6130ea6",
+     "attempt_id": "2bc51e87-6667-5f54-9be7-355fdf250336",
      "n": 1,
      "outcome": "rejected",
      "failure": "acceptance",
      "spent": "0.05",
-     "started_at": "2026-10-04T03:31:51.125766Z",
-     "ended_at": "2026-10-04T03:31:51.131903Z",
+     "started_at": "2026-10-04T03:51:13.252235Z",
+     "ended_at": "2026-10-04T03:51:13.258485Z",
      "checks": [
       {
        "label": "交回的格式对",

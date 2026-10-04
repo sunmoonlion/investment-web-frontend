@@ -5,7 +5,7 @@
   "owner_actor_id": "e824e960-e14f-5f42-8843-61bc18a78346",
   "tenant": "default",
   "idempotency_key": "preview-done-0001",
-  "request_digest": "d96c7605030b28931244b7d610eb29b5b8ccda5680cfd6574a99aa3dd5feb1c9",
+  "request_digest": "b3f39c04df88172a1d3c82e47604e3e00deb67dfdf3ba93df1bca9bf042baeef",
   "profile_id": "FIN_REVIEW",
   "profile_version": "1",
   "expert_pack_version": "1",
@@ -19,7 +19,7 @@
    }
   },
   "normalized_goal": null,
-  "thread_id": "thread-d3716dc95f9b",
+  "thread_id": "thread-dbfd8d09d699",
   "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
   "project_root": "/home/demo/research/恒瑞医药",
   "state": "SUCCEEDED",
@@ -52,8 +52,8 @@
   "rejection": null,
   "cancel_requested_at": null,
   "cancel_requested_by": null,
-  "created_at": "2026-10-04T03:32:05.292459+00:00",
-  "updated_at": "2026-10-04T03:32:06.119605+00:00",
+  "created_at": "2026-10-04T03:51:27.139650+00:00",
+  "updated_at": "2026-10-04T03:51:27.962181+00:00",
   "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b"
  },
  "attempts": [
@@ -61,7 +61,7 @@
    "id": "22a0a366-7769-5e1e-bebe-fe4c31f0901f",
    "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
    "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "thread_id": "thread-d3716dc95f9b",
+   "thread_id": "thread-dbfd8d09d699",
    "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
    "role": "execute",
    "arm": 0,
@@ -69,7 +69,7 @@
    "step_version": "1",
    "input_artifact_versions": [],
    "turn_ids": [
-    "turn-20d7628a9b83"
+    "turn-ad4b02878cd7"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -101,16 +101,16 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T03:32:05.488663+00:00",
-   "ended_at": "2026-10-04T03:32:05.500336+00:00",
-   "created_at": "2026-10-04T03:32:05.428415+00:00",
-   "updated_at": "2026-10-04T03:32:05.494610+00:00"
+   "started_at": "2026-10-04T03:51:27.340206+00:00",
+   "ended_at": "2026-10-04T03:51:27.353541+00:00",
+   "created_at": "2026-10-04T03:51:27.281103+00:00",
+   "updated_at": "2026-10-04T03:51:27.345506+00:00"
   },
   {
    "id": "8cfa40e3-910b-5011-93e5-ef0c6a56bb2b",
    "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
    "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "thread_id": "thread-d3716dc95f9b",
+   "thread_id": "thread-dbfd8d09d699",
    "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
    "role": "execute",
    "arm": 0,
@@ -123,7 +123,7 @@
     }
    ],
    "turn_ids": [
-    "turn-5c485adad4ba"
+    "turn-8557c9094abb"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -155,16 +155,16 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T03:32:05.592305+00:00",
-   "ended_at": "2026-10-04T03:32:05.612416+00:00",
-   "created_at": "2026-10-04T03:32:05.517712+00:00",
-   "updated_at": "2026-10-04T03:32:05.603212+00:00"
+   "started_at": "2026-10-04T03:51:27.447920+00:00",
+   "ended_at": "2026-10-04T03:51:27.459165+00:00",
+   "created_at": "2026-10-04T03:51:27.372072+00:00",
+   "updated_at": "2026-10-04T03:51:27.452759+00:00"
   },
   {
    "id": "309c2a73-ecc3-5fca-9461-8bf727ffcf55",
    "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
    "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "thread_id": "thread-d3716dc95f9b",
+   "thread_id": "thread-dbfd8d09d699",
    "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
    "role": "execute",
    "arm": 0,
@@ -181,7 +181,7 @@
     }
    ],
    "turn_ids": [
-    "turn-3bf8b46ed7e2"
+    "turn-3605b3a4cd1c"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -213,16 +213,16 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T03:32:05.724683+00:00",
-   "ended_at": "2026-10-04T03:32:05.737292+00:00",
-   "created_at": "2026-10-04T03:32:05.630420+00:00",
-   "updated_at": "2026-10-04T03:32:05.730969+00:00"
+   "started_at": "2026-10-04T03:51:27.571875+00:00",
+   "ended_at": "2026-10-04T03:51:27.583436+00:00",
+   "created_at": "2026-10-04T03:51:27.483301+00:00",
+   "updated_at": "2026-10-04T03:51:27.577811+00:00"
   },
   {
    "id": "ba66ef68-2bb9-5218-b294-31e7c047d638",
    "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
    "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "thread_id": "thread-d3716dc95f9b",
+   "thread_id": "thread-dbfd8d09d699",
    "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
    "role": "execute",
    "arm": 0,
@@ -239,7 +239,7 @@
     }
    ],
    "turn_ids": [
-    "turn-58c7d34a2897"
+    "turn-e4d748af22c8"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -271,16 +271,16 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T03:32:05.823420+00:00",
-   "ended_at": "2026-10-04T03:32:05.834073+00:00",
-   "created_at": "2026-10-04T03:32:05.757008+00:00",
-   "updated_at": "2026-10-04T03:32:05.828549+00:00"
+   "started_at": "2026-10-04T03:51:27.676359+00:00",
+   "ended_at": "2026-10-04T03:51:27.685261+00:00",
+   "created_at": "2026-10-04T03:51:27.611063+00:00",
+   "updated_at": "2026-10-04T03:51:27.681056+00:00"
   },
   {
    "id": "ec3fdc7e-42f1-5fe2-a0ef-abd7d327ebf6",
    "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
    "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "thread_id": "thread-d3716dc95f9b",
+   "thread_id": "thread-dbfd8d09d699",
    "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
    "role": "execute",
    "arm": 0,
@@ -301,7 +301,7 @@
     }
    ],
    "turn_ids": [
-    "turn-5e3ee9641786"
+    "turn-745d587ee5b3"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -333,16 +333,16 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T03:32:05.917120+00:00",
-   "ended_at": "2026-10-04T03:32:05.929073+00:00",
-   "created_at": "2026-10-04T03:32:05.851104+00:00",
-   "updated_at": "2026-10-04T03:32:05.924008+00:00"
+   "started_at": "2026-10-04T03:51:27.760114+00:00",
+   "ended_at": "2026-10-04T03:51:27.769492+00:00",
+   "created_at": "2026-10-04T03:51:27.702606+00:00",
+   "updated_at": "2026-10-04T03:51:27.765022+00:00"
   },
   {
    "id": "3f58a052-4dcd-54ec-9c35-bf85369ac517",
    "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
    "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "thread_id": "thread-d3716dc95f9b",
+   "thread_id": "thread-dbfd8d09d699",
    "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
    "role": "execute",
    "arm": 0,
@@ -363,7 +363,7 @@
     }
    ],
    "turn_ids": [
-    "turn-91847868918a"
+    "turn-5d9ebe058b03"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -395,16 +395,16 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T03:32:06.014819+00:00",
-   "ended_at": "2026-10-04T03:32:06.023716+00:00",
-   "created_at": "2026-10-04T03:32:05.953736+00:00",
-   "updated_at": "2026-10-04T03:32:06.019738+00:00"
+   "started_at": "2026-10-04T03:51:27.845799+00:00",
+   "ended_at": "2026-10-04T03:51:27.856727+00:00",
+   "created_at": "2026-10-04T03:51:27.785771+00:00",
+   "updated_at": "2026-10-04T03:51:27.850937+00:00"
   },
   {
    "id": "596eea7e-b780-589d-b98b-168edf296206",
    "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
    "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "thread_id": "thread-d3716dc95f9b",
+   "thread_id": "thread-dbfd8d09d699",
    "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
    "role": "execute",
    "arm": 0,
@@ -437,7 +437,7 @@
     }
    ],
    "turn_ids": [
-    "turn-336d1ec79699"
+    "turn-4c5d8f63a2fe"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -469,10 +469,10 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T03:32:06.092504+00:00",
-   "ended_at": "2026-10-04T03:32:06.102780+00:00",
-   "created_at": "2026-10-04T03:32:06.039732+00:00",
-   "updated_at": "2026-10-04T03:32:06.097927+00:00"
+   "started_at": "2026-10-04T03:51:27.936388+00:00",
+   "ended_at": "2026-10-04T03:51:27.945517+00:00",
+   "created_at": "2026-10-04T03:51:27.878174+00:00",
+   "updated_at": "2026-10-04T03:51:27.941478+00:00"
   }
  ],
  "artifacts": [
@@ -485,7 +485,7 @@
    "kind": "step",
    "digest": "6ac95e0974e19cf5044deed3dca8c1f82aa3b13bba12adbc53cc60e22556dfd4",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:32:06.019738+00:00"
+   "created_at": "2026-10-04T03:51:27.850937+00:00"
   },
   {
    "id": "df0dee41-f7da-5243-89c8-ff2dc452cdff",
@@ -496,7 +496,7 @@
    "kind": "step",
    "digest": "674a5d061101acb30ae811b528c30df29158b70e62f018a94b7015877a675966",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:32:05.828549+00:00"
+   "created_at": "2026-10-04T03:51:27.681056+00:00"
   },
   {
    "id": "7c4b3727-1f6d-57b9-826c-560265a9f017",
@@ -507,7 +507,7 @@
    "kind": "handback",
    "digest": "1c95a74983ba502c04d0736f99d73e08bbd5b47e3b6f632a281b1242f0149fbc",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:32:06.114191+00:00"
+   "created_at": "2026-10-04T03:51:27.956719+00:00"
   },
   {
    "id": "5b61a466-4818-5b51-8465-0b1ece82ad67",
@@ -518,7 +518,7 @@
    "kind": "step",
    "digest": "3c544b3182d53edbf9bcfce2b834bf2074b9b04bc2486a1fe7737a36334549f3",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:32:05.924008+00:00"
+   "created_at": "2026-10-04T03:51:27.765022+00:00"
   },
   {
    "id": "12512834-06a3-53da-8e9e-51a716855f27",
@@ -529,7 +529,7 @@
    "kind": "step",
    "digest": "35fc2f5b96cfb8de097ec5d0f5a02330082d3db2cceb638b41a2d37d0f7f6788",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:32:06.097927+00:00"
+   "created_at": "2026-10-04T03:51:27.941478+00:00"
   },
   {
    "id": "6a9b36d6-2b08-5249-be16-4539ec7b2fa2",
@@ -540,7 +540,7 @@
    "kind": "step",
    "digest": "75b16c998c63820779dfb5b3b3f8b827b4e1c830bbda5e8092ccd4ab1d2909b3",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:32:05.603212+00:00"
+   "created_at": "2026-10-04T03:51:27.452759+00:00"
   },
   {
    "id": "b91dd376-3939-5332-a853-d51048e3a4ff",
@@ -551,7 +551,7 @@
    "kind": "step",
    "digest": "6bb866129d663a1e0bc127a403ec0c1c7cee5aeab9195ac1a894623ab9b788d7",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:32:05.730969+00:00"
+   "created_at": "2026-10-04T03:51:27.577811+00:00"
   },
   {
    "id": "37cc65e6-5709-5a38-a598-5b634c181a29",
@@ -562,7 +562,7 @@
    "kind": "step",
    "digest": "13b86f417fe6d3bbd5bf0e1330c6e121bef18ad29b7cffd24a41162383d36c4f",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:32:05.494610+00:00"
+   "created_at": "2026-10-04T03:51:27.345506+00:00"
   }
  ]
 }

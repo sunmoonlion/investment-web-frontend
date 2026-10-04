@@ -7,7 +7,7 @@
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
    "idempotency_key": "preview-done-redone-0001",
-   "request_digest": "7a86cfc5a891da538f705dc4ffb32a2e7be374920c22fa83df3b639db925c11a",
+   "request_digest": "2a432ea194ba9695ca28e43bdfe19efb0c2c9c1ed0b167e96dcc3ba5640f6b92",
    "profile_id": "FIN_REVIEW",
    "profile_version": "1",
    "expert_pack_version": "1",
@@ -21,7 +21,7 @@
     }
    },
    "normalized_goal": null,
-   "thread_id": "thread-e57698bc2cda",
+   "thread_id": "thread-d299a006c8a1",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "project_root": "/home/demo/research/恒瑞医药",
    "state": "SUCCEEDED",
@@ -54,8 +54,8 @@
    "rejection": null,
    "cancel_requested_at": null,
    "cancel_requested_by": null,
-   "created_at": "2026-10-04T03:31:48.832355+00:00",
-   "updated_at": "2026-10-04T03:31:49.734777+00:00",
+   "created_at": "2026-10-04T03:51:10.948829+00:00",
+   "updated_at": "2026-10-04T03:51:11.866472+00:00",
    "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e"
   }
  ]

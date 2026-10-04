@@ -5,7 +5,7 @@
   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
   "tenant": "default",
   "idempotency_key": "preview-no-data-0001",
-  "request_digest": "38d8c8a5d06a8cf730fdbf6bf40fea946b08f0f8a4b256a3acf1ce55c81ef6ea",
+  "request_digest": "9d953be297ccd84364b870b50df7ca9c7c19955f0a26e2198168d99eeb26cf4d",
   "profile_id": "FIN_REVIEW",
   "profile_version": "1",
   "expert_pack_version": "1",
@@ -19,7 +19,7 @@
    }
   },
   "normalized_goal": null,
-  "thread_id": "thread-8bc04593dd94",
+  "thread_id": "thread-ed2a3230eac1",
   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
   "project_root": "/home/demo/research/片仔癀",
   "state": "WAITING",
@@ -52,16 +52,16 @@
   "rejection": null,
   "cancel_requested_at": null,
   "cancel_requested_by": null,
-  "created_at": "2026-10-04T03:31:51.166166+00:00",
-  "updated_at": "2026-10-04T03:31:51.364190+00:00",
+  "created_at": "2026-10-04T03:51:13.303495+00:00",
+  "updated_at": "2026-10-04T03:51:13.508820+00:00",
   "project_id": "7679e7df-8718-5408-8ba3-5f59a9525cf4"
  },
  "attempts": [
   {
-   "id": "612e12d3-cf81-59f4-b6f0-5de6a2787692",
+   "id": "21f5d553-64c4-5255-ab9f-0ffb4343df9b",
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
-   "thread_id": "thread-8bc04593dd94",
+   "thread_id": "thread-ed2a3230eac1",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "role": "execute",
    "arm": 0,
@@ -69,7 +69,7 @@
    "step_version": "1",
    "input_artifact_versions": [],
    "turn_ids": [
-    "turn-eabced971e04"
+    "turn-10e2b5fe6d49"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -93,7 +93,7 @@
    "retryable": null,
    "output_artifacts": [
     {
-     "id": "1878e97a-299e-53f0-98f4-96b1659e4533",
+     "id": "0393f853-1f2c-5616-bc67-f3d197988a7a",
      "name": "scope",
      "version": 1
     }
@@ -101,16 +101,16 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T03:31:51.264041+00:00",
-   "ended_at": "2026-10-04T03:31:51.274739+00:00",
-   "created_at": "2026-10-04T03:31:51.215686+00:00",
-   "updated_at": "2026-10-04T03:31:51.271178+00:00"
+   "started_at": "2026-10-04T03:51:13.405611+00:00",
+   "ended_at": "2026-10-04T03:51:13.413799+00:00",
+   "created_at": "2026-10-04T03:51:13.353282+00:00",
+   "updated_at": "2026-10-04T03:51:13.410502+00:00"
   },
   {
-   "id": "8d8169d4-6f4a-5d52-bba7-8cf57924c7ef",
+   "id": "62e88bc8-3ac8-5baf-9413-64e774170022",
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
-   "thread_id": "thread-8bc04593dd94",
+   "thread_id": "thread-ed2a3230eac1",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "role": "execute",
    "arm": 0,
@@ -123,7 +123,7 @@
     }
    ],
    "turn_ids": [
-    "turn-50232a766137"
+    "turn-e52ed372722f"
    ],
    "status": "FAILED",
    "codex_version": null,
@@ -149,23 +149,23 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T03:31:51.343566+00:00",
-   "ended_at": "2026-10-04T03:31:51.349883+00:00",
-   "created_at": "2026-10-04T03:31:51.289838+00:00",
-   "updated_at": "2026-10-04T03:31:51.348097+00:00"
+   "started_at": "2026-10-04T03:51:13.486355+00:00",
+   "ended_at": "2026-10-04T03:51:13.494006+00:00",
+   "created_at": "2026-10-04T03:51:13.432577+00:00",
+   "updated_at": "2026-10-04T03:51:13.491730+00:00"
   }
  ],
  "artifacts": [
   {
-   "id": "1878e97a-299e-53f0-98f4-96b1659e4533",
+   "id": "0393f853-1f2c-5616-bc67-f3d197988a7a",
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
-   "attempt_id": "612e12d3-cf81-59f4-b6f0-5de6a2787692",
+   "attempt_id": "21f5d553-64c4-5255-ab9f-0ffb4343df9b",
    "name": "scope",
    "version": 1,
    "kind": "step",
    "digest": "ba37233edfe10f95b97200707ee4107c2dc0f0698c97eb92c42a53f9af1bcfed",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:31:51.271178+00:00"
+   "created_at": "2026-10-04T03:51:13.410502+00:00"
   }
  ]
 }

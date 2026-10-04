@@ -5,13 +5,13 @@
   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
   "sandbox_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
   "project_root": "/home/demo/research/片仔癀",
-  "thread_id": "thread-8bc04593dd94",
+  "thread_id": "thread-ed2a3230eac1",
   "wheel": "advisor",
   "state_version": 1,
   "active_task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
   "thread_settings": {},
-  "created_at": "2026-10-04T03:31:51.166166+00:00",
-  "last_active_at": "2026-10-04T03:31:51.192262+00:00",
+  "created_at": "2026-10-04T03:51:13.303495+00:00",
+  "last_active_at": "2026-10-04T03:51:13.328746+00:00",
   "kind": "work",
   "project_id": "7679e7df-8718-5408-8ba3-5f59a9525cf4",
   "title": "片仔癀 2023 到 2025 年的盈利能力怎么样？"
@@ -21,7 +21,7 @@
    "id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
    "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
-   "attempt_id": "8d8169d4-6f4a-5d52-bba7-8cf57924c7ef",
+   "attempt_id": "62e88bc8-3ac8-5baf-9413-64e774170022",
    "kind": "input",
    "audience": "owner",
    "prompt": {
@@ -58,12 +58,12 @@
    },
    "subject_digest": null,
    "target_state_version": 13,
-   "expires_at": "2026-10-07T03:31:51.364845+00:00",
+   "expires_at": "2026-10-07T03:51:13.509515+00:00",
    "status": "pending",
    "response": null,
    "consumed_at": null,
    "responded_by": null,
-   "created_at": "2026-10-04T03:31:51.364190+00:00"
+   "created_at": "2026-10-04T03:51:13.508820+00:00"
   }
  ]
 }

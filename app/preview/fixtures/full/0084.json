@@ -7,7 +7,7 @@
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
    "idempotency_key": "preview-stopped-0001",
-   "request_digest": "a205157a73c5071f8fbdd57f29941f9ef664bd090e660eefb647ca186f80e84e",
+   "request_digest": "106914ce65284aab825253c343a89faed1b000b8c16be62ccdf0c6deb771608c",
    "profile_id": "FIN_REVIEW",
    "profile_version": "1",
    "expert_pack_version": "1",
@@ -21,7 +21,7 @@
     }
    },
    "normalized_goal": null,
-   "thread_id": "thread-a3575471100f",
+   "thread_id": "thread-da76151acd99",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "project_root": "/home/demo/research/上海机场",
    "state": "CANCELLED",
@@ -52,10 +52,10 @@
    "waiting_reason": null,
    "active_interaction_id": null,
    "rejection": null,
-   "cancel_requested_at": "2026-10-04T03:31:51.855348+00:00",
+   "cancel_requested_at": "2026-10-04T03:51:14.009109+00:00",
    "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "created_at": "2026-10-04T03:31:51.398709+00:00",
-   "updated_at": "2026-10-04T03:31:51.893032+00:00",
+   "created_at": "2026-10-04T03:51:13.531997+00:00",
+   "updated_at": "2026-10-04T03:51:14.046930+00:00",
    "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f"
   }
  ]

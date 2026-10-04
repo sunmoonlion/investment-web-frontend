@@ -5,7 +5,7 @@
   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
   "tenant": "default",
   "idempotency_key": "preview-cancelled-0001",
-  "request_digest": "da57bad3319c16d6008399acdeef98e00db22ba803bbcb16caef0335c8033625",
+  "request_digest": "4ea52f13647de315f5057869fbfce9b6fbe96066bb450b71ba0f0dc523aa0575",
   "profile_id": "FIN_REVIEW",
   "profile_version": "1",
   "expert_pack_version": "1",
@@ -19,7 +19,7 @@
    }
   },
   "normalized_goal": null,
-  "thread_id": "thread-dbe42664da96",
+  "thread_id": "thread-812dcf5e0787",
   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
   "project_root": "/home/demo/research/招商银行",
   "state": "CANCELLED",
@@ -50,18 +50,18 @@
   "waiting_reason": null,
   "active_interaction_id": null,
   "rejection": null,
-  "cancel_requested_at": "2026-10-04T03:31:53.057636+00:00",
+  "cancel_requested_at": "2026-10-04T03:51:15.128374+00:00",
   "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-  "created_at": "2026-10-04T03:31:52.617297+00:00",
-  "updated_at": "2026-10-04T03:31:53.056938+00:00",
+  "created_at": "2026-10-04T03:51:14.771267+00:00",
+  "updated_at": "2026-10-04T03:51:15.127706+00:00",
   "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa"
  },
  "attempts": [
   {
-   "id": "b8bc64bd-5d5b-5df7-b07f-ebdf0b323328",
+   "id": "064f60f4-e1bb-56f6-b3ac-cc0b1b4d78dc",
    "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
    "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
-   "thread_id": "thread-dbe42664da96",
+   "thread_id": "thread-812dcf5e0787",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "role": "execute",
    "arm": 0,
@@ -69,7 +69,7 @@
    "step_version": "1",
    "input_artifact_versions": [],
    "turn_ids": [
-    "turn-c9fd935aefc9"
+    "turn-ef38ad66becd"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -93,7 +93,7 @@
    "retryable": null,
    "output_artifacts": [
     {
-     "id": "c309882f-e6ce-5f63-b492-ce6b9097cf61",
+     "id": "1fe55be8-9a82-5c3a-bd0d-8293b8444e2e",
      "name": "scope",
      "version": 1
     }
@@ -101,16 +101,16 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T03:31:52.735365+00:00",
-   "ended_at": "2026-10-04T03:31:52.744286+00:00",
-   "created_at": "2026-10-04T03:31:52.677270+00:00",
-   "updated_at": "2026-10-04T03:31:52.740625+00:00"
+   "started_at": "2026-10-04T03:51:14.873800+00:00",
+   "ended_at": "2026-10-04T03:51:14.883187+00:00",
+   "created_at": "2026-10-04T03:51:14.822727+00:00",
+   "updated_at": "2026-10-04T03:51:14.879828+00:00"
   },
   {
-   "id": "dc4310f9-065d-567c-86b0-d7a474ad34dd",
+   "id": "73b1928b-4c2f-5080-b878-b6dec0fd62cd",
    "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
    "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
-   "thread_id": "thread-dbe42664da96",
+   "thread_id": "thread-812dcf5e0787",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "role": "execute",
    "arm": 0,
@@ -123,7 +123,7 @@
     }
    ],
    "turn_ids": [
-    "turn-d549306a4468"
+    "turn-47ee26563df1"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -147,7 +147,7 @@
    "retryable": null,
    "output_artifacts": [
     {
-     "id": "e7bb4979-0709-5f8d-bf7a-081d391d2a75",
+     "id": "1d6502ae-83b6-53bb-a8b8-456bcf03b388",
      "name": "profile",
      "version": 1
     }
@@ -155,16 +155,16 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T03:31:52.834922+00:00",
-   "ended_at": "2026-10-04T03:31:52.843206+00:00",
-   "created_at": "2026-10-04T03:31:52.760545+00:00",
-   "updated_at": "2026-10-04T03:31:52.839672+00:00"
+   "started_at": "2026-10-04T03:51:14.961289+00:00",
+   "ended_at": "2026-10-04T03:51:14.970362+00:00",
+   "created_at": "2026-10-04T03:51:14.897900+00:00",
+   "updated_at": "2026-10-04T03:51:14.966929+00:00"
   },
   {
-   "id": "2f43eab0-204d-5b09-bb48-13a67d51c819",
+   "id": "029096fa-2d5e-5f04-b2b8-b24ab06806ad",
    "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
    "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
-   "thread_id": "thread-dbe42664da96",
+   "thread_id": "thread-812dcf5e0787",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "role": "execute",
    "arm": 0,
@@ -181,7 +181,7 @@
     }
    ],
    "turn_ids": [
-    "turn-8b3d3b1772f7"
+    "turn-d98aa3b7c731"
    ],
    "status": "FAILED",
    "codex_version": null,
@@ -207,34 +207,34 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T03:31:52.967827+00:00",
-   "ended_at": "2026-10-04T03:31:52.974463+00:00",
-   "created_at": "2026-10-04T03:31:52.871130+00:00",
-   "updated_at": "2026-10-04T03:31:52.972481+00:00"
+   "started_at": "2026-10-04T03:51:15.076231+00:00",
+   "ended_at": "2026-10-04T03:51:15.083132+00:00",
+   "created_at": "2026-10-04T03:51:14.986082+00:00",
+   "updated_at": "2026-10-04T03:51:15.081263+00:00"
   }
  ],
  "artifacts": [
   {
-   "id": "e7bb4979-0709-5f8d-bf7a-081d391d2a75",
+   "id": "1d6502ae-83b6-53bb-a8b8-456bcf03b388",
    "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
-   "attempt_id": "dc4310f9-065d-567c-86b0-d7a474ad34dd",
+   "attempt_id": "73b1928b-4c2f-5080-b878-b6dec0fd62cd",
    "name": "profile",
    "version": 1,
    "kind": "step",
    "digest": "0801c19adbe7145e42acecc360deb0f05b3f302a4640bade548d9a51b0a6ead8",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:31:52.839672+00:00"
+   "created_at": "2026-10-04T03:51:14.966929+00:00"
   },
   {
-   "id": "c309882f-e6ce-5f63-b492-ce6b9097cf61",
+   "id": "1fe55be8-9a82-5c3a-bd0d-8293b8444e2e",
    "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
-   "attempt_id": "b8bc64bd-5d5b-5df7-b07f-ebdf0b323328",
+   "attempt_id": "064f60f4-e1bb-56f6-b3ac-cc0b1b4d78dc",
    "name": "scope",
    "version": 1,
    "kind": "step",
    "digest": "b8d454f41c3ca74f8f6c0df1e9b96f59609c3abac41d247cc8974b3b42f79945",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:31:52.740625+00:00"
+   "created_at": "2026-10-04T03:51:14.879828+00:00"
   }
  ]
 }

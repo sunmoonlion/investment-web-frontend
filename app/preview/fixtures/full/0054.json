@@ -7,8 +7,8 @@
   "workspace_root": "/home/demo/research",
   "path": "中国平安",
   "title": "中国平安",
-  "created_at": "2026-10-04T03:31:48.796820Z",
-  "updated_at": "2026-10-04T03:31:48.796820Z",
+  "created_at": "2026-10-04T03:51:10.917949Z",
+  "updated_at": "2026-10-04T03:51:10.917949Z",
   "archived_at": null,
   "directory": "/home/demo/research/中国平安",
   "archived": false,
@@ -23,7 +23,7 @@
    "title": null,
    "wheel": "user",
    "active_task_id": null,
-   "last_active_at": "2026-10-04T03:31:54.305060Z"
+   "last_active_at": "2026-10-04T03:51:16.467664Z"
   }
  ],
  "tasks": [
@@ -39,7 +39,7 @@
     "currency": "CNY",
     "reserved": "0"
    },
-   "created_at": "2026-10-04T03:31:54.274779Z"
+   "created_at": "2026-10-04T03:51:16.438082Z"
   }
  ]
 }

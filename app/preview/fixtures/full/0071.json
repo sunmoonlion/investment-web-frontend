@@ -14,18 +14,18 @@
   "source": "https://platform.kimi.com/docs/pricing/chat-k3",
   "estimated": true
  },
- "cost": "0.083676",
+ "cost": "0.290504",
  "tokens": {
-  "input": 230,
-  "cached_input": 9728,
-  "cache_write": 256,
-  "output": 545,
-  "total": 10759
+  "input": 410,
+  "cached_input": 15872,
+  "cache_write": 9728,
+  "output": 560,
+  "total": 26570
  },
- "calls": 2,
+ "calls": 3,
  "turns": [
   {
-   "turn_id": "turn-2aa9deda00f6",
+   "turn_id": "turn-aa088cf8de0a",
    "calls": 1,
    "cost": "0.037968",
    "tokens": {
@@ -35,10 +35,10 @@
     "output": 263,
     "total": 5224
    },
-   "at": "2026-10-04T03:31:53.194877+00:00"
+   "at": "2026-10-04T03:51:15.256986+00:00"
   },
   {
-   "turn_id": "turn-4d8a41da23ad",
+   "turn_id": "turn-6081a0532deb",
    "calls": 1,
    "cost": "0.045708",
    "tokens": {
@@ -48,7 +48,20 @@
     "output": 282,
     "total": 5535
    },
-   "at": "2026-10-04T03:31:53.288022+00:00"
+   "at": "2026-10-04T03:51:15.350652+00:00"
+  },
+  {
+   "turn_id": "turn-3e313d867ca3",
+   "calls": 1,
+   "cost": "0.206828",
+   "tokens": {
+    "input": 180,
+    "cached_input": 6144,
+    "cache_write": 9472,
+    "output": 15,
+    "total": 15811
+   },
+   "at": "2026-10-04T03:51:15.426447+00:00"
   }
  ]
 }

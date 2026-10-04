@@ -7,7 +7,7 @@
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
    "idempotency_key": "preview-running-0001",
-   "request_digest": "55abe32bb84fccab091d3f765dad422d3ffc4ac678139095f4aac4e303bead75",
+   "request_digest": "38670daade73f604661b47a79a3d0ba94aac5cdc5a0fbd2775d738ef731450a9",
    "profile_id": "DATA_QUERY",
    "profile_version": "1",
    "expert_pack_version": "1",
@@ -21,7 +21,7 @@
     }
    },
    "normalized_goal": null,
-   "thread_id": "thread-9fbf4cd66996",
+   "thread_id": "thread-f34d8a2129bc",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "project_root": "/home/demo/research/五粮液",
    "state": "RUNNING",
@@ -52,8 +52,8 @@
    "rejection": null,
    "cancel_requested_at": null,
    "cancel_requested_by": null,
-   "created_at": "2026-10-04T03:31:50.553818+00:00",
-   "updated_at": "2026-10-04T03:31:50.770990+00:00",
+   "created_at": "2026-10-04T03:51:12.687465+00:00",
+   "updated_at": "2026-10-04T03:51:12.915499+00:00",
    "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0"
   }
  ]

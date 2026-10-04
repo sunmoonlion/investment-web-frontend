@@ -2,9 +2,9 @@
  "contract_version": 2,
  "artifacts": [
   {
-   "id": "c6e1ff86-57f4-50ec-841d-e31f631a504b",
+   "id": "e957cd76-e3f9-5c1a-9622-83d6b92c49b4",
    "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
-   "attempt_id": "6ed27916-5574-5323-81ac-8996e2bf5712",
+   "attempt_id": "14a0c299-3bab-5967-ad46-0777deed091d",
    "name": "profile",
    "version": 1,
    "kind": "step",
@@ -69,12 +69,12 @@
    },
    "digest": "b3735d1760412b7e122f73ba16d44b60f4f558ecee20b3dc72daf79138fab94c",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:31:51.016862+00:00"
+   "created_at": "2026-10-04T03:51:13.142635+00:00"
   },
   {
-   "id": "6d38a3ca-1d8b-58fa-8c9e-d7cd9abb8663",
+   "id": "dc04a489-73d3-5616-af96-8f8c55364805",
    "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
-   "attempt_id": "a8de8c0b-26f9-5ef3-a333-3dcc5f3959d5",
+   "attempt_id": "4e0f9c67-3218-5b0e-980f-cfd63f84cdf5",
    "name": "scope",
    "version": 1,
    "kind": "step",
@@ -97,7 +97,7 @@
    },
    "digest": "f77a558f3ba9620c552aba0f6d28ef5b64355e4e4f006ed494bb527bd55aa444",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:31:50.916454+00:00"
+   "created_at": "2026-10-04T03:51:13.052566+00:00"
   }
  ]
 }
