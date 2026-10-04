@@ -1,0 +1,103 @@
+{
+ "contract_version": 2,
+ "artifacts": [
+  {
+   "id": "0dcbf52b-605b-5b10-a5cd-9c7bf241ea70",
+   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+   "attempt_id": "85f0609e-72c2-5e98-9e29-f94d4fe48318",
+   "name": "profile",
+   "version": 1,
+   "kind": "step",
+   "content": {
+    "as_of": "2025-12-31",
+    "notes": [
+     "样例数据：数字是为了预览编的，不是这家公司的真实数据",
+     "2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策"
+    ],
+    "dataset": "sz300750-financials",
+    "periods": [
+     {
+      "basis": "原始披露",
+      "verified": true,
+      "fiscal_year": 2023,
+      "report_date": "2023-12-31",
+      "report_type": "年报",
+      "official_disclosed_date": "2024-03-28"
+     },
+     {
+      "basis": "追溯调整后",
+      "verified": true,
+      "fiscal_year": 2024,
+      "report_date": "2024-12-31",
+      "report_type": "年报",
+      "official_disclosed_date": "2025-03-28"
+     },
+     {
+      "basis": "原始披露",
+      "verified": true,
+      "fiscal_year": 2025,
+      "report_date": "2025-12-31",
+      "report_type": "年报",
+      "official_disclosed_date": "2026-03-28"
+     }
+    ],
+    "basis_breaks": [
+     {
+      "basis": [
+       "原始披露",
+       "追溯调整后"
+      ],
+      "between": [
+       "2023",
+       "2024"
+      ]
+     },
+     {
+      "basis": [
+       "追溯调整后",
+       "原始披露"
+      ],
+      "between": [
+       "2024",
+       "2025"
+      ]
+     }
+    ],
+    "data_version": "sz300750-financials-sample300750",
+    "not_ingested": false,
+    "security_code": "300750"
+   },
+   "digest": "b3735d1760412b7e122f73ba16d44b60f4f558ecee20b3dc72daf79138fab94c",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:50.776845+00:00"
+  },
+  {
+   "id": "c8693ae4-37c3-560f-85eb-cbac53635198",
+   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+   "attempt_id": "b634c871-77c6-5c9e-a169-0166c16db618",
+   "name": "scope",
+   "version": 1,
+   "kind": "step",
+   "content": {
+    "aspects": [
+     "盈利能力"
+    ],
+    "company": "宁德时代",
+    "periods": [
+     "2023",
+     "2024",
+     "2025"
+    ],
+    "question": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
+    "assumptions": [],
+    "report_types": [
+     "年报"
+    ],
+    "security_code": "300750"
+   },
+   "digest": "f77a558f3ba9620c552aba0f6d28ef5b64355e4e4f006ed494bb527bd55aa444",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:50.677909+00:00"
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "contract_version": 2,
+ "project": {
+  "id": "d35d6a3c-0149-5775-a1c7-860389fb558a",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "workspace_root": "/home/demo/research",
+  "path": "宁德时代",
+  "title": "宁德时代",
+  "created_at": "2026-09-29T16:02:48.336536Z",
+  "updated_at": "2026-09-29T16:02:48.336536Z",
+  "archived_at": null,
+  "directory": "/home/demo/research/宁德时代",
+  "archived": false,
+  "environment_name": "办公室的电脑",
+  "online": true
+ },
+ "active_task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+ "conversations": [
+  {
+   "id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+   "kind": "work",
+   "title": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
+   "wheel": "advisor",
+   "active_task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+   "last_active_at": "2026-09-29T16:02:50.584423Z"
+  }
+ ],
+ "tasks": [
+  {
+   "id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+   "session_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+   "profile_id": "FIN_REVIEW",
+   "state": "WAITING",
+   "question": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
+   "budget": {
+    "used": "0.150000",
+    "limit": "2",
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "created_at": "2026-09-29T16:02:50.551663Z"
+  }
+ ]
+}

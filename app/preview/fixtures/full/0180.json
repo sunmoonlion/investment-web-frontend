@@ -1,0 +1,608 @@
+{
+ "task": {
+  "id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+  "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "tenant": "default",
+  "idempotency_key": "preview-done-redone-0001",
+  "request_digest": "a9757d193b2b1806891ce48c396223224549291a8c7b1832ecaf4e6df889a3b3",
+  "profile_id": "FIN_REVIEW",
+  "profile_version": "1",
+  "expert_pack_version": "1",
+  "original_input": {
+   "input": {
+    "text": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？"
+   },
+   "attachments": [],
+   "client_context": {
+    "entry": "expert"
+   }
+  },
+  "normalized_goal": null,
+  "thread_id": "thread-1dcb794ea446",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "project_root": "/home/demo/research/恒瑞医药",
+  "state": "SUCCEEDED",
+  "state_version": 43,
+  "workflow_version": "1",
+  "current_step": 7,
+  "acceptance_contract": {
+   "steps": [
+    "scope",
+    "profile",
+    "reconcile",
+    "extract",
+    "metrics",
+    "crosscheck",
+    "note"
+   ],
+   "pack_id": "FIN_REVIEW"
+  },
+  "execution_policy": {},
+  "budget": {
+   "used": "0.400000",
+   "limit": "2",
+   "currency": "CNY",
+   "reserved": "0"
+  },
+  "active_attempt_id": null,
+  "terminal_result_ref": "58bf41ed-2812-51fe-87d9-3a7ad7438f7a",
+  "waiting_reason": null,
+  "active_interaction_id": null,
+  "rejection": null,
+  "cancel_requested_at": null,
+  "cancel_requested_by": null,
+  "created_at": "2026-09-29T16:02:48.412359+00:00",
+  "updated_at": "2026-09-29T16:02:49.375542+00:00",
+  "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e"
+ },
+ "attempts": [
+  {
+   "id": "854f32e4-ffea-5216-8b6a-69d14708ff97",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "thread_id": "thread-1dcb794ea446",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "scope",
+   "step_version": "1",
+   "input_artifact_versions": [],
+   "turn_ids": [
+    "turn-1dc75e337afc"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "total": {
+      "totalTokens": 5000
+     }
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "85e1d8fb-6016-51ea-8762-47206a5e0beb",
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-09-29T16:02:48.617921+00:00",
+   "ended_at": "2026-09-29T16:02:48.634755+00:00",
+   "created_at": "2026-09-29T16:02:48.549525+00:00",
+   "updated_at": "2026-09-29T16:02:48.624177+00:00"
+  },
+  {
+   "id": "1e5179f8-17c0-5034-a28e-2a1cf18baaf3",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "thread_id": "thread-1dcb794ea446",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "profile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-325be6261107"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "total": {
+      "totalTokens": 5000
+     }
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "47e2afaa-a3a0-53f5-9233-f261479c5506",
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-09-29T16:02:48.749020+00:00",
+   "ended_at": "2026-09-29T16:02:48.761212+00:00",
+   "created_at": "2026-09-29T16:02:48.655882+00:00",
+   "updated_at": "2026-09-29T16:02:48.755402+00:00"
+  },
+  {
+   "id": "6689b960-e120-5833-a5cb-e5de0226265c",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "thread_id": "thread-1dcb794ea446",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "reconcile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-5988fc8e23d7"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "total": {
+      "totalTokens": 5000
+     }
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "3178acaf-cfef-5cc8-8393-629a5d4eaff5",
+     "name": "reconcile",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-09-29T16:02:48.879448+00:00",
+   "ended_at": "2026-09-29T16:02:48.889082+00:00",
+   "created_at": "2026-09-29T16:02:48.780855+00:00",
+   "updated_at": "2026-09-29T16:02:48.884771+00:00"
+  },
+  {
+   "id": "b0725800-1154-5169-afeb-73bf643d17a1",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "thread_id": "thread-1dcb794ea446",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "extract",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-49f8ac683512"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "total": {
+      "totalTokens": 5000
+     }
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "9ec65153-b051-501d-8c3a-d0bc1b92e576",
+     "name": "facts",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-09-29T16:02:48.968817+00:00",
+   "ended_at": "2026-09-29T16:02:48.980314+00:00",
+   "created_at": "2026-09-29T16:02:48.907512+00:00",
+   "updated_at": "2026-09-29T16:02:48.975582+00:00"
+  },
+  {
+   "id": "3e53cc59-6924-533b-a6bf-31d57c3cb26f",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "thread_id": "thread-1dcb794ea446",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "metrics",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    },
+    {
+     "name": "facts",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-30a615a653fd"
+   ],
+   "status": "FAILED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "total": {
+      "totalTokens": 5000
+     }
+    }
+   },
+   "failure_code": "acceptance",
+   "retryable": true,
+   "output_artifacts": [],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-09-29T16:02:49.064993+00:00",
+   "ended_at": "2026-09-29T16:02:49.076658+00:00",
+   "created_at": "2026-09-29T16:02:49.002599+00:00",
+   "updated_at": "2026-09-29T16:02:49.074481+00:00"
+  },
+  {
+   "id": "9d91f339-8a18-559b-9ed8-371dc277f543",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "thread_id": "thread-1dcb794ea446",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "metrics",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    },
+    {
+     "name": "facts",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-9a6f08ed5206"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "total": {
+      "totalTokens": 5000
+     }
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "00b5c292-2f1b-5160-97ce-9abc31ce8df8",
+     "name": "metrics",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 1
+   },
+   "started_at": "2026-09-29T16:02:49.159601+00:00",
+   "ended_at": "2026-09-29T16:02:49.170700+00:00",
+   "created_at": "2026-09-29T16:02:49.094739+00:00",
+   "updated_at": "2026-09-29T16:02:49.166053+00:00"
+  },
+  {
+   "id": "22a89c4e-0679-55ae-8198-fba5676acb3f",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "thread_id": "thread-1dcb794ea446",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "crosscheck",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    },
+    {
+     "name": "facts",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-0e8402993e53"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "total": {
+      "totalTokens": 5000
+     }
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "523cb74c-1b3a-5e69-831f-18a8112d5cf7",
+     "name": "crosscheck",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-09-29T16:02:49.252301+00:00",
+   "ended_at": "2026-09-29T16:02:49.263516+00:00",
+   "created_at": "2026-09-29T16:02:49.188529+00:00",
+   "updated_at": "2026-09-29T16:02:49.257833+00:00"
+  },
+  {
+   "id": "70b09ff6-0b05-5a0d-a4ae-210290ac0f1f",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "thread_id": "thread-1dcb794ea446",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "note",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    },
+    {
+     "name": "reconcile",
+     "version": 1
+    },
+    {
+     "name": "facts",
+     "version": 1
+    },
+    {
+     "name": "metrics",
+     "version": 1
+    },
+    {
+     "name": "crosscheck",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-312db3fc5704"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "total": {
+      "totalTokens": 5000
+     }
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "58bf41ed-2812-51fe-87d9-3a7ad7438f7a",
+     "name": "note",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-09-29T16:02:49.346563+00:00",
+   "ended_at": "2026-09-29T16:02:49.356919+00:00",
+   "created_at": "2026-09-29T16:02:49.285983+00:00",
+   "updated_at": "2026-09-29T16:02:49.351908+00:00"
+  }
+ ],
+ "artifacts": [
+  {
+   "id": "523cb74c-1b3a-5e69-831f-18a8112d5cf7",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "attempt_id": "22a89c4e-0679-55ae-8198-fba5676acb3f",
+   "name": "crosscheck",
+   "version": 1,
+   "kind": "step",
+   "digest": "6ac95e0974e19cf5044deed3dca8c1f82aa3b13bba12adbc53cc60e22556dfd4",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:49.257833+00:00"
+  },
+  {
+   "id": "9ec65153-b051-501d-8c3a-d0bc1b92e576",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "attempt_id": "b0725800-1154-5169-afeb-73bf643d17a1",
+   "name": "facts",
+   "version": 1,
+   "kind": "step",
+   "digest": "674a5d061101acb30ae811b528c30df29158b70e62f018a94b7015877a675966",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:48.975582+00:00"
+  },
+  {
+   "id": "26b47ea1-cf27-52bc-8102-78b859236788",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "attempt_id": null,
+   "name": "handback",
+   "version": 1,
+   "kind": "handback",
+   "digest": "b05a18eb7b600663a5b99a3279b4106ca426c95dc94f3e4a7776b81d903fda75",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:49.368945+00:00"
+  },
+  {
+   "id": "00b5c292-2f1b-5160-97ce-9abc31ce8df8",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "attempt_id": "9d91f339-8a18-559b-9ed8-371dc277f543",
+   "name": "metrics",
+   "version": 1,
+   "kind": "step",
+   "digest": "3c544b3182d53edbf9bcfce2b834bf2074b9b04bc2486a1fe7737a36334549f3",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:49.166053+00:00"
+  },
+  {
+   "id": "58bf41ed-2812-51fe-87d9-3a7ad7438f7a",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "attempt_id": "70b09ff6-0b05-5a0d-a4ae-210290ac0f1f",
+   "name": "note",
+   "version": 1,
+   "kind": "step",
+   "digest": "35fc2f5b96cfb8de097ec5d0f5a02330082d3db2cceb638b41a2d37d0f7f6788",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:49.351908+00:00"
+  },
+  {
+   "id": "47e2afaa-a3a0-53f5-9233-f261479c5506",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "attempt_id": "1e5179f8-17c0-5034-a28e-2a1cf18baaf3",
+   "name": "profile",
+   "version": 1,
+   "kind": "step",
+   "digest": "75b16c998c63820779dfb5b3b3f8b827b4e1c830bbda5e8092ccd4ab1d2909b3",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:48.755402+00:00"
+  },
+  {
+   "id": "3178acaf-cfef-5cc8-8393-629a5d4eaff5",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "attempt_id": "6689b960-e120-5833-a5cb-e5de0226265c",
+   "name": "reconcile",
+   "version": 1,
+   "kind": "step",
+   "digest": "6bb866129d663a1e0bc127a403ec0c1c7cee5aeab9195ac1a894623ab9b788d7",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:48.884771+00:00"
+  },
+  {
+   "id": "85e1d8fb-6016-51ea-8762-47206a5e0beb",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "attempt_id": "854f32e4-ffea-5216-8b6a-69d14708ff97",
+   "name": "scope",
+   "version": 1,
+   "kind": "step",
+   "digest": "13b86f417fe6d3bbd5bf0e1330c6e121bef18ad29b7cffd24a41162383d36c4f",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:48.624177+00:00"
+  }
+ ]
+}

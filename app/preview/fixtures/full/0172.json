@@ -1,0 +1,715 @@
+{
+ "contract_version": 2,
+ "task": {
+  "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+  "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+  "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10",
+  "expert": {
+   "id": "FIN_REVIEW",
+   "name": "财报体检",
+   "version": "1"
+  },
+  "question": "贵州茅台 2023 到 2025 年的盈利能力怎么样？",
+  "state": "SUCCEEDED",
+  "state_word": "已完成",
+  "waiting_reason": null,
+  "cancel_requested": false,
+  "reason": null,
+  "reason_text": "",
+  "budget": {
+   "currency": "CNY",
+   "limit": "2.00",
+   "used": "0.35",
+   "reserved": "0.00",
+   "left": "1.65"
+  },
+  "data": {
+   "dataset": "sh600519-financials",
+   "data_version": "sh600519-financials-sample600519",
+   "as_of": "2025-12-31",
+   "security_code": "600519",
+   "versions_seen": [
+    "sh600519-financials-sample600519"
+   ]
+  },
+  "started_at": "2026-09-29T16:02:49.404832Z",
+  "ended_at": "2026-09-29T16:02:50.209714Z",
+  "seconds": 0,
+  "active_interaction_id": null
+ },
+ "position": {
+  "step": 7,
+  "of": 7,
+  "title": "成稿",
+  "left": 0
+ },
+ "steps": [
+  {
+   "index": 1,
+   "step_id": "scope",
+   "title": "定范围",
+   "summary": "认出公司、期间、报告类型",
+   "uses": [],
+   "tools": [],
+   "returns": "scope",
+   "checks": [
+    {
+     "label": "交回的格式对"
+    },
+    {
+     "label": "有证券代码、期间、报告类型"
+    },
+    {
+     "label": "认得出是哪家公司"
+    },
+    {
+     "label": "期间不是空的"
+    }
+   ],
+   "after_rejection": {
+    "reworks": 1,
+    "then": "human",
+    "back_to": null,
+    "text": "重做，最多 1 次；仍不过，停下来问你"
+   },
+   "reserve": "0.05",
+   "status": "accepted",
+   "attempts": [
+    {
+     "attempt_id": "e581e98a-56ba-56db-8dc8-60ebec70cb60",
+     "n": 1,
+     "outcome": "accepted",
+     "failure": null,
+     "spent": "0.05",
+     "started_at": "2026-09-29T16:02:49.548754Z",
+     "ended_at": "2026-09-29T16:02:49.558126Z",
+     "checks": [
+      {
+       "label": "交回的格式对",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "有证券代码、期间、报告类型",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "认得出是哪家公司",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "期间不是空的",
+       "pass": true,
+       "message": ""
+      }
+     ],
+     "tools": {}
+    }
+   ],
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.05",
+   "data": null
+  },
+  {
+   "index": 2,
+   "step_id": "profile",
+   "title": "数据摸底",
+   "summary": "确认有这家公司的数据、数据到哪一天、各期是什么口径",
+   "uses": [
+    {
+     "artifact": "scope",
+     "step": 1,
+     "title": "定范围"
+    }
+   ],
+   "tools": [
+    "list_datasets",
+    "describe_schema",
+    "metric_definitions",
+    "run_sql"
+   ],
+   "returns": "profile",
+   "checks": [
+    {
+     "label": "交回的格式对"
+    },
+    {
+     "label": "有数据集、数据版本、期间、口径断点"
+    },
+    {
+     "label": "有对应的数据集"
+    },
+    {
+     "label": "有数据版本"
+    },
+    {
+     "label": "范围内至少有一期数据"
+    }
+   ],
+   "after_rejection": {
+    "reworks": 1,
+    "then": "human",
+    "back_to": null,
+    "text": "重做，最多 1 次；仍不过，停下来问你"
+   },
+   "reserve": "0.05",
+   "status": "accepted",
+   "attempts": [
+    {
+     "attempt_id": "3bec41a8-4476-515c-8e4d-c3a8232f8b87",
+     "n": 1,
+     "outcome": "accepted",
+     "failure": null,
+     "spent": "0.05",
+     "started_at": "2026-09-29T16:02:49.665612Z",
+     "ended_at": "2026-09-29T16:02:49.679676Z",
+     "checks": [
+      {
+       "label": "交回的格式对",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "有数据集、数据版本、期间、口径断点",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "有对应的数据集",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "有数据版本",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "范围内至少有一期数据",
+       "pass": true,
+       "message": ""
+      }
+     ],
+     "tools": {
+      "list_datasets": 1,
+      "describe_schema": 1,
+      "run_sql": 3
+     }
+    }
+   ],
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.05",
+   "data": {
+    "dataset": "sh600519-financials",
+    "data_version": "sh600519-financials-sample600519",
+    "as_of": "2025-12-31",
+    "security_code": "600519"
+   }
+  },
+  {
+   "index": 3,
+   "step_id": "reconcile",
+   "title": "勾稽",
+   "summary": "三张表之间、前后两年之间对不对得上",
+   "uses": [
+    {
+     "artifact": "scope",
+     "step": 1,
+     "title": "定范围"
+    },
+    {
+     "artifact": "profile",
+     "step": 2,
+     "title": "数据摸底"
+    }
+   ],
+   "tools": [
+    "run_sql"
+   ],
+   "returns": "reconcile",
+   "checks": [
+    {
+     "label": "交回的格式对"
+    },
+    {
+     "label": "有勾稽结果、跨期连续性、未解释的断点"
+    },
+    {
+     "label": "做了勾稽"
+    },
+    {
+     "label": "每条勾稽规则都平"
+    },
+    {
+     "label": "跨期的断点都有解释"
+    }
+   ],
+   "after_rejection": {
+    "reworks": 0,
+    "then": "human",
+    "back_to": null,
+    "text": "停下来问你"
+   },
+   "reserve": "0.05",
+   "status": "accepted",
+   "attempts": [
+    {
+     "attempt_id": "c3ec4b71-0f35-52dc-a602-fb5b4a9e8ff6",
+     "n": 1,
+     "outcome": "accepted",
+     "failure": null,
+     "spent": "0.05",
+     "started_at": "2026-09-29T16:02:49.798485Z",
+     "ended_at": "2026-09-29T16:02:49.811440Z",
+     "checks": [
+      {
+       "label": "交回的格式对",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "有勾稽结果、跨期连续性、未解释的断点",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "做了勾稽",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "每条勾稽规则都平",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "跨期的断点都有解释",
+       "pass": true,
+       "message": ""
+      }
+     ],
+     "tools": {
+      "run_sql": 10
+     }
+    }
+   ],
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.05",
+   "data": {
+    "data_version": "sh600519-financials-sample600519"
+   }
+  },
+  {
+   "index": 4,
+   "step_id": "extract",
+   "title": "取数",
+   "summary": "把问题要用到的报表科目按期取出来，每个数带口径",
+   "uses": [
+    {
+     "artifact": "scope",
+     "step": 1,
+     "title": "定范围"
+    },
+    {
+     "artifact": "profile",
+     "step": 2,
+     "title": "数据摸底"
+    }
+   ],
+   "tools": [
+    "describe_schema",
+    "run_sql"
+   ],
+   "returns": "facts",
+   "checks": [
+    {
+     "label": "交回的格式对"
+    },
+    {
+     "label": "有取数表和数据版本"
+    },
+    {
+     "label": "取数表不是空的"
+    },
+    {
+     "label": "有数据版本"
+    }
+   ],
+   "after_rejection": {
+    "reworks": 1,
+    "then": "back",
+    "back_to": 2,
+    "text": "重做，最多 1 次；仍不过，退回第 2 步"
+   },
+   "reserve": "0.05",
+   "status": "accepted",
+   "attempts": [
+    {
+     "attempt_id": "8efa3ee6-8634-5072-b965-dfddc2e74cf6",
+     "n": 1,
+     "outcome": "accepted",
+     "failure": null,
+     "spent": "0.05",
+     "started_at": "2026-09-29T16:02:49.898982Z",
+     "ended_at": "2026-09-29T16:02:49.908732Z",
+     "checks": [
+      {
+       "label": "交回的格式对",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "有取数表和数据版本",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "取数表不是空的",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "有数据版本",
+       "pass": true,
+       "message": ""
+      }
+     ],
+     "tools": {
+      "describe_schema": 1,
+      "run_sql": 2
+     }
+    }
+   ],
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.05",
+   "data": {
+    "data_version": "sh600519-financials-sample600519"
+   }
+  },
+  {
+   "index": 5,
+   "step_id": "metrics",
+   "title": "算指标",
+   "summary": "按数据集里登记的口径算指标；分母不成立或口径不同的，标为不适用",
+   "uses": [
+    {
+     "artifact": "scope",
+     "step": 1,
+     "title": "定范围"
+    },
+    {
+     "artifact": "profile",
+     "step": 2,
+     "title": "数据摸底"
+    },
+    {
+     "artifact": "facts",
+     "step": 4,
+     "title": "取数"
+    }
+   ],
+   "tools": [
+    "metric_definitions",
+    "query_metric",
+    "run_sql"
+   ],
+   "returns": "metrics",
+   "checks": [
+    {
+     "label": "交回的格式对"
+    },
+    {
+     "label": "有指标表和数据版本"
+    },
+    {
+     "label": "指标表不是空的"
+    }
+   ],
+   "after_rejection": {
+    "reworks": 2,
+    "then": "human",
+    "back_to": null,
+    "text": "重做，最多 2 次；仍不过，停下来问你"
+   },
+   "reserve": "0.05",
+   "status": "accepted",
+   "attempts": [
+    {
+     "attempt_id": "73060dbf-b76b-58ac-8de4-c5f0c3c17530",
+     "n": 1,
+     "outcome": "accepted",
+     "failure": null,
+     "spent": "0.05",
+     "started_at": "2026-09-29T16:02:49.992751Z",
+     "ended_at": "2026-09-29T16:02:50.005677Z",
+     "checks": [
+      {
+       "label": "交回的格式对",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "有指标表和数据版本",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "指标表不是空的",
+       "pass": true,
+       "message": ""
+      }
+     ],
+     "tools": {
+      "metric_definitions": 1,
+      "query_metric": 1
+     }
+    }
+   ],
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.05",
+   "data": {
+    "data_version": "sh600519-financials-sample600519"
+   }
+  },
+  {
+   "index": 6,
+   "step_id": "crosscheck",
+   "title": "对照官方",
+   "summary": "拿取到的数和公司年报里自己披露的数逐项对照",
+   "uses": [
+    {
+     "artifact": "scope",
+     "step": 1,
+     "title": "定范围"
+    },
+    {
+     "artifact": "profile",
+     "step": 2,
+     "title": "数据摸底"
+    },
+    {
+     "artifact": "facts",
+     "step": 4,
+     "title": "取数"
+    }
+   ],
+   "tools": [
+    "run_sql"
+   ],
+   "returns": "crosscheck",
+   "checks": [
+    {
+     "label": "交回的格式对"
+    },
+    {
+     "label": "有一致项、不一致项、覆盖说明"
+    },
+    {
+     "label": "说明了对照覆盖了哪些期"
+    },
+    {
+     "label": "和公司披露的数都对得上"
+    }
+   ],
+   "after_rejection": {
+    "reworks": 0,
+    "then": "human",
+    "back_to": null,
+    "text": "停下来问你"
+   },
+   "reserve": "0.05",
+   "status": "accepted",
+   "attempts": [
+    {
+     "attempt_id": "ad4ae0d3-2aca-5001-8b72-b5512fe47050",
+     "n": 1,
+     "outcome": "accepted",
+     "failure": null,
+     "spent": "0.05",
+     "started_at": "2026-09-29T16:02:50.088032Z",
+     "ended_at": "2026-09-29T16:02:50.098275Z",
+     "checks": [
+      {
+       "label": "交回的格式对",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "有一致项、不一致项、覆盖说明",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "说明了对照覆盖了哪些期",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "和公司披露的数都对得上",
+       "pass": true,
+       "message": ""
+      }
+     ],
+     "tools": {
+      "run_sql": 1
+     }
+    }
+   ],
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.05",
+   "data": {
+    "data_version": "sh600519-financials-sample600519"
+   }
+  },
+  {
+   "index": 7,
+   "step_id": "note",
+   "title": "成稿",
+   "summary": "只用前面各步的结果写底稿：列事实和提醒，结论栏留空",
+   "uses": [
+    {
+     "artifact": "scope",
+     "step": 1,
+     "title": "定范围"
+    },
+    {
+     "artifact": "profile",
+     "step": 2,
+     "title": "数据摸底"
+    },
+    {
+     "artifact": "reconcile",
+     "step": 3,
+     "title": "勾稽"
+    },
+    {
+     "artifact": "facts",
+     "step": 4,
+     "title": "取数"
+    },
+    {
+     "artifact": "metrics",
+     "step": 5,
+     "title": "算指标"
+    },
+    {
+     "artifact": "crosscheck",
+     "step": 6,
+     "title": "对照官方"
+    }
+   ],
+   "tools": [],
+   "returns": "note",
+   "checks": [
+    {
+     "label": "交回的格式对"
+    },
+    {
+     "label": "有回答、提醒、出处、数据版本"
+    },
+    {
+     "label": "回答不是空的"
+    },
+    {
+     "label": "有提醒"
+    },
+    {
+     "label": "有出处"
+    },
+    {
+     "label": "有数据版本"
+    },
+    {
+     "label": "结论栏是空的"
+    },
+    {
+     "label": "没有评级、目标价、买卖建议"
+    },
+    {
+     "label": "底稿没有超长"
+    }
+   ],
+   "after_rejection": {
+    "reworks": 1,
+    "then": "human",
+    "back_to": null,
+    "text": "重做，最多 1 次；仍不过，停下来问你"
+   },
+   "reserve": "0.05",
+   "status": "accepted",
+   "attempts": [
+    {
+     "attempt_id": "e9b1c506-4103-5ea6-8b6d-b4f592ff9f46",
+     "n": 1,
+     "outcome": "accepted",
+     "failure": null,
+     "spent": "0.05",
+     "started_at": "2026-09-29T16:02:50.173339Z",
+     "ended_at": "2026-09-29T16:02:50.183876Z",
+     "checks": [
+      {
+       "label": "交回的格式对",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "有回答、提醒、出处、数据版本",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "回答不是空的",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "有提醒",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "有出处",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "有数据版本",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "结论栏是空的",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "没有评级、目标价、买卖建议",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "底稿没有超长",
+       "pass": true,
+       "message": ""
+      }
+     ],
+     "tools": {}
+    }
+   ],
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.05",
+   "data": {
+    "data_version": "sh600519-financials-sample600519"
+   }
+  }
+ ]
+}

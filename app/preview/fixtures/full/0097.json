@@ -1,0 +1,37 @@
+{
+ "contract_version": 2,
+ "task": {
+  "task_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+  "session_id": "3d3b3fb6-b19e-5292-b36c-2643d99977bb",
+  "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f",
+  "expert": {
+   "id": "BOND_REVIEW",
+   "name": "",
+   "version": "1"
+  },
+  "question": "中国平安 2025 年的偿付能力怎么样？",
+  "state": "REJECTED",
+  "state_word": "打回",
+  "waiting_reason": null,
+  "cancel_requested": false,
+  "reason": {
+   "code": "no_expert_pack",
+   "message": "这个问题不在专家范围，继续自己用 Codex 即可"
+  },
+  "reason_text": "这个问题不在专家的范围里，可以自己在对话里接着做",
+  "budget": {
+   "currency": "CNY",
+   "limit": "2.00",
+   "used": "0.00",
+   "reserved": "0.00",
+   "left": "2.00"
+  },
+  "data": null,
+  "started_at": "2026-09-29T16:02:54.828433Z",
+  "ended_at": "2026-09-29T16:02:54.864631Z",
+  "seconds": 0,
+  "active_interaction_id": null
+ },
+ "position": null,
+ "steps": []
+}

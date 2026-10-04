@@ -1,0 +1,57 @@
+{
+ "contract_version": 2,
+ "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+ "step": {
+  "index": 5,
+  "step_id": "metrics",
+  "title": "算指标",
+  "summary": "按数据集里登记的口径算指标；分母不成立或口径不同的，标为不适用",
+  "uses": [
+   {
+    "artifact": "scope",
+    "step": 1,
+    "title": "定范围"
+   },
+   {
+    "artifact": "profile",
+    "step": 2,
+    "title": "数据摸底"
+   },
+   {
+    "artifact": "facts",
+    "step": 4,
+    "title": "取数"
+   }
+  ],
+  "tools": [
+   "metric_definitions",
+   "query_metric",
+   "run_sql"
+  ],
+  "returns": "metrics",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有指标表和数据版本"
+   },
+   {
+    "label": "指标表不是空的"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 2,
+   "then": "human",
+   "back_to": null,
+   "text": "重做，最多 2 次；仍不过，停下来问你"
+  },
+  "reserve": "0.05",
+  "status": "pending",
+  "attempts": [],
+  "times": 0,
+  "rejected": 0,
+  "spent": "0.00",
+  "data": null
+ }
+}

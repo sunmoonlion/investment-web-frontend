@@ -1,0 +1,58 @@
+{
+ "contract_version": 2,
+ "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+ "step": {
+  "index": 6,
+  "step_id": "crosscheck",
+  "title": "对照官方",
+  "summary": "拿取到的数和公司年报里自己披露的数逐项对照",
+  "uses": [
+   {
+    "artifact": "scope",
+    "step": 1,
+    "title": "定范围"
+   },
+   {
+    "artifact": "profile",
+    "step": 2,
+    "title": "数据摸底"
+   },
+   {
+    "artifact": "facts",
+    "step": 4,
+    "title": "取数"
+   }
+  ],
+  "tools": [
+   "run_sql"
+  ],
+  "returns": "crosscheck",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有一致项、不一致项、覆盖说明"
+   },
+   {
+    "label": "说明了对照覆盖了哪些期"
+   },
+   {
+    "label": "和公司披露的数都对得上"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 0,
+   "then": "human",
+   "back_to": null,
+   "text": "停下来问你"
+  },
+  "reserve": "0.05",
+  "status": "pending",
+  "attempts": [],
+  "times": 0,
+  "rejected": 0,
+  "spent": "0.00",
+  "data": null
+ }
+}

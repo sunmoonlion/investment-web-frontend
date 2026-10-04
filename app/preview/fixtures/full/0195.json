@@ -1,0 +1,85 @@
+{
+ "contract_version": 2,
+ "interaction": {
+  "interaction_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+  "kind": "resource",
+  "status": "pending",
+  "where": {
+   "project": {
+    "id": "f0410883-287b-578b-81dc-15f24e5b2d8f",
+    "title": "上海机场"
+   },
+   "conversation": {
+    "id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+    "title": "上海机场 2023 到 2025 年的盈利能力怎么样？",
+    "kind": "work"
+   },
+   "task": {
+    "id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+    "question": "上海机场 2023 到 2025 年的盈利能力怎么样？",
+    "expert": "财报体检"
+   },
+   "step": {
+    "index": 4,
+    "title": "取数"
+   },
+   "about": "预算"
+  },
+  "why": "预算不够做下一步了。专家不会超出你给的上限",
+  "failed": [],
+  "missing_data": null,
+  "expires_at": "2026-10-02T16:02:51.756575Z",
+  "created_at": "2026-09-29T16:02:51.748347Z",
+  "pending": {
+   "title": "预算已用尽",
+   "question": "是否追加预算继续？",
+   "options": [
+    {
+     "id": "topup",
+     "label": "追加",
+     "consequence": "追加的金额计入预算上限，专家接着做",
+     "needs_amount": true
+    },
+    {
+     "id": "stop",
+     "label": "停止",
+     "consequence": "专家停下，把做完的 3 步交回给你。已花的不退",
+     "needs_amount": false
+    }
+   ],
+   "unknowns": [],
+   "evidence": []
+  },
+  "subject": {
+   "digest": null,
+   "target_state_version": 23,
+   "command": null,
+   "cwd": null,
+   "returned": null,
+   "budget": {
+    "currency": "CNY",
+    "limit": "1.00",
+    "used": "1.20",
+    "reserved": "0.00",
+    "left": "-0.20"
+   }
+  },
+  "validity": {
+   "expires_at": "2026-10-02T16:02:51.756575Z",
+   "seconds_left": 259195,
+   "after_expiry": "过期不等于同意，也不等于拒绝：委托停在等待，要重新请专家或重新发起"
+  },
+  "decision": {
+   "decided": false,
+   "at": null,
+   "by": null,
+   "chosen": null,
+   "amount": null,
+   "cancelled_because": null
+  },
+  "opened_event": {
+   "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "cursor": 69
+  }
+ }
+}

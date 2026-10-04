@@ -1,0 +1,66 @@
+{
+ "session": {
+  "id": "865ec0cc-3044-56ea-b08d-12c2b85b89a3",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "sandbox_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+  "project_root": "/home/demo/research/恒瑞医药",
+  "thread_id": "thread-fa9548d9bc24",
+  "wheel": "user",
+  "state_version": 0,
+  "active_task_id": null,
+  "thread_settings": {},
+  "created_at": "2026-09-29T16:02:54.333850+00:00",
+  "last_active_at": "2026-09-29T16:02:54.618407+00:00",
+  "kind": "work",
+  "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
+  "title": "把毛利率、净利率、自由现金流三个指标的含义整理成 notes…"
+ },
+ "pending_interactions": [
+  {
+   "id": "4816f691-3c61-5bff-a6ba-e4c76bd94692",
+   "session_id": "865ec0cc-3044-56ea-b08d-12c2b85b89a3",
+   "task_id": null,
+   "attempt_id": null,
+   "kind": "tool_approval",
+   "audience": "owner",
+   "prompt": {
+    "title": "命令需要你批准",
+    "options": [
+     {
+      "id": "accept",
+      "label": "允许一次"
+     },
+     {
+      "id": "acceptForSession",
+      "label": "本会话都允许"
+     },
+     {
+      "id": "decline",
+      "label": "拒绝"
+     }
+    ],
+    "subject": {
+     "cwd": "/home/demo/research/恒瑞医药",
+     "itemId": "exec_command_3_e67b4901",
+     "method": "item/commandExecution/requestApproval",
+     "reason": "需要在项目上一级目录 /home/demo/research 创建 outside.txt，是否允许？",
+     "command": "/usr/bin/zsh -lc \"printf 'test' > /home/demo/research/outside.txt\"",
+     "request_id": "03e833d1-4f51-5912-8c00-94f7793c46aa:srv-f97aded6",
+     "environmentId": "user-pc"
+    },
+    "evidence": [],
+    "question": "需要在项目上一级目录 /home/demo/research 创建 outside.txt，是否允许？",
+    "unknowns": []
+   },
+   "subject_digest": null,
+   "target_state_version": null,
+   "expires_at": "2026-09-29T17:02:54.730934+00:00",
+   "status": "pending",
+   "response": null,
+   "consumed_at": null,
+   "responded_by": null,
+   "created_at": "2026-09-29T16:02:54.730389+00:00"
+  }
+ ]
+}

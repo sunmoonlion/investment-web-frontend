@@ -18,6 +18,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "prepare:standalone": "node scripts/prepare-standalone.mjs",
+    "preview": "node preview/run.mjs",
     "test:e2e": "playwright test",
     "test:e2e:build": "pnpm build && playwright test",
     "check": "pnpm typecheck && pnpm lint && pnpm check:i18n && pnpm test && pnpm build"

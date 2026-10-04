@@ -1,0 +1,383 @@
+{
+ "id": "offline",
+ "title": "机器离线",
+ "description": "有一个项目、一份底稿、一段聊天，但机器不在线。",
+ "signed_in": true,
+ "user": {
+  "display_name": "样例用户"
+ },
+ "pages": [
+  {
+   "title": "首页",
+   "path": "/zh-CN/workbench"
+  },
+  {
+   "title": "项目页",
+   "path": "/zh-CN/workbench/projects/68a4a7ff-cdfe-53f4-a0c8-38dce439d35b"
+  },
+  {
+   "title": "请专家（机器离线，交不出去）",
+   "path": "/zh-CN/workbench/projects/68a4a7ff-cdfe-53f4-a0c8-38dce439d35b/expert/new"
+  },
+  {
+   "title": "项目里的聊天",
+   "path": "/zh-CN/workbench/projects/68a4a7ff-cdfe-53f4-a0c8-38dce439d35b/c/75fb7092-625a-5c48-b9e0-b1f5fad22e94"
+  },
+  {
+   "title": "底稿",
+   "path": "/zh-CN/workbench/projects/68a4a7ff-cdfe-53f4-a0c8-38dce439d35b/tasks/8b109ead-42d9-513b-be23-d3fa0e086069"
+  },
+  {
+   "title": "我的机器（离线）",
+   "path": "/zh-CN/workbench/machines"
+  }
+ ],
+ "responses": [
+  {
+   "method": "POST",
+   "path": "/api/workbench/environments",
+   "query": "",
+   "status": 201,
+   "content_type": "application/json",
+   "file": "0001.json"
+  },
+  {
+   "method": "PUT",
+   "path": "/api/workbench/prefs",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0002.json"
+  },
+  {
+   "method": "POST",
+   "path": "/api/workbench/projects",
+   "query": "",
+   "status": 201,
+   "content_type": "application/json",
+   "file": "0003.json"
+  },
+  {
+   "method": "POST",
+   "path": "/api/workbench/projects/68a4a7ff-cdfe-53f4-a0c8-38dce439d35b/delegations",
+   "query": "",
+   "status": 409,
+   "content_type": "application/problem+json",
+   "file": "0004.json"
+  },
+  {
+   "method": "POST",
+   "path": "/api/workbench/sessions",
+   "query": "",
+   "status": 201,
+   "content_type": "application/json",
+   "file": "0005.json"
+  },
+  {
+   "method": "POST",
+   "path": "/api/workbench/sessions/75fb7092-625a-5c48-b9e0-b1f5fad22e94/turns",
+   "query": "",
+   "status": 202,
+   "content_type": "application/json",
+   "file": "0006.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/workspaces",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0007.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/environments",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0008.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/sandboxes",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0009.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/projects",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0010.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/sessions",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0011.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/tasks",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0012.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/interactions",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0013.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/expert/overview",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0014.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/packs",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0015.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/prefs",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0016.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/credentials",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0017.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/projects",
+   "query": "include_archived=true",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0018.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/sessions",
+   "query": "without_project=true",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0019.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/interactions",
+   "query": "status=all",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0020.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/packs/DATA_QUERY",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0021.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/packs/FIN_REVIEW",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0022.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/projects/68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0023.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/sessions",
+   "query": "project_id=68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0024.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/sessions/75fb7092-625a-5c48-b9e0-b1f5fad22e94",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0025.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/tasks",
+   "query": "session_id=75fb7092-625a-5c48-b9e0-b1f5fad22e94",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0026.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/sessions/75fb7092-625a-5c48-b9e0-b1f5fad22e94/events",
+   "query": "limit=1000",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0027.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/sessions/e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0028.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/tasks",
+   "query": "session_id=e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0029.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/sessions/e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e/events",
+   "query": "limit=1000",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0030.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0031.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069/artifacts",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0032.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069/dossier",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0033.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069/dossier/export",
+   "query": "",
+   "status": 200,
+   "content_type": "text/markdown; charset=utf-8",
+   "file": "0034.md"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069/steps",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0035.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069/steps/1",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0036.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069/steps/2",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0037.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069/steps/3",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0038.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069/steps/4",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0039.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069/steps/5",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0040.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069/steps/6",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0041.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069/steps/7",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0042.json"
+  }
+ ],
+ "streams": [
+  {
+   "path": "/api/workbench/sessions/75fb7092-625a-5c48-b9e0-b1f5fad22e94/stream",
+   "file": "stream-0001.json"
+  },
+  {
+   "path": "/api/workbench/sessions/e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e/stream",
+   "file": "stream-0002.json"
+  }
+ ]
+}

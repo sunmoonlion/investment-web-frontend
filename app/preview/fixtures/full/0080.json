@@ -1,0 +1,684 @@
+{
+ "contract_version": 2,
+ "events": [
+  {
+   "id": "62e88bc8-3ac8-5baf-9413-64e774170022",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 1,
+   "kind": "session",
+   "type": "session/created",
+   "payload": {
+    "kind": "work",
+    "project_id": "7679e7df-8718-5408-8ba3-5f59a9525cf4",
+    "sandbox_id": "03e833d1-4f51-5912-8c00-94f7793c46aa"
+   },
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:50.995945+00:00"
+  },
+  {
+   "id": "a8feb889-3756-5595-bc03-3167523053d1",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 2,
+   "kind": "task",
+   "type": "task/received",
+   "payload": {
+    "budget": {
+     "used": "0",
+     "limit": "2",
+     "currency": "CNY",
+     "reserved": "0"
+    },
+    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+    "profile_id": "FIN_REVIEW"
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:50.995945+00:00"
+  },
+  {
+   "id": "206ad044-c345-503a-8198-623aaf6b3464",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 3,
+   "kind": "wheel",
+   "type": "wheel/handover",
+   "payload": {
+    "to": "advisor",
+    "from": "user",
+    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48"
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:50.995945+00:00"
+  },
+  {
+   "id": "c4af4351-d423-5f9d-a3ab-32f112d75637",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 4,
+   "kind": "thread",
+   "type": "session/thread_started",
+   "payload": {
+    "thread_id": "thread-c6aa57af535c",
+    "environment": "user-pc"
+   },
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.026285+00:00"
+  },
+  {
+   "id": "d37eea2c-6603-5b85-9b1e-f2f12d88f92c",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 5,
+   "kind": "task",
+   "type": "task/state",
+   "payload": {
+    "to": "VALIDATING",
+    "from": "RECEIVED",
+    "reason": {},
+    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+    "waiting_reason": null
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.034777+00:00"
+  },
+  {
+   "id": "cf8c6ba3-f64d-5eab-ab1b-6bbcdd223d37",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 6,
+   "kind": "task",
+   "type": "task/state",
+   "payload": {
+    "to": "QUEUED",
+    "from": "VALIDATING",
+    "reason": {},
+    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+    "waiting_reason": null
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.047762+00:00"
+  },
+  {
+   "id": "612e12d3-cf81-59f4-b6f0-5de6a2787692",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 7,
+   "kind": "task",
+   "type": "attempt/opened",
+   "payload": {
+    "role": "execute",
+    "step_id": "scope",
+    "attempt_id": "d21bd2e8-f435-5512-8927-33605951d508"
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": "d21bd2e8-f435-5512-8927-33605951d508",
+   "created_at": "2026-09-29T16:02:51.053039+00:00"
+  },
+  {
+   "id": "21f5d553-64c4-5255-ab9f-0ffb4343df9b",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 8,
+   "kind": "task",
+   "type": "task/state",
+   "payload": {
+    "to": "RUNNING",
+    "from": "QUEUED",
+    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48"
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.053039+00:00"
+  },
+  {
+   "id": "494c585e-8730-5aed-affd-3efd43a1c999",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 9,
+   "kind": "task",
+   "type": "step/started",
+   "payload": {
+    "title": "定范围",
+    "rework": 0,
+    "step_id": "scope",
+    "attempt_id": "d21bd2e8-f435-5512-8927-33605951d508"
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": "d21bd2e8-f435-5512-8927-33605951d508",
+   "created_at": "2026-09-29T16:02:51.063627+00:00"
+  },
+  {
+   "id": "f0caacf6-7a59-5c82-bc4a-5acb49f971a7",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 10,
+   "kind": "session",
+   "type": "session/mode_announced",
+   "payload": {
+    "mode": "expert",
+    "note": "[workbench] This conversation is now in WORK mode inside the project directory /home/demo/research/片仔癀 on the user's machine. For this and the following turns the shell tool IS available, whatever was said earlier in this conversation. You may read files, and create or change files inside the project directory. Anything outside the project directory is off limits.",
+    "injected": true,
+    "directory": "/home/demo/research/片仔癀"
+   },
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.070892+00:00"
+  },
+  {
+   "id": "d3d74add-e02c-5001-a894-5da79e267f53",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 11,
+   "kind": "turn",
+   "type": "turn/started",
+   "payload": {
+    "turn": {
+     "id": "turn-26a1f04f042e",
+     "status": "inProgress"
+    },
+    "turnId": "turn-26a1f04f042e",
+    "threadId": "thread-c6aa57af535c"
+   },
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.085828+00:00"
+  },
+  {
+   "id": "a9c44cb7-638a-501e-bb7d-d7b935e430b8",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 12,
+   "kind": "item",
+   "type": "item/completed",
+   "payload": {
+    "item": {
+     "id": "msg-turn-26a1f04f042e",
+     "text": "{\"company\": \"片仔癀\", \"security_code\": \"600436\", \"periods\": [\"2023\", \"2024\", \"2025\"], \"report_types\": [\"年报\"], \"aspects\": [\"盈利能力\"], \"assumptions\": [], \"question\": \"片仔癀 2023 到 2025 年的盈利能力怎么样？\"}",
+     "type": "agentMessage"
+    },
+    "turnId": "turn-26a1f04f042e",
+    "threadId": "thread-c6aa57af535c"
+   },
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.091280+00:00"
+  },
+  {
+   "id": "3f5a58c9-6799-5393-9809-0018dae20d10",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 13,
+   "kind": "usage",
+   "type": "thread/tokenUsage/updated",
+   "payload": {
+    "turnId": "turn-26a1f04f042e",
+    "threadId": "thread-c6aa57af535c",
+    "tokenUsage": {
+     "total": {
+      "totalTokens": 5000
+     }
+    }
+   },
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.095493+00:00"
+  },
+  {
+   "id": "756de197-ebbf-575b-a148-6dbe55f1f539",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 14,
+   "kind": "turn",
+   "type": "turn/completed",
+   "payload": {
+    "turn": {
+     "id": "turn-26a1f04f042e",
+     "status": "completed"
+    },
+    "threadId": "thread-c6aa57af535c"
+   },
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.101182+00:00"
+  },
+  {
+   "id": "ce400cc2-d108-56d4-b769-df8699e94482",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 15,
+   "kind": "task",
+   "type": "attempt/state",
+   "payload": {
+    "to": "RUNNING",
+    "from": "CREATED",
+    "consumed": "0",
+    "attempt_id": "d21bd2e8-f435-5512-8927-33605951d508",
+    "failure_code": null
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": "d21bd2e8-f435-5512-8927-33605951d508",
+   "created_at": "2026-09-29T16:02:51.108298+00:00"
+  },
+  {
+   "id": "02bba996-2682-5aa4-81a4-7243cd3044e9",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 16,
+   "kind": "task",
+   "type": "attempt/state",
+   "payload": {
+    "to": "COMPLETED",
+    "from": "RUNNING",
+    "consumed": "0.050000",
+    "attempt_id": "d21bd2e8-f435-5512-8927-33605951d508",
+    "failure_code": null
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": "d21bd2e8-f435-5512-8927-33605951d508",
+   "created_at": "2026-09-29T16:02:51.115179+00:00"
+  },
+  {
+   "id": "1878e97a-299e-53f0-98f4-96b1659e4533",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 17,
+   "kind": "task",
+   "type": "step/accepted",
+   "payload": {
+    "checks": [
+     {
+      "pass": true,
+      "path": null,
+      "rule": "json_object",
+      "label": "交回的格式对",
+      "detail": "",
+      "message": ""
+     },
+     {
+      "pass": true,
+      "path": null,
+      "rule": "required_keys",
+      "label": "有证券代码、期间、报告类型",
+      "detail": "",
+      "message": ""
+     },
+     {
+      "pass": true,
+      "path": "security_code",
+      "rule": "non_empty",
+      "label": "认得出是哪家公司",
+      "detail": "",
+      "message": ""
+     },
+     {
+      "pass": true,
+      "path": "periods",
+      "rule": "list_min",
+      "label": "期间不是空的",
+      "detail": "len=3",
+      "message": ""
+     }
+    ],
+    "step_id": "scope",
+    "artifact": {
+     "id": "87991342-530c-5110-9578-6eb62dbbdbb7",
+     "kind": "step",
+     "name": "scope",
+     "digest": "ba37233edfe10f95b97200707ee4107c2dc0f0698c97eb92c42a53f9af1bcfed",
+     "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+     "version": 1
+    },
+    "consumed": "0.050000"
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": "d21bd2e8-f435-5512-8927-33605951d508",
+   "created_at": "2026-09-29T16:02:51.124710+00:00"
+  },
+  {
+   "id": "0393f853-1f2c-5616-bc67-f3d197988a7a",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 18,
+   "kind": "task",
+   "type": "task/state",
+   "payload": {
+    "to": "QUEUED",
+    "from": "RUNNING",
+    "reason": {},
+    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+    "waiting_reason": null
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.130458+00:00"
+  },
+  {
+   "id": "f290ba17-1f11-55cc-b181-c28a6f6622e6",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 19,
+   "kind": "task",
+   "type": "attempt/opened",
+   "payload": {
+    "role": "execute",
+    "step_id": "profile",
+    "attempt_id": "d0e3c198-669c-53e7-b561-b13927278534"
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": "d0e3c198-669c-53e7-b561-b13927278534",
+   "created_at": "2026-09-29T16:02:51.136503+00:00"
+  },
+  {
+   "id": "d6e5cb3f-787e-5bf4-8df9-780697b38303",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 20,
+   "kind": "task",
+   "type": "task/state",
+   "payload": {
+    "to": "RUNNING",
+    "from": "QUEUED",
+    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48"
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.136503+00:00"
+  },
+  {
+   "id": "1838a86d-357e-5eb1-8225-16725e9b3e6e",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 21,
+   "kind": "task",
+   "type": "step/started",
+   "payload": {
+    "title": "数据摸底",
+    "rework": 0,
+    "step_id": "profile",
+    "attempt_id": "d0e3c198-669c-53e7-b561-b13927278534"
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": "d0e3c198-669c-53e7-b561-b13927278534",
+   "created_at": "2026-09-29T16:02:51.148676+00:00"
+  },
+  {
+   "id": "a8fdb0db-33f8-5b0f-a407-109afa1cf46b",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 22,
+   "kind": "turn",
+   "type": "turn/started",
+   "payload": {
+    "turn": {
+     "id": "turn-0e3e3f980610",
+     "status": "inProgress"
+    },
+    "turnId": "turn-0e3e3f980610",
+    "threadId": "thread-c6aa57af535c"
+   },
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.167859+00:00"
+  },
+  {
+   "id": "d52a401e-0c5f-57c0-b7af-bc1b084822a8",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 23,
+   "kind": "item",
+   "type": "item/completed",
+   "payload": {
+    "item": {
+     "id": "call-turn-0e3e3f980610-0",
+     "tool": "list_datasets",
+     "type": "mcpToolCall",
+     "error": null,
+     "result": {
+      "content": [
+       {
+        "text": "（样例里不带查询的结果）",
+        "type": "text"
+       }
+      ]
+     },
+     "server": "sunmoon_knowledge",
+     "status": "completed",
+     "arguments": {}
+    },
+    "turnId": "turn-0e3e3f980610",
+    "threadId": "thread-c6aa57af535c"
+   },
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.173183+00:00"
+  },
+  {
+   "id": "95435a9b-7ae8-509d-b6ec-8f95d9683ebc",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 24,
+   "kind": "item",
+   "type": "item/completed",
+   "payload": {
+    "item": {
+     "id": "msg-turn-0e3e3f980610",
+     "text": "{\"dataset\": null, \"not_ingested\": true, \"security_code\": \"600436\", \"data_version\": \"\", \"as_of\": \"\", \"notes\": [], \"periods\": [], \"basis_breaks\": []}",
+     "type": "agentMessage"
+    },
+    "turnId": "turn-0e3e3f980610",
+    "threadId": "thread-c6aa57af535c"
+   },
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.177094+00:00"
+  },
+  {
+   "id": "466bd507-2209-5b81-9aed-338b31b3b7d5",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 25,
+   "kind": "usage",
+   "type": "thread/tokenUsage/updated",
+   "payload": {
+    "turnId": "turn-0e3e3f980610",
+    "threadId": "thread-c6aa57af535c",
+    "tokenUsage": {
+     "total": {
+      "totalTokens": 5000
+     }
+    }
+   },
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.180831+00:00"
+  },
+  {
+   "id": "fc27694c-38cd-5baf-85f6-be7fe44e75bb",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 26,
+   "kind": "turn",
+   "type": "turn/completed",
+   "payload": {
+    "turn": {
+     "id": "turn-0e3e3f980610",
+     "status": "completed"
+    },
+    "threadId": "thread-c6aa57af535c"
+   },
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.184833+00:00"
+  },
+  {
+   "id": "31a72127-0813-59d0-88d2-364cbaa9bee1",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 27,
+   "kind": "task",
+   "type": "attempt/state",
+   "payload": {
+    "to": "RUNNING",
+    "from": "CREATED",
+    "consumed": "0",
+    "attempt_id": "d0e3c198-669c-53e7-b561-b13927278534",
+    "failure_code": null
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": "d0e3c198-669c-53e7-b561-b13927278534",
+   "created_at": "2026-09-29T16:02:51.189109+00:00"
+  },
+  {
+   "id": "b8c68678-6305-5277-b485-ec7124bf5204",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 28,
+   "kind": "task",
+   "type": "attempt/state",
+   "payload": {
+    "to": "FAILED",
+    "from": "RUNNING",
+    "consumed": "0.050000",
+    "attempt_id": "d0e3c198-669c-53e7-b561-b13927278534",
+    "failure_code": "acceptance"
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": "d0e3c198-669c-53e7-b561-b13927278534",
+   "created_at": "2026-09-29T16:02:51.196296+00:00"
+  },
+  {
+   "id": "7ae0b929-5cbf-5c1a-b46f-42869662c6d8",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 29,
+   "kind": "task",
+   "type": "step/rejected",
+   "payload": {
+    "checks": [
+     {
+      "pass": true,
+      "path": null,
+      "rule": "json_object",
+      "label": "交回的格式对",
+      "detail": "",
+      "message": ""
+     },
+     {
+      "pass": true,
+      "path": null,
+      "rule": "required_keys",
+      "label": "有数据集、数据版本、期间、口径断点",
+      "detail": "",
+      "message": ""
+     },
+     {
+      "pass": false,
+      "path": "dataset",
+      "rule": "non_empty",
+      "label": "有对应的数据集",
+      "detail": "",
+      "message": "这家公司未入库：没有对应的数据集"
+     },
+     {
+      "pass": false,
+      "path": "data_version",
+      "rule": "non_empty",
+      "label": "有数据版本",
+      "detail": "",
+      "message": "没有数据版本"
+     },
+     {
+      "pass": false,
+      "path": "periods",
+      "rule": "list_min",
+      "label": "范围内至少有一期数据",
+      "detail": "len=0",
+      "message": "范围内没有任何一期的数据"
+     }
+    ],
+    "rework": 0,
+    "step_id": "profile",
+    "failures": [
+     "non_empty(dataset): 这家公司未入库：没有对应的数据集",
+     "non_empty(data_version): 没有数据版本",
+     "list_min(periods): 范围内没有任何一期的数据"
+    ],
+    "returned": {
+     "raw": null,
+     "content": {
+      "as_of": "",
+      "notes": [],
+      "dataset": null,
+      "periods": [],
+      "basis_breaks": [],
+      "data_version": "",
+      "not_ingested": true,
+      "security_code": "600436"
+     }
+    },
+    "on_reject": "human"
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": "d0e3c198-669c-53e7-b561-b13927278534",
+   "created_at": "2026-09-29T16:02:51.205778+00:00"
+  },
+  {
+   "id": "07135301-7b69-53c3-b623-780cc4ff6688",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 30,
+   "kind": "data",
+   "type": "data.missing",
+   "payload": {
+    "market": null,
+    "source": "expert",
+    "dataset": null,
+    "security_code": "600436"
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": "d0e3c198-669c-53e7-b561-b13927278534",
+   "created_at": "2026-09-29T16:02:51.210262+00:00"
+  },
+  {
+   "id": "c87fe20f-7b34-56d7-8684-3586a083f3d2",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 31,
+   "kind": "task",
+   "type": "task/state",
+   "payload": {
+    "to": "WAITING",
+    "from": "RUNNING",
+    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+    "waiting_reason": "INPUT"
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": null,
+   "created_at": "2026-09-29T16:02:51.215863+00:00"
+  },
+  {
+   "id": "18be15af-4adf-5f4d-97fe-c211a6130ea6",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "cursor": 32,
+   "kind": "interaction",
+   "type": "interaction/opened",
+   "payload": {
+    "kind": "input",
+    "token": "preview-token-00040000000000000000000000000",
+    "prompt": {
+     "title": "这家公司还没有数据",
+     "options": [
+      {
+       "id": "rework",
+       "label": "数据已经入库了，接着做"
+      },
+      {
+       "id": "stop",
+       "label": "停止"
+      }
+     ],
+     "subject": {
+      "step_id": "profile",
+      "failures": [
+       "non_empty(dataset): 这家公司未入库：没有对应的数据集",
+       "non_empty(data_version): 没有数据版本",
+       "list_min(periods): 范围内没有任何一期的数据"
+      ],
+      "missing_data": {
+       "market": null,
+       "source": "expert",
+       "dataset": null,
+       "security_code": "600436"
+      }
+     },
+     "evidence": [],
+     "question": "数据入库之后可以接着做。现在可以先不答：委托停在这里，不再花钱",
+     "unknowns": [
+      "这家公司的数据什么时候能入库"
+     ]
+    },
+    "interaction_id": "e622161e-278e-510c-a294-d321919a97e8"
+   },
+   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "attempt_id": "d0e3c198-669c-53e7-b561-b13927278534",
+   "created_at": "2026-09-29T16:02:51.215863+00:00"
+  }
+ ],
+ "next_cursor": 32
+}

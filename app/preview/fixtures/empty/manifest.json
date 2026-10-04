@@ -1,0 +1,130 @@
+{
+ "id": "empty",
+ "title": "刚注册",
+ "description": "没有机器、没有沙箱、没有项目。看各个页面空着的样子。",
+ "signed_in": true,
+ "user": {
+  "display_name": "样例用户"
+ },
+ "pages": [
+  {
+   "title": "首页（什么都还没有）",
+   "path": "/zh-CN/workbench"
+  },
+  {
+   "title": "专家首页",
+   "path": "/zh-CN/workbench/expert"
+  },
+  {
+   "title": "项目列表（空的）",
+   "path": "/zh-CN/workbench/projects"
+  },
+  {
+   "title": "我的机器（还没有装）",
+   "path": "/zh-CN/workbench/machines"
+  },
+  {
+   "title": "设置",
+   "path": "/zh-CN/workbench/settings"
+  }
+ ],
+ "responses": [
+  {
+   "method": "GET",
+   "path": "/api/workbench/workspaces",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0001.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/environments",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0002.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/sandboxes",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0003.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/projects",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0004.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/sessions",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0005.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/tasks",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0006.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/interactions",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0007.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/expert/overview",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0008.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/packs",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0009.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/prefs",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0010.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/credentials",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0011.json"
+  },
+  {
+   "method": "POST",
+   "path": "/api/workbench/sessions",
+   "query": "",
+   "status": 409,
+   "content_type": "application/problem+json",
+   "file": "0012.json"
+  }
+ ],
+ "streams": []
+}

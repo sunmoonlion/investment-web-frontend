@@ -1,0 +1,52 @@
+{
+ "contract_version": 2,
+ "tasks": [
+  {
+   "id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "session_id": "3d3b3fb6-b19e-5292-b36c-2643d99977bb",
+   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "tenant": "default",
+   "idempotency_key": "preview-refused-0001",
+   "request_digest": "26a329a304b2ec79e6550e117a06f47e9c244046fa321cf51165693adf0d1242",
+   "profile_id": "BOND_REVIEW",
+   "profile_version": "1",
+   "expert_pack_version": null,
+   "original_input": {
+    "input": {
+     "text": "中国平安 2025 年的偿付能力怎么样？"
+    },
+    "attachments": [],
+    "client_context": {}
+   },
+   "normalized_goal": null,
+   "thread_id": "thread-1c9606202fa8",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "project_root": "/home/demo/research/中国平安",
+   "state": "REJECTED",
+   "state_version": 2,
+   "workflow_version": null,
+   "current_step": 0,
+   "acceptance_contract": {},
+   "execution_policy": {},
+   "budget": {
+    "used": "0",
+    "limit": "2",
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "active_attempt_id": null,
+   "terminal_result_ref": null,
+   "waiting_reason": null,
+   "active_interaction_id": null,
+   "rejection": {
+    "code": "no_expert_pack",
+    "message": "这个问题不在专家范围，继续自己用 Codex 即可"
+   },
+   "cancel_requested_at": null,
+   "cancel_requested_by": null,
+   "created_at": "2026-09-29T16:02:54.828433+00:00",
+   "updated_at": "2026-09-29T16:02:54.864631+00:00",
+   "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f"
+  }
+ ]
+}

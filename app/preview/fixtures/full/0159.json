@@ -1,0 +1,50 @@
+{
+ "contract_version": 2,
+ "artifacts": [
+  {
+   "id": "38320049-63c0-53fa-9945-01582956eb79",
+   "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+   "attempt_id": "41009191-0921-50e4-bc4b-88bb2cc1d5ea",
+   "name": "rewritten",
+   "version": 1,
+   "kind": "step",
+   "content": {
+    "period": "2021 至 2025 年，年报",
+    "metrics": [
+     "毛利率"
+    ],
+    "entities": [
+     "五粮液（000858）"
+    ],
+    "question": "五粮液 2021 至 2025 年年报的毛利率，按年列出"
+   },
+   "digest": "ec39488d520eda88e2d518566dd2f97e8876b10eb86c3d91d267ef37658e8a2f",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:50.409082+00:00"
+  },
+  {
+   "id": "02022332-277b-5d39-963b-947829025012",
+   "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+   "attempt_id": "fd2d1b01-adb2-552c-9c49-f751c75fb500",
+   "name": "sql",
+   "version": 1,
+   "kind": "step",
+   "content": {
+    "sql": "SELECT fiscal_year, report_type, (operate_income - operate_cost) / operate_income AS gross_margin FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2021 AND 2025 ORDER BY fiscal_year",
+    "columns": [
+     {
+      "name": "fiscal_year",
+      "definition": "会计年度"
+     },
+     {
+      "name": "gross_margin",
+      "definition": "(营业收入 − 营业成本) ÷ 营业收入，比率，0.25 表示 25%"
+     }
+    ]
+   },
+   "digest": "cc594282d14ad283f752b1eda59802b844112867794dfdf320f55dbe37832b1b",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:50.500847+00:00"
+  }
+ ]
+}

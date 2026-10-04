@@ -1,0 +1,112 @@
+{
+ "contract_version": 2,
+ "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+ "step": {
+  "index": 2,
+  "step_id": "sql_generate",
+  "title": "生成 SQL",
+  "summary": "对照数据的结构写出查询，并说明每一列的口径",
+  "uses": [
+   {
+    "artifact": "rewritten",
+    "step": 1,
+    "title": "改写问题"
+   }
+  ],
+  "tools": [
+   "describe_schema",
+   "metric_definitions"
+  ],
+  "returns": "sql",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有查询语句"
+   },
+   {
+    "label": "查询语句不是空的"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 2,
+   "then": "human",
+   "back_to": null,
+   "text": "重做，最多 2 次；仍不过，停下来问你"
+  },
+  "reserve": "0.05",
+  "status": "accepted",
+  "attempts": [
+   {
+    "attempt_id": "fd2d1b01-adb2-552c-9c49-f751c75fb500",
+    "n": 1,
+    "outcome": "accepted",
+    "failure": null,
+    "spent": "0.05",
+    "started_at": "2026-09-29T16:02:50.495949Z",
+    "ended_at": "2026-09-29T16:02:50.504721Z",
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有查询语句",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "查询语句不是空的",
+      "pass": true,
+      "message": ""
+     }
+    ],
+    "tools": {
+     "describe_schema": 1,
+     "metric_definitions": 1
+    },
+    "returned": {
+     "artifact": "sql",
+     "version": 1,
+     "content": {
+      "sql": "SELECT fiscal_year, report_type, (operate_income - operate_cost) / operate_income AS gross_margin FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2021 AND 2025 ORDER BY fiscal_year",
+      "columns": [
+       {
+        "name": "fiscal_year",
+        "definition": "会计年度"
+       },
+       {
+        "name": "gross_margin",
+        "definition": "(营业收入 − 营业成本) ÷ 营业收入，比率，0.25 表示 25%"
+       }
+      ]
+     }
+    },
+    "process": [
+     {
+      "at": "2026-09-29T16:02:50.470373Z",
+      "kind": "tool",
+      "name": "describe_schema",
+      "dataset": "sz000858-financials",
+      "brief": "",
+      "ok": true
+     },
+     {
+      "at": "2026-09-29T16:02:50.475837Z",
+      "kind": "tool",
+      "name": "metric_definitions",
+      "dataset": "sz000858-financials",
+      "brief": "",
+      "ok": true
+     }
+    ]
+   }
+  ],
+  "times": 1,
+  "rejected": 0,
+  "spent": "0.05",
+  "data": null
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "contract_version": 2,
+ "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+ "step": {
+  "index": 1,
+  "step_id": "rewrite",
+  "title": "改写问题",
+  "summary": "把问题改写成没有歧义的：查什么、哪个期间、什么口径",
+  "uses": [],
+  "tools": [],
+  "returns": "rewritten",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有改写后的问题和指标"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 1,
+   "then": "human",
+   "back_to": null,
+   "text": "重做，最多 1 次；仍不过，停下来问你"
+  },
+  "reserve": "0.05",
+  "status": "accepted",
+  "attempts": [
+   {
+    "attempt_id": "41009191-0921-50e4-bc4b-88bb2cc1d5ea",
+    "n": 1,
+    "outcome": "accepted",
+    "failure": null,
+    "spent": "0.05",
+    "started_at": "2026-09-29T16:02:50.402286Z",
+    "ended_at": "2026-09-29T16:02:50.417218Z",
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有改写后的问题和指标",
+      "pass": true,
+      "message": ""
+     }
+    ],
+    "tools": {},
+    "returned": {
+     "artifact": "rewritten",
+     "version": 1,
+     "content": {
+      "period": "2021 至 2025 年，年报",
+      "metrics": [
+       "毛利率"
+      ],
+      "entities": [
+       "五粮液（000858）"
+      ],
+      "question": "五粮液 2021 至 2025 年年报的毛利率，按年列出"
+     }
+    },
+    "process": []
+   }
+  ],
+  "times": 1,
+  "rejected": 0,
+  "spent": "0.05",
+  "data": null
+ }
+}

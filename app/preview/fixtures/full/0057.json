@@ -1,0 +1,20 @@
+{
+ "session": {
+  "id": "3d3b3fb6-b19e-5292-b36c-2643d99977bb",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "sandbox_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+  "project_root": "/home/demo/research/中国平安",
+  "thread_id": "thread-1c9606202fa8",
+  "wheel": "user",
+  "state_version": 2,
+  "active_task_id": null,
+  "thread_settings": {},
+  "created_at": "2026-09-29T16:02:54.793458+00:00",
+  "last_active_at": "2026-09-29T16:02:54.864631+00:00",
+  "kind": "work",
+  "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f",
+  "title": null
+ },
+ "pending_interactions": []
+}

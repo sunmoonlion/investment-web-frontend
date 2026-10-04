@@ -1,0 +1,14 @@
+{
+ "type": "urn:sunmoonai:problem:environment_offline",
+ "title": "the machine of this project is offline; the expert works on it",
+ "status": 409,
+ "detail": "the machine of this project is offline; the expert works on it",
+ "instance": "/api/workbench/projects/68a4a7ff-cdfe-53f4-a0c8-38dce439d35b/delegations",
+ "code": "environment_offline",
+ "operation_id": "operation-unavailable",
+ "error": {
+  "code": "environment_offline",
+  "message": "the machine of this project is offline; the expert works on it",
+  "operation_id": "operation-unavailable"
+ }
+}

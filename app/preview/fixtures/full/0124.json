@@ -1,0 +1,619 @@
+{
+ "contract_version": 2,
+ "task": {
+  "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+  "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+  "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f",
+  "expert": {
+   "id": "FIN_REVIEW",
+   "name": "财报体检",
+   "version": "1"
+  },
+  "question": "上海机场 2023 到 2025 年的盈利能力怎么样？",
+  "state": "WAITING",
+  "state_word": null,
+  "waiting_reason": "RESOURCE",
+  "cancel_requested": false,
+  "reason": null,
+  "reason_text": "",
+  "budget": {
+   "currency": "CNY",
+   "limit": "1.00",
+   "used": "1.20",
+   "reserved": "0.00",
+   "left": "-0.20"
+  },
+  "data": {
+   "dataset": "sh600009-financials",
+   "data_version": "sh600009-financials-sample600009",
+   "as_of": "2025-12-31",
+   "security_code": "600009",
+   "versions_seen": [
+    "sh600009-financials-sample600009"
+   ]
+  },
+  "started_at": "2026-09-29T16:02:51.235809Z",
+  "ended_at": null,
+  "seconds": 4,
+  "active_interaction_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce"
+ },
+ "head": {
+  "kind": "running",
+  "text": "专家还在做"
+ },
+ "sections": [
+  {
+   "key": "answer",
+   "title": "回答",
+   "blocks": [
+    {
+     "key": "answer",
+     "title": "回答",
+     "kind": "text",
+     "folded": false,
+     "from": {
+      "step": 7,
+      "title": "成稿"
+     },
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    }
+   ]
+  },
+  {
+   "key": "data",
+   "title": "数据",
+   "blocks": [
+    {
+     "key": "metrics",
+     "title": "指标表",
+     "kind": "table",
+     "folded": false,
+     "from": {
+      "step": 5,
+      "title": "算指标"
+     },
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [
+      {
+       "key": "display_name",
+       "title": "指标"
+      },
+      {
+       "key": "metric_name",
+       "title": "指标代码"
+      },
+      {
+       "key": "fiscal_year",
+       "title": "年度"
+      },
+      {
+       "key": "report_type",
+       "title": "报告"
+      },
+      {
+       "key": "basis",
+       "title": "口径"
+      },
+      {
+       "key": "value",
+       "title": "值"
+      },
+      {
+       "key": "unit",
+       "title": "单位"
+      },
+      {
+       "key": "applicable",
+       "title": "适用"
+      },
+      {
+       "key": "reason_if_not",
+       "title": "不适用的原因"
+      },
+      {
+       "key": "formula",
+       "title": "算法"
+      },
+      {
+       "key": "source",
+       "title": "来自"
+      }
+     ],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    },
+    {
+     "key": "facts",
+     "title": "取数表",
+     "kind": "table",
+     "folded": true,
+     "from": {
+      "step": 4,
+      "title": "取数"
+     },
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [
+      {
+       "key": "display_name",
+       "title": "科目"
+      },
+      {
+       "key": "item",
+       "title": "字段"
+      },
+      {
+       "key": "fiscal_year",
+       "title": "年度"
+      },
+      {
+       "key": "report_type",
+       "title": "报告"
+      },
+      {
+       "key": "report_date",
+       "title": "报告期"
+      },
+      {
+       "key": "basis",
+       "title": "口径"
+      },
+      {
+       "key": "value",
+       "title": "值"
+      },
+      {
+       "key": "unit",
+       "title": "单位"
+      },
+      {
+       "key": "statement",
+       "title": "报表"
+      }
+     ],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    }
+   ]
+  },
+  {
+   "key": "verified",
+   "title": "专家验过什么",
+   "blocks": [
+    {
+     "key": "reconcile",
+     "title": "勾稽",
+     "kind": "checks",
+     "folded": false,
+     "from": {
+      "step": 3,
+      "title": "勾稽"
+     },
+     "status": "done",
+     "note": null,
+     "content": [
+      {
+       "rule": "资产 = 负债 + 所有者权益",
+       "rule_id": "R01",
+       "unbalanced": 0,
+       "periods_checked": 3,
+       "unbalanced_periods": []
+      },
+      {
+       "rule": "流动资产 + 非流动资产 = 资产总计",
+       "rule_id": "R02",
+       "unbalanced": 0,
+       "periods_checked": 3,
+       "unbalanced_periods": []
+      },
+      {
+       "rule": "流动负债 + 非流动负债 = 负债合计",
+       "rule_id": "R03",
+       "unbalanced": 0,
+       "periods_checked": 3,
+       "unbalanced_periods": []
+      },
+      {
+       "rule": "营业收入 − 营业成本 − 各项费用 = 营业利润（允许其他收益）",
+       "rule_id": "R04",
+       "unbalanced": 0,
+       "periods_checked": 3,
+       "unbalanced_periods": []
+      },
+      {
+       "rule": "利润总额 − 所得税 = 净利润",
+       "rule_id": "R05",
+       "unbalanced": 0,
+       "periods_checked": 3,
+       "unbalanced_periods": []
+      },
+      {
+       "rule": "归母净利润 + 少数股东损益 = 净利润",
+       "rule_id": "R06",
+       "unbalanced": 0,
+       "periods_checked": 3,
+       "unbalanced_periods": []
+      },
+      {
+       "rule": "经营 + 投资 + 筹资现金流 + 汇率影响 = 现金净增加额",
+       "rule_id": "R07",
+       "unbalanced": 0,
+       "periods_checked": 3,
+       "unbalanced_periods": []
+      },
+      {
+       "rule": "期初现金 + 现金净增加额 = 期末现金",
+       "rule_id": "R08",
+       "unbalanced": 0,
+       "periods_checked": 3,
+       "unbalanced_periods": []
+      },
+      {
+       "rule": "利润表净利润 = 现金流量表补充资料里的净利润",
+       "rule_id": "R09",
+       "unbalanced": 0,
+       "periods_checked": 3,
+       "unbalanced_periods": []
+      }
+     ],
+     "columns": [
+      {
+       "key": "rule_id",
+       "title": "编号"
+      },
+      {
+       "key": "rule",
+       "title": "规则"
+      },
+      {
+       "key": "periods_checked",
+       "title": "验了几期"
+      },
+      {
+       "key": "unbalanced",
+       "title": "不平的期数"
+      },
+      {
+       "key": "unbalanced_periods",
+       "title": "不平的期"
+      }
+     ],
+     "also": {
+      "continuity": [
+       {
+        "diff": 1204.0,
+        "note": "2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策",
+        "fiscal_year": 2024
+       }
+      ],
+      "unexplained_breaks": []
+     },
+     "summary": {
+      "rules": 9,
+      "periods": 3,
+      "unbalanced": 0,
+      "breaks": 1,
+      "unexplained": 0,
+      "text": "9 条规则 × 3 期，全部平；跨期断点 1 处，都有解释"
+     },
+     "artifact": {
+      "name": "reconcile",
+      "version": 1,
+      "digest": "658700bbfe14785116fd089b366fb7bac5d7a547c7ad0221e5f9929ca2611b60"
+     },
+     "source": null
+    },
+    {
+     "key": "crosscheck",
+     "title": "对照官方",
+     "kind": "coverage",
+     "folded": false,
+     "from": {
+      "step": 6,
+      "title": "对照官方"
+     },
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    },
+    {
+     "key": "mismatched",
+     "title": "和公司披露的数对不上的",
+     "kind": "table",
+     "folded": false,
+     "from": {
+      "step": 6,
+      "title": "对照官方"
+     },
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [
+      {
+       "key": "fiscal_year",
+       "title": "年度"
+      },
+      {
+       "key": "item",
+       "title": "字段"
+      },
+      {
+       "key": "basis",
+       "title": "口径"
+      },
+      {
+       "key": "official",
+       "title": "公司披露的"
+      },
+      {
+       "key": "dataset",
+       "title": "数据集里的"
+      },
+      {
+       "key": "source_report",
+       "title": "出自"
+      },
+      {
+       "key": "page",
+       "title": "页"
+      }
+     ],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    },
+    {
+     "key": "not_covered",
+     "title": "没有对照到的",
+     "kind": "table",
+     "folded": false,
+     "from": {
+      "step": 6,
+      "title": "对照官方"
+     },
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [
+      {
+       "key": "fiscal_year",
+       "title": "年度"
+      },
+      {
+       "key": "report_type",
+       "title": "报告"
+      }
+     ],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    },
+    {
+     "key": "matched",
+     "title": "和公司披露的数一致的",
+     "kind": "table",
+     "folded": true,
+     "from": {
+      "step": 6,
+      "title": "对照官方"
+     },
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [
+      {
+       "key": "fiscal_year",
+       "title": "年度"
+      },
+      {
+       "key": "item",
+       "title": "字段"
+      },
+      {
+       "key": "basis",
+       "title": "口径"
+      },
+      {
+       "key": "value",
+       "title": "值"
+      },
+      {
+       "key": "source_report",
+       "title": "出自"
+      },
+      {
+       "key": "page",
+       "title": "页"
+      }
+     ],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    }
+   ]
+  },
+  {
+   "key": "notes",
+   "title": "观察与提醒",
+   "blocks": [
+    {
+     "key": "observations",
+     "title": "观察",
+     "kind": "list",
+     "folded": false,
+     "from": {
+      "step": 7,
+      "title": "成稿"
+     },
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    },
+    {
+     "key": "caveats",
+     "title": "提醒",
+     "kind": "list",
+     "folded": false,
+     "from": {
+      "step": 7,
+      "title": "成稿"
+     },
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    }
+   ]
+  },
+  {
+   "key": "limits",
+   "title": "局限",
+   "blocks": [
+    {
+     "key": "limitations",
+     "title": "局限",
+     "kind": "list",
+     "folded": false,
+     "from": {
+      "step": 7,
+      "title": "成稿"
+     },
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    }
+   ]
+  },
+  {
+   "key": "sources",
+   "title": "出处",
+   "blocks": [
+    {
+     "key": "citations",
+     "title": "出处",
+     "kind": "list",
+     "folded": false,
+     "from": {
+      "step": 7,
+      "title": "成稿"
+     },
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    }
+   ]
+  }
+ ],
+ "how": [
+  {
+   "index": 1,
+   "title": "定范围",
+   "summary": "认出公司、期间、报告类型",
+   "status": "accepted",
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.30"
+  },
+  {
+   "index": 2,
+   "title": "数据摸底",
+   "summary": "确认有这家公司的数据、数据到哪一天、各期是什么口径",
+   "status": "accepted",
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.30"
+  },
+  {
+   "index": 3,
+   "title": "勾稽",
+   "summary": "三张表之间、前后两年之间对不对得上",
+   "status": "accepted",
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.30"
+  },
+  {
+   "index": 4,
+   "title": "取数",
+   "summary": "把问题要用到的报表科目按期取出来，每个数带口径",
+   "status": "waiting",
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.30"
+  },
+  {
+   "index": 5,
+   "title": "算指标",
+   "summary": "按数据集里登记的口径算指标；分母不成立或口径不同的，标为不适用",
+   "status": "pending",
+   "times": 0,
+   "rejected": 0,
+   "spent": "0.00"
+  },
+  {
+   "index": 6,
+   "title": "对照官方",
+   "summary": "拿取到的数和公司年报里自己披露的数逐项对照",
+   "status": "pending",
+   "times": 0,
+   "rejected": 0,
+   "spent": "0.00"
+  },
+  {
+   "index": 7,
+   "title": "成稿",
+   "summary": "只用前面各步的结果写底稿：列事实和提醒，结论栏留空",
+   "status": "pending",
+   "times": 0,
+   "rejected": 0,
+   "spent": "0.00"
+  }
+ ],
+ "conclusion": {
+  "text": "",
+  "kind": "user_draft",
+  "saved_at": null,
+  "version": null
+ }
+}

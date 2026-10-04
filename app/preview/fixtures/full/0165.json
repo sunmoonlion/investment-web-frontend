@@ -1,0 +1,67 @@
+{
+ "contract_version": 2,
+ "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+ "step": {
+  "index": 3,
+  "step_id": "sql_execute",
+  "title": "执行 SQL",
+  "summary": "执行查询，原样带回结果和数据版本",
+  "uses": [
+   {
+    "artifact": "sql",
+    "step": 2,
+    "title": "生成 SQL"
+   }
+  ],
+  "tools": [
+   "run_sql"
+  ],
+  "returns": "rows",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有结果和数据版本"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 1,
+   "then": "back",
+   "back_to": 2,
+   "text": "重做，最多 1 次；仍不过，退回第 2 步"
+  },
+  "reserve": "0.05",
+  "status": "running",
+  "attempts": [
+   {
+    "attempt_id": "81108b8f-3022-5de7-860c-36662e2db6fb",
+    "n": 1,
+    "outcome": "running",
+    "failure": null,
+    "spent": "0.00",
+    "started_at": "2026-09-29T16:02:50.521496Z",
+    "ended_at": null,
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": null,
+      "message": ""
+     },
+     {
+      "label": "有结果和数据版本",
+      "pass": null,
+      "message": ""
+     }
+    ],
+    "tools": {},
+    "returned": null,
+    "process": []
+   }
+  ],
+  "times": 1,
+  "rejected": 0,
+  "spent": "0.00",
+  "data": null
+ }
+}

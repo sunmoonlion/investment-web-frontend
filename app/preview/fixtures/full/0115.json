@@ -1,0 +1,95 @@
+{
+ "contract_version": 2,
+ "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+ "step": {
+  "index": 1,
+  "step_id": "scope",
+  "title": "定范围",
+  "summary": "认出公司、期间、报告类型",
+  "uses": [],
+  "tools": [],
+  "returns": "scope",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有证券代码、期间、报告类型"
+   },
+   {
+    "label": "认得出是哪家公司"
+   },
+   {
+    "label": "期间不是空的"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 1,
+   "then": "human",
+   "back_to": null,
+   "text": "重做，最多 1 次；仍不过，停下来问你"
+  },
+  "reserve": "0.05",
+  "status": "accepted",
+  "attempts": [
+   {
+    "attempt_id": "3d81600f-f30c-56c3-99b9-70232be0ce22",
+    "n": 1,
+    "outcome": "accepted",
+    "failure": null,
+    "spent": "0.05",
+    "started_at": "2026-09-29T16:02:51.951068Z",
+    "ended_at": "2026-09-29T16:02:51.959909Z",
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有证券代码、期间、报告类型",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "认得出是哪家公司",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "期间不是空的",
+      "pass": true,
+      "message": ""
+     }
+    ],
+    "tools": {},
+    "returned": {
+     "artifact": "scope",
+     "version": 1,
+     "content": {
+      "aspects": [
+       "盈利能力"
+      ],
+      "company": "比亚迪",
+      "periods": [
+       "2023",
+       "2024",
+       "2025"
+      ],
+      "question": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
+      "assumptions": [],
+      "report_types": [
+       "年报"
+      ],
+      "security_code": "002594"
+     }
+    },
+    "process": []
+   }
+  ],
+  "times": 1,
+  "rejected": 0,
+  "spent": "0.05",
+  "data": null
+ }
+}

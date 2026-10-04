@@ -1,0 +1,34 @@
+{
+ "contract_version": 2,
+ "waiting": [],
+ "running": [],
+ "returned": [
+  {
+   "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
+   "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
+   "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
+   "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+   "expert": "财报体检",
+   "state": "SUCCEEDED",
+   "state_word": "已完成",
+   "waiting_reason": null,
+   "position": {
+    "step": 7,
+    "of": 7,
+    "title": "成稿",
+    "left": 0
+   },
+   "budget": {
+    "currency": "CNY",
+    "limit": "2.00",
+    "used": "0.35",
+    "reserved": "0.00",
+    "left": "1.65"
+   },
+   "started_at": "2026-09-29T16:03:06.689843Z",
+   "ended_at": "2026-09-29T16:03:07.640277Z",
+   "reason": null,
+   "reason_text": ""
+  }
+ ]
+}

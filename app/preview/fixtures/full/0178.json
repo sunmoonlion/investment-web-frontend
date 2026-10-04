@@ -1,0 +1,213 @@
+{
+ "contract_version": 2,
+ "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+ "step": {
+  "index": 6,
+  "step_id": "crosscheck",
+  "title": "对照官方",
+  "summary": "拿取到的数和公司年报里自己披露的数逐项对照",
+  "uses": [
+   {
+    "artifact": "scope",
+    "step": 1,
+    "title": "定范围"
+   },
+   {
+    "artifact": "profile",
+    "step": 2,
+    "title": "数据摸底"
+   },
+   {
+    "artifact": "facts",
+    "step": 4,
+    "title": "取数"
+   }
+  ],
+  "tools": [
+   "run_sql"
+  ],
+  "returns": "crosscheck",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有一致项、不一致项、覆盖说明"
+   },
+   {
+    "label": "说明了对照覆盖了哪些期"
+   },
+   {
+    "label": "和公司披露的数都对得上"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 0,
+   "then": "human",
+   "back_to": null,
+   "text": "停下来问你"
+  },
+  "reserve": "0.05",
+  "status": "accepted",
+  "attempts": [
+   {
+    "attempt_id": "ad4ae0d3-2aca-5001-8b72-b5512fe47050",
+    "n": 1,
+    "outcome": "accepted",
+    "failure": null,
+    "spent": "0.05",
+    "started_at": "2026-09-29T16:02:50.088032Z",
+    "ended_at": "2026-09-29T16:02:50.098275Z",
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有一致项、不一致项、覆盖说明",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "说明了对照覆盖了哪些期",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "和公司披露的数都对得上",
+      "pass": true,
+      "message": ""
+     }
+    ],
+    "tools": {
+     "run_sql": 1
+    },
+    "returned": {
+     "artifact": "crosscheck",
+     "version": 1,
+     "content": {
+      "matched": [
+       {
+        "item": "operate_income",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 150560000000.0,
+        "fiscal_year": 2023,
+        "source_report": "贵州茅台2023年年度报告"
+       },
+       {
+        "item": "net_profit",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 79044000000.0,
+        "fiscal_year": 2023,
+        "source_report": "贵州茅台2023年年度报告"
+       },
+       {
+        "item": "total_assets",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 286064000000.0,
+        "fiscal_year": 2023,
+        "source_report": "贵州茅台2023年年度报告"
+       },
+       {
+        "item": "total_equity",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 234572480000.0,
+        "fiscal_year": 2023,
+        "source_report": "贵州茅台2023年年度报告"
+       },
+       {
+        "item": "operate_income",
+        "page": 6,
+        "basis": "追溯调整后",
+        "value": 174197920000.0,
+        "fiscal_year": 2024,
+        "source_report": "贵州茅台2024年年度报告"
+       },
+       {
+        "item": "net_profit",
+        "page": 6,
+        "basis": "追溯调整后",
+        "value": 90931314240.0,
+        "fiscal_year": 2024,
+        "source_report": "贵州茅台2024年年度报告"
+       },
+       {
+        "item": "total_assets",
+        "page": 6,
+        "basis": "追溯调整后",
+        "value": 330976048000.0,
+        "fiscal_year": 2024,
+        "source_report": "贵州茅台2024年年度报告"
+       },
+       {
+        "item": "total_equity",
+        "page": 6,
+        "basis": "追溯调整后",
+        "value": 271400359360.0,
+        "fiscal_year": 2024,
+        "source_report": "贵州茅台2024年年度报告"
+       },
+       {
+        "item": "operate_income",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 190572524480.0,
+        "fiscal_year": 2025,
+        "source_report": "贵州茅台2025年年度报告"
+       },
+       {
+        "item": "net_profit",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 98907140205.12,
+        "fiscal_year": 2025,
+        "source_report": "贵州茅台2025年年度报告"
+       },
+       {
+        "item": "total_assets",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 362087796512.0,
+        "fiscal_year": 2025,
+        "source_report": "贵州茅台2025年年度报告"
+       },
+       {
+        "item": "total_equity",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 296911993139.84,
+        "fiscal_year": 2025,
+        "source_report": "贵州茅台2025年年度报告"
+       }
+      ],
+      "coverage": "范围内 3 期年报全部对照；现金流量表的项目年报的「主要会计数据」表里没有，没有对照",
+      "mismatched": [],
+      "not_covered": [],
+      "data_version": "sh600519-financials-sample600519"
+     }
+    },
+    "process": [
+     {
+      "at": "2026-09-29T16:02:50.063073Z",
+      "kind": "tool",
+      "name": "run_sql",
+      "dataset": "sh600519-financials",
+      "brief": "SELECT fiscal_year, item, basis, value, source_report, page FROM official_key_figures WHERE fiscal_year BETWEEN 2023 AND 2025",
+      "ok": true
+     }
+    ]
+   }
+  ],
+  "times": 1,
+  "rejected": 0,
+  "spent": "0.05",
+  "data": {
+   "data_version": "sh600519-financials-sample600519"
+  }
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "contract_version": 2,
+ "sandboxes": [
+  {
+   "id": "09e06f6e-eee5-5c37-b579-b534b06bfda2",
+   "owner_actor_id": "e824e960-e14f-5f42-8843-61bc18a78346",
+   "app_server_url": "ws://127.0.0.1:42185",
+   "codex_version": "0.155.1",
+   "status": "registered",
+   "created_at": "2026-09-29T16:03:06.646524+00:00",
+   "updated_at": "2026-09-29T16:03:06.646524+00:00",
+   "relay_user": null,
+   "provisioned": false
+  }
+ ]
+}

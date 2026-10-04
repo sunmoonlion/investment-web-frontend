@@ -1,0 +1,62 @@
+{
+ "contract_version": 2,
+ "tasks": [
+  {
+   "id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "tenant": "default",
+   "idempotency_key": "preview-no-data-0001",
+   "request_digest": "fe8c504295264b998193c9bf7558617d191028ef5eedd6440d5c367a643002e3",
+   "profile_id": "FIN_REVIEW",
+   "profile_version": "1",
+   "expert_pack_version": "1",
+   "original_input": {
+    "input": {
+     "text": "片仔癀 2023 到 2025 年的盈利能力怎么样？"
+    },
+    "attachments": [],
+    "client_context": {
+     "entry": "expert"
+    }
+   },
+   "normalized_goal": null,
+   "thread_id": "thread-c6aa57af535c",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "project_root": "/home/demo/research/片仔癀",
+   "state": "WAITING",
+   "state_version": 13,
+   "workflow_version": "1",
+   "current_step": 1,
+   "acceptance_contract": {
+    "steps": [
+     "scope",
+     "profile",
+     "reconcile",
+     "extract",
+     "metrics",
+     "crosscheck",
+     "note"
+    ],
+    "pack_id": "FIN_REVIEW"
+   },
+   "execution_policy": {},
+   "budget": {
+    "used": "0.100000",
+    "limit": "2",
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "active_attempt_id": null,
+   "terminal_result_ref": null,
+   "waiting_reason": "INPUT",
+   "active_interaction_id": "e622161e-278e-510c-a294-d321919a97e8",
+   "rejection": null,
+   "cancel_requested_at": null,
+   "cancel_requested_by": null,
+   "created_at": "2026-09-29T16:02:50.995945+00:00",
+   "updated_at": "2026-09-29T16:02:51.215863+00:00",
+   "project_id": "7679e7df-8718-5408-8ba3-5f59a9525cf4"
+  }
+ ]
+}

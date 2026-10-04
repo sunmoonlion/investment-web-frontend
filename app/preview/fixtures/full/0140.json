@@ -1,0 +1,119 @@
+{
+ "contract_version": 2,
+ "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+ "step": {
+  "index": 2,
+  "step_id": "profile",
+  "title": "数据摸底",
+  "summary": "确认有这家公司的数据、数据到哪一天、各期是什么口径",
+  "uses": [
+   {
+    "artifact": "scope",
+    "step": 1,
+    "title": "定范围"
+   }
+  ],
+  "tools": [
+   "list_datasets",
+   "describe_schema",
+   "metric_definitions",
+   "run_sql"
+  ],
+  "returns": "profile",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有数据集、数据版本、期间、口径断点"
+   },
+   {
+    "label": "有对应的数据集"
+   },
+   {
+    "label": "有数据版本"
+   },
+   {
+    "label": "范围内至少有一期数据"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 1,
+   "then": "human",
+   "back_to": null,
+   "text": "重做，最多 1 次；仍不过，停下来问你"
+  },
+  "reserve": "0.05",
+  "status": "waiting",
+  "attempts": [
+   {
+    "attempt_id": "d0e3c198-669c-53e7-b561-b13927278534",
+    "n": 1,
+    "outcome": "rejected",
+    "failure": "acceptance",
+    "spent": "0.05",
+    "started_at": "2026-09-29T16:02:51.190565Z",
+    "ended_at": "2026-09-29T16:02:51.198405Z",
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有数据集、数据版本、期间、口径断点",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有对应的数据集",
+      "pass": false,
+      "message": "这家公司未入库：没有对应的数据集"
+     },
+     {
+      "label": "有数据版本",
+      "pass": false,
+      "message": "没有数据版本"
+     },
+     {
+      "label": "范围内至少有一期数据",
+      "pass": false,
+      "message": "范围内没有任何一期的数据"
+     }
+    ],
+    "tools": {
+     "list_datasets": 1
+    },
+    "returned": {
+     "artifact": "profile",
+     "version": null,
+     "content": {
+      "as_of": "",
+      "notes": [],
+      "dataset": null,
+      "periods": [],
+      "basis_breaks": [],
+      "data_version": "",
+      "not_ingested": true,
+      "security_code": "600436"
+     },
+     "raw": null
+    },
+    "process": [
+     {
+      "at": "2026-09-29T16:02:51.173183Z",
+      "kind": "tool",
+      "name": "list_datasets",
+      "dataset": null,
+      "brief": "",
+      "ok": true
+     }
+    ]
+   }
+  ],
+  "times": 1,
+  "rejected": 1,
+  "spent": "0.05",
+  "data": null
+ }
+}

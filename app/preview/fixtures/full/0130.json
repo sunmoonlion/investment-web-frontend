@@ -1,0 +1,117 @@
+{
+ "contract_version": 2,
+ "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+ "step": {
+  "index": 4,
+  "step_id": "extract",
+  "title": "取数",
+  "summary": "把问题要用到的报表科目按期取出来，每个数带口径",
+  "uses": [
+   {
+    "artifact": "scope",
+    "step": 1,
+    "title": "定范围"
+   },
+   {
+    "artifact": "profile",
+    "step": 2,
+    "title": "数据摸底"
+   }
+  ],
+  "tools": [
+   "describe_schema",
+   "run_sql"
+  ],
+  "returns": "facts",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有取数表和数据版本"
+   },
+   {
+    "label": "取数表不是空的"
+   },
+   {
+    "label": "有数据版本"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 1,
+   "then": "back",
+   "back_to": 2,
+   "text": "重做，最多 1 次；仍不过，退回第 2 步"
+  },
+  "reserve": "0.05",
+  "status": "waiting",
+  "attempts": [
+   {
+    "attempt_id": "80ad391d-c874-5f18-80ba-a59eafd36c6a",
+    "n": 1,
+    "outcome": "over_budget",
+    "failure": null,
+    "spent": "0.30",
+    "started_at": "2026-09-29T16:02:51.742504Z",
+    "ended_at": "2026-09-29T16:02:51.750403Z",
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": null,
+      "message": ""
+     },
+     {
+      "label": "有取数表和数据版本",
+      "pass": null,
+      "message": ""
+     },
+     {
+      "label": "取数表不是空的",
+      "pass": null,
+      "message": ""
+     },
+     {
+      "label": "有数据版本",
+      "pass": null,
+      "message": ""
+     }
+    ],
+    "tools": {
+     "describe_schema": 1,
+     "run_sql": 2
+    },
+    "returned": null,
+    "process": [
+     {
+      "at": "2026-09-29T16:02:51.678538Z",
+      "kind": "tool",
+      "name": "describe_schema",
+      "dataset": "sh600009-financials",
+      "brief": "income_statement",
+      "ok": true
+     },
+     {
+      "at": "2026-09-29T16:02:51.689735Z",
+      "kind": "tool",
+      "name": "run_sql",
+      "dataset": "sh600009-financials",
+      "brief": "SELECT report_date, basis, operate_income, operate_cost, net_profit FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
+      "ok": true
+     },
+     {
+      "at": "2026-09-29T16:02:51.709180Z",
+      "kind": "tool",
+      "name": "run_sql",
+      "dataset": "sh600009-financials",
+      "brief": "SELECT report_date, basis, total_assets, total_liabilities, total_equity FROM balance_sheet WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
+      "ok": true
+     }
+    ]
+   }
+  ],
+  "times": 1,
+  "rejected": 0,
+  "spent": "0.30",
+  "data": null
+ }
+}

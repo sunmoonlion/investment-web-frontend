@@ -1,0 +1,45 @@
+{
+ "contract_version": 2,
+ "project": {
+  "id": "69268fa0-44c9-5bb1-8187-e0ddab71455f",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "workspace_root": "/home/demo/research",
+  "path": "中国平安",
+  "title": "中国平安",
+  "created_at": "2026-09-29T16:02:48.374543Z",
+  "updated_at": "2026-09-29T16:02:48.374543Z",
+  "archived_at": null,
+  "directory": "/home/demo/research/中国平安",
+  "archived": false,
+  "environment_name": "办公室的电脑",
+  "online": true
+ },
+ "active_task_id": null,
+ "conversations": [
+  {
+   "id": "3d3b3fb6-b19e-5292-b36c-2643d99977bb",
+   "kind": "work",
+   "title": null,
+   "wheel": "user",
+   "active_task_id": null,
+   "last_active_at": "2026-09-29T16:02:54.864631Z"
+  }
+ ],
+ "tasks": [
+  {
+   "id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "session_id": "3d3b3fb6-b19e-5292-b36c-2643d99977bb",
+   "profile_id": "BOND_REVIEW",
+   "state": "REJECTED",
+   "question": "中国平安 2025 年的偿付能力怎么样？",
+   "budget": {
+    "used": "0",
+    "limit": "2",
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "created_at": "2026-09-29T16:02:54.828433Z"
+  }
+ ]
+}

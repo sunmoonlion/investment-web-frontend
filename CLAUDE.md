@@ -61,6 +61,16 @@ corepack pnpm check          # typecheck + lint + i18n + test + build
 corepack pnpm dev
 ```
 
+## 预览
+
+不连后端看页面：`cd app && pnpm preview`，打开终端里打印的 `/__preview`。说明在 `app/preview/README.md`。
+
+| 规则 | 原因 |
+| --- | --- |
+| 网页端的代码里不写预览的分支 | 预览是网页端之外的一个进程，它顶替的是后端 |
+| 样例不手写、不手改 | `app/preview/fixtures/` 是从真的后端录下来的。要改就改后端的录制脚本（后端 `tests/test_preview_fixtures.py`）重录 |
+| 页面要了、样例里没有的请求 | 预览的终端与目录页会列出来。去后端的录制脚本里补上，重录 |
+
 ## 动手前
 
 1. 读对应后端路由（`../investment-backend/app/app/interfaces/`）确认参数与响应结构

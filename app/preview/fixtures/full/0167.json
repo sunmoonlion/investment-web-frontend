@@ -1,0 +1,48 @@
+{
+ "contract_version": 2,
+ "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+ "step": {
+  "index": 5,
+  "step_id": "final",
+  "title": "成稿",
+  "summary": "写出答案：每个数带数据版本和口径，写明局限；结论栏留空",
+  "uses": [
+   {
+    "artifact": "rewritten",
+    "step": 1,
+    "title": "改写问题"
+   },
+   {
+    "artifact": "table",
+    "step": 4,
+    "title": "整理结果"
+   }
+  ],
+  "tools": [],
+  "returns": "note",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有回答和出处"
+   },
+   {
+    "label": "没有评级、目标价、买卖建议"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 1,
+   "then": "human",
+   "back_to": null,
+   "text": "重做，最多 1 次；仍不过，停下来问你"
+  },
+  "reserve": "0.05",
+  "status": "pending",
+  "attempts": [],
+  "times": 0,
+  "rejected": 0,
+  "spent": "0.00",
+  "data": null
+ }
+}

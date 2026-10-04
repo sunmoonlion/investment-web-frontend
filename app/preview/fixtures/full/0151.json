@@ -1,0 +1,95 @@
+{
+ "contract_version": 2,
+ "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+ "step": {
+  "index": 1,
+  "step_id": "scope",
+  "title": "定范围",
+  "summary": "认出公司、期间、报告类型",
+  "uses": [],
+  "tools": [],
+  "returns": "scope",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有证券代码、期间、报告类型"
+   },
+   {
+    "label": "认得出是哪家公司"
+   },
+   {
+    "label": "期间不是空的"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 1,
+   "then": "human",
+   "back_to": null,
+   "text": "重做，最多 1 次；仍不过，停下来问你"
+  },
+  "reserve": "0.05",
+  "status": "accepted",
+  "attempts": [
+   {
+    "attempt_id": "b634c871-77c6-5c9e-a169-0166c16db618",
+    "n": 1,
+    "outcome": "accepted",
+    "failure": null,
+    "spent": "0.05",
+    "started_at": "2026-09-29T16:02:50.672605Z",
+    "ended_at": "2026-09-29T16:02:50.682206Z",
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有证券代码、期间、报告类型",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "认得出是哪家公司",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "期间不是空的",
+      "pass": true,
+      "message": ""
+     }
+    ],
+    "tools": {},
+    "returned": {
+     "artifact": "scope",
+     "version": 1,
+     "content": {
+      "aspects": [
+       "盈利能力"
+      ],
+      "company": "宁德时代",
+      "periods": [
+       "2023",
+       "2024",
+       "2025"
+      ],
+      "question": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
+      "assumptions": [],
+      "report_types": [
+       "年报"
+      ],
+      "security_code": "300750"
+     }
+    },
+    "process": []
+   }
+  ],
+  "times": 1,
+  "rejected": 0,
+  "spent": "0.05",
+  "data": null
+ }
+}

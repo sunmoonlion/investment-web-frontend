@@ -1,0 +1,17 @@
+{
+ "contract_version": 2,
+ "workspaces": [
+  {
+   "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
+   "environment_name": "家里的电脑",
+   "online": false,
+   "root": "/home/demo/research"
+  },
+  {
+   "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
+   "environment_name": "家里的电脑",
+   "online": false,
+   "root": "/home/demo/notes"
+  }
+ ]
+}

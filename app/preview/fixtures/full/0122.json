@@ -1,0 +1,301 @@
+{
+ "task": {
+  "id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+  "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "tenant": "default",
+  "idempotency_key": "preview-over-budget-0001",
+  "request_digest": "d011e96797b9db8143b3cebc0b561a484bf362cbb85e6a273d9c418aae4ff40f",
+  "profile_id": "FIN_REVIEW",
+  "profile_version": "1",
+  "expert_pack_version": "1",
+  "original_input": {
+   "input": {
+    "text": "上海机场 2023 到 2025 年的盈利能力怎么样？"
+   },
+   "attachments": [],
+   "client_context": {
+    "entry": "expert"
+   }
+  },
+  "normalized_goal": null,
+  "thread_id": "thread-9f075d1ee27c",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "project_root": "/home/demo/research/上海机场",
+  "state": "WAITING",
+  "state_version": 23,
+  "workflow_version": "1",
+  "current_step": 3,
+  "acceptance_contract": {
+   "steps": [
+    "scope",
+    "profile",
+    "reconcile",
+    "extract",
+    "metrics",
+    "crosscheck",
+    "note"
+   ],
+   "pack_id": "FIN_REVIEW"
+  },
+  "execution_policy": {},
+  "budget": {
+   "used": "1.200000",
+   "limit": "1",
+   "currency": "CNY",
+   "reserved": "0"
+  },
+  "active_attempt_id": null,
+  "terminal_result_ref": null,
+  "waiting_reason": "RESOURCE",
+  "active_interaction_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+  "rejection": null,
+  "cancel_requested_at": null,
+  "cancel_requested_by": null,
+  "created_at": "2026-09-29T16:02:51.235809+00:00",
+  "updated_at": "2026-09-29T16:02:51.748347+00:00",
+  "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f"
+ },
+ "attempts": [
+  {
+   "id": "72385666-9773-5f28-b7e4-6c111709a765",
+   "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "thread_id": "thread-9f075d1ee27c",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "scope",
+   "step_version": "1",
+   "input_artifact_versions": [],
+   "turn_ids": [
+    "turn-d45f6f9fcbb2"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.300000",
+    "tokens": {
+     "total": {
+      "totalTokens": 30000
+     }
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "75f23376-75b4-59b9-9bc3-51126c200534",
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-09-29T16:02:51.348950+00:00",
+   "ended_at": "2026-09-29T16:02:51.357772+00:00",
+   "created_at": "2026-09-29T16:02:51.291604+00:00",
+   "updated_at": "2026-09-29T16:02:51.353928+00:00"
+  },
+  {
+   "id": "eae747fe-03f1-54f1-8efd-83c3f0e127b5",
+   "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "thread_id": "thread-9f075d1ee27c",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "profile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-2b92633484ce"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.300000",
+    "tokens": {
+     "total": {
+      "totalTokens": 30000
+     }
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "14a29141-aa3d-560d-aad4-1b9e95af600c",
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-09-29T16:02:51.447524+00:00",
+   "ended_at": "2026-09-29T16:02:51.456357+00:00",
+   "created_at": "2026-09-29T16:02:51.375164+00:00",
+   "updated_at": "2026-09-29T16:02:51.452582+00:00"
+  },
+  {
+   "id": "ccb54308-60a4-5f26-9052-25589ce92521",
+   "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "thread_id": "thread-9f075d1ee27c",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "reconcile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-844cfa061557"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.300000",
+    "tokens": {
+     "total": {
+      "totalTokens": 30000
+     }
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "599d4a3f-8415-5c0a-b178-27724ecf07ad",
+     "name": "reconcile",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-09-29T16:02:51.572339+00:00",
+   "ended_at": "2026-09-29T16:02:51.583454+00:00",
+   "created_at": "2026-09-29T16:02:51.476645+00:00",
+   "updated_at": "2026-09-29T16:02:51.578765+00:00"
+  },
+  {
+   "id": "80ad391d-c874-5f18-80ba-a59eafd36c6a",
+   "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "thread_id": "thread-9f075d1ee27c",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "extract",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-520fe7505db3"
+   ],
+   "status": "BUDGET_EXCEEDED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.300000",
+    "tokens": {
+     "total": {
+      "totalTokens": 30000
+     }
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-09-29T16:02:51.742504+00:00",
+   "ended_at": "2026-09-29T16:02:51.750403+00:00",
+   "created_at": "2026-09-29T16:02:51.617570+00:00",
+   "updated_at": "2026-09-29T16:02:51.748347+00:00"
+  }
+ ],
+ "artifacts": [
+  {
+   "id": "14a29141-aa3d-560d-aad4-1b9e95af600c",
+   "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "attempt_id": "eae747fe-03f1-54f1-8efd-83c3f0e127b5",
+   "name": "profile",
+   "version": 1,
+   "kind": "step",
+   "digest": "9433b6d4359acfa5a12e0f3300553ca24d834156fbe1f3a0f6c69d5a97650d4e",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:51.452582+00:00"
+  },
+  {
+   "id": "599d4a3f-8415-5c0a-b178-27724ecf07ad",
+   "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "attempt_id": "ccb54308-60a4-5f26-9052-25589ce92521",
+   "name": "reconcile",
+   "version": 1,
+   "kind": "step",
+   "digest": "658700bbfe14785116fd089b366fb7bac5d7a547c7ad0221e5f9929ca2611b60",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:51.578765+00:00"
+  },
+  {
+   "id": "75f23376-75b4-59b9-9bc3-51126c200534",
+   "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "attempt_id": "72385666-9773-5f28-b7e4-6c111709a765",
+   "name": "scope",
+   "version": 1,
+   "kind": "step",
+   "digest": "3ea5ab25a4b7e3b5e4c67ce809567794bf3d7bcf43fa546a8aeaa69e07a52620",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:51.353928+00:00"
+  }
+ ]
+}

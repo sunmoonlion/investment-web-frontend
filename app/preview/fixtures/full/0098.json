@@ -1,0 +1,234 @@
+{
+ "task": {
+  "id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+  "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "tenant": "default",
+  "idempotency_key": "preview-cancelled-0001",
+  "request_digest": "84cd5f0598fb802aeae154d753a9c8f9354de75b384a2975fd79160adc56069e",
+  "profile_id": "FIN_REVIEW",
+  "profile_version": "1",
+  "expert_pack_version": "1",
+  "original_input": {
+   "input": {
+    "text": "招商银行 2023 到 2025 年的盈利能力怎么样？"
+   },
+   "attachments": [],
+   "client_context": {
+    "entry": "expert"
+   }
+  },
+  "normalized_goal": null,
+  "thread_id": "thread-c374db140d3a",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "project_root": "/home/demo/research/招商银行",
+  "state": "CANCELLED",
+  "state_version": 20,
+  "workflow_version": "1",
+  "current_step": 2,
+  "acceptance_contract": {
+   "steps": [
+    "scope",
+    "profile",
+    "reconcile",
+    "extract",
+    "metrics",
+    "crosscheck",
+    "note"
+   ],
+   "pack_id": "FIN_REVIEW"
+  },
+  "execution_policy": {},
+  "budget": {
+   "used": "0.150000",
+   "limit": "2",
+   "currency": "CNY",
+   "reserved": "0"
+  },
+  "active_attempt_id": null,
+  "terminal_result_ref": null,
+  "waiting_reason": null,
+  "active_interaction_id": null,
+  "rejection": null,
+  "cancel_requested_at": "2026-09-29T16:02:53.046495+00:00",
+  "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "created_at": "2026-09-29T16:02:52.593570+00:00",
+  "updated_at": "2026-09-29T16:02:53.045281+00:00",
+  "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa"
+ },
+ "attempts": [
+  {
+   "id": "064f60f4-e1bb-56f6-b3ac-cc0b1b4d78dc",
+   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
+   "thread_id": "thread-c374db140d3a",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "scope",
+   "step_version": "1",
+   "input_artifact_versions": [],
+   "turn_ids": [
+    "turn-b1618b1f0802"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "total": {
+      "totalTokens": 5000
+     }
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "1fe55be8-9a82-5c3a-bd0d-8293b8444e2e",
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-09-29T16:02:52.712384+00:00",
+   "ended_at": "2026-09-29T16:02:52.722583+00:00",
+   "created_at": "2026-09-29T16:02:52.651831+00:00",
+   "updated_at": "2026-09-29T16:02:52.718795+00:00"
+  },
+  {
+   "id": "73b1928b-4c2f-5080-b878-b6dec0fd62cd",
+   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
+   "thread_id": "thread-c374db140d3a",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "profile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-2d27bcad5ac6"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "total": {
+      "totalTokens": 5000
+     }
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "1d6502ae-83b6-53bb-a8b8-456bcf03b388",
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-09-29T16:02:52.828583+00:00",
+   "ended_at": "2026-09-29T16:02:52.841716+00:00",
+   "created_at": "2026-09-29T16:02:52.745187+00:00",
+   "updated_at": "2026-09-29T16:02:52.835258+00:00"
+  },
+  {
+   "id": "029096fa-2d5e-5f04-b2b8-b24ab06806ad",
+   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
+   "thread_id": "thread-c374db140d3a",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "reconcile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-10fea9a2053c"
+   ],
+   "status": "FAILED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "total": {
+      "totalTokens": 5000
+     }
+    }
+   },
+   "failure_code": "acceptance",
+   "retryable": true,
+   "output_artifacts": [],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-09-29T16:02:52.960026+00:00",
+   "ended_at": "2026-09-29T16:02:52.973211+00:00",
+   "created_at": "2026-09-29T16:02:52.860980+00:00",
+   "updated_at": "2026-09-29T16:02:52.968212+00:00"
+  }
+ ],
+ "artifacts": [
+  {
+   "id": "1d6502ae-83b6-53bb-a8b8-456bcf03b388",
+   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "attempt_id": "73b1928b-4c2f-5080-b878-b6dec0fd62cd",
+   "name": "profile",
+   "version": 1,
+   "kind": "step",
+   "digest": "0801c19adbe7145e42acecc360deb0f05b3f302a4640bade548d9a51b0a6ead8",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:52.835258+00:00"
+  },
+  {
+   "id": "1fe55be8-9a82-5c3a-bd0d-8293b8444e2e",
+   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "attempt_id": "064f60f4-e1bb-56f6-b3ac-cc0b1b4d78dc",
+   "name": "scope",
+   "version": 1,
+   "kind": "step",
+   "digest": "b8d454f41c3ca74f8f6c0df1e9b96f59609c3abac41d247cc8974b3b42f79945",
+   "workspace_path": null,
+   "created_at": "2026-09-29T16:02:52.718795+00:00"
+  }
+ ]
+}
