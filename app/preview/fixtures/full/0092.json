@@ -1,62 +1,67 @@
 {
  "contract_version": 2,
- "tasks": [
+ "price": {
+  "model": "kimi-k3",
+  "priced": true,
+  "currency": "CNY",
+  "as_of": "2026-10-04",
+  "per_million": {
+   "input": "20",
+   "cached_input": "2",
+   "cache_write": "20",
+   "output": "100"
+  },
+  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
+  "estimated": true
+ },
+ "cost": "0.150000",
+ "tokens": {
+  "input": 6000,
+  "cached_input": 0,
+  "cache_write": 0,
+  "output": 300,
+  "total": 6300
+ },
+ "calls": 3,
+ "turns": [
   {
-   "id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
-   "session_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "tenant": "default",
-   "idempotency_key": "preview-waiting-0001",
-   "request_digest": "4c536787f0641a36f9f834a37ab4b846673fe4c3c47f9462e0c0fe8dd3bba2b2",
-   "profile_id": "FIN_REVIEW",
-   "profile_version": "1",
-   "expert_pack_version": "1",
-   "original_input": {
-    "input": {
-     "text": "宁德时代 2023 到 2025 年的盈利能力怎么样？"
-    },
-    "attachments": [],
-    "client_context": {
-     "entry": "expert"
-    }
+   "turn_id": "turn-f105a20a689b",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "normalized_goal": null,
-   "thread_id": "thread-f3a973a8d6a6",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "project_root": "/home/demo/research/宁德时代",
-   "state": "WAITING",
-   "state_version": 18,
-   "workflow_version": "1",
-   "current_step": 2,
-   "acceptance_contract": {
-    "steps": [
-     "scope",
-     "profile",
-     "reconcile",
-     "extract",
-     "metrics",
-     "crosscheck",
-     "note"
-    ],
-    "pack_id": "FIN_REVIEW"
+   "at": "2026-10-04T07:42:36.158391+00:00"
+  },
+  {
+   "turn_id": "turn-6f5433e3633a",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "execution_policy": {},
-   "budget": {
-    "used": "0.150000",
-    "limit": null,
-    "currency": "CNY",
-    "reserved": "0"
+   "at": "2026-10-04T07:42:36.257069+00:00"
+  },
+  {
+   "turn_id": "turn-7d0f8a16348a",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "active_attempt_id": null,
-   "terminal_result_ref": null,
-   "waiting_reason": "INPUT",
-   "active_interaction_id": "81108b8f-3022-5de7-860c-36662e2db6fb",
-   "rejection": null,
-   "cancel_requested_at": null,
-   "cancel_requested_by": null,
-   "created_at": "2026-10-04T07:00:01.831009+00:00",
-   "updated_at": "2026-10-04T07:00:02.245135+00:00",
-   "project_id": "d35d6a3c-0149-5775-a1c7-860389fb558a"
+   "at": "2026-10-04T07:42:36.372102+00:00"
   }
  ]
 }

@@ -1,62 +1,119 @@
 {
  "contract_version": 2,
- "tasks": [
+ "price": {
+  "model": "kimi-k3",
+  "priced": true,
+  "currency": "CNY",
+  "as_of": "2026-10-04",
+  "per_million": {
+   "input": "20",
+   "cached_input": "2",
+   "cache_write": "20",
+   "output": "100"
+  },
+  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
+  "estimated": true
+ },
+ "cost": "0.350000",
+ "tokens": {
+  "input": 14000,
+  "cached_input": 0,
+  "cache_write": 0,
+  "output": 700,
+  "total": 14700
+ },
+ "calls": 7,
+ "turns": [
   {
-   "id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
-   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "tenant": "default",
-   "idempotency_key": "preview-done-concluded-0001",
-   "request_digest": "78edc4c4a5d82b5463a35865067e3de45f551e24732b4b79e44ed2e3cab7e465",
-   "profile_id": "FIN_REVIEW",
-   "profile_version": "1",
-   "expert_pack_version": "1",
-   "original_input": {
-    "input": {
-     "text": "贵州茅台 2023 到 2025 年的盈利能力怎么样？"
-    },
-    "attachments": [],
-    "client_context": {
-     "entry": "expert"
-    }
+   "turn_id": "turn-5ae865aeff5f",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "normalized_goal": null,
-   "thread_id": "thread-016c51c346b0",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "project_root": "/home/demo/research/贵州茅台",
-   "state": "SUCCEEDED",
-   "state_version": 39,
-   "workflow_version": "1",
-   "current_step": 7,
-   "acceptance_contract": {
-    "steps": [
-     "scope",
-     "profile",
-     "reconcile",
-     "extract",
-     "metrics",
-     "crosscheck",
-     "note"
-    ],
-    "pack_id": "FIN_REVIEW"
+   "at": "2026-10-04T07:42:35.212633+00:00"
+  },
+  {
+   "turn_id": "turn-9836ce0f4f60",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "execution_policy": {},
-   "budget": {
-    "used": "0.350000",
-    "limit": null,
-    "currency": "CNY",
-    "reserved": "0"
+   "at": "2026-10-04T07:42:35.310776+00:00"
+  },
+  {
+   "turn_id": "turn-f0297fb39532",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "active_attempt_id": null,
-   "terminal_result_ref": "58bf41ed-2812-51fe-87d9-3a7ad7438f7a",
-   "waiting_reason": null,
-   "active_interaction_id": null,
-   "rejection": null,
-   "cancel_requested_at": null,
-   "cancel_requested_by": null,
-   "created_at": "2026-10-04T07:00:00.725800+00:00",
-   "updated_at": "2026-10-04T07:00:01.465256+00:00",
-   "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10"
+   "at": "2026-10-04T07:42:35.425168+00:00"
+  },
+  {
+   "turn_id": "turn-82817d2bc551",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T07:42:35.507808+00:00"
+  },
+  {
+   "turn_id": "turn-469fdc7b99af",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T07:42:35.593526+00:00"
+  },
+  {
+   "turn_id": "turn-84d36a215e42",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T07:42:35.679012+00:00"
+  },
+  {
+   "turn_id": "turn-c9848f7f424d",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T07:42:35.753715+00:00"
   }
  ]
 }

@@ -1,62 +1,80 @@
 {
  "contract_version": 2,
- "tasks": [
+ "price": {
+  "model": "kimi-k3",
+  "priced": true,
+  "currency": "CNY",
+  "as_of": "2026-10-04",
+  "per_million": {
+   "input": "20",
+   "cached_input": "2",
+   "cache_write": "20",
+   "output": "100"
+  },
+  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
+  "estimated": true
+ },
+ "cost": "1.200000",
+ "tokens": {
+  "input": 48000,
+  "cached_input": 0,
+  "cache_write": 0,
+  "output": 2400,
+  "total": 50400
+ },
+ "calls": 4,
+ "turns": [
   {
-   "id": "a8d00557-4ee4-5cdf-918b-e69884980326",
-   "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "tenant": "default",
-   "idempotency_key": "preview-stopped-0001",
-   "request_digest": "6facd762b1eabd1e2bc45b2b2735c38d8ccfb69fab86c10ed4693f2dee12ec54",
-   "profile_id": "FIN_REVIEW",
-   "profile_version": "1",
-   "expert_pack_version": "1",
-   "original_input": {
-    "input": {
-     "text": "上海机场 2023 到 2025 年的盈利能力怎么样？"
-    },
-    "attachments": [],
-    "client_context": {
-     "entry": "expert"
-    }
+   "turn_id": "turn-a61d6d8e130b",
+   "calls": 1,
+   "cost": "0.300000",
+   "tokens": {
+    "input": 12000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 600,
+    "total": 12600
    },
-   "normalized_goal": null,
-   "thread_id": "thread-d06f30ea7cd8",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "project_root": "/home/demo/research/上海机场",
-   "state": "CANCELLED",
-   "state_version": 24,
-   "workflow_version": "1",
-   "current_step": 3,
-   "acceptance_contract": {
-    "steps": [
-     "scope",
-     "profile",
-     "reconcile",
-     "extract",
-     "metrics",
-     "crosscheck",
-     "note"
-    ],
-    "pack_id": "FIN_REVIEW"
+   "at": "2026-10-04T07:42:36.761732+00:00"
+  },
+  {
+   "turn_id": "turn-f030909a01f0",
+   "calls": 1,
+   "cost": "0.300000",
+   "tokens": {
+    "input": 12000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 600,
+    "total": 12600
    },
-   "execution_policy": {},
-   "budget": {
-    "used": "1.200000",
-    "limit": null,
-    "currency": "CNY",
-    "reserved": "0"
+   "at": "2026-10-04T07:42:36.869985+00:00"
+  },
+  {
+   "turn_id": "turn-c030d51dd6be",
+   "calls": 1,
+   "cost": "0.300000",
+   "tokens": {
+    "input": 12000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 600,
+    "total": 12600
    },
-   "active_attempt_id": null,
-   "terminal_result_ref": null,
-   "waiting_reason": null,
-   "active_interaction_id": null,
-   "rejection": null,
-   "cancel_requested_at": "2026-10-04T07:00:03.105106+00:00",
-   "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "created_at": "2026-10-04T07:00:02.582492+00:00",
-   "updated_at": "2026-10-04T07:00:03.150112+00:00",
-   "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f"
+   "at": "2026-10-04T07:42:36.986987+00:00"
+  },
+  {
+   "turn_id": "turn-5feffde48063",
+   "calls": 1,
+   "cost": "0.300000",
+   "tokens": {
+    "input": 12000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 600,
+    "total": 12600
+   },
+   "at": "2026-10-04T07:42:37.071647+00:00"
   }
  ]
 }

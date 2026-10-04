@@ -30,12 +30,21 @@
    "estimated": true
   },
   "data": null,
-  "started_at": "2026-10-04T07:00:05.904619Z",
-  "ended_at": "2026-10-04T07:00:05.939401Z",
+  "started_at": "2026-10-04T07:42:39.722996Z",
+  "ended_at": "2026-10-04T07:42:39.753242Z",
   "seconds": 0,
   "active_interaction_id": null
  },
- "now": null,
- "position": null,
- "steps": []
+ "head": {
+  "kind": "refused",
+  "text": "专家没有接"
+ },
+ "sections": [],
+ "how": [],
+ "conclusion": {
+  "text": "",
+  "kind": "user_draft",
+  "saved_at": null,
+  "version": null
+ }
 }

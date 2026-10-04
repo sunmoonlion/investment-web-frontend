@@ -1,39 +1,58 @@
 {
  "contract_version": 2,
- "sessions": [
+ "project": {
+  "id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
+  "owner_actor_id": "e824e960-e14f-5f42-8843-61bc18a78346",
+  "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
+  "workspace_root": "/home/demo/research",
+  "path": "恒瑞医药",
+  "title": "恒瑞医药",
+  "created_at": "2026-10-04T07:42:49.872010Z",
+  "updated_at": "2026-10-04T07:42:49.872010Z",
+  "archived_at": null,
+  "directory": "/home/demo/research/恒瑞医药",
+  "archived": false,
+  "environment_name": "家里的电脑",
+  "online": false
+ },
+ "active_task_id": null,
+ "conversations": [
   {
    "id": "75fb7092-625a-5c48-b9e0-b1f5fad22e94",
-   "owner_actor_id": "e824e960-e14f-5f42-8843-61bc18a78346",
-   "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
-   "sandbox_id": "09e06f6e-eee5-5c37-b579-b534b06bfda2",
-   "project_root": "/home/demo/research/恒瑞医药",
-   "thread_id": "thread-e35006207873",
-   "wheel": "user",
-   "state_version": 0,
-   "active_task_id": null,
-   "thread_settings": {},
-   "created_at": "2026-10-04T07:00:17.127106+00:00",
-   "last_active_at": "2026-10-04T07:00:17.509592+00:00",
    "kind": "chat",
-   "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
-   "title": "这个项目里有哪些文件？"
+   "title": "这个项目里有哪些文件？",
+   "wheel": "user",
+   "active_task_id": null,
+   "last_active_at": "2026-10-04T07:42:51.085292Z"
   },
   {
    "id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "owner_actor_id": "e824e960-e14f-5f42-8843-61bc18a78346",
-   "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
-   "sandbox_id": "09e06f6e-eee5-5c37-b579-b534b06bfda2",
-   "project_root": "/home/demo/research/恒瑞医药",
-   "thread_id": "thread-463ed9c9a28c",
-   "wheel": "user",
-   "state_version": 2,
-   "active_task_id": null,
-   "thread_settings": {},
-   "created_at": "2026-10-04T07:00:16.231116+00:00",
-   "last_active_at": "2026-10-04T07:00:17.043589+00:00",
    "kind": "work",
-   "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
-   "title": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？"
+   "title": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+   "wheel": "user",
+   "active_task_id": null,
+   "last_active_at": "2026-10-04T07:42:50.678120Z"
+  }
+ ],
+ "tasks": [
+  {
+   "id": "8b109ead-42d9-513b-be23-d3fa0e086069",
+   "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
+   "profile_id": "FIN_REVIEW",
+   "expert": "财报体检",
+   "state": "SUCCEEDED",
+   "state_word": "已完成",
+   "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+   "budget": {
+    "used": "0.350000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "spent": "0.35",
+   "currency": "CNY",
+   "created_at": "2026-10-04T07:42:49.881884Z",
+   "ended_at": "2026-10-04T07:42:50.678120Z"
   }
  ]
 }

@@ -1,5 +1,201 @@
 {
- "contract_version": 2,
+ "task": {
+  "id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+  "session_id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "tenant": "default",
+  "idempotency_key": "preview-running-0001",
+  "request_digest": "77ac409a2ed5dd12f4a501d4b052e4a5a8049376a8399a18b41fa08ec7bbc0e6",
+  "profile_id": "DATA_QUERY",
+  "profile_version": "1",
+  "expert_pack_version": "1",
+  "original_input": {
+   "input": {
+    "text": "五粮液近五年的毛利率分别是多少？"
+   },
+   "attachments": [],
+   "client_context": {
+    "entry": "expert"
+   }
+  },
+  "normalized_goal": null,
+  "thread_id": "thread-d1ec303d062c",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "project_root": "/home/demo/research/五粮液",
+  "state": "RUNNING",
+  "state_version": 15,
+  "workflow_version": "1",
+  "current_step": 2,
+  "acceptance_contract": {
+   "steps": [
+    "rewrite",
+    "sql_generate",
+    "sql_execute",
+    "normalize",
+    "final"
+   ],
+   "pack_id": "DATA_QUERY"
+  },
+  "execution_policy": {},
+  "budget": {
+   "used": "0.100000",
+   "limit": null,
+   "currency": "CNY",
+   "reserved": "0.05"
+  },
+  "active_attempt_id": "5b878ac4-da05-5183-aec1-10871091b1e4",
+  "terminal_result_ref": null,
+  "waiting_reason": null,
+  "active_interaction_id": null,
+  "rejection": null,
+  "cancel_requested_at": null,
+  "cancel_requested_by": null,
+  "created_at": "2026-10-04T07:42:35.811707+00:00",
+  "updated_at": "2026-10-04T07:42:36.032121+00:00",
+  "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0"
+ },
+ "attempts": [
+  {
+   "id": "54a98f60-a531-5ced-a9e9-89afe72225d8",
+   "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+   "session_id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
+   "thread_id": "thread-d1ec303d062c",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "rewrite",
+   "step_version": "1",
+   "input_artifact_versions": [],
+   "turn_ids": [
+    "turn-4ff35c7a41ae"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "b0efc28f-40ff-597d-acd9-729d7d839580",
+     "name": "rewritten",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-04T07:42:35.917345+00:00",
+   "ended_at": "2026-10-04T07:42:35.930253+00:00",
+   "created_at": "2026-10-04T07:42:35.860292+00:00",
+   "updated_at": "2026-10-04T07:42:35.924219+00:00"
+  },
+  {
+   "id": "02022332-277b-5d39-963b-947829025012",
+   "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+   "session_id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
+   "thread_id": "thread-d1ec303d062c",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "sql_generate",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "rewritten",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-2acb3f13c734"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "bbae48e0-1441-5c02-8204-1f5c73640fbc",
+     "name": "sql",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-04T07:42:36.007347+00:00",
+   "ended_at": "2026-10-04T07:42:36.016461+00:00",
+   "created_at": "2026-10-04T07:42:35.947627+00:00",
+   "updated_at": "2026-10-04T07:42:36.012944+00:00"
+  },
+  {
+   "id": "5b878ac4-da05-5183-aec1-10871091b1e4",
+   "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+   "session_id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
+   "thread_id": "thread-d1ec303d062c",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "sql_execute",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "sql",
+     "version": 1
+    }
+   ],
+   "turn_ids": [],
+   "status": "CREATED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {},
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": null,
+   "ended_at": null,
+   "created_at": "2026-10-04T07:42:36.032121+00:00",
+   "updated_at": "2026-10-04T07:42:36.032121+00:00"
+  }
+ ],
  "artifacts": [
   {
    "id": "b0efc28f-40ff-597d-acd9-729d7d839580",
@@ -8,19 +204,9 @@
    "name": "rewritten",
    "version": 1,
    "kind": "step",
-   "content": {
-    "period": "2021 至 2025 年，年报",
-    "metrics": [
-     "毛利率"
-    ],
-    "entities": [
-     "五粮液（000858）"
-    ],
-    "question": "五粮液 2021 至 2025 年年报的毛利率，按年列出"
-   },
    "digest": "ec39488d520eda88e2d518566dd2f97e8876b10eb86c3d91d267ef37658e8a2f",
    "workspace_path": null,
-   "created_at": "2026-10-04T07:00:01.649070+00:00"
+   "created_at": "2026-10-04T07:42:35.924219+00:00"
   },
   {
    "id": "bbae48e0-1441-5c02-8204-1f5c73640fbc",
@@ -29,22 +215,9 @@
    "name": "sql",
    "version": 1,
    "kind": "step",
-   "content": {
-    "sql": "SELECT fiscal_year, report_type, (operate_income - operate_cost) / operate_income AS gross_margin FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2021 AND 2025 ORDER BY fiscal_year",
-    "columns": [
-     {
-      "name": "fiscal_year",
-      "definition": "会计年度"
-     },
-     {
-      "name": "gross_margin",
-      "definition": "(营业收入 − 营业成本) ÷ 营业收入，比率，0.25 表示 25%"
-     }
-    ]
-   },
    "digest": "cc594282d14ad283f752b1eda59802b844112867794dfdf320f55dbe37832b1b",
    "workspace_path": null,
-   "created_at": "2026-10-04T07:00:01.744297+00:00"
+   "created_at": "2026-10-04T07:42:36.012944+00:00"
   }
  ]
 }

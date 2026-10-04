@@ -58,7 +58,9 @@ const BUILT: ReadonlySet<Page> = new Set([
   'projectConversation',
   'expert',
   'askExpert',
+  'dossier',
   'review',
+  'machines',
   'settings',
 ])
 

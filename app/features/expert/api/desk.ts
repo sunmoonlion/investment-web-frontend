@@ -3,7 +3,9 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
 import {
+  acceptedSchema,
   delegatedSchema,
+  dossierSchema,
   eventsPageSchema,
   overviewSchema,
   packsSchema,
@@ -96,4 +98,32 @@ export function useAsk() {
         client.invalidateQueries({ queryKey: ['workbench', 'conversation'] }),
       ]),
   })
+}
+
+// 底稿：问了什么、答了什么、凭什么、哪些没做到、我怎么看
+export function useDossier(task: string) {
+  return useQuery({
+    queryKey: ['workbench', 'dossier', task],
+    queryFn: () => getJson(dossierSchema, `/api/workbench/tasks/${seg(task)}/dossier`),
+  })
+}
+
+// 「我的结论」是用户自己写的草稿。存一次是一个新版本
+export function useSaveConclusion(task: string) {
+  const { csrfToken } = useWorkbench()
+  const client = useQueryClient()
+  return useMutation({
+    mutationFn: (text: string) =>
+      sendJson(acceptedSchema, `/api/workbench/tasks/${seg(task)}/conclusion`, {
+        csrfToken,
+        method: 'PUT',
+        body: { text },
+      }),
+    onSuccess: () => client.invalidateQueries({ queryKey: ['workbench', 'dossier', task] }),
+  })
+}
+
+// 导出是一份 Markdown，由浏览器下载
+export function dossierExportHref(task: string) {
+  return `/api/workbench/tasks/${seg(task)}/dossier/export`
 }

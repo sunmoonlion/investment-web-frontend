@@ -2,40 +2,26 @@
  "contract_version": 2,
  "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
  "step": {
-  "index": 2,
-  "step_id": "profile",
-  "title": "数据摸底",
-  "summary": "确认有这家公司的数据、数据到哪一天、各期是什么口径",
-  "why": "先看我们有没有这家公司的数据、数据到哪一天。没有数据就停下，不拿别处的数来凑。",
-  "uses": [
-   {
-    "artifact": "scope",
-    "step": 1,
-    "title": "定范围"
-   }
-  ],
-  "tools": [
-   "list_datasets",
-   "describe_schema",
-   "metric_definitions",
-   "run_sql"
-  ],
-  "returns": "profile",
+  "index": 1,
+  "step_id": "scope",
+  "title": "定范围",
+  "summary": "认出公司、期间、报告类型",
+  "why": "先把问的是哪家公司、哪几年、哪种报告认准。认错了，后面每一步都白做。",
+  "uses": [],
+  "tools": [],
+  "returns": "scope",
   "checks": [
    {
     "label": "交回的格式对"
    },
    {
-    "label": "有数据集、数据版本、期间、口径断点"
+    "label": "有证券代码、期间、报告类型"
    },
    {
-    "label": "有对应的数据集"
+    "label": "认得出是哪家公司"
    },
    {
-    "label": "有数据版本"
-   },
-   {
-    "label": "范围内至少有一期数据"
+    "label": "期间不是空的"
    }
   ],
   "after_rejection": {
@@ -49,13 +35,13 @@
   "status": "accepted",
   "attempts": [
    {
-    "attempt_id": "4b0b46b9-edd3-585d-a4fe-c3152293459f",
+    "attempt_id": "dc04a489-73d3-5616-af96-8f8c55364805",
     "n": 1,
     "outcome": "accepted",
     "failure": null,
     "spent": "0.05",
-    "started_at": "2026-10-04T07:00:02.099097Z",
-    "ended_at": "2026-10-04T07:00:02.107664Z",
+    "started_at": "2026-10-04T07:42:36.173678Z",
+    "ended_at": "2026-10-04T07:42:36.183638Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -63,146 +49,58 @@
       "message": ""
      },
      {
-      "label": "有数据集、数据版本、期间、口径断点",
+      "label": "有证券代码、期间、报告类型",
       "pass": true,
       "message": ""
      },
      {
-      "label": "有对应的数据集",
+      "label": "认得出是哪家公司",
       "pass": true,
       "message": ""
      },
      {
-      "label": "有数据版本",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "范围内至少有一期数据",
+      "label": "期间不是空的",
       "pass": true,
       "message": ""
      }
     ],
-    "tools": {
-     "list_datasets": 1,
-     "describe_schema": 1,
-     "run_sql": 3
-    },
+    "tools": {},
     "returned": {
-     "artifact": "profile",
+     "artifact": "scope",
      "version": 1,
      "content": {
-      "as_of": "2025-12-31",
-      "notes": [
-       "样例数据：数字是为了预览编的，不是这家公司的真实数据",
-       "2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策"
+      "aspects": [
+       "盈利能力"
       ],
-      "dataset": "sz300750-financials",
+      "company": "宁德时代",
       "periods": [
-       {
-        "basis": "原始披露",
-        "verified": true,
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "official_disclosed_date": "2024-03-28"
-       },
-       {
-        "basis": "追溯调整后",
-        "verified": true,
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "official_disclosed_date": "2025-03-28"
-       },
-       {
-        "basis": "原始披露",
-        "verified": true,
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "official_disclosed_date": "2026-03-28"
-       }
+       "2023",
+       "2024",
+       "2025"
       ],
-      "basis_breaks": [
-       {
-        "basis": [
-         "原始披露",
-         "追溯调整后"
-        ],
-        "between": [
-         "2023",
-         "2024"
-        ]
-       },
-       {
-        "basis": [
-         "追溯调整后",
-         "原始披露"
-        ],
-        "between": [
-         "2024",
-         "2025"
-        ]
-       }
+      "question": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
+      "assumptions": [],
+      "report_types": [
+       "年报"
       ],
-      "data_version": "sz300750-financials-sample300750",
-      "not_ingested": false,
       "security_code": "300750"
+     },
+     "labels": {
+      "aspects": "关注的方面",
+      "company": "公司",
+      "periods": "期间",
+      "question": "问题",
+      "assumptions": "假设",
+      "report_types": "报告类型",
+      "security_code": "证券代码"
      }
     },
-    "process": [
-     {
-      "at": "2026-10-04T07:00:02.056548Z",
-      "kind": "tool",
-      "name": "list_datasets",
-      "dataset": null,
-      "brief": "",
-      "ok": true
-     },
-     {
-      "at": "2026-10-04T07:00:02.061091Z",
-      "kind": "tool",
-      "name": "describe_schema",
-      "dataset": "sz300750-financials",
-      "brief": "",
-      "ok": true
-     },
-     {
-      "at": "2026-10-04T07:00:02.065257Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sz300750-financials",
-      "brief": "SELECT key, value FROM dataset_metadata",
-      "ok": true
-     },
-     {
-      "at": "2026-10-04T07:00:02.070243Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sz300750-financials",
-      "brief": "SELECT fiscal_year, report_type, basis, verified FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     },
-     {
-      "at": "2026-10-04T07:00:02.074791Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sz300750-financials",
-      "brief": "SELECT report_date, disclosed_date FROM disclosure_calendar WHERE fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     }
-    ]
+    "process": []
    }
   ],
   "times": 1,
   "rejected": 0,
   "spent": "0.05",
-  "data": {
-   "dataset": "sz300750-financials",
-   "data_version": "sz300750-financials-sample300750",
-   "as_of": "2025-12-31",
-   "security_code": "300750"
-  }
+  "data": null
  }
 }

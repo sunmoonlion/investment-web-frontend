@@ -2,11 +2,11 @@
  "contract_version": 2,
  "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
  "step": {
-  "index": 6,
-  "step_id": "crosscheck",
-  "title": "对照官方",
-  "summary": "拿取到的数和公司年报里自己披露的数逐项对照",
-  "why": "我们的数是采集来的。和公司年报里自己披露的数对一遍，对不上的要让你知道。",
+  "index": 5,
+  "step_id": "metrics",
+  "title": "算指标",
+  "summary": "按数据集里登记的口径算指标；分母不成立或口径不同的，标为不适用",
+  "why": "指标按数据集里登记的口径算，不临时发明算法。分母不成立的标「不适用」，不硬算。",
   "uses": [
    {
     "artifact": "scope",
@@ -25,29 +25,28 @@
    }
   ],
   "tools": [
+   "metric_definitions",
+   "query_metric",
    "run_sql"
   ],
-  "returns": "crosscheck",
+  "returns": "metrics",
   "checks": [
    {
     "label": "交回的格式对"
    },
    {
-    "label": "有一致项、不一致项、覆盖说明"
+    "label": "有指标表和数据版本"
    },
    {
-    "label": "说明了对照覆盖了哪些期"
-   },
-   {
-    "label": "和公司披露的数都对得上"
+    "label": "指标表不是空的"
    }
   ],
   "after_rejection": {
-   "reworks": 0,
+   "reworks": 2,
    "then": "human",
    "back_to": null,
    "backs": 0,
-   "text": "停下来问你"
+   "text": "重做，最多 2 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
   "status": "not_reached",

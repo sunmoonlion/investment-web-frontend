@@ -2,11 +2,11 @@
  "contract_version": 2,
  "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
  "step": {
-  "index": 6,
-  "step_id": "crosscheck",
-  "title": "对照官方",
-  "summary": "拿取到的数和公司年报里自己披露的数逐项对照",
-  "why": "我们的数是采集来的。和公司年报里自己披露的数对一遍，对不上的要让你知道。",
+  "index": 5,
+  "step_id": "metrics",
+  "title": "算指标",
+  "summary": "按数据集里登记的口径算指标；分母不成立或口径不同的，标为不适用",
+  "why": "指标按数据集里登记的口径算，不临时发明算法。分母不成立的标「不适用」，不硬算。",
   "uses": [
    {
     "artifact": "scope",
@@ -25,41 +25,40 @@
    }
   ],
   "tools": [
+   "metric_definitions",
+   "query_metric",
    "run_sql"
   ],
-  "returns": "crosscheck",
+  "returns": "metrics",
   "checks": [
    {
     "label": "交回的格式对"
    },
    {
-    "label": "有一致项、不一致项、覆盖说明"
+    "label": "有指标表和数据版本"
    },
    {
-    "label": "说明了对照覆盖了哪些期"
-   },
-   {
-    "label": "和公司披露的数都对得上"
+    "label": "指标表不是空的"
    }
   ],
   "after_rejection": {
-   "reworks": 0,
+   "reworks": 2,
    "then": "human",
    "back_to": null,
    "backs": 0,
-   "text": "停下来问你"
+   "text": "重做，最多 2 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
   "status": "accepted",
   "attempts": [
    {
-    "attempt_id": "63ce0782-3a1c-5515-b179-400c477c5b2e",
+    "attempt_id": "e70ec205-26c6-53eb-a8ec-52d796d7ee28",
     "n": 1,
     "outcome": "accepted",
     "failure": null,
     "spent": "0.05",
-    "started_at": "2026-10-04T07:00:01.362322Z",
-    "ended_at": "2026-10-04T07:00:01.371269Z",
+    "started_at": "2026-10-04T07:42:35.604330Z",
+    "ended_at": "2026-10-04T07:42:35.616182Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -67,139 +66,266 @@
       "message": ""
      },
      {
-      "label": "有一致项、不一致项、覆盖说明",
+      "label": "有指标表和数据版本",
       "pass": true,
       "message": ""
      },
      {
-      "label": "说明了对照覆盖了哪些期",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "和公司披露的数都对得上",
+      "label": "指标表不是空的",
       "pass": true,
       "message": ""
      }
     ],
     "tools": {
-     "run_sql": 1
+     "metric_definitions": 1,
+     "query_metric": 1
     },
     "returned": {
-     "artifact": "crosscheck",
+     "artifact": "metrics",
      "version": 1,
      "content": {
-      "matched": [
+      "sql": [],
+      "table": [
        {
-        "item": "operate_income",
-        "page": 6,
+        "unit": "比率",
         "basis": "原始披露",
-        "value": 150560000000.0,
+        "value": 0.919,
+        "inputs": {
+         "operate_cost": 12195360000.0,
+         "operate_income": 150560000000.0
+        },
+        "source": "query_metric",
+        "formula": "(营业收入 − 营业成本) ÷ 营业收入",
+        "applicable": true,
         "fiscal_year": 2023,
-        "source_report": "贵州茅台2023年年度报告"
+        "metric_name": "gross_margin",
+        "report_type": "年报",
+        "display_name": "毛利率",
+        "reason_if_not": ""
        },
        {
-        "item": "net_profit",
-        "page": 6,
+        "unit": "比率",
         "basis": "原始披露",
-        "value": 79044000000.0,
+        "value": 0.525,
+        "inputs": {
+         "net_profit": 79044000000.0,
+         "operate_income": 150560000000.0
+        },
+        "source": "query_metric",
+        "formula": "净利润 ÷ 营业收入",
+        "applicable": true,
         "fiscal_year": 2023,
-        "source_report": "贵州茅台2023年年度报告"
+        "metric_name": "net_margin",
+        "report_type": "年报",
+        "display_name": "净利率",
+        "reason_if_not": ""
        },
        {
-        "item": "total_assets",
-        "page": 6,
+        "unit": "比率",
         "basis": "原始披露",
-        "value": 286064000000.0,
+        "value": 0.18,
+        "inputs": {
+         "total_assets": 286064000000.0,
+         "total_liabilities": 51491520000.0
+        },
+        "source": "query_metric",
+        "formula": "负债合计 ÷ 资产总计",
+        "applicable": true,
         "fiscal_year": 2023,
-        "source_report": "贵州茅台2023年年度报告"
+        "metric_name": "debt_to_assets",
+        "report_type": "年报",
+        "display_name": "资产负债率",
+        "reason_if_not": ""
        },
        {
-        "item": "total_equity",
-        "page": 6,
+        "unit": "比率",
         "basis": "原始披露",
-        "value": 234572480000.0,
+        "value": null,
+        "inputs": {
+         "net_profit": 79044000000.0,
+         "total_equity": 234572480000.0
+        },
+        "source": "query_metric",
+        "formula": "净利润 ÷ 期初与期末所有者权益的平均",
+        "applicable": false,
         "fiscal_year": 2023,
-        "source_report": "贵州茅台2023年年度报告"
+        "metric_name": "roe",
+        "report_type": "年报",
+        "display_name": "净资产收益率",
+        "reason_if_not": "要用上一年的期末数，范围内没有"
        },
        {
-        "item": "operate_income",
-        "page": 6,
+        "unit": "比率",
         "basis": "追溯调整后",
-        "value": 174197920000.0,
+        "value": 0.92,
+        "inputs": {
+         "operate_cost": 13935833600.0,
+         "operate_income": 174197920000.0
+        },
+        "source": "query_metric",
+        "formula": "(营业收入 − 营业成本) ÷ 营业收入",
+        "applicable": true,
         "fiscal_year": 2024,
-        "source_report": "贵州茅台2024年年度报告"
+        "metric_name": "gross_margin",
+        "report_type": "年报",
+        "display_name": "毛利率",
+        "reason_if_not": ""
        },
        {
-        "item": "net_profit",
-        "page": 6,
+        "unit": "比率",
         "basis": "追溯调整后",
-        "value": 90931314240.0,
+        "value": 0.522,
+        "inputs": {
+         "net_profit": 90931314240.0,
+         "operate_income": 174197920000.0
+        },
+        "source": "query_metric",
+        "formula": "净利润 ÷ 营业收入",
+        "applicable": true,
         "fiscal_year": 2024,
-        "source_report": "贵州茅台2024年年度报告"
+        "metric_name": "net_margin",
+        "report_type": "年报",
+        "display_name": "净利率",
+        "reason_if_not": ""
        },
        {
-        "item": "total_assets",
-        "page": 6,
+        "unit": "比率",
         "basis": "追溯调整后",
-        "value": 330976048000.0,
+        "value": 0.18,
+        "inputs": {
+         "total_assets": 330976048000.0,
+         "total_liabilities": 59575688640.0
+        },
+        "source": "query_metric",
+        "formula": "负债合计 ÷ 资产总计",
+        "applicable": true,
         "fiscal_year": 2024,
-        "source_report": "贵州茅台2024年年度报告"
+        "metric_name": "debt_to_assets",
+        "report_type": "年报",
+        "display_name": "资产负债率",
+        "reason_if_not": ""
        },
        {
-        "item": "total_equity",
-        "page": 6,
+        "unit": "比率",
         "basis": "追溯调整后",
-        "value": 271400359360.0,
+        "value": null,
+        "inputs": {
+         "net_profit": 90931314240.0,
+         "total_equity": 271400359360.0
+        },
+        "source": "query_metric",
+        "formula": "净利润 ÷ 期初与期末所有者权益的平均",
+        "applicable": false,
         "fiscal_year": 2024,
-        "source_report": "贵州茅台2024年年度报告"
+        "metric_name": "roe",
+        "report_type": "年报",
+        "display_name": "净资产收益率",
+        "reason_if_not": "口径不同"
        },
        {
-        "item": "operate_income",
-        "page": 6,
+        "unit": "比率",
         "basis": "原始披露",
-        "value": 190572524480.0,
+        "value": 0.918,
+        "inputs": {
+         "operate_cost": 15626947007.36,
+         "operate_income": 190572524480.0
+        },
+        "source": "query_metric",
+        "formula": "(营业收入 − 营业成本) ÷ 营业收入",
+        "applicable": true,
         "fiscal_year": 2025,
-        "source_report": "贵州茅台2025年年度报告"
+        "metric_name": "gross_margin",
+        "report_type": "年报",
+        "display_name": "毛利率",
+        "reason_if_not": ""
        },
        {
-        "item": "net_profit",
-        "page": 6,
+        "unit": "比率",
         "basis": "原始披露",
-        "value": 98907140205.12,
+        "value": 0.519,
+        "inputs": {
+         "net_profit": 98907140205.12,
+         "operate_income": 190572524480.0
+        },
+        "source": "query_metric",
+        "formula": "净利润 ÷ 营业收入",
+        "applicable": true,
         "fiscal_year": 2025,
-        "source_report": "贵州茅台2025年年度报告"
+        "metric_name": "net_margin",
+        "report_type": "年报",
+        "display_name": "净利率",
+        "reason_if_not": ""
        },
        {
-        "item": "total_assets",
-        "page": 6,
+        "unit": "比率",
         "basis": "原始披露",
-        "value": 362087796512.0,
+        "value": 0.18,
+        "inputs": {
+         "total_assets": 362087796512.0,
+         "total_liabilities": 65175803372.16
+        },
+        "source": "query_metric",
+        "formula": "负债合计 ÷ 资产总计",
+        "applicable": true,
         "fiscal_year": 2025,
-        "source_report": "贵州茅台2025年年度报告"
+        "metric_name": "debt_to_assets",
+        "report_type": "年报",
+        "display_name": "资产负债率",
+        "reason_if_not": ""
        },
        {
-        "item": "total_equity",
-        "page": 6,
+        "unit": "比率",
         "basis": "原始披露",
-        "value": 296911993139.84,
+        "value": null,
+        "inputs": {
+         "net_profit": 98907140205.12,
+         "total_equity": 296911993139.84
+        },
+        "source": "query_metric",
+        "formula": "净利润 ÷ 期初与期末所有者权益的平均",
+        "applicable": false,
         "fiscal_year": 2025,
-        "source_report": "贵州茅台2025年年度报告"
+        "metric_name": "roe",
+        "report_type": "年报",
+        "display_name": "净资产收益率",
+        "reason_if_not": "口径不同"
        }
       ],
-      "coverage": "范围内 3 期年报全部对照；现金流量表的项目年报的「主要会计数据」表里没有，没有对照",
-      "mismatched": [],
-      "not_covered": [],
       "data_version": "sh600519-financials-sample600519"
+     },
+     "labels": {
+      "sql": "查询语句",
+      "table": "表",
+      "unit": "单位",
+      "basis": "口径",
+      "value": "数值",
+      "inputs": "用到的数",
+      "source": "来源",
+      "formula": "算法",
+      "applicable": "适用",
+      "fiscal_year": "年度",
+      "metric_name": "指标",
+      "report_type": "报告类型",
+      "display_name": "名称",
+      "reason_if_not": "不适用的原因",
+      "data_version": "数据版本"
      }
     },
     "process": [
      {
-      "at": "2026-10-04T07:00:01.339675Z",
+      "at": "2026-10-04T07:42:35.580584Z",
       "kind": "tool",
-      "name": "run_sql",
+      "name": "metric_definitions",
       "dataset": "sh600519-financials",
-      "brief": "SELECT fiscal_year, item, basis, value, source_report, page FROM official_key_figures WHERE fiscal_year BETWEEN 2023 AND 2025",
+      "brief": "",
+      "ok": true
+     },
+     {
+      "at": "2026-10-04T07:42:35.585045Z",
+      "kind": "tool",
+      "name": "query_metric",
+      "dataset": "sh600519-financials",
+      "brief": "['gross_margin', 'net_margin', 'debt_to_assets', 'roe']",
       "ok": true
      }
     ]

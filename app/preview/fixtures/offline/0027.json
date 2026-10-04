@@ -1,4 +1,67 @@
 {
  "contract_version": 2,
- "tasks": []
+ "price": {
+  "model": "kimi-k3",
+  "priced": true,
+  "currency": "CNY",
+  "as_of": "2026-10-04",
+  "per_million": {
+   "input": "20",
+   "cached_input": "2",
+   "cache_write": "20",
+   "output": "100"
+  },
+  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
+  "estimated": true
+ },
+ "cost": "0.151028",
+ "tokens": {
+  "input": 400,
+  "cached_input": 29184,
+  "cache_write": 1023,
+  "output": 642,
+  "total": 31249
+ },
+ "calls": 5,
+ "turns": [
+  {
+   "turn_id": "turn-c294eff3fa05",
+   "calls": 2,
+   "cost": "0.059236",
+   "tokens": {
+    "input": 159,
+    "cached_input": 11008,
+    "cache_write": 512,
+    "output": 238,
+    "total": 11917
+   },
+   "at": "2026-10-04T07:42:50.852645+00:00"
+  },
+  {
+   "turn_id": "turn-5552d7b3bdca",
+   "calls": 2,
+   "cost": "0.050244",
+   "tokens": {
+    "input": 189,
+    "cached_input": 12032,
+    "cache_write": 255,
+    "output": 173,
+    "total": 12649
+   },
+   "at": "2026-10-04T07:42:51.010809+00:00"
+  },
+  {
+   "turn_id": "turn-ff6b885aedaf",
+   "calls": 1,
+   "cost": "0.041548",
+   "tokens": {
+    "input": 52,
+    "cached_input": 6144,
+    "cache_write": 256,
+    "output": 231,
+    "total": 6683
+   },
+   "at": "2026-10-04T07:42:51.157729+00:00"
+  }
+ ]
 }

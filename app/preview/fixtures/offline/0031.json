@@ -1,62 +1,119 @@
 {
  "contract_version": 2,
- "tasks": [
+ "price": {
+  "model": "kimi-k3",
+  "priced": true,
+  "currency": "CNY",
+  "as_of": "2026-10-04",
+  "per_million": {
+   "input": "20",
+   "cached_input": "2",
+   "cache_write": "20",
+   "output": "100"
+  },
+  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
+  "estimated": true
+ },
+ "cost": "0.350000",
+ "tokens": {
+  "input": 14000,
+  "cached_input": 0,
+  "cache_write": 0,
+  "output": 700,
+  "total": 14700
+ },
+ "calls": 7,
+ "turns": [
   {
-   "id": "8b109ead-42d9-513b-be23-d3fa0e086069",
-   "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "owner_actor_id": "e824e960-e14f-5f42-8843-61bc18a78346",
-   "tenant": "default",
-   "idempotency_key": "preview-done-0001",
-   "request_digest": "889fa9c567f30357002be2ef7fac38330027448984a7d5629e8839c4796b4f77",
-   "profile_id": "FIN_REVIEW",
-   "profile_version": "1",
-   "expert_pack_version": "1",
-   "original_input": {
-    "input": {
-     "text": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？"
-    },
-    "attachments": [],
-    "client_context": {
-     "entry": "expert"
-    }
+   "turn_id": "turn-f603af909fc9",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "normalized_goal": null,
-   "thread_id": "thread-463ed9c9a28c",
-   "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
-   "project_root": "/home/demo/research/恒瑞医药",
-   "state": "SUCCEEDED",
-   "state_version": 39,
-   "workflow_version": "1",
-   "current_step": 7,
-   "acceptance_contract": {
-    "steps": [
-     "scope",
-     "profile",
-     "reconcile",
-     "extract",
-     "metrics",
-     "crosscheck",
-     "note"
-    ],
-    "pack_id": "FIN_REVIEW"
+   "at": "2026-10-04T07:42:50.064547+00:00"
+  },
+  {
+   "turn_id": "turn-eb79279e3d85",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "execution_policy": {},
-   "budget": {
-    "used": "0.350000",
-    "limit": null,
-    "currency": "CNY",
-    "reserved": "0"
+   "at": "2026-10-04T07:42:50.179436+00:00"
+  },
+  {
+   "turn_id": "turn-f01c2fa68763",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "active_attempt_id": null,
-   "terminal_result_ref": "12512834-06a3-53da-8e9e-51a716855f27",
-   "waiting_reason": null,
-   "active_interaction_id": null,
-   "rejection": null,
-   "cancel_requested_at": null,
-   "cancel_requested_by": null,
-   "created_at": "2026-10-04T07:00:16.231116+00:00",
-   "updated_at": "2026-10-04T07:00:17.043589+00:00",
-   "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b"
+   "at": "2026-10-04T07:42:50.293828+00:00"
+  },
+  {
+   "turn_id": "turn-7c62273d9b43",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T07:42:50.387732+00:00"
+  },
+  {
+   "turn_id": "turn-6f86d0f91a83",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T07:42:50.473853+00:00"
+  },
+  {
+   "turn_id": "turn-df5e2cb54c49",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T07:42:50.556298+00:00"
+  },
+  {
+   "turn_id": "turn-39c309e98a54",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T07:42:50.645334+00:00"
   }
  ]
 }

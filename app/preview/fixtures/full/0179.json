@@ -2,44 +2,66 @@
  "contract_version": 2,
  "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
  "step": {
-  "index": 4,
-  "step_id": "normalize",
-  "title": "整理结果",
-  "summary": "统一单位、币种、期间的写法，标出缺的值",
-  "why": "单位、币种、期间的写法统一之后才好比较。缺的值标出来，不补、不估。",
+  "index": 3,
+  "step_id": "sql_execute",
+  "title": "执行 SQL",
+  "summary": "执行查询，原样带回结果和数据版本",
+  "why": "查询的结果原样带回，不改数；同时记下数据版本，以后能复查。",
   "uses": [
    {
-    "artifact": "rewritten",
-    "step": 1,
-    "title": "改写问题"
-   },
-   {
-    "artifact": "rows",
-    "step": 3,
-    "title": "执行 SQL"
+    "artifact": "sql",
+    "step": 2,
+    "title": "生成 SQL"
    }
   ],
-  "tools": [],
-  "returns": "table",
+  "tools": [
+   "run_sql"
+  ],
+  "returns": "rows",
   "checks": [
    {
     "label": "交回的格式对"
    },
    {
-    "label": "有整理后的表"
+    "label": "有结果和数据版本"
    }
   ],
   "after_rejection": {
    "reworks": 1,
-   "then": "human",
-   "back_to": null,
-   "backs": 0,
-   "text": "重做，最多 1 次；仍不过，停下来问你"
+   "then": "back",
+   "back_to": 2,
+   "backs": 1,
+   "text": "重做，最多 1 次；仍不过，退回第 2 步，最多 1 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
-  "status": "pending",
-  "attempts": [],
-  "times": 0,
+  "status": "running",
+  "attempts": [
+   {
+    "attempt_id": "5b878ac4-da05-5183-aec1-10871091b1e4",
+    "n": 1,
+    "outcome": "running",
+    "failure": null,
+    "spent": "0.00",
+    "started_at": "2026-10-04T07:42:36.032121Z",
+    "ended_at": null,
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": null,
+      "message": ""
+     },
+     {
+      "label": "有结果和数据版本",
+      "pass": null,
+      "message": ""
+     }
+    ],
+    "tools": {},
+    "returned": null,
+    "process": []
+   }
+  ],
+  "times": 1,
   "rejected": 0,
   "spent": "0.00",
   "data": null

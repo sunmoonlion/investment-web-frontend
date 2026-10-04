@@ -1,10 +1,12 @@
 'use client'
 
-// 设置（F-WEB-01）：key 只提交一次，页面不留、不回显；模型与审批策略进新会话的 thread 设置。
+// 设置（F-WEB-01）：key 只提交一次，页面不留、不回显；模型与审批策略用在新开的对话上。
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useRef, useState } from 'react'
-import type { Prefs } from '@/contracts/workbench'
+import type { Prefs } from '@/contracts/workbench-settings'
+import { useWorkbench } from '@/lib/workbench/context'
+
 import {
   addCredential,
   deprovisionSandbox,
@@ -15,28 +17,36 @@ import {
   revokeCredential,
   savePrefs,
   rotateRelayIdentity,
-} from '@/lib/workbench/client'
+} from '../api/client'
 
 const POLICIES: Prefs['approval_policy'][] = ['untrusted', 'on-request', 'on-failure', 'never']
 
-export function SettingsPanel({ csrfToken }: { csrfToken: string }) {
+// 设置：我的沙箱、模型 key、新对话的默认。一栏排下来，先后是用户第一次要做的顺序。
+export function SettingsScreen() {
   const t = useTranslations('workbench.settings')
+  const { csrfToken } = useWorkbench()
   const prefs = useQuery({ queryKey: ['wb-prefs'], queryFn: () => fetchPrefs() })
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
-      <KeysSection csrfToken={csrfToken} />
-      <SandboxSection csrfToken={csrfToken} />
-      {prefs.data ? (
-        <ThreadSection
-          key={`${prefs.data.model ?? ''}|${prefs.data.approval_policy}`}
-          csrfToken={csrfToken}
-          initial={prefs.data}
-        />
-      ) : (
-        <section className="bg-card rounded-2xl border p-6 shadow-sm">
-          <h2 className="text-xl font-semibold">{t('thread')}</h2>
-        </section>
-      )}
+    <div className="h-full overflow-y-auto">
+      <div className="mx-auto w-full max-w-3xl space-y-6 px-6 py-10">
+        <header>
+          <h1 className="text-2xl font-semibold tracking-tight">{t('title')}</h1>
+          <p className="text-muted-foreground mt-1 text-sm">{t('lead')}</p>
+        </header>
+        <KeysSection csrfToken={csrfToken} />
+        <SandboxSection csrfToken={csrfToken} />
+        {prefs.data ? (
+          <ThreadSection
+            key={`${prefs.data.model ?? ''}|${prefs.data.approval_policy}`}
+            csrfToken={csrfToken}
+            initial={prefs.data}
+          />
+        ) : (
+          <section className="rounded-xl border p-5">
+            <h2 className="text-base font-semibold">{t('thread')}</h2>
+          </section>
+        )}
+      </div>
     </div>
   )
 }
@@ -52,8 +62,8 @@ function ThreadSection({ csrfToken, initial }: { csrfToken: string; initial: Pre
     onSuccess: () => void queryClient.invalidateQueries({ queryKey: ['wb-prefs'] }),
   })
   return (
-    <section className="bg-card rounded-2xl border p-6 shadow-sm" aria-labelledby="settings-thread">
-      <h2 id="settings-thread" className="text-xl font-semibold">
+    <section className="rounded-xl border p-5" aria-labelledby="settings-thread">
+      <h2 id="settings-thread" className="text-base font-semibold">
         {t('thread')}
       </h2>
       <p className="text-muted-foreground mt-1 text-sm">{t('threadHint')}</p>
@@ -121,8 +131,8 @@ function KeysSection({ csrfToken }: { csrfToken: string }) {
   })
 
   return (
-    <section className="bg-card rounded-2xl border p-6 shadow-sm" aria-labelledby="settings-keys">
-      <h2 id="settings-keys" className="text-xl font-semibold">
+    <section className="rounded-xl border p-5" aria-labelledby="settings-keys">
+      <h2 id="settings-keys" className="text-base font-semibold">
         {t('keys')}
       </h2>
       <p className="text-muted-foreground mt-1 text-sm">{t('keysHint')}</p>
@@ -263,11 +273,8 @@ function SandboxSection({ csrfToken }: { csrfToken: string }) {
   const hasIdentity = Boolean(status.data?.relay_user)
   const busy = provision.isPending || remove.isPending || rotate.isPending
   return (
-    <section
-      className="bg-card rounded-2xl border p-6 shadow-sm lg:col-span-2"
-      aria-labelledby="settings-sandbox"
-    >
-      <h2 id="settings-sandbox" className="text-xl font-semibold">
+    <section className="rounded-xl border p-5" aria-labelledby="settings-sandbox">
+      <h2 id="settings-sandbox" className="text-base font-semibold">
         {t('sandbox')}
       </h2>
       <p className="text-muted-foreground mt-1 text-sm">{t('sandboxHint')}</p>

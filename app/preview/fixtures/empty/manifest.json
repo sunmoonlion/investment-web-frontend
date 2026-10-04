@@ -118,12 +118,20 @@
    "file": "0011.json"
   },
   {
+   "method": "GET",
+   "path": "/api/workbench/sandboxes/provisioned",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0012.json"
+  },
+  {
    "method": "POST",
    "path": "/api/workbench/sessions",
    "query": "",
    "status": 409,
    "content_type": "application/problem+json",
-   "file": "0012.json"
+   "file": "0013.json"
   }
  ],
  "streams": []

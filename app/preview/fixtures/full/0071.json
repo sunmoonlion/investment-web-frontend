@@ -1,67 +1,20 @@
 {
- "contract_version": 2,
- "price": {
-  "model": "kimi-k3",
-  "priced": true,
-  "currency": "CNY",
-  "as_of": "2026-10-04",
-  "per_million": {
-   "input": "20",
-   "cached_input": "2",
-   "cache_write": "20",
-   "output": "100"
-  },
-  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
-  "estimated": true
+ "session": {
+  "id": "7702656d-c17f-5a36-a101-1c6cf4e19611",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": null,
+  "sandbox_id": "e622161e-278e-510c-a294-d321919a97e8",
+  "project_root": null,
+  "thread_id": "thread-9bf70f523f52",
+  "wheel": "user",
+  "state_version": 0,
+  "active_task_id": null,
+  "thread_settings": {},
+  "created_at": "2026-10-04T07:42:38.332320+00:00",
+  "last_active_at": "2026-10-04T07:42:38.573811+00:00",
+  "kind": "chat",
+  "project_id": null,
+  "title": "毛利率和净利率有什么区别？用三句话说清楚。"
  },
- "cost": "0.123212",
- "tokens": {
-  "input": 370,
-  "cached_input": 18176,
-  "cache_write": 768,
-  "output": 641,
-  "total": 19955
- },
- "calls": 3,
- "turns": [
-  {
-   "turn_id": "turn-6895b412fdd3",
-   "calls": 1,
-   "cost": "0.037968",
-   "tokens": {
-    "input": 97,
-    "cached_input": 4864,
-    "cache_write": 0,
-    "output": 263,
-    "total": 5224
-   },
-   "at": "2026-10-04T07:00:04.558929+00:00"
-  },
-  {
-   "turn_id": "turn-b491af1d3d35",
-   "calls": 1,
-   "cost": "0.045708",
-   "tokens": {
-    "input": 133,
-    "cached_input": 4864,
-    "cache_write": 256,
-    "output": 282,
-    "total": 5535
-   },
-   "at": "2026-10-04T07:00:04.713285+00:00"
-  },
-  {
-   "turn_id": "turn-4c920ab29a07",
-   "calls": 1,
-   "cost": "0.039536",
-   "tokens": {
-    "input": 140,
-    "cached_input": 8448,
-    "cache_write": 512,
-    "output": 96,
-    "total": 9196
-   },
-   "at": "2026-10-04T07:00:04.789412+00:00"
-  }
- ]
+ "pending_interactions": []
 }

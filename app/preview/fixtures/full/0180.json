@@ -2,11 +2,11 @@
  "contract_version": 2,
  "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
  "step": {
-  "index": 5,
-  "step_id": "final",
-  "title": "成稿",
-  "summary": "写出答案：每个数带数据版本和口径，写明局限；结论栏留空",
-  "why": "答案里每个数都带出处和口径，并写明局限。只给事实，不给评级和买卖建议。",
+  "index": 4,
+  "step_id": "normalize",
+  "title": "整理结果",
+  "summary": "统一单位、币种、期间的写法，标出缺的值",
+  "why": "单位、币种、期间的写法统一之后才好比较。缺的值标出来，不补、不估。",
   "uses": [
    {
     "artifact": "rewritten",
@@ -14,22 +14,19 @@
     "title": "改写问题"
    },
    {
-    "artifact": "table",
-    "step": 4,
-    "title": "整理结果"
+    "artifact": "rows",
+    "step": 3,
+    "title": "执行 SQL"
    }
   ],
   "tools": [],
-  "returns": "note",
+  "returns": "table",
   "checks": [
    {
     "label": "交回的格式对"
    },
    {
-    "label": "有回答和出处"
-   },
-   {
-    "label": "没有评级、目标价、买卖建议"
+    "label": "有整理后的表"
    }
   ],
   "after_rejection": {

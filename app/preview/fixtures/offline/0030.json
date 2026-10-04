@@ -1,119 +1,20 @@
 {
- "contract_version": 2,
- "price": {
-  "model": "kimi-k3",
-  "priced": true,
-  "currency": "CNY",
-  "as_of": "2026-10-04",
-  "per_million": {
-   "input": "20",
-   "cached_input": "2",
-   "cache_write": "20",
-   "output": "100"
-  },
-  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
-  "estimated": true
+ "session": {
+  "id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
+  "owner_actor_id": "e824e960-e14f-5f42-8843-61bc18a78346",
+  "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
+  "sandbox_id": "09e06f6e-eee5-5c37-b579-b534b06bfda2",
+  "project_root": "/home/demo/research/恒瑞医药",
+  "thread_id": "thread-63f5fa3b54be",
+  "wheel": "user",
+  "state_version": 2,
+  "active_task_id": null,
+  "thread_settings": {},
+  "created_at": "2026-10-04T07:42:49.881884+00:00",
+  "last_active_at": "2026-10-04T07:42:50.678120+00:00",
+  "kind": "work",
+  "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
+  "title": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？"
  },
- "cost": "0.350000",
- "tokens": {
-  "input": 14000,
-  "cached_input": 0,
-  "cache_write": 0,
-  "output": 700,
-  "total": 14700
- },
- "calls": 7,
- "turns": [
-  {
-   "turn_id": "turn-3f290f92b9eb",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-04T07:00:16.416099+00:00"
-  },
-  {
-   "turn_id": "turn-9ceab4d32b63",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-04T07:00:16.526223+00:00"
-  },
-  {
-   "turn_id": "turn-2ac6d5efa529",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-04T07:00:16.656153+00:00"
-  },
-  {
-   "turn_id": "turn-87ecd7d767c6",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-04T07:00:16.748692+00:00"
-  },
-  {
-   "turn_id": "turn-6c961019876d",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-04T07:00:16.832680+00:00"
-  },
-  {
-   "turn_id": "turn-cbf52fff8ff1",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-04T07:00:16.912176+00:00"
-  },
-  {
-   "turn_id": "turn-ca9707902a68",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-04T07:00:17.004450+00:00"
-  }
- ]
+ "pending_interactions": []
 }

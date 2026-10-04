@@ -1,540 +1,103 @@
 {
  "contract_version": 2,
- "task": {
-  "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
-  "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
-  "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa",
-  "expert": {
-   "id": "FIN_REVIEW",
-   "name": "财报体检",
-   "version": "1"
-  },
-  "question": "招商银行 2023 到 2025 年的盈利能力怎么样？",
-  "state": "CANCELLED",
-  "state_word": "已取消",
-  "waiting_reason": null,
-  "cancel_requested": true,
-  "reason": {
-   "by": "user"
-  },
-  "reason_text": "你取消了这个委托",
-  "budget": {
-   "currency": "CNY",
-   "limit": null,
-   "used": "0.15",
-   "reserved": "0.00",
-   "left": null,
-   "running": "0.00",
-   "spent": "0.15",
-   "estimated": true
-  },
-  "data": {
-   "dataset": "sh600036-financials",
-   "data_version": "sh600036-financials-sample600036",
-   "as_of": "2025-12-31",
-   "security_code": "600036",
-   "versions_seen": [
-    "sh600036-financials-sample600036"
-   ]
-  },
-  "started_at": "2026-10-04T07:00:03.982088Z",
-  "ended_at": "2026-10-04T07:00:04.413741Z",
-  "seconds": 0,
-  "active_interaction_id": null
- },
- "head": {
-  "kind": "stopped",
-  "text": "做到第 3 步停下了"
- },
- "sections": [
+ "artifacts": [
   {
-   "key": "answer",
-   "title": "回答",
-   "blocks": [
-    {
-     "key": "answer",
-     "title": "回答",
-     "kind": "text",
-     "folded": false,
-     "from": {
-      "step": 7,
-      "title": "成稿"
+   "id": "5a2d2204-c8d8-5b74-9afe-4d279d625a99",
+   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "attempt_id": "afe2be79-4e44-5e15-a212-c5bb25507e54",
+   "name": "profile",
+   "version": 1,
+   "kind": "step",
+   "content": {
+    "as_of": "2025-12-31",
+    "notes": [
+     "样例数据：数字是为了预览编的，不是这家公司的真实数据",
+     "2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策"
+    ],
+    "dataset": "sh600036-financials",
+    "periods": [
+     {
+      "basis": "原始披露",
+      "verified": true,
+      "fiscal_year": 2023,
+      "report_date": "2023-12-31",
+      "report_type": "年报",
+      "official_disclosed_date": "2024-03-28"
      },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    }
-   ]
-  },
-  {
-   "key": "data",
-   "title": "数据",
-   "blocks": [
-    {
-     "key": "metrics",
-     "title": "指标表",
-     "kind": "table",
-     "folded": false,
-     "from": {
-      "step": 5,
-      "title": "算指标"
+     {
+      "basis": "追溯调整后",
+      "verified": true,
+      "fiscal_year": 2024,
+      "report_date": "2024-12-31",
+      "report_type": "年报",
+      "official_disclosed_date": "2025-03-28"
      },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [
-      {
-       "key": "display_name",
-       "title": "指标"
-      },
-      {
-       "key": "metric_name",
-       "title": "指标代码"
-      },
-      {
-       "key": "fiscal_year",
-       "title": "年度"
-      },
-      {
-       "key": "report_type",
-       "title": "报告"
-      },
-      {
-       "key": "basis",
-       "title": "口径"
-      },
-      {
-       "key": "value",
-       "title": "值"
-      },
-      {
-       "key": "unit",
-       "title": "单位"
-      },
-      {
-       "key": "applicable",
-       "title": "适用"
-      },
-      {
-       "key": "reason_if_not",
-       "title": "不适用的原因"
-      },
-      {
-       "key": "formula",
-       "title": "算法"
-      },
-      {
-       "key": "source",
-       "title": "来自"
-      }
-     ],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    },
-    {
-     "key": "facts",
-     "title": "取数表",
-     "kind": "table",
-     "folded": true,
-     "from": {
-      "step": 4,
-      "title": "取数"
+     {
+      "basis": "原始披露",
+      "verified": true,
+      "fiscal_year": 2025,
+      "report_date": "2025-12-31",
+      "report_type": "年报",
+      "official_disclosed_date": "2026-03-28"
+     }
+    ],
+    "basis_breaks": [
+     {
+      "basis": [
+       "原始披露",
+       "追溯调整后"
+      ],
+      "between": [
+       "2023",
+       "2024"
+      ]
      },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [
-      {
-       "key": "display_name",
-       "title": "科目"
-      },
-      {
-       "key": "item",
-       "title": "字段"
-      },
-      {
-       "key": "fiscal_year",
-       "title": "年度"
-      },
-      {
-       "key": "report_type",
-       "title": "报告"
-      },
-      {
-       "key": "report_date",
-       "title": "报告期"
-      },
-      {
-       "key": "basis",
-       "title": "口径"
-      },
-      {
-       "key": "value",
-       "title": "值"
-      },
-      {
-       "key": "unit",
-       "title": "单位"
-      },
-      {
-       "key": "statement",
-       "title": "报表"
-      }
-     ],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    }
-   ]
+     {
+      "basis": [
+       "追溯调整后",
+       "原始披露"
+      ],
+      "between": [
+       "2024",
+       "2025"
+      ]
+     }
+    ],
+    "data_version": "sh600036-financials-sample600036",
+    "not_ingested": false,
+    "security_code": "600036"
+   },
+   "digest": "0801c19adbe7145e42acecc360deb0f05b3f302a4640bade548d9a51b0a6ead8",
+   "workspace_path": null,
+   "created_at": "2026-10-04T07:42:38.067519+00:00"
   },
   {
-   "key": "verified",
-   "title": "专家验过什么",
-   "blocks": [
-    {
-     "key": "reconcile",
-     "title": "勾稽",
-     "kind": "checks",
-     "folded": false,
-     "from": {
-      "step": 3,
-      "title": "勾稽"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [
-      {
-       "key": "rule_id",
-       "title": "编号"
-      },
-      {
-       "key": "rule",
-       "title": "规则"
-      },
-      {
-       "key": "periods_checked",
-       "title": "验了几期"
-      },
-      {
-       "key": "unbalanced",
-       "title": "不平的期数"
-      },
-      {
-       "key": "unbalanced_periods",
-       "title": "不平的期"
-      }
-     ],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    },
-    {
-     "key": "crosscheck",
-     "title": "对照官方",
-     "kind": "coverage",
-     "folded": false,
-     "from": {
-      "step": 6,
-      "title": "对照官方"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    },
-    {
-     "key": "mismatched",
-     "title": "和公司披露的数对不上的",
-     "kind": "table",
-     "folded": false,
-     "from": {
-      "step": 6,
-      "title": "对照官方"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [
-      {
-       "key": "fiscal_year",
-       "title": "年度"
-      },
-      {
-       "key": "item",
-       "title": "字段"
-      },
-      {
-       "key": "basis",
-       "title": "口径"
-      },
-      {
-       "key": "official",
-       "title": "公司披露的"
-      },
-      {
-       "key": "dataset",
-       "title": "数据集里的"
-      },
-      {
-       "key": "source_report",
-       "title": "出自"
-      },
-      {
-       "key": "page",
-       "title": "页"
-      }
-     ],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    },
-    {
-     "key": "not_covered",
-     "title": "没有对照到的",
-     "kind": "table",
-     "folded": false,
-     "from": {
-      "step": 6,
-      "title": "对照官方"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [
-      {
-       "key": "fiscal_year",
-       "title": "年度"
-      },
-      {
-       "key": "report_type",
-       "title": "报告"
-      }
-     ],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    },
-    {
-     "key": "matched",
-     "title": "和公司披露的数一致的",
-     "kind": "table",
-     "folded": true,
-     "from": {
-      "step": 6,
-      "title": "对照官方"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [
-      {
-       "key": "fiscal_year",
-       "title": "年度"
-      },
-      {
-       "key": "item",
-       "title": "字段"
-      },
-      {
-       "key": "basis",
-       "title": "口径"
-      },
-      {
-       "key": "value",
-       "title": "值"
-      },
-      {
-       "key": "source_report",
-       "title": "出自"
-      },
-      {
-       "key": "page",
-       "title": "页"
-      }
-     ],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    }
-   ]
-  },
-  {
-   "key": "notes",
-   "title": "观察与提醒",
-   "blocks": [
-    {
-     "key": "observations",
-     "title": "观察",
-     "kind": "list",
-     "folded": false,
-     "from": {
-      "step": 7,
-      "title": "成稿"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    },
-    {
-     "key": "caveats",
-     "title": "提醒",
-     "kind": "list",
-     "folded": false,
-     "from": {
-      "step": 7,
-      "title": "成稿"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    }
-   ]
-  },
-  {
-   "key": "limits",
-   "title": "局限",
-   "blocks": [
-    {
-     "key": "limitations",
-     "title": "局限",
-     "kind": "list",
-     "folded": false,
-     "from": {
-      "step": 7,
-      "title": "成稿"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    }
-   ]
-  },
-  {
-   "key": "sources",
-   "title": "出处",
-   "blocks": [
-    {
-     "key": "citations",
-     "title": "出处",
-     "kind": "list",
-     "folded": false,
-     "from": {
-      "step": 7,
-      "title": "成稿"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    }
-   ]
+   "id": "4f84de0b-201e-521c-b5d1-8be18da742cd",
+   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "attempt_id": "1fe55be8-9a82-5c3a-bd0d-8293b8444e2e",
+   "name": "scope",
+   "version": 1,
+   "kind": "step",
+   "content": {
+    "aspects": [
+     "盈利能力"
+    ],
+    "company": "招商银行",
+    "periods": [
+     "2023",
+     "2024",
+     "2025"
+    ],
+    "question": "招商银行 2023 到 2025 年的盈利能力怎么样？",
+    "assumptions": [],
+    "report_types": [
+     "年报"
+    ],
+    "security_code": "600036"
+   },
+   "digest": "b8d454f41c3ca74f8f6c0df1e9b96f59609c3abac41d247cc8974b3b42f79945",
+   "workspace_path": null,
+   "created_at": "2026-10-04T07:42:37.965957+00:00"
   }
- ],
- "how": [
-  {
-   "index": 1,
-   "title": "定范围",
-   "summary": "认出公司、期间、报告类型",
-   "status": "accepted",
-   "times": 1,
-   "rejected": 0,
-   "spent": "0.05"
-  },
-  {
-   "index": 2,
-   "title": "数据摸底",
-   "summary": "确认有这家公司的数据、数据到哪一天、各期是什么口径",
-   "status": "accepted",
-   "times": 1,
-   "rejected": 0,
-   "spent": "0.05"
-  },
-  {
-   "index": 3,
-   "title": "勾稽",
-   "summary": "三张表之间、前后两年之间对不对得上",
-   "status": "cancelled",
-   "times": 1,
-   "rejected": 1,
-   "spent": "0.05"
-  },
-  {
-   "index": 4,
-   "title": "取数",
-   "summary": "把问题要用到的报表科目按期取出来，每个数带口径",
-   "status": "not_reached",
-   "times": 0,
-   "rejected": 0,
-   "spent": "0.00"
-  },
-  {
-   "index": 5,
-   "title": "算指标",
-   "summary": "按数据集里登记的口径算指标；分母不成立或口径不同的，标为不适用",
-   "status": "not_reached",
-   "times": 0,
-   "rejected": 0,
-   "spent": "0.00"
-  },
-  {
-   "index": 6,
-   "title": "对照官方",
-   "summary": "拿取到的数和公司年报里自己披露的数逐项对照",
-   "status": "not_reached",
-   "times": 0,
-   "rejected": 0,
-   "spent": "0.00"
-  },
-  {
-   "index": 7,
-   "title": "成稿",
-   "summary": "只用前面各步的结果写底稿：列事实和提醒，结论栏留空",
-   "status": "not_reached",
-   "times": 0,
-   "rejected": 0,
-   "spent": "0.00"
-  }
- ],
- "conclusion": {
-  "text": "",
-  "kind": "user_draft",
-  "saved_at": null,
-  "version": null
- }
+ ]
 }

@@ -1,54 +1,66 @@
 {
- "contract_version": 2,
- "price": {
-  "model": "kimi-k3",
-  "priced": true,
-  "currency": "CNY",
-  "as_of": "2026-10-04",
-  "per_million": {
-   "input": "20",
-   "cached_input": "2",
-   "cache_write": "20",
-   "output": "100"
-  },
-  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
-  "estimated": true
+ "session": {
+  "id": "865ec0cc-3044-56ea-b08d-12c2b85b89a3",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "sandbox_id": "e622161e-278e-510c-a294-d321919a97e8",
+  "project_root": "/home/demo/research/恒瑞医药",
+  "thread_id": "thread-7ce11267ab82",
+  "wheel": "user",
+  "state_version": 0,
+  "active_task_id": null,
+  "thread_settings": {},
+  "created_at": "2026-10-04T07:42:39.223186+00:00",
+  "last_active_at": "2026-10-04T07:42:39.595409+00:00",
+  "kind": "work",
+  "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
+  "title": "把毛利率、净利率、自由现金流三个指标的含义整理成 notes…"
  },
- "cost": "0.177284",
- "tokens": {
-  "input": 533,
-  "cached_input": 33792,
-  "cache_write": 1792,
-  "output": 632,
-  "total": 36749
- },
- "calls": 5,
- "turns": [
+ "pending_interactions": [
   {
-   "turn_id": "turn-d19077a67c2f",
-   "calls": 4,
-   "cost": "0.140916",
-   "tokens": {
-    "input": 313,
-    "cached_input": 26368,
-    "cache_write": 1536,
-    "output": 512,
-    "total": 28729
+   "id": "ab81c556-789b-5c9f-834a-d591f5885019",
+   "session_id": "865ec0cc-3044-56ea-b08d-12c2b85b89a3",
+   "task_id": null,
+   "attempt_id": null,
+   "kind": "tool_approval",
+   "audience": "owner",
+   "prompt": {
+    "title": "命令需要你批准",
+    "options": [
+     {
+      "id": "accept",
+      "label": "允许一次"
+     },
+     {
+      "id": "acceptForSession",
+      "label": "这段对话里都允许"
+     },
+     {
+      "id": "decline",
+      "label": "拒绝"
+     }
+    ],
+    "subject": {
+     "cwd": "/home/demo/research/恒瑞医药",
+     "itemId": "exec_command_3_e67b4901",
+     "method": "item/commandExecution/requestApproval",
+     "reason": "需要在项目上一级目录 /home/demo/research 创建 outside.txt，是否允许？",
+     "command": "/usr/bin/zsh -lc \"printf 'test' > /home/demo/research/outside.txt\"",
+     "request_id": "e622161e-278e-510c-a294-d321919a97e8:srv-97cfab49",
+     "environmentId": "user-pc"
+    },
+    "evidence": [],
+    "question": "需要在项目上一级目录 /home/demo/research 创建 outside.txt，是否允许？",
+    "unknowns": []
    },
-   "at": "2026-10-04T07:00:05.600125+00:00"
-  },
-  {
-   "turn_id": "turn-40aff826c952",
-   "calls": 1,
-   "cost": "0.036368",
-   "tokens": {
-    "input": 220,
-    "cached_input": 7424,
-    "cache_write": 256,
-    "output": 120,
-    "total": 8020
-   },
-   "at": "2026-10-04T07:00:05.707104+00:00"
+   "subject_digest": null,
+   "target_state_version": null,
+   "expires_at": "2026-10-04T08:42:39.669995+00:00",
+   "status": "pending",
+   "response": null,
+   "consumed_at": null,
+   "responded_by": null,
+   "created_at": "2026-10-04T07:42:39.669462+00:00"
   }
  ]
 }

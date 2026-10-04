@@ -138,20 +138,21 @@ function Returned({ attempt }: { attempt: Attempt }) {
       <p className="text-muted-foreground text-[13px]">{t('detail.noReturn')}</p>
     )
   }
+  const word = (key: string) => returned.labels?.[key] ?? key
   return (
     <div className="space-y-3">
       {shape(returned.content).map((part) =>
         part.kind === 'table' ? (
           <div key={part.key} className="overflow-x-auto rounded-md border">
             <table className="w-full text-[13px]">
-              <caption className="text-muted-foreground border-b px-2 py-1 text-left font-mono text-xs">
-                {part.key}
+              <caption className="text-muted-foreground border-b px-2 py-1 text-left text-xs">
+                {word(part.key)}
               </caption>
               <thead>
                 <tr className="bg-muted/50 text-left">
                   {part.columns.map((column) => (
-                    <th key={column} className="px-2 py-1 font-mono text-xs font-normal">
-                      {column}
+                    <th key={column} className="px-2 py-1 text-xs font-normal">
+                      {word(column)}
                     </th>
                   ))}
                 </tr>
@@ -176,9 +177,7 @@ function Returned({ attempt }: { attempt: Attempt }) {
           </div>
         ) : (
           <dl key={part.key} className="grid grid-cols-[10rem_1fr] gap-x-3 text-[13px]">
-            <dt className="text-muted-foreground truncate font-mono text-xs leading-6">
-              {part.key}
-            </dt>
+            <dt className="text-muted-foreground truncate text-xs leading-6">{word(part.key)}</dt>
             <dd className="min-w-0 break-words">
               {part.kind === 'value' ? part.value : part.items.length ? part.items.join('；') : '—'}
             </dd>

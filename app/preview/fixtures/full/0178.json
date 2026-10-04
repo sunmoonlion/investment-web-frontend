@@ -2,68 +2,119 @@
  "contract_version": 2,
  "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
  "step": {
-  "index": 3,
-  "step_id": "sql_execute",
-  "title": "执行 SQL",
-  "summary": "执行查询，原样带回结果和数据版本",
-  "why": "查询的结果原样带回，不改数；同时记下数据版本，以后能复查。",
+  "index": 2,
+  "step_id": "sql_generate",
+  "title": "生成 SQL",
+  "summary": "对照数据的结构写出查询，并说明每一列的口径",
+  "why": "查询照着数据的真实结构写，每一列是什么口径写明白。你看得到它到底查了什么。",
   "uses": [
    {
-    "artifact": "sql",
-    "step": 2,
-    "title": "生成 SQL"
+    "artifact": "rewritten",
+    "step": 1,
+    "title": "改写问题"
    }
   ],
   "tools": [
-   "run_sql"
+   "describe_schema",
+   "metric_definitions"
   ],
-  "returns": "rows",
+  "returns": "sql",
   "checks": [
    {
     "label": "交回的格式对"
    },
    {
-    "label": "有结果和数据版本"
+    "label": "有查询语句"
+   },
+   {
+    "label": "查询语句不是空的"
    }
   ],
   "after_rejection": {
-   "reworks": 1,
-   "then": "back",
-   "back_to": 2,
-   "backs": 1,
-   "text": "重做，最多 1 次；仍不过，退回第 2 步，最多 1 次；仍不过，停下来问你"
+   "reworks": 2,
+   "then": "human",
+   "back_to": null,
+   "backs": 0,
+   "text": "重做，最多 2 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
-  "status": "running",
+  "status": "accepted",
   "attempts": [
    {
-    "attempt_id": "5b878ac4-da05-5183-aec1-10871091b1e4",
+    "attempt_id": "02022332-277b-5d39-963b-947829025012",
     "n": 1,
-    "outcome": "running",
+    "outcome": "accepted",
     "failure": null,
-    "spent": "0.00",
-    "started_at": "2026-10-04T07:00:01.772343Z",
-    "ended_at": null,
+    "spent": "0.05",
+    "started_at": "2026-10-04T07:42:36.007347Z",
+    "ended_at": "2026-10-04T07:42:36.016461Z",
     "checks": [
      {
       "label": "交回的格式对",
-      "pass": null,
+      "pass": true,
       "message": ""
      },
      {
-      "label": "有结果和数据版本",
-      "pass": null,
+      "label": "有查询语句",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "查询语句不是空的",
+      "pass": true,
       "message": ""
      }
     ],
-    "tools": {},
-    "returned": null,
-    "process": []
+    "tools": {
+     "describe_schema": 1,
+     "metric_definitions": 1
+    },
+    "returned": {
+     "artifact": "sql",
+     "version": 1,
+     "content": {
+      "sql": "SELECT fiscal_year, report_type, (operate_income - operate_cost) / operate_income AS gross_margin FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2021 AND 2025 ORDER BY fiscal_year",
+      "columns": [
+       {
+        "name": "fiscal_year",
+        "definition": "会计年度"
+       },
+       {
+        "name": "gross_margin",
+        "definition": "(营业收入 − 营业成本) ÷ 营业收入，比率，0.25 表示 25%"
+       }
+      ]
+     },
+     "labels": {
+      "sql": "查询语句",
+      "columns": "列",
+      "name": "名字",
+      "definition": "口径"
+     }
+    },
+    "process": [
+     {
+      "at": "2026-10-04T07:42:35.983610Z",
+      "kind": "tool",
+      "name": "describe_schema",
+      "dataset": "sz000858-financials",
+      "brief": "",
+      "ok": true
+     },
+     {
+      "at": "2026-10-04T07:42:35.988512Z",
+      "kind": "tool",
+      "name": "metric_definitions",
+      "dataset": "sz000858-financials",
+      "brief": "",
+      "ok": true
+     }
+    ]
    }
   ],
   "times": 1,
   "rejected": 0,
-  "spent": "0.00",
+  "spent": "0.05",
   "data": null
  }
 }

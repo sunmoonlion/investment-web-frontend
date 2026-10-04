@@ -1,67 +1,63 @@
 {
- "contract_version": 2,
- "price": {
-  "model": "kimi-k3",
-  "priced": true,
-  "currency": "CNY",
-  "as_of": "2026-10-04",
-  "per_million": {
-   "input": "20",
-   "cached_input": "2",
-   "cache_write": "20",
-   "output": "100"
-  },
-  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
-  "estimated": true
+ "session": {
+  "id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "sandbox_id": "e622161e-278e-510c-a294-d321919a97e8",
+  "project_root": "/home/demo/research/宁德时代",
+  "thread_id": "thread-2a7c11101482",
+  "wheel": "advisor",
+  "state_version": 1,
+  "active_task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+  "thread_settings": {},
+  "created_at": "2026-10-04T07:42:36.058812+00:00",
+  "last_active_at": "2026-10-04T07:42:36.095255+00:00",
+  "kind": "work",
+  "project_id": "d35d6a3c-0149-5775-a1c7-860389fb558a",
+  "title": "宁德时代 2023 到 2025 年的盈利能力怎么样？"
  },
- "cost": "0.150000",
- "tokens": {
-  "input": 6000,
-  "cached_input": 0,
-  "cache_write": 0,
-  "output": 300,
-  "total": 6300
- },
- "calls": 3,
- "turns": [
+ "pending_interactions": [
   {
-   "turn_id": "turn-377f5ba97a5b",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
+   "id": "81108b8f-3022-5de7-860c-36662e2db6fb",
+   "session_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+   "attempt_id": "1ad55ace-076f-5588-a1db-a4f8e4970b49",
+   "kind": "input",
+   "audience": "owner",
+   "prompt": {
+    "title": "第「勾稽」步没有通过验收",
+    "options": [
+     {
+      "id": "rework",
+      "label": "再试一次"
+     },
+     {
+      "id": "stop",
+      "label": "停止"
+     }
+    ],
+    "subject": {
+     "backs": 0,
+     "step_id": "reconcile",
+     "failures": [
+      "all_equal(checks): 有勾稽规则不平，不往下算"
+     ],
+     "last_output": "{\"checks\": [{\"rule_id\": \"R01\", \"rule\": \"资产 = 负债 + 所有者权益\", \"periods_checked\": 3, \"unbalanced\": 1, \"unbalanced_periods\": [\"2024-12-31\"]}, {\"rule_id\": \"R02\", \"rule\": \"流动资产 + 非流动资产 = 资产总计\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R03\", \"rule\": \"流动负债 + 非流动负债 = 负债合计\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R04\", \"rule\": \"营业收入 − 营业成本 − 各项费用 = 营业利润（允许其他收益）\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R05\", \"rule\": \"利润总额 − 所得税 = 净利润\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R06\", \"rule\": \"归母净利润 + 少数股东损益 = 净利润\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R07\", \"rule\": \"经营 + 投资 + 筹资现金流 + 汇率影响 = 现金净增加额\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R08\", \"rule\": \"期初现金 + 现金净增加额 = 期末现金\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R09\", \"rule\": \"利润表净利润 = 现金流量表补充资料里的净利润\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}], \"continuity\": [{\"fiscal_year\": 2024, \"diff\": 1204.0, \"note\": \"2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策\"}], \"unexplained_breaks\": [], \"data_version\": \"sz300750-financials-sample300750\"}"
+    },
+    "evidence": [],
+    "question": "要再试一次，还是停止？",
+    "unknowns": [
+     "all_equal(checks): 有勾稽规则不平，不往下算"
+    ]
    },
-   "at": "2026-10-04T07:00:01.947582+00:00"
-  },
-  {
-   "turn_id": "turn-dd702a6fc22a",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-04T07:00:02.086334+00:00"
-  },
-  {
-   "turn_id": "turn-001d2e91bb54",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-04T07:00:02.210973+00:00"
+   "subject_digest": null,
+   "target_state_version": 18,
+   "expires_at": "2026-10-07T07:42:36.398719+00:00",
+   "status": "pending",
+   "response": null,
+   "consumed_at": null,
+   "responded_by": null,
+   "created_at": "2026-10-04T07:42:36.398108+00:00"
   }
  ]
 }

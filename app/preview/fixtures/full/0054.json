@@ -1,50 +1,22 @@
 {
  "contract_version": 2,
- "project": {
-  "id": "69268fa0-44c9-5bb1-8187-e0ddab71455f",
-  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-  "workspace_root": "/home/demo/research",
-  "path": "中国平安",
-  "title": "中国平安",
-  "created_at": "2026-10-04T06:59:59.726102Z",
-  "updated_at": "2026-10-04T06:59:59.726102Z",
-  "archived_at": null,
-  "directory": "/home/demo/research/中国平安",
-  "archived": false,
-  "environment_name": "办公室的电脑",
-  "online": true
- },
- "active_task_id": null,
- "conversations": [
+ "sessions": [
   {
-   "id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
-   "kind": "work",
-   "title": null,
+   "id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
+   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "sandbox_id": "e622161e-278e-510c-a294-d321919a97e8",
+   "project_root": "/home/demo/research/招商银行",
+   "thread_id": "thread-1be50a2e4cae",
    "wheel": "user",
+   "state_version": 2,
    "active_task_id": null,
-   "last_active_at": "2026-10-04T07:00:05.939401Z"
-  }
- ],
- "tasks": [
-  {
-   "id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
-   "session_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
-   "profile_id": "BOND_REVIEW",
-   "expert": "",
-   "state": "REJECTED",
-   "state_word": "打回",
-   "question": "中国平安 2025 年的偿付能力怎么样？",
-   "budget": {
-    "used": "0",
-    "limit": null,
-    "currency": "CNY",
-    "reserved": "0"
-   },
-   "spent": "0.00",
-   "currency": "CNY",
-   "created_at": "2026-10-04T07:00:05.904619Z",
-   "ended_at": "2026-10-04T07:00:05.939401Z"
+   "thread_settings": {},
+   "created_at": "2026-10-04T07:42:37.858107+00:00",
+   "last_active_at": "2026-10-04T07:42:38.299531+00:00",
+   "kind": "work",
+   "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa",
+   "title": "招商银行 2023 到 2025 年的盈利能力怎么样？"
   }
  ]
 }

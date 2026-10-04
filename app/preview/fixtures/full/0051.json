@@ -1,22 +1,50 @@
 {
  "contract_version": 2,
- "sessions": [
+ "project": {
+  "id": "06944124-075a-504f-b4f3-275ef032eb9c",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "workspace_root": "/home/demo/research",
+  "path": "比亚迪",
+  "title": "比亚迪",
+  "created_at": "2026-10-04T07:42:34.177027Z",
+  "updated_at": "2026-10-04T07:42:34.177027Z",
+  "archived_at": null,
+  "directory": "/home/demo/research/比亚迪",
+  "archived": false,
+  "environment_name": "办公室的电脑",
+  "online": true
+ },
+ "active_task_id": null,
+ "conversations": [
   {
    "id": "dd790e56-724e-5e57-9294-bae977583372",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "sandbox_id": "e622161e-278e-510c-a294-d321919a97e8",
-   "project_root": "/home/demo/research/比亚迪",
-   "thread_id": "thread-0dd4533d1821",
-   "wheel": "user",
-   "state_version": 2,
-   "active_task_id": null,
-   "thread_settings": {},
-   "created_at": "2026-10-04T07:00:03.212567+00:00",
-   "last_active_at": "2026-10-04T07:00:03.946871+00:00",
    "kind": "work",
-   "project_id": "06944124-075a-504f-b4f3-275ef032eb9c",
-   "title": "比亚迪 2023 到 2025 年的盈利能力怎么样？"
+   "title": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
+   "wheel": "user",
+   "active_task_id": null,
+   "last_active_at": "2026-10-04T07:42:37.828017Z"
+  }
+ ],
+ "tasks": [
+  {
+   "id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "session_id": "dd790e56-724e-5e57-9294-bae977583372",
+   "profile_id": "FIN_REVIEW",
+   "expert": "财报体检",
+   "state": "FAILED",
+   "state_word": "失败",
+   "question": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
+   "budget": {
+    "used": "0.300000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "spent": "0.30",
+   "currency": "CNY",
+   "created_at": "2026-10-04T07:42:37.192171Z",
+   "ended_at": "2026-10-04T07:42:37.828017Z"
   }
  ]
 }

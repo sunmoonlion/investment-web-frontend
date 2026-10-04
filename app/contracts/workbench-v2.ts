@@ -98,7 +98,20 @@ export type Pending = z.infer<typeof pendingSchema>
 export const pendingListSchema = z.object({ interactions: z.array(pendingSchema) }).loose()
 
 export const machineSchema = z
-  .object({ id: uuid, name: z.string(), status: z.string(), roots: z.array(z.string()) })
+  .object({
+    id: uuid,
+    name: z.string(),
+    status: z.string(),
+    roots: z.array(z.string()),
+    agent_version: z.string().nullable().optional(),
+    codex_version: z.string().nullable().optional(),
+    last_seen_at: z.string().nullable().optional(),
+    // 这台机器自己定的上限：只能在那台机器上改，网页只显示
+    ceiling: z
+      .object({ sandbox: z.string().optional(), network: z.boolean().optional() })
+      .loose()
+      .optional(),
+  })
   .loose()
 export type Machine = z.infer<typeof machineSchema>
 export const machinesSchema = z.object({ environments: z.array(machineSchema) }).loose()
@@ -230,6 +243,8 @@ const attemptSchema = z
         artifact: z.string().nullable(),
         content: z.unknown(),
         raw: z.string().nullable().optional(),
+        // 字段各叫什么。没登记的字段不在里面
+        labels: z.record(z.string(), z.string()).optional(),
       })
       .loose()
       .nullable()
@@ -549,3 +564,55 @@ export const reviewPlaceSchema = z
   .loose()
 
 export const createdProjectSchema = z.object({ id: uuid }).loose()
+
+// ---------------- 底稿 ----------------
+export const dossierBlockSchema = z
+  .object({
+    key: z.string(),
+    title: z.string(),
+    kind: z.enum(['text', 'list', 'table', 'tables', 'checks', 'coverage']),
+    folded: z.boolean(),
+    from: z.object({ step: z.number().int().nullable(), title: z.string() }).loose().nullable(),
+    // done：有内容；别的：没有做到这一步，note 里是原因
+    status: z.string(),
+    note: z.string().nullable(),
+    content: z.unknown(),
+    columns: z.array(z.object({ key: z.string(), title: z.string() })),
+    also: z.record(z.string(), z.unknown()),
+    summary: z.object({ text: z.string() }).loose().nullable(),
+    source: z
+      .object({
+        dataset: z.string().nullable().optional(),
+        data_version: z.string().nullable().optional(),
+        as_of: z.string().nullable().optional(),
+      })
+      .loose()
+      .nullable(),
+  })
+  .loose()
+export type DossierBlock = z.infer<typeof dossierBlockSchema>
+
+export const dossierSchema = z
+  .object({
+    task: runSheetSchema,
+    head: z.object({ kind: z.string(), text: z.string() }).loose(),
+    sections: z.array(
+      z.object({ key: z.string(), title: z.string(), blocks: z.array(dossierBlockSchema) }).loose(),
+    ),
+    how: z.array(
+      z
+        .object({
+          index: z.number().int(),
+          title: z.string(),
+          status: stepStatusSchema,
+          times: z.number().int(),
+          rejected: z.number().int(),
+        })
+        .loose(),
+    ),
+    conclusion: z
+      .object({ text: z.string(), saved_at: z.string().nullable(), version: z.number().nullable() })
+      .loose(),
+  })
+  .loose()
+export type Dossier = z.infer<typeof dossierSchema>

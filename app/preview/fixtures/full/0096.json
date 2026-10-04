@@ -1,60 +1,67 @@
 {
  "contract_version": 2,
- "tasks": [
+ "price": {
+  "model": "kimi-k3",
+  "priced": true,
+  "currency": "CNY",
+  "as_of": "2026-10-04",
+  "per_million": {
+   "input": "20",
+   "cached_input": "2",
+   "cache_write": "20",
+   "output": "100"
+  },
+  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
+  "estimated": true
+ },
+ "cost": "0.150000",
+ "tokens": {
+  "input": 6000,
+  "cached_input": 0,
+  "cache_write": 0,
+  "output": 300,
+  "total": 6300
+ },
+ "calls": 3,
+ "turns": [
   {
-   "id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
-   "session_id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "tenant": "default",
-   "idempotency_key": "preview-running-0001",
-   "request_digest": "33a0c3012dc114f5b4e89bb34dda2421d6fcfea43ea02974fab3a5502a202844",
-   "profile_id": "DATA_QUERY",
-   "profile_version": "1",
-   "expert_pack_version": "1",
-   "original_input": {
-    "input": {
-     "text": "五粮液近五年的毛利率分别是多少？"
-    },
-    "attachments": [],
-    "client_context": {
-     "entry": "expert"
-    }
+   "turn_id": "turn-4ff35c7a41ae",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "normalized_goal": null,
-   "thread_id": "thread-85654ad16f37",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "project_root": "/home/demo/research/五粮液",
-   "state": "RUNNING",
-   "state_version": 15,
-   "workflow_version": "1",
-   "current_step": 2,
-   "acceptance_contract": {
-    "steps": [
-     "rewrite",
-     "sql_generate",
-     "sql_execute",
-     "normalize",
-     "final"
-    ],
-    "pack_id": "DATA_QUERY"
+   "at": "2026-10-04T07:42:35.901527+00:00"
+  },
+  {
+   "turn_id": "turn-2acb3f13c734",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "execution_policy": {},
-   "budget": {
-    "used": "0.100000",
-    "limit": null,
-    "currency": "CNY",
-    "reserved": "0.05"
+   "at": "2026-10-04T07:42:35.998941+00:00"
+  },
+  {
+   "turn_id": "turn-295c6ea52e3e",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "active_attempt_id": "5b878ac4-da05-5183-aec1-10871091b1e4",
-   "terminal_result_ref": null,
-   "waiting_reason": null,
-   "active_interaction_id": null,
-   "rejection": null,
-   "cancel_requested_at": null,
-   "cancel_requested_by": null,
-   "created_at": "2026-10-04T07:00:01.496627+00:00",
-   "updated_at": "2026-10-04T07:00:01.772343+00:00",
-   "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0"
+   "at": "2026-10-04T07:42:36.071905+00:00"
   }
  ]
 }

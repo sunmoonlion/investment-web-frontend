@@ -2,11 +2,11 @@
  "contract_version": 2,
  "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
  "step": {
-  "index": 5,
-  "step_id": "metrics",
-  "title": "算指标",
-  "summary": "按数据集里登记的口径算指标；分母不成立或口径不同的，标为不适用",
-  "why": "指标按数据集里登记的口径算，不临时发明算法。分母不成立的标「不适用」，不硬算。",
+  "index": 4,
+  "step_id": "extract",
+  "title": "取数",
+  "summary": "把问题要用到的报表科目按期取出来，每个数带口径",
+  "why": "只取问题用得到的科目，每个数记下出自哪一期、什么口径。后面的指标只用这里取出来的数。",
   "uses": [
    {
     "artifact": "scope",
@@ -17,43 +17,103 @@
     "artifact": "profile",
     "step": 2,
     "title": "数据摸底"
-   },
-   {
-    "artifact": "facts",
-    "step": 4,
-    "title": "取数"
    }
   ],
   "tools": [
-   "metric_definitions",
-   "query_metric",
+   "describe_schema",
    "run_sql"
   ],
-  "returns": "metrics",
+  "returns": "facts",
   "checks": [
    {
     "label": "交回的格式对"
    },
    {
-    "label": "有指标表和数据版本"
+    "label": "有取数表和数据版本"
    },
    {
-    "label": "指标表不是空的"
+    "label": "取数表不是空的"
+   },
+   {
+    "label": "有数据版本"
    }
   ],
   "after_rejection": {
-   "reworks": 2,
-   "then": "human",
-   "back_to": null,
-   "backs": 0,
-   "text": "重做，最多 2 次；仍不过，停下来问你"
+   "reworks": 1,
+   "then": "back",
+   "back_to": 2,
+   "backs": 1,
+   "text": "重做，最多 1 次；仍不过，退回第 2 步，最多 1 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
-  "status": "not_reached",
-  "attempts": [],
-  "times": 0,
+  "status": "cancelled",
+  "attempts": [
+   {
+    "attempt_id": "e0bb6f11-f25a-5b0f-a85e-f7c8ebd2db97",
+    "n": 1,
+    "outcome": "cancelled",
+    "failure": "cancelled",
+    "spent": "0.30",
+    "started_at": "2026-10-04T07:42:37.116554Z",
+    "ended_at": "2026-10-04T07:42:37.125524Z",
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": null,
+      "message": ""
+     },
+     {
+      "label": "有取数表和数据版本",
+      "pass": null,
+      "message": ""
+     },
+     {
+      "label": "取数表不是空的",
+      "pass": null,
+      "message": ""
+     },
+     {
+      "label": "有数据版本",
+      "pass": null,
+      "message": ""
+     }
+    ],
+    "tools": {
+     "describe_schema": 1,
+     "run_sql": 2
+    },
+    "returned": null,
+    "process": [
+     {
+      "at": "2026-10-04T07:42:37.060055Z",
+      "kind": "tool",
+      "name": "describe_schema",
+      "dataset": "sh600009-financials",
+      "brief": "income_statement",
+      "ok": true
+     },
+     {
+      "at": "2026-10-04T07:42:37.063863Z",
+      "kind": "tool",
+      "name": "run_sql",
+      "dataset": "sh600009-financials",
+      "brief": "SELECT report_date, basis, operate_income, operate_cost, net_profit FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
+      "ok": true
+     },
+     {
+      "at": "2026-10-04T07:42:37.067744Z",
+      "kind": "tool",
+      "name": "run_sql",
+      "dataset": "sh600009-financials",
+      "brief": "SELECT report_date, basis, total_assets, total_liabilities, total_equity FROM balance_sheet WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
+      "ok": true
+     }
+    ]
+   }
+  ],
+  "times": 1,
   "rejected": 0,
-  "spent": "0.00",
+  "spent": "0.30",
   "data": null
  }
 }

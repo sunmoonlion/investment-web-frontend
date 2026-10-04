@@ -1,67 +1,20 @@
 {
- "contract_version": 2,
- "price": {
-  "model": "kimi-k3",
-  "priced": true,
-  "currency": "CNY",
-  "as_of": "2026-10-04",
-  "per_million": {
-   "input": "20",
-   "cached_input": "2",
-   "cache_write": "20",
-   "output": "100"
-  },
-  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
-  "estimated": true
+ "session": {
+  "id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "sandbox_id": "e622161e-278e-510c-a294-d321919a97e8",
+  "project_root": "/home/demo/research/招商银行",
+  "thread_id": "thread-1be50a2e4cae",
+  "wheel": "user",
+  "state_version": 2,
+  "active_task_id": null,
+  "thread_settings": {},
+  "created_at": "2026-10-04T07:42:37.858107+00:00",
+  "last_active_at": "2026-10-04T07:42:38.299531+00:00",
+  "kind": "work",
+  "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa",
+  "title": "招商银行 2023 到 2025 年的盈利能力怎么样？"
  },
- "cost": "0.150000",
- "tokens": {
-  "input": 6000,
-  "cached_input": 0,
-  "cache_write": 0,
-  "output": 300,
-  "total": 6300
- },
- "calls": 3,
- "turns": [
-  {
-   "turn_id": "turn-94429987b872",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-04T07:00:04.080377+00:00"
-  },
-  {
-   "turn_id": "turn-2a15b214648c",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-04T07:00:04.182206+00:00"
-  },
-  {
-   "turn_id": "turn-a3b47ce790ec",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-04T07:00:04.307187+00:00"
-  }
- ]
+ "pending_interactions": []
 }
