@@ -6,6 +6,7 @@
   "step_id": "reconcile",
   "title": "勾稽",
   "summary": "三张表之间、前后两年之间对不对得上",
+  "why": "三张表对不上，说明数据本身有问题；带着问题往下算，指标都不可信。所以对不上就停下来问你，不自己把数改平。",
   "uses": [
    {
     "artifact": "scope",
@@ -43,6 +44,7 @@
    "reworks": 0,
    "then": "human",
    "back_to": null,
+   "backs": 0,
    "text": "停下来问你"
   },
   "reserve": "0.05",

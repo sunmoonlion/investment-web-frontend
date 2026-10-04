@@ -6,6 +6,7 @@
   "step_id": "profile",
   "title": "数据摸底",
   "summary": "确认有这家公司的数据、数据到哪一天、各期是什么口径",
+  "why": "先看我们有没有这家公司的数据、数据到哪一天。没有数据就停下，不拿别处的数来凑。",
   "uses": [
    {
     "artifact": "scope",
@@ -41,6 +42,7 @@
    "reworks": 1,
    "then": "human",
    "back_to": null,
+   "backs": 0,
    "text": "重做，最多 1 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
@@ -52,8 +54,8 @@
     "outcome": "accepted",
     "failure": null,
     "spent": "0.05",
-    "started_at": "2026-10-04T04:44:48.987564Z",
-    "ended_at": "2026-10-04T04:44:48.998531Z",
+    "started_at": "2026-10-04T05:09:17.368937Z",
+    "ended_at": "2026-10-04T05:09:17.378051Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -151,7 +153,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T04:44:48.946796Z",
+      "at": "2026-10-04T05:09:17.326295Z",
       "kind": "tool",
       "name": "list_datasets",
       "dataset": null,
@@ -159,7 +161,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:48.950553Z",
+      "at": "2026-10-04T05:09:17.330600Z",
       "kind": "tool",
       "name": "describe_schema",
       "dataset": "sh600276-financials",
@@ -167,7 +169,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:48.954367Z",
+      "at": "2026-10-04T05:09:17.334616Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -175,7 +177,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:48.958164Z",
+      "at": "2026-10-04T05:09:17.338461Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -183,7 +185,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:48.961966Z",
+      "at": "2026-10-04T05:09:17.342431Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",

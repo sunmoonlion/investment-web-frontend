@@ -15,7 +15,9 @@ import {
 import { useConversationEvents } from '@/lib/workbench/conversation-events'
 
 import { useUsage } from '../api/usage'
-import { money, spent, symbol, toMicros } from '../model/spent'
+import { money, symbol, toMicros } from '@/lib/workbench/money'
+
+import { spent } from '../model/spent'
 
 // 花费钮：这段对话到现在花了多少。模型每调用一次跳一次。点开看每一轮的明细和单价。
 export function CostButton({ conversation }: { conversation: string }) {

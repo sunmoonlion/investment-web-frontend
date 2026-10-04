@@ -6,6 +6,7 @@
   "step_id": "crosscheck",
   "title": "对照官方",
   "summary": "拿取到的数和公司年报里自己披露的数逐项对照",
+  "why": "我们的数是采集来的。和公司年报里自己披露的数对一遍，对不上的要让你知道。",
   "uses": [
    {
     "artifact": "scope",
@@ -45,6 +46,7 @@
    "reworks": 0,
    "then": "human",
    "back_to": null,
+   "backs": 0,
    "text": "停下来问你"
   },
   "reserve": "0.05",
@@ -56,8 +58,8 @@
     "outcome": "rejected",
     "failure": "acceptance",
     "spent": "0.05",
-    "started_at": "2026-10-04T04:44:36.592763Z",
-    "ended_at": "2026-10-04T04:44:36.599597Z",
+    "started_at": "2026-10-04T05:09:04.613949Z",
+    "ended_at": "2026-10-04T05:09:04.620718Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -196,7 +198,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T04:44:36.571441Z",
+      "at": "2026-10-04T05:09:04.595044Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz002594-financials",

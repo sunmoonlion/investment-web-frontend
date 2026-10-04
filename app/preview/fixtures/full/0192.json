@@ -6,6 +6,7 @@
   "step_id": "note",
   "title": "成稿",
   "summary": "只用前面各步的结果写底稿：列事实和提醒，结论栏留空",
+  "why": "底稿只写前面各步验过的事实和提醒。结论栏留空：下结论是你的事。",
   "uses": [
    {
     "artifact": "scope",
@@ -73,6 +74,7 @@
    "reworks": 1,
    "then": "human",
    "back_to": null,
+   "backs": 0,
    "text": "重做，最多 1 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
@@ -84,8 +86,8 @@
     "outcome": "accepted",
     "failure": null,
     "spent": "0.05",
-    "started_at": "2026-10-04T04:44:34.519103Z",
-    "ended_at": "2026-10-04T04:44:34.527911Z",
+    "started_at": "2026-10-04T05:09:02.306176Z",
+    "ended_at": "2026-10-04T05:09:02.314879Z",
     "checks": [
      {
       "label": "交回的格式对",

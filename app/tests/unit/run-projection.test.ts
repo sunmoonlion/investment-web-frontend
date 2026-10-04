@@ -42,10 +42,8 @@ describe('run event projection', () => {
         },
       }),
     ).projection
-    const completed = applyRunEvent(
-      waiting,
-      event(3, 'completed', { summary: 'Finished' }),
-    ).projection.snapshot
+    const completed = applyRunEvent(waiting, event(3, 'completed', { summary: 'Finished' }))
+      .projection.snapshot
 
     expect(waiting.snapshot.status).toBe('waiting_for_input')
     expect(completed).toMatchObject({ status: 'succeeded', summary: 'Finished' })

@@ -6,6 +6,7 @@
   "step_id": "normalize",
   "title": "整理结果",
   "summary": "统一单位、币种、期间的写法，标出缺的值",
+  "why": "单位、币种、期间的写法统一之后才好比较。缺的值标出来，不补、不估。",
   "uses": [
    {
     "artifact": "rewritten",
@@ -32,6 +33,7 @@
    "reworks": 1,
    "then": "human",
    "back_to": null,
+   "backs": 0,
    "text": "重做，最多 1 次；仍不过，停下来问你"
   },
   "reserve": "0.05",

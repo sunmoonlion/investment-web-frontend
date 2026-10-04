@@ -5,7 +5,8 @@ import { describe, expect, it } from 'vitest'
 
 import { conversationEventSchema, type ConversationEvent } from '@/contracts/workbench-v2'
 import { running, tally, thread } from '@/features/chat/model/thread'
-import { money, spent, toMicros } from '@/features/usage/model/spent'
+import { spent } from '@/features/usage/model/spent'
+import { money, toMicros } from '@/lib/workbench/money'
 
 // 样例是真后端录下来的：不属于项目的那段聊天，和项目里的那段聊天
 const full = join(process.cwd(), 'preview/fixtures/full')

@@ -18,6 +18,7 @@
     "step_id": "rewrite",
     "title": "改写问题",
     "summary": "把问题改写成没有歧义的：查什么、哪个期间、什么口径",
+    "why": "口语的问题常有歧义：哪一年、合并报表还是母公司。先说清楚查什么，免得查出来的不是你要的。",
     "uses": [],
     "tools": [],
     "returns": "rewritten",
@@ -33,6 +34,7 @@
      "reworks": 1,
      "then": "human",
      "back_to": null,
+     "backs": 0,
      "text": "重做，最多 1 次；仍不过，停下来问你"
     },
     "reserve": "0.05"
@@ -42,6 +44,7 @@
     "step_id": "sql_generate",
     "title": "生成 SQL",
     "summary": "对照数据的结构写出查询，并说明每一列的口径",
+    "why": "查询照着数据的真实结构写，每一列是什么口径写明白。你看得到它到底查了什么。",
     "uses": [
      {
       "artifact": "rewritten",
@@ -69,6 +72,7 @@
      "reworks": 2,
      "then": "human",
      "back_to": null,
+     "backs": 0,
      "text": "重做，最多 2 次；仍不过，停下来问你"
     },
     "reserve": "0.05"
@@ -78,6 +82,7 @@
     "step_id": "sql_execute",
     "title": "执行 SQL",
     "summary": "执行查询，原样带回结果和数据版本",
+    "why": "查询的结果原样带回，不改数；同时记下数据版本，以后能复查。",
     "uses": [
      {
       "artifact": "sql",
@@ -101,7 +106,8 @@
      "reworks": 1,
      "then": "back",
      "back_to": 2,
-     "text": "重做，最多 1 次；仍不过，退回第 2 步"
+     "backs": 1,
+     "text": "重做，最多 1 次；仍不过，退回第 2 步，最多 1 次；仍不过，停下来问你"
     },
     "reserve": "0.05"
    },
@@ -110,6 +116,7 @@
     "step_id": "normalize",
     "title": "整理结果",
     "summary": "统一单位、币种、期间的写法，标出缺的值",
+    "why": "单位、币种、期间的写法统一之后才好比较。缺的值标出来，不补、不估。",
     "uses": [
      {
       "artifact": "rewritten",
@@ -136,6 +143,7 @@
      "reworks": 1,
      "then": "human",
      "back_to": null,
+     "backs": 0,
      "text": "重做，最多 1 次；仍不过，停下来问你"
     },
     "reserve": "0.05"
@@ -145,6 +153,7 @@
     "step_id": "final",
     "title": "成稿",
     "summary": "写出答案：每个数带数据版本和口径，写明局限；结论栏留空",
+    "why": "答案里每个数都带出处和口径，并写明局限。只给事实，不给评级和买卖建议。",
     "uses": [
      {
       "artifact": "rewritten",
@@ -174,6 +183,7 @@
      "reworks": 1,
      "then": "human",
      "back_to": null,
+     "backs": 0,
      "text": "重做，最多 1 次；仍不过，停下来问你"
     },
     "reserve": "0.05"

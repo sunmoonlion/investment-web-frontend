@@ -6,6 +6,7 @@
   "step_id": "metrics",
   "title": "算指标",
   "summary": "按数据集里登记的口径算指标；分母不成立或口径不同的，标为不适用",
+  "why": "指标按数据集里登记的口径算，不临时发明算法。分母不成立的标「不适用」，不硬算。",
   "uses": [
    {
     "artifact": "scope",
@@ -44,6 +45,7 @@
    "reworks": 2,
    "then": "human",
    "back_to": null,
+   "backs": 0,
    "text": "重做，最多 2 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
@@ -55,8 +57,8 @@
     "outcome": "rejected",
     "failure": "acceptance",
     "spent": "0.05",
-    "started_at": "2026-10-04T04:44:33.511749Z",
-    "ended_at": "2026-10-04T04:44:33.519311Z",
+    "started_at": "2026-10-04T05:09:01.192676Z",
+    "ended_at": "2026-10-04T05:09:01.199891Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -90,7 +92,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T04:44:33.489616Z",
+      "at": "2026-10-04T05:09:01.172566Z",
       "kind": "tool",
       "name": "metric_definitions",
       "dataset": "sh600276-financials",
@@ -98,7 +100,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:33.494656Z",
+      "at": "2026-10-04T05:09:01.176280Z",
       "kind": "tool",
       "name": "query_metric",
       "dataset": "sh600276-financials",
@@ -113,8 +115,8 @@
     "outcome": "accepted",
     "failure": null,
     "spent": "0.05",
-    "started_at": "2026-10-04T04:44:33.607579Z",
-    "ended_at": "2026-10-04T04:44:33.617189Z",
+    "started_at": "2026-10-04T05:09:01.291412Z",
+    "ended_at": "2026-10-04T05:09:01.300537Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -352,7 +354,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T04:44:33.576570Z",
+      "at": "2026-10-04T05:09:01.265200Z",
       "kind": "tool",
       "name": "metric_definitions",
       "dataset": "sh600276-financials",
@@ -360,7 +362,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:33.580639Z",
+      "at": "2026-10-04T05:09:01.270552Z",
       "kind": "tool",
       "name": "query_metric",
       "dataset": "sh600276-financials",

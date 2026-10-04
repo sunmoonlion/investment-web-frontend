@@ -37,15 +37,11 @@ describe('common query helpers', () => {
     expect(() => assertSameOriginDownloadPath('https://example.com/file')).toThrow(
       'same-origin /api/',
     )
-    expect(() => assertSameOriginDownloadPath('//example.com/file')).toThrow(
-      'same-origin /api/',
-    )
+    expect(() => assertSameOriginDownloadPath('//example.com/file')).toThrow('same-origin /api/')
   })
 
   it('sanitizes download filenames', () => {
-    expect(safeDownloadFilename('report:2026/07?.csv')).toBe(
-      'report_2026_07_.csv',
-    )
+    expect(safeDownloadFilename('report:2026/07?.csv')).toBe('report_2026_07_.csv')
     expect(safeDownloadFilename('\u0000')).toBe('download')
   })
 })

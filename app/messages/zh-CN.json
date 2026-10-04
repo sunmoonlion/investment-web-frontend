@@ -490,5 +490,107 @@
       "returned": "专家交回了",
       "inside": "专家做的每一步有它自己的进度页，这一部分还在做。"
     }
+  },
+  "expert": {
+    "band": {
+      "running": "专家正在处理：{name}",
+      "waiting": "专家停下来了，等你决定",
+      "offline": "你的机器断开了，专家在等它回来",
+      "position": "第 {step} 步，共 {of} 步：{title}",
+      "spent": "已花 {amount}",
+      "estimated": "估算"
+    },
+    "stop": {
+      "button": "停止",
+      "title": "停下专家？",
+      "body": "已经花的不退。做完的部分会交回给你，在底稿里看得到。",
+      "confirm": "停下",
+      "cancel": "接着做",
+      "failed": "没有停成，请再试一次。"
+    },
+    "now": {
+      "label": "现在",
+      "why": "为什么要做这一步",
+      "elapsed": "这一步已经做了 {time}",
+      "fresh": "还在进行，最近一次动静在 {time}前",
+      "quiet": "最近一次动静在 {time}前，它还在做",
+      "long": "已经 {time}没有新动静。后台还连着，多半是这一步要想得久一些",
+      "unheld": "后台现在没有在跑这件委托，可能正在重新接上。过一会儿还是这样，可以停下再请一次"
+    },
+    "time": {
+      "minutes": "{minutes} 分 {seconds} 秒",
+      "seconds": "{seconds} 秒"
+    },
+    "rail": {
+      "title": "步骤",
+      "times": "做了 {n} 次"
+    },
+    "status": {
+      "pending": "还没做",
+      "running": "在做",
+      "accepted": "通过",
+      "reworking": "在重做",
+      "went_back": "退回了前面",
+      "redo": "要重做",
+      "waiting": "等你决定",
+      "failed": "失败",
+      "cancelled": "已取消",
+      "not_reached": "没有做到"
+    },
+    "detail": {
+      "step": "第 {index} 步",
+      "uses": "用了什么",
+      "usesStep": "第 {step} 步的「{title}」",
+      "usesInput": "你交出去的问题",
+      "tools": "工具",
+      "data": "数据",
+      "dataLine": "{dataset}，版本 …{version}，数据到 {asOf}",
+      "returned": "交回了什么",
+      "checks": "验收",
+      "attempt": "第 {n} 次",
+      "notYet": "还没有做到这一步。",
+      "willCheck": "做完会逐条检查",
+      "afterRejection": "验收不过的话",
+      "raw": "交回的不是约定的格式。原样是：",
+      "more": "还有 {n} 行没有列出",
+      "noReturn": "这一次还没有交回东西。",
+      "loading": "加载中…"
+    },
+    "outcome": {
+      "accepted": "通过",
+      "rejected": "没有通过",
+      "failed": "出错了",
+      "cancelled": "被停下了",
+      "running": "在做",
+      "over_budget": "预算不够"
+    },
+    "check": {
+      "pass": "通过",
+      "fail": "没有通过",
+      "skipped": "没有验到"
+    },
+    "review": {
+      "failed": "没有通过的",
+      "choose": "你来决定",
+      "expires": "这个问题保留到 {date}。",
+      "noToken": "答复用的凭证没有取到，刷新页面再试。",
+      "failedToSend": "没有答复成功，请再试一次。",
+      "decided": "你已经选了：{choice}",
+      "loading": "加载中…"
+    },
+    "sheet": {
+      "title": "委托单",
+      "question": "问题",
+      "spent": "已花（估算）",
+      "parts": "做完的 {used} ＋ 在做的 {running}",
+      "data": "数据",
+      "dataUnknown": "还不知道",
+      "dataAsOf": "数据到 {asOf}",
+      "elapsed": "已用时间",
+      "dossier": "看底稿",
+      "dossierSoon": "底稿页还在做"
+    },
+    "loading": "加载中…",
+    "failedToLoad": "没有取到这件委托。"
   }
 }

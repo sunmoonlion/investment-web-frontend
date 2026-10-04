@@ -196,3 +196,212 @@ export const turnAcceptedSchema = z.object({ request_id: z.string() }).loose()
 export const acceptedSchema = z.object({}).loose()
 
 export const problemSchema = z.object({ code: z.string() }).loose()
+
+// ---------------- 专家：委托的步骤与进度 ----------------
+const checkSchema = z
+  .object({
+    label: z.string(),
+    pass: z.boolean().nullable().optional(),
+    message: z.string().optional(),
+  })
+  .loose()
+
+const afterRejectionSchema = z
+  .object({
+    reworks: z.number().int(),
+    then: z.string(),
+    back_to: z.number().int().nullable(),
+    text: z.string(),
+  })
+  .loose()
+
+const attemptSchema = z
+  .object({
+    attempt_id: z.string(),
+    n: z.number().int(),
+    outcome: z.string(),
+    spent: z.string(),
+    checks: z.array(checkSchema),
+    tools: z.record(z.string(), z.number()),
+    // 只有单取一步的时候才带：交回了什么、过程
+    // 一次都还没交回的时候是空的
+    returned: z
+      .object({
+        artifact: z.string().nullable(),
+        content: z.unknown(),
+        raw: z.string().nullable().optional(),
+      })
+      .loose()
+      .nullable()
+      .optional(),
+    process: z
+      .array(
+        z
+          .object({
+            kind: z.string(),
+            name: z.string(),
+            dataset: z.string().nullable(),
+            brief: z.string(),
+            ok: z.boolean(),
+          })
+          .loose(),
+      )
+      .optional(),
+  })
+  .loose()
+export type Attempt = z.infer<typeof attemptSchema>
+
+export const stepStatusSchema = z.enum([
+  'pending',
+  'running',
+  'accepted',
+  'reworking',
+  'went_back',
+  'redo',
+  'waiting',
+  'failed',
+  'cancelled',
+  'not_reached',
+])
+export type StepStatus = z.infer<typeof stepStatusSchema>
+
+export const runStepSchema = z
+  .object({
+    index: z.number().int(),
+    title: z.string(),
+    summary: z.string(),
+    why: z.string(),
+    uses: z.array(z.object({ step: z.number().int().nullable(), title: z.string() }).loose()),
+    tools: z.array(z.string()),
+    checks: z.array(checkSchema),
+    after_rejection: afterRejectionSchema,
+    status: stepStatusSchema,
+    attempts: z.array(attemptSchema),
+    times: z.number().int(),
+    rejected: z.number().int(),
+    spent: z.string(),
+    data: z
+      .object({
+        dataset: z.string().nullable().optional(),
+        data_version: z.string().nullable().optional(),
+        as_of: z.string().nullable().optional(),
+      })
+      .loose()
+      .nullable(),
+  })
+  .loose()
+export type RunStep = z.infer<typeof runStepSchema>
+
+const budgetSchema = z
+  .object({
+    currency: z.string(),
+    used: z.string(),
+    running: z.string(),
+    spent: z.string(),
+    estimated: z.boolean(),
+  })
+  .loose()
+
+export const runSheetSchema = z
+  .object({
+    task_id: uuid,
+    session_id: uuid,
+    project_id: uuid.nullable(),
+    expert: z.object({ id: z.string(), name: z.string() }).loose(),
+    question: z.string(),
+    state: z.string(),
+    state_word: z.string().nullable(),
+    waiting_reason: z.string().nullable(),
+    reason_text: z.string(),
+    budget: budgetSchema,
+    data: z
+      .object({
+        dataset: z.string().nullable().optional(),
+        data_version: z.string().nullable().optional(),
+        as_of: z.string().nullable().optional(),
+      })
+      .loose()
+      .nullable(),
+    started_at: z.string().nullable(),
+    ended_at: z.string().nullable(),
+    active_interaction_id: uuid.nullable(),
+  })
+  .loose()
+export type RunSheet = z.infer<typeof runSheetSchema>
+
+// 现在在干什么、为什么、没有卡住。话是后端写的；页面只按两个时间算「做了多久」「多久没动静」
+export const nowSchema = z
+  .object({
+    step: z
+      .object({
+        index: z.number().int(),
+        of: z.number().int(),
+        title: z.string(),
+        summary: z.string(),
+        why: z.string(),
+      })
+      .loose(),
+    doing: z.object({ code: z.string(), text: z.string() }).loose(),
+    redo: z.string().nullable(),
+    since: z.string().nullable(),
+    last_event_at: z.string().nullable(),
+    held: z.boolean(),
+  })
+  .loose()
+export type Now = z.infer<typeof nowSchema>
+
+export const runSchema = z
+  .object({
+    task: runSheetSchema,
+    now: nowSchema.nullable(),
+    position: z
+      .object({ step: z.number().int(), of: z.number().int(), title: z.string() })
+      .loose()
+      .nullable(),
+    steps: z.array(runStepSchema),
+  })
+  .loose()
+export type Run = z.infer<typeof runSchema>
+
+export const runStepDetailSchema = z.object({ step: runStepSchema }).loose()
+
+// ---------------- 审查面：专家停下来问我 ----------------
+export const reviewSchema = z
+  .object({
+    interaction: z
+      .object({
+        interaction_id: uuid,
+        kind: z.string(),
+        status: z.string(),
+        where: z
+          .object({
+            step: z.object({ index: z.number().int(), title: z.string() }).loose().nullable(),
+            about: z.string().nullable(),
+          })
+          .loose(),
+        why: z.string().nullable(),
+        failed: z.array(z.object({ label: z.string(), message: z.string() }).loose()),
+        missing_data: z
+          .object({ security_code: z.string(), dataset: z.string().nullable() })
+          .loose()
+          .nullable(),
+        pending: z
+          .object({
+            title: z.string(),
+            question: z.string(),
+            options: z.array(
+              z.object({ id: z.string(), label: z.string(), consequence: z.string() }).loose(),
+            ),
+          })
+          .loose(),
+        validity: z.object({ expires_at: z.string().nullable(), after_expiry: z.string() }).loose(),
+        decision: z.object({ decided: z.boolean(), chosen: z.string().nullable() }).loose(),
+      })
+      .loose(),
+  })
+  .loose()
+export type Review = z.infer<typeof reviewSchema>['interaction']
+
+export const tasksSchema = z
+  .object({ tasks: z.array(z.object({ id: uuid, state: z.string() }).loose()) })
+  .loose()

@@ -14,7 +14,7 @@
    },
    "task_id": null,
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.234752+00:00"
+   "created_at": "2026-10-04T05:09:03.106758+00:00"
   },
   {
    "id": "3f5a58c9-6799-5393-9809-0018dae20d10",
@@ -34,7 +34,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.234752+00:00"
+   "created_at": "2026-10-04T05:09:03.106758+00:00"
   },
   {
    "id": "756de197-ebbf-575b-a148-6dbe55f1f539",
@@ -49,7 +49,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.234752+00:00"
+   "created_at": "2026-10-04T05:09:03.106758+00:00"
   },
   {
    "id": "ce400cc2-d108-56d4-b769-df8699e94482",
@@ -59,12 +59,12 @@
    "type": "session/thread_started",
    "payload": {
     "model": "kimi-k3",
-    "thread_id": "thread-3dcd18eec224",
+    "thread_id": "thread-5cf513be3310",
     "environment": "user-pc"
    },
    "task_id": null,
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.263506+00:00"
+   "created_at": "2026-10-04T05:09:03.134336+00:00"
   },
   {
    "id": "02bba996-2682-5aa4-81a4-7243cd3044e9",
@@ -81,7 +81,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.271231+00:00"
+   "created_at": "2026-10-04T05:09:03.142583+00:00"
   },
   {
    "id": "1878e97a-299e-53f0-98f4-96b1659e4533",
@@ -98,7 +98,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.284352+00:00"
+   "created_at": "2026-10-04T05:09:03.154079+00:00"
   },
   {
    "id": "87991342-530c-5110-9578-6eb62dbbdbb7",
@@ -113,7 +113,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": "0393f853-1f2c-5616-bc67-f3d197988a7a",
-   "created_at": "2026-10-04T04:44:35.289521+00:00"
+   "created_at": "2026-10-04T05:09:03.159046+00:00"
   },
   {
    "id": "f290ba17-1f11-55cc-b181-c28a6f6622e6",
@@ -128,7 +128,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.289521+00:00"
+   "created_at": "2026-10-04T05:09:03.159046+00:00"
   },
   {
    "id": "d6e5cb3f-787e-5bf4-8df9-780697b38303",
@@ -144,7 +144,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": "0393f853-1f2c-5616-bc67-f3d197988a7a",
-   "created_at": "2026-10-04T04:44:35.299914+00:00"
+   "created_at": "2026-10-04T05:09:03.169157+00:00"
   },
   {
    "id": "1838a86d-357e-5eb1-8225-16725e9b3e6e",
@@ -160,7 +160,7 @@
    },
    "task_id": null,
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.306666+00:00"
+   "created_at": "2026-10-04T05:09:03.175802+00:00"
   },
   {
    "id": "a8fdb0db-33f8-5b0f-a407-109afa1cf46b",
@@ -170,15 +170,15 @@
    "type": "turn/started",
    "payload": {
     "turn": {
-     "id": "turn-225102d094b3",
+     "id": "turn-c10e14e2729a",
      "status": "inProgress"
     },
-    "turnId": "turn-225102d094b3",
-    "threadId": "thread-3dcd18eec224"
+    "turnId": "turn-c10e14e2729a",
+    "threadId": "thread-5cf513be3310"
    },
    "task_id": null,
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.321551+00:00"
+   "created_at": "2026-10-04T05:09:03.190873+00:00"
   },
   {
    "id": "d52a401e-0c5f-57c0-b7af-bc1b084822a8",
@@ -188,16 +188,16 @@
    "type": "item/completed",
    "payload": {
     "item": {
-     "id": "msg-turn-225102d094b3",
+     "id": "msg-turn-c10e14e2729a",
      "text": "{\"company\": \"片仔癀\", \"security_code\": \"600436\", \"periods\": [\"2023\", \"2024\", \"2025\"], \"report_types\": [\"年报\"], \"aspects\": [\"盈利能力\"], \"assumptions\": [], \"question\": \"片仔癀 2023 到 2025 年的盈利能力怎么样？\"}",
      "type": "agentMessage"
     },
-    "turnId": "turn-225102d094b3",
-    "threadId": "thread-3dcd18eec224"
+    "turnId": "turn-c10e14e2729a",
+    "threadId": "thread-5cf513be3310"
    },
    "task_id": null,
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.325427+00:00"
+   "created_at": "2026-10-04T05:09:03.194835+00:00"
   },
   {
    "id": "95435a9b-7ae8-509d-b6ec-8f95d9683ebc",
@@ -228,8 +228,8 @@
       "cached_input": 0
      }
     },
-    "turnId": "turn-225102d094b3",
-    "threadId": "thread-3dcd18eec224",
+    "turnId": "turn-c10e14e2729a",
+    "threadId": "thread-5cf513be3310",
     "tokenUsage": {
      "last": {
       "inputTokens": 2000,
@@ -251,7 +251,7 @@
    },
    "task_id": null,
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.329204+00:00"
+   "created_at": "2026-10-04T05:09:03.199009+00:00"
   },
   {
    "id": "466bd507-2209-5b81-9aed-338b31b3b7d5",
@@ -261,14 +261,14 @@
    "type": "turn/completed",
    "payload": {
     "turn": {
-     "id": "turn-225102d094b3",
+     "id": "turn-c10e14e2729a",
      "status": "completed"
     },
-    "threadId": "thread-3dcd18eec224"
+    "threadId": "thread-5cf513be3310"
    },
    "task_id": null,
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.333828+00:00"
+   "created_at": "2026-10-04T05:09:03.206368+00:00"
   },
   {
    "id": "fc27694c-38cd-5baf-85f6-be7fe44e75bb",
@@ -285,7 +285,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": "0393f853-1f2c-5616-bc67-f3d197988a7a",
-   "created_at": "2026-10-04T04:44:35.339631+00:00"
+   "created_at": "2026-10-04T05:09:03.211760+00:00"
   },
   {
    "id": "31a72127-0813-59d0-88d2-364cbaa9bee1",
@@ -302,7 +302,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": "0393f853-1f2c-5616-bc67-f3d197988a7a",
-   "created_at": "2026-10-04T04:44:35.346720+00:00"
+   "created_at": "2026-10-04T05:09:03.219434+00:00"
   },
   {
    "id": "b8c68678-6305-5277-b485-ec7124bf5204",
@@ -358,7 +358,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": "0393f853-1f2c-5616-bc67-f3d197988a7a",
-   "created_at": "2026-10-04T04:44:35.355325+00:00"
+   "created_at": "2026-10-04T05:09:03.229749+00:00"
   },
   {
    "id": "07135301-7b69-53c3-b623-780cc4ff6688",
@@ -375,7 +375,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.360580+00:00"
+   "created_at": "2026-10-04T05:09:03.234887+00:00"
   },
   {
    "id": "c87fe20f-7b34-56d7-8684-3586a083f3d2",
@@ -390,7 +390,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": "d3d74add-e02c-5001-a894-5da79e267f53",
-   "created_at": "2026-10-04T04:44:35.366236+00:00"
+   "created_at": "2026-10-04T05:09:03.240753+00:00"
   },
   {
    "id": "18be15af-4adf-5f4d-97fe-c211a6130ea6",
@@ -405,7 +405,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.366236+00:00"
+   "created_at": "2026-10-04T05:09:03.240753+00:00"
   },
   {
    "id": "bbe0674b-0da1-561a-b898-ad752e71c01b",
@@ -421,7 +421,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": "d3d74add-e02c-5001-a894-5da79e267f53",
-   "created_at": "2026-10-04T04:44:35.376259+00:00"
+   "created_at": "2026-10-04T05:09:03.254485+00:00"
   },
   {
    "id": "2bc51e87-6667-5f54-9be7-355fdf250336",
@@ -431,15 +431,15 @@
    "type": "turn/started",
    "payload": {
     "turn": {
-     "id": "turn-f36dcfc5bc0c",
+     "id": "turn-03c23edc3806",
      "status": "inProgress"
     },
-    "turnId": "turn-f36dcfc5bc0c",
-    "threadId": "thread-3dcd18eec224"
+    "turnId": "turn-03c23edc3806",
+    "threadId": "thread-5cf513be3310"
    },
    "task_id": null,
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.393377+00:00"
+   "created_at": "2026-10-04T05:09:03.273309+00:00"
   },
   {
    "id": "d73f21e3-ac3b-5cee-ab2d-b6b82b50fcec",
@@ -449,7 +449,7 @@
    "type": "item/completed",
    "payload": {
     "item": {
-     "id": "call-turn-f36dcfc5bc0c-0",
+     "id": "call-turn-03c23edc3806-0",
      "tool": "list_datasets",
      "type": "mcpToolCall",
      "error": null,
@@ -465,12 +465,12 @@
      "status": "completed",
      "arguments": {}
     },
-    "turnId": "turn-f36dcfc5bc0c",
-    "threadId": "thread-3dcd18eec224"
+    "turnId": "turn-03c23edc3806",
+    "threadId": "thread-5cf513be3310"
    },
    "task_id": null,
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.397853+00:00"
+   "created_at": "2026-10-04T05:09:03.278983+00:00"
   },
   {
    "id": "a8383202-7f42-567f-9c9b-11cab726dde9",
@@ -480,16 +480,16 @@
    "type": "item/completed",
    "payload": {
     "item": {
-     "id": "msg-turn-f36dcfc5bc0c",
+     "id": "msg-turn-03c23edc3806",
      "text": "{\"dataset\": null, \"not_ingested\": true, \"security_code\": \"600436\", \"data_version\": \"\", \"as_of\": \"\", \"notes\": [], \"periods\": [], \"basis_breaks\": []}",
      "type": "agentMessage"
     },
-    "turnId": "turn-f36dcfc5bc0c",
-    "threadId": "thread-3dcd18eec224"
+    "turnId": "turn-03c23edc3806",
+    "threadId": "thread-5cf513be3310"
    },
    "task_id": null,
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.404824+00:00"
+   "created_at": "2026-10-04T05:09:03.283000+00:00"
   },
   {
    "id": "357e048d-2503-5da4-b8fe-52706792a21b",
@@ -520,8 +520,8 @@
       "cached_input": 0
      }
     },
-    "turnId": "turn-f36dcfc5bc0c",
-    "threadId": "thread-3dcd18eec224",
+    "turnId": "turn-03c23edc3806",
+    "threadId": "thread-5cf513be3310",
     "tokenUsage": {
      "last": {
       "inputTokens": 2000,
@@ -543,7 +543,7 @@
    },
    "task_id": null,
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.409015+00:00"
+   "created_at": "2026-10-04T05:09:03.288779+00:00"
   },
   {
    "id": "cf7e2901-fdc2-530f-81b9-8d69bae06558",
@@ -553,14 +553,14 @@
    "type": "turn/completed",
    "payload": {
     "turn": {
-     "id": "turn-f36dcfc5bc0c",
+     "id": "turn-03c23edc3806",
      "status": "completed"
     },
-    "threadId": "thread-3dcd18eec224"
+    "threadId": "thread-5cf513be3310"
    },
    "task_id": null,
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.412626+00:00"
+   "created_at": "2026-10-04T05:09:03.293105+00:00"
   },
   {
    "id": "0915cb3f-2b4f-5d01-9321-3fa5c7b84811",
@@ -577,7 +577,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": "d3d74add-e02c-5001-a894-5da79e267f53",
-   "created_at": "2026-10-04T04:44:35.416849+00:00"
+   "created_at": "2026-10-04T05:09:03.298390+00:00"
   },
   {
    "id": "a8de8c0b-26f9-5ef3-a333-3dcc5f3959d5",
@@ -594,7 +594,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": "d3d74add-e02c-5001-a894-5da79e267f53",
-   "created_at": "2026-10-04T04:44:35.423195+00:00"
+   "created_at": "2026-10-04T05:09:03.305375+00:00"
   },
   {
    "id": "b634c871-77c6-5c9e-a169-0166c16db618",
@@ -669,7 +669,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": "d3d74add-e02c-5001-a894-5da79e267f53",
-   "created_at": "2026-10-04T04:44:35.431026+00:00"
+   "created_at": "2026-10-04T05:09:03.313548+00:00"
   },
   {
    "id": "4e0f9c67-3218-5b0e-980f-cfd63f84cdf5",
@@ -685,7 +685,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": "d3d74add-e02c-5001-a894-5da79e267f53",
-   "created_at": "2026-10-04T04:44:35.436267+00:00"
+   "created_at": "2026-10-04T05:09:03.317584+00:00"
   },
   {
    "id": "4508b6bd-3f03-539c-b977-556c5d167c55",
@@ -701,7 +701,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": null,
-   "created_at": "2026-10-04T04:44:35.441965+00:00"
+   "created_at": "2026-10-04T05:09:03.322544+00:00"
   },
   {
    "id": "bba00285-1054-59f0-be0f-5157764cdd7a",
@@ -748,7 +748,7 @@
    },
    "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
    "attempt_id": "d3d74add-e02c-5001-a894-5da79e267f53",
-   "created_at": "2026-10-04T04:44:35.441965+00:00"
+   "created_at": "2026-10-04T05:09:03.322544+00:00"
   }
  ],
  "next_cursor": 32

@@ -6,6 +6,7 @@
   "step_id": "reconcile",
   "title": "勾稽",
   "summary": "三张表之间、前后两年之间对不对得上",
+  "why": "三张表对不上，说明数据本身有问题；带着问题往下算，指标都不可信。所以对不上就停下来问你，不自己把数改平。",
   "uses": [
    {
     "artifact": "scope",
@@ -43,6 +44,7 @@
    "reworks": 0,
    "then": "human",
    "back_to": null,
+   "backs": 0,
    "text": "停下来问你"
   },
   "reserve": "0.05",
@@ -54,8 +56,8 @@
     "outcome": "rejected",
     "failure": "acceptance",
     "spent": "0.05",
-    "started_at": "2026-10-04T04:44:35.195249Z",
-    "ended_at": "2026-10-04T04:44:35.202844Z",
+    "started_at": "2026-10-04T05:09:03.006350Z",
+    "ended_at": "2026-10-04T05:09:03.013550Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -171,7 +173,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T04:44:35.138691Z",
+      "at": "2026-10-04T05:09:02.950188Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -179,7 +181,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:35.143102Z",
+      "at": "2026-10-04T05:09:02.953838Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -187,7 +189,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:35.147874Z",
+      "at": "2026-10-04T05:09:02.957904Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -195,7 +197,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:35.151886Z",
+      "at": "2026-10-04T05:09:02.962052Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -203,7 +205,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:35.155324Z",
+      "at": "2026-10-04T05:09:02.966273Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -211,7 +213,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:35.159660Z",
+      "at": "2026-10-04T05:09:02.971531Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -219,7 +221,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:35.165454Z",
+      "at": "2026-10-04T05:09:02.977029Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -227,7 +229,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:35.171130Z",
+      "at": "2026-10-04T05:09:02.980820Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -235,7 +237,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:35.174666Z",
+      "at": "2026-10-04T05:09:02.984399Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -243,7 +245,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:35.178383Z",
+      "at": "2026-10-04T05:09:02.988707Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",

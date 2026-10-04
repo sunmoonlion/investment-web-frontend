@@ -18,6 +18,7 @@
     "step_id": "scope",
     "title": "定范围",
     "summary": "认出公司、期间、报告类型",
+    "why": "先把问的是哪家公司、哪几年、哪种报告认准。认错了，后面每一步都白做。",
     "uses": [],
     "tools": [],
     "returns": "scope",
@@ -39,6 +40,7 @@
      "reworks": 1,
      "then": "human",
      "back_to": null,
+     "backs": 0,
      "text": "重做，最多 1 次；仍不过，停下来问你"
     },
     "reserve": "0.05"
@@ -48,6 +50,7 @@
     "step_id": "profile",
     "title": "数据摸底",
     "summary": "确认有这家公司的数据、数据到哪一天、各期是什么口径",
+    "why": "先看我们有没有这家公司的数据、数据到哪一天。没有数据就停下，不拿别处的数来凑。",
     "uses": [
      {
       "artifact": "scope",
@@ -83,6 +86,7 @@
      "reworks": 1,
      "then": "human",
      "back_to": null,
+     "backs": 0,
      "text": "重做，最多 1 次；仍不过，停下来问你"
     },
     "reserve": "0.05"
@@ -92,6 +96,7 @@
     "step_id": "reconcile",
     "title": "勾稽",
     "summary": "三张表之间、前后两年之间对不对得上",
+    "why": "三张表对不上，说明数据本身有问题；带着问题往下算，指标都不可信。所以对不上就停下来问你，不自己把数改平。",
     "uses": [
      {
       "artifact": "scope",
@@ -129,6 +134,7 @@
      "reworks": 0,
      "then": "human",
      "back_to": null,
+     "backs": 0,
      "text": "停下来问你"
     },
     "reserve": "0.05"
@@ -138,6 +144,7 @@
     "step_id": "extract",
     "title": "取数",
     "summary": "把问题要用到的报表科目按期取出来，每个数带口径",
+    "why": "只取问题用得到的科目，每个数记下出自哪一期、什么口径。后面的指标只用这里取出来的数。",
     "uses": [
      {
       "artifact": "scope",
@@ -173,7 +180,8 @@
      "reworks": 1,
      "then": "back",
      "back_to": 2,
-     "text": "重做，最多 1 次；仍不过，退回第 2 步"
+     "backs": 1,
+     "text": "重做，最多 1 次；仍不过，退回第 2 步，最多 1 次；仍不过，停下来问你"
     },
     "reserve": "0.05"
    },
@@ -182,6 +190,7 @@
     "step_id": "metrics",
     "title": "算指标",
     "summary": "按数据集里登记的口径算指标；分母不成立或口径不同的，标为不适用",
+    "why": "指标按数据集里登记的口径算，不临时发明算法。分母不成立的标「不适用」，不硬算。",
     "uses": [
      {
       "artifact": "scope",
@@ -220,6 +229,7 @@
      "reworks": 2,
      "then": "human",
      "back_to": null,
+     "backs": 0,
      "text": "重做，最多 2 次；仍不过，停下来问你"
     },
     "reserve": "0.05"
@@ -229,6 +239,7 @@
     "step_id": "crosscheck",
     "title": "对照官方",
     "summary": "拿取到的数和公司年报里自己披露的数逐项对照",
+    "why": "我们的数是采集来的。和公司年报里自己披露的数对一遍，对不上的要让你知道。",
     "uses": [
      {
       "artifact": "scope",
@@ -268,6 +279,7 @@
      "reworks": 0,
      "then": "human",
      "back_to": null,
+     "backs": 0,
      "text": "停下来问你"
     },
     "reserve": "0.05"
@@ -277,6 +289,7 @@
     "step_id": "note",
     "title": "成稿",
     "summary": "只用前面各步的结果写底稿：列事实和提醒，结论栏留空",
+    "why": "底稿只写前面各步验过的事实和提醒。结论栏留空：下结论是你的事。",
     "uses": [
      {
       "artifact": "scope",
@@ -344,6 +357,7 @@
      "reworks": 1,
      "then": "human",
      "back_to": null,
+     "backs": 0,
      "text": "重做，最多 1 次；仍不过，停下来问你"
     },
     "reserve": "0.05"

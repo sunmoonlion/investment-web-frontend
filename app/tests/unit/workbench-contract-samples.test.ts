@@ -13,6 +13,9 @@ import {
   pendingListSchema,
   projectsSchema,
   sandboxesSchema,
+  reviewSchema,
+  runSchema,
+  runStepDetailSchema,
   usageSchema,
   workspacesSchema,
 } from '@/contracts/workbench-v2'
@@ -28,6 +31,9 @@ const contracts: [RegExp, z.ZodType][] = [
   [new RegExp(`^/api/workbench/sessions/${ID}$`), conversationViewSchema],
   [new RegExp(`^/api/workbench/sessions/${ID}/events$`), eventsPageSchema],
   [new RegExp(`^/api/workbench/sessions/${ID}/usage$`), usageSchema],
+  [new RegExp(`^/api/workbench/tasks/${ID}/steps$`), runSchema],
+  [new RegExp(`^/api/workbench/tasks/${ID}/steps/\\d+$`), runStepDetailSchema],
+  [new RegExp(`^/api/workbench/interactions/${ID}$`), reviewSchema],
 ]
 
 const fixtures = join(process.cwd(), 'preview/fixtures')
@@ -51,6 +57,6 @@ describe('契约认得样例里的每一份返回', () => {
     }
   })
   it('不是什么都没检查', () => {
-    expect(checked).toBeGreaterThan(40)
+    expect(checked).toBeGreaterThan(120)
   })
 })

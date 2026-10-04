@@ -6,6 +6,7 @@
   "step_id": "reconcile",
   "title": "勾稽",
   "summary": "三张表之间、前后两年之间对不对得上",
+  "why": "三张表对不上，说明数据本身有问题；带着问题往下算，指标都不可信。所以对不上就停下来问你，不自己把数改平。",
   "uses": [
    {
     "artifact": "scope",
@@ -43,6 +44,7 @@
    "reworks": 0,
    "then": "human",
    "back_to": null,
+   "backs": 0,
    "text": "停下来问你"
   },
   "reserve": "0.05",
@@ -54,8 +56,8 @@
     "outcome": "accepted",
     "failure": null,
     "spent": "0.05",
-    "started_at": "2026-10-04T04:44:49.109488Z",
-    "ended_at": "2026-10-04T04:44:49.121771Z",
+    "started_at": "2026-10-04T05:09:17.482881Z",
+    "ended_at": "2026-10-04T05:09:17.496330Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -168,7 +170,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T04:44:49.055053Z",
+      "at": "2026-10-04T05:09:17.433504Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -176,7 +178,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:49.058823Z",
+      "at": "2026-10-04T05:09:17.437433Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -184,7 +186,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:49.062645Z",
+      "at": "2026-10-04T05:09:17.441399Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -192,7 +194,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:49.066488Z",
+      "at": "2026-10-04T05:09:17.445106Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -200,7 +202,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:49.070371Z",
+      "at": "2026-10-04T05:09:17.448859Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -208,7 +210,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:49.074159Z",
+      "at": "2026-10-04T05:09:17.452357Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -216,7 +218,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:49.077871Z",
+      "at": "2026-10-04T05:09:17.455871Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -224,7 +226,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:49.081718Z",
+      "at": "2026-10-04T05:09:17.459657Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -232,7 +234,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:49.085424Z",
+      "at": "2026-10-04T05:09:17.463206Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -240,7 +242,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:49.089112Z",
+      "at": "2026-10-04T05:09:17.466734Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",

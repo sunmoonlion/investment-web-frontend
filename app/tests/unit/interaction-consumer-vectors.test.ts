@@ -2,11 +2,7 @@ import fs from 'node:fs'
 
 import { describe, expect, test } from 'vitest'
 
-import {
-  runActionSchema,
-  runEventSchema,
-  runSnapshotSchema,
-} from '@/contracts/interaction'
+import { runActionSchema, runEventSchema, runSnapshotSchema } from '@/contracts/interaction'
 
 type VectorGroup = {
   snapshots: unknown[]

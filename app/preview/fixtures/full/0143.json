@@ -6,6 +6,7 @@
   "step_id": "extract",
   "title": "取数",
   "summary": "把问题要用到的报表科目按期取出来，每个数带口径",
+  "why": "只取问题用得到的科目，每个数记下出自哪一期、什么口径。后面的指标只用这里取出来的数。",
   "uses": [
    {
     "artifact": "scope",
@@ -41,7 +42,8 @@
    "reworks": 1,
    "then": "back",
    "back_to": 2,
-   "text": "重做，最多 1 次；仍不过，退回第 2 步"
+   "backs": 1,
+   "text": "重做，最多 1 次；仍不过，退回第 2 步，最多 1 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
   "status": "cancelled",
@@ -52,8 +54,8 @@
     "outcome": "cancelled",
     "failure": "cancelled",
     "spent": "0.30",
-    "started_at": "2026-10-04T04:44:35.957511Z",
-    "ended_at": "2026-10-04T04:44:35.965855Z",
+    "started_at": "2026-10-04T05:09:03.865623Z",
+    "ended_at": "2026-10-04T05:09:03.877617Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -83,7 +85,7 @@
     "returned": null,
     "process": [
      {
-      "at": "2026-10-04T04:44:35.843990Z",
+      "at": "2026-10-04T05:09:03.768521Z",
       "kind": "tool",
       "name": "describe_schema",
       "dataset": "sh600009-financials",
@@ -91,7 +93,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:35.847792Z",
+      "at": "2026-10-04T05:09:03.773050Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600009-financials",
@@ -99,7 +101,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:35.851589Z",
+      "at": "2026-10-04T05:09:03.777078Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600009-financials",

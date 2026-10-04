@@ -11,12 +11,8 @@ describe('common API client', () => {
     const fetchMock = vi.fn()
     vi.stubGlobal('fetch', fetchMock)
 
-    await expect(requestJson('https://example.com/api/items')).rejects.toThrow(
-      'same-origin /api/',
-    )
-    await expect(requestJson('//example.com/api/items')).rejects.toThrow(
-      'same-origin /api/',
-    )
+    await expect(requestJson('https://example.com/api/items')).rejects.toThrow('same-origin /api/')
+    await expect(requestJson('//example.com/api/items')).rejects.toThrow('same-origin /api/')
     await expect(requestJson('/api\\items')).rejects.toThrow('same-origin /api/')
     expect(fetchMock).not.toHaveBeenCalled()
   })

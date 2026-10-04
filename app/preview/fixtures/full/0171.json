@@ -5,7 +5,7 @@
   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
   "tenant": "default",
   "idempotency_key": "preview-running-0001",
-  "request_digest": "551da13c19ddc3dc340b4562cf9717e523c63214ea79543f9fac75e1926f87b1",
+  "request_digest": "87b00bacb9b52f0d07c0d3dae686c621830a13aa3ac4e21db6d6a31a0f964fec",
   "profile_id": "DATA_QUERY",
   "profile_version": "1",
   "expert_pack_version": "1",
@@ -19,7 +19,7 @@
    }
   },
   "normalized_goal": null,
-  "thread_id": "thread-b7b7de307d8d",
+  "thread_id": "thread-32e0cedfbba1",
   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
   "project_root": "/home/demo/research/五粮液",
   "state": "RUNNING",
@@ -50,8 +50,8 @@
   "rejection": null,
   "cancel_requested_at": null,
   "cancel_requested_by": null,
-  "created_at": "2026-10-04T04:44:34.619762+00:00",
-  "updated_at": "2026-10-04T04:44:34.826273+00:00",
+  "created_at": "2026-10-04T05:09:02.408496+00:00",
+  "updated_at": "2026-10-04T05:09:02.644767+00:00",
   "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0"
  },
  "attempts": [
@@ -59,7 +59,7 @@
    "id": "54a98f60-a531-5ced-a9e9-89afe72225d8",
    "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
    "session_id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
-   "thread_id": "thread-b7b7de307d8d",
+   "thread_id": "thread-32e0cedfbba1",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "role": "execute",
    "arm": 0,
@@ -67,7 +67,7 @@
    "step_version": "1",
    "input_artifact_versions": [],
    "turn_ids": [
-    "turn-64aee32f7c1e"
+    "turn-dc9355b02d67"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -99,16 +99,16 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T04:44:34.720378+00:00",
-   "ended_at": "2026-10-04T04:44:34.730678+00:00",
-   "created_at": "2026-10-04T04:44:34.672702+00:00",
-   "updated_at": "2026-10-04T04:44:34.726633+00:00"
+   "started_at": "2026-10-04T05:09:02.523598+00:00",
+   "ended_at": "2026-10-04T05:09:02.538615+00:00",
+   "created_at": "2026-10-04T05:09:02.465686+00:00",
+   "updated_at": "2026-10-04T05:09:02.533098+00:00"
   },
   {
    "id": "02022332-277b-5d39-963b-947829025012",
    "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
    "session_id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
-   "thread_id": "thread-b7b7de307d8d",
+   "thread_id": "thread-32e0cedfbba1",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "role": "execute",
    "arm": 0,
@@ -121,7 +121,7 @@
     }
    ],
    "turn_ids": [
-    "turn-dd2ae1480841"
+    "turn-b35a6effa410"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -153,16 +153,16 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T04:44:34.803173+00:00",
-   "ended_at": "2026-10-04T04:44:34.811062+00:00",
-   "created_at": "2026-10-04T04:44:34.748034+00:00",
-   "updated_at": "2026-10-04T04:44:34.807655+00:00"
+   "started_at": "2026-10-04T05:09:02.619401+00:00",
+   "ended_at": "2026-10-04T05:09:02.628230+00:00",
+   "created_at": "2026-10-04T05:09:02.555808+00:00",
+   "updated_at": "2026-10-04T05:09:02.624362+00:00"
   },
   {
    "id": "5b878ac4-da05-5183-aec1-10871091b1e4",
    "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
    "session_id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
-   "thread_id": "thread-b7b7de307d8d",
+   "thread_id": "thread-32e0cedfbba1",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "role": "execute",
    "arm": 0,
@@ -192,8 +192,8 @@
    },
    "started_at": null,
    "ended_at": null,
-   "created_at": "2026-10-04T04:44:34.826273+00:00",
-   "updated_at": "2026-10-04T04:44:34.826273+00:00"
+   "created_at": "2026-10-04T05:09:02.644767+00:00",
+   "updated_at": "2026-10-04T05:09:02.644767+00:00"
   }
  ],
  "artifacts": [
@@ -206,7 +206,7 @@
    "kind": "step",
    "digest": "ec39488d520eda88e2d518566dd2f97e8876b10eb86c3d91d267ef37658e8a2f",
    "workspace_path": null,
-   "created_at": "2026-10-04T04:44:34.726633+00:00"
+   "created_at": "2026-10-04T05:09:02.533098+00:00"
   },
   {
    "id": "bbae48e0-1441-5c02-8204-1f5c73640fbc",
@@ -217,7 +217,7 @@
    "kind": "step",
    "digest": "cc594282d14ad283f752b1eda59802b844112867794dfdf320f55dbe37832b1b",
    "workspace_path": null,
-   "created_at": "2026-10-04T04:44:34.807655+00:00"
+   "created_at": "2026-10-04T05:09:02.624362+00:00"
   }
  ]
 }

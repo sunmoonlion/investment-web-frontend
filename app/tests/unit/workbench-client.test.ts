@@ -145,15 +145,13 @@ describe('workbench client', () => {
   })
 
   it('rotates the relay identity with a CSRF POST and surfaces the one-time token', async () => {
-    const fetchImpl = vi
-      .fn<typeof fetch>()
-      .mockResolvedValue(
-        json({
-          relay: { url: 'wss://edge.test/relay', user: 'u-1', agent_token: 'eyJ.new.token' },
-          revoked: 2,
-          sandbox_rolled: true,
-        }),
-      )
+    const fetchImpl = vi.fn<typeof fetch>().mockResolvedValue(
+      json({
+        relay: { url: 'wss://edge.test/relay', user: 'u-1', agent_token: 'eyJ.new.token' },
+        revoked: 2,
+        sandbox_rolled: true,
+      }),
+    )
     const result = await rotateRelayIdentity(csrf, fetchImpl)
     expect(result.relay?.agent_token).toBe('eyJ.new.token')
     const [url, init] = fetchImpl.mock.calls[0]

@@ -6,6 +6,7 @@
   "step_id": "sql_execute",
   "title": "执行 SQL",
   "summary": "执行查询，原样带回结果和数据版本",
+  "why": "查询的结果原样带回，不改数；同时记下数据版本，以后能复查。",
   "uses": [
    {
     "artifact": "sql",
@@ -29,7 +30,8 @@
    "reworks": 1,
    "then": "back",
    "back_to": 2,
-   "text": "重做，最多 1 次；仍不过，退回第 2 步"
+   "backs": 1,
+   "text": "重做，最多 1 次；仍不过，退回第 2 步，最多 1 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
   "status": "running",
@@ -40,7 +42,7 @@
     "outcome": "running",
     "failure": null,
     "spent": "0.00",
-    "started_at": "2026-10-04T04:44:34.826273Z",
+    "started_at": "2026-10-04T05:09:02.644767Z",
     "ended_at": null,
     "checks": [
      {

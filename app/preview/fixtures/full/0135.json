@@ -5,7 +5,7 @@
   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
   "tenant": "default",
   "idempotency_key": "preview-stopped-0001",
-  "request_digest": "35f6cf8d5b8abcba18a1f100211146910fa16dd13f0968215e3625636aa3e1f4",
+  "request_digest": "cb318759893a14dfc35eae8e6574890601436ffe6a1b57a80657e605d9f63e8f",
   "profile_id": "FIN_REVIEW",
   "profile_version": "1",
   "expert_pack_version": "1",
@@ -19,7 +19,7 @@
    }
   },
   "normalized_goal": null,
-  "thread_id": "thread-5309fad1ceb7",
+  "thread_id": "thread-831db3df587b",
   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
   "project_root": "/home/demo/research/上海机场",
   "state": "CANCELLED",
@@ -50,10 +50,10 @@
   "waiting_reason": null,
   "active_interaction_id": null,
   "rejection": null,
-  "cancel_requested_at": "2026-10-04T04:44:35.936132+00:00",
+  "cancel_requested_at": "2026-10-04T05:09:03.841056+00:00",
   "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-  "created_at": "2026-10-04T04:44:35.469499+00:00",
-  "updated_at": "2026-10-04T04:44:35.972538+00:00",
+  "created_at": "2026-10-04T05:09:03.341448+00:00",
+  "updated_at": "2026-10-04T05:09:03.884292+00:00",
   "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f"
  },
  "attempts": [
@@ -61,7 +61,7 @@
    "id": "75f23376-75b4-59b9-9bc3-51126c200534",
    "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
    "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
-   "thread_id": "thread-5309fad1ceb7",
+   "thread_id": "thread-831db3df587b",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "role": "execute",
    "arm": 0,
@@ -69,7 +69,7 @@
    "step_version": "1",
    "input_artifact_versions": [],
    "turn_ids": [
-    "turn-d03fd52f773f"
+    "turn-dc06596140b3"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -101,16 +101,16 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T04:44:35.571915+00:00",
-   "ended_at": "2026-10-04T04:44:35.584870+00:00",
-   "created_at": "2026-10-04T04:44:35.522559+00:00",
-   "updated_at": "2026-10-04T04:44:35.578618+00:00"
+   "started_at": "2026-10-04T05:09:03.451784+00:00",
+   "ended_at": "2026-10-04T05:09:03.469231+00:00",
+   "created_at": "2026-10-04T05:09:03.394895+00:00",
+   "updated_at": "2026-10-04T05:09:03.461084+00:00"
   },
   {
    "id": "828c734c-b182-5ee4-8fe9-602a549b4625",
    "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
    "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
-   "thread_id": "thread-5309fad1ceb7",
+   "thread_id": "thread-831db3df587b",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "role": "execute",
    "arm": 0,
@@ -123,7 +123,7 @@
     }
    ],
    "turn_ids": [
-    "turn-52b6af6dcabb"
+    "turn-c5266029828e"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -155,16 +155,16 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T04:44:35.674125+00:00",
-   "ended_at": "2026-10-04T04:44:35.682720+00:00",
-   "created_at": "2026-10-04T04:44:35.606878+00:00",
-   "updated_at": "2026-10-04T04:44:35.679267+00:00"
+   "started_at": "2026-10-04T05:09:03.567265+00:00",
+   "ended_at": "2026-10-04T05:09:03.576054+00:00",
+   "created_at": "2026-10-04T05:09:03.491503+00:00",
+   "updated_at": "2026-10-04T05:09:03.572183+00:00"
   },
   {
    "id": "c588a02e-18e0-5060-9948-da55c5ee48a9",
    "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
    "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
-   "thread_id": "thread-5309fad1ceb7",
+   "thread_id": "thread-831db3df587b",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "role": "execute",
    "arm": 0,
@@ -181,7 +181,7 @@
     }
    ],
    "turn_ids": [
-    "turn-5da2a6e14920"
+    "turn-6d63102451fa"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -213,16 +213,16 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T04:44:35.780444+00:00",
-   "ended_at": "2026-10-04T04:44:35.792311+00:00",
-   "created_at": "2026-10-04T04:44:35.699047+00:00",
-   "updated_at": "2026-10-04T04:44:35.786802+00:00"
+   "started_at": "2026-10-04T05:09:03.707864+00:00",
+   "ended_at": "2026-10-04T05:09:03.715585+00:00",
+   "created_at": "2026-10-04T05:09:03.594809+00:00",
+   "updated_at": "2026-10-04T05:09:03.712154+00:00"
   },
   {
    "id": "e0bb6f11-f25a-5b0f-a85e-f7c8ebd2db97",
    "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
    "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
-   "thread_id": "thread-5309fad1ceb7",
+   "thread_id": "thread-831db3df587b",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "role": "execute",
    "arm": 0,
@@ -239,7 +239,7 @@
     }
    ],
    "turn_ids": [
-    "turn-f2cde1828d32"
+    "turn-7bfe61351f51"
    ],
    "status": "CANCELLED",
    "codex_version": null,
@@ -265,10 +265,10 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T04:44:35.957511+00:00",
-   "ended_at": "2026-10-04T04:44:35.965855+00:00",
-   "created_at": "2026-10-04T04:44:35.811367+00:00",
-   "updated_at": "2026-10-04T04:44:35.962850+00:00"
+   "started_at": "2026-10-04T05:09:03.865623+00:00",
+   "ended_at": "2026-10-04T05:09:03.877617+00:00",
+   "created_at": "2026-10-04T05:09:03.731405+00:00",
+   "updated_at": "2026-10-04T05:09:03.874090+00:00"
   }
  ],
  "artifacts": [
@@ -281,7 +281,7 @@
    "kind": "step",
    "digest": "9433b6d4359acfa5a12e0f3300553ca24d834156fbe1f3a0f6c69d5a97650d4e",
    "workspace_path": null,
-   "created_at": "2026-10-04T04:44:35.679267+00:00"
+   "created_at": "2026-10-04T05:09:03.572183+00:00"
   },
   {
    "id": "e03ce519-16c3-5035-82b1-3126bf61aa5b",
@@ -292,7 +292,7 @@
    "kind": "step",
    "digest": "658700bbfe14785116fd089b366fb7bac5d7a547c7ad0221e5f9929ca2611b60",
    "workspace_path": null,
-   "created_at": "2026-10-04T04:44:35.786802+00:00"
+   "created_at": "2026-10-04T05:09:03.712154+00:00"
   },
   {
    "id": "8e9ae6d7-57f3-519d-bdda-b86e3cba22d3",
@@ -303,7 +303,7 @@
    "kind": "step",
    "digest": "3ea5ab25a4b7e3b5e4c67ce809567794bf3d7bcf43fa546a8aeaa69e07a52620",
    "workspace_path": null,
-   "created_at": "2026-10-04T04:44:35.578618+00:00"
+   "created_at": "2026-10-04T05:09:03.461084+00:00"
   }
  ]
 }

@@ -6,6 +6,7 @@
   "step_id": "metrics",
   "title": "算指标",
   "summary": "按数据集里登记的口径算指标；分母不成立或口径不同的，标为不适用",
+  "why": "指标按数据集里登记的口径算，不临时发明算法。分母不成立的标「不适用」，不硬算。",
   "uses": [
    {
     "artifact": "scope",
@@ -44,6 +45,7 @@
    "reworks": 2,
    "then": "human",
    "back_to": null,
+   "backs": 0,
    "text": "重做，最多 2 次；仍不过，停下来问你"
   },
   "reserve": "0.05",

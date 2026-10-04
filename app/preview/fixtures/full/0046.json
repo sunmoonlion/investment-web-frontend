@@ -7,8 +7,8 @@
   "workspace_root": "/home/demo/research",
   "path": "片仔癀",
   "title": "片仔癀",
-  "created_at": "2026-10-04T04:44:32.855045Z",
-  "updated_at": "2026-10-04T04:44:32.855045Z",
+  "created_at": "2026-10-04T05:09:00.512857Z",
+  "updated_at": "2026-10-04T05:09:00.512857Z",
   "archived_at": null,
   "directory": "/home/demo/research/片仔癀",
   "archived": false,
@@ -23,7 +23,7 @@
    "title": "片仔癀 2023 到 2025 年的盈利能力怎么样？",
    "wheel": "advisor",
    "active_task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
-   "last_active_at": "2026-10-04T04:44:35.263506Z"
+   "last_active_at": "2026-10-04T05:09:03.134336Z"
   }
  ],
  "tasks": [
@@ -39,7 +39,7 @@
     "currency": "CNY",
     "reserved": "0"
    },
-   "created_at": "2026-10-04T04:44:35.234752Z"
+   "created_at": "2026-10-04T05:09:03.106758Z"
   }
  ]
 }

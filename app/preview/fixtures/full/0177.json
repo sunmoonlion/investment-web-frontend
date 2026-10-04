@@ -6,6 +6,7 @@
   "step_id": "sql_generate",
   "title": "生成 SQL",
   "summary": "对照数据的结构写出查询，并说明每一列的口径",
+  "why": "查询照着数据的真实结构写，每一列是什么口径写明白。你看得到它到底查了什么。",
   "uses": [
    {
     "artifact": "rewritten",
@@ -33,6 +34,7 @@
    "reworks": 2,
    "then": "human",
    "back_to": null,
+   "backs": 0,
    "text": "重做，最多 2 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
@@ -44,8 +46,8 @@
     "outcome": "accepted",
     "failure": null,
     "spent": "0.05",
-    "started_at": "2026-10-04T04:44:34.803173Z",
-    "ended_at": "2026-10-04T04:44:34.811062Z",
+    "started_at": "2026-10-04T05:09:02.619401Z",
+    "ended_at": "2026-10-04T05:09:02.628230Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -86,7 +88,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T04:44:34.778604Z",
+      "at": "2026-10-04T05:09:02.592201Z",
       "kind": "tool",
       "name": "describe_schema",
       "dataset": "sz000858-financials",
@@ -94,7 +96,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T04:44:34.782197Z",
+      "at": "2026-10-04T05:09:02.600542Z",
       "kind": "tool",
       "name": "metric_definitions",
       "dataset": "sz000858-financials",

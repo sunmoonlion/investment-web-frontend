@@ -490,5 +490,107 @@
       "returned": "The expert handed back",
       "inside": "The expert's steps have their own progress view; that part is still being built."
     }
+  },
+  "expert": {
+    "band": {
+      "running": "The expert is working: {name}",
+      "waiting": "The expert stopped and is waiting for you",
+      "offline": "Your machine is offline; the expert is waiting for it",
+      "position": "Step {step} of {of}: {title}",
+      "spent": "Spent {amount}",
+      "estimated": "est."
+    },
+    "stop": {
+      "button": "Stop",
+      "title": "Stop the expert?",
+      "body": "What has been spent is not refunded. The finished part is handed back and can be seen in the dossier.",
+      "confirm": "Stop",
+      "cancel": "Keep going",
+      "failed": "Could not stop. Please try again."
+    },
+    "now": {
+      "label": "Now",
+      "why": "Why this step",
+      "elapsed": "This step has taken {time}",
+      "fresh": "In progress; last sign of life {time} ago",
+      "quiet": "Last sign of life {time} ago; it is still working",
+      "long": "No new activity for {time}. The backend is still connected; this step probably needs longer thinking",
+      "unheld": "The backend is not running this delegation right now; it may be reconnecting. If this persists, stop and ask again"
+    },
+    "time": {
+      "minutes": "{minutes} min {seconds} s",
+      "seconds": "{seconds} s"
+    },
+    "rail": {
+      "title": "Steps",
+      "times": "done {n} times"
+    },
+    "status": {
+      "pending": "not started",
+      "running": "running",
+      "accepted": "accepted",
+      "reworking": "redoing",
+      "went_back": "went back",
+      "redo": "to redo",
+      "waiting": "waiting for you",
+      "failed": "failed",
+      "cancelled": "cancelled",
+      "not_reached": "not reached"
+    },
+    "detail": {
+      "step": "Step {index}",
+      "uses": "What it used",
+      "usesStep": "\"{title}\" from step {step}",
+      "usesInput": "The question you handed over",
+      "tools": "Tools",
+      "data": "Data",
+      "dataLine": "{dataset}, version …{version}, data as of {asOf}",
+      "returned": "What it handed back",
+      "checks": "Acceptance",
+      "attempt": "Attempt {n}",
+      "notYet": "This step has not been reached yet.",
+      "willCheck": "When done, each of these is checked",
+      "afterRejection": "If acceptance fails",
+      "raw": "What came back is not in the agreed form. As received:",
+      "more": "{n} more rows not listed",
+      "noReturn": "Nothing handed back yet in this attempt.",
+      "loading": "Loading…"
+    },
+    "outcome": {
+      "accepted": "accepted",
+      "rejected": "not accepted",
+      "failed": "errored",
+      "cancelled": "stopped",
+      "running": "running",
+      "over_budget": "over budget"
+    },
+    "check": {
+      "pass": "pass",
+      "fail": "fail",
+      "skipped": "not checked"
+    },
+    "review": {
+      "failed": "What did not pass",
+      "choose": "Your decision",
+      "expires": "This question is kept until {date}.",
+      "noToken": "The credential for answering was not found. Reload the page and try again.",
+      "failedToSend": "The answer was not sent. Please try again.",
+      "decided": "You chose: {choice}",
+      "loading": "Loading…"
+    },
+    "sheet": {
+      "title": "Delegation",
+      "question": "Question",
+      "spent": "Spent (est.)",
+      "parts": "finished {used} + in progress {running}",
+      "data": "Data",
+      "dataUnknown": "not known yet",
+      "dataAsOf": "data as of {asOf}",
+      "elapsed": "Elapsed",
+      "dossier": "Open dossier",
+      "dossierSoon": "The dossier page is still being built"
+    },
+    "loading": "Loading…",
+    "failedToLoad": "Could not load this delegation."
   }
 }

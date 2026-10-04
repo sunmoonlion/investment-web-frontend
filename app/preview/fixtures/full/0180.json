@@ -6,6 +6,7 @@
   "step_id": "final",
   "title": "成稿",
   "summary": "写出答案：每个数带数据版本和口径，写明局限；结论栏留空",
+  "why": "答案里每个数都带出处和口径，并写明局限。只给事实，不给评级和买卖建议。",
   "uses": [
    {
     "artifact": "rewritten",
@@ -35,6 +36,7 @@
    "reworks": 1,
    "then": "human",
    "back_to": null,
+   "backs": 0,
    "text": "重做，最多 1 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
