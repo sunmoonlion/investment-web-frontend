@@ -47,8 +47,8 @@
     "dataset": null,
     "security_code": "600436"
    },
-   "expires_at": "2026-10-07T03:51:13.509515Z",
-   "created_at": "2026-10-04T03:51:13.508820Z"
+   "expires_at": "2026-10-07T03:53:36.272010Z",
+   "created_at": "2026-10-04T03:53:36.271355Z"
   },
   {
    "interaction_id": "e622161e-278e-510c-a294-d321919a97e8",
@@ -83,8 +83,8 @@
     }
    ],
    "missing_data": null,
-   "expires_at": "2026-10-07T03:51:13.268653Z",
-   "created_at": "2026-10-04T03:51:13.268007Z"
+   "expires_at": "2026-10-07T03:53:36.043626Z",
+   "created_at": "2026-10-04T03:53:36.042931Z"
   }
  ],
  "running": [
@@ -113,7 +113,7 @@
     "spent": "0.10",
     "estimated": true
    },
-   "started_at": "2026-10-04T03:51:12.687465Z",
+   "started_at": "2026-10-04T03:53:35.454989Z",
    "ended_at": null
   }
  ],
@@ -138,8 +138,8 @@
     "spent": "0.00",
     "estimated": true
    },
-   "started_at": "2026-10-04T03:51:16.438082Z",
-   "ended_at": "2026-10-04T03:51:16.467664Z",
+   "started_at": "2026-10-04T03:53:39.217110Z",
+   "ended_at": "2026-10-04T03:53:39.249120Z",
    "reason": {
     "code": "no_expert_pack",
     "message": "这个问题不在专家范围，继续自己用 Codex 即可"
@@ -171,8 +171,8 @@
     "spent": "0.15",
     "estimated": true
    },
-   "started_at": "2026-10-04T03:51:14.771267Z",
-   "ended_at": "2026-10-04T03:51:15.127706Z",
+   "started_at": "2026-10-04T03:53:37.523677Z",
+   "ended_at": "2026-10-04T03:53:37.878102Z",
    "reason": {
     "by": "user"
    },
@@ -203,8 +203,8 @@
     "spent": "0.30",
     "estimated": true
    },
-   "started_at": "2026-10-04T03:51:14.106841Z",
-   "ended_at": "2026-10-04T03:51:14.740582Z",
+   "started_at": "2026-10-04T03:53:36.856728Z",
+   "ended_at": "2026-10-04T03:53:37.492654Z",
    "reason": {
     "by": "user stopped",
     "interaction": "607c2718-4eae-57a0-bb04-8aa28b096733"
@@ -236,8 +236,8 @@
     "spent": "1.20",
     "estimated": true
    },
-   "started_at": "2026-10-04T03:51:13.531997Z",
-   "ended_at": "2026-10-04T03:51:14.046930Z",
+   "started_at": "2026-10-04T03:53:36.299517Z",
+   "ended_at": "2026-10-04T03:53:36.794114Z",
    "reason": {
     "by": "user"
    },
@@ -268,8 +268,8 @@
     "spent": "0.35",
     "estimated": true
    },
-   "started_at": "2026-10-04T03:51:11.930886Z",
-   "ended_at": "2026-10-04T03:51:12.610677Z",
+   "started_at": "2026-10-04T03:53:34.698432Z",
+   "ended_at": "2026-10-04T03:53:35.372076Z",
    "reason": null,
    "reason_text": ""
   },
@@ -298,8 +298,8 @@
     "spent": "0.40",
     "estimated": true
    },
-   "started_at": "2026-10-04T03:51:10.948829Z",
-   "ended_at": "2026-10-04T03:51:11.866472Z",
+   "started_at": "2026-10-04T03:53:33.745315Z",
+   "ended_at": "2026-10-04T03:53:34.631836Z",
    "reason": null,
    "reason_text": ""
   }

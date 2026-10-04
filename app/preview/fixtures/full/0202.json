@@ -55,8 +55,8 @@
     "outcome": "rejected",
     "failure": "acceptance",
     "spent": "0.05",
-    "started_at": "2026-10-04T03:51:11.567923Z",
-    "ended_at": "2026-10-04T03:51:11.574475Z",
+    "started_at": "2026-10-04T03:53:34.349606Z",
+    "ended_at": "2026-10-04T03:53:34.356338Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -90,7 +90,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T03:51:11.548017Z",
+      "at": "2026-10-04T03:53:34.330041Z",
       "kind": "tool",
       "name": "metric_definitions",
       "dataset": "sh600276-financials",
@@ -98,7 +98,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T03:51:11.551618Z",
+      "at": "2026-10-04T03:53:34.334116Z",
       "kind": "tool",
       "name": "query_metric",
       "dataset": "sh600276-financials",
@@ -113,8 +113,8 @@
     "outcome": "accepted",
     "failure": null,
     "spent": "0.05",
-    "started_at": "2026-10-04T03:51:11.657213Z",
-    "ended_at": "2026-10-04T03:51:11.665526Z",
+    "started_at": "2026-10-04T03:53:34.438366Z",
+    "ended_at": "2026-10-04T03:53:34.447701Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -352,7 +352,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T03:51:11.633399Z",
+      "at": "2026-10-04T03:53:34.411701Z",
       "kind": "tool",
       "name": "metric_definitions",
       "dataset": "sh600276-financials",
@@ -360,7 +360,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T03:51:11.636966Z",
+      "at": "2026-10-04T03:53:34.415491Z",
       "kind": "tool",
       "name": "query_metric",
       "dataset": "sh600276-financials",

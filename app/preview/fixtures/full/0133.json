@@ -56,8 +56,8 @@
     "outcome": "rejected",
     "failure": "acceptance",
     "spent": "0.05",
-    "started_at": "2026-10-04T03:51:14.681175Z",
-    "ended_at": "2026-10-04T03:51:14.687749Z",
+    "started_at": "2026-10-04T03:53:37.424692Z",
+    "ended_at": "2026-10-04T03:53:37.432994Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -196,7 +196,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T03:51:14.664314Z",
+      "at": "2026-10-04T03:53:37.395017Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz002594-financials",

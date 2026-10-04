@@ -21,8 +21,8 @@
   "why": "这个动作超出了当前允许的范围，要你点头才做",
   "failed": [],
   "missing_data": null,
-  "expires_at": "2026-10-04T04:51:16.387472Z",
-  "created_at": "2026-10-04T03:51:16.386933Z",
+  "expires_at": "2026-10-04T04:53:39.167104Z",
+  "created_at": "2026-10-04T03:53:39.166586Z",
   "pending": {
    "title": "命令需要你批准",
    "question": "需要在项目上一级目录 /home/demo/research 创建 outside.txt，是否允许？",
@@ -58,7 +58,7 @@
    "budget": null
   },
   "validity": {
-   "expires_at": "2026-10-04T04:51:16.387472Z",
+   "expires_at": "2026-10-04T04:53:39.167104Z",
    "seconds_left": 3598,
    "after_expiry": "过期不等于同意，也不等于拒绝：委托停在等待，要重新请专家或重新发起"
   },

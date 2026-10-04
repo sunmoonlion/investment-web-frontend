@@ -5,13 +5,13 @@
   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
   "sandbox_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
   "project_root": "/home/demo/research/恒瑞医药",
-  "thread_id": "thread-508c65eb826a",
+  "thread_id": "thread-dd124b7d6cf6",
   "wheel": "user",
   "state_version": 0,
   "active_task_id": null,
   "thread_settings": {},
-  "created_at": "2026-10-04T03:51:16.048398+00:00",
-  "last_active_at": "2026-10-04T03:51:16.314526+00:00",
+  "created_at": "2026-10-04T03:53:38.812445+00:00",
+  "last_active_at": "2026-10-04T03:53:39.093197+00:00",
   "kind": "work",
   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
   "title": "把毛利率、净利率、自由现金流三个指标的含义整理成 notes…"
@@ -46,7 +46,7 @@
      "method": "item/commandExecution/requestApproval",
      "reason": "需要在项目上一级目录 /home/demo/research 创建 outside.txt，是否允许？",
      "command": "/usr/bin/zsh -lc \"printf 'test' > /home/demo/research/outside.txt\"",
-     "request_id": "03e833d1-4f51-5912-8c00-94f7793c46aa:srv-499336b9",
+     "request_id": "03e833d1-4f51-5912-8c00-94f7793c46aa:srv-34dc8646",
      "environmentId": "user-pc"
     },
     "evidence": [],
@@ -55,12 +55,12 @@
    },
    "subject_digest": null,
    "target_state_version": null,
-   "expires_at": "2026-10-04T04:51:16.387472+00:00",
+   "expires_at": "2026-10-04T04:53:39.167104+00:00",
    "status": "pending",
    "response": null,
    "consumed_at": null,
    "responded_by": null,
-   "created_at": "2026-10-04T03:51:16.386933+00:00"
+   "created_at": "2026-10-04T03:53:39.166586+00:00"
   }
  ]
 }

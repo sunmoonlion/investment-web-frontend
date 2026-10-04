@@ -55,8 +55,8 @@
     "outcome": "accepted",
     "failure": null,
     "spent": "0.05",
-    "started_at": "2026-10-04T03:51:14.605631Z",
-    "ended_at": "2026-10-04T03:51:14.613831Z",
+    "started_at": "2026-10-04T03:53:37.332659Z",
+    "ended_at": "2026-10-04T03:53:37.343940Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -294,7 +294,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T03:51:14.575169Z",
+      "at": "2026-10-04T03:53:37.311291Z",
       "kind": "tool",
       "name": "metric_definitions",
       "dataset": "sz002594-financials",
@@ -302,7 +302,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T03:51:14.579574Z",
+      "at": "2026-10-04T03:53:37.315437Z",
       "kind": "tool",
       "name": "query_metric",
       "dataset": "sz002594-financials",

@@ -7,8 +7,8 @@
   "workspace_root": "/home/demo/research",
   "path": "贵州茅台",
   "title": "贵州茅台",
-  "created_at": "2026-10-04T03:51:10.873575Z",
-  "updated_at": "2026-10-04T03:51:10.873575Z",
+  "created_at": "2026-10-04T03:53:33.668341Z",
+  "updated_at": "2026-10-04T03:53:33.668341Z",
   "archived_at": null,
   "directory": "/home/demo/research/贵州茅台",
   "archived": false,
@@ -23,7 +23,7 @@
    "title": "贵州茅台 2023 到 2025 年的盈利能力怎么样？",
    "wheel": "user",
    "active_task_id": null,
-   "last_active_at": "2026-10-04T03:51:12.610677Z"
+   "last_active_at": "2026-10-04T03:53:35.372076Z"
   }
  ],
  "tasks": [
@@ -39,7 +39,7 @@
     "currency": "CNY",
     "reserved": "0"
    },
-   "created_at": "2026-10-04T03:51:11.930886Z"
+   "created_at": "2026-10-04T03:53:34.698432Z"
   }
  ]
 }

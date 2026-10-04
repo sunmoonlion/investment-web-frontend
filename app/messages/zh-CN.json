@@ -243,5 +243,190 @@
     "openDossier": "打开底稿",
     "settingsLink": "设置",
     "agentOffline": "本地代理未连上或未安装。安装后在你的机器上运行 `sunmoon-agent start`，这里会自动出现；浏览与设置不受影响。"
+  },
+  "shell": {
+    "brand": "投研工作台",
+    "modes": "三个功能",
+    "more": "其他",
+    "mode": {
+      "chat": "聊天",
+      "work": "工作",
+      "expert": "专家"
+    },
+    "new": "新建",
+    "workspace": "工作区",
+    "loading": "加载中…",
+    "noWorkspace": "还没有工作区。在你的机器上装好本地代理、加一个目录，就会出现在这里。",
+    "noProjects": "这个工作区里还没有项目",
+    "offline": "离线",
+    "recent": "最近",
+    "noRecent": "还没有对话",
+    "untitled": "未命名的对话",
+    "busy": "专家正在处理",
+    "notBuilt": "这一页还在做",
+    "foot": {
+      "pending": "待我决定",
+      "catalog": "数据目录",
+      "request": "数据申请",
+      "machines": "我的机器",
+      "settings": "设置"
+    },
+    "machine": {
+      "online": "机器在线",
+      "offline": "机器都不在线",
+      "none": "还没有登记机器"
+    }
+  },
+  "projectPicker": {
+    "loading": "加载中…",
+    "none": "还没有项目。项目是你机器上工作区里的一个目录。",
+    "offline": "机器离线"
+  },
+  "home": {
+    "title": "今天想弄清楚什么？",
+    "modes": "三个功能",
+    "mode": {
+      "chat": {
+        "name": "聊天",
+        "what": "一问一答。可以查我们的数据；不动你机器上的文件。",
+        "placeholder": "问点什么",
+        "send": "发送"
+      },
+      "work": {
+        "name": "工作",
+        "what": "让它在你的项目目录里动手：读文件、跑命令、改文件。要紧的事由你点头。",
+        "placeholder": "要它做什么",
+        "send": "开始"
+      },
+      "expert": {
+        "name": "专家",
+        "what": "按固定的方法一步一步做，每一步都验收，交回一份底稿。慢一些，贵一些。",
+        "placeholder": "要专家解决什么问题",
+        "send": "去请专家"
+      }
+    },
+    "project": {
+      "choose": "选一个项目",
+      "none": "不放进项目",
+      "clear": "不放进项目",
+      "pickTitle": "在哪个项目里",
+      "pick": {
+        "chat": "聊天可以不选项目。选了之后，它能读这个项目里的文件。",
+        "work": "工作要在一个项目里做：它是你机器上的一个目录。",
+        "expert": "专家接手的是整个项目：这段对话、项目里的文件、别的对话和底稿。"
+      }
+    },
+    "blocker": {
+      "noSandbox": "还没有可用的沙箱：先登记模型的 key、拉起沙箱。",
+      "needProject": "先选一个项目。",
+      "noMachine": "还没有登记机器。工作和专家要在你的机器上读写项目：先装本地代理。聊天不受影响。",
+      "machineOffline": "这个项目所在的机器不在线。先打开那台机器上的本地代理。",
+      "notBuilt": "这一页还在做，做好之后这里就能用。"
+    },
+    "toSettings": "去设置",
+    "problem": {
+      "backend_unavailable": "连不上服务，请稍后再试。",
+      "preview_no_sample": "预览里只能看，不能发。",
+      "other": "没有发出去，请再试一次。"
+    },
+    "pending": {
+      "title": "待我决定",
+      "open": "去看看"
+    },
+    "recent": {
+      "title": "最近的对话",
+      "untitled": "未命名的对话",
+      "noProject": "未归入项目"
+    },
+    "kind": {
+      "chat": "聊天",
+      "work": "工作"
+    }
+  },
+  "chat": {
+    "untitled": "未命名的对话",
+    "rename": "改名",
+    "noProject": "未归入项目",
+    "putInProject": "放进项目",
+    "empty": "还没有说话。",
+    "toEnd": "回到最新",
+    "stream": {
+      "connecting": "连接中…",
+      "offline": "连接断了，正在重连"
+    },
+    "stopped": "这一轮被你停下了。",
+    "failed": "这一轮没有做成。",
+    "activity": {
+      "waiting": "已发出，等它开始",
+      "thinking": "在想",
+      "data": "在查数据",
+      "file": "在读文件",
+      "writing": "在写回答"
+    },
+    "tally": {
+      "data": "查了 {count} 次数据",
+      "files": "读了 {count} 个文件",
+      "commands": "跑了 {count} 条命令",
+      "failed": "{count} 次没有成功",
+      "said": "过程"
+    },
+    "step": {
+      "data": "查数据：{tool}",
+      "version": "版本 …{version}",
+      "read": "读了 {name}",
+      "failed": "没有成功"
+    },
+    "missing": {
+      "title": "{code} 的数据还没有入库",
+      "body": "我们的数据里还没有这家公司，所以查不到。缺的数据集：",
+      "request": "去申请入库",
+      "noLink": "申请入库的入口暂时打不开。"
+    },
+    "composer": {
+      "label": "对它说",
+      "placeholder": "接着问…",
+      "send": "发送",
+      "stop": "停止",
+      "hint": "回车发送，Shift + 回车换行。金额是按公开单价估算的。"
+    },
+    "intoWork": "转为工作",
+    "askExpert": "请专家",
+    "pick": {
+      "project": {
+        "title": "放进哪个项目",
+        "description": "放进去之后，它能读这个项目里的文件。"
+      },
+      "work": {
+        "title": "在哪个项目里工作",
+        "description": "工作要在一个项目里做。选好之后，这段聊天会转成工作。"
+      },
+      "expert": {
+        "title": "请专家处理哪个项目",
+        "description": "专家接手的是整个项目。选好之后去「请专家」那一页。"
+      }
+    },
+    "problem": {
+      "backend_unavailable": "连不上服务，请稍后再试。",
+      "preview_no_sample": "预览里只能看，不能发。",
+      "wheel_held_by_other": "专家正在处理这段对话，现在不能发。",
+      "other": "没有做成，请再试一次。"
+    }
+  },
+  "usage": {
+    "button": "这段对话花了多少",
+    "estimated": "估算",
+    "tokens": "{count} token",
+    "title": "花了多少",
+    "why": "模型每调用一次算一笔。用的是你自己的模型 key，真正的账单在模型厂商那边；这里按公开单价估算。",
+    "loading": "加载中…",
+    "failed": "明细没有取到。",
+    "none": "还没有调用过模型。",
+    "turn": "哪一轮",
+    "turnNumber": "第 {n} 轮",
+    "calls": "调用",
+    "tokenColumn": "token",
+    "amount": "金额",
+    "price": "{model}，每百万 token：输入 {input}、命中缓存 {cached}、写缓存 {write}、输出 {output} 元。单价查于 {asOf}。",
+    "noPrice": "没有 {model} 的单价，所以只有 token 数，没有金额。"
   }
 }

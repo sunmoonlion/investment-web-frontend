@@ -7,7 +7,7 @@
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
    "idempotency_key": "preview-no-data-0001",
-   "request_digest": "9d953be297ccd84364b870b50df7ca9c7c19955f0a26e2198168d99eeb26cf4d",
+   "request_digest": "070796b3a9689755bd781e7375707d9bcf617001ed39ef1e643d19829609d138",
    "profile_id": "FIN_REVIEW",
    "profile_version": "1",
    "expert_pack_version": "1",
@@ -21,7 +21,7 @@
     }
    },
    "normalized_goal": null,
-   "thread_id": "thread-ed2a3230eac1",
+   "thread_id": "thread-210355ffe503",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "project_root": "/home/demo/research/片仔癀",
    "state": "WAITING",
@@ -54,8 +54,8 @@
    "rejection": null,
    "cancel_requested_at": null,
    "cancel_requested_by": null,
-   "created_at": "2026-10-04T03:51:13.303495+00:00",
-   "updated_at": "2026-10-04T03:51:13.508820+00:00",
+   "created_at": "2026-10-04T03:53:36.067222+00:00",
+   "updated_at": "2026-10-04T03:53:36.271355+00:00",
    "project_id": "7679e7df-8718-5408-8ba3-5f59a9525cf4"
   }
  ]

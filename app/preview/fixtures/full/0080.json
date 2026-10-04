@@ -7,7 +7,7 @@
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
    "idempotency_key": "preview-failed-0001",
-   "request_digest": "39ec316e15c27d714885caafde0fd873b80a59dde178a22793a54bd4b9818fd5",
+   "request_digest": "297cdc99526e36978ba68e7e358bc1d52da43284bd3e889b876464f7d8426dec",
    "profile_id": "FIN_REVIEW",
    "profile_version": "1",
    "expert_pack_version": "1",
@@ -21,7 +21,7 @@
     }
    },
    "normalized_goal": null,
-   "thread_id": "thread-152fd6e86fc5",
+   "thread_id": "thread-72316ce62bc5",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "project_root": "/home/demo/research/比亚迪",
    "state": "FAILED",
@@ -54,8 +54,8 @@
    "rejection": null,
    "cancel_requested_at": null,
    "cancel_requested_by": null,
-   "created_at": "2026-10-04T03:51:14.106841+00:00",
-   "updated_at": "2026-10-04T03:51:14.740582+00:00",
+   "created_at": "2026-10-04T03:53:36.856728+00:00",
+   "updated_at": "2026-10-04T03:53:37.492654+00:00",
    "project_id": "06944124-075a-504f-b4f3-275ef032eb9c"
   }
  ]

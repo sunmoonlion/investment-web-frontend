@@ -27,7 +27,7 @@
    "estimated": true
   },
   "data": null,
-  "started_at": "2026-10-04T03:51:13.303495Z",
+  "started_at": "2026-10-04T03:53:36.067222Z",
   "ended_at": null,
   "seconds": 4,
   "active_interaction_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce"
@@ -76,8 +76,8 @@
      "outcome": "accepted",
      "failure": null,
      "spent": "0.05",
-     "started_at": "2026-10-04T03:51:13.405611Z",
-     "ended_at": "2026-10-04T03:51:13.413799Z",
+     "started_at": "2026-10-04T03:53:36.176099Z",
+     "ended_at": "2026-10-04T03:53:36.183764Z",
      "checks": [
       {
        "label": "交回的格式对",
@@ -159,8 +159,8 @@
      "outcome": "rejected",
      "failure": "acceptance",
      "spent": "0.05",
-     "started_at": "2026-10-04T03:51:13.486355Z",
-     "ended_at": "2026-10-04T03:51:13.494006Z",
+     "started_at": "2026-10-04T03:53:36.250269Z",
+     "ended_at": "2026-10-04T03:53:36.256831Z",
      "checks": [
       {
        "label": "交回的格式对",
