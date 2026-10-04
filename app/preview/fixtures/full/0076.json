@@ -2,18 +2,18 @@
  "contract_version": 2,
  "tasks": [
   {
-   "id": "a8d00557-4ee4-5cdf-918b-e69884980326",
-   "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
-   "idempotency_key": "preview-over-budget-0001",
-   "request_digest": "d011e96797b9db8143b3cebc0b561a484bf362cbb85e6a273d9c418aae4ff40f",
+   "idempotency_key": "preview-cancelled-0001",
+   "request_digest": "da57bad3319c16d6008399acdeef98e00db22ba803bbcb16caef0335c8033625",
    "profile_id": "FIN_REVIEW",
    "profile_version": "1",
    "expert_pack_version": "1",
    "original_input": {
     "input": {
-     "text": "上海机场 2023 到 2025 年的盈利能力怎么样？"
+     "text": "招商银行 2023 到 2025 年的盈利能力怎么样？"
     },
     "attachments": [],
     "client_context": {
@@ -21,13 +21,13 @@
     }
    },
    "normalized_goal": null,
-   "thread_id": "thread-9f075d1ee27c",
+   "thread_id": "thread-dbe42664da96",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "project_root": "/home/demo/research/上海机场",
-   "state": "WAITING",
-   "state_version": 23,
+   "project_root": "/home/demo/research/招商银行",
+   "state": "CANCELLED",
+   "state_version": 20,
    "workflow_version": "1",
-   "current_step": 3,
+   "current_step": 2,
    "acceptance_contract": {
     "steps": [
      "scope",
@@ -42,21 +42,21 @@
    },
    "execution_policy": {},
    "budget": {
-    "used": "1.200000",
-    "limit": "1",
+    "used": "0.150000",
+    "limit": null,
     "currency": "CNY",
     "reserved": "0"
    },
    "active_attempt_id": null,
    "terminal_result_ref": null,
-   "waiting_reason": "RESOURCE",
-   "active_interaction_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+   "waiting_reason": null,
+   "active_interaction_id": null,
    "rejection": null,
-   "cancel_requested_at": null,
-   "cancel_requested_by": null,
-   "created_at": "2026-09-29T16:02:51.235809+00:00",
-   "updated_at": "2026-09-29T16:02:51.748347+00:00",
-   "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f"
+   "cancel_requested_at": "2026-10-04T03:31:53.057636+00:00",
+   "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "created_at": "2026-10-04T03:31:52.617297+00:00",
+   "updated_at": "2026-10-04T03:31:53.056938+00:00",
+   "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa"
   }
  ]
 }

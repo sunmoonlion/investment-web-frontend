@@ -1,95 +1,132 @@
 {
  "contract_version": 2,
- "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
- "step": {
-  "index": 1,
-  "step_id": "scope",
-  "title": "定范围",
-  "summary": "认出公司、期间、报告类型",
-  "uses": [],
-  "tools": [],
-  "returns": "scope",
-  "checks": [
-   {
-    "label": "交回的格式对"
-   },
-   {
-    "label": "有证券代码、期间、报告类型"
-   },
-   {
-    "label": "认得出是哪家公司"
-   },
-   {
-    "label": "期间不是空的"
-   }
-  ],
-  "after_rejection": {
-   "reworks": 1,
-   "then": "human",
-   "back_to": null,
-   "text": "重做，最多 1 次；仍不过，停下来问你"
+ "price": {
+  "model": "kimi-k3",
+  "priced": true,
+  "currency": "CNY",
+  "as_of": "2026-10-04",
+  "per_million": {
+   "input": "20",
+   "cached_input": "2",
+   "cache_write": "20",
+   "output": "100"
   },
-  "reserve": "0.05",
-  "status": "accepted",
-  "attempts": [
-   {
-    "attempt_id": "064f60f4-e1bb-56f6-b3ac-cc0b1b4d78dc",
-    "n": 1,
-    "outcome": "accepted",
-    "failure": null,
-    "spent": "0.05",
-    "started_at": "2026-09-29T16:02:52.712384Z",
-    "ended_at": "2026-09-29T16:02:52.722583Z",
-    "checks": [
-     {
-      "label": "交回的格式对",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有证券代码、期间、报告类型",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "认得出是哪家公司",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "期间不是空的",
-      "pass": true,
-      "message": ""
-     }
-    ],
-    "tools": {},
-    "returned": {
-     "artifact": "scope",
-     "version": 1,
-     "content": {
-      "aspects": [
-       "盈利能力"
-      ],
-      "company": "招商银行",
-      "periods": [
-       "2023",
-       "2024",
-       "2025"
-      ],
-      "question": "招商银行 2023 到 2025 年的盈利能力怎么样？",
-      "assumptions": [],
-      "report_types": [
-       "年报"
-      ],
-      "security_code": "600036"
-     }
-    },
-    "process": []
-   }
-  ],
-  "times": 1,
-  "rejected": 0,
-  "spent": "0.05",
-  "data": null
- }
+  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
+  "estimated": true
+ },
+ "cost": "0.400000",
+ "tokens": {
+  "input": 16000,
+  "cached_input": 0,
+  "cache_write": 0,
+  "output": 800,
+  "total": 16800
+ },
+ "calls": 8,
+ "turns": [
+  {
+   "turn_id": "turn-72f6b4c54175",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T03:31:49.024676+00:00"
+  },
+  {
+   "turn_id": "turn-e0fa46357af6",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T03:31:49.129128+00:00"
+  },
+  {
+   "turn_id": "turn-926fcdd7451c",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T03:31:49.265095+00:00"
+  },
+  {
+   "turn_id": "turn-f7e21f3827cd",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T03:31:49.359610+00:00"
+  },
+  {
+   "turn_id": "turn-efd31ca3ddcd",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T03:31:49.448935+00:00"
+  },
+  {
+   "turn_id": "turn-64e72e05ff83",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T03:31:49.533974+00:00"
+  },
+  {
+   "turn_id": "turn-86a382719f16",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T03:31:49.620282+00:00"
+  },
+  {
+   "turn_id": "turn-d322ead9d354",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T03:31:49.695857+00:00"
+  }
+ ]
 }

@@ -1,67 +1,206 @@
 {
  "contract_version": 2,
- "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+ "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
  "step": {
-  "index": 3,
-  "step_id": "sql_execute",
-  "title": "执行 SQL",
-  "summary": "执行查询，原样带回结果和数据版本",
+  "index": 2,
+  "step_id": "profile",
+  "title": "数据摸底",
+  "summary": "确认有这家公司的数据、数据到哪一天、各期是什么口径",
   "uses": [
    {
-    "artifact": "sql",
-    "step": 2,
-    "title": "生成 SQL"
+    "artifact": "scope",
+    "step": 1,
+    "title": "定范围"
    }
   ],
   "tools": [
+   "list_datasets",
+   "describe_schema",
+   "metric_definitions",
    "run_sql"
   ],
-  "returns": "rows",
+  "returns": "profile",
   "checks": [
    {
     "label": "交回的格式对"
    },
    {
-    "label": "有结果和数据版本"
+    "label": "有数据集、数据版本、期间、口径断点"
+   },
+   {
+    "label": "有对应的数据集"
+   },
+   {
+    "label": "有数据版本"
+   },
+   {
+    "label": "范围内至少有一期数据"
    }
   ],
   "after_rejection": {
    "reworks": 1,
-   "then": "back",
-   "back_to": 2,
-   "text": "重做，最多 1 次；仍不过，退回第 2 步"
+   "then": "human",
+   "back_to": null,
+   "text": "重做，最多 1 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
-  "status": "running",
+  "status": "accepted",
   "attempts": [
    {
-    "attempt_id": "81108b8f-3022-5de7-860c-36662e2db6fb",
+    "attempt_id": "6ed27916-5574-5323-81ac-8996e2bf5712",
     "n": 1,
-    "outcome": "running",
+    "outcome": "accepted",
     "failure": null,
-    "spent": "0.00",
-    "started_at": "2026-09-29T16:02:50.521496Z",
-    "ended_at": null,
+    "spent": "0.05",
+    "started_at": "2026-10-04T03:31:51.012006Z",
+    "ended_at": "2026-10-04T03:31:51.020270Z",
     "checks": [
      {
       "label": "交回的格式对",
-      "pass": null,
+      "pass": true,
       "message": ""
      },
      {
-      "label": "有结果和数据版本",
-      "pass": null,
+      "label": "有数据集、数据版本、期间、口径断点",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有对应的数据集",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有数据版本",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "范围内至少有一期数据",
+      "pass": true,
       "message": ""
      }
     ],
-    "tools": {},
-    "returned": null,
-    "process": []
+    "tools": {
+     "list_datasets": 1,
+     "describe_schema": 1,
+     "run_sql": 3
+    },
+    "returned": {
+     "artifact": "profile",
+     "version": 1,
+     "content": {
+      "as_of": "2025-12-31",
+      "notes": [
+       "样例数据：数字是为了预览编的，不是这家公司的真实数据",
+       "2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策"
+      ],
+      "dataset": "sz300750-financials",
+      "periods": [
+       {
+        "basis": "原始披露",
+        "verified": true,
+        "fiscal_year": 2023,
+        "report_date": "2023-12-31",
+        "report_type": "年报",
+        "official_disclosed_date": "2024-03-28"
+       },
+       {
+        "basis": "追溯调整后",
+        "verified": true,
+        "fiscal_year": 2024,
+        "report_date": "2024-12-31",
+        "report_type": "年报",
+        "official_disclosed_date": "2025-03-28"
+       },
+       {
+        "basis": "原始披露",
+        "verified": true,
+        "fiscal_year": 2025,
+        "report_date": "2025-12-31",
+        "report_type": "年报",
+        "official_disclosed_date": "2026-03-28"
+       }
+      ],
+      "basis_breaks": [
+       {
+        "basis": [
+         "原始披露",
+         "追溯调整后"
+        ],
+        "between": [
+         "2023",
+         "2024"
+        ]
+       },
+       {
+        "basis": [
+         "追溯调整后",
+         "原始披露"
+        ],
+        "between": [
+         "2024",
+         "2025"
+        ]
+       }
+      ],
+      "data_version": "sz300750-financials-sample300750",
+      "not_ingested": false,
+      "security_code": "300750"
+     }
+    },
+    "process": [
+     {
+      "at": "2026-10-04T03:31:50.970621Z",
+      "kind": "tool",
+      "name": "list_datasets",
+      "dataset": null,
+      "brief": "",
+      "ok": true
+     },
+     {
+      "at": "2026-10-04T03:31:50.977668Z",
+      "kind": "tool",
+      "name": "describe_schema",
+      "dataset": "sz300750-financials",
+      "brief": "",
+      "ok": true
+     },
+     {
+      "at": "2026-10-04T03:31:50.983019Z",
+      "kind": "tool",
+      "name": "run_sql",
+      "dataset": "sz300750-financials",
+      "brief": "SELECT key, value FROM dataset_metadata",
+      "ok": true
+     },
+     {
+      "at": "2026-10-04T03:31:50.988206Z",
+      "kind": "tool",
+      "name": "run_sql",
+      "dataset": "sz300750-financials",
+      "brief": "SELECT fiscal_year, report_type, basis, verified FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
+      "ok": true
+     },
+     {
+      "at": "2026-10-04T03:31:50.992945Z",
+      "kind": "tool",
+      "name": "run_sql",
+      "dataset": "sz300750-financials",
+      "brief": "SELECT report_date, disclosed_date FROM disclosure_calendar WHERE fiscal_year BETWEEN 2023 AND 2025",
+      "ok": true
+     }
+    ]
    }
   ],
   "times": 1,
   "rejected": 0,
-  "spent": "0.00",
-  "data": null
+  "spent": "0.05",
+  "data": {
+   "dataset": "sz300750-financials",
+   "data_version": "sz300750-financials-sample300750",
+   "as_of": "2025-12-31",
+   "security_code": "300750"
+  }
  }
 }

@@ -1,33 +1,309 @@
 {
- "contract_version": 2,
+ "task": {
+  "id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+  "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "tenant": "default",
+  "idempotency_key": "preview-stopped-0001",
+  "request_digest": "a205157a73c5071f8fbdd57f29941f9ef664bd090e660eefb647ca186f80e84e",
+  "profile_id": "FIN_REVIEW",
+  "profile_version": "1",
+  "expert_pack_version": "1",
+  "original_input": {
+   "input": {
+    "text": "上海机场 2023 到 2025 年的盈利能力怎么样？"
+   },
+   "attachments": [],
+   "client_context": {
+    "entry": "expert"
+   }
+  },
+  "normalized_goal": null,
+  "thread_id": "thread-a3575471100f",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "project_root": "/home/demo/research/上海机场",
+  "state": "CANCELLED",
+  "state_version": 24,
+  "workflow_version": "1",
+  "current_step": 3,
+  "acceptance_contract": {
+   "steps": [
+    "scope",
+    "profile",
+    "reconcile",
+    "extract",
+    "metrics",
+    "crosscheck",
+    "note"
+   ],
+   "pack_id": "FIN_REVIEW"
+  },
+  "execution_policy": {},
+  "budget": {
+   "used": "1.200000",
+   "limit": null,
+   "currency": "CNY",
+   "reserved": "0"
+  },
+  "active_attempt_id": null,
+  "terminal_result_ref": null,
+  "waiting_reason": null,
+  "active_interaction_id": null,
+  "rejection": null,
+  "cancel_requested_at": "2026-10-04T03:31:51.855348+00:00",
+  "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "created_at": "2026-10-04T03:31:51.398709+00:00",
+  "updated_at": "2026-10-04T03:31:51.893032+00:00",
+  "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f"
+ },
+ "attempts": [
+  {
+   "id": "f15c1678-161b-536f-b584-2371c93cfdc8",
+   "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "thread_id": "thread-a3575471100f",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "scope",
+   "step_version": "1",
+   "input_artifact_versions": [],
+   "turn_ids": [
+    "turn-39f27bd23a18"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.300000",
+    "tokens": {
+     "input": 12000,
+     "total": 12600,
+     "output": 600,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "248ee270-bbf5-5d9d-8c85-0b89edf4f9ab",
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-04T03:31:51.498633+00:00",
+   "ended_at": "2026-10-04T03:31:51.509738+00:00",
+   "created_at": "2026-10-04T03:31:51.449714+00:00",
+   "updated_at": "2026-10-04T03:31:51.504922+00:00"
+  },
+  {
+   "id": "5f9234e6-d522-5444-9c3b-cb1f6608d170",
+   "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "thread_id": "thread-a3575471100f",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "profile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-4f492e641a57"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.300000",
+    "tokens": {
+     "input": 12000,
+     "total": 12600,
+     "output": 600,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "e398a784-5005-51df-a70e-cbe68b0296c1",
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-04T03:31:51.595221+00:00",
+   "ended_at": "2026-10-04T03:31:51.604440+00:00",
+   "created_at": "2026-10-04T03:31:51.527894+00:00",
+   "updated_at": "2026-10-04T03:31:51.600908+00:00"
+  },
+  {
+   "id": "fd55384b-58f0-507f-816e-a89751226bd3",
+   "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "thread_id": "thread-a3575471100f",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "reconcile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-25497a254077"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.300000",
+    "tokens": {
+     "input": 12000,
+     "total": 12600,
+     "output": 600,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "8495c449-8778-5b83-b630-048a6fc126a1",
+     "name": "reconcile",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-04T03:31:51.704528+00:00",
+   "ended_at": "2026-10-04T03:31:51.716123+00:00",
+   "created_at": "2026-10-04T03:31:51.620496+00:00",
+   "updated_at": "2026-10-04T03:31:51.710868+00:00"
+  },
+  {
+   "id": "dc527528-a202-57ef-aed1-62ee24d10e89",
+   "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "thread_id": "thread-a3575471100f",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "extract",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-a526d8ae6fc5"
+   ],
+   "status": "CANCELLED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.300000",
+    "tokens": {
+     "input": 12000,
+     "total": 12600,
+     "output": 600,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": "cancelled",
+   "retryable": null,
+   "output_artifacts": [],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-04T03:31:51.877102+00:00",
+   "ended_at": "2026-10-04T03:31:51.887013+00:00",
+   "created_at": "2026-10-04T03:31:51.735791+00:00",
+   "updated_at": "2026-10-04T03:31:51.883736+00:00"
+  }
+ ],
  "artifacts": [
   {
-   "id": "87991342-530c-5110-9578-6eb62dbbdbb7",
-   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
-   "attempt_id": "d21bd2e8-f435-5512-8927-33605951d508",
+   "id": "e398a784-5005-51df-a70e-cbe68b0296c1",
+   "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "attempt_id": "5f9234e6-d522-5444-9c3b-cb1f6608d170",
+   "name": "profile",
+   "version": 1,
+   "kind": "step",
+   "digest": "9433b6d4359acfa5a12e0f3300553ca24d834156fbe1f3a0f6c69d5a97650d4e",
+   "workspace_path": null,
+   "created_at": "2026-10-04T03:31:51.600908+00:00"
+  },
+  {
+   "id": "8495c449-8778-5b83-b630-048a6fc126a1",
+   "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "attempt_id": "fd55384b-58f0-507f-816e-a89751226bd3",
+   "name": "reconcile",
+   "version": 1,
+   "kind": "step",
+   "digest": "658700bbfe14785116fd089b366fb7bac5d7a547c7ad0221e5f9929ca2611b60",
+   "workspace_path": null,
+   "created_at": "2026-10-04T03:31:51.710868+00:00"
+  },
+  {
+   "id": "248ee270-bbf5-5d9d-8c85-0b89edf4f9ab",
+   "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "attempt_id": "f15c1678-161b-536f-b584-2371c93cfdc8",
    "name": "scope",
    "version": 1,
    "kind": "step",
-   "content": {
-    "aspects": [
-     "盈利能力"
-    ],
-    "company": "片仔癀",
-    "periods": [
-     "2023",
-     "2024",
-     "2025"
-    ],
-    "question": "片仔癀 2023 到 2025 年的盈利能力怎么样？",
-    "assumptions": [],
-    "report_types": [
-     "年报"
-    ],
-    "security_code": "600436"
-   },
-   "digest": "ba37233edfe10f95b97200707ee4107c2dc0f0698c97eb92c42a53f9af1bcfed",
+   "digest": "3ea5ab25a4b7e3b5e4c67ce809567794bf3d7bcf43fa546a8aeaa69e07a52620",
    "workspace_path": null,
-   "created_at": "2026-09-29T16:02:51.115179+00:00"
+   "created_at": "2026-10-04T03:31:51.504922+00:00"
   }
  ]
 }

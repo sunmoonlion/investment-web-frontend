@@ -1,22 +1,45 @@
 {
  "contract_version": 2,
- "sessions": [
+ "project": {
+  "id": "868e3e7e-acfc-5d8c-9340-fba470994d10",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "workspace_root": "/home/demo/research",
+  "path": "贵州茅台",
+  "title": "贵州茅台",
+  "created_at": "2026-10-04T03:31:48.755592Z",
+  "updated_at": "2026-10-04T03:31:48.755592Z",
+  "archived_at": null,
+  "directory": "/home/demo/research/贵州茅台",
+  "archived": false,
+  "environment_name": "办公室的电脑",
+  "online": true
+ },
+ "active_task_id": null,
+ "conversations": [
   {
    "id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "sandbox_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
-   "project_root": "/home/demo/research/贵州茅台",
-   "thread_id": "thread-bf17a05a37bb",
-   "wheel": "user",
-   "state_version": 2,
-   "active_task_id": null,
-   "thread_settings": {},
-   "created_at": "2026-09-29T16:02:49.404832+00:00",
-   "last_active_at": "2026-09-29T16:02:50.209714+00:00",
    "kind": "work",
-   "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10",
-   "title": "贵州茅台 2023 到 2025 年的盈利能力怎么样？"
+   "title": "贵州茅台 2023 到 2025 年的盈利能力怎么样？",
+   "wheel": "user",
+   "active_task_id": null,
+   "last_active_at": "2026-10-04T03:31:50.523900Z"
+  }
+ ],
+ "tasks": [
+  {
+   "id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "profile_id": "FIN_REVIEW",
+   "state": "SUCCEEDED",
+   "question": "贵州茅台 2023 到 2025 年的盈利能力怎么样？",
+   "budget": {
+    "used": "0.350000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "created_at": "2026-10-04T03:31:49.788616Z"
   }
  ]
 }

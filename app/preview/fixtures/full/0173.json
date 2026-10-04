@@ -1,95 +1,256 @@
 {
  "contract_version": 2,
- "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
- "step": {
-  "index": 1,
-  "step_id": "scope",
-  "title": "定范围",
-  "summary": "认出公司、期间、报告类型",
-  "uses": [],
-  "tools": [],
-  "returns": "scope",
-  "checks": [
-   {
-    "label": "交回的格式对"
-   },
-   {
-    "label": "有证券代码、期间、报告类型"
-   },
-   {
-    "label": "认得出是哪家公司"
-   },
-   {
-    "label": "期间不是空的"
-   }
-  ],
-  "after_rejection": {
-   "reworks": 1,
-   "then": "human",
-   "back_to": null,
-   "text": "重做，最多 1 次；仍不过，停下来问你"
+ "task": {
+  "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+  "session_id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
+  "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0",
+  "expert": {
+   "id": "DATA_QUERY",
+   "name": "问数",
+   "version": "1"
   },
-  "reserve": "0.05",
-  "status": "accepted",
-  "attempts": [
-   {
-    "attempt_id": "e581e98a-56ba-56db-8dc8-60ebec70cb60",
-    "n": 1,
-    "outcome": "accepted",
-    "failure": null,
-    "spent": "0.05",
-    "started_at": "2026-09-29T16:02:49.548754Z",
-    "ended_at": "2026-09-29T16:02:49.558126Z",
-    "checks": [
-     {
-      "label": "交回的格式对",
-      "pass": true,
-      "message": ""
+  "question": "五粮液近五年的毛利率分别是多少？",
+  "state": "RUNNING",
+  "state_word": null,
+  "waiting_reason": null,
+  "cancel_requested": false,
+  "reason": null,
+  "reason_text": "",
+  "budget": {
+   "currency": "CNY",
+   "limit": null,
+   "used": "0.10",
+   "reserved": "0.05",
+   "left": null,
+   "running": "0.05",
+   "spent": "0.15",
+   "estimated": true
+  },
+  "data": null,
+  "started_at": "2026-10-04T03:31:50.553818Z",
+  "ended_at": null,
+  "seconds": 4,
+  "active_interaction_id": null
+ },
+ "head": {
+  "kind": "running",
+  "text": "专家还在做"
+ },
+ "sections": [
+  {
+   "key": "answer",
+   "title": "回答",
+   "blocks": [
+    {
+     "key": "answer",
+     "title": "回答",
+     "kind": "text",
+     "folded": false,
+     "from": {
+      "step": 5,
+      "title": "成稿"
      },
-     {
-      "label": "有证券代码、期间、报告类型",
-      "pass": true,
-      "message": ""
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    }
+   ]
+  },
+  {
+   "key": "data",
+   "title": "数据",
+   "blocks": [
+    {
+     "key": "result",
+     "title": "结果表",
+     "kind": "table",
+     "folded": false,
+     "from": {
+      "step": 4,
+      "title": "整理结果"
      },
-     {
-      "label": "认得出是哪家公司",
-      "pass": true,
-      "message": ""
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    }
+   ]
+  },
+  {
+   "key": "verified",
+   "title": "专家验过什么",
+   "blocks": [
+    {
+     "key": "definitions",
+     "title": "查询用的口径",
+     "kind": "table",
+     "folded": false,
+     "from": {
+      "step": 2,
+      "title": "生成 SQL"
      },
-     {
-      "label": "期间不是空的",
-      "pass": true,
-      "message": ""
-     }
-    ],
-    "tools": {},
-    "returned": {
-     "artifact": "scope",
-     "version": 1,
-     "content": {
-      "aspects": [
-       "盈利能力"
-      ],
-      "company": "贵州茅台",
-      "periods": [
-       "2023",
-       "2024",
-       "2025"
-      ],
-      "question": "贵州茅台 2023 到 2025 年的盈利能力怎么样？",
-      "assumptions": [],
-      "report_types": [
-       "年报"
-      ],
-      "security_code": "600519"
-     }
+     "status": "done",
+     "note": null,
+     "content": [
+      {
+       "name": "fiscal_year",
+       "definition": "会计年度"
+      },
+      {
+       "name": "gross_margin",
+       "definition": "(营业收入 − 营业成本) ÷ 营业收入，比率，0.25 表示 25%"
+      }
+     ],
+     "columns": [
+      {
+       "key": "name",
+       "title": "列"
+      },
+      {
+       "key": "definition",
+       "title": "口径"
+      }
+     ],
+     "also": {
+      "sql": "SELECT fiscal_year, report_type, (operate_income - operate_cost) / operate_income AS gross_margin FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2021 AND 2025 ORDER BY fiscal_year"
+     },
+     "summary": null,
+     "artifact": {
+      "name": "sql",
+      "version": 1,
+      "digest": "cc594282d14ad283f752b1eda59802b844112867794dfdf320f55dbe37832b1b"
+     },
+     "source": null
     },
-    "process": []
-   }
-  ],
-  "times": 1,
-  "rejected": 0,
-  "spent": "0.05",
-  "data": null
+    {
+     "key": "rows",
+     "title": "查询带回的原样结果",
+     "kind": "table",
+     "folded": true,
+     "from": {
+      "step": 3,
+      "title": "执行 SQL"
+     },
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    }
+   ]
+  },
+  {
+   "key": "limits",
+   "title": "局限",
+   "blocks": [
+    {
+     "key": "limitations",
+     "title": "局限",
+     "kind": "list",
+     "folded": false,
+     "from": {
+      "step": 5,
+      "title": "成稿"
+     },
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    }
+   ]
+  },
+  {
+   "key": "sources",
+   "title": "出处",
+   "blocks": [
+    {
+     "key": "citations",
+     "title": "出处",
+     "kind": "list",
+     "folded": false,
+     "from": {
+      "step": 5,
+      "title": "成稿"
+     },
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    }
+   ]
+  }
+ ],
+ "how": [
+  {
+   "index": 1,
+   "title": "改写问题",
+   "summary": "把问题改写成没有歧义的：查什么、哪个期间、什么口径",
+   "status": "accepted",
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.05"
+  },
+  {
+   "index": 2,
+   "title": "生成 SQL",
+   "summary": "对照数据的结构写出查询，并说明每一列的口径",
+   "status": "accepted",
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.05"
+  },
+  {
+   "index": 3,
+   "title": "执行 SQL",
+   "summary": "执行查询，原样带回结果和数据版本",
+   "status": "running",
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.00"
+  },
+  {
+   "index": 4,
+   "title": "整理结果",
+   "summary": "统一单位、币种、期间的写法，标出缺的值",
+   "status": "pending",
+   "times": 0,
+   "rejected": 0,
+   "spent": "0.00"
+  },
+  {
+   "index": 5,
+   "title": "成稿",
+   "summary": "写出答案：每个数带数据版本和口径，写明局限；结论栏留空",
+   "status": "pending",
+   "times": 0,
+   "rejected": 0,
+   "spent": "0.00"
+  }
+ ],
+ "conclusion": {
+  "text": "",
+  "kind": "user_draft",
+  "saved_at": null,
+  "version": null
  }
 }

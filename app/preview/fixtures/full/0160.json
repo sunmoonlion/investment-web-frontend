@@ -1,253 +1,103 @@
 {
  "contract_version": 2,
- "task": {
-  "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
-  "session_id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
-  "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0",
-  "expert": {
-   "id": "DATA_QUERY",
-   "name": "问数",
-   "version": "1"
-  },
-  "question": "五粮液近五年的毛利率分别是多少？",
-  "state": "RUNNING",
-  "state_word": null,
-  "waiting_reason": null,
-  "cancel_requested": false,
-  "reason": null,
-  "reason_text": "",
-  "budget": {
-   "currency": "CNY",
-   "limit": "2.00",
-   "used": "0.10",
-   "reserved": "0.05",
-   "left": "1.85"
-  },
-  "data": null,
-  "started_at": "2026-09-29T16:02:50.281266Z",
-  "ended_at": null,
-  "seconds": 5,
-  "active_interaction_id": null
- },
- "head": {
-  "kind": "running",
-  "text": "专家还在做"
- },
- "sections": [
+ "artifacts": [
   {
-   "key": "answer",
-   "title": "回答",
-   "blocks": [
-    {
-     "key": "answer",
-     "title": "回答",
-     "kind": "text",
-     "folded": false,
-     "from": {
-      "step": 5,
-      "title": "成稿"
+   "id": "c6e1ff86-57f4-50ec-841d-e31f631a504b",
+   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+   "attempt_id": "6ed27916-5574-5323-81ac-8996e2bf5712",
+   "name": "profile",
+   "version": 1,
+   "kind": "step",
+   "content": {
+    "as_of": "2025-12-31",
+    "notes": [
+     "样例数据：数字是为了预览编的，不是这家公司的真实数据",
+     "2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策"
+    ],
+    "dataset": "sz300750-financials",
+    "periods": [
+     {
+      "basis": "原始披露",
+      "verified": true,
+      "fiscal_year": 2023,
+      "report_date": "2023-12-31",
+      "report_type": "年报",
+      "official_disclosed_date": "2024-03-28"
      },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    }
-   ]
-  },
-  {
-   "key": "data",
-   "title": "数据",
-   "blocks": [
-    {
-     "key": "result",
-     "title": "结果表",
-     "kind": "table",
-     "folded": false,
-     "from": {
-      "step": 4,
-      "title": "整理结果"
+     {
+      "basis": "追溯调整后",
+      "verified": true,
+      "fiscal_year": 2024,
+      "report_date": "2024-12-31",
+      "report_type": "年报",
+      "official_disclosed_date": "2025-03-28"
      },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    }
-   ]
+     {
+      "basis": "原始披露",
+      "verified": true,
+      "fiscal_year": 2025,
+      "report_date": "2025-12-31",
+      "report_type": "年报",
+      "official_disclosed_date": "2026-03-28"
+     }
+    ],
+    "basis_breaks": [
+     {
+      "basis": [
+       "原始披露",
+       "追溯调整后"
+      ],
+      "between": [
+       "2023",
+       "2024"
+      ]
+     },
+     {
+      "basis": [
+       "追溯调整后",
+       "原始披露"
+      ],
+      "between": [
+       "2024",
+       "2025"
+      ]
+     }
+    ],
+    "data_version": "sz300750-financials-sample300750",
+    "not_ingested": false,
+    "security_code": "300750"
+   },
+   "digest": "b3735d1760412b7e122f73ba16d44b60f4f558ecee20b3dc72daf79138fab94c",
+   "workspace_path": null,
+   "created_at": "2026-10-04T03:31:51.016862+00:00"
   },
   {
-   "key": "verified",
-   "title": "专家验过什么",
-   "blocks": [
-    {
-     "key": "definitions",
-     "title": "查询用的口径",
-     "kind": "table",
-     "folded": false,
-     "from": {
-      "step": 2,
-      "title": "生成 SQL"
-     },
-     "status": "done",
-     "note": null,
-     "content": [
-      {
-       "name": "fiscal_year",
-       "definition": "会计年度"
-      },
-      {
-       "name": "gross_margin",
-       "definition": "(营业收入 − 营业成本) ÷ 营业收入，比率，0.25 表示 25%"
-      }
-     ],
-     "columns": [
-      {
-       "key": "name",
-       "title": "列"
-      },
-      {
-       "key": "definition",
-       "title": "口径"
-      }
-     ],
-     "also": {
-      "sql": "SELECT fiscal_year, report_type, (operate_income - operate_cost) / operate_income AS gross_margin FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2021 AND 2025 ORDER BY fiscal_year"
-     },
-     "summary": null,
-     "artifact": {
-      "name": "sql",
-      "version": 1,
-      "digest": "cc594282d14ad283f752b1eda59802b844112867794dfdf320f55dbe37832b1b"
-     },
-     "source": null
-    },
-    {
-     "key": "rows",
-     "title": "查询带回的原样结果",
-     "kind": "table",
-     "folded": true,
-     "from": {
-      "step": 3,
-      "title": "执行 SQL"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    }
-   ]
-  },
-  {
-   "key": "limits",
-   "title": "局限",
-   "blocks": [
-    {
-     "key": "limitations",
-     "title": "局限",
-     "kind": "list",
-     "folded": false,
-     "from": {
-      "step": 5,
-      "title": "成稿"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    }
-   ]
-  },
-  {
-   "key": "sources",
-   "title": "出处",
-   "blocks": [
-    {
-     "key": "citations",
-     "title": "出处",
-     "kind": "list",
-     "folded": false,
-     "from": {
-      "step": 5,
-      "title": "成稿"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    }
-   ]
+   "id": "6d38a3ca-1d8b-58fa-8c9e-d7cd9abb8663",
+   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+   "attempt_id": "a8de8c0b-26f9-5ef3-a333-3dcc5f3959d5",
+   "name": "scope",
+   "version": 1,
+   "kind": "step",
+   "content": {
+    "aspects": [
+     "盈利能力"
+    ],
+    "company": "宁德时代",
+    "periods": [
+     "2023",
+     "2024",
+     "2025"
+    ],
+    "question": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
+    "assumptions": [],
+    "report_types": [
+     "年报"
+    ],
+    "security_code": "300750"
+   },
+   "digest": "f77a558f3ba9620c552aba0f6d28ef5b64355e4e4f006ed494bb527bd55aa444",
+   "workspace_path": null,
+   "created_at": "2026-10-04T03:31:50.916454+00:00"
   }
- ],
- "how": [
-  {
-   "index": 1,
-   "title": "改写问题",
-   "summary": "把问题改写成没有歧义的：查什么、哪个期间、什么口径",
-   "status": "accepted",
-   "times": 1,
-   "rejected": 0,
-   "spent": "0.05"
-  },
-  {
-   "index": 2,
-   "title": "生成 SQL",
-   "summary": "对照数据的结构写出查询，并说明每一列的口径",
-   "status": "accepted",
-   "times": 1,
-   "rejected": 0,
-   "spent": "0.05"
-  },
-  {
-   "index": 3,
-   "title": "执行 SQL",
-   "summary": "执行查询，原样带回结果和数据版本",
-   "status": "running",
-   "times": 1,
-   "rejected": 0,
-   "spent": "0.00"
-  },
-  {
-   "index": 4,
-   "title": "整理结果",
-   "summary": "统一单位、币种、期间的写法，标出缺的值",
-   "status": "pending",
-   "times": 0,
-   "rejected": 0,
-   "spent": "0.00"
-  },
-  {
-   "index": 5,
-   "title": "成稿",
-   "summary": "写出答案：每个数带数据版本和口径，写明局限；结论栏留空",
-   "status": "pending",
-   "times": 0,
-   "rejected": 0,
-   "spent": "0.00"
-  }
- ],
- "conclusion": {
-  "text": "",
-  "kind": "user_draft",
-  "saved_at": null,
-  "version": null
- }
+ ]
 }

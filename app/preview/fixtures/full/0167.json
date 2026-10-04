@@ -1,41 +1,47 @@
 {
  "contract_version": 2,
- "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+ "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
  "step": {
-  "index": 5,
-  "step_id": "final",
-  "title": "成稿",
-  "summary": "写出答案：每个数带数据版本和口径，写明局限；结论栏留空",
+  "index": 4,
+  "step_id": "extract",
+  "title": "取数",
+  "summary": "把问题要用到的报表科目按期取出来，每个数带口径",
   "uses": [
    {
-    "artifact": "rewritten",
+    "artifact": "scope",
     "step": 1,
-    "title": "改写问题"
+    "title": "定范围"
    },
    {
-    "artifact": "table",
-    "step": 4,
-    "title": "整理结果"
+    "artifact": "profile",
+    "step": 2,
+    "title": "数据摸底"
    }
   ],
-  "tools": [],
-  "returns": "note",
+  "tools": [
+   "describe_schema",
+   "run_sql"
+  ],
+  "returns": "facts",
   "checks": [
    {
     "label": "交回的格式对"
    },
    {
-    "label": "有回答和出处"
+    "label": "有取数表和数据版本"
    },
    {
-    "label": "没有评级、目标价、买卖建议"
+    "label": "取数表不是空的"
+   },
+   {
+    "label": "有数据版本"
    }
   ],
   "after_rejection": {
    "reworks": 1,
-   "then": "human",
-   "back_to": null,
-   "text": "重做，最多 1 次；仍不过，停下来问你"
+   "then": "back",
+   "back_to": 2,
+   "text": "重做，最多 1 次；仍不过，退回第 2 步"
   },
   "reserve": "0.05",
   "status": "pending",

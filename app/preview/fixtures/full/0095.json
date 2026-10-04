@@ -1,47 +1,67 @@
 {
  "contract_version": 2,
- "task": {
-  "task_id": "ed482230-2f0f-51b2-ab02-68462b409785",
-  "session_id": "3d3b3fb6-b19e-5292-b36c-2643d99977bb",
-  "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f",
-  "expert": {
-   "id": "BOND_REVIEW",
-   "name": "",
-   "version": "1"
+ "price": {
+  "model": "kimi-k3",
+  "priced": true,
+  "currency": "CNY",
+  "as_of": "2026-10-04",
+  "per_million": {
+   "input": "20",
+   "cached_input": "2",
+   "cache_write": "20",
+   "output": "100"
   },
-  "question": "中国平安 2025 年的偿付能力怎么样？",
-  "state": "REJECTED",
-  "state_word": "打回",
-  "waiting_reason": null,
-  "cancel_requested": false,
-  "reason": {
-   "code": "no_expert_pack",
-   "message": "这个问题不在专家范围，继续自己用 Codex 即可"
-  },
-  "reason_text": "这个问题不在专家的范围里，可以自己在对话里接着做",
-  "budget": {
-   "currency": "CNY",
-   "limit": "2.00",
-   "used": "0.00",
-   "reserved": "0.00",
-   "left": "2.00"
-  },
-  "data": null,
-  "started_at": "2026-09-29T16:02:54.828433Z",
-  "ended_at": "2026-09-29T16:02:54.864631Z",
-  "seconds": 0,
-  "active_interaction_id": null
+  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
+  "estimated": true
  },
- "head": {
-  "kind": "refused",
-  "text": "专家没有接"
+ "cost": "0.150000",
+ "tokens": {
+  "input": 6000,
+  "cached_input": 0,
+  "cache_write": 0,
+  "output": 300,
+  "total": 6300
  },
- "sections": [],
- "how": [],
- "conclusion": {
-  "text": "",
-  "kind": "user_draft",
-  "saved_at": null,
-  "version": null
- }
+ "calls": 3,
+ "turns": [
+  {
+   "turn_id": "turn-8a8f543b567c",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T03:31:50.650550+00:00"
+  },
+  {
+   "turn_id": "turn-38e22238f73c",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T03:31:50.736929+00:00"
+  },
+  {
+   "turn_id": "turn-026797a9ea45",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T03:31:50.808588+00:00"
+  }
+ ]
 }

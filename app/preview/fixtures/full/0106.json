@@ -1,54 +1,51 @@
 {
- "contract_version": 2,
- "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
- "step": {
-  "index": 4,
-  "step_id": "extract",
-  "title": "取数",
-  "summary": "把问题要用到的报表科目按期取出来，每个数带口径",
-  "uses": [
-   {
-    "artifact": "scope",
-    "step": 1,
-    "title": "定范围"
+ "task": {
+  "id": "ed482230-2f0f-51b2-ab02-68462b409785",
+  "session_id": "3d3b3fb6-b19e-5292-b36c-2643d99977bb",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "tenant": "default",
+  "idempotency_key": "preview-refused-0001",
+  "request_digest": "12fc3cf9291186d125c6fcf806fe6c1a70378add3b805cb344611801cb954773",
+  "profile_id": "BOND_REVIEW",
+  "profile_version": "1",
+  "expert_pack_version": null,
+  "original_input": {
+   "input": {
+    "text": "中国平安 2025 年的偿付能力怎么样？"
    },
-   {
-    "artifact": "profile",
-    "step": 2,
-    "title": "数据摸底"
-   }
-  ],
-  "tools": [
-   "describe_schema",
-   "run_sql"
-  ],
-  "returns": "facts",
-  "checks": [
-   {
-    "label": "交回的格式对"
-   },
-   {
-    "label": "有取数表和数据版本"
-   },
-   {
-    "label": "取数表不是空的"
-   },
-   {
-    "label": "有数据版本"
-   }
-  ],
-  "after_rejection": {
-   "reworks": 1,
-   "then": "back",
-   "back_to": 2,
-   "text": "重做，最多 1 次；仍不过，退回第 2 步"
+   "attachments": [],
+   "client_context": {}
   },
-  "reserve": "0.05",
-  "status": "not_reached",
-  "attempts": [],
-  "times": 0,
-  "rejected": 0,
-  "spent": "0.00",
-  "data": null
- }
+  "normalized_goal": null,
+  "thread_id": "thread-2090188c2ee6",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "project_root": "/home/demo/research/中国平安",
+  "state": "REJECTED",
+  "state_version": 2,
+  "workflow_version": null,
+  "current_step": 0,
+  "acceptance_contract": {},
+  "execution_policy": {},
+  "budget": {
+   "used": "0",
+   "limit": null,
+   "currency": "CNY",
+   "reserved": "0"
+  },
+  "active_attempt_id": null,
+  "terminal_result_ref": null,
+  "waiting_reason": null,
+  "active_interaction_id": null,
+  "rejection": {
+   "code": "no_expert_pack",
+   "message": "这个问题不在专家范围，继续自己用 Codex 即可"
+  },
+  "cancel_requested_at": null,
+  "cancel_requested_by": null,
+  "created_at": "2026-10-04T03:31:54.274779+00:00",
+  "updated_at": "2026-10-04T03:31:54.305060+00:00",
+  "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f"
+ },
+ "attempts": [],
+ "artifacts": []
 }

@@ -1,62 +1,20 @@
 {
- "contract_version": 2,
- "tasks": [
-  {
-   "id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
-   "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "tenant": "default",
-   "idempotency_key": "preview-cancelled-0001",
-   "request_digest": "84cd5f0598fb802aeae154d753a9c8f9354de75b384a2975fd79160adc56069e",
-   "profile_id": "FIN_REVIEW",
-   "profile_version": "1",
-   "expert_pack_version": "1",
-   "original_input": {
-    "input": {
-     "text": "招商银行 2023 到 2025 年的盈利能力怎么样？"
-    },
-    "attachments": [],
-    "client_context": {
-     "entry": "expert"
-    }
-   },
-   "normalized_goal": null,
-   "thread_id": "thread-c374db140d3a",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "project_root": "/home/demo/research/招商银行",
-   "state": "CANCELLED",
-   "state_version": 20,
-   "workflow_version": "1",
-   "current_step": 2,
-   "acceptance_contract": {
-    "steps": [
-     "scope",
-     "profile",
-     "reconcile",
-     "extract",
-     "metrics",
-     "crosscheck",
-     "note"
-    ],
-    "pack_id": "FIN_REVIEW"
-   },
-   "execution_policy": {},
-   "budget": {
-    "used": "0.150000",
-    "limit": "2",
-    "currency": "CNY",
-    "reserved": "0"
-   },
-   "active_attempt_id": null,
-   "terminal_result_ref": null,
-   "waiting_reason": null,
-   "active_interaction_id": null,
-   "rejection": null,
-   "cancel_requested_at": "2026-09-29T16:02:53.046495+00:00",
-   "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "created_at": "2026-09-29T16:02:52.593570+00:00",
-   "updated_at": "2026-09-29T16:02:53.045281+00:00",
-   "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa"
-  }
- ]
+ "session": {
+  "id": "7702656d-c17f-5a36-a101-1c6cf4e19611",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": null,
+  "sandbox_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+  "project_root": null,
+  "thread_id": "thread-058bb410330c",
+  "wheel": "user",
+  "state_version": 0,
+  "active_task_id": null,
+  "thread_settings": {},
+  "created_at": "2026-10-04T03:31:53.085348+00:00",
+  "last_active_at": "2026-10-04T03:31:53.319464+00:00",
+  "kind": "chat",
+  "project_id": null,
+  "title": "毛利率和净利率有什么区别？用三句话说清楚。"
+ },
+ "pending_interactions": []
 }

@@ -1,38 +1,32 @@
 {
  "contract_version": 2,
  "pack": {
-  "id": "FIN_REVIEW",
+  "id": "DATA_QUERY",
   "version": "1",
-  "name": "财报体检",
-  "tagline": "先验数据，再算指标，不下结论",
-  "solves": "对一家已入库的 A 股非金融公司，按指定期间给出带出处、带口径、先过勾稽的财务体检底稿",
-  "does_not_solve": "预测、估值、评级、买卖或仓位建议；没有入库的公司；附注与经营数据",
-  "input": "用户的问题，其中含公司与期间",
-  "output": "底稿：数据摸底、勾稽结果、取数表、指标表、与官方的对照、观察与提醒；结论栏留空",
-  "who_judges": "用户。专家只列事实、算指标、提示口径问题",
-  "on_failure": "公司未入库、勾稽不平、与官方对不上时，不往下算，交人处理",
+  "name": "问数",
+  "tagline": "对已有的数据问一个数",
+  "solves": "对已入库数据集的口径明确的数值问题",
+  "does_not_solve": "预测、评级、买卖建议",
+  "input": "用户的问题，其中写明要查的指标与期间",
+  "output": "答案表：每个数带数据版本与口径，附局限；结论栏留空",
+  "who_judges": "用户。专家只取数、说明口径",
+  "on_failure": "查询带不回结果时退回重写查询；成稿不合格时交人处理",
   "uses_our_data": true,
   "steps": [
    {
     "index": 1,
-    "step_id": "scope",
-    "title": "定范围",
-    "summary": "认出公司、期间、报告类型",
+    "step_id": "rewrite",
+    "title": "改写问题",
+    "summary": "把问题改写成没有歧义的：查什么、哪个期间、什么口径",
     "uses": [],
     "tools": [],
-    "returns": "scope",
+    "returns": "rewritten",
     "checks": [
      {
       "label": "交回的格式对"
      },
      {
-      "label": "有证券代码、期间、报告类型"
-     },
-     {
-      "label": "认得出是哪家公司"
-     },
-     {
-      "label": "期间不是空的"
+      "label": "有改写后的问题和指标"
      }
     ],
     "after_rejection": {
@@ -45,175 +39,30 @@
    },
    {
     "index": 2,
-    "step_id": "profile",
-    "title": "数据摸底",
-    "summary": "确认有这家公司的数据、数据到哪一天、各期是什么口径",
+    "step_id": "sql_generate",
+    "title": "生成 SQL",
+    "summary": "对照数据的结构写出查询，并说明每一列的口径",
     "uses": [
      {
-      "artifact": "scope",
+      "artifact": "rewritten",
       "step": 1,
-      "title": "定范围"
-     }
-    ],
-    "tools": [
-     "list_datasets",
-     "describe_schema",
-     "metric_definitions",
-     "run_sql"
-    ],
-    "returns": "profile",
-    "checks": [
-     {
-      "label": "交回的格式对"
-     },
-     {
-      "label": "有数据集、数据版本、期间、口径断点"
-     },
-     {
-      "label": "有对应的数据集"
-     },
-     {
-      "label": "有数据版本"
-     },
-     {
-      "label": "范围内至少有一期数据"
-     }
-    ],
-    "after_rejection": {
-     "reworks": 1,
-     "then": "human",
-     "back_to": null,
-     "text": "重做，最多 1 次；仍不过，停下来问你"
-    },
-    "reserve": "0.05"
-   },
-   {
-    "index": 3,
-    "step_id": "reconcile",
-    "title": "勾稽",
-    "summary": "三张表之间、前后两年之间对不对得上",
-    "uses": [
-     {
-      "artifact": "scope",
-      "step": 1,
-      "title": "定范围"
-     },
-     {
-      "artifact": "profile",
-      "step": 2,
-      "title": "数据摸底"
-     }
-    ],
-    "tools": [
-     "run_sql"
-    ],
-    "returns": "reconcile",
-    "checks": [
-     {
-      "label": "交回的格式对"
-     },
-     {
-      "label": "有勾稽结果、跨期连续性、未解释的断点"
-     },
-     {
-      "label": "做了勾稽"
-     },
-     {
-      "label": "每条勾稽规则都平"
-     },
-     {
-      "label": "跨期的断点都有解释"
-     }
-    ],
-    "after_rejection": {
-     "reworks": 0,
-     "then": "human",
-     "back_to": null,
-     "text": "停下来问你"
-    },
-    "reserve": "0.05"
-   },
-   {
-    "index": 4,
-    "step_id": "extract",
-    "title": "取数",
-    "summary": "把问题要用到的报表科目按期取出来，每个数带口径",
-    "uses": [
-     {
-      "artifact": "scope",
-      "step": 1,
-      "title": "定范围"
-     },
-     {
-      "artifact": "profile",
-      "step": 2,
-      "title": "数据摸底"
+      "title": "改写问题"
      }
     ],
     "tools": [
      "describe_schema",
-     "run_sql"
+     "metric_definitions"
     ],
-    "returns": "facts",
+    "returns": "sql",
     "checks": [
      {
       "label": "交回的格式对"
      },
      {
-      "label": "有取数表和数据版本"
+      "label": "有查询语句"
      },
      {
-      "label": "取数表不是空的"
-     },
-     {
-      "label": "有数据版本"
-     }
-    ],
-    "after_rejection": {
-     "reworks": 1,
-     "then": "back",
-     "back_to": 2,
-     "text": "重做，最多 1 次；仍不过，退回第 2 步"
-    },
-    "reserve": "0.05"
-   },
-   {
-    "index": 5,
-    "step_id": "metrics",
-    "title": "算指标",
-    "summary": "按数据集里登记的口径算指标；分母不成立或口径不同的，标为不适用",
-    "uses": [
-     {
-      "artifact": "scope",
-      "step": 1,
-      "title": "定范围"
-     },
-     {
-      "artifact": "profile",
-      "step": 2,
-      "title": "数据摸底"
-     },
-     {
-      "artifact": "facts",
-      "step": 4,
-      "title": "取数"
-     }
-    ],
-    "tools": [
-     "metric_definitions",
-     "query_metric",
-     "run_sql"
-    ],
-    "returns": "metrics",
-    "checks": [
-     {
-      "label": "交回的格式对"
-     },
-     {
-      "label": "有指标表和数据版本"
-     },
-     {
-      "label": "指标表不是空的"
+      "label": "查询语句不是空的"
      }
     ],
     "after_rejection": {
@@ -225,88 +74,87 @@
     "reserve": "0.05"
    },
    {
-    "index": 6,
-    "step_id": "crosscheck",
-    "title": "对照官方",
-    "summary": "拿取到的数和公司年报里自己披露的数逐项对照",
+    "index": 3,
+    "step_id": "sql_execute",
+    "title": "执行 SQL",
+    "summary": "执行查询，原样带回结果和数据版本",
     "uses": [
      {
-      "artifact": "scope",
-      "step": 1,
-      "title": "定范围"
-     },
-     {
-      "artifact": "profile",
+      "artifact": "sql",
       "step": 2,
-      "title": "数据摸底"
-     },
-     {
-      "artifact": "facts",
-      "step": 4,
-      "title": "取数"
+      "title": "生成 SQL"
      }
     ],
     "tools": [
      "run_sql"
     ],
-    "returns": "crosscheck",
+    "returns": "rows",
     "checks": [
      {
       "label": "交回的格式对"
      },
      {
-      "label": "有一致项、不一致项、覆盖说明"
-     },
-     {
-      "label": "说明了对照覆盖了哪些期"
-     },
-     {
-      "label": "和公司披露的数都对得上"
+      "label": "有结果和数据版本"
      }
     ],
     "after_rejection": {
-     "reworks": 0,
-     "then": "human",
-     "back_to": null,
-     "text": "停下来问你"
+     "reworks": 1,
+     "then": "back",
+     "back_to": 2,
+     "text": "重做，最多 1 次；仍不过，退回第 2 步"
     },
     "reserve": "0.05"
    },
    {
-    "index": 7,
-    "step_id": "note",
-    "title": "成稿",
-    "summary": "只用前面各步的结果写底稿：列事实和提醒，结论栏留空",
+    "index": 4,
+    "step_id": "normalize",
+    "title": "整理结果",
+    "summary": "统一单位、币种、期间的写法，标出缺的值",
     "uses": [
      {
-      "artifact": "scope",
+      "artifact": "rewritten",
       "step": 1,
-      "title": "定范围"
+      "title": "改写问题"
      },
      {
-      "artifact": "profile",
-      "step": 2,
-      "title": "数据摸底"
-     },
-     {
-      "artifact": "reconcile",
+      "artifact": "rows",
       "step": 3,
-      "title": "勾稽"
+      "title": "执行 SQL"
+     }
+    ],
+    "tools": [],
+    "returns": "table",
+    "checks": [
+     {
+      "label": "交回的格式对"
      },
      {
-      "artifact": "facts",
+      "label": "有整理后的表"
+     }
+    ],
+    "after_rejection": {
+     "reworks": 1,
+     "then": "human",
+     "back_to": null,
+     "text": "重做，最多 1 次；仍不过，停下来问你"
+    },
+    "reserve": "0.05"
+   },
+   {
+    "index": 5,
+    "step_id": "final",
+    "title": "成稿",
+    "summary": "写出答案：每个数带数据版本和口径，写明局限；结论栏留空",
+    "uses": [
+     {
+      "artifact": "rewritten",
+      "step": 1,
+      "title": "改写问题"
+     },
+     {
+      "artifact": "table",
       "step": 4,
-      "title": "取数"
-     },
-     {
-      "artifact": "metrics",
-      "step": 5,
-      "title": "算指标"
-     },
-     {
-      "artifact": "crosscheck",
-      "step": 6,
-      "title": "对照官方"
+      "title": "整理结果"
      }
     ],
     "tools": [],
@@ -316,28 +164,10 @@
       "label": "交回的格式对"
      },
      {
-      "label": "有回答、提醒、出处、数据版本"
-     },
-     {
-      "label": "回答不是空的"
-     },
-     {
-      "label": "有提醒"
-     },
-     {
-      "label": "有出处"
-     },
-     {
-      "label": "有数据版本"
-     },
-     {
-      "label": "结论栏是空的"
+      "label": "有回答和出处"
      },
      {
       "label": "没有评级、目标价、买卖建议"
-     },
-     {
-      "label": "底稿没有超长"
      }
     ],
     "after_rejection": {
@@ -349,6 +179,6 @@
     "reserve": "0.05"
    }
   ],
-  "least_budget": "0.35"
+  "least_budget": "0.25"
  }
 }

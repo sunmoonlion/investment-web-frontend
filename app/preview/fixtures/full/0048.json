@@ -1,22 +1,45 @@
 {
  "contract_version": 2,
- "sessions": [
+ "project": {
+  "id": "f0410883-287b-578b-81dc-15f24e5b2d8f",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "workspace_root": "/home/demo/research",
+  "path": "上海机场",
+  "title": "上海机场",
+  "created_at": "2026-10-04T03:31:48.779744Z",
+  "updated_at": "2026-10-04T03:31:48.779744Z",
+  "archived_at": null,
+  "directory": "/home/demo/research/上海机场",
+  "archived": false,
+  "environment_name": "办公室的电脑",
+  "online": true
+ },
+ "active_task_id": null,
+ "conversations": [
   {
    "id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "sandbox_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
-   "project_root": "/home/demo/research/上海机场",
-   "thread_id": "thread-9f075d1ee27c",
-   "wheel": "advisor",
-   "state_version": 1,
-   "active_task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
-   "thread_settings": {},
-   "created_at": "2026-09-29T16:02:51.235809+00:00",
-   "last_active_at": "2026-09-29T16:02:51.264895+00:00",
    "kind": "work",
-   "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f",
-   "title": "上海机场 2023 到 2025 年的盈利能力怎么样？"
+   "title": "上海机场 2023 到 2025 年的盈利能力怎么样？",
+   "wheel": "user",
+   "active_task_id": null,
+   "last_active_at": "2026-10-04T03:31:51.893032Z"
+  }
+ ],
+ "tasks": [
+  {
+   "id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "profile_id": "FIN_REVIEW",
+   "state": "CANCELLED",
+   "question": "上海机场 2023 到 2025 年的盈利能力怎么样？",
+   "budget": {
+    "used": "1.200000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "created_at": "2026-10-04T03:31:51.398709Z"
   }
  ]
 }

@@ -1,8 +1,6 @@
 {
- "contract_version": 2,
- "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
- "session_id": "dd790e56-724e-5e57-9294-bae977583372",
- "project_id": "06944124-075a-504f-b4f3-275ef032eb9c",
- "state": "RECEIVED",
- "created": true
+ "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+ "state": "RUNNING",
+ "state_version": 21,
+ "cancel_requested": true
 }

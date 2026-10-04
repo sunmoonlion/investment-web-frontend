@@ -1,6 +1,6 @@
 {
  "contract_version": 2,
- "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+ "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
  "step": {
   "index": 2,
   "step_id": "profile",
@@ -47,13 +47,13 @@
   "status": "accepted",
   "attempts": [
    {
-    "attempt_id": "3bec41a8-4476-515c-8e4d-c3a8232f8b87",
+    "attempt_id": "1e5179f8-17c0-5034-a28e-2a1cf18baaf3",
     "n": 1,
     "outcome": "accepted",
     "failure": null,
     "spent": "0.05",
-    "started_at": "2026-09-29T16:02:49.665612Z",
-    "ended_at": "2026-09-29T16:02:49.679676Z",
+    "started_at": "2026-10-04T03:31:49.143374Z",
+    "ended_at": "2026-10-04T03:31:49.154270Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -95,7 +95,7 @@
        "样例数据：数字是为了预览编的，不是这家公司的真实数据",
        "2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策"
       ],
-      "dataset": "sh600519-financials",
+      "dataset": "sh600276-financials",
       "periods": [
        {
         "basis": "原始披露",
@@ -144,14 +144,14 @@
         ]
        }
       ],
-      "data_version": "sh600519-financials-sample600519",
+      "data_version": "sh600276-financials-sample600276",
       "not_ingested": false,
-      "security_code": "600519"
+      "security_code": "600276"
      }
     },
     "process": [
      {
-      "at": "2026-09-29T16:02:49.632206Z",
+      "at": "2026-10-04T03:31:49.106644Z",
       "kind": "tool",
       "name": "list_datasets",
       "dataset": null,
@@ -159,34 +159,34 @@
       "ok": true
      },
      {
-      "at": "2026-09-29T16:02:49.636742Z",
+      "at": "2026-10-04T03:31:49.110622Z",
       "kind": "tool",
       "name": "describe_schema",
-      "dataset": "sh600519-financials",
+      "dataset": "sh600276-financials",
       "brief": "",
       "ok": true
      },
      {
-      "at": "2026-09-29T16:02:49.640635Z",
+      "at": "2026-10-04T03:31:49.114295Z",
       "kind": "tool",
       "name": "run_sql",
-      "dataset": "sh600519-financials",
+      "dataset": "sh600276-financials",
       "brief": "SELECT key, value FROM dataset_metadata",
       "ok": true
      },
      {
-      "at": "2026-09-29T16:02:49.644462Z",
+      "at": "2026-10-04T03:31:49.117642Z",
       "kind": "tool",
       "name": "run_sql",
-      "dataset": "sh600519-financials",
+      "dataset": "sh600276-financials",
       "brief": "SELECT fiscal_year, report_type, basis, verified FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
       "ok": true
      },
      {
-      "at": "2026-09-29T16:02:49.648327Z",
+      "at": "2026-10-04T03:31:49.121367Z",
       "kind": "tool",
       "name": "run_sql",
-      "dataset": "sh600519-financials",
+      "dataset": "sh600276-financials",
       "brief": "SELECT report_date, disclosed_date FROM disclosure_calendar WHERE fiscal_year BETWEEN 2023 AND 2025",
       "ok": true
      }
@@ -197,10 +197,10 @@
   "rejected": 0,
   "spent": "0.05",
   "data": {
-   "dataset": "sh600519-financials",
-   "data_version": "sh600519-financials-sample600519",
+   "dataset": "sh600276-financials",
+   "data_version": "sh600276-financials-sample600276",
    "as_of": "2025-12-31",
-   "security_code": "600519"
+   "security_code": "600276"
   }
  }
 }

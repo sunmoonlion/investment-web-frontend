@@ -20,13 +20,16 @@
    },
    "budget": {
     "currency": "CNY",
-    "limit": "2.00",
+    "limit": null,
     "used": "0.35",
     "reserved": "0.00",
-    "left": "1.65"
+    "left": null,
+    "running": "0.00",
+    "spent": "0.35",
+    "estimated": true
    },
-   "started_at": "2026-09-29T16:03:06.689843Z",
-   "ended_at": "2026-09-29T16:03:07.640277Z",
+   "started_at": "2026-10-04T03:32:05.292459Z",
+   "ended_at": "2026-10-04T03:32:06.119605Z",
    "reason": null,
    "reason_text": ""
   }

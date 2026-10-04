@@ -1,145 +1,506 @@
 {
  "contract_version": 2,
- "interactions": [
+ "tasks": [
   {
-   "interaction_id": "4816f691-3c61-5bff-a6ba-e4c76bd94692",
-   "kind": "tool_approval",
-   "status": "pending",
-   "where": {
-    "project": {
-     "id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
-     "title": "恒瑞医药"
+   "id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "session_id": "3d3b3fb6-b19e-5292-b36c-2643d99977bb",
+   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "tenant": "default",
+   "idempotency_key": "preview-refused-0001",
+   "request_digest": "12fc3cf9291186d125c6fcf806fe6c1a70378add3b805cb344611801cb954773",
+   "profile_id": "BOND_REVIEW",
+   "profile_version": "1",
+   "expert_pack_version": null,
+   "original_input": {
+    "input": {
+     "text": "中国平安 2025 年的偿付能力怎么样？"
     },
-    "conversation": {
-     "id": "865ec0cc-3044-56ea-b08d-12c2b85b89a3",
-     "title": "把毛利率、净利率、自由现金流三个指标的含义整理成 notes…",
-     "kind": "work"
-    },
-    "task": null,
-    "step": null,
-    "about": "命令要你批准"
+    "attachments": [],
+    "client_context": {}
    },
-   "why": "这个动作超出了当前允许的范围，要你点头才做",
-   "failed": [],
-   "missing_data": null,
-   "expires_at": "2026-09-29T17:02:54.730934Z",
-   "created_at": "2026-09-29T16:02:54.730389Z"
+   "normalized_goal": null,
+   "thread_id": "thread-2090188c2ee6",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "project_root": "/home/demo/research/中国平安",
+   "state": "REJECTED",
+   "state_version": 2,
+   "workflow_version": null,
+   "current_step": 0,
+   "acceptance_contract": {},
+   "execution_policy": {},
+   "budget": {
+    "used": "0",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "active_attempt_id": null,
+   "terminal_result_ref": null,
+   "waiting_reason": null,
+   "active_interaction_id": null,
+   "rejection": {
+    "code": "no_expert_pack",
+    "message": "这个问题不在专家范围，继续自己用 Codex 即可"
+   },
+   "cancel_requested_at": null,
+   "cancel_requested_by": null,
+   "created_at": "2026-10-04T03:31:54.274779+00:00",
+   "updated_at": "2026-10-04T03:31:54.305060+00:00",
+   "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f"
   },
   {
-   "interaction_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
-   "kind": "resource",
-   "status": "pending",
-   "where": {
-    "project": {
-     "id": "f0410883-287b-578b-81dc-15f24e5b2d8f",
-     "title": "上海机场"
+   "id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
+   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "tenant": "default",
+   "idempotency_key": "preview-cancelled-0001",
+   "request_digest": "da57bad3319c16d6008399acdeef98e00db22ba803bbcb16caef0335c8033625",
+   "profile_id": "FIN_REVIEW",
+   "profile_version": "1",
+   "expert_pack_version": "1",
+   "original_input": {
+    "input": {
+     "text": "招商银行 2023 到 2025 年的盈利能力怎么样？"
     },
-    "conversation": {
-     "id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
-     "title": "上海机场 2023 到 2025 年的盈利能力怎么样？",
-     "kind": "work"
-    },
-    "task": {
-     "id": "a8d00557-4ee4-5cdf-918b-e69884980326",
-     "question": "上海机场 2023 到 2025 年的盈利能力怎么样？",
-     "expert": "财报体检"
-    },
-    "step": {
-     "index": 4,
-     "title": "取数"
-    },
-    "about": "预算"
-   },
-   "why": "预算不够做下一步了。专家不会超出你给的上限",
-   "failed": [],
-   "missing_data": null,
-   "expires_at": "2026-10-02T16:02:51.756575Z",
-   "created_at": "2026-09-29T16:02:51.748347Z"
-  },
-  {
-   "interaction_id": "e622161e-278e-510c-a294-d321919a97e8",
-   "kind": "input",
-   "status": "pending",
-   "where": {
-    "project": {
-     "id": "7679e7df-8718-5408-8ba3-5f59a9525cf4",
-     "title": "片仔癀"
-    },
-    "conversation": {
-     "id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
-     "title": "片仔癀 2023 到 2025 年的盈利能力怎么样？",
-     "kind": "work"
-    },
-    "task": {
-     "id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
-     "question": "片仔癀 2023 到 2025 年的盈利能力怎么样？",
-     "expert": "财报体检"
-    },
-    "step": {
-     "index": 2,
-     "title": "数据摸底"
-    },
-    "about": "验收没有通过"
-   },
-   "why": "这家公司还没有入库。没有数据，专家不往下做，也不重做",
-   "failed": [
-    {
-     "label": "有对应的数据集",
-     "message": "这家公司未入库：没有对应的数据集"
-    },
-    {
-     "label": "有数据版本",
-     "message": "没有数据版本"
-    },
-    {
-     "label": "范围内至少有一期数据",
-     "message": "范围内没有任何一期的数据"
+    "attachments": [],
+    "client_context": {
+     "entry": "expert"
     }
-   ],
-   "missing_data": {
-    "market": null,
-    "source": "expert",
-    "dataset": null,
-    "security_code": "600436"
    },
-   "expires_at": "2026-10-02T16:02:51.216641Z",
-   "created_at": "2026-09-29T16:02:51.215863Z"
+   "normalized_goal": null,
+   "thread_id": "thread-dbe42664da96",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "project_root": "/home/demo/research/招商银行",
+   "state": "CANCELLED",
+   "state_version": 20,
+   "workflow_version": "1",
+   "current_step": 2,
+   "acceptance_contract": {
+    "steps": [
+     "scope",
+     "profile",
+     "reconcile",
+     "extract",
+     "metrics",
+     "crosscheck",
+     "note"
+    ],
+    "pack_id": "FIN_REVIEW"
+   },
+   "execution_policy": {},
+   "budget": {
+    "used": "0.150000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "active_attempt_id": null,
+   "terminal_result_ref": null,
+   "waiting_reason": null,
+   "active_interaction_id": null,
+   "rejection": null,
+   "cancel_requested_at": "2026-10-04T03:31:53.057636+00:00",
+   "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "created_at": "2026-10-04T03:31:52.617297+00:00",
+   "updated_at": "2026-10-04T03:31:53.056938+00:00",
+   "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa"
   },
   {
-   "interaction_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b",
-   "kind": "input",
-   "status": "pending",
-   "where": {
-    "project": {
-     "id": "d35d6a3c-0149-5775-a1c7-860389fb558a",
-     "title": "宁德时代"
+   "id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "session_id": "dd790e56-724e-5e57-9294-bae977583372",
+   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "tenant": "default",
+   "idempotency_key": "preview-failed-0001",
+   "request_digest": "12cd0a31d4c939926db396100bcf821595462f87c52bb1ee0ee3a9d1bf8c8073",
+   "profile_id": "FIN_REVIEW",
+   "profile_version": "1",
+   "expert_pack_version": "1",
+   "original_input": {
+    "input": {
+     "text": "比亚迪 2023 到 2025 年的盈利能力怎么样？"
     },
-    "conversation": {
-     "id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
-     "title": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
-     "kind": "work"
-    },
-    "task": {
-     "id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
-     "question": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
-     "expert": "财报体检"
-    },
-    "step": {
-     "index": 3,
-     "title": "勾稽"
-    },
-    "about": "验收没有通过"
-   },
-   "why": "这一步没有通过验收。这一步不通过时专家不重做，直接问你",
-   "failed": [
-    {
-     "label": "每条勾稽规则都平",
-     "message": "有勾稽规则不平，不往下算"
+    "attachments": [],
+    "client_context": {
+     "entry": "expert"
     }
-   ],
-   "missing_data": null,
-   "expires_at": "2026-10-02T16:02:50.919764Z",
-   "created_at": "2026-09-29T16:02:50.918451Z"
+   },
+   "normalized_goal": null,
+   "thread_id": "thread-1d2a8d80a3c9",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "project_root": "/home/demo/research/比亚迪",
+   "state": "FAILED",
+   "state_version": 35,
+   "workflow_version": "1",
+   "current_step": 5,
+   "acceptance_contract": {
+    "steps": [
+     "scope",
+     "profile",
+     "reconcile",
+     "extract",
+     "metrics",
+     "crosscheck",
+     "note"
+    ],
+    "pack_id": "FIN_REVIEW"
+   },
+   "execution_policy": {},
+   "budget": {
+    "used": "0.300000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "active_attempt_id": null,
+   "terminal_result_ref": null,
+   "waiting_reason": null,
+   "active_interaction_id": null,
+   "rejection": null,
+   "cancel_requested_at": null,
+   "cancel_requested_by": null,
+   "created_at": "2026-10-04T03:31:51.951439+00:00",
+   "updated_at": "2026-10-04T03:31:52.580647+00:00",
+   "project_id": "06944124-075a-504f-b4f3-275ef032eb9c"
+  },
+  {
+   "id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "tenant": "default",
+   "idempotency_key": "preview-stopped-0001",
+   "request_digest": "a205157a73c5071f8fbdd57f29941f9ef664bd090e660eefb647ca186f80e84e",
+   "profile_id": "FIN_REVIEW",
+   "profile_version": "1",
+   "expert_pack_version": "1",
+   "original_input": {
+    "input": {
+     "text": "上海机场 2023 到 2025 年的盈利能力怎么样？"
+    },
+    "attachments": [],
+    "client_context": {
+     "entry": "expert"
+    }
+   },
+   "normalized_goal": null,
+   "thread_id": "thread-a3575471100f",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "project_root": "/home/demo/research/上海机场",
+   "state": "CANCELLED",
+   "state_version": 24,
+   "workflow_version": "1",
+   "current_step": 3,
+   "acceptance_contract": {
+    "steps": [
+     "scope",
+     "profile",
+     "reconcile",
+     "extract",
+     "metrics",
+     "crosscheck",
+     "note"
+    ],
+    "pack_id": "FIN_REVIEW"
+   },
+   "execution_policy": {},
+   "budget": {
+    "used": "1.200000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "active_attempt_id": null,
+   "terminal_result_ref": null,
+   "waiting_reason": null,
+   "active_interaction_id": null,
+   "rejection": null,
+   "cancel_requested_at": "2026-10-04T03:31:51.855348+00:00",
+   "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "created_at": "2026-10-04T03:31:51.398709+00:00",
+   "updated_at": "2026-10-04T03:31:51.893032+00:00",
+   "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f"
+  },
+  {
+   "id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "tenant": "default",
+   "idempotency_key": "preview-no-data-0001",
+   "request_digest": "38d8c8a5d06a8cf730fdbf6bf40fea946b08f0f8a4b256a3acf1ce55c81ef6ea",
+   "profile_id": "FIN_REVIEW",
+   "profile_version": "1",
+   "expert_pack_version": "1",
+   "original_input": {
+    "input": {
+     "text": "片仔癀 2023 到 2025 年的盈利能力怎么样？"
+    },
+    "attachments": [],
+    "client_context": {
+     "entry": "expert"
+    }
+   },
+   "normalized_goal": null,
+   "thread_id": "thread-8bc04593dd94",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "project_root": "/home/demo/research/片仔癀",
+   "state": "WAITING",
+   "state_version": 13,
+   "workflow_version": "1",
+   "current_step": 1,
+   "acceptance_contract": {
+    "steps": [
+     "scope",
+     "profile",
+     "reconcile",
+     "extract",
+     "metrics",
+     "crosscheck",
+     "note"
+    ],
+    "pack_id": "FIN_REVIEW"
+   },
+   "execution_policy": {},
+   "budget": {
+    "used": "0.100000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "active_attempt_id": null,
+   "terminal_result_ref": null,
+   "waiting_reason": "INPUT",
+   "active_interaction_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+   "rejection": null,
+   "cancel_requested_at": null,
+   "cancel_requested_by": null,
+   "created_at": "2026-10-04T03:31:51.166166+00:00",
+   "updated_at": "2026-10-04T03:31:51.364190+00:00",
+   "project_id": "7679e7df-8718-5408-8ba3-5f59a9525cf4"
+  },
+  {
+   "id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+   "session_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "tenant": "default",
+   "idempotency_key": "preview-waiting-0001",
+   "request_digest": "5cb7521633b9f39b2b2131e009a5b4c743c6f0e2130705cb913927c94ff078a0",
+   "profile_id": "FIN_REVIEW",
+   "profile_version": "1",
+   "expert_pack_version": "1",
+   "original_input": {
+    "input": {
+     "text": "宁德时代 2023 到 2025 年的盈利能力怎么样？"
+    },
+    "attachments": [],
+    "client_context": {
+     "entry": "expert"
+    }
+   },
+   "normalized_goal": null,
+   "thread_id": "thread-68c62e1aaf2e",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "project_root": "/home/demo/research/宁德时代",
+   "state": "WAITING",
+   "state_version": 18,
+   "workflow_version": "1",
+   "current_step": 2,
+   "acceptance_contract": {
+    "steps": [
+     "scope",
+     "profile",
+     "reconcile",
+     "extract",
+     "metrics",
+     "crosscheck",
+     "note"
+    ],
+    "pack_id": "FIN_REVIEW"
+   },
+   "execution_policy": {},
+   "budget": {
+    "used": "0.150000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "active_attempt_id": null,
+   "terminal_result_ref": null,
+   "waiting_reason": "INPUT",
+   "active_interaction_id": "e622161e-278e-510c-a294-d321919a97e8",
+   "rejection": null,
+   "cancel_requested_at": null,
+   "cancel_requested_by": null,
+   "created_at": "2026-10-04T03:31:50.805356+00:00",
+   "updated_at": "2026-10-04T03:31:51.141454+00:00",
+   "project_id": "d35d6a3c-0149-5775-a1c7-860389fb558a"
+  },
+  {
+   "id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+   "session_id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
+   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "tenant": "default",
+   "idempotency_key": "preview-running-0001",
+   "request_digest": "55abe32bb84fccab091d3f765dad422d3ffc4ac678139095f4aac4e303bead75",
+   "profile_id": "DATA_QUERY",
+   "profile_version": "1",
+   "expert_pack_version": "1",
+   "original_input": {
+    "input": {
+     "text": "五粮液近五年的毛利率分别是多少？"
+    },
+    "attachments": [],
+    "client_context": {
+     "entry": "expert"
+    }
+   },
+   "normalized_goal": null,
+   "thread_id": "thread-9fbf4cd66996",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "project_root": "/home/demo/research/五粮液",
+   "state": "RUNNING",
+   "state_version": 15,
+   "workflow_version": "1",
+   "current_step": 2,
+   "acceptance_contract": {
+    "steps": [
+     "rewrite",
+     "sql_generate",
+     "sql_execute",
+     "normalize",
+     "final"
+    ],
+    "pack_id": "DATA_QUERY"
+   },
+   "execution_policy": {},
+   "budget": {
+    "used": "0.100000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0.05"
+   },
+   "active_attempt_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b",
+   "terminal_result_ref": null,
+   "waiting_reason": null,
+   "active_interaction_id": null,
+   "rejection": null,
+   "cancel_requested_at": null,
+   "cancel_requested_by": null,
+   "created_at": "2026-10-04T03:31:50.553818+00:00",
+   "updated_at": "2026-10-04T03:31:50.770990+00:00",
+   "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0"
+  },
+  {
+   "id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "tenant": "default",
+   "idempotency_key": "preview-done-concluded-0001",
+   "request_digest": "7ea81995330bd22e4e7573ac6d6bd4c84c9a96272c9405d8c61a7915fecac7b2",
+   "profile_id": "FIN_REVIEW",
+   "profile_version": "1",
+   "expert_pack_version": "1",
+   "original_input": {
+    "input": {
+     "text": "贵州茅台 2023 到 2025 年的盈利能力怎么样？"
+    },
+    "attachments": [],
+    "client_context": {
+     "entry": "expert"
+    }
+   },
+   "normalized_goal": null,
+   "thread_id": "thread-4f9c81b243cb",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "project_root": "/home/demo/research/贵州茅台",
+   "state": "SUCCEEDED",
+   "state_version": 39,
+   "workflow_version": "1",
+   "current_step": 7,
+   "acceptance_contract": {
+    "steps": [
+     "scope",
+     "profile",
+     "reconcile",
+     "extract",
+     "metrics",
+     "crosscheck",
+     "note"
+    ],
+    "pack_id": "FIN_REVIEW"
+   },
+   "execution_policy": {},
+   "budget": {
+    "used": "0.350000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "active_attempt_id": null,
+   "terminal_result_ref": "81108b8f-3022-5de7-860c-36662e2db6fb",
+   "waiting_reason": null,
+   "active_interaction_id": null,
+   "rejection": null,
+   "cancel_requested_at": null,
+   "cancel_requested_by": null,
+   "created_at": "2026-10-04T03:31:49.788616+00:00",
+   "updated_at": "2026-10-04T03:31:50.523900+00:00",
+   "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10"
+  },
+  {
+   "id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "tenant": "default",
+   "idempotency_key": "preview-done-redone-0001",
+   "request_digest": "7a86cfc5a891da538f705dc4ffb32a2e7be374920c22fa83df3b639db925c11a",
+   "profile_id": "FIN_REVIEW",
+   "profile_version": "1",
+   "expert_pack_version": "1",
+   "original_input": {
+    "input": {
+     "text": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？"
+    },
+    "attachments": [],
+    "client_context": {
+     "entry": "expert"
+    }
+   },
+   "normalized_goal": null,
+   "thread_id": "thread-e57698bc2cda",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "project_root": "/home/demo/research/恒瑞医药",
+   "state": "SUCCEEDED",
+   "state_version": 43,
+   "workflow_version": "1",
+   "current_step": 7,
+   "acceptance_contract": {
+    "steps": [
+     "scope",
+     "profile",
+     "reconcile",
+     "extract",
+     "metrics",
+     "crosscheck",
+     "note"
+    ],
+    "pack_id": "FIN_REVIEW"
+   },
+   "execution_policy": {},
+   "budget": {
+    "used": "0.400000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "active_attempt_id": null,
+   "terminal_result_ref": "5b878ac4-da05-5183-aec1-10871091b1e4",
+   "waiting_reason": null,
+   "active_interaction_id": null,
+   "rejection": null,
+   "cancel_requested_at": null,
+   "cancel_requested_by": null,
+   "created_at": "2026-10-04T03:31:48.832355+00:00",
+   "updated_at": "2026-10-04T03:31:49.734777+00:00",
+   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e"
   }
  ]
 }

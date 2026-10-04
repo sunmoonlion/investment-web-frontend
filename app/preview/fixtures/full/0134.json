@@ -1,167 +1,86 @@
 {
- "task": {
-  "id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
-  "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
-  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-  "tenant": "default",
-  "idempotency_key": "preview-no-data-0001",
-  "request_digest": "fe8c504295264b998193c9bf7558617d191028ef5eedd6440d5c367a643002e3",
-  "profile_id": "FIN_REVIEW",
-  "profile_version": "1",
-  "expert_pack_version": "1",
-  "original_input": {
-   "input": {
-    "text": "片仔癀 2023 到 2025 年的盈利能力怎么样？"
+ "contract_version": 2,
+ "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+ "step": {
+  "index": 7,
+  "step_id": "note",
+  "title": "成稿",
+  "summary": "只用前面各步的结果写底稿：列事实和提醒，结论栏留空",
+  "uses": [
+   {
+    "artifact": "scope",
+    "step": 1,
+    "title": "定范围"
    },
-   "attachments": [],
-   "client_context": {
-    "entry": "expert"
+   {
+    "artifact": "profile",
+    "step": 2,
+    "title": "数据摸底"
+   },
+   {
+    "artifact": "reconcile",
+    "step": 3,
+    "title": "勾稽"
+   },
+   {
+    "artifact": "facts",
+    "step": 4,
+    "title": "取数"
+   },
+   {
+    "artifact": "metrics",
+    "step": 5,
+    "title": "算指标"
+   },
+   {
+    "artifact": "crosscheck",
+    "step": 6,
+    "title": "对照官方"
    }
+  ],
+  "tools": [],
+  "returns": "note",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有回答、提醒、出处、数据版本"
+   },
+   {
+    "label": "回答不是空的"
+   },
+   {
+    "label": "有提醒"
+   },
+   {
+    "label": "有出处"
+   },
+   {
+    "label": "有数据版本"
+   },
+   {
+    "label": "结论栏是空的"
+   },
+   {
+    "label": "没有评级、目标价、买卖建议"
+   },
+   {
+    "label": "底稿没有超长"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 1,
+   "then": "human",
+   "back_to": null,
+   "text": "重做，最多 1 次；仍不过，停下来问你"
   },
-  "normalized_goal": null,
-  "thread_id": "thread-c6aa57af535c",
-  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-  "project_root": "/home/demo/research/片仔癀",
-  "state": "WAITING",
-  "state_version": 13,
-  "workflow_version": "1",
-  "current_step": 1,
-  "acceptance_contract": {
-   "steps": [
-    "scope",
-    "profile",
-    "reconcile",
-    "extract",
-    "metrics",
-    "crosscheck",
-    "note"
-   ],
-   "pack_id": "FIN_REVIEW"
-  },
-  "execution_policy": {},
-  "budget": {
-   "used": "0.100000",
-   "limit": "2",
-   "currency": "CNY",
-   "reserved": "0"
-  },
-  "active_attempt_id": null,
-  "terminal_result_ref": null,
-  "waiting_reason": "INPUT",
-  "active_interaction_id": "e622161e-278e-510c-a294-d321919a97e8",
-  "rejection": null,
-  "cancel_requested_at": null,
-  "cancel_requested_by": null,
-  "created_at": "2026-09-29T16:02:50.995945+00:00",
-  "updated_at": "2026-09-29T16:02:51.215863+00:00",
-  "project_id": "7679e7df-8718-5408-8ba3-5f59a9525cf4"
- },
- "attempts": [
-  {
-   "id": "d21bd2e8-f435-5512-8927-33605951d508",
-   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
-   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
-   "thread_id": "thread-c6aa57af535c",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "role": "execute",
-   "arm": 0,
-   "step_id": "scope",
-   "step_version": "1",
-   "input_artifact_versions": [],
-   "turn_ids": [
-    "turn-26a1f04f042e"
-   ],
-   "status": "COMPLETED",
-   "codex_version": null,
-   "agent_version": null,
-   "model": null,
-   "model_provider": null,
-   "budget_allocated": {
-    "amount": "0.05"
-   },
-   "budget_consumed": {
-    "amount": "0.050000",
-    "tokens": {
-     "total": {
-      "totalTokens": 5000
-     }
-    }
-   },
-   "failure_code": null,
-   "retryable": null,
-   "output_artifacts": [
-    {
-     "id": "87991342-530c-5110-9578-6eb62dbbdbb7",
-     "name": "scope",
-     "version": 1
-    }
-   ],
-   "refs": {
-    "reworks": 0
-   },
-   "started_at": "2026-09-29T16:02:51.110089+00:00",
-   "ended_at": "2026-09-29T16:02:51.118847+00:00",
-   "created_at": "2026-09-29T16:02:51.053039+00:00",
-   "updated_at": "2026-09-29T16:02:51.115179+00:00"
-  },
-  {
-   "id": "d0e3c198-669c-53e7-b561-b13927278534",
-   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
-   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
-   "thread_id": "thread-c6aa57af535c",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "role": "execute",
-   "arm": 0,
-   "step_id": "profile",
-   "step_version": "1",
-   "input_artifact_versions": [
-    {
-     "name": "scope",
-     "version": 1
-    }
-   ],
-   "turn_ids": [
-    "turn-0e3e3f980610"
-   ],
-   "status": "FAILED",
-   "codex_version": null,
-   "agent_version": null,
-   "model": null,
-   "model_provider": null,
-   "budget_allocated": {
-    "amount": "0.05"
-   },
-   "budget_consumed": {
-    "amount": "0.050000",
-    "tokens": {
-     "total": {
-      "totalTokens": 5000
-     }
-    }
-   },
-   "failure_code": "acceptance",
-   "retryable": true,
-   "output_artifacts": [],
-   "refs": {
-    "reworks": 0
-   },
-   "started_at": "2026-09-29T16:02:51.190565+00:00",
-   "ended_at": "2026-09-29T16:02:51.198405+00:00",
-   "created_at": "2026-09-29T16:02:51.136503+00:00",
-   "updated_at": "2026-09-29T16:02:51.196296+00:00"
-  }
- ],
- "artifacts": [
-  {
-   "id": "87991342-530c-5110-9578-6eb62dbbdbb7",
-   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
-   "attempt_id": "d21bd2e8-f435-5512-8927-33605951d508",
-   "name": "scope",
-   "version": 1,
-   "kind": "step",
-   "digest": "ba37233edfe10f95b97200707ee4107c2dc0f0698c97eb92c42a53f9af1bcfed",
-   "workspace_path": null,
-   "created_at": "2026-09-29T16:02:51.115179+00:00"
-  }
- ]
+  "reserve": "0.05",
+  "status": "not_reached",
+  "attempts": [],
+  "times": 0,
+  "rejected": 0,
+  "spent": "0.00",
+  "data": null
+ }
 }

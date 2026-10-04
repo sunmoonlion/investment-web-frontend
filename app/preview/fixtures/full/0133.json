@@ -1,11 +1,11 @@
 {
  "contract_version": 2,
- "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+ "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
  "step": {
-  "index": 7,
-  "step_id": "note",
-  "title": "成稿",
-  "summary": "只用前面各步的结果写底稿：列事实和提醒，结论栏留空",
+  "index": 6,
+  "step_id": "crosscheck",
+  "title": "对照官方",
+  "summary": "拿取到的数和公司年报里自己披露的数逐项对照",
   "uses": [
    {
     "artifact": "scope",
@@ -18,69 +18,197 @@
     "title": "数据摸底"
    },
    {
-    "artifact": "reconcile",
-    "step": 3,
-    "title": "勾稽"
-   },
-   {
     "artifact": "facts",
     "step": 4,
     "title": "取数"
-   },
-   {
-    "artifact": "metrics",
-    "step": 5,
-    "title": "算指标"
-   },
-   {
-    "artifact": "crosscheck",
-    "step": 6,
-    "title": "对照官方"
    }
   ],
-  "tools": [],
-  "returns": "note",
+  "tools": [
+   "run_sql"
+  ],
+  "returns": "crosscheck",
   "checks": [
    {
     "label": "交回的格式对"
    },
    {
-    "label": "有回答、提醒、出处、数据版本"
+    "label": "有一致项、不一致项、覆盖说明"
    },
    {
-    "label": "回答不是空的"
+    "label": "说明了对照覆盖了哪些期"
    },
    {
-    "label": "有提醒"
-   },
-   {
-    "label": "有出处"
-   },
-   {
-    "label": "有数据版本"
-   },
-   {
-    "label": "结论栏是空的"
-   },
-   {
-    "label": "没有评级、目标价、买卖建议"
-   },
-   {
-    "label": "底稿没有超长"
+    "label": "和公司披露的数都对得上"
    }
   ],
   "after_rejection": {
-   "reworks": 1,
+   "reworks": 0,
    "then": "human",
    "back_to": null,
-   "text": "重做，最多 1 次；仍不过，停下来问你"
+   "text": "停下来问你"
   },
   "reserve": "0.05",
-  "status": "pending",
-  "attempts": [],
-  "times": 0,
-  "rejected": 0,
-  "spent": "0.00",
+  "status": "failed",
+  "attempts": [
+   {
+    "attempt_id": "b7f00c24-2faf-577a-ba5d-d7fcdb9d86d5",
+    "n": 1,
+    "outcome": "rejected",
+    "failure": "acceptance",
+    "spent": "0.05",
+    "started_at": "2026-10-04T03:31:52.523562Z",
+    "ended_at": "2026-10-04T03:31:52.531232Z",
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有一致项、不一致项、覆盖说明",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "说明了对照覆盖了哪些期",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "和公司披露的数都对得上",
+      "pass": false,
+      "message": "有数字与公司披露的原文对不上，不往下写"
+     }
+    ],
+    "tools": {
+     "run_sql": 1
+    },
+    "returned": {
+     "artifact": "crosscheck",
+     "version": null,
+     "content": {
+      "matched": [
+       {
+        "item": "operate_income",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 602300000000.0,
+        "fiscal_year": 2023,
+        "source_report": "比亚迪2023年年度报告"
+       },
+       {
+        "item": "net_profit",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 31319600000.0,
+        "fiscal_year": 2023,
+        "source_report": "比亚迪2023年年度报告"
+       },
+       {
+        "item": "total_assets",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 1144370000000.0,
+        "fiscal_year": 2023,
+        "source_report": "比亚迪2023年年度报告"
+       },
+       {
+        "item": "total_equity",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 286092500000.0,
+        "fiscal_year": 2023,
+        "source_report": "比亚迪2023年年度报告"
+       },
+       {
+        "item": "operate_income",
+        "page": 6,
+        "basis": "追溯调整后",
+        "value": 776967000000.0,
+        "fiscal_year": 2024,
+        "source_report": "比亚迪2024年年度报告"
+       },
+       {
+        "item": "net_profit",
+        "page": 6,
+        "basis": "追溯调整后",
+        "value": 41956218000.0,
+        "fiscal_year": 2024,
+        "source_report": "比亚迪2024年年度报告"
+       },
+       {
+        "item": "total_assets",
+        "page": 6,
+        "basis": "追溯调整后",
+        "value": 1476237300000.0,
+        "fiscal_year": 2024,
+        "source_report": "比亚迪2024年年度报告"
+       },
+       {
+        "item": "total_equity",
+        "page": 6,
+        "basis": "追溯调整后",
+        "value": 369059325000.0,
+        "fiscal_year": 2024,
+        "source_report": "比亚迪2024年年度报告"
+       },
+       {
+        "item": "operate_income",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 903612621000.0,
+        "fiscal_year": 2025,
+        "source_report": "比亚迪2025年年度报告"
+       },
+       {
+        "item": "net_profit",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 51505919397.0,
+        "fiscal_year": 2025,
+        "source_report": "比亚迪2025年年度报告"
+       },
+       {
+        "item": "total_assets",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 1716863979900.0,
+        "fiscal_year": 2025,
+        "source_report": "比亚迪2025年年度报告"
+       }
+      ],
+      "coverage": "范围内 3 期年报全部对照；现金流量表的项目年报的「主要会计数据」表里没有，没有对照",
+      "mismatched": [
+       {
+        "item": "total_equity",
+        "page": 6,
+        "basis": "原始披露",
+        "dataset": 429215994975.0,
+        "official": 429216114975.0,
+        "fiscal_year": 2025,
+        "source_report": "比亚迪2025年年度报告"
+       }
+      ],
+      "not_covered": [],
+      "data_version": "sz002594-financials-sample002594"
+     },
+     "raw": null
+    },
+    "process": [
+     {
+      "at": "2026-10-04T03:31:52.507285Z",
+      "kind": "tool",
+      "name": "run_sql",
+      "dataset": "sz002594-financials",
+      "brief": "SELECT fiscal_year, item, basis, value, source_report, page FROM official_key_figures WHERE fiscal_year BETWEEN 2023 AND 2025",
+      "ok": true
+     }
+    ]
+   }
+  ],
+  "times": 1,
+  "rejected": 1,
+  "spent": "0.05",
   "data": null
  }
 }

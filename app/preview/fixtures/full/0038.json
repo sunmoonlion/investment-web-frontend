@@ -1,56 +1,61 @@
 {
  "contract_version": 2,
- "sessions": [
+ "project": {
+  "id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "workspace_root": "/home/demo/research",
+  "path": "恒瑞医药",
+  "title": "恒瑞医药",
+  "created_at": "2026-10-04T03:31:48.746246Z",
+  "updated_at": "2026-10-04T03:31:48.746246Z",
+  "archived_at": null,
+  "directory": "/home/demo/research/恒瑞医药",
+  "archived": false,
+  "environment_name": "办公室的电脑",
+  "online": true
+ },
+ "active_task_id": null,
+ "conversations": [
   {
    "id": "865ec0cc-3044-56ea-b08d-12c2b85b89a3",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "sandbox_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
-   "project_root": "/home/demo/research/恒瑞医药",
-   "thread_id": "thread-fa9548d9bc24",
-   "wheel": "user",
-   "state_version": 0,
-   "active_task_id": null,
-   "thread_settings": {},
-   "created_at": "2026-09-29T16:02:54.333850+00:00",
-   "last_active_at": "2026-09-29T16:02:54.618407+00:00",
    "kind": "work",
-   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
-   "title": "把毛利率、净利率、自由现金流三个指标的含义整理成 notes…"
+   "title": "把毛利率、净利率、自由现金流三个指标的含义整理成 notes…",
+   "wheel": "user",
+   "active_task_id": null,
+   "last_active_at": "2026-10-04T03:31:54.151399Z"
   },
   {
    "id": "19fac78f-4bd9-59e2-bc2a-136ded347780",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "sandbox_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
-   "project_root": "/home/demo/research/恒瑞医药",
-   "thread_id": "thread-4c57d3b21d97",
-   "wheel": "user",
-   "state_version": 0,
-   "active_task_id": null,
-   "thread_settings": {},
-   "created_at": "2026-09-29T16:02:53.522447+00:00",
-   "last_active_at": "2026-09-29T16:02:54.130580+00:00",
    "kind": "chat",
-   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
-   "title": "这个项目里有哪些文件？"
+   "title": "这个项目里有哪些文件？",
+   "wheel": "user",
+   "active_task_id": null,
+   "last_active_at": "2026-10-04T03:31:53.777463Z"
   },
   {
    "id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "sandbox_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
-   "project_root": "/home/demo/research/恒瑞医药",
-   "thread_id": "thread-1dcb794ea446",
-   "wheel": "user",
-   "state_version": 2,
-   "active_task_id": null,
-   "thread_settings": {},
-   "created_at": "2026-09-29T16:02:48.412359+00:00",
-   "last_active_at": "2026-09-29T16:02:49.375542+00:00",
    "kind": "work",
-   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
-   "title": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？"
+   "title": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+   "wheel": "user",
+   "active_task_id": null,
+   "last_active_at": "2026-10-04T03:31:49.734777Z"
+  }
+ ],
+ "tasks": [
+  {
+   "id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "profile_id": "FIN_REVIEW",
+   "state": "SUCCEEDED",
+   "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+   "budget": {
+    "used": "0.400000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "created_at": "2026-10-04T03:31:48.832355Z"
   }
  ]
 }

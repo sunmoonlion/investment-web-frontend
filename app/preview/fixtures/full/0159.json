@@ -1,50 +1,240 @@
 {
- "contract_version": 2,
- "artifacts": [
-  {
-   "id": "38320049-63c0-53fa-9945-01582956eb79",
-   "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
-   "attempt_id": "41009191-0921-50e4-bc4b-88bb2cc1d5ea",
-   "name": "rewritten",
-   "version": 1,
-   "kind": "step",
-   "content": {
-    "period": "2021 至 2025 年，年报",
-    "metrics": [
-     "毛利率"
-    ],
-    "entities": [
-     "五粮液（000858）"
-    ],
-    "question": "五粮液 2021 至 2025 年年报的毛利率，按年列出"
+ "task": {
+  "id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+  "session_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "tenant": "default",
+  "idempotency_key": "preview-waiting-0001",
+  "request_digest": "5cb7521633b9f39b2b2131e009a5b4c743c6f0e2130705cb913927c94ff078a0",
+  "profile_id": "FIN_REVIEW",
+  "profile_version": "1",
+  "expert_pack_version": "1",
+  "original_input": {
+   "input": {
+    "text": "宁德时代 2023 到 2025 年的盈利能力怎么样？"
    },
-   "digest": "ec39488d520eda88e2d518566dd2f97e8876b10eb86c3d91d267ef37658e8a2f",
-   "workspace_path": null,
-   "created_at": "2026-09-29T16:02:50.409082+00:00"
+   "attachments": [],
+   "client_context": {
+    "entry": "expert"
+   }
+  },
+  "normalized_goal": null,
+  "thread_id": "thread-68c62e1aaf2e",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "project_root": "/home/demo/research/宁德时代",
+  "state": "WAITING",
+  "state_version": 18,
+  "workflow_version": "1",
+  "current_step": 2,
+  "acceptance_contract": {
+   "steps": [
+    "scope",
+    "profile",
+    "reconcile",
+    "extract",
+    "metrics",
+    "crosscheck",
+    "note"
+   ],
+   "pack_id": "FIN_REVIEW"
+  },
+  "execution_policy": {},
+  "budget": {
+   "used": "0.150000",
+   "limit": null,
+   "currency": "CNY",
+   "reserved": "0"
+  },
+  "active_attempt_id": null,
+  "terminal_result_ref": null,
+  "waiting_reason": "INPUT",
+  "active_interaction_id": "e622161e-278e-510c-a294-d321919a97e8",
+  "rejection": null,
+  "cancel_requested_at": null,
+  "cancel_requested_by": null,
+  "created_at": "2026-10-04T03:31:50.805356+00:00",
+  "updated_at": "2026-10-04T03:31:51.141454+00:00",
+  "project_id": "d35d6a3c-0149-5775-a1c7-860389fb558a"
+ },
+ "attempts": [
+  {
+   "id": "a8de8c0b-26f9-5ef3-a333-3dcc5f3959d5",
+   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+   "session_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+   "thread_id": "thread-68c62e1aaf2e",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "scope",
+   "step_version": "1",
+   "input_artifact_versions": [],
+   "turn_ids": [
+    "turn-fb44de50e1ff"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "6d38a3ca-1d8b-58fa-8c9e-d7cd9abb8663",
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-04T03:31:50.909446+00:00",
+   "ended_at": "2026-10-04T03:31:50.919907+00:00",
+   "created_at": "2026-10-04T03:31:50.857178+00:00",
+   "updated_at": "2026-10-04T03:31:50.916454+00:00"
   },
   {
-   "id": "02022332-277b-5d39-963b-947829025012",
-   "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
-   "attempt_id": "fd2d1b01-adb2-552c-9c49-f751c75fb500",
-   "name": "sql",
+   "id": "6ed27916-5574-5323-81ac-8996e2bf5712",
+   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+   "session_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+   "thread_id": "thread-68c62e1aaf2e",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "profile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-dc74a95121ac"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "c6e1ff86-57f4-50ec-841d-e31f631a504b",
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-04T03:31:51.012006+00:00",
+   "ended_at": "2026-10-04T03:31:51.020270+00:00",
+   "created_at": "2026-10-04T03:31:50.937271+00:00",
+   "updated_at": "2026-10-04T03:31:51.016862+00:00"
+  },
+  {
+   "id": "18be15af-4adf-5f4d-97fe-c211a6130ea6",
+   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+   "session_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+   "thread_id": "thread-68c62e1aaf2e",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "reconcile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-1f8de0c932fd"
+   ],
+   "status": "FAILED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": "acceptance",
+   "retryable": true,
+   "output_artifacts": [],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-04T03:31:51.125766+00:00",
+   "ended_at": "2026-10-04T03:31:51.131903+00:00",
+   "created_at": "2026-10-04T03:31:51.037879+00:00",
+   "updated_at": "2026-10-04T03:31:51.130046+00:00"
+  }
+ ],
+ "artifacts": [
+  {
+   "id": "c6e1ff86-57f4-50ec-841d-e31f631a504b",
+   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+   "attempt_id": "6ed27916-5574-5323-81ac-8996e2bf5712",
+   "name": "profile",
    "version": 1,
    "kind": "step",
-   "content": {
-    "sql": "SELECT fiscal_year, report_type, (operate_income - operate_cost) / operate_income AS gross_margin FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2021 AND 2025 ORDER BY fiscal_year",
-    "columns": [
-     {
-      "name": "fiscal_year",
-      "definition": "会计年度"
-     },
-     {
-      "name": "gross_margin",
-      "definition": "(营业收入 − 营业成本) ÷ 营业收入，比率，0.25 表示 25%"
-     }
-    ]
-   },
-   "digest": "cc594282d14ad283f752b1eda59802b844112867794dfdf320f55dbe37832b1b",
+   "digest": "b3735d1760412b7e122f73ba16d44b60f4f558ecee20b3dc72daf79138fab94c",
    "workspace_path": null,
-   "created_at": "2026-09-29T16:02:50.500847+00:00"
+   "created_at": "2026-10-04T03:31:51.016862+00:00"
+  },
+  {
+   "id": "6d38a3ca-1d8b-58fa-8c9e-d7cd9abb8663",
+   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+   "attempt_id": "a8de8c0b-26f9-5ef3-a333-3dcc5f3959d5",
+   "name": "scope",
+   "version": 1,
+   "kind": "step",
+   "digest": "f77a558f3ba9620c552aba0f6d28ef5b64355e4e4f006ed494bb527bd55aa444",
+   "workspace_path": null,
+   "created_at": "2026-10-04T03:31:50.916454+00:00"
   }
  ]
 }

@@ -1,20 +1,20 @@
 {
  "session": {
-  "id": "7702656d-c17f-5a36-a101-1c6cf4e19611",
+  "id": "19fac78f-4bd9-59e2-bc2a-136ded347780",
   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-  "environment_id": null,
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
   "sandbox_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
-  "project_root": null,
-  "thread_id": "thread-8c8566d580a8",
+  "project_root": "/home/demo/research/恒瑞医药",
+  "thread_id": "thread-488b4e17bd01",
   "wheel": "user",
   "state_version": 0,
   "active_task_id": null,
   "thread_settings": {},
-  "created_at": "2026-09-29T16:02:53.080815+00:00",
-  "last_active_at": "2026-09-29T16:02:53.422879+00:00",
+  "created_at": "2026-10-04T03:31:53.414330+00:00",
+  "last_active_at": "2026-10-04T03:31:53.777463+00:00",
   "kind": "chat",
-  "project_id": null,
-  "title": "毛利率和净利率有什么区别？用三句话说清楚。"
+  "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
+  "title": "这个项目里有哪些文件？"
  },
  "pending_interactions": []
 }

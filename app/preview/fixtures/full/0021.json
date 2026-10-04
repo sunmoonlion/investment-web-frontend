@@ -1,17 +1,5 @@
 {
- "contract_version": 2,
- "workspaces": [
-  {
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "environment_name": "办公室的电脑",
-   "online": true,
-   "root": "/home/demo/research"
-  },
-  {
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "environment_name": "办公室的电脑",
-   "online": true,
-   "root": "/home/demo/notes"
-  }
- ]
+ "task_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+ "state": "RECEIVED",
+ "created": true
 }

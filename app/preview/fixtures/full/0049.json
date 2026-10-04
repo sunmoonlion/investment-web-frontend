@@ -1,45 +1,22 @@
 {
  "contract_version": 2,
- "project": {
-  "id": "06944124-075a-504f-b4f3-275ef032eb9c",
-  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-  "workspace_root": "/home/demo/research",
-  "path": "比亚迪",
-  "title": "比亚迪",
-  "created_at": "2026-09-29T16:02:48.359860Z",
-  "updated_at": "2026-09-29T16:02:48.359860Z",
-  "archived_at": null,
-  "directory": "/home/demo/research/比亚迪",
-  "archived": false,
-  "environment_name": "办公室的电脑",
-  "online": true
- },
- "active_task_id": null,
- "conversations": [
+ "sessions": [
   {
-   "id": "dd790e56-724e-5e57-9294-bae977583372",
-   "kind": "work",
-   "title": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
+   "id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "sandbox_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+   "project_root": "/home/demo/research/上海机场",
+   "thread_id": "thread-a3575471100f",
    "wheel": "user",
+   "state_version": 2,
    "active_task_id": null,
-   "last_active_at": "2026-09-29T16:02:52.555671Z"
-  }
- ],
- "tasks": [
-  {
-   "id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
-   "session_id": "dd790e56-724e-5e57-9294-bae977583372",
-   "profile_id": "FIN_REVIEW",
-   "state": "FAILED",
-   "question": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
-   "budget": {
-    "used": "0.300000",
-    "limit": "2",
-    "currency": "CNY",
-    "reserved": "0"
-   },
-   "created_at": "2026-09-29T16:02:51.836609Z"
+   "thread_settings": {},
+   "created_at": "2026-10-04T03:31:51.398709+00:00",
+   "last_active_at": "2026-10-04T03:31:51.893032+00:00",
+   "kind": "work",
+   "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f",
+   "title": "上海机场 2023 到 2025 年的盈利能力怎么样？"
   }
  ]
 }

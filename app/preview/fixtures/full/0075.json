@@ -1,61 +1,67 @@
 {
- "session": {
-  "id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
-  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-  "sandbox_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
-  "project_root": "/home/demo/research/上海机场",
-  "thread_id": "thread-9f075d1ee27c",
-  "wheel": "advisor",
-  "state_version": 1,
-  "active_task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
-  "thread_settings": {},
-  "created_at": "2026-09-29T16:02:51.235809+00:00",
-  "last_active_at": "2026-09-29T16:02:51.264895+00:00",
-  "kind": "work",
-  "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f",
-  "title": "上海机场 2023 到 2025 年的盈利能力怎么样？"
+ "contract_version": 2,
+ "price": {
+  "model": "kimi-k3",
+  "priced": true,
+  "currency": "CNY",
+  "as_of": "2026-10-04",
+  "per_million": {
+   "input": "20",
+   "cached_input": "2",
+   "cache_write": "20",
+   "output": "100"
+  },
+  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
+  "estimated": true
  },
- "pending_interactions": [
+ "cost": "0.150000",
+ "tokens": {
+  "input": 6000,
+  "cached_input": 0,
+  "cache_write": 0,
+  "output": 300,
+  "total": 6300
+ },
+ "calls": 3,
+ "turns": [
   {
-   "id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
-   "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
-   "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
-   "attempt_id": null,
-   "kind": "resource",
-   "audience": "owner",
-   "prompt": {
-    "title": "预算已用尽",
-    "options": [
-     {
-      "id": "topup",
-      "label": "追加"
-     },
-     {
-      "id": "stop",
-      "label": "停止"
-     }
-    ],
-    "subject": {
-     "budget": {
-      "used": "1.200000",
-      "limit": "1",
-      "currency": "CNY",
-      "reserved": "0"
-     }
-    },
-    "evidence": [],
-    "question": "是否追加预算继续？",
-    "unknowns": []
+   "turn_id": "turn-c9fd935aefc9",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "subject_digest": null,
-   "target_state_version": 23,
-   "expires_at": "2026-10-02T16:02:51.756575+00:00",
-   "status": "pending",
-   "response": null,
-   "consumed_at": null,
-   "responded_by": null,
-   "created_at": "2026-09-29T16:02:51.748347+00:00"
+   "at": "2026-10-04T03:31:52.721809+00:00"
+  },
+  {
+   "turn_id": "turn-d549306a4468",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T03:31:52.823534+00:00"
+  },
+  {
+   "turn_id": "turn-8b3d3b1772f7",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-04T03:31:52.958647+00:00"
   }
  ]
 }

@@ -1,59 +1,39 @@
 {
  "contract_version": 2,
- "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+ "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
  "step": {
-  "index": 4,
-  "step_id": "extract",
-  "title": "取数",
-  "summary": "把问题要用到的报表科目按期取出来，每个数带口径",
-  "uses": [
-   {
-    "artifact": "scope",
-    "step": 1,
-    "title": "定范围"
-   },
-   {
-    "artifact": "profile",
-    "step": 2,
-    "title": "数据摸底"
-   }
-  ],
-  "tools": [
-   "describe_schema",
-   "run_sql"
-  ],
-  "returns": "facts",
+  "index": 1,
+  "step_id": "rewrite",
+  "title": "改写问题",
+  "summary": "把问题改写成没有歧义的：查什么、哪个期间、什么口径",
+  "uses": [],
+  "tools": [],
+  "returns": "rewritten",
   "checks": [
    {
     "label": "交回的格式对"
    },
    {
-    "label": "有取数表和数据版本"
-   },
-   {
-    "label": "取数表不是空的"
-   },
-   {
-    "label": "有数据版本"
+    "label": "有改写后的问题和指标"
    }
   ],
   "after_rejection": {
    "reworks": 1,
-   "then": "back",
-   "back_to": 2,
-   "text": "重做，最多 1 次；仍不过，退回第 2 步"
+   "then": "human",
+   "back_to": null,
+   "text": "重做，最多 1 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
   "status": "accepted",
   "attempts": [
    {
-    "attempt_id": "8efa3ee6-8634-5072-b965-dfddc2e74cf6",
+    "attempt_id": "01b09d43-427a-5b15-bdb4-0e5e16dc8cb4",
     "n": 1,
     "outcome": "accepted",
     "failure": null,
     "spent": "0.05",
-    "started_at": "2026-09-29T16:02:49.898982Z",
-    "ended_at": "2026-09-29T16:02:49.908732Z",
+    "started_at": "2026-10-04T03:31:50.662259Z",
+    "ended_at": "2026-10-04T03:31:50.673186Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -61,302 +41,32 @@
       "message": ""
      },
      {
-      "label": "有取数表和数据版本",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "取数表不是空的",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有数据版本",
+      "label": "有改写后的问题和指标",
       "pass": true,
       "message": ""
      }
     ],
-    "tools": {
-     "describe_schema": 1,
-     "run_sql": 2
-    },
+    "tools": {},
     "returned": {
-     "artifact": "facts",
+     "artifact": "rewritten",
      "version": 1,
      "content": {
-      "sql": [
-       "SELECT report_date, basis, operate_income, operate_cost, net_profit FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
-       "SELECT report_date, basis, total_assets, total_liabilities, total_equity FROM balance_sheet WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025"
+      "period": "2021 至 2025 年，年报",
+      "metrics": [
+       "毛利率"
       ],
-      "table": [
-       {
-        "item": "operate_income",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 150560000000.0,
-        "statement": "income_statement",
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "display_name": "营业收入"
-       },
-       {
-        "item": "operate_cost",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 12195360000.0,
-        "statement": "income_statement",
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "display_name": "营业成本"
-       },
-       {
-        "item": "net_profit",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 79044000000.0,
-        "statement": "income_statement",
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "display_name": "净利润"
-       },
-       {
-        "item": "net_operate_cash_flow",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 88529280000.0,
-        "statement": "cash_flow_statement",
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "display_name": "经营活动现金流量净额"
-       },
-       {
-        "item": "total_assets",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 286064000000.0,
-        "statement": "balance_sheet",
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "display_name": "资产总计"
-       },
-       {
-        "item": "total_liabilities",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 51491520000.0,
-        "statement": "balance_sheet",
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "display_name": "负债合计"
-       },
-       {
-        "item": "total_equity",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 234572480000.0,
-        "statement": "balance_sheet",
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "display_name": "所有者权益合计"
-       },
-       {
-        "item": "operate_income",
-        "unit": "元",
-        "basis": "追溯调整后",
-        "value": 174197920000.0,
-        "statement": "income_statement",
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "display_name": "营业收入"
-       },
-       {
-        "item": "operate_cost",
-        "unit": "元",
-        "basis": "追溯调整后",
-        "value": 13935833600.0,
-        "statement": "income_statement",
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "display_name": "营业成本"
-       },
-       {
-        "item": "net_profit",
-        "unit": "元",
-        "basis": "追溯调整后",
-        "value": 90931314240.0,
-        "statement": "income_statement",
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "display_name": "净利润"
-       },
-       {
-        "item": "net_operate_cash_flow",
-        "unit": "元",
-        "basis": "追溯调整后",
-        "value": 101843071948.8,
-        "statement": "cash_flow_statement",
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "display_name": "经营活动现金流量净额"
-       },
-       {
-        "item": "total_assets",
-        "unit": "元",
-        "basis": "追溯调整后",
-        "value": 330976048000.0,
-        "statement": "balance_sheet",
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "display_name": "资产总计"
-       },
-       {
-        "item": "total_liabilities",
-        "unit": "元",
-        "basis": "追溯调整后",
-        "value": 59575688640.0,
-        "statement": "balance_sheet",
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "display_name": "负债合计"
-       },
-       {
-        "item": "total_equity",
-        "unit": "元",
-        "basis": "追溯调整后",
-        "value": 271400359360.0,
-        "statement": "balance_sheet",
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "display_name": "所有者权益合计"
-       },
-       {
-        "item": "operate_income",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 190572524480.0,
-        "statement": "income_statement",
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "display_name": "营业收入"
-       },
-       {
-        "item": "operate_cost",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 15626947007.36,
-        "statement": "income_statement",
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "display_name": "营业成本"
-       },
-       {
-        "item": "net_profit",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 98907140205.12,
-        "statement": "income_statement",
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "display_name": "净利润"
-       },
-       {
-        "item": "net_operate_cash_flow",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 110775997029.73,
-        "statement": "cash_flow_statement",
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "display_name": "经营活动现金流量净额"
-       },
-       {
-        "item": "total_assets",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 362087796512.0,
-        "statement": "balance_sheet",
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "display_name": "资产总计"
-       },
-       {
-        "item": "total_liabilities",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 65175803372.16,
-        "statement": "balance_sheet",
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "display_name": "负债合计"
-       },
-       {
-        "item": "total_equity",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 296911993139.84,
-        "statement": "balance_sheet",
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "display_name": "所有者权益合计"
-       }
+      "entities": [
+       "五粮液（000858）"
       ],
-      "data_version": "sh600519-financials-sample600519"
+      "question": "五粮液 2021 至 2025 年年报的毛利率，按年列出"
      }
     },
-    "process": [
-     {
-      "at": "2026-09-29T16:02:49.868718Z",
-      "kind": "tool",
-      "name": "describe_schema",
-      "dataset": "sh600519-financials",
-      "brief": "income_statement",
-      "ok": true
-     },
-     {
-      "at": "2026-09-29T16:02:49.874445Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "SELECT report_date, basis, operate_income, operate_cost, net_profit FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     },
-     {
-      "at": "2026-09-29T16:02:49.880780Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "SELECT report_date, basis, total_assets, total_liabilities, total_equity FROM balance_sheet WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     }
-    ]
+    "process": []
    }
   ],
   "times": 1,
   "rejected": 0,
   "spent": "0.05",
-  "data": {
-   "data_version": "sh600519-financials-sample600519"
-  }
+  "data": null
  }
 }

@@ -12,7 +12,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.664874+00:00"
+  "created_at": "2026-10-04T03:32:06.140754+00:00"
  },
  {
   "id": "45c5535a-2d03-5337-98a7-b898cc193482",
@@ -21,12 +21,13 @@
   "kind": "thread",
   "type": "session/thread_started",
   "payload": {
-   "thread_id": "thread-a479d2b7a949",
+   "model": "kimi-k3",
+   "thread_id": "thread-00322c00c5e9",
    "environment": "user-pc"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.693430+00:00"
+  "created_at": "2026-10-04T03:32:06.162771+00:00"
  },
  {
   "id": "37431277-0c9a-5f8a-b023-98c217dd9cb0",
@@ -41,7 +42,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.727901+00:00"
+  "created_at": "2026-10-04T03:32:06.184453+00:00"
  },
  {
   "id": "1a424b80-746a-5b67-bb66-046574e88b06",
@@ -57,7 +58,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.759135+00:00"
+  "created_at": "2026-10-04T03:32:06.209157+00:00"
  },
  {
   "id": "dcab7e2b-37bd-5e9a-bbaf-f474da2d9e49",
@@ -68,14 +69,14 @@
   "payload": {
    "by": "user",
    "turn": {
-    "id": "turn-c4ab8bdf3542",
-    "threadId": "thread-a479d2b7a949"
+    "id": "turn-8f12624a14b2",
+    "threadId": "thread-00322c00c5e9"
    },
    "request_id": "08c0c5e7-4bb7-5c1b-b9b0-8c213822f306"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.764248+00:00"
+  "created_at": "2026-10-04T03:32:06.213257+00:00"
  },
  {
   "id": "305e6b86-aaef-531c-93f5-f32636d5e58d",
@@ -85,11 +86,11 @@
   "type": "warning",
   "payload": {
    "message": "Model metadata for `kimi-k3` not found. Defaulting to fallback metadata; this can degrade performance and cause issues.",
-   "threadId": "thread-a479d2b7a949"
+   "threadId": "thread-00322c00c5e9"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.774962+00:00"
+  "created_at": "2026-10-04T03:32:06.224019+00:00"
  },
  {
   "id": "359f7b37-d7be-5d85-8685-a0bff2b7c376",
@@ -102,11 +103,11 @@
     "type": "active",
     "activeFlags": []
    },
-   "threadId": "thread-a479d2b7a949"
+   "threadId": "thread-00322c00c5e9"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.781950+00:00"
+  "created_at": "2026-10-04T03:32:06.228398+00:00"
  },
  {
   "id": "a8b0e94b-77e6-5409-b4ff-0a480ed5b6ad",
@@ -116,7 +117,7 @@
   "type": "turn/started",
   "payload": {
    "turn": {
-    "id": "turn-c4ab8bdf3542",
+    "id": "turn-8f12624a14b2",
     "error": null,
     "items": [],
     "status": "inProgress",
@@ -125,11 +126,11 @@
     "durationMs": null,
     "completedAt": null
    },
-   "threadId": "thread-a479d2b7a949"
+   "threadId": "thread-00322c00c5e9"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.786121+00:00"
+  "created_at": "2026-10-04T03:32:06.232064+00:00"
  },
  {
   "id": "4c0cb973-20d1-5c30-9252-db48bfc20a8b",
@@ -150,13 +151,13 @@
     ],
     "clientId": "86038f02aeef41dcac0ec430aac243ae"
    },
-   "turnId": "turn-c4ab8bdf3542",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-8f12624a14b2",
+   "threadId": "thread-00322c00c5e9",
    "startedAtMs": 1790696964385
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.790972+00:00"
+  "created_at": "2026-10-04T03:32:06.236174+00:00"
  },
  {
   "id": "0864b102-0b97-5303-bc8b-57e1196a6a7d",
@@ -177,13 +178,13 @@
     ],
     "clientId": "86038f02aeef41dcac0ec430aac243ae"
    },
-   "turnId": "turn-c4ab8bdf3542",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-8f12624a14b2",
+   "threadId": "thread-00322c00c5e9",
    "completedAtMs": 1790696964385
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.796783+00:00"
+  "created_at": "2026-10-04T03:32:06.240646+00:00"
  },
  {
   "id": "a4479e3b-783c-57f3-ac75-af43f35d0b10",
@@ -198,13 +199,13 @@
     "content": [],
     "summary": []
    },
-   "turnId": "turn-c4ab8bdf3542",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-8f12624a14b2",
+   "threadId": "thread-00322c00c5e9",
    "startedAtMs": 1790696971300
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.801525+00:00"
+  "created_at": "2026-10-04T03:32:06.246914+00:00"
  },
  {
   "id": "15bd5099-5e3e-5d8c-b9bd-3d7970a6b2d8",
@@ -214,13 +215,13 @@
   "type": "item/reasoning/summaryPartAdded",
   "payload": {
    "itemId": "rs_fNlCl8C9bcCir3ebZJnvx0Kg",
-   "turnId": "turn-c4ab8bdf3542",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-8f12624a14b2",
+   "threadId": "thread-00322c00c5e9",
    "summaryIndex": 0
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.806255+00:00"
+  "created_at": "2026-10-04T03:32:06.252520+00:00"
  },
  {
   "id": "1c752c5e-1839-5c28-9c6b-dfb83d3aa533",
@@ -237,13 +238,13 @@
      "The user is asking what files are in this project directory. Let me list the files."
     ]
    },
-   "turnId": "turn-c4ab8bdf3542",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-8f12624a14b2",
+   "threadId": "thread-00322c00c5e9",
    "completedAtMs": 1790696971624
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.810409+00:00"
+  "created_at": "2026-10-04T03:32:06.256468+00:00"
  },
  {
   "id": "e604bbb2-6404-5e8b-82b1-57a00c8d512a",
@@ -261,13 +262,13 @@
     "questions": null,
     "memoryCitation": null
    },
-   "turnId": "turn-c4ab8bdf3542",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-8f12624a14b2",
+   "threadId": "thread-00322c00c5e9",
    "startedAtMs": 1790696971629
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.816209+00:00"
+  "created_at": "2026-10-04T03:32:06.260349+00:00"
  },
  {
   "id": "ab872ee7-efd3-5bf8-93d7-c3f50cc730f7",
@@ -285,13 +286,13 @@
     "questions": null,
     "memoryCitation": null
    },
-   "turnId": "turn-c4ab8bdf3542",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-8f12624a14b2",
+   "threadId": "thread-00322c00c5e9",
    "completedAtMs": 1790696972509
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.822319+00:00"
+  "created_at": "2026-10-04T03:32:06.264236+00:00"
  },
  {
   "id": "3b2a3029-a0e2-5823-9bb7-3bd32f2a75a4",
@@ -320,13 +321,13 @@
     ],
     "aggregatedOutput": null
    },
-   "turnId": "turn-c4ab8bdf3542",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-8f12624a14b2",
+   "threadId": "thread-00322c00c5e9",
    "startedAtMs": 1790696973968
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.827083+00:00"
+  "created_at": "2026-10-04T03:32:06.268114+00:00"
  },
  {
   "id": "28db01cd-4b5c-542f-b179-a3f177711e24",
@@ -355,13 +356,13 @@
     ],
     "aggregatedOutput": "total 16\ndrwxrwxr-x 2 demo demo 4096 Sep 29 23:48 .\ndrwxrwxr-x 3 demo demo 4096 Sep 29 23:48 ..\n-rw-rw-r-- 1 demo demo   43 Sep 29 23:48 README.md\n-rw-rw-r-- 1 demo demo  201 Sep 29 23:48 年报要点.md\n---\n/home/demo/research/恒瑞医药/年报要点.md\n/home/demo/research/恒瑞医药/README.md\n"
    },
-   "turnId": "turn-c4ab8bdf3542",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-8f12624a14b2",
+   "threadId": "thread-00322c00c5e9",
    "completedAtMs": 1790696973968
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.832069+00:00"
+  "created_at": "2026-10-04T03:32:06.271975+00:00"
  },
  {
   "id": "96de0586-b001-5f1a-b0e6-f2db9bdbb652",
@@ -370,8 +371,30 @@
   "kind": "usage",
   "type": "thread/tokenUsage/updated",
   "payload": {
-   "turnId": "turn-c4ab8bdf3542",
-   "threadId": "thread-a479d2b7a949",
+   "cost": {
+    "call": "0.029612",
+    "turn": "0.029612",
+    "model": "kimi-k3",
+    "priced": true,
+    "currency": "CNY",
+    "estimated": true,
+    "call_tokens": {
+     "input": 42,
+     "total": 5803,
+     "output": 129,
+     "cache_write": 256,
+     "cached_input": 5376
+    },
+    "turn_tokens": {
+     "input": 42,
+     "total": 5803,
+     "output": 129,
+     "cache_write": 256,
+     "cached_input": 5376
+    }
+   },
+   "turnId": "turn-8f12624a14b2",
+   "threadId": "thread-00322c00c5e9",
    "tokenUsage": {
     "last": {
      "inputTokens": 5674,
@@ -394,7 +417,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.837599+00:00"
+  "created_at": "2026-10-04T03:32:06.276326+00:00"
  },
  {
   "id": "89691543-29d9-5907-a95a-1bad72a62cfb",
@@ -409,13 +432,13 @@
     "content": [],
     "summary": []
    },
-   "turnId": "turn-c4ab8bdf3542",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-8f12624a14b2",
+   "threadId": "thread-00322c00c5e9",
    "startedAtMs": 1790696978462
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.844106+00:00"
+  "created_at": "2026-10-04T03:32:06.283127+00:00"
  },
  {
   "id": "ac205f39-9383-5887-9756-075efe90d424",
@@ -425,13 +448,13 @@
   "type": "item/reasoning/summaryPartAdded",
   "payload": {
    "itemId": "rs_TBookwbzRejnbNhvm0BHC0Ye",
-   "turnId": "turn-c4ab8bdf3542",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-8f12624a14b2",
+   "threadId": "thread-00322c00c5e9",
    "summaryIndex": 0
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.850009+00:00"
+  "created_at": "2026-10-04T03:32:06.290358+00:00"
  },
  {
   "id": "5066b647-0d2c-5d68-b2f6-eeea7d91c600",
@@ -448,13 +471,13 @@
      "Simple directory listing. Two files: README.md and 年报要点.md. Let me give a quick answer. Maybe show the contents briefly? The user just asked what files are there. I'll list them with sizes. Could also mention content briefly but user only asked which files. Keep concise."
     ]
    },
-   "turnId": "turn-c4ab8bdf3542",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-8f12624a14b2",
+   "threadId": "thread-00322c00c5e9",
    "completedAtMs": 1790696980566
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.853865+00:00"
+  "created_at": "2026-10-04T03:32:06.293976+00:00"
  },
  {
   "id": "c8b5db19-da25-53e2-b720-fe81708a7eaa",
@@ -472,13 +495,13 @@
     "questions": null,
     "memoryCitation": null
    },
-   "turnId": "turn-c4ab8bdf3542",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-8f12624a14b2",
+   "threadId": "thread-00322c00c5e9",
    "startedAtMs": 1790696980572
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.858622+00:00"
+  "created_at": "2026-10-04T03:32:06.297856+00:00"
  },
  {
   "id": "31e670bc-a13d-501c-a388-fba782b4ca29",
@@ -496,13 +519,13 @@
     "questions": null,
     "memoryCitation": null
    },
-   "turnId": "turn-c4ab8bdf3542",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-8f12624a14b2",
+   "threadId": "thread-00322c00c5e9",
    "completedAtMs": 1790696981497
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.862863+00:00"
+  "created_at": "2026-10-04T03:32:06.302012+00:00"
  },
  {
   "id": "b0255164-523c-5011-92db-d0bb82e934e8",
@@ -511,8 +534,30 @@
   "kind": "usage",
   "type": "thread/tokenUsage/updated",
   "payload": {
-   "turnId": "turn-c4ab8bdf3542",
-   "threadId": "thread-a479d2b7a949",
+   "cost": {
+    "call": "0.029624",
+    "turn": "0.059236",
+    "model": "kimi-k3",
+    "priced": true,
+    "currency": "CNY",
+    "estimated": true,
+    "call_tokens": {
+     "input": 117,
+     "total": 6114,
+     "output": 109,
+     "cache_write": 256,
+     "cached_input": 5632
+    },
+    "turn_tokens": {
+     "input": 159,
+     "total": 11917,
+     "output": 238,
+     "cache_write": 512,
+     "cached_input": 11008
+    }
+   },
+   "turnId": "turn-8f12624a14b2",
+   "threadId": "thread-00322c00c5e9",
    "tokenUsage": {
     "last": {
      "inputTokens": 6005,
@@ -535,7 +580,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.867315+00:00"
+  "created_at": "2026-10-04T03:32:06.305777+00:00"
  },
  {
   "id": "16d615b8-d939-5b42-ae86-5ba4b2328d51",
@@ -547,11 +592,11 @@
    "status": {
     "type": "idle"
    },
-   "threadId": "thread-a479d2b7a949"
+   "threadId": "thread-00322c00c5e9"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.871292+00:00"
+  "created_at": "2026-10-04T03:32:06.309709+00:00"
  },
  {
   "id": "cee69725-7593-5e8c-ad4c-2f2bf254645d",
@@ -561,7 +606,7 @@
   "type": "turn/completed",
   "payload": {
    "turn": {
-    "id": "turn-c4ab8bdf3542",
+    "id": "turn-8f12624a14b2",
     "error": null,
     "items": [
      {
@@ -580,11 +625,11 @@
     "durationMs": 17151,
     "completedAt": 1790696981
    },
-   "threadId": "thread-a479d2b7a949"
+   "threadId": "thread-00322c00c5e9"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.875332+00:00"
+  "created_at": "2026-10-04T03:32:06.313332+00:00"
  },
  {
   "id": "6e035ae9-4be6-5f1b-bb34-7a51d8b0cf3b",
@@ -599,7 +644,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.921705+00:00"
+  "created_at": "2026-10-04T03:32:06.360342+00:00"
  },
  {
   "id": "822c14d8-eb9f-5e0d-a946-720f9cada12d",
@@ -610,14 +655,14 @@
   "payload": {
    "by": "user",
    "turn": {
-    "id": "turn-da1b39229bcf",
-    "threadId": "thread-a479d2b7a949"
+    "id": "turn-9e85e36e72ac",
+    "threadId": "thread-00322c00c5e9"
    },
    "request_id": "4cdb23d1-a9cc-5fd9-8983-0a8e1e6a8287"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.940624+00:00"
+  "created_at": "2026-10-04T03:32:06.377479+00:00"
  },
  {
   "id": "2918e30a-e73c-543f-af83-30f8212fbc16",
@@ -627,11 +672,11 @@
   "type": "warning",
   "payload": {
    "message": "Model metadata for `kimi-k3` not found. Defaulting to fallback metadata; this can degrade performance and cause issues.",
-   "threadId": "thread-a479d2b7a949"
+   "threadId": "thread-00322c00c5e9"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.952842+00:00"
+  "created_at": "2026-10-04T03:32:06.388532+00:00"
  },
  {
   "id": "300feed8-62e7-5761-9f8c-e9c3e8fb9310",
@@ -644,11 +689,11 @@
     "type": "active",
     "activeFlags": []
    },
-   "threadId": "thread-a479d2b7a949"
+   "threadId": "thread-00322c00c5e9"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.958455+00:00"
+  "created_at": "2026-10-04T03:32:06.393674+00:00"
  },
  {
   "id": "f76b007b-cb4f-5dc5-956c-6496b4313395",
@@ -658,7 +703,7 @@
   "type": "turn/started",
   "payload": {
    "turn": {
-    "id": "turn-da1b39229bcf",
+    "id": "turn-9e85e36e72ac",
     "error": null,
     "items": [],
     "status": "inProgress",
@@ -667,11 +712,11 @@
     "durationMs": null,
     "completedAt": null
    },
-   "threadId": "thread-a479d2b7a949"
+   "threadId": "thread-00322c00c5e9"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.963010+00:00"
+  "created_at": "2026-10-04T03:32:06.397594+00:00"
  },
  {
   "id": "fd7b34fb-83f4-5f2f-8052-43697d5f6561",
@@ -692,13 +737,13 @@
     ],
     "clientId": "65c996f6ac8b4e3f87fa3e85ae827bf4"
    },
-   "turnId": "turn-da1b39229bcf",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-9e85e36e72ac",
+   "threadId": "thread-00322c00c5e9",
    "startedAtMs": 1790696983848
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.968854+00:00"
+  "created_at": "2026-10-04T03:32:06.402706+00:00"
  },
  {
   "id": "cf51c2a1-4044-5fcf-8ef3-595876d7d9e1",
@@ -719,13 +764,13 @@
     ],
     "clientId": "65c996f6ac8b4e3f87fa3e85ae827bf4"
    },
-   "turnId": "turn-da1b39229bcf",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-9e85e36e72ac",
+   "threadId": "thread-00322c00c5e9",
    "completedAtMs": 1790696983848
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.973154+00:00"
+  "created_at": "2026-10-04T03:32:06.408228+00:00"
  },
  {
   "id": "d1c4bedf-79d6-5444-a1ab-2c40b52ecf5f",
@@ -740,13 +785,13 @@
     "content": [],
     "summary": []
    },
-   "turnId": "turn-da1b39229bcf",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-9e85e36e72ac",
+   "threadId": "thread-00322c00c5e9",
    "startedAtMs": 1790696994647
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.977731+00:00"
+  "created_at": "2026-10-04T03:32:06.411951+00:00"
  },
  {
   "id": "f0569db5-6f69-5915-92f1-b7dfdfb38f50",
@@ -756,13 +801,13 @@
   "type": "item/reasoning/summaryPartAdded",
   "payload": {
    "itemId": "rs_aVwI8Ch4qJryWxji4fqqilso",
-   "turnId": "turn-da1b39229bcf",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-9e85e36e72ac",
+   "threadId": "thread-00322c00c5e9",
    "summaryIndex": 0
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.983134+00:00"
+  "created_at": "2026-10-04T03:32:06.415791+00:00"
  },
  {
   "id": "4fe1e86e-a951-55f0-b37e-6d6efaf37580",
@@ -779,13 +824,13 @@
      "Simple task: read the file and summarize in two sentences."
     ]
    },
-   "turnId": "turn-da1b39229bcf",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-9e85e36e72ac",
+   "threadId": "thread-00322c00c5e9",
    "completedAtMs": 1790696995320
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.987688+00:00"
+  "created_at": "2026-10-04T03:32:06.419364+00:00"
  },
  {
   "id": "9aa7b972-853b-57bc-ada9-25d10ef313d9",
@@ -816,13 +861,13 @@
     ],
     "aggregatedOutput": null
    },
-   "turnId": "turn-da1b39229bcf",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-9e85e36e72ac",
+   "threadId": "thread-00322c00c5e9",
    "startedAtMs": 1790696995966
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.992464+00:00"
+  "created_at": "2026-10-04T03:32:06.423859+00:00"
  },
  {
   "id": "62a48f9e-bec5-562e-95f0-68afccd0f90a",
@@ -853,13 +898,13 @@
     ],
     "aggregatedOutput": "# 2025 年报要点（样例，内容是编的）\n\n- 营业收入同比增长，创新药占比提高\n- 研发投入继续加大，费用化比例高\n- 经营现金流为正，应收账款周转放慢\n"
    },
-   "turnId": "turn-da1b39229bcf",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-9e85e36e72ac",
+   "threadId": "thread-00322c00c5e9",
    "completedAtMs": 1790696995966
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:07.997355+00:00"
+  "created_at": "2026-10-04T03:32:06.428071+00:00"
  },
  {
   "id": "71f45013-55b5-5efb-8278-2ab9b76f63bd",
@@ -868,8 +913,30 @@
   "kind": "usage",
   "type": "thread/tokenUsage/updated",
   "payload": {
-   "turnId": "turn-da1b39229bcf",
-   "threadId": "thread-a479d2b7a949",
+   "cost": {
+    "call": "0.025276",
+    "turn": "0.025276",
+    "model": "kimi-k3",
+    "priced": true,
+    "currency": "CNY",
+    "estimated": true,
+    "call_tokens": {
+     "input": 0,
+     "total": 6227,
+     "output": 84,
+     "cache_write": 255,
+     "cached_input": 5888
+    },
+    "turn_tokens": {
+     "input": 0,
+     "total": 6227,
+     "output": 84,
+     "cache_write": 255,
+     "cached_input": 5888
+    }
+   },
+   "turnId": "turn-9e85e36e72ac",
+   "threadId": "thread-00322c00c5e9",
    "tokenUsage": {
     "last": {
      "inputTokens": 6143,
@@ -892,7 +959,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.002024+00:00"
+  "created_at": "2026-10-04T03:32:06.432753+00:00"
  },
  {
   "id": "18c7182c-22d0-5413-9b0b-27bf32625577",
@@ -907,13 +974,13 @@
     "content": [],
     "summary": []
    },
-   "turnId": "turn-da1b39229bcf",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-9e85e36e72ac",
+   "threadId": "thread-00322c00c5e9",
    "startedAtMs": 1790697000927
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.006717+00:00"
+  "created_at": "2026-10-04T03:32:06.436830+00:00"
  },
  {
   "id": "baab5cf6-b844-511f-98d4-a80ee079f313",
@@ -923,13 +990,13 @@
   "type": "item/reasoning/summaryPartAdded",
   "payload": {
    "itemId": "rs_4SZ79o4jhtCyRvafn3GL9MAp",
-   "turnId": "turn-da1b39229bcf",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-9e85e36e72ac",
+   "threadId": "thread-00322c00c5e9",
    "summaryIndex": 0
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.015192+00:00"
+  "created_at": "2026-10-04T03:32:06.441126+00:00"
  },
  {
   "id": "93d46a3d-ba48-533d-bdfa-8204e7f3214b",
@@ -946,13 +1013,13 @@
      "The file itself says it's a sample with fabricated content. I should mention that. Two sentences summary."
     ]
    },
-   "turnId": "turn-da1b39229bcf",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-9e85e36e72ac",
+   "threadId": "thread-00322c00c5e9",
    "completedAtMs": 1790697001565
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.023765+00:00"
+  "created_at": "2026-10-04T03:32:06.446400+00:00"
  },
  {
   "id": "9f87733f-ef6b-5bdd-83e4-70e7f098c530",
@@ -970,13 +1037,13 @@
     "questions": null,
     "memoryCitation": null
    },
-   "turnId": "turn-da1b39229bcf",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-9e85e36e72ac",
+   "threadId": "thread-00322c00c5e9",
    "startedAtMs": 1790697001573
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.029804+00:00"
+  "created_at": "2026-10-04T03:32:06.455131+00:00"
  },
  {
   "id": "763b9ae3-d5f3-571d-b94c-4a52285c686d",
@@ -994,13 +1061,13 @@
     "questions": null,
     "memoryCitation": null
    },
-   "turnId": "turn-da1b39229bcf",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-9e85e36e72ac",
+   "threadId": "thread-00322c00c5e9",
    "completedAtMs": 1790697003185
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.034178+00:00"
+  "created_at": "2026-10-04T03:32:06.459121+00:00"
  },
  {
   "id": "eb8144c7-4534-58eb-87e1-abdb23fe0252",
@@ -1009,8 +1076,30 @@
   "kind": "usage",
   "type": "thread/tokenUsage/updated",
   "payload": {
-   "turnId": "turn-da1b39229bcf",
-   "threadId": "thread-a479d2b7a949",
+   "cost": {
+    "call": "0.024968",
+    "turn": "0.050244",
+    "model": "kimi-k3",
+    "priced": true,
+    "currency": "CNY",
+    "estimated": true,
+    "call_tokens": {
+     "input": 189,
+     "total": 6422,
+     "output": 89,
+     "cache_write": 0,
+     "cached_input": 6144
+    },
+    "turn_tokens": {
+     "input": 189,
+     "total": 12649,
+     "output": 173,
+     "cache_write": 255,
+     "cached_input": 12032
+    }
+   },
+   "turnId": "turn-9e85e36e72ac",
+   "threadId": "thread-00322c00c5e9",
    "tokenUsage": {
     "last": {
      "inputTokens": 6333,
@@ -1033,7 +1122,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.038546+00:00"
+  "created_at": "2026-10-04T03:32:06.464202+00:00"
  },
  {
   "id": "6c1e92d1-9bd8-5620-bd14-fe6f584a5137",
@@ -1045,11 +1134,11 @@
    "status": {
     "type": "idle"
    },
-   "threadId": "thread-a479d2b7a949"
+   "threadId": "thread-00322c00c5e9"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.043114+00:00"
+  "created_at": "2026-10-04T03:32:06.468684+00:00"
  },
  {
   "id": "67a7ecce-1a03-5d1b-b7f8-84141a816a37",
@@ -1059,7 +1148,7 @@
   "type": "turn/completed",
   "payload": {
    "turn": {
-    "id": "turn-da1b39229bcf",
+    "id": "turn-9e85e36e72ac",
     "error": null,
     "items": [
      {
@@ -1078,11 +1167,11 @@
     "durationMs": 19397,
     "completedAt": 1790697003
    },
-   "threadId": "thread-a479d2b7a949"
+   "threadId": "thread-00322c00c5e9"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.047069+00:00"
+  "created_at": "2026-10-04T03:32:06.472370+00:00"
  },
  {
   "id": "637e7ee3-9058-596e-8948-f1322e7ed3bb",
@@ -1097,7 +1186,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.097229+00:00"
+  "created_at": "2026-10-04T03:32:06.529716+00:00"
  },
  {
   "id": "4ef084b2-967c-5359-b200-f2a1a780f727",
@@ -1108,14 +1197,14 @@
   "payload": {
    "by": "user",
    "turn": {
-    "id": "turn-98dc480e4ac8",
-    "threadId": "thread-a479d2b7a949"
+    "id": "turn-7589e972a270",
+    "threadId": "thread-00322c00c5e9"
    },
    "request_id": "d93f313f-1bac-582b-b6a2-568e3f60b393"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.115787+00:00"
+  "created_at": "2026-10-04T03:32:06.551015+00:00"
  },
  {
   "id": "2d83ebac-a83c-5c9d-9dc6-8c2e73df3084",
@@ -1125,11 +1214,11 @@
   "type": "warning",
   "payload": {
    "message": "Model metadata for `kimi-k3` not found. Defaulting to fallback metadata; this can degrade performance and cause issues.",
-   "threadId": "thread-a479d2b7a949"
+   "threadId": "thread-00322c00c5e9"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.128182+00:00"
+  "created_at": "2026-10-04T03:32:06.565444+00:00"
  },
  {
   "id": "bd2eeed7-ef0d-51d8-9106-14ea94b2c10f",
@@ -1142,11 +1231,11 @@
     "type": "active",
     "activeFlags": []
    },
-   "threadId": "thread-a479d2b7a949"
+   "threadId": "thread-00322c00c5e9"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.136105+00:00"
+  "created_at": "2026-10-04T03:32:06.570466+00:00"
  },
  {
   "id": "f3a49dc9-d28f-5109-9d7c-6365c2a4c1b8",
@@ -1156,7 +1245,7 @@
   "type": "turn/started",
   "payload": {
    "turn": {
-    "id": "turn-98dc480e4ac8",
+    "id": "turn-7589e972a270",
     "error": null,
     "items": [],
     "status": "inProgress",
@@ -1165,11 +1254,11 @@
     "durationMs": null,
     "completedAt": null
    },
-   "threadId": "thread-a479d2b7a949"
+   "threadId": "thread-00322c00c5e9"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.140506+00:00"
+  "created_at": "2026-10-04T03:32:06.574591+00:00"
  },
  {
   "id": "d2213f08-9430-594f-b25c-f924817ab8da",
@@ -1190,13 +1279,13 @@
     ],
     "clientId": "cdf0ba78f2b4426e844ab76566756a06"
    },
-   "turnId": "turn-98dc480e4ac8",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-7589e972a270",
+   "threadId": "thread-00322c00c5e9",
    "startedAtMs": 1790697004859
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.144986+00:00"
+  "created_at": "2026-10-04T03:32:06.579981+00:00"
  },
  {
   "id": "54caa513-180b-5752-b594-f1dcde792bdd",
@@ -1217,13 +1306,13 @@
     ],
     "clientId": "cdf0ba78f2b4426e844ab76566756a06"
    },
-   "turnId": "turn-98dc480e4ac8",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-7589e972a270",
+   "threadId": "thread-00322c00c5e9",
    "completedAtMs": 1790697004859
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.149620+00:00"
+  "created_at": "2026-10-04T03:32:06.585117+00:00"
  },
  {
   "id": "01f87096-999f-56b4-9660-a67fd14ae22b",
@@ -1238,13 +1327,13 @@
     "content": [],
     "summary": []
    },
-   "turnId": "turn-98dc480e4ac8",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-7589e972a270",
+   "threadId": "thread-00322c00c5e9",
    "startedAtMs": 1790697012749
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.154373+00:00"
+  "created_at": "2026-10-04T03:32:06.593651+00:00"
  },
  {
   "id": "821b6a1e-edc4-512e-806d-242dad93a994",
@@ -1254,13 +1343,13 @@
   "type": "item/reasoning/summaryPartAdded",
   "payload": {
    "itemId": "rs_lkjxB3uPhDGJw49iQYvunFDK",
-   "turnId": "turn-98dc480e4ac8",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-7589e972a270",
+   "threadId": "thread-00322c00c5e9",
    "summaryIndex": 0
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.158853+00:00"
+  "created_at": "2026-10-04T03:32:06.599385+00:00"
  },
  {
   "id": "4300b7ee-6284-5968-9512-a9c6c126a8a9",
@@ -1277,13 +1366,13 @@
      "The user wants me to write the two-sentence summary into notes/概括.md. But the environment context says the filesystem is read-only: \"The file system is read-only and nobody will be asked for approval, so do not try to create, change or delete anything. If the user asks for a change, say that this conversation has to be switched to work mode.\"\n\nSo I cannot create the file. I should tell the user that this conversation is in chat mode / read-only, and they need to switch to work mode for file changes. I can provide the content they would want to write."
     ]
    },
-   "turnId": "turn-98dc480e4ac8",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-7589e972a270",
+   "threadId": "thread-00322c00c5e9",
    "completedAtMs": 1790697016545
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.163194+00:00"
+  "created_at": "2026-10-04T03:32:06.604656+00:00"
  },
  {
   "id": "78eed1b9-5a11-562c-a100-cb940cb8aa75",
@@ -1301,13 +1390,13 @@
     "questions": null,
     "memoryCitation": null
    },
-   "turnId": "turn-98dc480e4ac8",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-7589e972a270",
+   "threadId": "thread-00322c00c5e9",
    "startedAtMs": 1790697016558
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.167229+00:00"
+  "created_at": "2026-10-04T03:32:06.609568+00:00"
  },
  {
   "id": "db127cc2-6141-5d2f-b938-276038dcd9f2",
@@ -1325,13 +1414,13 @@
     "questions": null,
     "memoryCitation": null
    },
-   "turnId": "turn-98dc480e4ac8",
-   "threadId": "thread-a479d2b7a949",
+   "turnId": "turn-7589e972a270",
+   "threadId": "thread-00322c00c5e9",
    "completedAtMs": 1790697018806
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.171068+00:00"
+  "created_at": "2026-10-04T03:32:06.613529+00:00"
  },
  {
   "id": "3fb2df8a-1289-5e65-a7be-a769461d3088",
@@ -1340,8 +1429,30 @@
   "kind": "usage",
   "type": "thread/tokenUsage/updated",
   "payload": {
-   "turnId": "turn-98dc480e4ac8",
-   "threadId": "thread-a479d2b7a949",
+   "cost": {
+    "call": "0.041548",
+    "turn": "0.041548",
+    "model": "kimi-k3",
+    "priced": true,
+    "currency": "CNY",
+    "estimated": true,
+    "call_tokens": {
+     "input": 52,
+     "total": 6683,
+     "output": 231,
+     "cache_write": 256,
+     "cached_input": 6144
+    },
+    "turn_tokens": {
+     "input": 52,
+     "total": 6683,
+     "output": 231,
+     "cache_write": 256,
+     "cached_input": 6144
+    }
+   },
+   "turnId": "turn-7589e972a270",
+   "threadId": "thread-00322c00c5e9",
    "tokenUsage": {
     "last": {
      "inputTokens": 6452,
@@ -1364,7 +1475,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.176717+00:00"
+  "created_at": "2026-10-04T03:32:06.617562+00:00"
  },
  {
   "id": "760d7aaa-1b09-58ac-bf2b-7e491fa346c3",
@@ -1376,11 +1487,11 @@
    "status": {
     "type": "idle"
    },
-   "threadId": "thread-a479d2b7a949"
+   "threadId": "thread-00322c00c5e9"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.180949+00:00"
+  "created_at": "2026-10-04T03:32:06.623027+00:00"
  },
  {
   "id": "71a21183-d696-5a27-9075-41e9ba34f71d",
@@ -1390,7 +1501,7 @@
   "type": "turn/completed",
   "payload": {
    "turn": {
-    "id": "turn-98dc480e4ac8",
+    "id": "turn-7589e972a270",
     "error": null,
     "items": [
      {
@@ -1409,10 +1520,10 @@
     "durationMs": 14040,
     "completedAt": 1790697018
    },
-   "threadId": "thread-a479d2b7a949"
+   "threadId": "thread-00322c00c5e9"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-09-29T16:03:08.185461+00:00"
+  "created_at": "2026-10-04T03:32:06.632990+00:00"
  }
 ]

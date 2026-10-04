@@ -1,62 +1,67 @@
 {
  "contract_version": 2,
- "tasks": [
+ "price": {
+  "model": "kimi-k3",
+  "priced": true,
+  "currency": "CNY",
+  "as_of": "2026-10-04",
+  "per_million": {
+   "input": "20",
+   "cached_input": "2",
+   "cache_write": "20",
+   "output": "100"
+  },
+  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
+  "estimated": true
+ },
+ "cost": "0.150000",
+ "tokens": {
+  "input": 6000,
+  "cached_input": 0,
+  "cache_write": 0,
+  "output": 300,
+  "total": 6300
+ },
+ "calls": 3,
+ "turns": [
   {
-   "id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
-   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "tenant": "default",
-   "idempotency_key": "preview-done-redone-0001",
-   "request_digest": "a9757d193b2b1806891ce48c396223224549291a8c7b1832ecaf4e6df889a3b3",
-   "profile_id": "FIN_REVIEW",
-   "profile_version": "1",
-   "expert_pack_version": "1",
-   "original_input": {
-    "input": {
-     "text": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？"
-    },
-    "attachments": [],
-    "client_context": {
-     "entry": "expert"
-    }
+   "turn_id": "turn-fb44de50e1ff",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "normalized_goal": null,
-   "thread_id": "thread-1dcb794ea446",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "project_root": "/home/demo/research/恒瑞医药",
-   "state": "SUCCEEDED",
-   "state_version": 43,
-   "workflow_version": "1",
-   "current_step": 7,
-   "acceptance_contract": {
-    "steps": [
-     "scope",
-     "profile",
-     "reconcile",
-     "extract",
-     "metrics",
-     "crosscheck",
-     "note"
-    ],
-    "pack_id": "FIN_REVIEW"
+   "at": "2026-10-04T03:31:50.895767+00:00"
+  },
+  {
+   "turn_id": "turn-dc74a95121ac",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "execution_policy": {},
-   "budget": {
-    "used": "0.400000",
-    "limit": "2",
-    "currency": "CNY",
-    "reserved": "0"
+   "at": "2026-10-04T03:31:51.002515+00:00"
+  },
+  {
+   "turn_id": "turn-1f8de0c932fd",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "active_attempt_id": null,
-   "terminal_result_ref": "58bf41ed-2812-51fe-87d9-3a7ad7438f7a",
-   "waiting_reason": null,
-   "active_interaction_id": null,
-   "rejection": null,
-   "cancel_requested_at": null,
-   "cancel_requested_by": null,
-   "created_at": "2026-09-29T16:02:48.412359+00:00",
-   "updated_at": "2026-09-29T16:02:49.375542+00:00",
-   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e"
+   "at": "2026-10-04T03:31:51.117823+00:00"
   }
  ]
 }

@@ -1,206 +1,62 @@
 {
  "contract_version": 2,
- "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
- "step": {
-  "index": 2,
-  "step_id": "profile",
-  "title": "数据摸底",
-  "summary": "确认有这家公司的数据、数据到哪一天、各期是什么口径",
-  "uses": [
-   {
-    "artifact": "scope",
-    "step": 1,
-    "title": "定范围"
-   }
-  ],
-  "tools": [
-   "list_datasets",
-   "describe_schema",
-   "metric_definitions",
-   "run_sql"
-  ],
-  "returns": "profile",
-  "checks": [
-   {
-    "label": "交回的格式对"
+ "tasks": [
+  {
+   "id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "tenant": "default",
+   "idempotency_key": "preview-done-redone-0001",
+   "request_digest": "7a86cfc5a891da538f705dc4ffb32a2e7be374920c22fa83df3b639db925c11a",
+   "profile_id": "FIN_REVIEW",
+   "profile_version": "1",
+   "expert_pack_version": "1",
+   "original_input": {
+    "input": {
+     "text": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？"
+    },
+    "attachments": [],
+    "client_context": {
+     "entry": "expert"
+    }
    },
-   {
-    "label": "有数据集、数据版本、期间、口径断点"
-   },
-   {
-    "label": "有对应的数据集"
-   },
-   {
-    "label": "有数据版本"
-   },
-   {
-    "label": "范围内至少有一期数据"
-   }
-  ],
-  "after_rejection": {
-   "reworks": 1,
-   "then": "human",
-   "back_to": null,
-   "text": "重做，最多 1 次；仍不过，停下来问你"
-  },
-  "reserve": "0.05",
-  "status": "accepted",
-  "attempts": [
-   {
-    "attempt_id": "73b1928b-4c2f-5080-b878-b6dec0fd62cd",
-    "n": 1,
-    "outcome": "accepted",
-    "failure": null,
-    "spent": "0.05",
-    "started_at": "2026-09-29T16:02:52.828583Z",
-    "ended_at": "2026-09-29T16:02:52.841716Z",
-    "checks": [
-     {
-      "label": "交回的格式对",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有数据集、数据版本、期间、口径断点",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有对应的数据集",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有数据版本",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "范围内至少有一期数据",
-      "pass": true,
-      "message": ""
-     }
+   "normalized_goal": null,
+   "thread_id": "thread-e57698bc2cda",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "project_root": "/home/demo/research/恒瑞医药",
+   "state": "SUCCEEDED",
+   "state_version": 43,
+   "workflow_version": "1",
+   "current_step": 7,
+   "acceptance_contract": {
+    "steps": [
+     "scope",
+     "profile",
+     "reconcile",
+     "extract",
+     "metrics",
+     "crosscheck",
+     "note"
     ],
-    "tools": {
-     "list_datasets": 1,
-     "describe_schema": 1,
-     "run_sql": 3
-    },
-    "returned": {
-     "artifact": "profile",
-     "version": 1,
-     "content": {
-      "as_of": "2025-12-31",
-      "notes": [
-       "样例数据：数字是为了预览编的，不是这家公司的真实数据",
-       "2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策"
-      ],
-      "dataset": "sh600036-financials",
-      "periods": [
-       {
-        "basis": "原始披露",
-        "verified": true,
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "official_disclosed_date": "2024-03-28"
-       },
-       {
-        "basis": "追溯调整后",
-        "verified": true,
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "official_disclosed_date": "2025-03-28"
-       },
-       {
-        "basis": "原始披露",
-        "verified": true,
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "official_disclosed_date": "2026-03-28"
-       }
-      ],
-      "basis_breaks": [
-       {
-        "basis": [
-         "原始披露",
-         "追溯调整后"
-        ],
-        "between": [
-         "2023",
-         "2024"
-        ]
-       },
-       {
-        "basis": [
-         "追溯调整后",
-         "原始披露"
-        ],
-        "between": [
-         "2024",
-         "2025"
-        ]
-       }
-      ],
-      "data_version": "sh600036-financials-sample600036",
-      "not_ingested": false,
-      "security_code": "600036"
-     }
-    },
-    "process": [
-     {
-      "at": "2026-09-29T16:02:52.793209Z",
-      "kind": "tool",
-      "name": "list_datasets",
-      "dataset": null,
-      "brief": "",
-      "ok": true
-     },
-     {
-      "at": "2026-09-29T16:02:52.797743Z",
-      "kind": "tool",
-      "name": "describe_schema",
-      "dataset": "sh600036-financials",
-      "brief": "",
-      "ok": true
-     },
-     {
-      "at": "2026-09-29T16:02:52.801983Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600036-financials",
-      "brief": "SELECT key, value FROM dataset_metadata",
-      "ok": true
-     },
-     {
-      "at": "2026-09-29T16:02:52.805848Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600036-financials",
-      "brief": "SELECT fiscal_year, report_type, basis, verified FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     },
-     {
-      "at": "2026-09-29T16:02:52.809706Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600036-financials",
-      "brief": "SELECT report_date, disclosed_date FROM disclosure_calendar WHERE fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     }
-    ]
-   }
-  ],
-  "times": 1,
-  "rejected": 0,
-  "spent": "0.05",
-  "data": {
-   "dataset": "sh600036-financials",
-   "data_version": "sh600036-financials-sample600036",
-   "as_of": "2025-12-31",
-   "security_code": "600036"
+    "pack_id": "FIN_REVIEW"
+   },
+   "execution_policy": {},
+   "budget": {
+    "used": "0.400000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "active_attempt_id": null,
+   "terminal_result_ref": "5b878ac4-da05-5183-aec1-10871091b1e4",
+   "waiting_reason": null,
+   "active_interaction_id": null,
+   "rejection": null,
+   "cancel_requested_at": null,
+   "cancel_requested_by": null,
+   "created_at": "2026-10-04T03:31:48.832355+00:00",
+   "updated_at": "2026-10-04T03:31:49.734777+00:00",
+   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e"
   }
- }
+ ]
 }

@@ -1,6 +1,6 @@
 {
  "contract_version": 2,
- "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
+ "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
  "step": {
   "index": 1,
   "step_id": "scope",
@@ -33,13 +33,13 @@
   "status": "accepted",
   "attempts": [
    {
-    "attempt_id": "22a0a366-7769-5e1e-bebe-fe4c31f0901f",
+    "attempt_id": "854f32e4-ffea-5216-8b6a-69d14708ff97",
     "n": 1,
     "outcome": "accepted",
     "failure": null,
     "spent": "0.05",
-    "started_at": "2026-09-29T16:03:06.918090Z",
-    "ended_at": "2026-09-29T16:03:06.932576Z",
+    "started_at": "2026-10-04T03:31:49.038752Z",
+    "ended_at": "2026-10-04T03:31:49.049721Z",
     "checks": [
      {
       "label": "交回的格式对",
