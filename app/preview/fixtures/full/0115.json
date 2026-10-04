@@ -37,8 +37,8 @@
     "sh600036-financials-sample600036"
    ]
   },
-  "started_at": "2026-10-04T05:09:04.713250Z",
-  "ended_at": "2026-10-04T05:09:05.145922Z",
+  "started_at": "2026-10-04T05:33:21.822949Z",
+  "ended_at": "2026-10-04T05:33:22.182189Z",
   "seconds": 0,
   "active_interaction_id": null
  },
@@ -89,8 +89,8 @@
      "outcome": "accepted",
      "failure": null,
      "spent": "0.05",
-     "started_at": "2026-10-04T05:09:04.829848Z",
-     "ended_at": "2026-10-04T05:09:04.838652Z",
+     "started_at": "2026-10-04T05:33:21.929360Z",
+     "ended_at": "2026-10-04T05:33:21.937318Z",
      "checks": [
       {
        "label": "交回的格式对",
@@ -174,8 +174,8 @@
      "outcome": "accepted",
      "failure": null,
      "spent": "0.05",
-     "started_at": "2026-10-04T05:09:04.931310Z",
-     "ended_at": "2026-10-04T05:09:04.941811Z",
+     "started_at": "2026-10-04T05:33:22.019775Z",
+     "ended_at": "2026-10-04T05:33:22.027917Z",
      "checks": [
       {
        "label": "交回的格式对",
@@ -275,8 +275,8 @@
      "outcome": "rejected",
      "failure": "acceptance",
      "spent": "0.05",
-     "started_at": "2026-10-04T05:09:05.060759Z",
-     "ended_at": "2026-10-04T05:09:05.067875Z",
+     "started_at": "2026-10-04T05:33:22.140272Z",
+     "ended_at": "2026-10-04T05:33:22.147301Z",
      "checks": [
       {
        "label": "交回的格式对",

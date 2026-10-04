@@ -10,6 +10,10 @@ import {
   conversationsSchema,
   eventsPageSchema,
   machinesSchema,
+  overviewSchema,
+  packsSchema,
+  projectDetailSchema,
+  reviewPlaceSchema,
   pendingListSchema,
   projectsSchema,
   sandboxesSchema,
@@ -34,6 +38,10 @@ const contracts: [RegExp, z.ZodType][] = [
   [new RegExp(`^/api/workbench/tasks/${ID}/steps$`), runSchema],
   [new RegExp(`^/api/workbench/tasks/${ID}/steps/\\d+$`), runStepDetailSchema],
   [new RegExp(`^/api/workbench/interactions/${ID}$`), reviewSchema],
+  [new RegExp(`^/api/workbench/interactions/${ID}$`), reviewPlaceSchema],
+  [/^\/api\/workbench\/expert\/overview$/, overviewSchema],
+  [/^\/api\/workbench\/packs$/, packsSchema],
+  [new RegExp(`^/api/workbench/projects/${ID}$`), projectDetailSchema],
 ]
 
 const fixtures = join(process.cwd(), 'preview/fixtures')
@@ -48,12 +56,14 @@ describe('契约认得样例里的每一份返回', () => {
     }
     for (const response of manifest.responses) {
       if (response.method !== 'GET' || response.status !== 200) continue
-      const contract = contracts.find(([pattern]) => pattern.test(response.path))
-      if (!contract) continue
-      const body = JSON.parse(readFileSync(join(directory, response.file), 'utf8'))
-      const parsed = contract[1].safeParse(body)
-      expect(parsed.success ? null : `${response.path}: ${parsed.error.message}`).toBeNull()
-      checked += 1
+      // 一个地址可以有不止一份契约（同一份返回，不同的页面各取所需）
+      for (const [pattern, contract] of contracts) {
+        if (!pattern.test(response.path)) continue
+        const body = JSON.parse(readFileSync(join(directory, response.file), 'utf8'))
+        const parsed = contract.safeParse(body)
+        expect(parsed.success ? null : `${response.path}: ${parsed.error.message}`).toBeNull()
+        checked += 1
+      }
     }
   })
   it('不是什么都没检查', () => {

@@ -70,7 +70,7 @@ export function ReviewPanel({
               <li key={option.id} className="flex items-start gap-3">
                 <Button
                   size="sm"
-                  variant={option.id === 'stop' ? 'outline' : 'default'}
+                  variant={option.id === 'stop' || option.id === 'decline' ? 'outline' : 'default'}
                   disabled={answering || token === null}
                   onClick={() => onAnswer(option.id)}
                   className="shrink-0"

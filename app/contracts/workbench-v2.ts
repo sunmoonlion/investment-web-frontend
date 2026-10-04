@@ -405,3 +405,129 @@ export type Review = z.infer<typeof reviewSchema>['interaction']
 export const tasksSchema = z
   .object({ tasks: z.array(z.object({ id: uuid, state: z.string() }).loose()) })
   .loose()
+
+// ---------------- 专家首页与请专家 ----------------
+export const packSchema = z
+  .object({
+    id: z.string(),
+    name: z.string(),
+    tagline: z.string(),
+    solves: z.string(),
+    does_not_solve: z.string(),
+    input: z.string(),
+    output: z.string(),
+    uses_our_data: z.boolean(),
+    steps: z.array(
+      z
+        .object({
+          index: z.number().int(),
+          title: z.string(),
+          summary: z.string(),
+          after_rejection: z.object({ text: z.string() }).loose(),
+        })
+        .loose(),
+    ),
+  })
+  .loose()
+export type Pack = z.infer<typeof packSchema>
+export const packsSchema = z.object({ packs: z.array(packSchema) }).loose()
+
+const delegationRowSchema = z
+  .object({
+    task_id: uuid,
+    session_id: uuid,
+    project_id: uuid.nullable(),
+    question: z.string(),
+    expert: z.string(),
+    state: z.string(),
+    state_word: z.string().nullable(),
+    position: z
+      .object({ step: z.number().int(), of: z.number().int(), title: z.string() })
+      .loose()
+      .nullable(),
+    budget: z.object({ currency: z.string(), spent: z.string() }).loose(),
+    ended_at: z.string().nullable(),
+    reason_text: z.string().optional(),
+  })
+  .loose()
+export type DelegationRow = z.infer<typeof delegationRowSchema>
+
+const waitingRowSchema = z
+  .object({
+    interaction_id: uuid,
+    kind: z.string(),
+    where: z
+      .object({
+        project: z.object({ id: uuid, title: z.string().nullable() }).loose().nullable(),
+        conversation: z
+          .object({ id: uuid, title: z.string().nullable(), kind: conversationKindSchema })
+          .loose()
+          .nullable(),
+        task: z.object({ id: uuid, question: z.string(), expert: z.string() }).loose().nullable(),
+        step: z.object({ index: z.number().int(), title: z.string() }).loose().nullable(),
+        about: z.string().nullable(),
+      })
+      .loose(),
+    why: z.string().nullable(),
+    failed: z.array(z.object({ label: z.string(), message: z.string() }).loose()),
+  })
+  .loose()
+export type WaitingRow = z.infer<typeof waitingRowSchema>
+
+export const overviewSchema = z
+  .object({
+    waiting: z.array(waitingRowSchema),
+    running: z.array(delegationRowSchema),
+    returned: z.array(delegationRowSchema),
+  })
+  .loose()
+
+export const projectDetailSchema = z
+  .object({
+    project: projectSchema.omit({ conversations: true, last_active_at: true }).loose(),
+    active_task_id: uuid.nullable(),
+    conversations: z.array(
+      z
+        .object({
+          id: uuid,
+          kind: conversationKindSchema,
+          title: z.string().nullable(),
+          active_task_id: uuid.nullable(),
+        })
+        .loose(),
+    ),
+    tasks: z.array(z.object({ id: uuid, state: z.string() }).loose()),
+  })
+  .loose()
+export type ProjectDetail = z.infer<typeof projectDetailSchema>
+
+export const delegatedSchema = z.object({ task_id: uuid, session_id: uuid.optional() }).loose()
+
+// 单独的审查面还要知道这件事在哪：哪个项目、哪段对话
+export const reviewPlaceSchema = z
+  .object({
+    interaction: z
+      .object({
+        where: z
+          .object({
+            project: z.object({ id: uuid, title: z.string().nullable() }).loose().nullable(),
+            conversation: z
+              .object({ id: uuid, title: z.string().nullable(), kind: conversationKindSchema })
+              .loose()
+              .nullable(),
+            task: z
+              .object({ id: uuid, question: z.string(), expert: z.string() })
+              .loose()
+              .nullable(),
+          })
+          .loose(),
+        subject: z
+          .object({
+            command: z.string().nullable().optional(),
+            cwd: z.string().nullable().optional(),
+          })
+          .loose(),
+      })
+      .loose(),
+  })
+  .loose()

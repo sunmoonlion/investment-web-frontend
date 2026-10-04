@@ -12,7 +12,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:03.942410+00:00"
+  "created_at": "2026-10-04T05:33:20.989351+00:00"
  },
  {
   "id": "66fa1afe-7336-58bb-93cf-3a53be588409",
@@ -32,7 +32,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:03.942410+00:00"
+  "created_at": "2026-10-04T05:33:20.989351+00:00"
  },
  {
   "id": "ccddca55-43b2-5e68-a80c-ba128b77c307",
@@ -47,7 +47,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:03.942410+00:00"
+  "created_at": "2026-10-04T05:33:20.989351+00:00"
  },
  {
   "id": "cfcfd02d-de65-5e63-9041-a2b6b6613cf6",
@@ -57,12 +57,12 @@
   "type": "session/thread_started",
   "payload": {
    "model": "kimi-k3",
-   "thread_id": "thread-18cda955e06c",
+   "thread_id": "thread-941d1c58ba1e",
    "environment": "user-pc"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:03.972877+00:00"
+  "created_at": "2026-10-04T05:33:21.024169+00:00"
  },
  {
   "id": "65a2a57f-3d23-5435-a6c1-e0fc24707f30",
@@ -79,7 +79,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:03.981503+00:00"
+  "created_at": "2026-10-04T05:33:21.031992+00:00"
  },
  {
   "id": "74a56ed1-28fb-53ea-8881-a811adb45e5a",
@@ -96,7 +96,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:03.994204+00:00"
+  "created_at": "2026-10-04T05:33:21.042764+00:00"
  },
  {
   "id": "f053e2ac-3041-5844-9aab-35c05b55a6d2",
@@ -111,7 +111,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "f7170f07-acfc-59f1-afab-64431d4265d6",
-  "created_at": "2026-10-04T05:09:03.999187+00:00"
+  "created_at": "2026-10-04T05:33:21.048282+00:00"
  },
  {
   "id": "2d4d7dee-5620-5cfc-8322-fae570860793",
@@ -126,7 +126,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:03.999187+00:00"
+  "created_at": "2026-10-04T05:33:21.048282+00:00"
  },
  {
   "id": "946daf10-acc0-5c66-9892-8d1996809a00",
@@ -142,7 +142,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "f7170f07-acfc-59f1-afab-64431d4265d6",
-  "created_at": "2026-10-04T05:09:04.011103+00:00"
+  "created_at": "2026-10-04T05:33:21.058575+00:00"
  },
  {
   "id": "448f5ee2-c416-5f56-bb01-632077c38342",
@@ -158,7 +158,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.019674+00:00"
+  "created_at": "2026-10-04T05:33:21.065418+00:00"
  },
  {
   "id": "17aa465d-6bca-59b6-bbd7-fe6ec08ae89d",
@@ -168,15 +168,15 @@
   "type": "turn/started",
   "payload": {
    "turn": {
-    "id": "turn-a03f753d3036",
+    "id": "turn-63a95a4a0e19",
     "status": "inProgress"
    },
-   "turnId": "turn-a03f753d3036",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-63a95a4a0e19",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.035029+00:00"
+  "created_at": "2026-10-04T05:33:21.081341+00:00"
  },
  {
   "id": "7e450aab-5333-587c-8dc6-fb6147bd6334",
@@ -186,16 +186,16 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "msg-turn-a03f753d3036",
+    "id": "msg-turn-63a95a4a0e19",
     "text": "{\"company\": \"比亚迪\", \"security_code\": \"002594\", \"periods\": [\"2023\", \"2024\", \"2025\"], \"report_types\": [\"年报\"], \"aspects\": [\"盈利能力\"], \"assumptions\": [], \"question\": \"比亚迪 2023 到 2025 年的盈利能力怎么样？\"}",
     "type": "agentMessage"
    },
-   "turnId": "turn-a03f753d3036",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-63a95a4a0e19",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.039630+00:00"
+  "created_at": "2026-10-04T05:33:21.085131+00:00"
  },
  {
   "id": "66128326-530f-506f-a45a-f90c3772a39e",
@@ -226,8 +226,8 @@
      "cached_input": 0
     }
    },
-   "turnId": "turn-a03f753d3036",
-   "threadId": "thread-18cda955e06c",
+   "turnId": "turn-63a95a4a0e19",
+   "threadId": "thread-941d1c58ba1e",
    "tokenUsage": {
     "last": {
      "inputTokens": 2000,
@@ -249,7 +249,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.043812+00:00"
+  "created_at": "2026-10-04T05:33:21.089071+00:00"
  },
  {
   "id": "745956fe-083a-588e-bf3c-e5d463fec198",
@@ -259,14 +259,14 @@
   "type": "turn/completed",
   "payload": {
    "turn": {
-    "id": "turn-a03f753d3036",
+    "id": "turn-63a95a4a0e19",
     "status": "completed"
    },
-   "threadId": "thread-18cda955e06c"
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.052327+00:00"
+  "created_at": "2026-10-04T05:33:21.093752+00:00"
  },
  {
   "id": "bfdafa17-f98a-5445-a66f-7fc0cdd5fb8f",
@@ -283,7 +283,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "f7170f07-acfc-59f1-afab-64431d4265d6",
-  "created_at": "2026-10-04T05:09:04.057819+00:00"
+  "created_at": "2026-10-04T05:33:21.099389+00:00"
  },
  {
   "id": "2c0eedf2-2405-5eb1-8017-4ee8822f7c5c",
@@ -300,7 +300,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "f7170f07-acfc-59f1-afab-64431d4265d6",
-  "created_at": "2026-10-04T05:09:04.063808+00:00"
+  "created_at": "2026-10-04T05:33:21.105876+00:00"
  },
  {
   "id": "b9d79dce-2231-54bc-8dff-d29a2a8acec6",
@@ -356,7 +356,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "f7170f07-acfc-59f1-afab-64431d4265d6",
-  "created_at": "2026-10-04T05:09:04.072637+00:00"
+  "created_at": "2026-10-04T05:33:21.114436+00:00"
  },
  {
   "id": "1b031d44-2c1a-5345-b91b-ce85abe0e8a1",
@@ -373,7 +373,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.078577+00:00"
+  "created_at": "2026-10-04T05:33:21.119589+00:00"
  },
  {
   "id": "b78216c2-aa83-5b8c-880a-dc9e5a20e4a1",
@@ -388,7 +388,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "d3ba3d84-9428-5ebd-9e5f-75f5c2d24b12",
-  "created_at": "2026-10-04T05:09:04.084767+00:00"
+  "created_at": "2026-10-04T05:33:21.124770+00:00"
  },
  {
   "id": "7045db8d-8101-5b89-a31a-dd996ddfd0f2",
@@ -403,7 +403,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.084767+00:00"
+  "created_at": "2026-10-04T05:33:21.124770+00:00"
  },
  {
   "id": "98cc84e4-d8ce-5c0b-bce0-c62e91ac2532",
@@ -419,7 +419,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "d3ba3d84-9428-5ebd-9e5f-75f5c2d24b12",
-  "created_at": "2026-10-04T05:09:04.095630+00:00"
+  "created_at": "2026-10-04T05:33:21.135648+00:00"
  },
  {
   "id": "3eb45f19-8fd8-5e88-a00a-b9703bf1117e",
@@ -429,15 +429,15 @@
   "type": "turn/started",
   "payload": {
    "turn": {
-    "id": "turn-3c1528bea89f",
+    "id": "turn-354eaefed5c9",
     "status": "inProgress"
    },
-   "turnId": "turn-3c1528bea89f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-354eaefed5c9",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.113270+00:00"
+  "created_at": "2026-10-04T05:33:21.155033+00:00"
  },
  {
   "id": "de06bfa8-792f-56cf-87cd-85a16da9a187",
@@ -447,7 +447,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-3c1528bea89f-0",
+    "id": "call-turn-354eaefed5c9-0",
     "tool": "list_datasets",
     "type": "mcpToolCall",
     "error": null,
@@ -463,12 +463,12 @@
     "status": "completed",
     "arguments": {}
    },
-   "turnId": "turn-3c1528bea89f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-354eaefed5c9",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.120084+00:00"
+  "created_at": "2026-10-04T05:33:21.160194+00:00"
  },
  {
   "id": "01b93aba-1419-5599-954d-5bf7539ed5da",
@@ -478,7 +478,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-3c1528bea89f-1",
+    "id": "call-turn-354eaefed5c9-1",
     "tool": "describe_schema",
     "type": "mcpToolCall",
     "error": null,
@@ -496,12 +496,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-3c1528bea89f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-354eaefed5c9",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.124126+00:00"
+  "created_at": "2026-10-04T05:33:21.165924+00:00"
  },
  {
   "id": "36221d3b-710c-54fc-998d-74cf53216154",
@@ -511,7 +511,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-3c1528bea89f-2",
+    "id": "call-turn-354eaefed5c9-2",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -530,12 +530,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-3c1528bea89f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-354eaefed5c9",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.127749+00:00"
+  "created_at": "2026-10-04T05:33:21.169391+00:00"
  },
  {
   "id": "f4deb367-67f6-5a30-b9da-d2e7ae9a698a",
@@ -545,7 +545,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-3c1528bea89f-3",
+    "id": "call-turn-354eaefed5c9-3",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -564,12 +564,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-3c1528bea89f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-354eaefed5c9",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.132354+00:00"
+  "created_at": "2026-10-04T05:33:21.174020+00:00"
  },
  {
   "id": "56b1d8a8-c743-5835-8e6b-cea5bb849924",
@@ -579,7 +579,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-3c1528bea89f-4",
+    "id": "call-turn-354eaefed5c9-4",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -598,12 +598,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-3c1528bea89f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-354eaefed5c9",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.136266+00:00"
+  "created_at": "2026-10-04T05:33:21.177841+00:00"
  },
  {
   "id": "ca235c1f-9ffa-5552-b4d2-9419f6b18043",
@@ -613,16 +613,16 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "msg-turn-3c1528bea89f",
+    "id": "msg-turn-354eaefed5c9",
     "text": "{\"dataset\": \"sz002594-financials\", \"not_ingested\": false, \"security_code\": \"002594\", \"data_version\": \"sz002594-financials-sample002594\", \"as_of\": \"2025-12-31\", \"notes\": [\"样例数据：数字是为了预览编的，不是这家公司的真实数据\", \"2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策\"], \"periods\": [{\"fiscal_year\": 2023, \"report_type\": \"年报\", \"report_date\": \"2023-12-31\", \"basis\": \"原始披露\", \"verified\": true, \"official_disclosed_date\": \"2024-03-28\"}, {\"fiscal_year\": 2024, \"report_type\": \"年报\", \"report_date\": \"2024-12-31\", \"basis\": \"追溯调整后\", \"verified\": true, \"official_disclosed_date\": \"2025-03-28\"}, {\"fiscal_year\": 2025, \"report_type\": \"年报\", \"report_date\": \"2025-12-31\", \"basis\": \"原始披露\", \"verified\": true, \"official_disclosed_date\": \"2026-03-28\"}], \"basis_breaks\": [{\"between\": [\"2023\", \"2024\"], \"basis\": [\"原始披露\", \"追溯调整后\"]}, {\"between\": [\"2024\", \"2025\"], \"basis\": [\"追溯调整后\", \"原始披露\"]}]}",
     "type": "agentMessage"
    },
-   "turnId": "turn-3c1528bea89f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-354eaefed5c9",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.140546+00:00"
+  "created_at": "2026-10-04T05:33:21.181416+00:00"
  },
  {
   "id": "5e234611-9211-50b2-a241-45f2e596bb72",
@@ -653,8 +653,8 @@
      "cached_input": 0
     }
    },
-   "turnId": "turn-3c1528bea89f",
-   "threadId": "thread-18cda955e06c",
+   "turnId": "turn-354eaefed5c9",
+   "threadId": "thread-941d1c58ba1e",
    "tokenUsage": {
     "last": {
      "inputTokens": 2000,
@@ -676,7 +676,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.144629+00:00"
+  "created_at": "2026-10-04T05:33:21.186386+00:00"
  },
  {
   "id": "cef36805-f78f-5cfe-9668-1f3eadecd978",
@@ -686,14 +686,14 @@
   "type": "turn/completed",
   "payload": {
    "turn": {
-    "id": "turn-3c1528bea89f",
+    "id": "turn-354eaefed5c9",
     "status": "completed"
    },
-   "threadId": "thread-18cda955e06c"
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.149538+00:00"
+  "created_at": "2026-10-04T05:33:21.190117+00:00"
  },
  {
   "id": "2d97aa14-9b41-500a-bc1f-d3eaeab4b9e8",
@@ -710,7 +710,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "d3ba3d84-9428-5ebd-9e5f-75f5c2d24b12",
-  "created_at": "2026-10-04T05:09:04.154250+00:00"
+  "created_at": "2026-10-04T05:33:21.193672+00:00"
  },
  {
   "id": "77079a71-a21d-5cb1-8b6a-5a092523e612",
@@ -727,7 +727,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "d3ba3d84-9428-5ebd-9e5f-75f5c2d24b12",
-  "created_at": "2026-10-04T05:09:04.161199+00:00"
+  "created_at": "2026-10-04T05:33:21.200006+00:00"
  },
  {
   "id": "a75220d0-c479-57ab-a87e-89183bf6ac9a",
@@ -791,7 +791,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "d3ba3d84-9428-5ebd-9e5f-75f5c2d24b12",
-  "created_at": "2026-10-04T05:09:04.174134+00:00"
+  "created_at": "2026-10-04T05:33:21.209007+00:00"
  },
  {
   "id": "edd41f9b-b1a9-56d7-b663-dfd2fc3567b7",
@@ -808,7 +808,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.187056+00:00"
+  "created_at": "2026-10-04T05:33:21.214735+00:00"
  },
  {
   "id": "65935752-9481-542c-9e77-59b9d1837a99",
@@ -823,7 +823,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "56acfbc7-5bf0-5f21-b86e-0c75293fed43",
-  "created_at": "2026-10-04T05:09:04.198922+00:00"
+  "created_at": "2026-10-04T05:33:21.223027+00:00"
  },
  {
   "id": "8a4ad6ec-e79f-5b58-9743-eb28b2e29c70",
@@ -838,7 +838,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.198922+00:00"
+  "created_at": "2026-10-04T05:33:21.223027+00:00"
  },
  {
   "id": "c54c66d5-26a5-5eeb-878b-dba0f62521da",
@@ -854,7 +854,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "56acfbc7-5bf0-5f21-b86e-0c75293fed43",
-  "created_at": "2026-10-04T05:09:04.212414+00:00"
+  "created_at": "2026-10-04T05:33:21.236941+00:00"
  },
  {
   "id": "dac372b8-6a6e-5e0c-b2d7-edf005f18e11",
@@ -864,15 +864,15 @@
   "type": "turn/started",
   "payload": {
    "turn": {
-    "id": "turn-635bdb5a1e7f",
+    "id": "turn-597d90545d60",
     "status": "inProgress"
    },
-   "turnId": "turn-635bdb5a1e7f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-597d90545d60",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.232306+00:00"
+  "created_at": "2026-10-04T05:33:21.254856+00:00"
  },
  {
   "id": "5c2c435f-cf78-5fa2-a9d3-db4d7946eb9b",
@@ -882,7 +882,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-635bdb5a1e7f-0",
+    "id": "call-turn-597d90545d60-0",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -901,12 +901,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-635bdb5a1e7f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-597d90545d60",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.237230+00:00"
+  "created_at": "2026-10-04T05:33:21.258569+00:00"
  },
  {
   "id": "86a5a6ff-4afb-5f1d-8a75-0ccd34710e2b",
@@ -916,7 +916,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-635bdb5a1e7f-1",
+    "id": "call-turn-597d90545d60-1",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -935,12 +935,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-635bdb5a1e7f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-597d90545d60",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.241949+00:00"
+  "created_at": "2026-10-04T05:33:21.263028+00:00"
  },
  {
   "id": "de62814a-97c2-524a-8690-06dc3afbcc01",
@@ -950,7 +950,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-635bdb5a1e7f-2",
+    "id": "call-turn-597d90545d60-2",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -969,12 +969,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-635bdb5a1e7f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-597d90545d60",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.248159+00:00"
+  "created_at": "2026-10-04T05:33:21.266772+00:00"
  },
  {
   "id": "ecb83a2b-e78e-5772-bc82-69c54ed3f306",
@@ -984,7 +984,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-635bdb5a1e7f-3",
+    "id": "call-turn-597d90545d60-3",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -1003,12 +1003,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-635bdb5a1e7f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-597d90545d60",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.255638+00:00"
+  "created_at": "2026-10-04T05:33:21.270291+00:00"
  },
  {
   "id": "a52ee0f4-f5b0-507a-b8e3-9653ea7a9437",
@@ -1018,7 +1018,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-635bdb5a1e7f-4",
+    "id": "call-turn-597d90545d60-4",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -1037,12 +1037,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-635bdb5a1e7f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-597d90545d60",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.263622+00:00"
+  "created_at": "2026-10-04T05:33:21.274884+00:00"
  },
  {
   "id": "4ea34d4c-5384-5d01-be0e-ce233cec8de2",
@@ -1052,7 +1052,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-635bdb5a1e7f-5",
+    "id": "call-turn-597d90545d60-5",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -1071,12 +1071,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-635bdb5a1e7f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-597d90545d60",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.268192+00:00"
+  "created_at": "2026-10-04T05:33:21.278578+00:00"
  },
  {
   "id": "05dd0931-9a2e-5cb9-9d6a-14f1910cb10f",
@@ -1086,7 +1086,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-635bdb5a1e7f-6",
+    "id": "call-turn-597d90545d60-6",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -1105,12 +1105,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-635bdb5a1e7f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-597d90545d60",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.273920+00:00"
+  "created_at": "2026-10-04T05:33:21.282437+00:00"
  },
  {
   "id": "6f3f985b-dc59-5495-a4d5-c8bb3a090a02",
@@ -1120,7 +1120,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-635bdb5a1e7f-7",
+    "id": "call-turn-597d90545d60-7",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -1139,12 +1139,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-635bdb5a1e7f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-597d90545d60",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.278773+00:00"
+  "created_at": "2026-10-04T05:33:21.289799+00:00"
  },
  {
   "id": "ade6d3df-27e4-57e2-bbb0-4398ec239926",
@@ -1154,7 +1154,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-635bdb5a1e7f-8",
+    "id": "call-turn-597d90545d60-8",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -1173,12 +1173,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-635bdb5a1e7f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-597d90545d60",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.283406+00:00"
+  "created_at": "2026-10-04T05:33:21.296597+00:00"
  },
  {
   "id": "392e745b-5252-5d44-9c65-5eaea9634f17",
@@ -1188,7 +1188,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-635bdb5a1e7f-9",
+    "id": "call-turn-597d90545d60-9",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -1207,12 +1207,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-635bdb5a1e7f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-597d90545d60",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.287480+00:00"
+  "created_at": "2026-10-04T05:33:21.300115+00:00"
  },
  {
   "id": "8185de5b-9941-530b-a223-2ff7bdff49b1",
@@ -1222,16 +1222,16 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "msg-turn-635bdb5a1e7f",
+    "id": "msg-turn-597d90545d60",
     "text": "{\"checks\": [{\"rule_id\": \"R01\", \"rule\": \"资产 = 负债 + 所有者权益\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R02\", \"rule\": \"流动资产 + 非流动资产 = 资产总计\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R03\", \"rule\": \"流动负债 + 非流动负债 = 负债合计\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R04\", \"rule\": \"营业收入 − 营业成本 − 各项费用 = 营业利润（允许其他收益）\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R05\", \"rule\": \"利润总额 − 所得税 = 净利润\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R06\", \"rule\": \"归母净利润 + 少数股东损益 = 净利润\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R07\", \"rule\": \"经营 + 投资 + 筹资现金流 + 汇率影响 = 现金净增加额\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R08\", \"rule\": \"期初现金 + 现金净增加额 = 期末现金\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R09\", \"rule\": \"利润表净利润 = 现金流量表补充资料里的净利润\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}], \"continuity\": [{\"fiscal_year\": 2024, \"diff\": 1204.0, \"note\": \"2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策\"}], \"unexplained_breaks\": [], \"data_version\": \"sz002594-financials-sample002594\"}",
     "type": "agentMessage"
    },
-   "turnId": "turn-635bdb5a1e7f",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-597d90545d60",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.291910+00:00"
+  "created_at": "2026-10-04T05:33:21.303543+00:00"
  },
  {
   "id": "4f3c5227-435e-552f-999f-344e012ee4df",
@@ -1262,8 +1262,8 @@
      "cached_input": 0
     }
    },
-   "turnId": "turn-635bdb5a1e7f",
-   "threadId": "thread-18cda955e06c",
+   "turnId": "turn-597d90545d60",
+   "threadId": "thread-941d1c58ba1e",
    "tokenUsage": {
     "last": {
      "inputTokens": 2000,
@@ -1285,7 +1285,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.295982+00:00"
+  "created_at": "2026-10-04T05:33:21.308175+00:00"
  },
  {
   "id": "68e5bdb3-2e1d-5444-8176-be9e2e372688",
@@ -1295,14 +1295,14 @@
   "type": "turn/completed",
   "payload": {
    "turn": {
-    "id": "turn-635bdb5a1e7f",
+    "id": "turn-597d90545d60",
     "status": "completed"
    },
-   "threadId": "thread-18cda955e06c"
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.299926+00:00"
+  "created_at": "2026-10-04T05:33:21.311601+00:00"
  },
  {
   "id": "0abd61da-351a-5d07-b26e-e4a4b80c2de4",
@@ -1319,7 +1319,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "56acfbc7-5bf0-5f21-b86e-0c75293fed43",
-  "created_at": "2026-10-04T05:09:04.304065+00:00"
+  "created_at": "2026-10-04T05:33:21.315244+00:00"
  },
  {
   "id": "4bef29c4-871e-5981-8f8d-738e7c4cfbd6",
@@ -1336,7 +1336,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "56acfbc7-5bf0-5f21-b86e-0c75293fed43",
-  "created_at": "2026-10-04T05:09:04.312068+00:00"
+  "created_at": "2026-10-04T05:33:21.320737+00:00"
  },
  {
   "id": "a3442638-17f9-5791-b6f0-bb2f42f5d567",
@@ -1400,7 +1400,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "56acfbc7-5bf0-5f21-b86e-0c75293fed43",
-  "created_at": "2026-10-04T05:09:04.332409+00:00"
+  "created_at": "2026-10-04T05:33:21.330404+00:00"
  },
  {
   "id": "d7772da8-89ca-59ca-88b9-57d8a207d46b",
@@ -1417,7 +1417,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.338535+00:00"
+  "created_at": "2026-10-04T05:33:21.334955+00:00"
  },
  {
   "id": "03f4a0cb-94bf-5f94-bc6a-2e97de47225b",
@@ -1432,7 +1432,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "ad44edda-5d04-576d-a365-7c6aecdfbe60",
-  "created_at": "2026-10-04T05:09:04.346314+00:00"
+  "created_at": "2026-10-04T05:33:21.340551+00:00"
  },
  {
   "id": "dec72182-b5db-5eb7-90c2-ac23f8ac1c3a",
@@ -1447,7 +1447,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.346314+00:00"
+  "created_at": "2026-10-04T05:33:21.340551+00:00"
  },
  {
   "id": "71403ffb-65fb-59d1-bf09-c61fe104dde2",
@@ -1463,7 +1463,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "ad44edda-5d04-576d-a365-7c6aecdfbe60",
-  "created_at": "2026-10-04T05:09:04.361007+00:00"
+  "created_at": "2026-10-04T05:33:21.353994+00:00"
  },
  {
   "id": "80947c1a-203d-52ec-bcd9-6bd473cdc1dd",
@@ -1473,15 +1473,15 @@
   "type": "turn/started",
   "payload": {
    "turn": {
-    "id": "turn-c6040820fbea",
+    "id": "turn-2e67a6eb255b",
     "status": "inProgress"
    },
-   "turnId": "turn-c6040820fbea",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-2e67a6eb255b",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.381901+00:00"
+  "created_at": "2026-10-04T05:33:21.373943+00:00"
  },
  {
   "id": "087bc250-30e6-53d9-8761-93ca4eb0ef41",
@@ -1491,7 +1491,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-c6040820fbea-0",
+    "id": "call-turn-2e67a6eb255b-0",
     "tool": "describe_schema",
     "type": "mcpToolCall",
     "error": null,
@@ -1510,12 +1510,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-c6040820fbea",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-2e67a6eb255b",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.388327+00:00"
+  "created_at": "2026-10-04T05:33:21.379027+00:00"
  },
  {
   "id": "ef0259b5-9330-5b1c-a9e1-eda44d558e27",
@@ -1525,7 +1525,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-c6040820fbea-1",
+    "id": "call-turn-2e67a6eb255b-1",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -1544,12 +1544,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-c6040820fbea",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-2e67a6eb255b",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.394904+00:00"
+  "created_at": "2026-10-04T05:33:21.382794+00:00"
  },
  {
   "id": "306c98d8-578b-514a-a84c-5c458e22eb8f",
@@ -1559,7 +1559,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-c6040820fbea-2",
+    "id": "call-turn-2e67a6eb255b-2",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -1578,12 +1578,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-c6040820fbea",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-2e67a6eb255b",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.401063+00:00"
+  "created_at": "2026-10-04T05:33:21.386431+00:00"
  },
  {
   "id": "047ba929-de9d-5d7f-bce0-b3dde1521e2a",
@@ -1593,16 +1593,16 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "msg-turn-c6040820fbea",
+    "id": "msg-turn-2e67a6eb255b",
     "text": "{\"table\": [{\"fiscal_year\": 2023, \"report_type\": \"年报\", \"report_date\": \"2023-12-31\", \"basis\": \"原始披露\", \"statement\": \"income_statement\", \"item\": \"operate_income\", \"display_name\": \"营业收入\", \"value\": 602300000000.0, \"unit\": \"元\"}, {\"fiscal_year\": 2023, \"report_type\": \"年报\", \"report_date\": \"2023-12-31\", \"basis\": \"原始披露\", \"statement\": \"income_statement\", \"item\": \"operate_cost\", \"display_name\": \"营业成本\", \"value\": 480635400000.0, \"unit\": \"元\"}, {\"fiscal_year\": 2023, \"report_type\": \"年报\", \"report_date\": \"2023-12-31\", \"basis\": \"原始披露\", \"statement\": \"income_statement\", \"item\": \"net_profit\", \"display_name\": \"净利润\", \"value\": 31319600000.0, \"unit\": \"元\"}, {\"fiscal_year\": 2023, \"report_type\": \"年报\", \"report_date\": \"2023-12-31\", \"basis\": \"原始披露\", \"statement\": \"cash_flow_statement\", \"item\": \"net_operate_cash_flow\", \"display_name\": \"经营活动现金流量净额\", \"value\": 35077952000.0, \"unit\": \"元\"}, {\"fiscal_year\": 2023, \"report_type\": \"年报\", \"report_date\": \"2023-12-31\", \"basis\": \"原始披露\", \"statement\": \"balance_sheet\", \"item\": \"total_assets\", \"display_name\": \"资产总计\", \"value\": 1144370000000.0, \"unit\": \"元\"}, {\"fiscal_year\": 2023, \"report_type\": \"年报\", \"report_date\": \"2023-12-31\", \"basis\": \"原始披露\", \"statement\": \"balance_sheet\", \"item\": \"total_liabilities\", \"display_name\": \"负债合计\", \"value\": 858277500000.0, \"unit\": \"元\"}, {\"fiscal_year\": 2023, \"report_type\": \"年报\", \"report_date\": \"2023-12-31\", \"basis\": \"原始披露\", \"statement\": \"balance_sheet\", \"item\": \"total_equity\", \"display_name\": \"所有者权益合计\", \"value\": 286092500000.0, \"unit\": \"元\"}, {\"fiscal_year\": 2024, \"report_type\": \"年报\", \"report_date\": \"2024-12-31\", \"basis\": \"追溯调整后\", \"statement\": \"income_statement\", \"item\": \"operate_income\", \"display_name\": \"营业收入\", \"value\": 776967000000.0, \"unit\": \"元\"}, {\"fiscal_year\": 2024, \"report_type\": \"年报\", \"report_date\": \"2024-12-31\", \"basis\": \"追溯调整后\", \"statement\": \"income_statement\", \"item\": \"operate_cost\", \"display_name\": \"营业成本\", \"value\": 626235402000.0, \"unit\": \"元\"}, {\"fiscal_year\": 2024, \"report_type\": \"年报\", \"report_date\": \"2024-12-31\", \"basis\": \"追溯调整后\", \"statement\": \"income_statement\", \"item\": \"net_profit\", \"display_name\": \"净利润\", \"value\": 41956218000.0, \"unit\": \"元\"}, {\"fiscal_year\": 2024, \"report_type\": \"年报\", \"report_date\": \"2024-12-31\", \"basis\": \"追溯调整后\", \"statement\": \"cash_flow_statement\", \"item\": \"net_operate_cash_flow\", \"display_name\": \"经营活动现金流量净额\", \"value\": 46990964160.0, \"unit\": \"元\"}, {\"fiscal_year\": 2024, \"report_type\": \"年报\", \"report_date\": \"2024-12-31\", \"basis\": \"追溯调整后\", \"statement\": \"balance_sheet\", \"item\": \"total_assets\", \"display_name\": \"资产总计\", \"value\": 1476237300000.0, \"unit\": \"元\"}, {\"fiscal_year\": 2024, \"report_type\": \"年报\", \"report_date\": \"2024-12-31\", \"basis\": \"追溯调整后\", \"statement\": \"balance_sheet\", \"item\": \"total_liabilities\", \"display_name\": \"负债合计\", \"value\": 1107177975000.0, \"unit\": \"元\"}, {\"fiscal_year\": 2024, \"report_type\": \"年报\", \"report_date\": \"2024-12-31\", \"basis\": \"追溯调整后\", \"statement\": \"balance_sheet\", \"item\": \"total_equity\", \"display_name\": \"所有者权益合计\", \"value\": 369059325000.0, \"unit\": \"元\"}, {\"fiscal_year\": 2025, \"report_type\": \"年报\", \"report_date\": \"2025-12-31\", \"basis\": \"原始披露\", \"statement\": \"income_statement\", \"item\": \"operate_income\", \"display_name\": \"营业收入\", \"value\": 903612621000.0, \"unit\": \"元\"}, {\"fiscal_year\": 2025, \"report_type\": \"年报\", \"report_date\": \"2025-12-31\", \"basis\": \"原始披露\", \"statement\": \"income_statement\", \"item\": \"operate_cost\", \"display_name\": \"营业成本\", \"value\": 724697322042.0, \"unit\": \"元\"}, {\"fiscal_year\": 2025, \"report_type\": \"年报\", \"report_date\": \"2025-12-31\", \"basis\": \"原始披露\", \"statement\": \"income_statement\", \"item\": \"net_profit\", \"display_name\": \"净利润\", \"value\": 51505919397.0, \"unit\": \"元\"}, {\"fiscal_year\": 2025, \"report_type\": \"年报\", \"report_date\": \"2025-12-31\", \"basis\": \"原始披露\", \"statement\": \"cash_flow_statement\", \"item\": \"net_operate_cash_flow\", \"display_name\": \"经营活动现金流量净额\", \"value\": 57686629724.64, \"unit\": \"元\"}, {\"fiscal_year\": 2025, \"report_type\": \"年报\", \"report_date\": \"2025-12-31\", \"basis\": \"原始披露\", \"statement\": \"balance_sheet\", \"item\": \"total_assets\", \"display_name\": \"资产总计\", \"value\": 1716863979900.0, \"unit\": \"元\"}, {\"fiscal_year\": 2025, \"report_type\": \"年报\", \"report_date\": \"2025-12-31\", \"basis\": \"原始披露\", \"statement\": \"balance_sheet\", \"item\": \"total_liabilities\", \"display_name\": \"负债合计\", \"value\": 1287647984925.0, \"unit\": \"元\"}, {\"fiscal_year\": 2025, \"report_type\": \"年报\", \"report_date\": \"2025-12-31\", \"basis\": \"原始披露\", \"statement\": \"balance_sheet\", \"item\": \"total_equity\", \"display_name\": \"所有者权益合计\", \"value\": 429215994975.0, \"unit\": \"元\"}], \"sql\": [\"SELECT report_date, basis, operate_income, operate_cost, net_profit FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025\", \"SELECT report_date, basis, total_assets, total_liabilities, total_equity FROM balance_sheet WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025\"], \"data_version\": \"sz002594-financials-sample002594\"}",
     "type": "agentMessage"
    },
-   "turnId": "turn-c6040820fbea",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-2e67a6eb255b",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.405213+00:00"
+  "created_at": "2026-10-04T05:33:21.389973+00:00"
  },
  {
   "id": "6e8f4c12-e75b-5211-9e1b-6f71512a42a4",
@@ -1633,8 +1633,8 @@
      "cached_input": 0
     }
    },
-   "turnId": "turn-c6040820fbea",
-   "threadId": "thread-18cda955e06c",
+   "turnId": "turn-2e67a6eb255b",
+   "threadId": "thread-941d1c58ba1e",
    "tokenUsage": {
     "last": {
      "inputTokens": 2000,
@@ -1656,7 +1656,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.410123+00:00"
+  "created_at": "2026-10-04T05:33:21.395726+00:00"
  },
  {
   "id": "0618a0a9-f8aa-5831-b7b4-48d01da3ca14",
@@ -1666,14 +1666,14 @@
   "type": "turn/completed",
   "payload": {
    "turn": {
-    "id": "turn-c6040820fbea",
+    "id": "turn-2e67a6eb255b",
     "status": "completed"
    },
-   "threadId": "thread-18cda955e06c"
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.414254+00:00"
+  "created_at": "2026-10-04T05:33:21.399125+00:00"
  },
  {
   "id": "c70f34ac-3fb2-5322-b5be-077ef69d5a71",
@@ -1690,7 +1690,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "ad44edda-5d04-576d-a365-7c6aecdfbe60",
-  "created_at": "2026-10-04T05:09:04.418178+00:00"
+  "created_at": "2026-10-04T05:33:21.402776+00:00"
  },
  {
   "id": "555667b7-acc7-5124-97a0-a68482a2fb81",
@@ -1707,7 +1707,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "ad44edda-5d04-576d-a365-7c6aecdfbe60",
-  "created_at": "2026-10-04T05:09:04.427365+00:00"
+  "created_at": "2026-10-04T05:33:21.410467+00:00"
  },
  {
   "id": "666b0b1d-a0a3-5145-8d93-dd933aeda364",
@@ -1763,7 +1763,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "ad44edda-5d04-576d-a365-7c6aecdfbe60",
-  "created_at": "2026-10-04T05:09:04.440561+00:00"
+  "created_at": "2026-10-04T05:33:21.421853+00:00"
  },
  {
   "id": "5bea9166-a57d-53d9-82dc-d19e0a816f79",
@@ -1780,7 +1780,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.447283+00:00"
+  "created_at": "2026-10-04T05:33:21.428223+00:00"
  },
  {
   "id": "972ec99e-ff29-50d0-9d2c-119e4d898b24",
@@ -1795,7 +1795,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "7222866a-c359-5d40-b2da-c2ecce9c6eae",
-  "created_at": "2026-10-04T05:09:04.459977+00:00"
+  "created_at": "2026-10-04T05:33:21.433810+00:00"
  },
  {
   "id": "9194db4d-5dde-50b7-b3c9-933b24710ef3",
@@ -1810,7 +1810,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.459977+00:00"
+  "created_at": "2026-10-04T05:33:21.433810+00:00"
  },
  {
   "id": "b7f00c24-2faf-577a-ba5d-d7fcdb9d86d5",
@@ -1826,7 +1826,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "7222866a-c359-5d40-b2da-c2ecce9c6eae",
-  "created_at": "2026-10-04T05:09:04.478066+00:00"
+  "created_at": "2026-10-04T05:33:21.444825+00:00"
  },
  {
   "id": "890f5a28-b926-5fc1-abf4-8928b05d4a14",
@@ -1836,15 +1836,15 @@
   "type": "turn/started",
   "payload": {
    "turn": {
-    "id": "turn-7dd6a41dd9db",
+    "id": "turn-1fab4dd2f53e",
     "status": "inProgress"
    },
-   "turnId": "turn-7dd6a41dd9db",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-1fab4dd2f53e",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.498708+00:00"
+  "created_at": "2026-10-04T05:33:21.465404+00:00"
  },
  {
   "id": "d7bd3f14-eb85-5899-9b5c-1e6c15c537bf",
@@ -1854,7 +1854,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-7dd6a41dd9db-0",
+    "id": "call-turn-1fab4dd2f53e-0",
     "tool": "metric_definitions",
     "type": "mcpToolCall",
     "error": null,
@@ -1872,12 +1872,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-7dd6a41dd9db",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-1fab4dd2f53e",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.503388+00:00"
+  "created_at": "2026-10-04T05:33:21.470460+00:00"
  },
  {
   "id": "9f120a74-e178-506b-94c5-9d9ccf319ec5",
@@ -1887,7 +1887,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-7dd6a41dd9db-1",
+    "id": "call-turn-1fab4dd2f53e-1",
     "tool": "query_metric",
     "type": "mcpToolCall",
     "error": null,
@@ -1914,12 +1914,12 @@
      ]
     }
    },
-   "turnId": "turn-7dd6a41dd9db",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-1fab4dd2f53e",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.507512+00:00"
+  "created_at": "2026-10-04T05:33:21.572525+00:00"
  },
  {
   "id": "e7aa25d9-011f-52d6-b5c9-2eac3c9b8e46",
@@ -1929,16 +1929,16 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "msg-turn-7dd6a41dd9db",
+    "id": "msg-turn-1fab4dd2f53e",
     "text": "{\"table\": [{\"fiscal_year\": 2023, \"report_type\": \"年报\", \"basis\": \"原始披露\", \"metric_name\": \"gross_margin\", \"display_name\": \"毛利率\", \"value\": 0.202, \"unit\": \"比率\", \"formula\": \"(营业收入 − 营业成本) ÷ 营业收入\", \"inputs\": {\"operate_income\": 602300000000.0, \"operate_cost\": 480635400000.0}, \"applicable\": true, \"reason_if_not\": \"\", \"source\": \"query_metric\"}, {\"fiscal_year\": 2023, \"report_type\": \"年报\", \"basis\": \"原始披露\", \"metric_name\": \"net_margin\", \"display_name\": \"净利率\", \"value\": 0.052, \"unit\": \"比率\", \"formula\": \"净利润 ÷ 营业收入\", \"inputs\": {\"net_profit\": 31319600000.0, \"operate_income\": 602300000000.0}, \"applicable\": true, \"reason_if_not\": \"\", \"source\": \"query_metric\"}, {\"fiscal_year\": 2023, \"report_type\": \"年报\", \"basis\": \"原始披露\", \"metric_name\": \"debt_to_assets\", \"display_name\": \"资产负债率\", \"value\": 0.75, \"unit\": \"比率\", \"formula\": \"负债合计 ÷ 资产总计\", \"inputs\": {\"total_liabilities\": 858277500000.0, \"total_assets\": 1144370000000.0}, \"applicable\": true, \"reason_if_not\": \"\", \"source\": \"query_metric\"}, {\"fiscal_year\": 2023, \"report_type\": \"年报\", \"basis\": \"原始披露\", \"metric_name\": \"roe\", \"display_name\": \"净资产收益率\", \"value\": null, \"unit\": \"比率\", \"formula\": \"净利润 ÷ 期初与期末所有者权益的平均\", \"inputs\": {\"net_profit\": 31319600000.0, \"total_equity\": 286092500000.0}, \"applicable\": false, \"reason_if_not\": \"要用上一年的期末数，范围内没有\", \"source\": \"query_metric\"}, {\"fiscal_year\": 2024, \"report_type\": \"年报\", \"basis\": \"追溯调整后\", \"metric_name\": \"gross_margin\", \"display_name\": \"毛利率\", \"value\": 0.194, \"unit\": \"比率\", \"formula\": \"(营业收入 − 营业成本) ÷ 营业收入\", \"inputs\": {\"operate_income\": 776967000000.0, \"operate_cost\": 626235402000.0}, \"applicable\": true, \"reason_if_not\": \"\", \"source\": \"query_metric\"}, {\"fiscal_year\": 2024, \"report_type\": \"年报\", \"basis\": \"追溯调整后\", \"metric_name\": \"net_margin\", \"display_name\": \"净利率\", \"value\": 0.054, \"unit\": \"比率\", \"formula\": \"净利润 ÷ 营业收入\", \"inputs\": {\"net_profit\": 41956218000.0, \"operate_income\": 776967000000.0}, \"applicable\": true, \"reason_if_not\": \"\", \"source\": \"query_metric\"}, {\"fiscal_year\": 2024, \"report_type\": \"年报\", \"basis\": \"追溯调整后\", \"metric_name\": \"debt_to_assets\", \"display_name\": \"资产负债率\", \"value\": 0.75, \"unit\": \"比率\", \"formula\": \"负债合计 ÷ 资产总计\", \"inputs\": {\"total_liabilities\": 1107177975000.0, \"total_assets\": 1476237300000.0}, \"applicable\": true, \"reason_if_not\": \"\", \"source\": \"query_metric\"}, {\"fiscal_year\": 2024, \"report_type\": \"年报\", \"basis\": \"追溯调整后\", \"metric_name\": \"roe\", \"display_name\": \"净资产收益率\", \"value\": null, \"unit\": \"比率\", \"formula\": \"净利润 ÷ 期初与期末所有者权益的平均\", \"inputs\": {\"net_profit\": 41956218000.0, \"total_equity\": 369059325000.0}, \"applicable\": false, \"reason_if_not\": \"口径不同\", \"source\": \"query_metric\"}, {\"fiscal_year\": 2025, \"report_type\": \"年报\", \"basis\": \"原始披露\", \"metric_name\": \"gross_margin\", \"display_name\": \"毛利率\", \"value\": 0.198, \"unit\": \"比率\", \"formula\": \"(营业收入 − 营业成本) ÷ 营业收入\", \"inputs\": {\"operate_income\": 903612621000.0, \"operate_cost\": 724697322042.0}, \"applicable\": true, \"reason_if_not\": \"\", \"source\": \"query_metric\"}, {\"fiscal_year\": 2025, \"report_type\": \"年报\", \"basis\": \"原始披露\", \"metric_name\": \"net_margin\", \"display_name\": \"净利率\", \"value\": 0.057, \"unit\": \"比率\", \"formula\": \"净利润 ÷ 营业收入\", \"inputs\": {\"net_profit\": 51505919397.0, \"operate_income\": 903612621000.0}, \"applicable\": true, \"reason_if_not\": \"\", \"source\": \"query_metric\"}, {\"fiscal_year\": 2025, \"report_type\": \"年报\", \"basis\": \"原始披露\", \"metric_name\": \"debt_to_assets\", \"display_name\": \"资产负债率\", \"value\": 0.75, \"unit\": \"比率\", \"formula\": \"负债合计 ÷ 资产总计\", \"inputs\": {\"total_liabilities\": 1287647984925.0, \"total_assets\": 1716863979900.0}, \"applicable\": true, \"reason_if_not\": \"\", \"source\": \"query_metric\"}, {\"fiscal_year\": 2025, \"report_type\": \"年报\", \"basis\": \"原始披露\", \"metric_name\": \"roe\", \"display_name\": \"净资产收益率\", \"value\": null, \"unit\": \"比率\", \"formula\": \"净利润 ÷ 期初与期末所有者权益的平均\", \"inputs\": {\"net_profit\": 51505919397.0, \"total_equity\": 429215994975.0}, \"applicable\": false, \"reason_if_not\": \"口径不同\", \"source\": \"query_metric\"}], \"sql\": [], \"data_version\": \"sz002594-financials-sample002594\"}",
     "type": "agentMessage"
    },
-   "turnId": "turn-7dd6a41dd9db",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-1fab4dd2f53e",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.511556+00:00"
+  "created_at": "2026-10-04T05:33:21.579994+00:00"
  },
  {
   "id": "6b6b9adf-9da1-52fa-b942-07e0f16bb6db",
@@ -1969,8 +1969,8 @@
      "cached_input": 0
     }
    },
-   "turnId": "turn-7dd6a41dd9db",
-   "threadId": "thread-18cda955e06c",
+   "turnId": "turn-1fab4dd2f53e",
+   "threadId": "thread-941d1c58ba1e",
    "tokenUsage": {
     "last": {
      "inputTokens": 2000,
@@ -1992,7 +1992,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.515924+00:00"
+  "created_at": "2026-10-04T05:33:21.587245+00:00"
  },
  {
   "id": "f72f0387-155c-51cd-9467-c08657b2396e",
@@ -2002,14 +2002,14 @@
   "type": "turn/completed",
   "payload": {
    "turn": {
-    "id": "turn-7dd6a41dd9db",
+    "id": "turn-1fab4dd2f53e",
     "status": "completed"
    },
-   "threadId": "thread-18cda955e06c"
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.520521+00:00"
+  "created_at": "2026-10-04T05:33:21.593084+00:00"
  },
  {
   "id": "8c54855d-bc9b-58ac-8107-c98d9d9d6b38",
@@ -2026,7 +2026,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "7222866a-c359-5d40-b2da-c2ecce9c6eae",
-  "created_at": "2026-10-04T05:09:04.525967+00:00"
+  "created_at": "2026-10-04T05:33:21.598227+00:00"
  },
  {
   "id": "c5447689-4a39-57c4-bbe5-4d5937c5e971",
@@ -2043,7 +2043,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "7222866a-c359-5d40-b2da-c2ecce9c6eae",
-  "created_at": "2026-10-04T05:09:04.535616+00:00"
+  "created_at": "2026-10-04T05:33:21.605883+00:00"
  },
  {
   "id": "f98cb83b-44f0-5a5b-9cb0-cdc662e5da5f",
@@ -2091,7 +2091,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "7222866a-c359-5d40-b2da-c2ecce9c6eae",
-  "created_at": "2026-10-04T05:09:04.545373+00:00"
+  "created_at": "2026-10-04T05:33:21.616026+00:00"
  },
  {
   "id": "9e038954-da35-5214-8ef1-3dea3423caa8",
@@ -2108,7 +2108,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.551342+00:00"
+  "created_at": "2026-10-04T05:33:21.622209+00:00"
  },
  {
   "id": "e466b39c-2079-55c8-95ed-49f520b44fcf",
@@ -2123,7 +2123,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "b834451d-2975-5957-99bb-5b14763ac95b",
-  "created_at": "2026-10-04T05:09:04.557703+00:00"
+  "created_at": "2026-10-04T05:33:21.628739+00:00"
  },
  {
   "id": "2b9de8a2-ed3c-550f-b8dc-7047429ff431",
@@ -2138,7 +2138,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.557703+00:00"
+  "created_at": "2026-10-04T05:33:21.628739+00:00"
  },
  {
   "id": "e8148719-c495-5de1-a624-778cbfb31e9e",
@@ -2154,7 +2154,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "b834451d-2975-5957-99bb-5b14763ac95b",
-  "created_at": "2026-10-04T05:09:04.570035+00:00"
+  "created_at": "2026-10-04T05:33:21.646579+00:00"
  },
  {
   "id": "7d757572-3f84-5f77-ad81-0db8a7c7f66a",
@@ -2164,15 +2164,15 @@
   "type": "turn/started",
   "payload": {
    "turn": {
-    "id": "turn-aac8873c89d6",
+    "id": "turn-ec9c3f5673b5",
     "status": "inProgress"
    },
-   "turnId": "turn-aac8873c89d6",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-ec9c3f5673b5",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.589236+00:00"
+  "created_at": "2026-10-04T05:33:21.664940+00:00"
  },
  {
   "id": "8e07d4cd-58a4-5725-ab81-26d2133b8f5f",
@@ -2182,7 +2182,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-aac8873c89d6-0",
+    "id": "call-turn-ec9c3f5673b5-0",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -2201,12 +2201,12 @@
      "dataset": "sz002594-financials"
     }
    },
-   "turnId": "turn-aac8873c89d6",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-ec9c3f5673b5",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.595044+00:00"
+  "created_at": "2026-10-04T05:33:21.668791+00:00"
  },
  {
   "id": "0f038849-8baf-5472-bd3a-b14b754f932e",
@@ -2216,16 +2216,16 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "msg-turn-aac8873c89d6",
+    "id": "msg-turn-ec9c3f5673b5",
     "text": "{\"matched\": [{\"fiscal_year\": 2023, \"item\": \"operate_income\", \"basis\": \"原始披露\", \"value\": 602300000000.0, \"source_report\": \"比亚迪2023年年度报告\", \"page\": 6}, {\"fiscal_year\": 2023, \"item\": \"net_profit\", \"basis\": \"原始披露\", \"value\": 31319600000.0, \"source_report\": \"比亚迪2023年年度报告\", \"page\": 6}, {\"fiscal_year\": 2023, \"item\": \"total_assets\", \"basis\": \"原始披露\", \"value\": 1144370000000.0, \"source_report\": \"比亚迪2023年年度报告\", \"page\": 6}, {\"fiscal_year\": 2023, \"item\": \"total_equity\", \"basis\": \"原始披露\", \"value\": 286092500000.0, \"source_report\": \"比亚迪2023年年度报告\", \"page\": 6}, {\"fiscal_year\": 2024, \"item\": \"operate_income\", \"basis\": \"追溯调整后\", \"value\": 776967000000.0, \"source_report\": \"比亚迪2024年年度报告\", \"page\": 6}, {\"fiscal_year\": 2024, \"item\": \"net_profit\", \"basis\": \"追溯调整后\", \"value\": 41956218000.0, \"source_report\": \"比亚迪2024年年度报告\", \"page\": 6}, {\"fiscal_year\": 2024, \"item\": \"total_assets\", \"basis\": \"追溯调整后\", \"value\": 1476237300000.0, \"source_report\": \"比亚迪2024年年度报告\", \"page\": 6}, {\"fiscal_year\": 2024, \"item\": \"total_equity\", \"basis\": \"追溯调整后\", \"value\": 369059325000.0, \"source_report\": \"比亚迪2024年年度报告\", \"page\": 6}, {\"fiscal_year\": 2025, \"item\": \"operate_income\", \"basis\": \"原始披露\", \"value\": 903612621000.0, \"source_report\": \"比亚迪2025年年度报告\", \"page\": 6}, {\"fiscal_year\": 2025, \"item\": \"net_profit\", \"basis\": \"原始披露\", \"value\": 51505919397.0, \"source_report\": \"比亚迪2025年年度报告\", \"page\": 6}, {\"fiscal_year\": 2025, \"item\": \"total_assets\", \"basis\": \"原始披露\", \"value\": 1716863979900.0, \"source_report\": \"比亚迪2025年年度报告\", \"page\": 6}], \"mismatched\": [{\"fiscal_year\": 2025, \"item\": \"total_equity\", \"basis\": \"原始披露\", \"official\": 429216114975.0, \"dataset\": 429215994975.0, \"source_report\": \"比亚迪2025年年度报告\", \"page\": 6}], \"not_covered\": [], \"coverage\": \"范围内 3 期年报全部对照；现金流量表的项目年报的「主要会计数据」表里没有，没有对照\", \"data_version\": \"sz002594-financials-sample002594\"}",
     "type": "agentMessage"
    },
-   "turnId": "turn-aac8873c89d6",
-   "threadId": "thread-18cda955e06c"
+   "turnId": "turn-ec9c3f5673b5",
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.601096+00:00"
+  "created_at": "2026-10-04T05:33:21.672290+00:00"
  },
  {
   "id": "d33a9724-92bf-5c13-8cee-4641094f0a13",
@@ -2256,8 +2256,8 @@
      "cached_input": 0
     }
    },
-   "turnId": "turn-aac8873c89d6",
-   "threadId": "thread-18cda955e06c",
+   "turnId": "turn-ec9c3f5673b5",
+   "threadId": "thread-941d1c58ba1e",
    "tokenUsage": {
     "last": {
      "inputTokens": 2000,
@@ -2279,7 +2279,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.605348+00:00"
+  "created_at": "2026-10-04T05:33:21.676431+00:00"
  },
  {
   "id": "cd30a0dc-37be-52cb-93f9-253bd161cdc2",
@@ -2289,14 +2289,14 @@
   "type": "turn/completed",
   "payload": {
    "turn": {
-    "id": "turn-aac8873c89d6",
+    "id": "turn-ec9c3f5673b5",
     "status": "completed"
    },
-   "threadId": "thread-18cda955e06c"
+   "threadId": "thread-941d1c58ba1e"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.608945+00:00"
+  "created_at": "2026-10-04T05:33:21.680852+00:00"
  },
  {
   "id": "96526ef2-47ff-5b95-ad11-d90076d0828b",
@@ -2313,7 +2313,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "b834451d-2975-5957-99bb-5b14763ac95b",
-  "created_at": "2026-10-04T05:09:04.612732+00:00"
+  "created_at": "2026-10-04T05:33:21.684464+00:00"
  },
  {
   "id": "5fb3ae1b-e0b4-528c-8404-21a9e274d42c",
@@ -2330,7 +2330,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "b834451d-2975-5957-99bb-5b14763ac95b",
-  "created_at": "2026-10-04T05:09:04.618800+00:00"
+  "created_at": "2026-10-04T05:33:21.690396+00:00"
  },
  {
   "id": "f15c1678-161b-536f-b584-2371c93cfdc8",
@@ -2491,7 +2491,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "b834451d-2975-5957-99bb-5b14763ac95b",
-  "created_at": "2026-10-04T05:09:04.626422+00:00"
+  "created_at": "2026-10-04T05:33:21.698297+00:00"
  },
  {
   "id": "7dd67885-9b28-50a5-af38-2e72644af776",
@@ -2507,7 +2507,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.630688+00:00"
+  "created_at": "2026-10-04T05:33:21.706223+00:00"
  },
  {
   "id": "72385666-9773-5f28-b7e4-6c111709a765",
@@ -2548,7 +2548,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": "b834451d-2975-5957-99bb-5b14763ac95b",
-  "created_at": "2026-10-04T05:09:04.630688+00:00"
+  "created_at": "2026-10-04T05:33:21.706223+00:00"
  },
  {
   "id": "e7a85521-65c6-5aba-891c-a1cc0e8d3bc3",
@@ -2565,7 +2565,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.682894+00:00"
+  "created_at": "2026-10-04T05:33:21.792023+00:00"
  },
  {
   "id": "708018ed-14e9-5c8d-91b8-95103d3f6738",
@@ -2585,7 +2585,7 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.682894+00:00"
+  "created_at": "2026-10-04T05:33:21.792023+00:00"
  },
  {
   "id": "21d1108b-2504-5f4e-88b9-5335ee318468",
@@ -2601,6 +2601,6 @@
   },
   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
   "attempt_id": null,
-  "created_at": "2026-10-04T05:09:04.682894+00:00"
+  "created_at": "2026-10-04T05:33:21.792023+00:00"
  }
 ]

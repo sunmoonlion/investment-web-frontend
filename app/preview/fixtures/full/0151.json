@@ -27,7 +27,7 @@
    "estimated": true
   },
   "data": null,
-  "started_at": "2026-10-04T05:09:03.106758Z",
+  "started_at": "2026-10-04T05:33:20.113846Z",
   "ended_at": null,
   "seconds": 4,
   "active_interaction_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b"
@@ -45,8 +45,8 @@
    "text": "停下来了，在等你决定"
   },
   "redo": null,
-  "since": "2026-10-04T05:09:03.322544Z",
-  "last_event_at": "2026-10-04T05:09:03.322544Z",
+  "since": "2026-10-04T05:33:20.332772Z",
+  "last_event_at": "2026-10-04T05:33:20.332772Z",
   "held": true
  },
  "position": {
@@ -95,8 +95,8 @@
      "outcome": "accepted",
      "failure": null,
      "spent": "0.05",
-     "started_at": "2026-10-04T05:09:03.214319Z",
-     "ended_at": "2026-10-04T05:09:03.223187Z",
+     "started_at": "2026-10-04T05:33:20.235373Z",
+     "ended_at": "2026-10-04T05:33:20.244069Z",
      "checks": [
       {
        "label": "交回的格式对",
@@ -180,8 +180,8 @@
      "outcome": "rejected",
      "failure": "acceptance",
      "spent": "0.05",
-     "started_at": "2026-10-04T05:09:03.299690Z",
-     "ended_at": "2026-10-04T05:09:03.307354Z",
+     "started_at": "2026-10-04T05:33:20.309911Z",
+     "ended_at": "2026-10-04T05:33:20.316338Z",
      "checks": [
       {
        "label": "交回的格式对",

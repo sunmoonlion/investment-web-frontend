@@ -127,7 +127,7 @@ export function Sidebar() {
         {MODES.map((each) => (
           <Link
             key={each}
-            href={routes.home(locale, each)}
+            href={each === 'expert' ? routes.expert(locale) : routes.home(locale, each)}
             aria-current={mode === each ? 'true' : undefined}
             className={cn(
               'rounded-md py-1 text-center text-[13px]',

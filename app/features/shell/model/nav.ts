@@ -9,6 +9,8 @@ export function modeOf(pathname: string, search: string, conversation?: Conversa
     return 'expert'
   }
   if (rest.startsWith('/chat/')) return 'chat'
+  // 专家正拿着这段对话：现在看的是专家
+  if (conversation?.wheel === 'advisor') return 'expert'
   if (conversation) return conversation.kind
   const asked = new URLSearchParams(search).get('mode')
   return asked === 'work' || asked === 'expert' ? asked : 'chat'

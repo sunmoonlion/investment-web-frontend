@@ -7,8 +7,8 @@
   "workspace_root": "/home/demo/research",
   "path": "上海机场",
   "title": "上海机场",
-  "created_at": "2026-10-04T05:09:00.519198Z",
-  "updated_at": "2026-10-04T05:09:00.519198Z",
+  "created_at": "2026-10-04T05:33:17.682906Z",
+  "updated_at": "2026-10-04T05:33:17.682906Z",
   "archived_at": null,
   "directory": "/home/demo/research/上海机场",
   "archived": false,
@@ -23,7 +23,7 @@
    "title": "上海机场 2023 到 2025 年的盈利能力怎么样？",
    "wheel": "user",
    "active_task_id": null,
-   "last_active_at": "2026-10-04T05:09:03.884292Z"
+   "last_active_at": "2026-10-04T05:33:20.928453Z"
   }
  ],
  "tasks": [
@@ -39,7 +39,7 @@
     "currency": "CNY",
     "reserved": "0"
    },
-   "created_at": "2026-10-04T05:09:03.341448Z"
+   "created_at": "2026-10-04T05:33:20.409118Z"
   }
  ]
 }

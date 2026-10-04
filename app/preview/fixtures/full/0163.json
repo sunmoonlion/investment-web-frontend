@@ -35,7 +35,7 @@
     "sz300750-financials-sample300750"
    ]
   },
-  "started_at": "2026-10-04T05:09:02.672351Z",
+  "started_at": "2026-10-04T05:33:19.756587Z",
   "ended_at": null,
   "seconds": 4,
   "active_interaction_id": "81108b8f-3022-5de7-860c-36662e2db6fb"
@@ -53,8 +53,8 @@
    "text": "停下来了，在等你决定"
   },
   "redo": null,
-  "since": "2026-10-04T05:09:03.024419Z",
-  "last_event_at": "2026-10-04T05:09:03.024419Z",
+  "since": "2026-10-04T05:33:20.083033Z",
+  "last_event_at": "2026-10-04T05:33:20.083033Z",
   "held": true
  },
  "position": {
@@ -103,8 +103,8 @@
      "outcome": "accepted",
      "failure": null,
      "spent": "0.05",
-     "started_at": "2026-10-04T05:09:02.787833Z",
-     "ended_at": "2026-10-04T05:09:02.796522Z",
+     "started_at": "2026-10-04T05:33:19.859304Z",
+     "ended_at": "2026-10-04T05:33:19.868897Z",
      "checks": [
       {
        "label": "交回的格式对",
@@ -188,8 +188,8 @@
      "outcome": "accepted",
      "failure": null,
      "spent": "0.05",
-     "started_at": "2026-10-04T05:09:02.884969Z",
-     "ended_at": "2026-10-04T05:09:02.894081Z",
+     "started_at": "2026-10-04T05:33:19.953012Z",
+     "ended_at": "2026-10-04T05:33:19.960857Z",
      "checks": [
       {
        "label": "交回的格式对",
@@ -289,8 +289,8 @@
      "outcome": "rejected",
      "failure": "acceptance",
      "spent": "0.05",
-     "started_at": "2026-10-04T05:09:03.006350Z",
-     "ended_at": "2026-10-04T05:09:03.013550Z",
+     "started_at": "2026-10-04T05:33:20.066809Z",
+     "ended_at": "2026-10-04T05:33:20.073423Z",
      "checks": [
       {
        "label": "交回的格式对",

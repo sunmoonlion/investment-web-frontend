@@ -133,3 +133,33 @@ describe('交回了什么：按形状摆', () => {
     expect(table.kind === 'table' && [table.rows.length, table.more]).toEqual([12, 18])
   })
 })
+
+describe('请专家：现在能不能交出去', () => {
+  // 懒得再引一遍：这一段只用到下面两个函数
+  it('一条一条拦', async () => {
+    const { askBlocker, busyConversation, sees } = await import('@/features/expert/model/ask')
+    const { packsSchema, projectDetailSchema } = await import('@/contracts/workbench-v2')
+    const packs = packsSchema.parse(read('/api/workbench/packs')).packs
+    const title = (start: string) =>
+      manifest.pages.find((p) => p.title.startsWith(start))!.path.split('/')
+    const free = projectDetailSchema.parse(read(`/api/workbench/projects/${title('项目页')[4]}`))
+    const busy = projectDetailSchema.parse(
+      read(`/api/workbench/projects/${title('专家处理中')[4]}`),
+    )
+    const ok = { pack: packs[0], question: '问', project: free, sandboxes: 1 }
+    expect(askBlocker(ok)).toBeNull()
+    expect(askBlocker({ ...ok, pack: undefined })).toBe('noExpert')
+    expect(askBlocker({ ...ok, question: ' ' })).toBe('noQuestion')
+    expect(askBlocker({ ...ok, sandboxes: 0 })).toBe('noSandbox')
+    expect(askBlocker({ ...ok, project: busy })).toBe('busy')
+    expect(
+      askBlocker({ ...ok, project: { ...free, project: { ...free.project, online: false } } }),
+    ).toBe('offline')
+    // 专家在哪段对话里做：给一条过去的路
+    expect(busyConversation(busy)).toBe(title('专家处理中')[6])
+    expect(busyConversation(free)).toBeNull()
+    // 专家看得到：项目里别的几段对话、几份底稿。只数数
+    expect(sees(free, null)).toEqual({ conversations: 3, dossiers: 1 })
+    expect(sees(free, free.conversations[0].id)).toEqual({ conversations: 2, dossiers: 1 })
+  })
+})
