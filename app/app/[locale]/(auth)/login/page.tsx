@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { redirect } from 'next/navigation'
+import { nextPath } from '@/lib/auth/next-path'
 import { buttonVariants } from '@/components/ui/button'
 import { clientEnv } from '@/env/client'
 import { getBrowserSession } from '@/lib/server/auth-session'
@@ -27,6 +28,8 @@ type Props = {
     reason?: string
     /** 由 BFF /api/auth/after-signup 或 Casdoor 跳转带回 */
     registered?: string
+    /** 登录完回到哪。只认本站、本语言下的路径 */
+    next?: string
   }>
 }
 
@@ -35,8 +38,8 @@ export default async function LoginPage({ params, searchParams }: Props) {
   const t = await getTranslations('auth')
   const paramsQ = await searchParams
   const session = await getBrowserSession()
-  if (session) redirect(`/${locale}/dashboard`)
-  const returnTo = `/${locale}/dashboard`
+  const returnTo = nextPath(locale, paramsQ.next, `/${locale}/dashboard`)
+  if (session) redirect(returnTo)
   const loginUrl = `${clientEnv.NEXT_PUBLIC_API_URL}/auth/web/login?return_to=${encodeURIComponent(returnTo)}`
   const signupUrl = `${clientEnv.NEXT_PUBLIC_API_URL}/auth/web/signup?return_to=${encodeURIComponent(returnTo)}`
 

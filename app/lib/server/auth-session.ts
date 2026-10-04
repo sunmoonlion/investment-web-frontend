@@ -5,6 +5,7 @@ import { cookies, headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { serverEnv } from '@/env/server'
 import { loadBrowserSession } from '@/lib/auth/browser-session'
+import { loginPath } from '@/lib/auth/next-path'
 
 export async function getBrowserSession() {
   const [cookieStore, requestHeaders] = await Promise.all([cookies(), headers()])
@@ -26,8 +27,9 @@ export async function getBrowserSession() {
   })
 }
 
-export async function requireBrowserSession(locale: string) {
+// next：登录完回到哪（本语言下的路径，可带参数）。不给就回默认页
+export async function requireBrowserSession(locale: string, next?: string) {
   const session = await getBrowserSession()
-  if (!session) redirect(`/${locale}/login`)
+  if (!session) redirect(loginPath(locale, next))
   return session
 }
