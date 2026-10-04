@@ -493,10 +493,26 @@ export const projectDetailSchema = z
           kind: conversationKindSchema,
           title: z.string().nullable(),
           active_task_id: uuid.nullable(),
+          last_active_at: z.string().nullable(),
         })
         .loose(),
     ),
-    tasks: z.array(z.object({ id: uuid, state: z.string() }).loose()),
+    tasks: z.array(
+      z
+        .object({
+          id: uuid,
+          session_id: uuid,
+          expert: z.string(),
+          state: z.string(),
+          state_word: z.string().nullable(),
+          question: z.string().nullable(),
+          spent: z.string(),
+          currency: z.string(),
+          created_at: z.string(),
+          ended_at: z.string().nullable(),
+        })
+        .loose(),
+    ),
   })
   .loose()
 export type ProjectDetail = z.infer<typeof projectDetailSchema>
@@ -531,3 +547,5 @@ export const reviewPlaceSchema = z
       .loose(),
   })
   .loose()
+
+export const createdProjectSchema = z.object({ id: uuid }).loose()

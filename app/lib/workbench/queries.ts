@@ -6,11 +6,12 @@ import {
   conversationsSchema,
   machinesSchema,
   pendingListSchema,
+  projectDetailSchema,
   projectsSchema,
   sandboxesSchema,
   workspacesSchema,
 } from '@/contracts/workbench-v2'
-import { getJson } from './http'
+import { getJson, seg } from './http'
 
 // 好几个功能都要的清单：工作区、项目、对话、待办、机器、沙箱。
 // 键都以 'workbench' 开头：哪个功能改了东西，按键让别处重取。
@@ -64,5 +65,27 @@ export function useSandboxes() {
   return useQuery({
     queryKey: workbenchKeys.sandboxes,
     queryFn: async () => (await getJson(sandboxesSchema, '/api/workbench/sandboxes')).sandboxes,
+  })
+}
+
+// 一个项目：它的对话、底稿、有没有专家正在做
+export function useProjectDetail(project: string) {
+  return useQuery({
+    queryKey: ['workbench', 'project', project],
+    queryFn: () => getJson(projectDetailSchema, `/api/workbench/projects/${seg(project)}`),
+  })
+}
+
+// 全部项目。归档的默认不取
+export function useAllProjects(includeArchived: boolean) {
+  return useQuery({
+    queryKey: ['workbench', 'projects', 'all', includeArchived],
+    queryFn: async () =>
+      (
+        await getJson(
+          projectsSchema,
+          `/api/workbench/projects${includeArchived ? '?include_archived=true' : ''}`,
+        )
+      ).projects,
   })
 }

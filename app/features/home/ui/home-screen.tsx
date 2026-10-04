@@ -28,8 +28,11 @@ export function HomeScreen() {
   const t = useTranslations('home')
   const router = useRouter()
   const { locale } = useWorkbench()
-  const asked = useSearchParams().get('mode')
+  const query = useSearchParams()
+  const asked = query.get('mode')
   const mode: Mode = asked === 'work' || asked === 'expert' ? asked : 'chat'
+  // 从项目页点「新聊天」「新工作」进来：项目已经选好
+  const given = query.get('project')
 
   const projects = useProjects()
   const machines = useMachines()
@@ -39,7 +42,8 @@ export function HomeScreen() {
   const start = useStart()
 
   const [text, setText] = useState('')
-  const [projectId, setProjectId] = useState<string | null>(null)
+  const [chosen, setProjectId] = useState<string | null | undefined>(undefined)
+  const projectId = chosen === undefined ? given : chosen
   const [picking, setPicking] = useState(false)
 
   const project = (projects.data ?? []).find((each) => each.id === projectId)

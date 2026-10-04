@@ -10,6 +10,7 @@ import { ProjectPicker } from '@/components/workbench/project-picker'
 import { useWorkbench } from '@/lib/workbench/context'
 import { useProjects } from '@/lib/workbench/queries'
 import { isBuilt, routes } from '@/lib/workbench/routes'
+import { cn } from '@/lib/utils'
 
 import { useOverview, usePacks } from '../api/desk'
 import { amountText } from './parts'
@@ -71,7 +72,7 @@ export function ExpertHomeScreen() {
                   {/* 去别的页：是链接，不是按钮 */}
                   <Link
                     href={routes.review(locale, each.interaction_id)}
-                    className={buttonVariants({ size: 'sm' })}
+                    className={cn(buttonVariants({ size: 'sm' }))}
                   >
                     {t('handle')}
                   </Link>

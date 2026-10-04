@@ -7,8 +7,8 @@
   "workspace_root": "/home/demo/research",
   "path": "比亚迪",
   "title": "比亚迪",
-  "created_at": "2026-10-04T05:33:17.689303Z",
-  "updated_at": "2026-10-04T05:33:17.689303Z",
+  "created_at": "2026-10-04T06:59:59.713900Z",
+  "updated_at": "2026-10-04T06:59:59.713900Z",
   "archived_at": null,
   "directory": "/home/demo/research/比亚迪",
   "archived": false,
@@ -23,7 +23,7 @@
    "title": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
    "wheel": "user",
    "active_task_id": null,
-   "last_active_at": "2026-10-04T05:33:21.792023Z"
+   "last_active_at": "2026-10-04T07:00:03.946871Z"
   }
  ],
  "tasks": [
@@ -31,7 +31,9 @@
    "id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
    "session_id": "dd790e56-724e-5e57-9294-bae977583372",
    "profile_id": "FIN_REVIEW",
+   "expert": "财报体检",
    "state": "FAILED",
+   "state_word": "失败",
    "question": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
    "budget": {
     "used": "0.300000",
@@ -39,7 +41,10 @@
     "currency": "CNY",
     "reserved": "0"
    },
-   "created_at": "2026-10-04T05:33:20.989351Z"
+   "spent": "0.30",
+   "currency": "CNY",
+   "created_at": "2026-10-04T07:00:03.212567Z",
+   "ended_at": "2026-10-04T07:00:03.946871Z"
   }
  ]
 }

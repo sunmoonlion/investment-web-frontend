@@ -152,7 +152,15 @@ export function Sidebar() {
       {/* 中间这一段自己滚：项目和对话再多，底部的条目也一直看得见 */}
       <div className="-mx-1 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-1">
         <section aria-label={t('workspace')}>
-          <h2 className={heading}>{t('workspace')}</h2>
+          <h2 className={cn(heading, 'flex items-center')}>
+            {t('workspace')}
+            <Link
+              href={routes.projects(locale)}
+              className="hover:text-foreground ml-auto font-normal underline-offset-3 hover:underline"
+            >
+              {t('allProjects')}
+            </Link>
+          </h2>
           {allWorkspaces.length === 0 ? (
             <p className="text-muted-foreground px-2 text-xs">
               {workspaces.isPending ? t('loading') : t('noWorkspace')}

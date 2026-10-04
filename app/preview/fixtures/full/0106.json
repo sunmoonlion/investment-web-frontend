@@ -5,7 +5,7 @@
   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
   "tenant": "default",
   "idempotency_key": "preview-refused-0001",
-  "request_digest": "c9fcffd809a7cecac29cffce67f716907a9d6dfa8d4d6616b195f7d5273d57c7",
+  "request_digest": "54b257744c3450db396314e3a0e3c4276a33a2256b64f3e12345c61e8f3c3ee5",
   "profile_id": "BOND_REVIEW",
   "profile_version": "1",
   "expert_pack_version": null,
@@ -17,7 +17,7 @@
    "client_context": {}
   },
   "normalized_goal": null,
-  "thread_id": "thread-9a19c86c6cc2",
+  "thread_id": "thread-26dafef67199",
   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
   "project_root": "/home/demo/research/中国平安",
   "state": "REJECTED",
@@ -42,8 +42,8 @@
   },
   "cancel_requested_at": null,
   "cancel_requested_by": null,
-  "created_at": "2026-10-04T05:33:23.630199+00:00",
-  "updated_at": "2026-10-04T05:33:23.658678+00:00",
+  "created_at": "2026-10-04T07:00:05.904619+00:00",
+  "updated_at": "2026-10-04T07:00:05.939401+00:00",
   "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f"
  },
  "attempts": [],

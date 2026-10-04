@@ -7,7 +7,7 @@
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
    "idempotency_key": "preview-cancelled-0001",
-   "request_digest": "3b64aec334b42dc4fb1c21ba876f3a021c721eb5dab1650bde249ce6dd537d0b",
+   "request_digest": "b381b35c444ef6ef35eaee2df59b3b388e940c21c3f6c77dbba2f0a4c529fa84",
    "profile_id": "FIN_REVIEW",
    "profile_version": "1",
    "expert_pack_version": "1",
@@ -21,7 +21,7 @@
     }
    },
    "normalized_goal": null,
-   "thread_id": "thread-752ca7a36fcf",
+   "thread_id": "thread-68029c4a9efd",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "project_root": "/home/demo/research/招商银行",
    "state": "CANCELLED",
@@ -52,10 +52,10 @@
    "waiting_reason": null,
    "active_interaction_id": null,
    "rejection": null,
-   "cancel_requested_at": "2026-10-04T05:33:22.182813+00:00",
+   "cancel_requested_at": "2026-10-04T07:00:04.414453+00:00",
    "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "created_at": "2026-10-04T05:33:21.822949+00:00",
-   "updated_at": "2026-10-04T05:33:22.182189+00:00",
+   "created_at": "2026-10-04T07:00:03.982088+00:00",
+   "updated_at": "2026-10-04T07:00:04.413741+00:00",
    "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa"
   }
  ]

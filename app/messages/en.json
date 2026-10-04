@@ -275,7 +275,8 @@
       "online": "A machine is online",
       "offline": "No machine is online",
       "none": "No machine registered"
-    }
+    },
+    "allProjects": "All"
   },
   "projectPicker": {
     "loading": "Loading…",
@@ -672,5 +673,86 @@
     "answered": "Already answered.",
     "loading": "Loading…",
     "failed": "Could not load this item. It may have been answered already, or expired."
+  },
+  "projects": {
+    "list": {
+      "title": "Projects",
+      "lead": "A project is a folder on your computer, plus what you chatted about, worked on, and what experts handed back around it.",
+      "new": "New project",
+      "showArchived": "Show archived",
+      "archived": "archived",
+      "conversations": "{n} conversations",
+      "never": "not used yet",
+      "none": "No projects in this workspace yet.",
+      "offline": "machine offline",
+      "loading": "Loading…",
+      "noWorkspace": {
+        "title": "No workspace yet",
+        "lead": "A workspace is a root folder on your machine. Having none usually has one of these three causes:",
+        "sandbox": "No sandbox started yet: register a model key and start the sandbox in Settings.",
+        "agent": "No local agent connected yet: install the local agent on your machine and add a folder in it.",
+        "account": "Signed in with a different account: the local agent and the web page must use the same account.",
+        "note": "Workspaces are added and removed in the local agent on your machine, not on the web."
+      }
+    },
+    "create": {
+      "title": "New project",
+      "machine": "On which machine",
+      "workspace": "In which workspace",
+      "path": "Subfolder",
+      "pathHint": "A folder relative to the workspace. Leave empty for the workspace itself. If the folder does not exist yet, it is created the first time work happens in it.",
+      "name": "Project name",
+      "nameHint": "Left empty, the last part of the folder is used: {title}",
+      "directory": "The project's folder",
+      "cancel": "Cancel",
+      "submit": "Create",
+      "submitting": "Creating…",
+      "choose": "Choose",
+      "machineOffline": " (offline)",
+      "problem": {
+        "absolute": "The subfolder must be relative to the workspace, not an absolute path.",
+        "upward": "The subfolder must not go upwards (no ..).",
+        "project_exists": "This folder is already a project.",
+        "project_path_invalid": "This subfolder is not valid.",
+        "root_outside_whitelist": "This workspace is not whitelisted on that machine.",
+        "preview_no_sample": "The preview is read-only.",
+        "other": "Not created. Please try again."
+      }
+    },
+    "page": {
+      "lead": "A project is a folder on your computer, plus what you chatted about, worked on, and what experts handed back around it.",
+      "workspace": "Workspace",
+      "directory": "Folder",
+      "machine": "Machine",
+      "online": "online",
+      "offline": "offline",
+      "newChat": "New chat",
+      "newWork": "New work",
+      "askExpert": "Ask an expert",
+      "offlineNote": "The machine is offline: you can look and chat, but not start work or ask an expert.",
+      "conversations": "Conversations",
+      "dossiers": "Dossiers",
+      "empty": "Nothing in this project yet. Start with the three buttons above.",
+      "noConversations": "No conversations yet.",
+      "noDossiers": "No dossier handed back yet.",
+      "expertWorking": "The expert is working",
+      "untitled": "Untitled conversation",
+      "kind": {
+        "chat": "Chat",
+        "work": "Work"
+      },
+      "running": "in progress",
+      "rename": "Rename",
+      "archive": "Archive",
+      "unarchive": "Unarchive",
+      "archiveTitle": "Archive this project?",
+      "archiveBody": "Once archived it no longer appears in the sidebar and the project list. Conversations and dossiers stay and it can be unarchived. Files on your computer are not affected.",
+      "archiveConfirm": "Archive",
+      "cancel": "Cancel",
+      "archivedNote": "This project is archived.",
+      "loading": "Loading…",
+      "failed": "Could not load this project.",
+      "problem": "It did not work. Please try again."
+    }
   }
 }

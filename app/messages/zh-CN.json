@@ -275,7 +275,8 @@
       "online": "机器在线",
       "offline": "机器都不在线",
       "none": "还没有登记机器"
-    }
+    },
+    "allProjects": "全部"
   },
   "projectPicker": {
     "loading": "加载中…",
@@ -672,5 +673,86 @@
     "answered": "已经答复了。",
     "loading": "加载中…",
     "failed": "没有取到这件待办。它可能已经答复过，或者过期了。"
+  },
+  "projects": {
+    "list": {
+      "title": "项目",
+      "lead": "一个项目是你电脑上的一个文件夹，加上你围绕它聊过的、做过的、专家交回的。",
+      "new": "新建项目",
+      "showArchived": "显示归档的",
+      "archived": "已归档",
+      "conversations": "{n} 段对话",
+      "never": "还没有用过",
+      "none": "这个工作区里还没有项目。",
+      "offline": "机器离线",
+      "loading": "加载中…",
+      "noWorkspace": {
+        "title": "还没有工作区",
+        "lead": "工作区是你机器上的一个根目录。一个都没有，通常是这三种原因之一：",
+        "sandbox": "还没有拉起沙箱：去设置里登记模型的 key、拉起沙箱。",
+        "agent": "还没有接入本地代理：在你的机器上装好本地代理，在里面加一个目录。",
+        "account": "登录的账号不对：本地代理登的和网页登的要是同一个账号。",
+        "note": "工作区的增减不在网页上做，在你机器上的本地代理里做。"
+      }
+    },
+    "create": {
+      "title": "新建项目",
+      "machine": "在哪台机器上",
+      "workspace": "在哪个工作区里",
+      "path": "子目录",
+      "pathHint": "相对工作区的目录。留空就是工作区本身。这个目录要是还不存在，第一次在里面工作时会创建。",
+      "name": "项目名",
+      "nameHint": "不填就用目录的最后一段：{title}",
+      "directory": "项目的目录",
+      "cancel": "取消",
+      "submit": "建立",
+      "submitting": "正在建立…",
+      "choose": "请选择",
+      "machineOffline": "（离线）",
+      "problem": {
+        "absolute": "子目录要写相对工作区的路径，不能是绝对路径。",
+        "upward": "子目录不能往上走（不能有 ..）。",
+        "project_exists": "这个目录已经是一个项目了。",
+        "project_path_invalid": "这个子目录写得不对。",
+        "root_outside_whitelist": "这个工作区不在那台机器的白名单里。",
+        "preview_no_sample": "预览里只能看，不能建。",
+        "other": "没有建成，请再试一次。"
+      }
+    },
+    "page": {
+      "lead": "一个项目是你电脑上的一个文件夹，加上你围绕它聊过的、做过的、专家交回的。",
+      "workspace": "工作区",
+      "directory": "目录",
+      "machine": "机器",
+      "online": "在线",
+      "offline": "离线",
+      "newChat": "新聊天",
+      "newWork": "新工作",
+      "askExpert": "请专家",
+      "offlineNote": "机器不在线：可以看、可以聊天，不能新建工作、不能请专家。",
+      "conversations": "对话",
+      "dossiers": "底稿",
+      "empty": "这个项目里还什么都没有。用上面三个按钮开始。",
+      "noConversations": "还没有对话。",
+      "noDossiers": "专家还没有交回过底稿。",
+      "expertWorking": "专家正在处理",
+      "untitled": "未命名的对话",
+      "kind": {
+        "chat": "聊天",
+        "work": "工作"
+      },
+      "running": "进行中",
+      "rename": "改名",
+      "archive": "归档",
+      "unarchive": "取消归档",
+      "archiveTitle": "归档这个项目？",
+      "archiveBody": "归档之后它不出现在侧栏和项目列表里。对话和底稿都还在，可以取消归档。你电脑上的文件不受影响。",
+      "archiveConfirm": "归档",
+      "cancel": "取消",
+      "archivedNote": "这个项目已经归档。",
+      "loading": "加载中…",
+      "failed": "没有取到这个项目。",
+      "problem": "没有做成，请再试一次。"
+    }
   }
 }

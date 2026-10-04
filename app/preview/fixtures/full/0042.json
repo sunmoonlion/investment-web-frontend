@@ -7,8 +7,8 @@
   "workspace_root": "/home/demo/research",
   "path": "五粮液",
   "title": "五粮液",
-  "created_at": "2026-10-04T05:33:17.662897Z",
-  "updated_at": "2026-10-04T05:33:17.662897Z",
+  "created_at": "2026-10-04T06:59:59.688299Z",
+  "updated_at": "2026-10-04T06:59:59.688299Z",
   "archived_at": null,
   "directory": "/home/demo/research/五粮液",
   "archived": false,
@@ -23,7 +23,7 @@
    "title": "五粮液近五年的毛利率分别是多少？",
    "wheel": "advisor",
    "active_task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
-   "last_active_at": "2026-10-04T05:33:19.523543Z"
+   "last_active_at": "2026-10-04T07:00:01.528465Z"
   }
  ],
  "tasks": [
@@ -31,7 +31,9 @@
    "id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
    "session_id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
    "profile_id": "DATA_QUERY",
+   "expert": "问数",
    "state": "RUNNING",
+   "state_word": null,
    "question": "五粮液近五年的毛利率分别是多少？",
    "budget": {
     "used": "0.100000",
@@ -39,7 +41,10 @@
     "currency": "CNY",
     "reserved": "0.05"
    },
-   "created_at": "2026-10-04T05:33:19.485970Z"
+   "spent": "0.10",
+   "currency": "CNY",
+   "created_at": "2026-10-04T07:00:01.496627Z",
+   "ended_at": null
   }
  ]
 }

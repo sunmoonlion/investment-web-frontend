@@ -7,8 +7,8 @@
   "workspace_root": "/home/demo/research",
   "path": "宁德时代",
   "title": "宁德时代",
-  "created_at": "2026-10-04T05:33:17.669778Z",
-  "updated_at": "2026-10-04T05:33:17.669778Z",
+  "created_at": "2026-10-04T06:59:59.695294Z",
+  "updated_at": "2026-10-04T06:59:59.695294Z",
   "archived_at": null,
   "directory": "/home/demo/research/宁德时代",
   "archived": false,
@@ -23,7 +23,7 @@
    "title": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
    "wheel": "advisor",
    "active_task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
-   "last_active_at": "2026-10-04T05:33:19.787355Z"
+   "last_active_at": "2026-10-04T07:00:01.868919Z"
   }
  ],
  "tasks": [
@@ -31,7 +31,9 @@
    "id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
    "session_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
    "profile_id": "FIN_REVIEW",
+   "expert": "财报体检",
    "state": "WAITING",
+   "state_word": null,
    "question": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
    "budget": {
     "used": "0.150000",
@@ -39,7 +41,10 @@
     "currency": "CNY",
     "reserved": "0"
    },
-   "created_at": "2026-10-04T05:33:19.756587Z"
+   "spent": "0.15",
+   "currency": "CNY",
+   "created_at": "2026-10-04T07:00:01.831009Z",
+   "ended_at": null
   }
  ]
 }

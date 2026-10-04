@@ -10,11 +10,11 @@ import { Button, buttonVariants } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { useWorkbench } from '@/lib/workbench/context'
 import { WorkbenchError } from '@/lib/workbench/http'
-import { useSandboxes } from '@/lib/workbench/queries'
+import { useProjectDetail, useSandboxes } from '@/lib/workbench/queries'
 import { routes } from '@/lib/workbench/routes'
 import { cn } from '@/lib/utils'
 
-import { useAsk, usePacks, useProjectDetail, useSaid } from '../api/desk'
+import { useAsk, usePacks, useSaid } from '../api/desk'
 import { askBlocker, busyConversation, sees } from '../model/ask'
 
 const QUESTION = 'workbench.question'
@@ -252,7 +252,7 @@ export function AskExpertScreen({
               </p>
             ) : null}
             <div className="flex justify-end gap-2">
-              <Link href={back} className={buttonVariants({ variant: 'outline' })}>
+              <Link href={back} className={cn(buttonVariants({ variant: 'outline' }))}>
                 {t('cancel')}
               </Link>
               <Button

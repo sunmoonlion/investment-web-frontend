@@ -53,6 +53,8 @@ export type Page =
 const BUILT: ReadonlySet<Page> = new Set([
   'home',
   'chat',
+  'projects',
+  'project',
   'projectConversation',
   'expert',
   'askExpert',

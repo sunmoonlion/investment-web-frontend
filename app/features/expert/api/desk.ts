@@ -7,7 +7,6 @@ import {
   eventsPageSchema,
   overviewSchema,
   packsSchema,
-  projectDetailSchema,
   reviewPlaceSchema,
 } from '@/contracts/workbench-v2'
 import { useWorkbench } from '@/lib/workbench/context'
@@ -28,14 +27,6 @@ export function usePacks() {
   return useQuery({
     queryKey: ['workbench', 'expert', 'packs'],
     queryFn: async () => (await getJson(packsSchema, '/api/workbench/packs')).packs,
-  })
-}
-
-// 一个项目：它的对话、底稿、有没有专家正在做
-export function useProjectDetail(project: string) {
-  return useQuery({
-    queryKey: ['workbench', 'project', project],
-    queryFn: () => getJson(projectDetailSchema, `/api/workbench/projects/${seg(project)}`),
   })
 }
 

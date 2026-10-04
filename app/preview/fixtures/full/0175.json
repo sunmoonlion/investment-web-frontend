@@ -27,7 +27,7 @@
    "estimated": true
   },
   "data": null,
-  "started_at": "2026-10-04T05:33:19.485970Z",
+  "started_at": "2026-10-04T07:00:01.496627Z",
   "ended_at": null,
   "seconds": 5,
   "active_interaction_id": null
@@ -45,8 +45,8 @@
    "text": "在想这一步怎么做"
   },
   "redo": null,
-  "since": "2026-10-04T05:33:19.743235Z",
-  "last_event_at": "2026-10-04T05:33:19.773246Z",
+  "since": "2026-10-04T07:00:01.783976Z",
+  "last_event_at": "2026-10-04T07:00:01.811630Z",
   "held": true
  },
  "position": {
@@ -89,8 +89,8 @@
      "outcome": "accepted",
      "failure": null,
      "spent": "0.05",
-     "started_at": "2026-10-04T05:33:19.627413Z",
-     "ended_at": "2026-10-04T05:33:19.636829Z",
+     "started_at": "2026-10-04T07:00:01.644032Z",
+     "ended_at": "2026-10-04T07:00:01.653311Z",
      "checks": [
       {
        "label": "交回的格式对",
@@ -156,8 +156,8 @@
      "outcome": "accepted",
      "failure": null,
      "spent": "0.05",
-     "started_at": "2026-10-04T05:33:19.709036Z",
-     "ended_at": "2026-10-04T05:33:19.716813Z",
+     "started_at": "2026-10-04T07:00:01.738943Z",
+     "ended_at": "2026-10-04T07:00:01.747840Z",
      "checks": [
       {
        "label": "交回的格式对",
@@ -227,7 +227,7 @@
      "outcome": "running",
      "failure": null,
      "spent": "0.00",
-     "started_at": "2026-10-04T05:33:19.733216Z",
+     "started_at": "2026-10-04T07:00:01.772343Z",
      "ended_at": null,
      "checks": [
       {

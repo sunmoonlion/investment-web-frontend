@@ -7,7 +7,7 @@
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
    "idempotency_key": "preview-done-concluded-0001",
-   "request_digest": "4fee03245014b0dc3b9d1269de71c1e15bc44daf252277f3e40004ac720e63aa",
+   "request_digest": "78edc4c4a5d82b5463a35865067e3de45f551e24732b4b79e44ed2e3cab7e465",
    "profile_id": "FIN_REVIEW",
    "profile_version": "1",
    "expert_pack_version": "1",
@@ -21,7 +21,7 @@
     }
    },
    "normalized_goal": null,
-   "thread_id": "thread-ebb41b1e5d3d",
+   "thread_id": "thread-016c51c346b0",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "project_root": "/home/demo/research/贵州茅台",
    "state": "SUCCEEDED",
@@ -54,8 +54,8 @@
    "rejection": null,
    "cancel_requested_at": null,
    "cancel_requested_by": null,
-   "created_at": "2026-10-04T05:33:18.724581+00:00",
-   "updated_at": "2026-10-04T05:33:19.410436+00:00",
+   "created_at": "2026-10-04T07:00:00.725800+00:00",
+   "updated_at": "2026-10-04T07:00:01.465256+00:00",
    "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10"
   }
  ]

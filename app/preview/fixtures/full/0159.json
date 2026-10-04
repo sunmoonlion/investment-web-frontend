@@ -5,7 +5,7 @@
   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
   "tenant": "default",
   "idempotency_key": "preview-waiting-0001",
-  "request_digest": "d85e8e9321cd0b24d52d9f3116986fe4ab999e3cb8c457015e4a64a05fd9da67",
+  "request_digest": "4c536787f0641a36f9f834a37ab4b846673fe4c3c47f9462e0c0fe8dd3bba2b2",
   "profile_id": "FIN_REVIEW",
   "profile_version": "1",
   "expert_pack_version": "1",
@@ -19,7 +19,7 @@
    }
   },
   "normalized_goal": null,
-  "thread_id": "thread-47f50c22a76d",
+  "thread_id": "thread-f3a973a8d6a6",
   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
   "project_root": "/home/demo/research/宁德时代",
   "state": "WAITING",
@@ -52,8 +52,8 @@
   "rejection": null,
   "cancel_requested_at": null,
   "cancel_requested_by": null,
-  "created_at": "2026-10-04T05:33:19.756587+00:00",
-  "updated_at": "2026-10-04T05:33:20.083033+00:00",
+  "created_at": "2026-10-04T07:00:01.831009+00:00",
+  "updated_at": "2026-10-04T07:00:02.245135+00:00",
   "project_id": "d35d6a3c-0149-5775-a1c7-860389fb558a"
  },
  "attempts": [
@@ -61,7 +61,7 @@
    "id": "dc04a489-73d3-5616-af96-8f8c55364805",
    "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
    "session_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
-   "thread_id": "thread-47f50c22a76d",
+   "thread_id": "thread-f3a973a8d6a6",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "role": "execute",
    "arm": 0,
@@ -69,7 +69,7 @@
    "step_version": "1",
    "input_artifact_versions": [],
    "turn_ids": [
-    "turn-31a804219628"
+    "turn-377f5ba97a5b"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -101,16 +101,16 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T05:33:19.859304+00:00",
-   "ended_at": "2026-10-04T05:33:19.868897+00:00",
-   "created_at": "2026-10-04T05:33:19.810563+00:00",
-   "updated_at": "2026-10-04T05:33:19.865649+00:00"
+   "started_at": "2026-10-04T07:00:01.966917+00:00",
+   "ended_at": "2026-10-04T07:00:01.980892+00:00",
+   "created_at": "2026-10-04T07:00:01.899410+00:00",
+   "updated_at": "2026-10-04T07:00:01.974451+00:00"
   },
   {
    "id": "4b0b46b9-edd3-585d-a4fe-c3152293459f",
    "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
    "session_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
-   "thread_id": "thread-47f50c22a76d",
+   "thread_id": "thread-f3a973a8d6a6",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "role": "execute",
    "arm": 0,
@@ -123,7 +123,7 @@
     }
    ],
    "turn_ids": [
-    "turn-b983442936ab"
+    "turn-dd702a6fc22a"
    ],
    "status": "COMPLETED",
    "codex_version": null,
@@ -155,16 +155,16 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T05:33:19.953012+00:00",
-   "ended_at": "2026-10-04T05:33:19.960857+00:00",
-   "created_at": "2026-10-04T05:33:19.884539+00:00",
-   "updated_at": "2026-10-04T05:33:19.957508+00:00"
+   "started_at": "2026-10-04T07:00:02.099097+00:00",
+   "ended_at": "2026-10-04T07:00:02.107664+00:00",
+   "created_at": "2026-10-04T07:00:02.014602+00:00",
+   "updated_at": "2026-10-04T07:00:02.104190+00:00"
   },
   {
    "id": "1ad55ace-076f-5588-a1db-a4f8e4970b49",
    "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
    "session_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
-   "thread_id": "thread-47f50c22a76d",
+   "thread_id": "thread-f3a973a8d6a6",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "role": "execute",
    "arm": 0,
@@ -181,7 +181,7 @@
     }
    ],
    "turn_ids": [
-    "turn-96330cc4c05e"
+    "turn-001d2e91bb54"
    ],
    "status": "FAILED",
    "codex_version": null,
@@ -207,10 +207,10 @@
    "refs": {
     "reworks": 0
    },
-   "started_at": "2026-10-04T05:33:20.066809+00:00",
-   "ended_at": "2026-10-04T05:33:20.073423+00:00",
-   "created_at": "2026-10-04T05:33:19.975923+00:00",
-   "updated_at": "2026-10-04T05:33:20.071523+00:00"
+   "started_at": "2026-10-04T07:00:02.222761+00:00",
+   "ended_at": "2026-10-04T07:00:02.229987+00:00",
+   "created_at": "2026-10-04T07:00:02.124847+00:00",
+   "updated_at": "2026-10-04T07:00:02.227929+00:00"
   }
  ],
  "artifacts": [
@@ -223,7 +223,7 @@
    "kind": "step",
    "digest": "b3735d1760412b7e122f73ba16d44b60f4f558ecee20b3dc72daf79138fab94c",
    "workspace_path": null,
-   "created_at": "2026-10-04T05:33:19.957508+00:00"
+   "created_at": "2026-10-04T07:00:02.104190+00:00"
   },
   {
    "id": "959ea641-222c-5517-848a-c45414a4eb0d",
@@ -234,7 +234,7 @@
    "kind": "step",
    "digest": "f77a558f3ba9620c552aba0f6d28ef5b64355e4e4f006ed494bb527bd55aa444",
    "workspace_path": null,
-   "created_at": "2026-10-04T05:33:19.865649+00:00"
+   "created_at": "2026-10-04T07:00:01.974451+00:00"
   }
  ]
 }
