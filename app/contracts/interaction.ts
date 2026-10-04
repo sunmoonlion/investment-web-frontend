@@ -75,50 +75,16 @@ const eventBase = {
 }
 
 export const runEventSchema = z.discriminatedUnion('type', [
-  z
-    .object({
-      ...eventBase,
-      type: z.literal('status'),
-      data: z.object({ status: runStatusSchema }).strict(),
-    })
-    .strict(),
-  z
-    .object({
-      ...eventBase,
-      type: z.literal('delta'),
-      data: z.object({ text: z.string().min(1).max(4096) }).strict(),
-    })
-    .strict(),
-  z
-    .object({
-      ...eventBase,
-      type: z.literal('citation'),
-      data: z.object({ citation: citationSchema }).strict(),
-    })
-    .strict(),
-  z
-    .object({
-      ...eventBase,
-      type: z.literal('input_required'),
-      data: z.object({ action: requiredActionSchema }).strict(),
-    })
-    .strict(),
-  z
-    .object({
-      ...eventBase,
-      type: z.literal('completed'),
-      data: z.object({ summary: z.string().max(20000) }).strict(),
-    })
-    .strict(),
-  z
-    .object({
-      ...eventBase,
-      type: z.literal('failed'),
-      data: z
-        .object({ code: z.string().min(1).max(128), message: z.string().min(1).max(1000) })
-        .strict(),
-    })
-    .strict(),
+  z.object({ ...eventBase, type: z.literal('status'), data: z.object({ status: runStatusSchema }).strict() }).strict(),
+  z.object({ ...eventBase, type: z.literal('delta'), data: z.object({ text: z.string().min(1).max(4096) }).strict() }).strict(),
+  z.object({ ...eventBase, type: z.literal('citation'), data: z.object({ citation: citationSchema }).strict() }).strict(),
+  z.object({ ...eventBase, type: z.literal('input_required'), data: z.object({ action: requiredActionSchema }).strict() }).strict(),
+  z.object({ ...eventBase, type: z.literal('completed'), data: z.object({ summary: z.string().max(20000) }).strict() }).strict(),
+  z.object({
+    ...eventBase,
+    type: z.literal('failed'),
+    data: z.object({ code: z.string().min(1).max(128), message: z.string().min(1).max(1000) }).strict(),
+  }).strict(),
   z.object({ ...eventBase, type: z.literal('heartbeat'), data: z.object({}).strict() }).strict(),
 ])
 
