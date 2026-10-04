@@ -344,25 +344,10 @@
     }
   },
   "chat": {
-    "untitled": "Untitled conversation",
-    "rename": "Rename",
     "noProject": "No project",
     "putInProject": "Put in a project",
     "empty": "Nothing said yet.",
     "toEnd": "Back to latest",
-    "stream": {
-      "connecting": "Connecting…",
-      "offline": "Connection lost, reconnecting"
-    },
-    "stopped": "You stopped this turn.",
-    "failed": "This turn did not succeed.",
-    "activity": {
-      "waiting": "Sent, waiting for it to start",
-      "thinking": "Thinking",
-      "data": "Querying data",
-      "file": "Reading files",
-      "writing": "Writing the answer"
-    },
     "tally": {
       "data": "Queried data {count} time(s)",
       "files": "Read {count} file(s)",
@@ -370,27 +355,7 @@
       "failed": "{count} did not succeed",
       "said": "Process"
     },
-    "step": {
-      "data": "Data query: {tool}",
-      "version": "version …{version}",
-      "read": "Read {name}",
-      "failed": "did not succeed"
-    },
-    "missing": {
-      "title": "No data for {code} yet",
-      "body": "This company is not in our data yet, so nothing can be queried. Missing dataset:",
-      "request": "Request ingestion",
-      "noLink": "The request page cannot be opened right now."
-    },
-    "composer": {
-      "label": "Say to it",
-      "placeholder": "Ask a follow-up…",
-      "send": "Send",
-      "stop": "Stop",
-      "hint": "Enter to send, Shift + Enter for a new line. Amounts are estimates at public prices."
-    },
     "intoWork": "Turn into work",
-    "askExpert": "Ask an expert",
     "pick": {
       "project": {
         "title": "Put in which project",
@@ -405,12 +370,7 @@
         "description": "The expert takes over the whole project. After choosing you go to the ask-an-expert page."
       }
     },
-    "problem": {
-      "backend_unavailable": "Cannot reach the service. Try again later.",
-      "preview_no_sample": "The preview is read-only.",
-      "wheel_held_by_other": "The expert is working in this conversation; you cannot send now.",
-      "other": "It did not work. Please try again."
-    }
+    "placeholder": "Ask a follow-up…"
   },
   "usage": {
     "button": "What this conversation has cost",
@@ -428,5 +388,107 @@
     "amount": "Amount",
     "price": "{model}, per million tokens: input {input}, cached {cached}, cache write {write}, output {output} CNY. Prices looked up on {asOf}.",
     "noPrice": "No price for {model}, so only token counts are shown."
+  },
+  "conversation": {
+    "untitled": "Untitled conversation",
+    "rename": "Rename",
+    "stream": {
+      "connecting": "Connecting…",
+      "offline": "Connection lost, reconnecting"
+    },
+    "stopped": "You stopped this turn.",
+    "failed": "This turn did not succeed.",
+    "activity": {
+      "waiting": "Sent, waiting for it to start",
+      "thinking": "Thinking",
+      "data": "Querying data",
+      "file": "Reading files",
+      "writing": "Writing the answer",
+      "command": "Running a command",
+      "change": "Changing files",
+      "approval": "Waiting for your approval"
+    },
+    "step": {
+      "data": "Data query: {tool}",
+      "version": "version …{version}",
+      "read": "Read {name}",
+      "failed": "did not succeed",
+      "exit": "exit code {code}",
+      "change": {
+        "add": "Added",
+        "update": "Changed",
+        "delete": "Deleted",
+        "failed": "not applied"
+      }
+    },
+    "missing": {
+      "title": "No data for {code} yet",
+      "body": "This company is not in our data yet, so nothing can be queried. Missing dataset:",
+      "request": "Request ingestion",
+      "noLink": "The request page cannot be opened right now."
+    },
+    "problem": {
+      "backend_unavailable": "Cannot reach the service. Try again later.",
+      "preview_no_sample": "The preview is read-only.",
+      "wheel_held_by_other": "The expert is working in this conversation; you cannot send now.",
+      "other": "It did not work. Please try again."
+    },
+    "askExpert": "Ask an expert",
+    "composer": {
+      "label": "Say to it",
+      "send": "Send",
+      "stop": "Stop",
+      "hint": "Enter to send, Shift + Enter for a new line. Amounts are estimates at public prices."
+    },
+    "notBuilt": "This page is still being built"
+  },
+  "work": {
+    "placeholder": "Tell it what to do next…",
+    "directory": "Folder",
+    "toEnd": "Back to latest",
+    "empty": "Nothing started yet.",
+    "band": {
+      "you": "You are driving",
+      "expert": "The expert is working",
+      "idle": "Idle, waiting for you",
+      "running": "Working",
+      "waiting": "Waiting for your approval",
+      "stopped": "You stopped the last turn",
+      "failed": "The last turn did not succeed"
+    },
+    "expertBusy": "The expert is working. You can watch progress, answer what is waiting, or cancel.",
+    "phase": {
+      "commands": "{count} command(s)",
+      "data": "queried data {count} time(s)",
+      "failed": "{count} did not succeed",
+      "untitled": "What it did"
+    },
+    "approval": {
+      "title": "This goes beyond what is allowed and needs your approval",
+      "command": "Command",
+      "where": "In folder",
+      "reason": "Its reason",
+      "answered": {
+        "accept": "You allowed it once",
+        "acceptForSession": "You allowed it; the same thing will not be asked again in this conversation",
+        "decline": "You declined",
+        "other": "You answered"
+      },
+      "expired": "This request expired and was not executed",
+      "failed": "The answer was not sent. Please try again."
+    },
+    "changes": {
+      "title": "Changes",
+      "none": "No files changed in this conversation yet.",
+      "note": "Only files changed through patches are listed here. Files it changed from the command line (for example by redirection) cannot be listed; look at the commands above.",
+      "files": "{count} file(s)",
+      "show": "Show changes",
+      "hide": "Hide"
+    },
+    "handover": {
+      "given": "Handed to the expert",
+      "returned": "The expert handed back",
+      "inside": "The expert's steps have their own progress view; that part is still being built."
+    }
   }
 }

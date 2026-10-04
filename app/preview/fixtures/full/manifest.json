@@ -73,7 +73,7 @@
   },
   {
    "title": "底稿：打回",
-   "path": "/zh-CN/workbench/projects/69268fa0-44c9-5bb1-8187-e0ddab71455f/tasks/ed482230-2f0f-51b2-ab02-68462b409785"
+   "path": "/zh-CN/workbench/projects/69268fa0-44c9-5bb1-8187-e0ddab71455f/tasks/f0fb1647-6d14-5a5a-a59e-f5660c17edce"
   },
   {
    "title": "底稿：还在做",
@@ -81,15 +81,15 @@
   },
   {
    "title": "审查面：命令要你批准",
-   "path": "/zh-CN/workbench/review/58bf41ed-2812-51fe-87d9-3a7ad7438f7a"
+   "path": "/zh-CN/workbench/review/ab81c556-789b-5c9f-834a-d591f5885019"
   },
   {
    "title": "审查面：没有数据",
-   "path": "/zh-CN/workbench/review/f0fb1647-6d14-5a5a-a59e-f5660c17edce"
+   "path": "/zh-CN/workbench/review/5ae7813b-a5b7-5c98-881b-33152b36aa7b"
   },
   {
    "title": "审查面：验收没有通过（第 3 步 勾稽）",
-   "path": "/zh-CN/workbench/review/e622161e-278e-510c-a294-d321919a97e8"
+   "path": "/zh-CN/workbench/review/81108b8f-3022-5de7-860c-36662e2db6fb"
   },
   {
    "title": "我的机器",
@@ -263,7 +263,7 @@
   },
   {
    "method": "POST",
-   "path": "/api/workbench/sessions/3d3b3fb6-b19e-5292-b36c-2643d99977bb/handover",
+   "path": "/api/workbench/sessions/03e833d1-4f51-5912-8c00-94f7793c46aa/handover",
    "query": "",
    "status": 201,
    "content_type": "application/json",
@@ -559,7 +559,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/sessions/3d3b3fb6-b19e-5292-b36c-2643d99977bb",
+   "path": "/api/workbench/sessions/03e833d1-4f51-5912-8c00-94f7793c46aa",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -567,7 +567,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/sessions/3d3b3fb6-b19e-5292-b36c-2643d99977bb/usage",
+   "path": "/api/workbench/sessions/03e833d1-4f51-5912-8c00-94f7793c46aa/usage",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -576,14 +576,14 @@
   {
    "method": "GET",
    "path": "/api/workbench/tasks",
-   "query": "session_id=3d3b3fb6-b19e-5292-b36c-2643d99977bb",
+   "query": "session_id=03e833d1-4f51-5912-8c00-94f7793c46aa",
    "status": 200,
    "content_type": "application/json",
    "file": "0060.json"
   },
   {
    "method": "GET",
-   "path": "/api/workbench/sessions/3d3b3fb6-b19e-5292-b36c-2643d99977bb/events",
+   "path": "/api/workbench/sessions/03e833d1-4f51-5912-8c00-94f7793c46aa/events",
    "query": "limit=1000",
    "status": 200,
    "content_type": "application/json",
@@ -943,7 +943,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/tasks/ed482230-2f0f-51b2-ab02-68462b409785",
+   "path": "/api/workbench/tasks/f0fb1647-6d14-5a5a-a59e-f5660c17edce",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -951,7 +951,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/tasks/ed482230-2f0f-51b2-ab02-68462b409785/artifacts",
+   "path": "/api/workbench/tasks/f0fb1647-6d14-5a5a-a59e-f5660c17edce/artifacts",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -959,7 +959,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/tasks/ed482230-2f0f-51b2-ab02-68462b409785/dossier",
+   "path": "/api/workbench/tasks/f0fb1647-6d14-5a5a-a59e-f5660c17edce/dossier",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -967,7 +967,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/tasks/ed482230-2f0f-51b2-ab02-68462b409785/dossier/export",
+   "path": "/api/workbench/tasks/f0fb1647-6d14-5a5a-a59e-f5660c17edce/dossier/export",
    "query": "",
    "status": 200,
    "content_type": "text/markdown; charset=utf-8",
@@ -975,7 +975,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/tasks/ed482230-2f0f-51b2-ab02-68462b409785/steps",
+   "path": "/api/workbench/tasks/f0fb1647-6d14-5a5a-a59e-f5660c17edce/steps",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -1735,7 +1735,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/interactions/58bf41ed-2812-51fe-87d9-3a7ad7438f7a",
+   "path": "/api/workbench/interactions/ab81c556-789b-5c9f-834a-d591f5885019",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -1743,7 +1743,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/interactions/4816f691-3c61-5bff-a6ba-e4c76bd94692",
+   "path": "/api/workbench/interactions/7a2555b7-cc4f-5722-af30-bffeae1c3659",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -1759,7 +1759,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/interactions/f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+   "path": "/api/workbench/interactions/5ae7813b-a5b7-5c98-881b-33152b36aa7b",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -1767,7 +1767,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/interactions/e622161e-278e-510c-a294-d321919a97e8",
+   "path": "/api/workbench/interactions/81108b8f-3022-5de7-860c-36662e2db6fb",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -1776,7 +1776,7 @@
  ],
  "streams": [
   {
-   "path": "/api/workbench/sessions/3d3b3fb6-b19e-5292-b36c-2643d99977bb/stream",
+   "path": "/api/workbench/sessions/03e833d1-4f51-5912-8c00-94f7793c46aa/stream",
    "file": "stream-0001.json"
   },
   {

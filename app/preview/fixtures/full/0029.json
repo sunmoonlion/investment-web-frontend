@@ -2,7 +2,7 @@
  "contract_version": 2,
  "waiting": [
   {
-   "interaction_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+   "interaction_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b",
    "kind": "input",
    "status": "pending",
    "where": {
@@ -47,11 +47,11 @@
     "dataset": null,
     "security_code": "600436"
    },
-   "expires_at": "2026-10-07T03:53:36.272010Z",
-   "created_at": "2026-10-04T03:53:36.271355Z"
+   "expires_at": "2026-10-07T04:44:35.442620Z",
+   "created_at": "2026-10-04T04:44:35.441965Z"
   },
   {
-   "interaction_id": "e622161e-278e-510c-a294-d321919a97e8",
+   "interaction_id": "81108b8f-3022-5de7-860c-36662e2db6fb",
    "kind": "input",
    "status": "pending",
    "where": {
@@ -83,8 +83,8 @@
     }
    ],
    "missing_data": null,
-   "expires_at": "2026-10-07T03:53:36.043626Z",
-   "created_at": "2026-10-04T03:53:36.042931Z"
+   "expires_at": "2026-10-07T04:44:35.214822Z",
+   "created_at": "2026-10-04T04:44:35.214046Z"
   }
  ],
  "running": [
@@ -113,14 +113,14 @@
     "spent": "0.10",
     "estimated": true
    },
-   "started_at": "2026-10-04T03:53:35.454989Z",
+   "started_at": "2026-10-04T04:44:34.619762Z",
    "ended_at": null
   }
  ],
  "returned": [
   {
-   "task_id": "ed482230-2f0f-51b2-ab02-68462b409785",
-   "session_id": "3d3b3fb6-b19e-5292-b36c-2643d99977bb",
+   "task_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+   "session_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
    "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f",
    "question": "中国平安 2025 年的偿付能力怎么样？",
    "expert": "",
@@ -138,8 +138,8 @@
     "spent": "0.00",
     "estimated": true
    },
-   "started_at": "2026-10-04T03:53:39.217110Z",
-   "ended_at": "2026-10-04T03:53:39.249120Z",
+   "started_at": "2026-10-04T04:44:38.523382Z",
+   "ended_at": "2026-10-04T04:44:38.551842Z",
    "reason": {
     "code": "no_expert_pack",
     "message": "这个问题不在专家范围，继续自己用 Codex 即可"
@@ -171,8 +171,8 @@
     "spent": "0.15",
     "estimated": true
    },
-   "started_at": "2026-10-04T03:53:37.523677Z",
-   "ended_at": "2026-10-04T03:53:37.878102Z",
+   "started_at": "2026-10-04T04:44:36.693305Z",
+   "ended_at": "2026-10-04T04:44:37.047558Z",
    "reason": {
     "by": "user"
    },
@@ -203,8 +203,8 @@
     "spent": "0.30",
     "estimated": true
    },
-   "started_at": "2026-10-04T03:53:36.856728Z",
-   "ended_at": "2026-10-04T03:53:37.492654Z",
+   "started_at": "2026-10-04T04:44:36.032903Z",
+   "ended_at": "2026-10-04T04:44:36.663415Z",
    "reason": {
     "by": "user stopped",
     "interaction": "607c2718-4eae-57a0-bb04-8aa28b096733"
@@ -236,8 +236,8 @@
     "spent": "1.20",
     "estimated": true
    },
-   "started_at": "2026-10-04T03:53:36.299517Z",
-   "ended_at": "2026-10-04T03:53:36.794114Z",
+   "started_at": "2026-10-04T04:44:35.469499Z",
+   "ended_at": "2026-10-04T04:44:35.972538Z",
    "reason": {
     "by": "user"
    },
@@ -268,8 +268,8 @@
     "spent": "0.35",
     "estimated": true
    },
-   "started_at": "2026-10-04T03:53:34.698432Z",
-   "ended_at": "2026-10-04T03:53:35.372076Z",
+   "started_at": "2026-10-04T04:44:33.864049Z",
+   "ended_at": "2026-10-04T04:44:34.548517Z",
    "reason": null,
    "reason_text": ""
   },
@@ -298,8 +298,8 @@
     "spent": "0.40",
     "estimated": true
    },
-   "started_at": "2026-10-04T03:53:33.745315Z",
-   "ended_at": "2026-10-04T03:53:34.631836Z",
+   "started_at": "2026-10-04T04:44:32.916090Z",
+   "ended_at": "2026-10-04T04:44:33.813544Z",
    "reason": null,
    "reason_text": ""
   }

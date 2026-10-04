@@ -2,9 +2,9 @@
  "contract_version": 2,
  "artifacts": [
   {
-   "id": "54a98f60-a531-5ced-a9e9-89afe72225d8",
+   "id": "b0efc28f-40ff-597d-acd9-729d7d839580",
    "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
-   "attempt_id": "a7b4f0ee-c6f1-5d84-a73f-119be1bf262f",
+   "attempt_id": "54a98f60-a531-5ced-a9e9-89afe72225d8",
    "name": "rewritten",
    "version": 1,
    "kind": "step",
@@ -20,12 +20,12 @@
    },
    "digest": "ec39488d520eda88e2d518566dd2f97e8876b10eb86c3d91d267ef37658e8a2f",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:53:35.562069+00:00"
+   "created_at": "2026-10-04T04:44:34.726633+00:00"
   },
   {
-   "id": "8661f34f-1396-5e0d-99bc-3d0cbb28776f",
+   "id": "bbae48e0-1441-5c02-8204-1f5c73640fbc",
    "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
-   "attempt_id": "f4e95d95-4175-5fb9-9cf5-1a1bdac8db38",
+   "attempt_id": "02022332-277b-5d39-963b-947829025012",
    "name": "sql",
    "version": 1,
    "kind": "step",
@@ -44,7 +44,7 @@
    },
    "digest": "cc594282d14ad283f752b1eda59802b844112867794dfdf320f55dbe37832b1b",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:53:35.643625+00:00"
+   "created_at": "2026-10-04T04:44:34.807655+00:00"
   }
  ]
 }

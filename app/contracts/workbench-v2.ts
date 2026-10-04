@@ -29,8 +29,22 @@ export type Conversation = z.infer<typeof conversationSchema>
 
 export const conversationsSchema = z.object({ sessions: z.array(conversationSchema) }).loose()
 
+// 这段对话里等着用户答复的事。能选什么、每一项怎么说，由后端给
+export const waitingSchema = z
+  .object({
+    id: uuid,
+    kind: z.string(),
+    prompt: z
+      .object({
+        options: z.array(z.object({ id: z.string(), label: z.string() }).loose()).optional(),
+      })
+      .loose(),
+  })
+  .loose()
+export type Waiting = z.infer<typeof waitingSchema>
+
 export const conversationViewSchema = z
-  .object({ session: conversationSchema, pending_interactions: z.array(record) })
+  .object({ session: conversationSchema, pending_interactions: z.array(waitingSchema) })
   .loose()
 
 export const workspaceSchema = z

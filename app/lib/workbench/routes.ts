@@ -50,7 +50,7 @@ export type Page =
   | 'machines'
   | 'settings'
 
-const BUILT: ReadonlySet<Page> = new Set(['home', 'chat', 'settings'])
+const BUILT: ReadonlySet<Page> = new Set(['home', 'chat', 'projectConversation', 'settings'])
 
 export function isBuilt(page: Page) {
   return BUILT.has(page)

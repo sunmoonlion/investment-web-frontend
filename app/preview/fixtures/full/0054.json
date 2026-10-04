@@ -7,8 +7,8 @@
   "workspace_root": "/home/demo/research",
   "path": "中国平安",
   "title": "中国平安",
-  "created_at": "2026-10-04T03:53:33.711868Z",
-  "updated_at": "2026-10-04T03:53:33.711868Z",
+  "created_at": "2026-10-04T04:44:32.880313Z",
+  "updated_at": "2026-10-04T04:44:32.880313Z",
   "archived_at": null,
   "directory": "/home/demo/research/中国平安",
   "archived": false,
@@ -18,18 +18,18 @@
  "active_task_id": null,
  "conversations": [
   {
-   "id": "3d3b3fb6-b19e-5292-b36c-2643d99977bb",
+   "id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
    "kind": "work",
    "title": null,
    "wheel": "user",
    "active_task_id": null,
-   "last_active_at": "2026-10-04T03:53:39.249120Z"
+   "last_active_at": "2026-10-04T04:44:38.551842Z"
   }
  ],
  "tasks": [
   {
-   "id": "ed482230-2f0f-51b2-ab02-68462b409785",
-   "session_id": "3d3b3fb6-b19e-5292-b36c-2643d99977bb",
+   "id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+   "session_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
    "profile_id": "BOND_REVIEW",
    "state": "REJECTED",
    "question": "中国平安 2025 年的偿付能力怎么样？",
@@ -39,7 +39,7 @@
     "currency": "CNY",
     "reserved": "0"
    },
-   "created_at": "2026-10-04T03:53:39.217110Z"
+   "created_at": "2026-10-04T04:44:38.523382Z"
   }
  ]
 }

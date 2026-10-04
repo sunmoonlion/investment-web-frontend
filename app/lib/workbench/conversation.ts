@@ -7,9 +7,9 @@ import {
   conversationViewSchema,
   turnAcceptedSchema,
 } from '@/contracts/workbench-v2'
-import { useWorkbench } from '@/lib/workbench/context'
-import { getJson, seg, sendJson } from '@/lib/workbench/http'
-import { workbenchKeys } from '@/lib/workbench/queries'
+import { useWorkbench } from './context'
+import { getJson, seg, sendJson } from './http'
+import { workbenchKeys } from './queries'
 
 const base = (conversation: string) => `/api/workbench/sessions/${seg(conversation)}`
 const key = (conversation: string) => ['workbench', 'conversation', conversation] as const
@@ -17,7 +17,17 @@ const key = (conversation: string) => ['workbench', 'conversation', conversation
 export function useConversation(conversation: string) {
   return useQuery({
     queryKey: key(conversation),
-    queryFn: async () => (await getJson(conversationViewSchema, base(conversation))).session,
+    queryFn: () => getJson(conversationViewSchema, base(conversation)),
+    select: (view) => view.session,
+  })
+}
+
+// 这段对话里等着用户答复的事（同一次请求，不另取）
+export function useWaiting(conversation: string) {
+  return useQuery({
+    queryKey: key(conversation),
+    queryFn: () => getJson(conversationViewSchema, base(conversation)),
+    select: (view) => view.pending_interactions,
   })
 }
 
@@ -57,6 +67,18 @@ export function useConversationActions(conversation: string) {
           body: { project_id: project },
         }),
       onSuccess: changed,
+    }),
+    // 答复一件等着的事（批准或拒绝一条命令）。凭证在「开了这件待办」的那条事件里
+    answer: useMutation({
+      mutationFn: (input: { pending: string; token: string; decision: string }) =>
+        sendJson(acceptedSchema, `/api/workbench/interactions/${seg(input.pending)}/respond`, {
+          csrfToken,
+          body: { token: input.token, decision: input.decision },
+        }),
+      onSuccess: async () => {
+        await changed()
+        await client.invalidateQueries({ queryKey: workbenchKeys.pending })
+      },
     }),
     turnIntoWork: useMutation({
       mutationFn: () =>

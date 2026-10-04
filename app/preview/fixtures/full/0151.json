@@ -27,10 +27,10 @@
    "estimated": true
   },
   "data": null,
-  "started_at": "2026-10-04T03:53:36.067222Z",
+  "started_at": "2026-10-04T04:44:35.234752Z",
   "ended_at": null,
   "seconds": 4,
-  "active_interaction_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce"
+  "active_interaction_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b"
  },
  "position": {
   "step": 2,
@@ -71,13 +71,13 @@
    "status": "accepted",
    "attempts": [
     {
-     "attempt_id": "21f5d553-64c4-5255-ab9f-0ffb4343df9b",
+     "attempt_id": "0393f853-1f2c-5616-bc67-f3d197988a7a",
      "n": 1,
      "outcome": "accepted",
      "failure": null,
      "spent": "0.05",
-     "started_at": "2026-10-04T03:53:36.176099Z",
-     "ended_at": "2026-10-04T03:53:36.183764Z",
+     "started_at": "2026-10-04T04:44:35.341416Z",
+     "ended_at": "2026-10-04T04:44:35.350245Z",
      "checks": [
       {
        "label": "交回的格式对",
@@ -154,13 +154,13 @@
    "status": "waiting",
    "attempts": [
     {
-     "attempt_id": "62e88bc8-3ac8-5baf-9413-64e774170022",
+     "attempt_id": "d3d74add-e02c-5001-a894-5da79e267f53",
      "n": 1,
      "outcome": "rejected",
      "failure": "acceptance",
      "spent": "0.05",
-     "started_at": "2026-10-04T03:53:36.250269Z",
-     "ended_at": "2026-10-04T03:53:36.256831Z",
+     "started_at": "2026-10-04T04:44:35.418206Z",
+     "ended_at": "2026-10-04T04:44:35.425187Z",
      "checks": [
       {
        "label": "交回的格式对",

@@ -1,13 +1,14 @@
 'use client'
 
-import { FolderIcon, PencilIcon } from 'lucide-react'
+import { FolderIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
+import { Composer } from '@/components/workbench/composer'
+import { ConversationTitle } from '@/components/workbench/conversation-title'
 import { ProjectPicker } from '@/components/workbench/project-picker'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { Marker, MarkerContent } from '@/components/ui/marker'
 import {
   MessageScroller,
@@ -23,9 +24,8 @@ import { WorkbenchError } from '@/lib/workbench/http'
 import { useProjects } from '@/lib/workbench/queries'
 import { isBuilt, routes } from '@/lib/workbench/routes'
 
-import { useConversation, useConversationActions } from '../api/conversation'
+import { useConversation, useConversationActions } from '@/lib/workbench/conversation'
 import { running, thread } from '../model/thread'
-import { Composer } from './composer'
 import { Turn } from './turn'
 
 type Asking = 'project' | 'work' | 'expert' | null
@@ -40,6 +40,7 @@ export function ChatScreen({
   actions?: React.ReactNode
 }) {
   const t = useTranslations('chat')
+  const tc = useTranslations('conversation')
   const router = useRouter()
   const { locale } = useWorkbench()
   const { events, state } = useConversationEvents()
@@ -47,7 +48,6 @@ export function ChatScreen({
   const projects = useProjects()
   const act = useConversationActions(id)
   const [asking, setAsking] = useState<Asking>(null)
-  const [renaming, setRenaming] = useState<string | null>(null)
 
   const turns = thread(events)
   const live = running(turns)
@@ -59,9 +59,9 @@ export function ChatScreen({
     (each) => each.isError,
   )?.error
   const problem = failed
-    ? t.has(`problem.${(failed as WorkbenchError).code}`)
-      ? t(`problem.${(failed as WorkbenchError).code}`)
-      : t('problem.other')
+    ? tc.has(`problem.${(failed as WorkbenchError).code}`)
+      ? tc(`problem.${(failed as WorkbenchError).code}`)
+      : tc('problem.other')
     : null
 
   async function intoWork(projectId: string | null) {
@@ -88,40 +88,10 @@ export function ChatScreen({
     }
   }
 
-  async function rename() {
-    const title = (renaming ?? '').trim()
-    setRenaming(null)
-    if (title && title !== session?.title) await act.rename.mutateAsync(title).catch(() => {})
-  }
-
   return (
     <div className="flex h-full min-h-0 flex-col">
       <header className="flex h-12 shrink-0 items-center gap-3 border-b px-4">
-        {renaming !== null ? (
-          <Input
-            autoFocus
-            value={renaming}
-            maxLength={400}
-            aria-label={t('rename')}
-            onChange={(event) => setRenaming(event.target.value)}
-            onBlur={() => void rename()}
-            onKeyDown={(event) => {
-              if (event.key === 'Enter') void rename()
-              if (event.key === 'Escape') setRenaming(null)
-            }}
-            className="h-8 max-w-md"
-          />
-        ) : (
-          <button
-            type="button"
-            onClick={() => setRenaming(session?.title ?? '')}
-            title={t('rename')}
-            className="group flex min-w-0 items-center gap-1.5 text-sm font-medium"
-          >
-            <span className="truncate">{session?.title ?? t('untitled')}</span>
-            <PencilIcon className="text-muted-foreground size-3 shrink-0 opacity-0 group-hover:opacity-100" />
-          </button>
-        )}
+        <ConversationTitle title={session?.title} onRename={(title) => act.rename.mutate(title)} />
         {session ? (
           project ? (
             <span className="text-muted-foreground flex shrink-0 items-center gap-1 text-[13px]">
@@ -139,19 +109,19 @@ export function ChatScreen({
         ) : null}
         <div className="flex-1" />
         {state === 'offline' ? (
-          <span className="text-[13px] text-amber-600">{t('stream.offline')}</span>
+          <span className="text-[13px] text-amber-600">{tc('stream.offline')}</span>
         ) : null}
         {actions}
       </header>
 
-      <MessageScrollerProvider>
+      <MessageScrollerProvider autoScroll defaultScrollPosition="end">
         <MessageScroller className="flex-1">
           <MessageScrollerViewport>
             <MessageScrollerContent className="mx-auto w-full max-w-3xl px-4 py-6">
               {turns.length === 0 ? (
                 <Marker className="justify-center">
                   <MarkerContent>
-                    {state === 'connecting' ? t('stream.connecting') : t('empty')}
+                    {state === 'connecting' ? tc('stream.connecting') : t('empty')}
                   </MarkerContent>
                 </Marker>
               ) : null}
@@ -177,6 +147,7 @@ export function ChatScreen({
         problem={problem}
         onSend={(text) => act.say.mutateAsync(text)}
         onStop={() => act.stop.mutate()}
+        placeholder={t('placeholder')}
       >
         <Button
           variant="outline"
@@ -198,7 +169,7 @@ export function ChatScreen({
               : setAsking('expert')
           }
         >
-          {t('askExpert')}
+          {tc('askExpert')}
         </Button>
       </Composer>
 

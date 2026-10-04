@@ -16,6 +16,8 @@ export function Composer({
   onSend,
   onStop,
   children,
+  placeholder,
+  disabledReason = null,
 }: {
   busy: boolean
   sending: boolean
@@ -24,10 +26,13 @@ export function Composer({
   onSend: (text: string) => Promise<unknown>
   onStop: () => void
   children?: React.ReactNode
+  placeholder: string
+  // 不能说话的时候（专家正在处理）：输入框禁用，这里写原因
+  disabledReason?: string | null
 }) {
-  const t = useTranslations('chat')
+  const t = useTranslations('conversation')
   const [draft, setDraft] = useState('')
-  const ready = draft.trim().length > 0 && !busy && !sending
+  const ready = draft.trim().length > 0 && !busy && !sending && disabledReason === null
 
   async function send() {
     if (!ready) return
@@ -59,13 +64,14 @@ export function Composer({
           }}
           rows={2}
           aria-label={t('composer.label')}
-          placeholder={t('composer.placeholder')}
+          placeholder={disabledReason ?? placeholder}
+          disabled={disabledReason !== null}
           className="max-h-48 min-h-12 resize-none border-0 bg-transparent px-2 shadow-none focus-visible:ring-0 dark:bg-transparent"
         />
         <div className="flex items-center gap-2 px-1 pt-1">
           {children}
           <div className="flex-1" />
-          {busy ? (
+          {busy && disabledReason === null ? (
             <Button
               type="button"
               size="icon"

@@ -344,25 +344,10 @@
     }
   },
   "chat": {
-    "untitled": "未命名的对话",
-    "rename": "改名",
     "noProject": "未归入项目",
     "putInProject": "放进项目",
     "empty": "还没有说话。",
     "toEnd": "回到最新",
-    "stream": {
-      "connecting": "连接中…",
-      "offline": "连接断了，正在重连"
-    },
-    "stopped": "这一轮被你停下了。",
-    "failed": "这一轮没有做成。",
-    "activity": {
-      "waiting": "已发出，等它开始",
-      "thinking": "在想",
-      "data": "在查数据",
-      "file": "在读文件",
-      "writing": "在写回答"
-    },
     "tally": {
       "data": "查了 {count} 次数据",
       "files": "读了 {count} 个文件",
@@ -370,27 +355,7 @@
       "failed": "{count} 次没有成功",
       "said": "过程"
     },
-    "step": {
-      "data": "查数据：{tool}",
-      "version": "版本 …{version}",
-      "read": "读了 {name}",
-      "failed": "没有成功"
-    },
-    "missing": {
-      "title": "{code} 的数据还没有入库",
-      "body": "我们的数据里还没有这家公司，所以查不到。缺的数据集：",
-      "request": "去申请入库",
-      "noLink": "申请入库的入口暂时打不开。"
-    },
-    "composer": {
-      "label": "对它说",
-      "placeholder": "接着问…",
-      "send": "发送",
-      "stop": "停止",
-      "hint": "回车发送，Shift + 回车换行。金额是按公开单价估算的。"
-    },
     "intoWork": "转为工作",
-    "askExpert": "请专家",
     "pick": {
       "project": {
         "title": "放进哪个项目",
@@ -405,12 +370,7 @@
         "description": "专家接手的是整个项目。选好之后去「请专家」那一页。"
       }
     },
-    "problem": {
-      "backend_unavailable": "连不上服务，请稍后再试。",
-      "preview_no_sample": "预览里只能看，不能发。",
-      "wheel_held_by_other": "专家正在处理这段对话，现在不能发。",
-      "other": "没有做成，请再试一次。"
-    }
+    "placeholder": "接着问…"
   },
   "usage": {
     "button": "这段对话花了多少",
@@ -428,5 +388,107 @@
     "amount": "金额",
     "price": "{model}，每百万 token：输入 {input}、命中缓存 {cached}、写缓存 {write}、输出 {output} 元。单价查于 {asOf}。",
     "noPrice": "没有 {model} 的单价，所以只有 token 数，没有金额。"
+  },
+  "conversation": {
+    "untitled": "未命名的对话",
+    "rename": "改名",
+    "stream": {
+      "connecting": "连接中…",
+      "offline": "连接断了，正在重连"
+    },
+    "stopped": "这一轮被你停下了。",
+    "failed": "这一轮没有做成。",
+    "activity": {
+      "waiting": "已发出，等它开始",
+      "thinking": "在想",
+      "data": "在查数据",
+      "file": "在读文件",
+      "writing": "在写回答",
+      "command": "在跑命令",
+      "change": "在改文件",
+      "approval": "在等你批准"
+    },
+    "step": {
+      "data": "查数据：{tool}",
+      "version": "版本 …{version}",
+      "read": "读了 {name}",
+      "failed": "没有成功",
+      "exit": "退出码 {code}",
+      "change": {
+        "add": "新建",
+        "update": "修改",
+        "delete": "删除",
+        "failed": "没有改成"
+      }
+    },
+    "missing": {
+      "title": "{code} 的数据还没有入库",
+      "body": "我们的数据里还没有这家公司，所以查不到。缺的数据集：",
+      "request": "去申请入库",
+      "noLink": "申请入库的入口暂时打不开。"
+    },
+    "problem": {
+      "backend_unavailable": "连不上服务，请稍后再试。",
+      "preview_no_sample": "预览里只能看，不能发。",
+      "wheel_held_by_other": "专家正在处理这段对话，现在不能发。",
+      "other": "没有做成，请再试一次。"
+    },
+    "askExpert": "请专家",
+    "composer": {
+      "label": "对它说",
+      "send": "发送",
+      "stop": "停止",
+      "hint": "回车发送，Shift + 回车换行。金额是按公开单价估算的。"
+    },
+    "notBuilt": "这一页还在做"
+  },
+  "work": {
+    "placeholder": "接着让它做…",
+    "directory": "目录",
+    "toEnd": "回到最新",
+    "empty": "还没有开始。",
+    "band": {
+      "you": "你在操作",
+      "expert": "专家正在处理",
+      "idle": "它停着，等你说话",
+      "running": "它正在做",
+      "waiting": "它在等你批准",
+      "stopped": "上一轮被你停下了",
+      "failed": "上一轮没有做成"
+    },
+    "expertBusy": "专家正在处理，你可以看进度、答复待办或取消。",
+    "phase": {
+      "commands": "{count} 条命令",
+      "data": "查了 {count} 次数据",
+      "failed": "{count} 条没有成功",
+      "untitled": "做了这些"
+    },
+    "approval": {
+      "title": "它要做的这件事超出了允许的范围，要你点头",
+      "command": "命令",
+      "where": "在哪个目录",
+      "reason": "它的理由",
+      "answered": {
+        "accept": "你允许了这一次",
+        "acceptForSession": "你允许了，这段对话里同样的事不再问",
+        "decline": "你拒绝了",
+        "other": "你答复了"
+      },
+      "expired": "这个请求过期了，没有执行",
+      "failed": "没有答复成功，请再试一次。"
+    },
+    "changes": {
+      "title": "改动",
+      "none": "这段对话还没有改过文件。",
+      "note": "这里只列得出它用补丁改的文件。它在命令行里改的（例如用重定向写文件）列不出来，要看上面的命令。",
+      "files": "{count} 个文件",
+      "show": "看改了什么",
+      "hide": "收起"
+    },
+    "handover": {
+      "given": "交给了专家",
+      "returned": "专家交回了",
+      "inside": "专家做的每一步有它自己的进度页，这一部分还在做。"
+    }
   }
 }

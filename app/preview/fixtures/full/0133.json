@@ -51,13 +51,13 @@
   "status": "failed",
   "attempts": [
    {
-    "attempt_id": "d7bd3f14-eb85-5899-9b5c-1e6c15c537bf",
+    "attempt_id": "b834451d-2975-5957-99bb-5b14763ac95b",
     "n": 1,
     "outcome": "rejected",
     "failure": "acceptance",
     "spent": "0.05",
-    "started_at": "2026-10-04T03:53:37.424692Z",
-    "ended_at": "2026-10-04T03:53:37.432994Z",
+    "started_at": "2026-10-04T04:44:36.592763Z",
+    "ended_at": "2026-10-04T04:44:36.599597Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -196,7 +196,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T03:53:37.395017Z",
+      "at": "2026-10-04T04:44:36.571441Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz002594-financials",

@@ -1,35 +1,19 @@
 // 事件 → 聊天页上要显示的东西。纯函数，不取数、不渲染。
 // 一轮：用户的一句话，模型在回答之前做的事（查数据、读文件、顺口说的话），最后的回答。
 import type { ConversationEvent } from '@/contracts/workbench-v2'
-
-export type DataStep = {
-  kind: 'data'
-  id: string
-  server: string
-  tool: string
-  dataset: string | null
-  version: string | null
-  failed: boolean
-  running: boolean
-  query: string
-  result: string
-}
-
-export type FileStep = {
-  kind: 'file'
-  id: string
-  // 读文件时是文件名；别的命令是命令本身
-  label: string
-  reading: boolean
-  running: boolean
-  failed: boolean
-  command: string
-  output: string
-}
+import {
+  commandStep,
+  dataStep,
+  text,
+  turnIdOf,
+  type CommandStep,
+  type DataStep,
+  type Item,
+} from '@/lib/workbench/items'
 
 export type SaidStep = { kind: 'said'; id: string; text: string }
 
-export type Step = DataStep | FileStep | SaidStep
+export type Step = DataStep | CommandStep | SaidStep
 
 export type TurnStatus = 'queued' | 'running' | 'completed' | 'interrupted' | 'failed'
 
@@ -48,78 +32,6 @@ export type TurnView = {
   missing: MissingData[]
   status: TurnStatus
   activity: Activity | null
-}
-
-type Item = Record<string, unknown>
-
-function text(value: unknown): string {
-  return typeof value === 'string' ? value : ''
-}
-
-function pretty(value: unknown): string {
-  if (value === undefined || value === null) return ''
-  if (typeof value === 'string') return value
-  try {
-    return JSON.stringify(value, null, 2)
-  } catch {
-    return String(value)
-  }
-}
-
-// 工具答复里的正文：MCP 的答复是若干段文字
-function resultText(result: unknown): string {
-  if (!result || typeof result !== 'object') return pretty(result)
-  const content = (result as { content?: unknown }).content
-  if (!Array.isArray(content)) return pretty(result)
-  return content
-    .map((part) => (part && typeof part === 'object' ? text((part as Item).text) : ''))
-    .filter(Boolean)
-    .join('\n')
-}
-
-function versionIn(result: string): string | null {
-  const found = /"data_version"\s*:\s*"([^"]+)"/.exec(result)
-  return found ? found[1] : null
-}
-
-function dataStep(item: Item, running: boolean): DataStep {
-  const args = (item.arguments ?? {}) as Item
-  const result = resultText(item.result)
-  return {
-    kind: 'data',
-    id: text(item.id),
-    server: text(item.server),
-    tool: text(item.tool),
-    dataset: text(args.dataset) || null,
-    version: versionIn(result),
-    failed: !running && (item.status === 'failed' || Boolean(item.error)),
-    running,
-    query: pretty(item.arguments),
-    result: result || pretty(item.error),
-  }
-}
-
-function fileStep(item: Item, running: boolean): FileStep {
-  const actions = Array.isArray(item.commandActions) ? (item.commandActions as Item[]) : []
-  const first = actions[0] ?? {}
-  const reading = actions.length > 0 && actions.every((action) => action.type === 'read')
-  const command = text(first.command) || text(item.command)
-  const exit = typeof item.exitCode === 'number' ? item.exitCode : null
-  return {
-    kind: 'file',
-    id: text(item.id),
-    label: reading ? actions.map((action) => text(action.name)).join('、') : command,
-    reading,
-    running,
-    failed: !running && exit !== null && exit !== 0,
-    command,
-    output: text(item.aggregatedOutput),
-  }
-}
-
-function turnIdOf(payload: Item): string | null {
-  const turn = payload.turn as Item | undefined
-  return text(payload.turnId) || text(turn?.id) || null
 }
 
 export function thread(events: readonly ConversationEvent[]): TurnView[] {
@@ -200,7 +112,7 @@ export function thread(events: readonly ConversationEvent[]): TurnView[] {
         put(turn, dataStep(item, running))
         if (live) turn.activity = running ? 'data' : 'thinking'
       } else if (item.type === 'commandExecution') {
-        put(turn, fileStep(item, running))
+        put(turn, commandStep(item, running))
         if (live) turn.activity = running ? 'file' : 'thinking'
       } else if (item.type === 'agentMessage') {
         if (running) {

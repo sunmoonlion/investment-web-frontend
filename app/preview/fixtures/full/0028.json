@@ -2,7 +2,7 @@
  "contract_version": 2,
  "interactions": [
   {
-   "interaction_id": "58bf41ed-2812-51fe-87d9-3a7ad7438f7a",
+   "interaction_id": "ab81c556-789b-5c9f-834a-d591f5885019",
    "kind": "tool_approval",
    "status": "pending",
    "where": {
@@ -22,11 +22,11 @@
    "why": "这个动作超出了当前允许的范围，要你点头才做",
    "failed": [],
    "missing_data": null,
-   "expires_at": "2026-10-04T04:53:39.167104Z",
-   "created_at": "2026-10-04T03:53:39.166586Z"
+   "expires_at": "2026-10-04T05:44:38.471712Z",
+   "created_at": "2026-10-04T04:44:38.471098Z"
   },
   {
-   "interaction_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+   "interaction_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b",
    "kind": "input",
    "status": "pending",
    "where": {
@@ -71,11 +71,11 @@
     "dataset": null,
     "security_code": "600436"
    },
-   "expires_at": "2026-10-07T03:53:36.272010Z",
-   "created_at": "2026-10-04T03:53:36.271355Z"
+   "expires_at": "2026-10-07T04:44:35.442620Z",
+   "created_at": "2026-10-04T04:44:35.441965Z"
   },
   {
-   "interaction_id": "e622161e-278e-510c-a294-d321919a97e8",
+   "interaction_id": "81108b8f-3022-5de7-860c-36662e2db6fb",
    "kind": "input",
    "status": "pending",
    "where": {
@@ -107,8 +107,8 @@
     }
    ],
    "missing_data": null,
-   "expires_at": "2026-10-07T03:53:36.043626Z",
-   "created_at": "2026-10-04T03:53:36.042931Z"
+   "expires_at": "2026-10-07T04:44:35.214822Z",
+   "created_at": "2026-10-04T04:44:35.214046Z"
   }
  ]
 }

@@ -2,9 +2,9 @@
  "contract_version": 2,
  "artifacts": [
   {
-   "id": "14a29141-aa3d-560d-aad4-1b9e95af600c",
+   "id": "250c8b9e-f37e-51fc-ba36-77ec29381fd6",
    "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
-   "attempt_id": "eae747fe-03f1-54f1-8efd-83c3f0e127b5",
+   "attempt_id": "828c734c-b182-5ee4-8fe9-602a549b4625",
    "name": "profile",
    "version": 1,
    "kind": "step",
@@ -69,12 +69,12 @@
    },
    "digest": "9433b6d4359acfa5a12e0f3300553ca24d834156fbe1f3a0f6c69d5a97650d4e",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:53:36.509742+00:00"
+   "created_at": "2026-10-04T04:44:35.679267+00:00"
   },
   {
-   "id": "599d4a3f-8415-5c0a-b178-27724ecf07ad",
+   "id": "e03ce519-16c3-5035-82b1-3126bf61aa5b",
    "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
-   "attempt_id": "ccb54308-60a4-5f26-9052-25589ce92521",
+   "attempt_id": "c588a02e-18e0-5060-9948-da55c5ee48a9",
    "name": "reconcile",
    "version": 1,
    "kind": "step",
@@ -156,12 +156,12 @@
    },
    "digest": "658700bbfe14785116fd089b366fb7bac5d7a547c7ad0221e5f9929ca2611b60",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:53:36.625343+00:00"
+   "created_at": "2026-10-04T04:44:35.786802+00:00"
   },
   {
-   "id": "75f23376-75b4-59b9-9bc3-51126c200534",
+   "id": "8e9ae6d7-57f3-519d-bdda-b86e3cba22d3",
    "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
-   "attempt_id": "72385666-9773-5f28-b7e4-6c111709a765",
+   "attempt_id": "75f23376-75b4-59b9-9bc3-51126c200534",
    "name": "scope",
    "version": 1,
    "kind": "step",
@@ -184,7 +184,7 @@
    },
    "digest": "3ea5ab25a4b7e3b5e4c67ce809567794bf3d7bcf43fa546a8aeaa69e07a52620",
    "workspace_path": null,
-   "created_at": "2026-10-04T03:53:36.412454+00:00"
+   "created_at": "2026-10-04T04:44:35.578618+00:00"
   }
  ]
 }

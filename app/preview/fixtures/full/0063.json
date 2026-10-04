@@ -14,18 +14,18 @@
   "source": "https://platform.kimi.com/docs/pricing/chat-k3",
   "estimated": true
  },
- "cost": "0.140916",
+ "cost": "0.177284",
  "tokens": {
-  "input": 313,
-  "cached_input": 26368,
-  "cache_write": 1536,
-  "output": 512,
-  "total": 28729
+  "input": 533,
+  "cached_input": 33792,
+  "cache_write": 1792,
+  "output": 632,
+  "total": 36749
  },
- "calls": 4,
+ "calls": 5,
  "turns": [
   {
-   "turn_id": "turn-61b73df431fa",
+   "turn_id": "turn-3f6e579bf7a1",
    "calls": 4,
    "cost": "0.140916",
    "tokens": {
@@ -35,7 +35,20 @@
     "output": 512,
     "total": 28729
    },
-   "at": "2026-10-04T03:53:39.030592+00:00"
+   "at": "2026-10-04T04:44:38.207241+00:00"
+  },
+  {
+   "turn_id": "turn-229f8c97824d",
+   "calls": 1,
+   "cost": "0.036368",
+   "tokens": {
+    "input": 220,
+    "cached_input": 7424,
+    "cache_write": 256,
+    "output": 120,
+    "total": 8020
+   },
+   "at": "2026-10-04T04:44:38.326632+00:00"
   }
  ]
 }

@@ -1,7 +1,7 @@
 {
  "contract_version": 2,
  "interaction": {
-  "interaction_id": "4816f691-3c61-5bff-a6ba-e4c76bd94692",
+  "interaction_id": "7a2555b7-cc4f-5722-af30-bffeae1c3659",
   "kind": "input",
   "status": "cancelled",
   "where": {
@@ -33,8 +33,8 @@
    }
   ],
   "missing_data": null,
-  "expires_at": "2026-10-07T03:53:37.849929Z",
-  "created_at": "2026-10-04T03:53:37.849342Z",
+  "expires_at": "2026-10-07T04:44:37.011796Z",
+  "created_at": "2026-10-04T04:44:37.011210Z",
   "pending": {
    "title": "第「勾稽」步没有通过验收",
    "question": "要继续返工、跳过这一步交回现有产物，还是停止？",
@@ -66,7 +66,7 @@
    "budget": null
   },
   "validity": {
-   "expires_at": "2026-10-07T03:53:37.849929Z",
+   "expires_at": "2026-10-07T04:44:37.011796Z",
    "seconds_left": 259197,
    "after_expiry": "过期不等于同意，也不等于拒绝：委托停在等待，要重新请专家或重新发起"
   },

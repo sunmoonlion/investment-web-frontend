@@ -1,8 +1,8 @@
 {
  "contract_version": 2,
  "task": {
-  "task_id": "ed482230-2f0f-51b2-ab02-68462b409785",
-  "session_id": "3d3b3fb6-b19e-5292-b36c-2643d99977bb",
+  "task_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+  "session_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
   "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f",
   "expert": {
    "id": "BOND_REVIEW",
@@ -30,8 +30,8 @@
    "estimated": true
   },
   "data": null,
-  "started_at": "2026-10-04T03:53:39.217110Z",
-  "ended_at": "2026-10-04T03:53:39.249120Z",
+  "started_at": "2026-10-04T04:44:38.523382Z",
+  "ended_at": "2026-10-04T04:44:38.551842Z",
   "seconds": 0,
   "active_interaction_id": null
  },

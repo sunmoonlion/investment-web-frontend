@@ -49,13 +49,13 @@
   "status": "accepted",
   "attempts": [
    {
-    "attempt_id": "000fd148-8da1-5172-90ef-aea44b81c2d6",
+    "attempt_id": "5202c264-a97b-5528-be65-320498f4e5c7",
     "n": 1,
     "outcome": "accepted",
     "failure": null,
     "spent": "0.05",
-    "started_at": "2026-10-04T03:53:34.155657Z",
-    "ended_at": "2026-10-04T03:53:34.169357Z",
+    "started_at": "2026-10-04T04:44:33.318477Z",
+    "ended_at": "2026-10-04T04:44:33.330519Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -168,7 +168,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T03:53:34.105315Z",
+      "at": "2026-10-04T04:44:33.261584Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -176,7 +176,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T03:53:34.110810Z",
+      "at": "2026-10-04T04:44:33.266675Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -184,7 +184,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T03:53:34.114440Z",
+      "at": "2026-10-04T04:44:33.272924Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -192,7 +192,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T03:53:34.117649Z",
+      "at": "2026-10-04T04:44:33.278369Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -200,7 +200,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T03:53:34.120713Z",
+      "at": "2026-10-04T04:44:33.282305Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -208,7 +208,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T03:53:34.124010Z",
+      "at": "2026-10-04T04:44:33.285979Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -216,7 +216,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T03:53:34.127319Z",
+      "at": "2026-10-04T04:44:33.290453Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -224,7 +224,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T03:53:34.130653Z",
+      "at": "2026-10-04T04:44:33.294361Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -232,7 +232,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T03:53:34.134221Z",
+      "at": "2026-10-04T04:44:33.298027Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
@@ -240,7 +240,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T03:53:34.138079Z",
+      "at": "2026-10-04T04:44:33.301754Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600276-financials",
