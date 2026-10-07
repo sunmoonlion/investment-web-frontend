@@ -143,3 +143,12 @@ export function tally(steps: readonly Step[]) {
     failed: steps.filter((step) => step.kind !== 'said' && step.failed).length,
   }
 }
+
+// 结果边栏要的：最后一次完整的回答；还没有就是 null
+export function lastAnswer(turns: readonly TurnView[]): string | null {
+  for (let at = turns.length - 1; at >= 0; at -= 1) {
+    const answer = turns[at].answer
+    if (answer && answer.text.trim()) return answer.text
+  }
+  return null
+}

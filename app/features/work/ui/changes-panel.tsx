@@ -8,7 +8,7 @@ import { relativeTo } from '@/lib/workbench/items'
 
 import type { FileChanges } from '../model/timeline'
 
-// 右边的「改动」栏：这段对话改了哪些文件、改了什么。
+// 结果边栏里的「改动」：这段对话改了哪些文件、改了什么。
 export function ChangesPanel({
   files,
   directory,
@@ -20,10 +20,7 @@ export function ChangesPanel({
   const tc = useTranslations('conversation')
   const [open, setOpen] = useState<string | null>(null)
   return (
-    <aside
-      aria-label={t('changes.title')}
-      className="hidden w-80 shrink-0 flex-col overflow-y-auto border-l p-4 lg:flex"
-    >
+    <section aria-label={t('changes.title')}>
       <h2 className="flex items-baseline gap-2 text-sm font-medium">
         {t('changes.title')}
         {files.length > 0 ? (
@@ -70,6 +67,6 @@ export function ChangesPanel({
       <p className="text-muted-foreground mt-4 border-t pt-3 text-xs leading-5">
         {t('changes.note')}
       </p>
-    </aside>
+    </section>
   )
 }

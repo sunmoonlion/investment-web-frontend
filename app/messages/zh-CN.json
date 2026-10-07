@@ -575,7 +575,8 @@
       "preview_no_sample": "预览里只能看，不能交出。",
       "other": "没有交出去，请再试一次。"
     },
-    "loading": "加载中…"
+    "loading": "加载中…",
+    "packsFailed": "没有取到专家清单，请刷新再试。"
   },
   "reviewPage": {
     "title": "待我决定",
@@ -749,5 +750,37 @@
       "download": "本地代理从哪里下载，上线时在这里给出。"
     },
     "loading": "加载中…"
+  },
+  "results": {
+    "title": "结果",
+    "open": "打开结果",
+    "close": "收起结果",
+    "filed": "已归入知识库",
+    "status": {
+      "idle": "还没有结果",
+      "running": "正在做",
+      "done": "做完了",
+      "stopped": "停下了",
+      "failed": "没有做成"
+    },
+    "chat": {
+      "answer": "回答",
+      "none": "还没有回答。",
+      "data": "查过的数据",
+      "noData": "没有查数据。",
+      "missing": "没有数据的公司"
+    },
+    "work": {
+      "changes": "改动",
+      "summary": "改了 {count} 个文件",
+      "none": "还没有结果。"
+    },
+    "expert": {
+      "sheet": "委托单",
+      "dossier": "底稿",
+      "full": "打开整份底稿",
+      "noAnswer": "还没有回答。",
+      "notFiled": "做完后归入知识库"
+    }
   }
 }

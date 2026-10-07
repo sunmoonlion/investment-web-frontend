@@ -95,9 +95,17 @@ describe('工作页', () => {
     expect(screen.queryByText('ls -la')).toBeNull()
     fireEvent.click(phase)
     expect(screen.getByText('ls -la')).toBeInTheDocument()
+    // 右边的结果边栏：还在等批准，没做完，折叠着；点开里面是「改动」
+    expect(screen.getByRole('complementary', { name: '结果' })).toHaveAttribute(
+      'data-state',
+      'collapsed',
+    )
+    fireEvent.click(within(screen.getByRole('complementary', { name: '结果' })).getByRole('button'))
+    const results = screen.getByRole('complementary', { name: '结果' })
+    expect(results).toHaveAttribute('data-state', 'open')
     // 用补丁改的两个文件：时间线里一处，「改动」栏里一处
     expect(screen.getAllByRole('button', { name: /新建\s*notes\/待办\.md/ })).toHaveLength(2)
-    const panel = within(screen.getByRole('complementary', { name: '改动' }))
+    const panel = within(within(results).getByRole('region', { name: '改动' }))
     expect(panel.getByText('2 个文件')).toBeInTheDocument()
     expect(panel.getByText('README.md')).toBeInTheDocument()
     // 点开看改了什么

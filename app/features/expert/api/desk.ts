@@ -101,10 +101,13 @@ export function useAsk() {
 }
 
 // 底稿：问了什么、答了什么、凭什么、哪些没做到、我怎么看
-export function useDossier(task: string) {
+// `beat` 给 null 就先不取；给数字则每变一次重取一次（专家页拿事件的条数当它）
+export function useDossier(task: string, beat: number | null = 0) {
   return useQuery({
-    queryKey: ['workbench', 'dossier', task],
+    queryKey: ['workbench', 'dossier', task, beat ?? 0],
     queryFn: () => getJson(dossierSchema, `/api/workbench/tasks/${seg(task)}/dossier`),
+    enabled: beat !== null,
+    placeholderData: (previous) => previous,
   })
 }
 

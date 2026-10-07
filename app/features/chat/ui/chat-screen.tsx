@@ -26,6 +26,7 @@ import { isBuilt, routes } from '@/lib/workbench/routes'
 
 import { useConversation, useConversationActions } from '@/lib/workbench/conversation'
 import { running, thread } from '../model/thread'
+import { ChatResults } from './results'
 import { Turn } from './turn'
 
 type Asking = 'project' | 'work' | 'expert' | null
@@ -114,64 +115,69 @@ export function ChatScreen({
         {actions}
       </header>
 
-      <MessageScrollerProvider autoScroll defaultScrollPosition="end">
-        <MessageScroller className="flex-1">
-          <MessageScrollerViewport>
-            <MessageScrollerContent className="mx-auto w-full max-w-3xl px-4 py-6">
-              {turns.length === 0 ? (
-                <Marker className="justify-center">
-                  <MarkerContent>
-                    {state === 'connecting' ? tc('stream.connecting') : t('empty')}
-                  </MarkerContent>
-                </Marker>
-              ) : null}
-              {turns.map((turn, index) => (
-                // 正在答的那一轮顶到上面，回答往下长；都答完了就停在最后
-                <MessageScrollerItem
-                  key={turn.key}
-                  scrollAnchor={live !== null && index === turns.length - 1}
-                >
-                  <Turn turn={turn} />
-                </MessageScrollerItem>
-              ))}
-            </MessageScrollerContent>
-          </MessageScrollerViewport>
-          <MessageScrollerButton aria-label={t('toEnd')} />
-        </MessageScroller>
-      </MessageScrollerProvider>
+      <div className="flex min-h-0 flex-1">
+        <div className="flex min-w-0 flex-1 flex-col">
+          <MessageScrollerProvider autoScroll defaultScrollPosition="end">
+            <MessageScroller className="flex-1">
+              <MessageScrollerViewport>
+                <MessageScrollerContent className="mx-auto w-full max-w-3xl px-4 py-6">
+                  {turns.length === 0 ? (
+                    <Marker className="justify-center">
+                      <MarkerContent>
+                        {state === 'connecting' ? tc('stream.connecting') : t('empty')}
+                      </MarkerContent>
+                    </Marker>
+                  ) : null}
+                  {turns.map((turn, index) => (
+                    // 正在答的那一轮顶到上面，回答往下长；都答完了就停在最后
+                    <MessageScrollerItem
+                      key={turn.key}
+                      scrollAnchor={live !== null && index === turns.length - 1}
+                    >
+                      <Turn turn={turn} />
+                    </MessageScrollerItem>
+                  ))}
+                </MessageScrollerContent>
+              </MessageScrollerViewport>
+              <MessageScrollerButton aria-label={t('toEnd')} />
+            </MessageScroller>
+          </MessageScrollerProvider>
 
-      <Composer
-        busy={live !== null}
-        sending={act.say.isPending}
-        stopping={act.stop.isPending}
-        problem={problem}
-        onSend={(text) => act.say.mutateAsync(text)}
-        onStop={() => act.stop.mutate()}
-        placeholder={t('placeholder')}
-      >
-        <Button
-          variant="outline"
-          size="sm"
-          disabled={live !== null || !session}
-          onClick={() =>
-            session?.project_id ? void intoWork(null).catch(() => {}) : setAsking('work')
-          }
-        >
-          {t('intoWork')}
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          disabled={live !== null || !session}
-          onClick={() =>
-            session?.project_id
-              ? router.push(routes.askExpert(locale, session.project_id, id))
-              : setAsking('expert')
-          }
-        >
-          {tc('askExpert')}
-        </Button>
-      </Composer>
+          <Composer
+            busy={live !== null}
+            sending={act.say.isPending}
+            stopping={act.stop.isPending}
+            problem={problem}
+            onSend={(text) => act.say.mutateAsync(text)}
+            onStop={() => act.stop.mutate()}
+            placeholder={t('placeholder')}
+          >
+            <Button
+              variant="outline"
+              size="sm"
+              disabled={live !== null || !session}
+              onClick={() =>
+                session?.project_id ? void intoWork(null).catch(() => {}) : setAsking('work')
+              }
+            >
+              {t('intoWork')}
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              disabled={live !== null || !session}
+              onClick={() =>
+                session?.project_id
+                  ? router.push(routes.askExpert(locale, session.project_id, id))
+                  : setAsking('expert')
+              }
+            >
+              {tc('askExpert')}
+            </Button>
+          </Composer>
+        </div>
+        <ChatResults turns={turns} />
+      </div>
 
       <ProjectPicker
         open={asking !== null}

@@ -121,6 +121,10 @@ export function AskExpertScreen({
               </ul>
               {packs.isPending ? (
                 <p className="text-muted-foreground text-sm">{t('loading')}</p>
+              ) : packs.isError ? (
+                <p role="alert" className="text-destructive text-sm">
+                  {t('packsFailed')}
+                </p>
               ) : null}
             </section>
 

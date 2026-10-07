@@ -24,6 +24,9 @@ export const routes = {
   review: (locale: string, pending: string) => at(locale, 'review', pending),
   machines: (locale: string) => at(locale, 'machines'),
   settings: (locale: string) => at(locale, 'settings'),
+  // 知识库（SDD 0011）：用户自己的底稿与交回物
+  library: (locale: string) => at(locale, 'library'),
+  libraryItem: (locale: string, item: string) => at(locale, 'library', item),
 }
 
 // 一段对话在哪一页
@@ -49,6 +52,8 @@ export type Page =
   | 'review'
   | 'machines'
   | 'settings'
+  | 'library'
+  | 'libraryItem'
 
 const BUILT: ReadonlySet<Page> = new Set([
   'home',

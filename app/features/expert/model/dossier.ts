@@ -1,5 +1,5 @@
 // 底稿页的几条规则。纯函数。
-import type { DossierBlock } from '@/contracts/workbench-v2'
+import type { Dossier, DossierBlock } from '@/contracts/workbench-v2'
 
 // 表里的一个格子怎么写。数值那一列按这一行的单位写（比率写成百分数）；年度、页码照原样；
 // 别的大数加分隔；是/否；空的写一横。
@@ -123,4 +123,16 @@ export function sourceLine(
 const NUMERALS = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
 export function ordinal(n: number): string {
   return NUMERALS[n - 1] ?? String(n)
+}
+
+// 结果边栏折叠时露出的一句：「回答」那一块的第一行；还没有就是 null
+export function answerLine(dossier: Dossier): string | null {
+  const block = dossier.sections.flatMap((s) => s.blocks).find((b) => b.key === 'answer')
+  if (!block || block.status !== 'done' || typeof block.content !== 'string') return null
+  const line =
+    block.content
+      .split('\n')
+      .find((each) => each.trim())
+      ?.trim() ?? ''
+  return line ? line.replace(/^#+\s*/, '') : null
 }

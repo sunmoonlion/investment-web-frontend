@@ -25,6 +25,7 @@ import { isBuilt, routes } from '@/lib/workbench/routes'
 
 import { byFile, timeline } from '../model/timeline'
 import { ChangesPanel } from './changes-panel'
+import { WorkResults } from './results'
 import { TimelineEntry } from './entries'
 
 // 工作页：看它干活，随时插话，要紧的事由你点头。
@@ -162,7 +163,9 @@ export function WorkScreen({
             </Button>
           </Composer>
         </div>
-        <ChangesPanel files={byFile(line.changes)} directory={directory} />
+        <WorkResults line={line}>
+          <ChangesPanel files={byFile(line.changes)} directory={directory} />
+        </WorkResults>
       </div>
     </div>
   )

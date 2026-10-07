@@ -575,7 +575,8 @@
       "preview_no_sample": "The preview is read-only.",
       "other": "Not handed over. Please try again."
     },
-    "loading": "Loading…"
+    "loading": "Loading…",
+    "packsFailed": "The list of experts could not be loaded; refresh and try again."
   },
   "reviewPage": {
     "title": "Waiting for me",
@@ -749,5 +750,37 @@
       "download": "Where to download the local agent will be given here at launch."
     },
     "loading": "Loading…"
+  },
+  "results": {
+    "title": "Results",
+    "open": "Open results",
+    "close": "Collapse results",
+    "filed": "Filed in your library",
+    "status": {
+      "idle": "No result yet",
+      "running": "Working",
+      "done": "Done",
+      "stopped": "Stopped",
+      "failed": "Failed"
+    },
+    "chat": {
+      "answer": "Answer",
+      "none": "No answer yet.",
+      "data": "Data consulted",
+      "noData": "No data was consulted.",
+      "missing": "Companies without data"
+    },
+    "work": {
+      "changes": "Changes",
+      "summary": "{count} files changed",
+      "none": "No result yet."
+    },
+    "expert": {
+      "sheet": "Delegation",
+      "dossier": "Working paper",
+      "full": "Open the full working paper",
+      "noAnswer": "No answer yet.",
+      "notFiled": "Filed in your library when done"
+    }
   }
 }

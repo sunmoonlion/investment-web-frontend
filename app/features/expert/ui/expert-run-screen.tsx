@@ -17,7 +17,8 @@ import { useClock } from '@/lib/workbench/use-clock'
 
 import { useReview, useRun, useRunActions, useRunStep } from '../api/run'
 import { shownStep, tokenOf } from '../model/run'
-import { amountText, NowStrip, Sheet, StepDetail, StepRail } from './parts'
+import { amountText, NowStrip, StepDetail, StepRail } from './parts'
+import { ExpertResults } from './results'
 import { ReviewPanel } from './review-panel'
 
 // 专家处理中。三栏：步骤、这一步的细节、委托单。
@@ -103,7 +104,7 @@ export function ExpertRunScreen({ task }: { task: string }) {
             />
           ) : null}
         </div>
-        <Sheet run={run.data} clock={clock} />
+        <ExpertResults task={task} run={run.data} clock={clock} beat={beat} />
       </div>
 
       <Dialog open={confirming} onOpenChange={setConfirming}>
