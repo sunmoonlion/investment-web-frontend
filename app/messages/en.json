@@ -182,10 +182,9 @@
     "notBuilt": "This page is still being built",
     "foot": {
       "pending": "Waiting for me",
-      "catalog": "Data catalog",
-      "request": "Data requests",
       "machines": "My machines",
-      "settings": "Settings"
+      "settings": "Settings",
+      "library": "Library"
     },
     "machine": {
       "online": "A machine is online",
@@ -341,8 +340,7 @@
     "missing": {
       "title": "No data for {code} yet",
       "body": "This company is not in our data yet, so nothing can be queried. Missing dataset:",
-      "request": "Request ingestion",
-      "noLink": "The request page cannot be opened right now."
+      "later": "We add companies on our side; ask again once the data is in."
     },
     "problem": {
       "backend_unavailable": "Cannot reach the service. Try again later.",
@@ -508,7 +506,8 @@
       "dossierSoon": "The dossier page is still being built"
     },
     "loading": "Loading…",
-    "failedToLoad": "Could not load this delegation."
+    "failedToLoad": "Could not load this delegation.",
+    "answer": "Answer"
   },
   "expertHome": {
     "title": "Experts",
@@ -781,6 +780,47 @@
       "full": "Open the full working paper",
       "noAnswer": "No answer yet.",
       "notFiled": "Filed in your library when done"
+    }
+  },
+  "library": {
+    "title": "Library",
+    "lead": "Your materials with us. Working papers handed back by experts and files returned by work appear here automatically; each one has a copy on the server that belongs only to you. Files on your computer are not here; experts read them on your machine.",
+    "loading": "Loading…",
+    "failed": "Could not load; try again later.",
+    "empty": "Nothing yet.",
+    "emptyHint": "Working papers and returned files will appear here automatically. Uploading your own files comes later.",
+    "notFound": "Nothing matches.",
+    "notFoundHint": "Try another word or clear the filter.",
+    "noProject": "Not in a project",
+    "versions": "{n} versions",
+    "search": "Search",
+    "searchLabel": "Search by title",
+    "searchPlaceholder": "Title contains…",
+    "note": "Only filed materials are here. Removing takes an item out of the library; the conversation and working paper stay.",
+    "kind": {
+      "label": "Kind",
+      "all": "All",
+      "dossier": "Working paper",
+      "deliverable": "Deliverable"
+    },
+    "item": {
+      "back": "Back to library",
+      "notFound": "No such item, or it was removed from the library.",
+      "versions": "{n} versions",
+      "versionsTitle": "Versions",
+      "version": "v{n}",
+      "from": "From: {question}",
+      "copy": "This item has a copy on the server that belongs only to you.",
+      "toDossier": "Open the working paper",
+      "toConversation": "Open the conversation",
+      "rename": "Rename",
+      "save": "Save",
+      "cancel": "Cancel",
+      "remove": "Remove from library",
+      "confirmRemove": "It will no longer show here; the conversation and working paper stay. Sure?",
+      "failed": "That did not work; try again.",
+      "content": "Content",
+      "sha": "Checksum {sha}…"
     }
   }
 }

@@ -616,3 +616,60 @@ export const dossierSchema = z
   })
   .loose()
 export type Dossier = z.infer<typeof dossierSchema>
+
+// ---------------- 知识库（SDD 0011 第一期）----------------
+export const libraryItemSchema = z
+  .object({
+    id: z.string(),
+    kind: z.enum(['dossier', 'deliverable']),
+    title: z.string(),
+    default_title: z.string(),
+    project_id: uuid.nullable(),
+    task_id: uuid,
+    session_id: uuid,
+    versions: z.number().int(),
+    updated_at: z.string(),
+    created_at: z.string(),
+    size_bytes: z.number().int().nullable(),
+    source: z
+      .object({
+        expert: z.string().nullable().optional(),
+        question: z.string().nullable().optional(),
+        step_title: z.string().nullable().optional(),
+        artifact: z.string().nullable().optional(),
+      })
+      .loose(),
+    deleted: z.boolean(),
+  })
+  .loose()
+export type LibraryItem = z.infer<typeof libraryItemSchema>
+export const libraryListSchema = z.object({ items: z.array(libraryItemSchema) }).loose()
+export const libraryDetailSchema = z
+  .object({
+    item: libraryItemSchema
+      .extend({
+        version_list: z.array(
+          z
+            .object({
+              version: z.number().int(),
+              created_at: z.string(),
+              sha256: z.string().optional(),
+              note: z.string().optional(),
+            })
+            .loose(),
+        ),
+      })
+      .loose(),
+  })
+  .loose()
+export type LibraryDetail = z.infer<typeof libraryDetailSchema>['item']
+export const libraryContentSchema = z
+  .object({
+    version: z.number().int(),
+    sha256: z.string(),
+    kind: z.enum(['dossier', 'deliverable']),
+    content: z.unknown(),
+    text: z.string(),
+  })
+  .loose()
+export type LibraryContent = z.infer<typeof libraryContentSchema>

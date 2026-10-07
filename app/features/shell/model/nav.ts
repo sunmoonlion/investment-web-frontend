@@ -90,19 +90,17 @@ export function machineLight(machines: Machine[]): MachineLight {
 
 // ---------------- 侧栏底部的条目 ----------------
 // 由这份清单生成。以后加「技能」「连接器」「助理」，只在这里加一项（PRD investment.md 11.3）。
-export type FootEntry =
-  | { key: string; kind: 'page'; page: Page; href: (locale: string) => string }
-  | { key: string; kind: 'elsewhere'; to: 'knowledge.catalog' | 'info.request' }
+// 公共数据的入口（数据目录、申请入库）不在用户侧，放管理后台（所有者 2026-10-07 定）。
+export type FootEntry = { key: string; kind: 'page'; page: Page; href: (locale: string) => string }
 
 export const FOOT: readonly FootEntry[] = [
   { key: 'pending', kind: 'page', page: 'home', href: (locale) => routes.home(locale) },
-  { key: 'catalog', kind: 'elsewhere', to: 'knowledge.catalog' },
-  { key: 'request', kind: 'elsewhere', to: 'info.request' },
+  // 知识库：用户自己的资料，服务端有专属副本（SDD 0011）
+  { key: 'library', kind: 'page', page: 'library', href: routes.library },
   { key: 'machines', kind: 'page', page: 'machines', href: routes.machines },
   { key: 'settings', kind: 'page', page: 'settings', href: routes.settings },
 ]
 
 export function footHref(entry: FootEntry, locale: string): string | null {
-  if (entry.kind !== 'page') return null
   return isBuilt(entry.page) ? entry.href(locale) : null
 }

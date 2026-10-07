@@ -1,11 +1,8 @@
 'use client'
 
-import { ArrowUpRightIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import { CrossAppLink } from '@/components/common/cross-app-link'
-
-// 「没有数据」：我们的数据里没有这家公司。给一条去 info 申请入库的路。
+// 「没有数据」：我们的数据里还没有这家公司。只说这一句；入库由我们在管理后台做（所有者 2026-10-07 定）。
 export function MissingDataCard({ code, dataset }: { code: string; dataset: string | null }) {
   const t = useTranslations('conversation')
   return (
@@ -15,15 +12,7 @@ export function MissingDataCard({ code, dataset }: { code: string; dataset: stri
         {t('missing.body')}
         {dataset ? <span className="font-mono"> {dataset}</span> : null}
       </p>
-      <CrossAppLink
-        to="info.request"
-        values={{ code }}
-        className="mt-2 inline-flex items-center gap-1 text-[13px] font-medium underline underline-offset-3"
-        fallback={<p className="text-muted-foreground mt-2 text-[13px]">{t('missing.noLink')}</p>}
-      >
-        {t('missing.request')}
-        <ArrowUpRightIcon className="size-3.5" />
-      </CrossAppLink>
+      <p className="text-muted-foreground mt-1 text-[13px]">{t('missing.later')}</p>
     </div>
   )
 }

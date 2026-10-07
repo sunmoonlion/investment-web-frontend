@@ -47,7 +47,10 @@ async function exchange<T>(
       response.status,
     )
   }
-  const parsed = schema.safeParse(await response.json().catch(() => null))
+  // 204：没有正文（删除之类），按空对象过契约
+  const parsed = schema.safeParse(
+    response.status === 204 ? {} : await response.json().catch(() => null),
+  )
   if (!parsed.success) {
     throw new WorkbenchError('contract_invalid', response.status, { cause: parsed.error })
   }
@@ -61,7 +64,7 @@ export function getJson<T>(schema: z.ZodType<T>, path: string, fetchImpl: Fetch 
 export function sendJson<T>(
   schema: z.ZodType<T>,
   path: string,
-  options: { csrfToken: string; method?: 'POST' | 'PATCH' | 'PUT'; body?: unknown },
+  options: { csrfToken: string; method?: 'POST' | 'PATCH' | 'PUT' | 'DELETE'; body?: unknown },
   fetchImpl: Fetch = fetch,
 ) {
   return exchange(

@@ -4,11 +4,11 @@
   {
    "id": "09e06f6e-eee5-5c37-b579-b534b06bfda2",
    "owner_actor_id": "e824e960-e14f-5f42-8843-61bc18a78346",
-   "app_server_url": "ws://127.0.0.1:34647",
+   "app_server_url": "ws://127.0.0.1:40987",
    "codex_version": "0.155.1",
    "status": "registered",
-   "created_at": "2026-10-04T07:42:49.860195+00:00",
-   "updated_at": "2026-10-04T07:42:49.860195+00:00",
+   "created_at": "2026-10-07T04:58:42.704258+00:00",
+   "updated_at": "2026-10-07T04:58:42.704258+00:00",
    "relay_user": null,
    "provisioned": false
   }

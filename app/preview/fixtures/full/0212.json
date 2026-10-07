@@ -1,0 +1,95 @@
+{
+ "contract_version": 2,
+ "items": [
+  {
+   "id": "dossier:d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "kind": "dossier",
+   "title": "财报体检：招商银行 2023 到 2025 年的盈利能力怎么样？",
+   "default_title": "财报体检：招商银行 2023 到 2025 年的盈利能力怎么样？",
+   "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa",
+   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
+   "versions": 1,
+   "updated_at": "2026-10-07T04:58:29.473965Z",
+   "created_at": "2026-10-07T04:58:29.272124Z",
+   "size_bytes": null,
+   "source": {
+    "expert": "财报体检",
+    "question": "招商银行 2023 到 2025 年的盈利能力怎么样？"
+   },
+   "deleted": false
+  },
+  {
+   "id": "dossier:6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "kind": "dossier",
+   "title": "财报体检：比亚迪 2023 到 2025 年的盈利能力怎么样？",
+   "default_title": "财报体检：比亚迪 2023 到 2025 年的盈利能力怎么样？",
+   "project_id": "06944124-075a-504f-b4f3-275ef032eb9c",
+   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "session_id": "dd790e56-724e-5e57-9294-bae977583372",
+   "versions": 1,
+   "updated_at": "2026-10-07T04:58:29.047248Z",
+   "created_at": "2026-10-07T04:58:28.532005Z",
+   "size_bytes": null,
+   "source": {
+    "expert": "财报体检",
+    "question": "比亚迪 2023 到 2025 年的盈利能力怎么样？"
+   },
+   "deleted": false
+  },
+  {
+   "id": "dossier:a8d00557-4ee4-5cdf-918b-e69884980326",
+   "kind": "dossier",
+   "title": "财报体检：上海机场 2023 到 2025 年的盈利能力怎么样？",
+   "default_title": "财报体检：上海机场 2023 到 2025 年的盈利能力怎么样？",
+   "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f",
+   "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "versions": 1,
+   "updated_at": "2026-10-07T04:58:28.282134Z",
+   "created_at": "2026-10-07T04:58:27.936941Z",
+   "size_bytes": null,
+   "source": {
+    "expert": "财报体检",
+    "question": "上海机场 2023 到 2025 年的盈利能力怎么样？"
+   },
+   "deleted": false
+  },
+  {
+   "id": "dossier:dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "kind": "dossier",
+   "title": "财报体检：贵州茅台 2023 到 2025 年的盈利能力怎么样？",
+   "default_title": "财报体检：贵州茅台 2023 到 2025 年的盈利能力怎么样？",
+   "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "versions": 2,
+   "updated_at": "2026-10-07T04:58:27.014561Z",
+   "created_at": "2026-10-07T04:58:26.073132Z",
+   "size_bytes": null,
+   "source": {
+    "expert": "财报体检",
+    "question": "贵州茅台 2023 到 2025 年的盈利能力怎么样？"
+   },
+   "deleted": false
+  },
+  {
+   "id": "dossier:e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "kind": "dossier",
+   "title": "财报体检：恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+   "default_title": "财报体检：恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "versions": 1,
+   "updated_at": "2026-10-07T04:58:25.968754Z",
+   "created_at": "2026-10-07T04:58:24.867479Z",
+   "size_bytes": null,
+   "source": {
+    "expert": "财报体检",
+    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？"
+   },
+   "deleted": false
+  }
+ ]
+}

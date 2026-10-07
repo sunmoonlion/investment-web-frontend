@@ -67,6 +67,8 @@ const BUILT: ReadonlySet<Page> = new Set([
   'review',
   'machines',
   'settings',
+  'library',
+  'libraryItem',
 ])
 
 export function isBuilt(page: Page) {

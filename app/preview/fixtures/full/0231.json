@@ -1,0 +1,28 @@
+{
+ "contract_version": 2,
+ "item": {
+  "id": "dossier:a8d00557-4ee4-5cdf-918b-e69884980326",
+  "kind": "dossier",
+  "title": "财报体检：上海机场 2023 到 2025 年的盈利能力怎么样？",
+  "default_title": "财报体检：上海机场 2023 到 2025 年的盈利能力怎么样？",
+  "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f",
+  "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+  "session_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+  "versions": 1,
+  "updated_at": "2026-10-07T04:58:28.282134Z",
+  "created_at": "2026-10-07T04:58:27.936941Z",
+  "size_bytes": null,
+  "source": {
+   "expert": "财报体检",
+   "question": "上海机场 2023 到 2025 年的盈利能力怎么样？"
+  },
+  "deleted": false,
+  "version_list": [
+   {
+    "version": 1,
+    "created_at": "2026-10-07T04:58:27.936941Z",
+    "note": "专家交回"
+   }
+  ]
+ }
+}

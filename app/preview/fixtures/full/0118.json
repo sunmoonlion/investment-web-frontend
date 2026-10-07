@@ -54,8 +54,8 @@
     "outcome": "accepted",
     "failure": null,
     "spent": "0.05",
-    "started_at": "2026-10-04T07:42:38.062269Z",
-    "ended_at": "2026-10-04T07:42:38.071323Z",
+    "started_at": "2026-10-07T04:58:29.469255Z",
+    "ended_at": "2026-10-07T04:58:29.477473Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -170,7 +170,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T07:42:38.023951Z",
+      "at": "2026-10-07T04:58:29.435182Z",
       "kind": "tool",
       "name": "list_datasets",
       "dataset": null,
@@ -178,7 +178,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T07:42:38.032519Z",
+      "at": "2026-10-07T04:58:29.440022Z",
       "kind": "tool",
       "name": "describe_schema",
       "dataset": "sh600036-financials",
@@ -186,7 +186,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T07:42:38.037503Z",
+      "at": "2026-10-07T04:58:29.443541Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600036-financials",
@@ -194,7 +194,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T07:42:38.041598Z",
+      "at": "2026-10-07T04:58:29.447023Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600036-financials",
@@ -202,7 +202,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T07:42:38.045436Z",
+      "at": "2026-10-07T04:58:29.452128Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sh600036-financials",

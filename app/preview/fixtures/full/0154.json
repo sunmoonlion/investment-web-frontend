@@ -54,8 +54,8 @@
     "outcome": "rejected",
     "failure": "acceptance",
     "spent": "0.05",
-    "started_at": "2026-10-04T07:42:36.607710Z",
-    "ended_at": "2026-10-04T07:42:36.613800Z",
+    "started_at": "2026-10-07T04:58:27.889580Z",
+    "ended_at": "2026-10-07T04:58:27.897166Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -113,7 +113,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T07:42:36.585600Z",
+      "at": "2026-10-07T04:58:27.870471Z",
       "kind": "tool",
       "name": "list_datasets",
       "dataset": null,

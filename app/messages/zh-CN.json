@@ -182,10 +182,9 @@
     "notBuilt": "这一页还在做",
     "foot": {
       "pending": "待我决定",
-      "catalog": "数据目录",
-      "request": "数据申请",
       "machines": "我的机器",
-      "settings": "设置"
+      "settings": "设置",
+      "library": "知识库"
     },
     "machine": {
       "online": "机器在线",
@@ -341,8 +340,7 @@
     "missing": {
       "title": "{code} 的数据还没有入库",
       "body": "我们的数据里还没有这家公司，所以查不到。缺的数据集：",
-      "request": "去申请入库",
-      "noLink": "申请入库的入口暂时打不开。"
+      "later": "入库由我们来做；有了数据再问。"
     },
     "problem": {
       "backend_unavailable": "连不上服务，请稍后再试。",
@@ -508,7 +506,8 @@
       "dossierSoon": "底稿页还在做"
     },
     "loading": "加载中…",
-    "failedToLoad": "没有取到这件委托。"
+    "failedToLoad": "没有取到这件委托。",
+    "answer": "回答"
   },
   "expertHome": {
     "title": "专家",
@@ -781,6 +780,47 @@
       "full": "打开整份底稿",
       "noAnswer": "还没有回答。",
       "notFiled": "做完后归入知识库"
+    }
+  },
+  "library": {
+    "title": "知识库",
+    "lead": "你在我们这里的资料。专家交回的底稿、工作交回的文件会自动出现在这里，每一份在服务端有一份只属于你的副本。你电脑上的文件不在这里，专家在你机器上就地读。",
+    "loading": "加载中…",
+    "failed": "没有取到，请稍后再试。",
+    "empty": "还没有资料。",
+    "emptyHint": "专家交回的底稿、工作交回的文件会自动出现在这里。上传自己的文件以后做。",
+    "notFound": "没有找到。",
+    "notFoundHint": "换个词，或者去掉筛选。",
+    "noProject": "不属于项目",
+    "versions": "{n} 版",
+    "search": "找",
+    "searchLabel": "按名字找",
+    "searchPlaceholder": "名字里有…",
+    "note": "这里只有归入知识库的资料。删掉的是「从知识库拿掉」，原来的对话和底稿还在。",
+    "kind": {
+      "label": "种类",
+      "all": "全部",
+      "dossier": "底稿",
+      "deliverable": "交回物"
+    },
+    "item": {
+      "back": "回到知识库",
+      "notFound": "没有这份资料，或者已经从知识库拿掉了。",
+      "versions": "{n} 版",
+      "versionsTitle": "版本",
+      "version": "第 {n} 版",
+      "from": "来自：{question}",
+      "copy": "这份资料在服务端有一份只属于你的副本。",
+      "toDossier": "去底稿",
+      "toConversation": "去对话",
+      "rename": "改名",
+      "save": "保存",
+      "cancel": "取消",
+      "remove": "从知识库拿掉",
+      "confirmRemove": "拿掉后这里不再显示，原来的对话和底稿还在。确定？",
+      "failed": "没有成功，请再试一次。",
+      "content": "内容",
+      "sha": "校验值 {sha}…"
     }
   }
 }

@@ -165,6 +165,14 @@ export function createPreviewServer({ config, fixturesRoot, log = () => {} }) {
     })
   }
 
+  function decodePath(pathname) {
+    try {
+      return decodeURIComponent(pathname)
+    } catch {
+      return pathname
+    }
+  }
+
   function api(request, response, url, cookies, scenarios) {
     const scenario = scenarioOf(cookies, scenarios)
     const method = String(request.method ?? 'GET').toUpperCase()
@@ -181,9 +189,11 @@ export function createPreviewServer({ config, fixturesRoot, log = () => {} }) {
       return json(response, 200, originAnswer(config, url.search))
     }
     if (scenario) {
-      const live = method === 'GET' ? findStream(scenario, url.pathname) : undefined
+      // 真后端按解码后的路径段匹配（dossier%3A… 到路由时已是 dossier:…），样例也照此比对
+      const path = decodePath(url.pathname)
+      const live = method === 'GET' ? findStream(scenario, path) : undefined
       if (live) return stream(request, response, url, scenario, live)
-      const found = findResponse(scenario, method, url.pathname, url.search)
+      const found = findResponse(scenario, method, path, url.search)
       if (found) {
         const status = Number(found.status ?? 200)
         response.writeHead(status, {

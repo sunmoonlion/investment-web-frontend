@@ -137,17 +137,12 @@ describe('侧栏', () => {
   })
 
   it('底部的条目由一份清单生成', () => {
-    expect(FOOT.map((entry) => entry.key)).toEqual([
-      'pending',
-      'catalog',
-      'request',
-      'machines',
-      'settings',
-    ])
+    // 公共数据的入口不在用户侧（所有者 2026-10-07 定）：没有数据目录、申请入库
+    expect(FOOT.map((entry) => entry.key)).toEqual(['pending', 'library', 'machines', 'settings'])
     const settings = FOOT.find((entry) => entry.key === 'settings')!
     expect(footHref(settings, 'zh-CN')).toBe('/zh-CN/workbench/settings')
-    const elsewhere = FOOT.find((entry) => entry.key === 'catalog')!
-    expect(footHref(elsewhere, 'zh-CN')).toBeNull()
+    const library = FOOT.find((entry) => entry.key === 'library')!
+    expect(footHref(library, 'zh-CN')).toBe('/zh-CN/workbench/library')
   })
 })
 

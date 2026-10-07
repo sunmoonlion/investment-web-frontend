@@ -56,8 +56,8 @@
     "outcome": "rejected",
     "failure": "acceptance",
     "spent": "0.05",
-    "started_at": "2026-10-04T07:42:36.381096Z",
-    "ended_at": "2026-10-04T07:42:36.388037Z",
+    "started_at": "2026-10-07T04:58:27.616263Z",
+    "ended_at": "2026-10-07T04:58:27.623668Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -187,7 +187,7 @@
     },
     "process": [
      {
-      "at": "2026-10-04T07:42:36.322894Z",
+      "at": "2026-10-07T04:58:27.557609Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -195,7 +195,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T07:42:36.326944Z",
+      "at": "2026-10-07T04:58:27.561400Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -203,7 +203,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T07:42:36.330656Z",
+      "at": "2026-10-07T04:58:27.565487Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -211,7 +211,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T07:42:36.334382Z",
+      "at": "2026-10-07T04:58:27.569446Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -219,7 +219,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T07:42:36.338196Z",
+      "at": "2026-10-07T04:58:27.574900Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -227,7 +227,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T07:42:36.342282Z",
+      "at": "2026-10-07T04:58:27.580299Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -235,7 +235,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T07:42:36.345982Z",
+      "at": "2026-10-07T04:58:27.584262Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -243,7 +243,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T07:42:36.351059Z",
+      "at": "2026-10-07T04:58:27.588948Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -251,7 +251,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T07:42:36.355516Z",
+      "at": "2026-10-07T04:58:27.593392Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",
@@ -259,7 +259,7 @@
       "ok": true
      },
      {
-      "at": "2026-10-04T07:42:36.361813Z",
+      "at": "2026-10-07T04:58:27.599181Z",
       "kind": "tool",
       "name": "run_sql",
       "dataset": "sz300750-financials",

@@ -38,8 +38,8 @@
     "sz002594-financials-sample002594"
    ]
   },
-  "started_at": "2026-10-04T07:42:37.192171Z",
-  "ended_at": "2026-10-04T07:42:37.828017Z",
+  "started_at": "2026-10-07T04:58:28.532005Z",
+  "ended_at": "2026-10-07T04:58:29.242641Z",
   "seconds": 0,
   "active_interaction_id": null
  },
@@ -90,8 +90,8 @@
      "outcome": "accepted",
      "failure": null,
      "spent": "0.05",
-     "started_at": "2026-10-04T07:42:37.291039Z",
-     "ended_at": "2026-10-04T07:42:37.301958Z",
+     "started_at": "2026-10-07T04:58:28.644299Z",
+     "ended_at": "2026-10-07T04:58:28.651814Z",
      "checks": [
       {
        "label": "交回的格式对",
@@ -175,8 +175,8 @@
      "outcome": "accepted",
      "failure": null,
      "spent": "0.05",
-     "started_at": "2026-10-04T07:42:37.383025Z",
-     "ended_at": "2026-10-04T07:42:37.390873Z",
+     "started_at": "2026-10-07T04:58:28.735698Z",
+     "ended_at": "2026-10-07T04:58:28.744869Z",
      "checks": [
       {
        "label": "交回的格式对",
@@ -276,8 +276,8 @@
      "outcome": "accepted",
      "failure": null,
      "spent": "0.05",
-     "started_at": "2026-10-04T07:42:37.505271Z",
-     "ended_at": "2026-10-04T07:42:37.514097Z",
+     "started_at": "2026-10-07T04:58:28.861071Z",
+     "ended_at": "2026-10-07T04:58:28.869204Z",
      "checks": [
       {
        "label": "交回的格式对",
@@ -370,8 +370,8 @@
      "outcome": "accepted",
      "failure": null,
      "spent": "0.05",
-     "started_at": "2026-10-04T07:42:37.593857Z",
-     "ended_at": "2026-10-04T07:42:37.602174Z",
+     "started_at": "2026-10-07T04:58:28.951474Z",
+     "ended_at": "2026-10-07T04:58:28.961871Z",
      "checks": [
       {
        "label": "交回的格式对",
@@ -463,8 +463,8 @@
      "outcome": "accepted",
      "failure": null,
      "spent": "0.05",
-     "started_at": "2026-10-04T07:42:37.680213Z",
-     "ended_at": "2026-10-04T07:42:37.688772Z",
+     "started_at": "2026-10-07T04:58:29.041092Z",
+     "ended_at": "2026-10-07T04:58:29.051295Z",
      "checks": [
       {
        "label": "交回的格式对",
@@ -552,8 +552,8 @@
      "outcome": "rejected",
      "failure": "acceptance",
      "spent": "0.05",
-     "started_at": "2026-10-04T07:42:37.767035Z",
-     "ended_at": "2026-10-04T07:42:37.773319Z",
+     "started_at": "2026-10-07T04:58:29.121827Z",
+     "ended_at": "2026-10-07T04:58:29.129641Z",
      "checks": [
       {
        "label": "交回的格式对",

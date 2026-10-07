@@ -7,8 +7,8 @@
   "workspace_root": "/home/demo/research",
   "path": "招商银行",
   "title": "招商银行",
-  "created_at": "2026-10-04T07:42:34.183336Z",
-  "updated_at": "2026-10-04T07:42:34.183336Z",
+  "created_at": "2026-10-07T04:58:24.821788Z",
+  "updated_at": "2026-10-07T04:58:24.821788Z",
   "archived_at": null,
   "directory": "/home/demo/research/招商银行",
   "archived": false,
@@ -23,7 +23,7 @@
    "title": "招商银行 2023 到 2025 年的盈利能力怎么样？",
    "wheel": "user",
    "active_task_id": null,
-   "last_active_at": "2026-10-04T07:42:38.299531Z"
+   "last_active_at": "2026-10-07T04:58:29.686157Z"
   }
  ],
  "tasks": [
@@ -43,8 +43,8 @@
    },
    "spent": "0.15",
    "currency": "CNY",
-   "created_at": "2026-10-04T07:42:37.858107Z",
-   "ended_at": "2026-10-04T07:42:38.299531Z"
+   "created_at": "2026-10-07T04:58:29.272124Z",
+   "ended_at": "2026-10-07T04:58:29.686157Z"
   }
  ]
 }

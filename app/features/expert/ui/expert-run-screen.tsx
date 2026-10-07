@@ -15,7 +15,9 @@ import {
 import { useConversationEvents } from '@/lib/workbench/conversation-events'
 import { useClock } from '@/lib/workbench/use-clock'
 
+import { useDossier } from '../api/desk'
 import { useReview, useRun, useRunActions, useRunStep } from '../api/run'
+import { answerLine } from '../model/dossier'
 import { shownStep, tokenOf } from '../model/run'
 import { amountText, NowStrip, StepDetail, StepRail } from './parts'
 import { ExpertResults } from './results'
@@ -36,6 +38,10 @@ export function ExpertRunScreen({ task }: { task: string }) {
 
   const shown = shownStep(run.data, picked)
   const detail = useRunStep(task, shown, beat)
+  // 做完了：把「回答」摘一行放在顶上，不用点进底稿才看到（所有者 2026-10-07）
+  const ended = run.data?.task.ended_at != null
+  const dossier = useDossier(task, ended ? beat : null)
+  const answer = ended && dossier.data ? answerLine(dossier.data) : null
   const pending = run.data?.task.active_interaction_id ?? null
   const review = useReview(pending)
 
@@ -83,6 +89,16 @@ export function ExpertRunScreen({ task }: { task: string }) {
       </header>
 
       {now ? <NowStrip now={now} clock={clock} /> : null}
+      {answer ? (
+        <p
+          role="status"
+          className="bg-muted/40 shrink-0 truncate border-b px-4 py-2 text-sm"
+          title={answer}
+        >
+          <span className="text-muted-foreground mr-2">{t('answer')}</span>
+          {answer}
+        </p>
+      ) : null}
 
       <div className="flex min-h-0 flex-1">
         <StepRail steps={steps} shown={shown} onPick={setPicked} />

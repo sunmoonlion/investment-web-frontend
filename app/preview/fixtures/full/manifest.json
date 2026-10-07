@@ -98,6 +98,18 @@
   {
    "title": "设置",
    "path": "/zh-CN/workbench/settings"
+  },
+  {
+   "title": "知识库",
+   "path": "/zh-CN/workbench/library"
+  },
+  {
+   "title": "知识库：一份底稿",
+   "path": "/zh-CN/workbench/library/dossier:d019b7ea-d96e-594c-9d38-4274df134fd9"
+  },
+  {
+   "title": "知识库：一份交回物",
+   "path": "/zh-CN/workbench/library/deliverable:d019b7ea-d96e-594c-9d38-4274df134fd9:profile"
   }
  ],
  "responses": [
@@ -1780,6 +1792,486 @@
    "status": 200,
    "content_type": "application/json",
    "file": "0210.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0211.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library",
+   "query": "kind=dossier",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0212.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/dossier:d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0213.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/dossier:d019b7ea-d96e-594c-9d38-4274df134fd9/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0214.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:d019b7ea-d96e-594c-9d38-4274df134fd9:profile",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0215.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:d019b7ea-d96e-594c-9d38-4274df134fd9:profile/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0216.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:d019b7ea-d96e-594c-9d38-4274df134fd9:scope",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0217.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:d019b7ea-d96e-594c-9d38-4274df134fd9:scope/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0218.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/dossier:6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0219.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/dossier:6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0220.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032:metrics",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0221.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032:metrics/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0222.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032:facts",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0223.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032:facts/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0224.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032:reconcile",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0225.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032:reconcile/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0226.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032:profile",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0227.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032:profile/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0228.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032:scope",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0229.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032:scope/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0230.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/dossier:a8d00557-4ee4-5cdf-918b-e69884980326",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0231.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/dossier:a8d00557-4ee4-5cdf-918b-e69884980326/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0232.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:a8d00557-4ee4-5cdf-918b-e69884980326:reconcile",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0233.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:a8d00557-4ee4-5cdf-918b-e69884980326:reconcile/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0234.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:a8d00557-4ee4-5cdf-918b-e69884980326:profile",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0235.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:a8d00557-4ee4-5cdf-918b-e69884980326:profile/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0236.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:a8d00557-4ee4-5cdf-918b-e69884980326:scope",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0237.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:a8d00557-4ee4-5cdf-918b-e69884980326:scope/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0238.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/dossier:dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0239.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/dossier:dad4ff9f-c1e2-5e51-a63c-fff965195623/versions/2/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0240.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:note",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0241.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:note/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0242.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:crosscheck",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0243.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:crosscheck/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0244.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:metrics",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0245.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:metrics/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0246.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:facts",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0247.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:facts/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0248.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:reconcile",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0249.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:reconcile/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0250.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:profile",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0251.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:profile/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0252.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:scope",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0253.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:scope/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0254.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/dossier:e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0255.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/dossier:e8d7f8a6-42c8-52b1-948d-742b459fa460/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0256.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:note",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0257.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:note/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0258.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:crosscheck",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0259.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:crosscheck/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0260.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:metrics",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0261.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:metrics/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0262.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:facts",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0263.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:facts/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0264.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:reconcile",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0265.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:reconcile/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0266.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:profile",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0267.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:profile/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0268.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:scope",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0269.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/library/deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:scope/versions/1/content",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0270.json"
   }
  ],
  "streams": [

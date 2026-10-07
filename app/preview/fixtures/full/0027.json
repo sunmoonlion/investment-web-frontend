@@ -7,7 +7,7 @@
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
    "idempotency_key": "preview-refused-0001",
-   "request_digest": "a874bf7697fb20cd09c88a666c7c614bc14bc956157234be1e1a03a98f0da504",
+   "request_digest": "d7b57224f5043dd9736f7712a78e3b9cf5dfe532c58e7bb2cce152147bff34ea",
    "profile_id": "BOND_REVIEW",
    "profile_version": "1",
    "expert_pack_version": null,
@@ -19,7 +19,7 @@
     "client_context": {}
    },
    "normalized_goal": null,
-   "thread_id": "thread-d39659a2c69c",
+   "thread_id": "thread-28c746de831e",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "project_root": "/home/demo/research/中国平安",
    "state": "REJECTED",
@@ -44,8 +44,8 @@
    },
    "cancel_requested_at": null,
    "cancel_requested_by": null,
-   "created_at": "2026-10-04T07:42:39.722996+00:00",
-   "updated_at": "2026-10-04T07:42:39.753242+00:00",
+   "created_at": "2026-10-07T04:58:31.253029+00:00",
+   "updated_at": "2026-10-07T04:58:31.297902+00:00",
    "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f"
   },
   {
@@ -54,7 +54,7 @@
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
    "idempotency_key": "preview-cancelled-0001",
-   "request_digest": "93a39efdde0b7da2e92e8dbd312bad9e6b6b7d2d4bf411281089468b7756deb1",
+   "request_digest": "f2b9bc12b80689d4bdecff0b24d3fa24b43da697569e1332dae6dfea9160ab88",
    "profile_id": "FIN_REVIEW",
    "profile_version": "1",
    "expert_pack_version": "1",
@@ -68,7 +68,7 @@
     }
    },
    "normalized_goal": null,
-   "thread_id": "thread-1be50a2e4cae",
+   "thread_id": "thread-61184822f337",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "project_root": "/home/demo/research/招商银行",
    "state": "CANCELLED",
@@ -99,10 +99,10 @@
    "waiting_reason": null,
    "active_interaction_id": null,
    "rejection": null,
-   "cancel_requested_at": "2026-10-04T07:42:38.300432+00:00",
+   "cancel_requested_at": "2026-10-07T04:58:29.686787+00:00",
    "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "created_at": "2026-10-04T07:42:37.858107+00:00",
-   "updated_at": "2026-10-04T07:42:38.299531+00:00",
+   "created_at": "2026-10-07T04:58:29.272124+00:00",
+   "updated_at": "2026-10-07T04:58:29.686157+00:00",
    "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa"
   },
   {
@@ -111,7 +111,7 @@
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
    "idempotency_key": "preview-failed-0001",
-   "request_digest": "59fe2054b778516272602d434fa68205d98517af76df02b0dc3ebd3a22c16661",
+   "request_digest": "2a3949dbc8e6d4a147205d729a17b0f943bedcc84a22e2fc69eb8cf0047ccd50",
    "profile_id": "FIN_REVIEW",
    "profile_version": "1",
    "expert_pack_version": "1",
@@ -125,7 +125,7 @@
     }
    },
    "normalized_goal": null,
-   "thread_id": "thread-289bcb0cc876",
+   "thread_id": "thread-1a4e7ee9ede7",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "project_root": "/home/demo/research/比亚迪",
    "state": "FAILED",
@@ -158,8 +158,8 @@
    "rejection": null,
    "cancel_requested_at": null,
    "cancel_requested_by": null,
-   "created_at": "2026-10-04T07:42:37.192171+00:00",
-   "updated_at": "2026-10-04T07:42:37.828017+00:00",
+   "created_at": "2026-10-07T04:58:28.532005+00:00",
+   "updated_at": "2026-10-07T04:58:29.242641+00:00",
    "project_id": "06944124-075a-504f-b4f3-275ef032eb9c"
   },
   {
@@ -168,7 +168,7 @@
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
    "idempotency_key": "preview-stopped-0001",
-   "request_digest": "943e14c63065f8883d73b3aea3b1ffc63f6fe3ffdae9ab05e8d8209829c43191",
+   "request_digest": "2266f837dbc41cae1a13c6e2ccedd13cb71f6227cc8b55a2e03271c557f3568c",
    "profile_id": "FIN_REVIEW",
    "profile_version": "1",
    "expert_pack_version": "1",
@@ -182,7 +182,7 @@
     }
    },
    "normalized_goal": null,
-   "thread_id": "thread-6c18a393e2ac",
+   "thread_id": "thread-d034cc7f1dae",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "project_root": "/home/demo/research/上海机场",
    "state": "CANCELLED",
@@ -213,10 +213,10 @@
    "waiting_reason": null,
    "active_interaction_id": null,
    "rejection": null,
-   "cancel_requested_at": "2026-10-04T07:42:37.095783+00:00",
+   "cancel_requested_at": "2026-10-07T04:58:28.429696+00:00",
    "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "created_at": "2026-10-04T07:42:36.663725+00:00",
-   "updated_at": "2026-10-04T07:42:37.133262+00:00",
+   "created_at": "2026-10-07T04:58:27.936941+00:00",
+   "updated_at": "2026-10-07T04:58:28.472915+00:00",
    "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f"
   },
   {
@@ -225,7 +225,7 @@
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
    "idempotency_key": "preview-no-data-0001",
-   "request_digest": "97c694177b4e8b19f53c4cf7ac41d433156295f4851b70024b062c514d9e787f",
+   "request_digest": "1da9e7f5d147b73e42f42d64458c965c300cedb033e563c929195beb9a257aca",
    "profile_id": "FIN_REVIEW",
    "profile_version": "1",
    "expert_pack_version": "1",
@@ -239,7 +239,7 @@
     }
    },
    "normalized_goal": null,
-   "thread_id": "thread-642179be3ff6",
+   "thread_id": "thread-4a5bc52ada47",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "project_root": "/home/demo/research/片仔癀",
    "state": "WAITING",
@@ -272,8 +272,8 @@
    "rejection": null,
    "cancel_requested_at": null,
    "cancel_requested_by": null,
-   "created_at": "2026-10-04T07:42:36.430322+00:00",
-   "updated_at": "2026-10-04T07:42:36.626785+00:00",
+   "created_at": "2026-10-07T04:58:27.702172+00:00",
+   "updated_at": "2026-10-07T04:58:27.911719+00:00",
    "project_id": "7679e7df-8718-5408-8ba3-5f59a9525cf4"
   },
   {
@@ -282,7 +282,7 @@
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
    "idempotency_key": "preview-waiting-0001",
-   "request_digest": "78908f9b8c26d7ae97f39325ffa9ac93cc6c5d58534830ff30d994fe175988ed",
+   "request_digest": "190ee7c102cc839c846e46e100da8b5c7563126bdfda9dfd37ac1b83c442f9b9",
    "profile_id": "FIN_REVIEW",
    "profile_version": "1",
    "expert_pack_version": "1",
@@ -296,7 +296,7 @@
     }
    },
    "normalized_goal": null,
-   "thread_id": "thread-2a7c11101482",
+   "thread_id": "thread-93909089360d",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "project_root": "/home/demo/research/宁德时代",
    "state": "WAITING",
@@ -329,8 +329,8 @@
    "rejection": null,
    "cancel_requested_at": null,
    "cancel_requested_by": null,
-   "created_at": "2026-10-04T07:42:36.058812+00:00",
-   "updated_at": "2026-10-04T07:42:36.398108+00:00",
+   "created_at": "2026-10-07T04:58:27.282655+00:00",
+   "updated_at": "2026-10-07T04:58:27.637042+00:00",
    "project_id": "d35d6a3c-0149-5775-a1c7-860389fb558a"
   },
   {
@@ -339,7 +339,7 @@
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
    "idempotency_key": "preview-running-0001",
-   "request_digest": "77ac409a2ed5dd12f4a501d4b052e4a5a8049376a8399a18b41fa08ec7bbc0e6",
+   "request_digest": "8e41eec27fa9177fc1263146670e4ecfad6a7709df35d280282acdf46feb6da3",
    "profile_id": "DATA_QUERY",
    "profile_version": "1",
    "expert_pack_version": "1",
@@ -353,7 +353,7 @@
     }
    },
    "normalized_goal": null,
-   "thread_id": "thread-d1ec303d062c",
+   "thread_id": "thread-ad5eb01b22fb",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "project_root": "/home/demo/research/五粮液",
    "state": "RUNNING",
@@ -384,8 +384,8 @@
    "rejection": null,
    "cancel_requested_at": null,
    "cancel_requested_by": null,
-   "created_at": "2026-10-04T07:42:35.811707+00:00",
-   "updated_at": "2026-10-04T07:42:36.032121+00:00",
+   "created_at": "2026-10-07T04:58:27.020649+00:00",
+   "updated_at": "2026-10-07T04:58:27.265829+00:00",
    "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0"
   },
   {
@@ -394,7 +394,7 @@
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
    "idempotency_key": "preview-done-concluded-0001",
-   "request_digest": "ca2085a7eaf0a878d140f18c972923ef9e6bc70d9327ec04d64bf12555f2013b",
+   "request_digest": "98c4004d119a7f58cbba4901cf03bd87b9deeea64dca23037615045a79eac410",
    "profile_id": "FIN_REVIEW",
    "profile_version": "1",
    "expert_pack_version": "1",
@@ -408,7 +408,7 @@
     }
    },
    "normalized_goal": null,
-   "thread_id": "thread-832430515eb3",
+   "thread_id": "thread-7fbb61ee3e0d",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "project_root": "/home/demo/research/贵州茅台",
    "state": "SUCCEEDED",
@@ -441,8 +441,8 @@
    "rejection": null,
    "cancel_requested_at": null,
    "cancel_requested_by": null,
-   "created_at": "2026-10-04T07:42:35.110583+00:00",
-   "updated_at": "2026-10-04T07:42:35.785718+00:00",
+   "created_at": "2026-10-07T04:58:26.073132+00:00",
+   "updated_at": "2026-10-07T04:58:26.934053+00:00",
    "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10"
   },
   {
@@ -451,7 +451,7 @@
    "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
    "tenant": "default",
    "idempotency_key": "preview-done-redone-0001",
-   "request_digest": "b827a7f6a023991f6f15c502b3b4f9ff82726c51ae3343bf87cd9ac5d1025980",
+   "request_digest": "e96386dd16b7f332e683d1e751b74e1fe7c75f6e9aff42df551126a0bb42111a",
    "profile_id": "FIN_REVIEW",
    "profile_version": "1",
    "expert_pack_version": "1",
@@ -465,7 +465,7 @@
     }
    },
    "normalized_goal": null,
-   "thread_id": "thread-faeb9080de64",
+   "thread_id": "thread-887cde7f2a6d",
    "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
    "project_root": "/home/demo/research/恒瑞医药",
    "state": "SUCCEEDED",
@@ -498,8 +498,8 @@
    "rejection": null,
    "cancel_requested_at": null,
    "cancel_requested_by": null,
-   "created_at": "2026-10-04T07:42:34.224986+00:00",
-   "updated_at": "2026-10-04T07:42:35.081093+00:00",
+   "created_at": "2026-10-07T04:58:24.867479+00:00",
+   "updated_at": "2026-10-07T04:58:26.008802+00:00",
    "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e"
   }
  ]

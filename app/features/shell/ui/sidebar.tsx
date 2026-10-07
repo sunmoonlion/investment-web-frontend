@@ -1,7 +1,7 @@
 'use client'
 
 import {
-  ArrowUpRightIcon,
+  BookOpenIcon,
   FolderIcon,
   MessageSquareIcon,
   PlusIcon,
@@ -14,7 +14,6 @@ import { usePathname, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 
 import { LogoutButton } from '@/components/auth/logout-button'
-import { CrossAppLink } from '@/components/common/cross-app-link'
 import {
   Select,
   SelectContent,
@@ -244,21 +243,6 @@ export function Sidebar() {
 
       <nav aria-label={t('more')} className="shrink-0 border-t pt-3">
         {FOOT.map((entry) => {
-          if (entry.kind === 'elsewhere') {
-            return (
-              <CrossAppLink
-                key={entry.key}
-                to={entry.to}
-                className={cn(row, rowLink)}
-                fallback={
-                  <span className={cn(row, 'text-muted-foreground')}>{t(`foot.${entry.key}`)}</span>
-                }
-              >
-                {t(`foot.${entry.key}`)}
-                <ArrowUpRightIcon className="text-muted-foreground ml-auto size-3.5" />
-              </CrossAppLink>
-            )
-          }
           const href = footHref(entry, locale)
           return (
             <Destination
@@ -278,6 +262,7 @@ export function Sidebar() {
                 />
               ) : null}
               {entry.key === 'settings' ? <SettingsIcon className="size-3.5 shrink-0" /> : null}
+              {entry.key === 'library' ? <BookOpenIcon className="size-3.5 shrink-0" /> : null}
               {t(`foot.${entry.key}`)}
               {entry.key === 'pending' && waiting > 0 ? (
                 <span className="bg-foreground text-background ml-auto rounded-full px-1.5 text-xs">

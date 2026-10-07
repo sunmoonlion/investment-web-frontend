@@ -58,6 +58,7 @@ beforeAll(async () => {
           file: 'sessions-p1.json',
         },
         { method: 'GET', path: '/api/workbench/sessions', file: 'sessions.json' },
+        { method: 'GET', path: '/api/workbench/library/dossier:t1', file: 'dossier.json' },
         {
           method: 'POST',
           path: `/api/workbench/tasks/${TASK}/cancel`,
@@ -71,6 +72,7 @@ beforeAll(async () => {
       'projects.json': { contract_version: 2, projects: [{ id: 'p1', title: '恒瑞医药研究' }] },
       'sessions.json': { sessions: ['all'] },
       'sessions-p1.json': { sessions: ['of p1'] },
+      'dossier.json': { item: { id: 'dossier:t1' } },
       'stream.json': [
         { cursor: 1, type: 'turn/requested', payload: { text: '你好' } },
         { cursor: 2, type: 'item/completed', payload: { item: { type: 'agentMessage' } } },
@@ -176,6 +178,13 @@ describe('preview: samples', () => {
     expect(await of('?project_id=p1')).toBe('of p1')
     // 没录过的参数组合：给不带参数的那一份
     expect(await of('?project_id=p2')).toBe('all')
+  })
+
+  it('matches a path the browser sent encoded, as the real backend does', async () => {
+    // 页面把 dossier:t1 编成 dossier%3At1；真后端解码后再路由，样例也按解码后的路径找
+    const got = await fetch(`${base}/api/workbench/library/dossier%3At1`)
+    expect(got.status).toBe(200)
+    expect(await got.json()).toEqual({ item: { id: 'dossier:t1' } })
   })
 
   it('answers a recorded change with its recorded status', async () => {
