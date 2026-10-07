@@ -20,11 +20,13 @@ export function ExpertResults({
   run,
   clock,
   beat,
+  live: stream,
 }: {
   task: string
   run: Run
   clock: number
   beat: number
+  live: boolean
 }) {
   const t = useTranslations('results')
   const te = useTranslations('expert')
@@ -41,7 +43,7 @@ export function ExpertResults({
         : sheet.state === 'FAILED'
           ? 'failed'
           : 'running'
-  const [open, setOpen] = useAutoOpen(ended)
+  const [open, setOpen] = useAutoOpen(ended, stream)
   // 做完了才取底稿；开着边栏时每来一条事件也重取，做完的步骤随时进来
   const dossier = useDossier(task, open || ended ? beat : null)
   const answer = dossier.data ? answerLine(dossier.data) : null

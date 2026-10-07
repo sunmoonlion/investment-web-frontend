@@ -176,7 +176,7 @@ export function ChatScreen({
             </Button>
           </Composer>
         </div>
-        <ChatResults turns={turns} />
+        <ChatResults turns={turns} live={state === 'live'} />
       </div>
 
       <ProjectPicker

@@ -25,7 +25,7 @@ import { ReviewPanel } from './review-panel'
 // 顶上一直摆着：做到第几步、花了多少、现在在干什么、为什么、没有卡住；随时能停。
 export function ExpertRunScreen({ task }: { task: string }) {
   const t = useTranslations('expert')
-  const { events } = useConversationEvents()
+  const { events, state } = useConversationEvents()
   const clock = useClock()
   // 每来一条事件就重取一次：步骤的状态、花了多少、现在在干什么都跟着变
   const beat = events.length
@@ -104,7 +104,13 @@ export function ExpertRunScreen({ task }: { task: string }) {
             />
           ) : null}
         </div>
-        <ExpertResults task={task} run={run.data} clock={clock} beat={beat} />
+        <ExpertResults
+          task={task}
+          run={run.data}
+          clock={clock}
+          beat={beat}
+          live={state === 'live'}
+        />
       </div>
 
       <Dialog open={confirming} onOpenChange={setConfirming}>

@@ -163,7 +163,7 @@ export function WorkScreen({
             </Button>
           </Composer>
         </div>
-        <WorkResults line={line}>
+        <WorkResults line={line} live={state === 'live'}>
           <ChangesPanel files={byFile(line.changes)} directory={directory} />
         </WorkResults>
       </div>

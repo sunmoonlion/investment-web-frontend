@@ -22,6 +22,20 @@ function Harness({ done, filed }: { done: boolean; filed?: string | null }) {
   )
 }
 
+function Armed({ done, armed }: { done: boolean; armed: boolean }) {
+  const [open, setOpen] = useAutoOpen(done, armed)
+  return (
+    <ResultsPanel
+      summary={null}
+      status={done ? 'done' : 'running'}
+      open={open}
+      onOpenChange={setOpen}
+    >
+      <p>里面的内容</p>
+    </ResultsPanel>
+  )
+}
+
 function mount(ui: React.ReactElement) {
   return render(
     <NextIntlClientProvider locale="zh-CN" messages={messages}>
@@ -43,6 +57,19 @@ describe('结果边栏', () => {
     )
     expect(screen.getByText('里面的内容')).toBeInTheDocument()
     fireEvent.click(screen.getByRole('button', { name: '收起结果' }))
+    expect(screen.getByRole('complementary', { name: '结果' })).toHaveAttribute(
+      'data-state',
+      'collapsed',
+    )
+  })
+
+  it('没接上实时流时的「做完」不算：历史一次装进来不自动弹开', () => {
+    const view = mount(<Armed done={false} armed={false} />)
+    view.rerender(
+      <NextIntlClientProvider locale="zh-CN" messages={messages}>
+        <Armed done armed={false} />
+      </NextIntlClientProvider>,
+    )
     expect(screen.getByRole('complementary', { name: '结果' })).toHaveAttribute(
       'data-state',
       'collapsed',

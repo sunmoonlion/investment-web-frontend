@@ -9,7 +9,7 @@ import { useAutoOpen } from '@/lib/workbench/use-auto-open'
 import { lastAnswer, type TurnView } from '../model/thread'
 
 // 聊天页右边的结果边栏：最后一次回答、这段对话查过的数据、没有数据的公司。答完那一刻自动展开。
-export function ChatResults({ turns }: { turns: TurnView[] }) {
+export function ChatResults({ turns, live: stream }: { turns: TurnView[]; live: boolean }) {
   const t = useTranslations('results')
   const tc = useTranslations('conversation')
   const live = turns.some((turn) => turn.status === 'queued' || turn.status === 'running')
@@ -24,7 +24,7 @@ export function ChatResults({ turns }: { turns: TurnView[] }) {
           ? 'failed'
           : 'done'
   const answer = lastAnswer(turns)
-  const [open, setOpen] = useAutoOpen(!live && answer !== null)
+  const [open, setOpen] = useAutoOpen(!live && answer !== null, stream)
   const data = turns.flatMap((turn) =>
     turn.steps.flatMap((step) =>
       step.kind === 'data' && !step.failed
