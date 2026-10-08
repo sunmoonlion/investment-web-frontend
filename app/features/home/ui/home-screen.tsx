@@ -7,6 +7,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
 import { ProjectPicker } from '@/components/workbench/project-picker'
+import { ConnectComputerLink } from '@/components/workbench/connect-computer'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { useWorkbench } from '@/lib/workbench/context'
@@ -26,6 +27,7 @@ import { blockerOf, projectIsRequired } from '../model/start'
 
 export function HomeScreen() {
   const t = useTranslations('home')
+  const connect = useTranslations('computerConnection')
   const router = useRouter()
   const { locale } = useWorkbench()
   const query = useSearchParams()
@@ -35,7 +37,7 @@ export function HomeScreen() {
   const given = query.get('project')
 
   const projects = useProjects()
-  const machines = useMachines()
+  const machines = useMachines(5000)
   const sandboxes = useSandboxes()
   const pending = usePending()
   const conversations = useConversations()
@@ -52,7 +54,7 @@ export function HomeScreen() {
     text,
     project,
     sandboxes: sandboxes.data?.length,
-    machines: machines.data,
+    machines: machines.isSuccess ? machines.data : undefined,
   })
   const names = new Map((projects.data ?? []).map((each) => [each.id, each.title]))
   const held = start.isError && (start.error as WorkbenchError).code === 'project_held_by_expert'
@@ -87,6 +89,13 @@ export function HomeScreen() {
   return (
     <div className="h-full overflow-y-auto">
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-6 pt-[12vh] pb-16">
+        {/* 通用首页欢迎卡；明确选择聊天或从项目进入聊天时不提示接电脑。 */}
+        {asked === null && !given && machines.isSuccess && machines.data.length === 0 ? (
+          <section className="space-y-3 rounded-xl border p-5" aria-label={connect('welcome')}>
+            <p>{connect('welcome')}</p>
+            <ConnectComputerLink />
+          </section>
+        ) : null}
         <h1 className="text-center text-2xl font-semibold tracking-tight">{t('title')}</h1>
 
         <section aria-label={t('title')}>
@@ -163,6 +172,7 @@ export function HomeScreen() {
           {said ? (
             <p className="text-muted-foreground mt-2 text-center text-[13px]">
               {t(`blocker.${said}`)}
+              {said === 'noMachine' ? <ConnectComputerLink className="ml-2" /> : null}
               {said === 'noSandbox' && isBuilt('settings') ? (
                 <>
                   {' '}

@@ -8,9 +8,10 @@ import { useState, useSyncExternalStore } from 'react'
 
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
+import { ConnectComputerLink } from '@/components/workbench/connect-computer'
 import { useWorkbench } from '@/lib/workbench/context'
 import { WorkbenchError } from '@/lib/workbench/http'
-import { useProjectDetail, useSandboxes } from '@/lib/workbench/queries'
+import { useMachines, useProjectDetail, useSandboxes } from '@/lib/workbench/queries'
 import { routes } from '@/lib/workbench/routes'
 import { cn } from '@/lib/utils'
 
@@ -40,6 +41,7 @@ export function AskExpertScreen({
   const packs = usePacks()
   const project = useProjectDetail(projectId)
   const sandboxes = useSandboxes()
+  const machines = useMachines()
   const said = useSaid(from)
   const ask = useAsk()
 
@@ -62,6 +64,7 @@ export function AskExpertScreen({
     question,
     project: project.data,
     sandboxes: sandboxes.data?.length,
+    machines: machines.isSuccess ? machines.data.length : undefined,
   })
   const busyAt = busyConversation(project.data)
   const seen = sees(project.data, from)
@@ -232,7 +235,7 @@ export function AskExpertScreen({
           <div className="shrink-0 text-right">
             {blocker && blocker !== 'noExpert' && blocker !== 'noQuestion' ? (
               <p className="mb-1.5 text-[13px] text-amber-700 dark:text-amber-400">
-                {t(`blocker.${blocker}`)}{' '}
+                {t(`blocker.${blocker}`)} {blocker === 'noMachine' ? <ConnectComputerLink /> : null}
                 {blocker === 'busy' && busyAt ? (
                   <Link
                     href={routes.projectConversation(locale, projectId, busyAt)}

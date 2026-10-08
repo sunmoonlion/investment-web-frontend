@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { fetchAgentDownload } from '../api/client'
-import { installCommands, startCommands } from '../model/onboarding'
+import { installCommands } from '../model/onboarding'
 import { IssuedCommand } from './agent-setup'
 
 export function AgentDownloadPanel() {
@@ -15,7 +15,11 @@ export function AgentDownloadPanel() {
   })
   const release = query.data?.download
   return (
-    <section className="space-y-3 rounded-xl border p-5" aria-label={t('downloadTitle')}>
+    <section
+      id="agent-download"
+      className="space-y-3 rounded-xl border p-5"
+      aria-label={t('downloadTitle')}
+    >
       <h2 className="text-base font-semibold">{t('downloadTitle')}</h2>
       {query.isPending ? (
         <p role="status">{t('loading')}</p>
@@ -51,7 +55,7 @@ export function AgentDownloadPanel() {
             <dt>{t('manifestSha')}</dt>
             <dd className="font-mono">{release.manifest_sha256}</dd>
           </dl>
-          <details>
+          <details id="agent-install" open>
             <summary className="cursor-pointer">{t('installTitle')}</summary>
             <p className="mt-2 text-sm">{t('installHint')}</p>
             <IssuedCommand command={installCommands(release)} />
@@ -59,11 +63,6 @@ export function AgentDownloadPanel() {
         </>
       )}
       <p className="text-muted-foreground text-xs">{t('developmentOnly')}</p>
-      <details>
-        <summary className="cursor-pointer">{t('startTitle')}</summary>
-        <p className="mt-2 text-sm">{t('startHint')}</p>
-        <IssuedCommand command={startCommands} />
-      </details>
     </section>
   )
 }

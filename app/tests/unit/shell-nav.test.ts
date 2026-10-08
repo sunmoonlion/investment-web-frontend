@@ -72,6 +72,7 @@ describe('地址', () => {
       `/zh-CN/workbench/projects/${P1}/c/${C1}`,
     )
     expect(routes.home('zh-CN')).toBe('/zh-CN/workbench')
+    expect(routes.home('zh-CN', 'chat')).toBe('/zh-CN/workbench?mode=chat')
     expect(routes.home('zh-CN', 'expert')).toBe('/zh-CN/workbench?mode=expert')
     expect(routes.askExpert('en', P1, C1)).toBe(
       `/en/workbench/projects/${P1}/expert/new?from=${C1}`,
@@ -160,5 +161,10 @@ describe('首页：现在能不能开始', () => {
       const page = mode === 'work' ? 'projectConversation' : 'askExpert'
       if (!isBuilt(page)) expect(blockerOf({ ...ready, mode })).toBe('notBuilt')
     }
+  })
+  it('工作/专家缺电脑时优先引导接入；聊天只看云端沙箱', () => {
+    expect(blockerOf({ ...ready, sandboxes: 0, mode: 'work' })).toBe('noMachine')
+    expect(blockerOf({ ...ready, sandboxes: 0, mode: 'expert' })).toBe('noMachine')
+    expect(blockerOf({ ...ready, sandboxes: 0, mode: 'chat' })).toBe('noSandbox')
   })
 })

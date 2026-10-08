@@ -126,7 +126,18 @@ describe('项目列表', () => {
     page(<ProjectListScreen />)
     expect(await screen.findByText('还没有工作区')).toBeInTheDocument()
     expect(screen.getByText(/还没有接入本地代理/)).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: '新建项目' })).toBeDisabled()
+    expect(screen.getByRole('link', { name: '接入电脑' })).toHaveAttribute(
+      'href',
+      '/zh-CN/workbench/machines',
+    )
+    fireEvent.click(screen.getByRole('button', { name: '新建项目' }))
+    const dialog = within(screen.getByRole('dialog'))
+    expect(await dialog.findByText('先接入电脑并选择项目目录，再创建项目。')).toBeVisible()
+    expect(dialog.getByRole('link', { name: '接入电脑' })).toHaveAttribute(
+      'href',
+      '/zh-CN/workbench/machines',
+    )
+    expect(calls).toHaveLength(0)
   })
 })
 

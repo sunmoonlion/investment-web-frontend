@@ -53,9 +53,10 @@ export function usePending() {
   })
 }
 
-export function useMachines() {
+export function useMachines(refetchInterval: number | false = false) {
   return useQuery({
     queryKey: workbenchKeys.machines,
+    refetchInterval,
     queryFn: async () =>
       (await getJson(machinesSchema, '/api/workbench/environments')).environments,
   })

@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
+import { ConnectComputerLink } from '@/components/workbench/connect-computer'
 import {
   Dialog,
   DialogContent,
@@ -48,7 +49,7 @@ export function NewProjectDialog({
   const failed = create.isError ? (create.error as WorkbenchError).code : null
 
   async function submit() {
-    if (!machine || !workspace || wrong) return
+    if (!machines.isSuccess || !machine || !workspace || wrong) return
     try {
       const made = await create.mutateAsync({
         environment_id: machine,
@@ -69,6 +70,27 @@ export function NewProjectDialog({
           <DialogTitle>{t('title')}</DialogTitle>
         </DialogHeader>
         <div className="space-y-4">
+          {machines.isPending ? <p role="status">{t('loadingMachines')}</p> : null}
+          {machines.isError ? (
+            <div role="alert">
+              <p>{t('machinesFailed')}</p>
+              <button type="button" className="underline" onClick={() => void machines.refetch()}>
+                {t('retryMachines')}
+              </button>
+            </div>
+          ) : null}
+          {machines.isSuccess && all.length === 0 ? (
+            <div className="space-y-3">
+              <p>{t('noMachine')}</p>
+              <ConnectComputerLink />
+            </div>
+          ) : null}
+          {machines.isSuccess && machine && roots.length === 0 ? (
+            <div className="space-y-3">
+              <p>{t('noRoots')}</p>
+              <ConnectComputerLink />
+            </div>
+          ) : null}
           {all.length > 1 ? (
             <div>
               <span className={label}>{t('machine')}</span>
@@ -170,7 +192,9 @@ export function NewProjectDialog({
             {t('cancel')}
           </Button>
           <Button
-            disabled={!machine || !workspace || wrong !== null || create.isPending}
+            disabled={
+              !machines.isSuccess || !machine || !workspace || wrong !== null || create.isPending
+            }
             onClick={() => void submit()}
           >
             {create.isPending ? t('submitting') : t('submit')}

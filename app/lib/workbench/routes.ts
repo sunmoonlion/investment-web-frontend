@@ -9,8 +9,7 @@ function at(locale: string, ...parts: string[]) {
 }
 
 export const routes = {
-  home: (locale: string, mode?: Mode) =>
-    mode && mode !== 'chat' ? `${at(locale)}?mode=${mode}` : at(locale),
+  home: (locale: string, mode?: Mode) => (mode ? `${at(locale)}?mode=${mode}` : at(locale)),
   chat: (locale: string, conversation: string) => at(locale, 'chat', conversation),
   projects: (locale: string) => at(locale, 'projects'),
   project: (locale: string, project: string) => at(locale, 'projects', project),

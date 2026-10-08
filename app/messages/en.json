@@ -157,10 +157,10 @@
       "copyManual": "Automatic copying is unavailable. The text is selected; press Ctrl+C.",
       "agentTokenTitle": "Local initialization (enter token separately)",
       "agentTokenHint": "Run this command in local PowerShell, then paste the token into the hidden prompt.",
-      "lead": "Register your model key and choose defaults for new conversations. Install agents and manage sandboxes in My machines.",
-      "machineEntry": "Machines and sandbox",
-      "machineEntryHint": "Downloads, sandbox setup and agent tokens are all in My machines.",
-      "toMachines": "Go to My machines"
+      "lead": "Register your model key and choose defaults for new conversations. Install agents and manage sandboxes in My computers.",
+      "machineEntry": "Computers and sandbox",
+      "machineEntryHint": "Downloads, sandbox setup and agent tokens are all in My computers.",
+      "toMachines": "Connect computer"
     }
   },
   "shell": {
@@ -175,7 +175,7 @@
     "new": "New",
     "workspace": "Workspace",
     "loading": "Loading…",
-    "noWorkspace": "No workspace yet. Install the local agent on your machine and add a folder; it will show up here.",
+    "noWorkspace": "No workspace yet.",
     "noProjects": "No projects in this workspace yet",
     "offline": "offline",
     "recent": "Recent",
@@ -185,14 +185,14 @@
     "notBuilt": "This page is still being built",
     "foot": {
       "pending": "Waiting for me",
-      "machines": "My machines",
+      "machines": "My computers",
       "settings": "Settings",
       "library": "Library"
     },
     "machine": {
-      "online": "A machine is online",
-      "offline": "No machine is online",
-      "none": "No machine registered"
+      "online": "A computer is online",
+      "offline": "No computer is online",
+      "none": "No computer registered"
     },
     "allProjects": "All"
   },
@@ -238,7 +238,7 @@
     "blocker": {
       "noSandbox": "No sandbox available yet: register a model key and start the sandbox first.",
       "needProject": "Choose a project first.",
-      "noMachine": "No machine registered. Work and Expert read and write the project on your machine: install the local agent first. Chat is not affected.",
+      "noMachine": "No computer registered. Connect one before starting Work or Expert.",
       "machineOffline": "The machine holding this project is offline. Start the local agent on it first.",
       "notBuilt": "This page is still being built; it will work here once it is done."
     },
@@ -535,7 +535,8 @@
     "dossier": "Open dossier",
     "loading": "Loading…",
     "pickTitle": "Ask this expert in which project",
-    "pickBody": "The expert takes over the whole project: its files, conversations and dossiers."
+    "pickBody": "The expert takes over the whole project: its files, conversations and dossiers.",
+    "noMachine": "No computer registered. Connect one before starting Work or Expert."
   },
   "askExpert": {
     "title": "Ask an expert",
@@ -568,7 +569,8 @@
       "noQuestion": "Write what should be solved first.",
       "noSandbox": "No sandbox available yet: register a model key and start the sandbox first.",
       "offline": "Your machine is offline; the expert needs to work on it.",
-      "busy": "The expert is still working on something in this project."
+      "busy": "The expert is still working on something in this project.",
+      "noMachine": "No computer registered. Connect one before starting Work or Expert."
     },
     "toBusy": "Take a look",
     "toSettings": "Go to settings",
@@ -610,7 +612,7 @@
       "noWorkspace": {
         "title": "No workspace yet",
         "lead": "A workspace is a root folder on your machine. Having none usually has one of these three causes:",
-        "sandbox": "No sandbox started yet: register a model key and start the sandbox in Settings.",
+        "sandbox": "No sandbox yet: register a model key in Settings, then start the sandbox in My computers.",
         "agent": "No local agent connected yet: install the local agent on your machine and add a folder in it.",
         "account": "Signed in with a different account: the local agent and the web page must use the same account.",
         "note": "Workspaces are added and removed in the local agent on your machine, not on the web."
@@ -638,7 +640,12 @@
         "root_outside_whitelist": "This workspace is not whitelisted on that machine.",
         "preview_no_sample": "The preview is read-only.",
         "other": "Not created. Please try again."
-      }
+      },
+      "loadingMachines": "Loading computers and directories…",
+      "machinesFailed": "Could not load computers. Try reloading; no project was created.",
+      "noMachine": "Connect a computer and choose a directory before creating a project.",
+      "noRoots": "This computer has no shared directories. Add and select directories in the local tray, save, then reopen this dialog.",
+      "retryMachines": "Reload computers"
     },
     "page": {
       "lead": "A project is a folder on your computer, plus what you chatted about, worked on, and what experts handed back around it.",
@@ -719,10 +726,10 @@
     "hideDetail": "Hide the detail"
   },
   "machines": {
-    "title": "My machines",
+    "title": "My computers",
     "lead": "Work and Expert read and write projects on your own computer. A local agent runs there and lets us touch only the folders you whitelisted.",
-    "list": "Connected machines",
-    "none": "No machine connected yet. Follow the three steps below.",
+    "list": "Registered computers",
+    "none": "No computer connected yet. Follow the five steps above.",
     "online": "online",
     "offline": "offline",
     "offlineNote": "The agent is offline. Check the reason in the local tray and start it; if logon startup is enabled it starts after login.",
@@ -744,14 +751,18 @@
       "note": "These can only be changed on that machine. The web page shows them and cannot change them; however much we allow, it cannot go beyond them."
     },
     "guide": {
-      "title": "How to connect a machine",
-      "step1": "Register a model key in Settings, then create your sandbox and obtain a token here.",
-      "step2": "Download and install the agent, initialize and start locally.",
-      "step3": "In the local agent, add the folders you want to use to the whitelist. One folder is one workspace.",
+      "title": "Connect a computer: five steps",
+      "download": "Download the package",
+      "install": "Verify and install",
+      "token": "Obtain an agent token",
+      "roots": "Choose project directories",
+      "online": "Confirm the computer is online",
       "done": "done",
       "todo": "not yet",
-      "toSettings": "Go to settings",
-      "download": "Download availability follows the release configuration shown on this page."
+      "confirmDownload": "I downloaded and verified the ZIP hash",
+      "confirmInstall": "I completed installation on this computer",
+      "evidence": "Confirm the first two steps yourself; checks last only on this page. The website cannot inspect local installation. The last three use token issuance and computer reports; issuance does not mean the token was copied. A lost token requires an explicit replacement.",
+      "onlineHint": "Status updates every 5 seconds. When a computer with selected directories is online, return to Work or Expert."
     },
     "loading": "Loading…",
     "setup": {
@@ -767,7 +778,7 @@
       "installHint": "Save the ZIP as windows-x64.zip in Downloads and run this in ordinary PowerShell. Verify the source and hashes first. An existing destination stops installation. Do not disable system protection if blocked.",
       "developmentOnly": "Development-site package. Clean Windows and real reboot acceptance are still pending before public release.",
       "startTitle": "Choose directories and start after initialization",
-      "startHint": "Obtain a token below and initialize first. Then open the tray settings, add and select project directories, save and start. Logon startup is an explicit tray option.",
+      "startHint": "Complete local initialization above, then open tray settings, add and select project directories, save and start. Logon startup is an explicit tray option.",
       "oneMachine": "Only one agent may be online per account. Connecting another replaces the existing connection.",
       "expires": "Current agent token expires: {value}",
       "unknownExpiry": "Not issued or a legacy token with no recorded expiry",
@@ -782,8 +793,11 @@
       "clearToken": "Clear token from this page",
       "tokenCopied": "Copied. Paste only into the hidden local initialization prompt; clear the clipboard afterwards.",
       "tokenMemory": "Shown on this page once, cleared after five minutes, navigation or refresh. Do not paste into chat or command arguments. Copying uses the system clipboard; avoid cross-device clipboard synchronization.",
-      "afterInit": "The command prompts for hidden token input on your computer. Then follow “Choose directories and start after initialization” above."
-    }
+      "afterInit": "The command prompts for hidden token input locally. Then follow the next step, “Choose directories and start after initialization”.",
+      "tokenTitle": "Agent token and cloud sandbox",
+      "toSettings": "Register a model key"
+    },
+    "loadFailed": "Computer status could not be loaded; online status is unknown."
   },
   "results": {
     "title": "Results",
@@ -857,5 +871,9 @@
       "content": "Content",
       "sha": "Checksum {sha}…"
     }
+  },
+  "computerConnection": {
+    "action": "Connect computer",
+    "welcome": "First step: connect your computer so Work and Expert can read and write your files."
   }
 }

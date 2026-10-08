@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { AgentSetup } from '@/features/machines/ui/agent-setup'
 import { AgentDownloadPanel } from '@/features/machines/ui/agent-download'
+import { WorkbenchProvider } from '@/lib/workbench/context'
 import messages from '@/messages/zh-CN.json'
 
 const token = 'fixture-only-agent-token-not-a-credential'
@@ -22,7 +23,11 @@ function page(children: React.ReactNode) {
     client,
     ...render(
       <NextIntlClientProvider locale="zh-CN" messages={messages} timeZone="Asia/Shanghai">
-        <QueryClientProvider client={client}>{children}</QueryClientProvider>
+        <QueryClientProvider client={client}>
+          <WorkbenchProvider csrfToken="csrf-fixture" locale="zh-CN">
+            {children}
+          </WorkbenchProvider>
+        </QueryClientProvider>
       </NextIntlClientProvider>,
     ),
   }

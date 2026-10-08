@@ -7,8 +7,9 @@ import { useState } from 'react'
 
 import { Button, buttonVariants } from '@/components/ui/button'
 import { ProjectPicker } from '@/components/workbench/project-picker'
+import { ConnectComputerLink } from '@/components/workbench/connect-computer'
 import { useWorkbench } from '@/lib/workbench/context'
-import { useProjects } from '@/lib/workbench/queries'
+import { useMachines, useProjects } from '@/lib/workbench/queries'
 import { isBuilt, routes } from '@/lib/workbench/routes'
 import { cn } from '@/lib/utils'
 
@@ -26,6 +27,8 @@ export function ExpertHomeScreen() {
   const overview = useOverview()
   const packs = usePacks()
   const projects = useProjects()
+  const machines = useMachines()
+  const noComputer = machines.isSuccess && machines.data.length === 0
   const [asking, setAsking] = useState<string | null>(null)
   const names = new Map((projects.data ?? []).map((each) => [each.id, each.title]))
   const data = overview.data
@@ -37,6 +40,13 @@ export function ExpertHomeScreen() {
           <h1 className="text-2xl font-semibold tracking-tight">{t('title')}</h1>
           <p className="text-muted-foreground mt-1 text-sm">{t('lead')}</p>
         </header>
+
+        {noComputer ? (
+          <section className="space-y-3 rounded-xl border p-5">
+            <p>{t('noMachine')}</p>
+            <ConnectComputerLink />
+          </section>
+        ) : null}
 
         {data && data.waiting.length > 0 ? (
           <section className={section} aria-label={t('waiting')}>
@@ -140,7 +150,7 @@ export function ExpertHomeScreen() {
                       {t('stepsCount', { n: pack.steps.length })} ·{' '}
                       {pack.uses_our_data ? t('usesData') : t('noData')}
                     </span>
-                    <Button size="sm" onClick={() => setAsking(pack.id)}>
+                    <Button size="sm" disabled={noComputer} onClick={() => setAsking(pack.id)}>
                       {t('ask')}
                     </Button>
                   </div>

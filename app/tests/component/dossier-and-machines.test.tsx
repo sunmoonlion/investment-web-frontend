@@ -256,21 +256,30 @@ describe('底稿页', () => {
   })
 })
 
-describe('我的机器', () => {
-  it('三步各做到了没有：看已有的清单', () => {
+describe('我的电脑', () => {
+  it('五步：用户确认安装，服务端报告令牌、目录和在线状态', () => {
     const machine = (roots: string[]) =>
       ({ id: 'x', name: 'm', status: 'online', roots }) as Machine
-    expect(progress({ sandboxes: 0, machines: [] })).toEqual({
-      sandbox: false,
-      agent: false,
+    const input = { downloaded: false, installed: false, identityIssued: false, machines: [] }
+    expect(progress(input)).toEqual({
+      download: false,
+      install: false,
+      token: false,
       roots: false,
+      online: false,
     })
-    expect(progress({ sandboxes: 1, machines: [machine([])] })).toEqual({
-      sandbox: true,
-      agent: true,
+    expect(progress({ ...input, identityIssued: true, machines: [machine([])] })).toEqual({
+      download: false,
+      install: false,
+      token: true,
       roots: false,
+      online: false,
     })
-    expect(progress({ sandboxes: 1, machines: [machine(['/r'])] }).roots).toBe(true)
+    expect(progress({ ...input, machines: [machine(['/r'])] }).online).toBe(true)
+    expect(
+      progress({ ...input, machines: [{ ...machine(['/r']), status: 'offline' }, machine([])] })
+        .online,
+    ).toBe(false)
   })
 
   it('接入的机器：在线、版本、白名单里的目录、它自己定的上限', async () => {
@@ -280,7 +289,11 @@ describe('我的机器', () => {
     expect(screen.getByText('/home/demo/research')).toBeInTheDocument()
     expect(screen.getByText(/只能改白名单目录里的文件；不许联网/)).toBeInTheDocument()
     expect(screen.getByText(/这些只能在那台机器上改/)).toBeInTheDocument()
-    await waitFor(() => expect(screen.getAllByLabelText('已完成')).toHaveLength(3))
+    // 此夹具没有令牌状态接口，不能把下载、安装或令牌虚报为已完成。
+    await waitFor(() => expect(screen.getAllByLabelText('已完成')).toHaveLength(2))
+    expect(screen.getAllByRole('checkbox').every((box) => !(box as HTMLInputElement).checked)).toBe(
+      true,
+    )
   })
 
   it('机器离线：写明本地代理没在运行', async () => {
@@ -289,11 +302,11 @@ describe('我的机器', () => {
     expect(await screen.findByText(/代理当前离线。请在本机托盘查看原因并启动/)).toBeVisible()
   })
 
-  it('还没有机器：照三步做', async () => {
+  it('还没有电脑：照五步做', async () => {
     scenario = 'empty'
     page(<MachinesScreen />)
-    expect(await screen.findByText('还没有机器接入。照下面三步做。')).toBeInTheDocument()
-    expect(screen.getAllByLabelText('还没做').length).toBeGreaterThanOrEqual(2)
+    expect(await screen.findByText('还没有电脑接入。请按上面的五步操作。')).toBeInTheDocument()
+    expect(screen.getAllByLabelText('还没做')).toHaveLength(5)
   })
 })
 
@@ -301,7 +314,7 @@ describe('设置', () => {
   it('三块：模型 key、我的沙箱、新对话的默认。给用户看的字里没有「会话」', async () => {
     page(<SettingsScreen />)
     expect(await screen.findByRole('heading', { name: '设置' })).toBeInTheDocument()
-    for (const name of ['模型 key', '机器与沙箱', '新对话的默认']) {
+    for (const name of ['模型 key', '电脑与沙箱', '新对话的默认']) {
       expect(await screen.findByRole('heading', { name })).toBeInTheDocument()
     }
     expect(document.body.textContent).not.toContain('会话')

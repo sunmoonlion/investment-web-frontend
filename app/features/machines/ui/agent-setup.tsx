@@ -1,26 +1,22 @@
 'use client'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useFormatter, useTranslations } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+import { useWorkbench } from '@/lib/workbench/context'
+import { routes } from '@/lib/workbench/routes'
 import type { ProvisionedSandbox } from '@/contracts/workbench-settings'
-import {
-  deprovisionSandbox,
-  provisionSandbox,
-  provisionedSandboxStatus,
-  rotateRelayIdentity,
-} from '../api/client'
+import { deprovisionSandbox, provisionSandbox, rotateRelayIdentity } from '../api/client'
+import { useAgentStatus } from '../api/status'
 import { initCommand } from '../model/onboarding'
 
 export function AgentSetup({ csrfToken }: { csrfToken: string }) {
   const t = useTranslations('workbench.settings')
   const u = useTranslations('machines.setup')
   const format = useFormatter()
+  const { locale } = useWorkbench()
   const queryClient = useQueryClient()
-  const status = useQuery({
-    queryKey: ['wb-provisioned'],
-    queryFn: () => provisionedSandboxStatus(),
-    refetchInterval: 5000,
-  })
+  const status = useAgentStatus()
   const [issued, setIssued] = useState<{
     url: string
     user: string
@@ -128,11 +124,14 @@ export function AgentSetup({ csrfToken }: { csrfToken: string }) {
   const date = (value: string) =>
     format.dateTime(new Date(value), { dateStyle: 'medium', timeStyle: 'short' })
   return (
-    <section className="rounded-xl border p-5" aria-labelledby="settings-sandbox">
+    <section id="agent-token" className="rounded-xl border p-5" aria-labelledby="settings-sandbox">
       <h2 id="settings-sandbox" className="text-base font-semibold">
-        {t('sandbox')}
+        {u('tokenTitle')}
       </h2>
       <p className="text-muted-foreground mt-1 text-sm">{t('sandboxHint')}</p>
+      <Link href={routes.settings(locale)} className="text-sm underline">
+        {u('toSettings')}
+      </Link>
       <p className="mt-2 text-sm">{u('oneMachine')}</p>
       <p className="text-muted-foreground text-sm">
         {u('expires', { value: expiry ? date(expiry) : u('unknownExpiry') })}

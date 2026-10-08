@@ -19,10 +19,10 @@ export function blockerOf(input: {
   machines: Machine[] | undefined
 }): Blocker | null {
   const { mode, text, project, sandboxes, machines } = input
+  if (mode !== 'chat' && machines?.length === 0) return 'noMachine'
   if (sandboxes === 0) return 'noSandbox'
   if (mode !== 'chat') {
     if (!isBuilt(mode === 'work' ? 'projectConversation' : 'askExpert')) return 'notBuilt'
-    if (machines && machines.length === 0) return 'noMachine'
     if (!project) return 'needProject'
     if (!project.online) return 'machineOffline'
   }

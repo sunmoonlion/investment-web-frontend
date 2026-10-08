@@ -6,6 +6,7 @@ export type AskBlocker =
   | 'noExpert' // 还没选哪位专家
   | 'noQuestion'
   | 'noSandbox'
+  | 'noMachine'
   | 'offline' // 项目所在的机器不在线：专家要在上面干活
   | 'busy' // 这个项目里有一件事专家还在做
 
@@ -14,8 +15,10 @@ export function askBlocker(input: {
   question: string
   project: ProjectDetail | undefined
   sandboxes: number | undefined
+  machines?: number
 }): AskBlocker | null {
   const { pack, question, project, sandboxes } = input
+  if (input.machines === 0) return 'noMachine'
   if (sandboxes === 0) return 'noSandbox'
   if (project && !project.project.online) return 'offline'
   if (project?.active_task_id) return 'busy'

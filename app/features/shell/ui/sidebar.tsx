@@ -250,7 +250,7 @@ export function Sidebar() {
               href={href}
               active={href === pathname && entry.key !== 'pending'}
             >
-              {entry.key === 'machines' ? (
+              {entry.key === 'machines' && machines.isSuccess ? (
                 <span
                   className={cn(
                     'size-2 shrink-0 rounded-full',
@@ -263,7 +263,14 @@ export function Sidebar() {
               ) : null}
               {entry.key === 'settings' ? <SettingsIcon className="size-3.5 shrink-0" /> : null}
               {entry.key === 'library' ? <BookOpenIcon className="size-3.5 shrink-0" /> : null}
-              {t(`foot.${entry.key}`)}
+              <span>
+                {t(`foot.${entry.key}`)}
+                {entry.key === 'machines' && machines.isSuccess ? (
+                  <span className="text-muted-foreground block text-xs">
+                    {t(`machine.${light}`)}
+                  </span>
+                ) : null}
+              </span>
               {entry.key === 'pending' && waiting > 0 ? (
                 <span className="bg-foreground text-background ml-auto rounded-full px-1.5 text-xs">
                   {waiting}

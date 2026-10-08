@@ -2,30 +2,40 @@
 
 import { CheckIcon, CircleIcon } from 'lucide-react'
 import { useFormatter, useTranslations } from 'next-intl'
-import Link from 'next/link'
+import { useState } from 'react'
 
 import { useWorkbench } from '@/lib/workbench/context'
-import { useMachines, useSandboxes } from '@/lib/workbench/queries'
-import { routes } from '@/lib/workbench/routes'
+import { useMachines } from '@/lib/workbench/queries'
 import { cn } from '@/lib/utils'
 
 import { isOnline, progress } from '../model/guide'
-import { AgentSetup } from './agent-setup'
+import { AgentSetup, IssuedCommand } from './agent-setup'
 import { AgentDownloadPanel } from './agent-download'
+import { useAgentStatus } from '../api/status'
+import { startCommands } from '../model/onboarding'
 
-// 我的机器：接入了哪些、各自在不在线、白名单里有哪些目录、它自己定的上限；怎么接入一台。
+// 我的电脑：按接入顺序引导，并显示实际登记、目录和在线状态。
 // 白名单与上限只能在那台机器上改：这一页只显示。
 export function MachinesScreen() {
   const t = useTranslations('machines')
   const format = useFormatter()
-  const { locale, csrfToken } = useWorkbench()
-  const machines = useMachines()
-  const sandboxes = useSandboxes()
-  const done = progress({ sandboxes: sandboxes.data?.length, machines: machines.data })
+  const { csrfToken } = useWorkbench()
+  const machines = useMachines(5000)
+  const status = useAgentStatus()
+  const [downloaded, setDownloaded] = useState(false)
+  const [installed, setInstalled] = useState(false)
+  const done = progress({
+    downloaded,
+    installed,
+    identityIssued: status.isSuccess && Boolean(status.data?.relay_user),
+    machines: machines.isSuccess ? machines.data : undefined,
+  })
   const steps = [
-    { key: 'step1', done: done.sandbox },
-    { key: 'step2', done: done.agent },
-    { key: 'step3', done: done.roots },
+    { key: 'download', target: 'agent-download' },
+    { key: 'install', target: 'agent-download' },
+    { key: 'token', target: 'agent-token' },
+    { key: 'roots', target: 'agent-roots' },
+    { key: 'online', target: 'agent-online' },
   ] as const
   const label = 'text-muted-foreground'
 
@@ -37,10 +47,72 @@ export function MachinesScreen() {
           <p className="text-muted-foreground mt-1 text-sm">{t('lead')}</p>
         </header>
 
-        <section aria-label={t('list')} className="space-y-3">
+        <section aria-label={t('guide.title')} className="space-y-3">
+          <h2 className="text-sm font-medium">{t('guide.title')}</h2>
+          <p className="text-muted-foreground text-sm">{t('guide.evidence')}</p>
+          <ol className="divide-y rounded-xl border">
+            {steps.map((step, index) => (
+              <li key={step.key} className="flex items-start gap-3 px-4 py-3 text-sm">
+                {done[step.key] ? (
+                  <CheckIcon
+                    className="mt-0.5 size-4 shrink-0 text-green-700"
+                    aria-label={t('guide.done')}
+                  />
+                ) : (
+                  <CircleIcon
+                    className="text-muted-foreground mt-0.5 size-4 shrink-0"
+                    aria-label={t('guide.todo')}
+                  />
+                )}
+                <div>
+                  <a href={`#${step.target}`} className="underline underline-offset-3">
+                    {index + 1}. {t(`guide.${step.key}`)}
+                  </a>
+                  {step.key === 'download' || step.key === 'install' ? (
+                    <label className="mt-1 flex items-center gap-2">
+                      <input
+                        type="checkbox"
+                        checked={done[step.key]}
+                        onChange={(event) => {
+                          if (step.key === 'download') setDownloaded(event.target.checked)
+                          else setInstalled(event.target.checked)
+                        }}
+                      />
+                      {t(
+                        step.key === 'download' ? 'guide.confirmDownload' : 'guide.confirmInstall',
+                      )}
+                    </label>
+                  ) : null}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <AgentDownloadPanel />
+        <AgentSetup csrfToken={csrfToken} />
+        <section
+          id="agent-roots"
+          className="space-y-3 rounded-xl border p-5"
+          aria-label={t('setup.startTitle')}
+        >
+          <h2 className="text-base font-semibold">{t('setup.startTitle')}</h2>
+          <p className="text-sm">{t('setup.startHint')}</p>
+          <IssuedCommand command={startCommands} />
+        </section>
+
+        <section id="agent-online" aria-label={t('list')} className="space-y-3">
           <h2 className="text-sm font-medium">{t('list')}</h2>
+          <p className="text-muted-foreground text-sm">{t('guide.onlineHint')}</p>
           {machines.isPending ? (
             <p className="text-muted-foreground text-sm">{t('loading')}</p>
+          ) : machines.isError ? (
+            <div role="alert">
+              <p>{t('loadFailed')}</p>
+              <button type="button" className="underline" onClick={() => void machines.refetch()}>
+                {t('setup.retryStatus')}
+              </button>
+            </div>
           ) : (machines.data ?? []).length === 0 ? (
             <p className="text-muted-foreground rounded-xl border px-4 py-3 text-sm">{t('none')}</p>
           ) : (
@@ -102,46 +174,6 @@ export function MachinesScreen() {
             })
           )}
           <p className="text-muted-foreground text-[13px]">{t('ceiling.note')}</p>
-        </section>
-
-        <AgentDownloadPanel />
-        <AgentSetup csrfToken={csrfToken} />
-
-        <section aria-label={t('guide.title')} className="space-y-3">
-          <h2 className="text-sm font-medium">{t('guide.title')}</h2>
-          <ol className="divide-y rounded-xl border">
-            {steps.map((step, index) => (
-              <li key={step.key} className="flex items-start gap-3 px-4 py-3 text-sm">
-                {step.done ? (
-                  <CheckIcon
-                    className="mt-0.5 size-4 shrink-0 text-green-700"
-                    aria-label={t('guide.done')}
-                  />
-                ) : (
-                  <CircleIcon
-                    className="text-muted-foreground mt-0.5 size-4 shrink-0"
-                    aria-label={t('guide.todo')}
-                  />
-                )}
-                <span className="min-w-0 flex-1">
-                  {index + 1}. {t(`guide.${step.key}`)}
-                  {step.key === 'step1' && !step.done ? (
-                    <>
-                      {' '}
-                      <Link href={routes.settings(locale)} className="underline underline-offset-3">
-                        {t('guide.toSettings')}
-                      </Link>
-                    </>
-                  ) : null}
-                  {step.key === 'step2' ? (
-                    <span className="text-muted-foreground block text-[13px]">
-                      {t('guide.download')}
-                    </span>
-                  ) : null}
-                </span>
-              </li>
-            ))}
-          </ol>
         </section>
       </div>
     </div>

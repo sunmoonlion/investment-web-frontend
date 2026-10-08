@@ -1,20 +1,28 @@
-// 接入一台机器的三步，各做到了没有。纯函数：看的是已有的清单，不另外问后端。
+// 下载/安装仅用户确认；其余根据只读状态，不把下载点击当作安装成功。
 import type { Machine } from '@/contracts/workbench-v2'
 
-export type GuideProgress = { sandbox: boolean; agent: boolean; roots: boolean }
+export type GuideProgress = {
+  download: boolean
+  install: boolean
+  token: boolean
+  roots: boolean
+  online: boolean
+}
 
 export function progress(input: {
-  sandboxes: number | undefined
+  downloaded: boolean
+  installed: boolean
+  identityIssued: boolean
   machines: Machine[] | undefined
 }): GuideProgress {
   const machines = input.machines ?? []
   return {
-    // 第一步：拉起过沙箱
-    sandbox: (input.sandboxes ?? 0) > 0,
-    // 第二步：本地代理登记过（有机器）
-    agent: machines.length > 0,
-    // 第三步：至少一台机器的白名单里有目录
+    download: input.downloaded,
+    install: input.installed,
+    token: input.identityIssued,
     roots: machines.some((machine) => machine.roots.length > 0),
+    // 须是已选目录的那台电脑在线，不能拼接两台电脑的进度。
+    online: machines.some((machine) => isOnline(machine) && machine.roots.length > 0),
   }
 }
 

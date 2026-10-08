@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
+import { ConnectComputerLink } from '@/components/workbench/connect-computer'
 import { useWorkbench } from '@/lib/workbench/context'
 import { useAllProjects, useWorkspaces } from '@/lib/workbench/queries'
 import { routes } from '@/lib/workbench/routes'
@@ -35,7 +36,7 @@ export function ProjectListScreen() {
             <h1 className="text-2xl font-semibold tracking-tight">{t('title')}</h1>
             <p className="text-muted-foreground mt-1 text-sm">{t('lead')}</p>
           </div>
-          <Button onClick={() => setCreating(true)} disabled={(workspaces.data ?? []).length === 0}>
+          <Button onClick={() => setCreating(true)}>
             <PlusIcon />
             {t('new')}
           </Button>
@@ -58,6 +59,7 @@ export function ProjectListScreen() {
               <li>{t('noWorkspace.account')}</li>
             </ol>
             <p className="text-muted-foreground mt-3 text-[13px]">{t('noWorkspace.note')}</p>
+            <ConnectComputerLink className="mt-3" />
           </section>
         ) : (
           <>
