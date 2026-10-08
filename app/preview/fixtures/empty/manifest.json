@@ -132,6 +132,14 @@
    "status": 409,
    "content_type": "application/problem+json",
    "file": "0013.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/agent/download",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "agent-download.json"
   }
  ],
  "streams": []

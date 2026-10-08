@@ -35,6 +35,12 @@ pnpm preview --built    # 用构建好的那一份（先 pnpm build）
 样例不手写。由这个应用的后端在测试库里把各种状态造出来，把接口的真实返回录下来。
 所以样例和真接口的形状一定一致；后端改了接口，重录一遍就跟上。
 
+下载区：`full`、`offline` 为已配置，`empty` 为暂不可下载，均由真实
+`GET /api/workbench/agent/download` 录制。这里只展示接入流程，示例域名与校验值不能用于安装。
+只补录此接口、不重排其它样例：在投资后端 `app/` 设置
+`PREVIEW_AGENT_DOWNLOAD_OUT=<本网页 app 的绝对路径>/preview/fixtures`，运行
+`.venv/bin/pytest tests/test_preview_agent_download.py`。完整录制仍走 `test_preview_fixtures.py`。
+
 | 项   | 位置                                                                 |
 | ---- | -------------------------------------------------------------------- |
 | 样例 | `preview/fixtures/<情景>/`，一个情景一个目录，`manifest.json` 是目录 |

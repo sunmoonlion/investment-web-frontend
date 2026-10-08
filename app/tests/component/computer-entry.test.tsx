@@ -38,10 +38,14 @@ const release = {
   size_bytes: 174243923,
 }
 let environment: 'empty' | 'full' | 'error' | 'pending'
+let hasSandbox: boolean
+let issuedIdentity: boolean
 const calls: { path: string; method: string }[] = []
 const clients: QueryClient[] = []
 beforeEach(() => {
   environment = 'empty'
+  hasSandbox = true
+  issuedIdentity = true
   navigation.query = ''
   navigation.push.mockReset()
   calls.length = 0
@@ -61,11 +65,14 @@ beforeEach(() => {
       if (path === '/api/workbench/sandboxes/provisioned')
         return Response.json({
           status: 'ready',
-          relay_user: 'fixture-user',
+          relay_user: issuedIdentity ? 'fixture-user' : null,
           identity_revision: 'a'.repeat(64),
         })
       // 云端沙箱与电脑无关：聊天有沙箱就能发消息。
-      const body = fixture(path === '/api/workbench/sandboxes' ? 'full' : 'empty', path)
+      const body = fixture(
+        path === '/api/workbench/sandboxes' && hasSandbox ? 'full' : 'empty',
+        path,
+      )
       return Response.json(body ?? { code: 'not_found' }, { status: body ? 200 : 404 })
     }),
   )
@@ -103,6 +110,19 @@ const checkLink = (locale: 'zh-CN' | 'en' = 'zh-CN') => {
 }
 
 describe('电脑接入入口', () => {
+  it('首次卡片依次引导设置 key 和接电脑，不重复显示下方沙箱提示', async () => {
+    hasSandbox = false
+    page(<HomeScreen />)
+    const card = await screen.findByRole('region', { name: zh.computerConnection.welcome })
+    expect(
+      within(card)
+        .getAllByRole('link')
+        .map((link) => link.getAttribute('href')),
+    ).toEqual(['/zh-CN/workbench/settings', '/zh-CN/workbench/machines'])
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: '你好' } })
+    expect(screen.queryByText(zh.home.blocker.noSandbox)).toBeNull()
+    expect(screen.getByRole('button', { name: zh.home.mode.chat.send })).toBeDisabled()
+  })
   it.each(['zh-CN', 'en'] as const)('通用首页展示卡片，登记电脑后消失（%s）', async (locale) => {
     const p = page(<HomeScreen />, locale)
     const title = (locale === 'zh-CN' ? zh : en).computerConnection.welcome
@@ -175,6 +195,18 @@ describe('电脑接入入口', () => {
 })
 
 describe('五步引导证据', () => {
+  it('电脑已在线，即使签发状态没有 relay_user，领取令牌步骤也完成', async () => {
+    issuedIdentity = false
+    environment = 'full'
+    page(<MachinesScreen />)
+    const guide = within(screen.getByRole('region', { name: zh.machines.guide.title }))
+    await waitFor(() => expect(guide.getAllByLabelText('已完成')).toHaveLength(3))
+    expect(guide.getByText(zh.machines.guide.evidence)).toHaveTextContent(
+      '前两步做完自己打勾，后三步做完会自动打勾。',
+    )
+    expect(guide.getByLabelText(zh.machines.guide.confirmDownload)).not.toBeChecked()
+    expect(guide.getByLabelText(zh.machines.guide.confirmInstall)).not.toBeChecked()
+  })
   it('下载/安装不自动打勾，不改令牌；目录与在线随只读状态更新', async () => {
     const p = page(<MachinesScreen />)
     const guide = within(screen.getByRole('region', { name: zh.machines.guide.title }))

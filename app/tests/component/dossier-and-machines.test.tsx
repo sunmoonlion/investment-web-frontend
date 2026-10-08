@@ -289,8 +289,8 @@ describe('我的电脑', () => {
     expect(screen.getByText('/home/demo/research')).toBeInTheDocument()
     expect(screen.getByText(/只能改白名单目录里的文件；不许联网/)).toBeInTheDocument()
     expect(screen.getByText(/这些只能在那台机器上改/)).toBeInTheDocument()
-    // 此夹具没有令牌状态接口，不能把下载、安装或令牌虚报为已完成。
-    await waitFor(() => expect(screen.getAllByLabelText('已完成')).toHaveLength(2))
+    // 已在线可证明持有可用令牌；下载与安装仍由本人确认。
+    await waitFor(() => expect(screen.getAllByLabelText('已完成')).toHaveLength(3))
     expect(screen.getAllByRole('checkbox').every((box) => !(box as HTMLInputElement).checked)).toBe(
       true,
     )

@@ -1,4 +1,6 @@
 import { describe, expect, it } from 'vitest'
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 import { agentDownloadSchema } from '@/contracts/workbench-settings'
 import { initCommand } from '@/features/machines/model/onboarding'
 
@@ -16,6 +18,26 @@ describe('agent release contract and commands', () => {
     expect(agentDownloadSchema.parse({ contract_version: 2, download: release }).download).toEqual(
       release,
     )
+  })
+  it.each(['full', 'empty', 'offline'])(
+    'accepts the real recorded download response: %s',
+    (scenario) => {
+      const directory = join(process.cwd(), 'preview/fixtures', scenario)
+      const manifest = JSON.parse(readFileSync(join(directory, 'manifest.json'), 'utf8'))
+      const entry = manifest.responses.find(
+        (r: { method: string; path: string }) =>
+          r.method === 'GET' && r.path === '/api/workbench/agent/download',
+      )
+      expect(entry.status).toBe(200)
+      const body = agentDownloadSchema.parse(
+        JSON.parse(readFileSync(join(directory, entry.file), 'utf8')),
+      )
+      expect(body.download === null).toBe(scenario === 'empty')
+    },
+  )
+  it('uses the same public contract for a same-origin backend download', () => {
+    const download = { ...release, url: 'https://investment.example/api/workbench/agent/package' }
+    expect(agentDownloadSchema.parse({ contract_version: 2, download }).download).toEqual(download)
   })
   for (const patch of [
     { url: 'javascript:alert(1)' },

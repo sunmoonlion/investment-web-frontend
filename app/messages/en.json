@@ -759,9 +759,9 @@
       "online": "Confirm the computer is online",
       "done": "done",
       "todo": "not yet",
-      "confirmDownload": "I downloaded and verified the ZIP hash",
+      "confirmDownload": "I downloaded and verified the checksum",
       "confirmInstall": "I completed installation on this computer",
-      "evidence": "Confirm the first two steps yourself; checks last only on this page. The website cannot inspect local installation. The last three use token issuance and computer reports; issuance does not mean the token was copied. A lost token requires an explicit replacement.",
+      "evidence": "Check off the first two steps yourself. The last three are checked automatically when complete.",
       "onlineHint": "Status updates every 5 seconds. When a computer with selected directories is online, return to Work or Expert."
     },
     "loading": "Loading…",
@@ -874,6 +874,6 @@
   },
   "computerConnection": {
     "action": "Connect computer",
-    "welcome": "First step: connect your computer so Work and Expert can read and write your files."
+    "welcome": "First add your model key in Settings, then connect your computer so Work and Expert can read and write your files."
   }
 }

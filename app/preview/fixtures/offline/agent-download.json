@@ -1,0 +1,11 @@
+{
+  "contract_version": 2,
+  "download": {
+    "url": "https://downloads.example/agent/0.2.1/windows-x64.zip",
+    "version": "0.2.1",
+    "zip_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "manifest_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "codex_version": "0.155.1",
+    "size_bytes": 174243923
+  }
+}

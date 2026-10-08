@@ -19,7 +19,7 @@ export function progress(input: {
   return {
     download: input.downloaded,
     install: input.installed,
-    token: input.identityIssued,
+    token: input.identityIssued || machines.some(isOnline),
     roots: machines.some((machine) => machine.roots.length > 0),
     // 须是已选目录的那台电脑在线，不能拼接两台电脑的进度。
     online: machines.some((machine) => isOnline(machine) && machine.roots.length > 0),

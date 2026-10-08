@@ -85,14 +85,18 @@ export function HomeScreen() {
 
   // 「还没写字」不用说出来：发送钮是灰的就够了
   const said = blocker && blocker !== 'empty' ? blocker : null
+  const welcome = asked === null && !given && machines.isSuccess && machines.data.length === 0
 
   return (
     <div className="h-full overflow-y-auto">
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-6 pt-[12vh] pb-16">
         {/* 通用首页欢迎卡；明确选择聊天或从项目进入聊天时不提示接电脑。 */}
-        {asked === null && !given && machines.isSuccess && machines.data.length === 0 ? (
+        {welcome ? (
           <section className="space-y-3 rounded-xl border p-5" aria-label={connect('welcome')}>
             <p>{connect('welcome')}</p>
+            <Link href={routes.settings(locale)} className="mr-3 underline underline-offset-3">
+              {t('toSettings')}
+            </Link>
             <ConnectComputerLink />
           </section>
         ) : null}
@@ -169,7 +173,7 @@ export function HomeScreen() {
             </div>
           </div>
 
-          {said ? (
+          {said && !(welcome && said === 'noSandbox') ? (
             <p className="text-muted-foreground mt-2 text-center text-[13px]">
               {t(`blocker.${said}`)}
               {said === 'noMachine' ? <ConnectComputerLink className="ml-2" /> : null}

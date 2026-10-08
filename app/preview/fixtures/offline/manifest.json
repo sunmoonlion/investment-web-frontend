@@ -536,6 +536,14 @@
    "status": 200,
    "content_type": "application/json",
    "file": "0063.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/agent/download",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "agent-download.json"
   }
  ],
  "streams": [
