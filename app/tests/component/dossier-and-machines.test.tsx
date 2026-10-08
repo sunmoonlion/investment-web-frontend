@@ -286,7 +286,7 @@ describe('我的机器', () => {
   it('机器离线：写明本地代理没在运行', async () => {
     scenario = 'offline'
     page(<MachinesScreen />)
-    expect(await screen.findByText(/本地代理没在运行。电脑重启之后要重新打开它。/)).toBeVisible()
+    expect(await screen.findByText(/代理当前离线。请在本机托盘查看原因并启动/)).toBeVisible()
   })
 
   it('还没有机器：照三步做', async () => {
@@ -301,7 +301,7 @@ describe('设置', () => {
   it('三块：模型 key、我的沙箱、新对话的默认。给用户看的字里没有「会话」', async () => {
     page(<SettingsScreen />)
     expect(await screen.findByRole('heading', { name: '设置' })).toBeInTheDocument()
-    for (const name of ['模型 key', '我的沙箱', '新对话的默认']) {
+    for (const name of ['模型 key', '机器与沙箱', '新对话的默认']) {
       expect(await screen.findByRole('heading', { name })).toBeInTheDocument()
     }
     expect(document.body.textContent).not.toContain('会话')

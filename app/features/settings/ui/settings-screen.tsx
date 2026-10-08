@@ -3,28 +3,26 @@
 // 设置（F-WEB-01）：key 只提交一次，页面不留、不回显；模型与审批策略用在新开的对话上。
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
+import Link from 'next/link'
+import { routes } from '@/lib/workbench/routes'
 import type { Prefs } from '@/contracts/workbench-settings'
 import { useWorkbench } from '@/lib/workbench/context'
 
 import {
   addCredential,
-  deprovisionSandbox,
   fetchPrefs,
   listCredentials,
-  provisionSandbox,
-  provisionedSandboxStatus,
   revokeCredential,
   savePrefs,
-  rotateRelayIdentity,
 } from '../api/client'
 
 const POLICIES: Prefs['approval_policy'][] = ['untrusted', 'on-request', 'on-failure', 'never']
 
-// 设置：我的沙箱、模型 key、新对话的默认。一栏排下来，先后是用户第一次要做的顺序。
+// 设置：模型 key、新对话默认值，以及机器接入入口。
 export function SettingsScreen() {
   const t = useTranslations('workbench.settings')
-  const { csrfToken } = useWorkbench()
+  const { csrfToken, locale } = useWorkbench()
   const prefs = useQuery({ queryKey: ['wb-prefs'], queryFn: () => fetchPrefs() })
   return (
     <div className="h-full overflow-y-auto">
@@ -34,7 +32,13 @@ export function SettingsScreen() {
           <p className="text-muted-foreground mt-1 text-sm">{t('lead')}</p>
         </header>
         <KeysSection csrfToken={csrfToken} />
-        <SandboxSection csrfToken={csrfToken} />
+        <section className="rounded-xl border p-5">
+          <h2 className="text-base font-semibold">{t('machineEntry')}</h2>
+          <p className="text-muted-foreground mt-1 text-sm">{t('machineEntryHint')}</p>
+          <Link className="underline underline-offset-3" href={routes.machines(locale)}>
+            {t('toMachines')}
+          </Link>
+        </section>
         {prefs.data ? (
           <ThreadSection
             key={`${prefs.data.model ?? ''}|${prefs.data.approval_policy}`}
@@ -201,231 +205,5 @@ function KeysSection({ csrfToken }: { csrfToken: string }) {
         ) : null}
       </ul>
     </section>
-  )
-}
-
-function SandboxSection({ csrfToken }: { csrfToken: string }) {
-  const t = useTranslations('workbench.settings')
-  const queryClient = useQueryClient()
-  const status = useQuery({
-    queryKey: ['wb-provisioned'],
-    queryFn: () => provisionedSandboxStatus(),
-    refetchInterval: 5000,
-  })
-  const [issued, setIssued] = useState<{ url: string; user: string; token: string } | null>(null)
-  // 每个动作做完都给一句人话（做了什么、接下来会看到什么）；失败也在这里说（KIND 09：点了没反应，用户不知道成没成）
-  const [notice, setNotice] = useState<{ tone: 'ok' | 'error'; text: string } | null>(null)
-  const [confirming, setConfirming] = useState<'rotate' | 'delete' | null>(null)
-  const errorText = (error: unknown) => {
-    const code = (error as Error).message
-    return code === 'sandbox_capacity_full' ? t('sandboxCapacityFull') : t('error', { code })
-  }
-  const refresh = () => {
-    void queryClient.invalidateQueries({ queryKey: ['wb-provisioned'] })
-    void queryClient.invalidateQueries({ queryKey: ['wb-sandboxes'] })
-  }
-  const state = status.data?.status ?? 'absent'
-  const live = state === 'ready' || state === 'starting'
-  const provision = useMutation({
-    mutationFn: () => provisionSandbox(csrfToken),
-    onMutate: () => setNotice(null),
-    onSuccess: (result) => {
-      const fresh = Boolean(result.relay?.agent_token)
-      if (result.relay?.agent_token)
-        setIssued({
-          url: result.relay.url,
-          user: result.relay.user,
-          token: result.relay.agent_token,
-        })
-      setNotice({
-        tone: 'ok',
-        text: fresh ? t('noticeProvisioned') : live ? t('noticeUpdated') : t('noticeRestored'),
-      })
-      refresh()
-    },
-    onError: (error) => setNotice({ tone: 'error', text: errorText(error) }),
-  })
-  const remove = useMutation({
-    mutationFn: () => deprovisionSandbox(csrfToken),
-    onMutate: () => setNotice(null),
-    onSuccess: () => {
-      setIssued(null)
-      setNotice({ tone: 'ok', text: t('noticeDeleted') })
-      refresh()
-    },
-    onError: (error) => setNotice({ tone: 'error', text: errorText(error) }),
-  })
-  const rotate = useMutation({
-    mutationFn: () => rotateRelayIdentity(csrfToken),
-    onMutate: () => setNotice(null),
-    onSuccess: (result) => {
-      if (result.relay?.agent_token)
-        setIssued({
-          url: result.relay.url,
-          user: result.relay.user,
-          token: result.relay.agent_token,
-        })
-      setNotice({ tone: 'ok', text: t('noticeRotated') })
-      refresh()
-    },
-    onError: (error) => setNotice({ tone: 'error', text: errorText(error) }),
-  })
-  const hasIdentity = Boolean(status.data?.relay_user)
-  const busy = provision.isPending || remove.isPending || rotate.isPending
-  return (
-    <section className="rounded-xl border p-5" aria-labelledby="settings-sandbox">
-      <h2 id="settings-sandbox" className="text-base font-semibold">
-        {t('sandbox')}
-      </h2>
-      <p className="text-muted-foreground mt-1 text-sm">{t('sandboxHint')}</p>
-      <div className="mt-4 flex flex-wrap items-center gap-3">
-        <span className="rounded-full border px-3 py-1 text-xs" data-sandbox-status={state}>
-          {t(
-            `sandboxStatus.${['absent', 'starting', 'ready', 'deleted'].includes(state) ? state : 'starting'}` as 'sandboxStatus.absent',
-          )}
-        </span>
-        <button
-          type="button"
-          className="bg-primary text-primary-foreground rounded-lg px-4 py-2 text-sm font-medium disabled:opacity-50"
-          disabled={busy}
-          onClick={() => provision.mutate()}
-        >
-          {provision.isPending
-            ? live
-              ? t('updating')
-              : t('provisioning')
-            : live
-              ? t('sandboxUpdate')
-              : t('sandboxProvision')}
-        </button>
-        {live ? (
-          <button
-            type="button"
-            className="rounded-lg border px-3 py-2 text-sm disabled:opacity-50"
-            disabled={busy}
-            onClick={() => setConfirming('delete')}
-          >
-            {remove.isPending ? t('deleting') : t('sandboxDelete')}
-          </button>
-        ) : null}
-        {hasIdentity ? (
-          <button
-            type="button"
-            className="rounded-lg border px-3 py-2 text-sm disabled:opacity-50"
-            disabled={busy}
-            onClick={() => setConfirming('rotate')}
-            title={t('rotateHint')}
-          >
-            {rotate.isPending ? t('rotating') : t('rotateToken')}
-          </button>
-        ) : null}
-      </div>
-      {confirming ? (
-        <div
-          className="mt-3 rounded-lg border border-amber-300 p-3 text-sm"
-          role="alertdialog"
-          data-confirm={confirming}
-        >
-          <p>{confirming === 'rotate' ? t('confirmRotate') : t('confirmDelete')}</p>
-          <div className="mt-2 flex gap-2">
-            <button
-              type="button"
-              className="bg-primary text-primary-foreground rounded-lg px-3 py-1.5 text-sm"
-              onClick={() => {
-                const action = confirming
-                setConfirming(null)
-                if (action === 'rotate') rotate.mutate()
-                else remove.mutate()
-              }}
-            >
-              {confirming === 'rotate' ? t('confirmRotateYes') : t('confirmDeleteYes')}
-            </button>
-            <button
-              type="button"
-              className="rounded-lg border px-3 py-1.5 text-sm"
-              onClick={() => setConfirming(null)}
-            >
-              {t('cancel')}
-            </button>
-          </div>
-        </div>
-      ) : null}
-      {notice ? (
-        <p
-          role={notice.tone === 'error' ? 'alert' : 'status'}
-          className={`mt-3 text-sm ${notice.tone === 'error' ? 'text-destructive' : 'text-emerald-700 dark:text-emerald-400'}`}
-          data-notice={notice.tone}
-        >
-          {notice.text}
-        </p>
-      ) : null}
-      {issued ? (
-        <div
-          className="mt-4 rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm dark:bg-amber-950/30"
-          data-agent-token-issued
-        >
-          <p className="font-medium">{t('agentTokenTitle')}</p>
-          <p className="text-muted-foreground mt-1 text-xs">{t('agentTokenHint')}</p>
-          <IssuedCommand
-            command={`sunmoon-agent init --relay ${issued.url} --user ${issued.user} --token ${issued.token} --root <你的研究目录>`}
-          />
-        </div>
-      ) : null}
-    </section>
-  )
-}
-
-// 只显示一次的接入命令：一键复制并给出"已复制"；浏览器不给剪贴板权限（如非 https）时退回为整段选中，让用户手动复制
-function IssuedCommand({ command }: { command: string }) {
-  const t = useTranslations('workbench.settings')
-  const [copied, setCopied] = useState<'ok' | 'manual' | null>(null)
-  const preRef = useRef<HTMLPreElement>(null)
-  const selectAll = () => {
-    const el = preRef.current
-    if (!el) return
-    const range = document.createRange()
-    range.selectNodeContents(el)
-    const sel = window.getSelection()
-    sel?.removeAllRanges()
-    sel?.addRange(range)
-  }
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(command)
-      setCopied('ok')
-    } catch {
-      selectAll()
-      setCopied('manual')
-    }
-  }
-  return (
-    <div className="mt-2">
-      <pre
-        ref={preRef}
-        className="bg-background overflow-x-auto rounded p-2 text-xs"
-        data-issued-command
-      >
-        {command}
-      </pre>
-      <div className="mt-2 flex items-center gap-3">
-        <button
-          type="button"
-          className="bg-primary text-primary-foreground rounded-lg px-3 py-1.5 text-sm font-medium"
-          onClick={() => void copy()}
-        >
-          {t('copyCommand')}
-        </button>
-        {copied === 'ok' ? (
-          <span role="status" className="text-sm text-emerald-700 dark:text-emerald-400">
-            {t('copied')}
-          </span>
-        ) : null}
-        {copied === 'manual' ? (
-          <span role="status" className="text-muted-foreground text-sm">
-            {t('copyManual')}
-          </span>
-        ) : null}
-      </div>
-    </div>
   )
 }

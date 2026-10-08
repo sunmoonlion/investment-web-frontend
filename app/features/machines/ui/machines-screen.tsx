@@ -10,13 +10,15 @@ import { routes } from '@/lib/workbench/routes'
 import { cn } from '@/lib/utils'
 
 import { isOnline, progress } from '../model/guide'
+import { AgentSetup } from './agent-setup'
+import { AgentDownloadPanel } from './agent-download'
 
 // 我的机器：接入了哪些、各自在不在线、白名单里有哪些目录、它自己定的上限；怎么接入一台。
 // 白名单与上限只能在那台机器上改：这一页只显示。
 export function MachinesScreen() {
   const t = useTranslations('machines')
   const format = useFormatter()
-  const { locale } = useWorkbench()
+  const { locale, csrfToken } = useWorkbench()
   const machines = useMachines()
   const sandboxes = useSandboxes()
   const done = progress({ sandboxes: sandboxes.data?.length, machines: machines.data })
@@ -101,6 +103,9 @@ export function MachinesScreen() {
           )}
           <p className="text-muted-foreground text-[13px]">{t('ceiling.note')}</p>
         </section>
+
+        <AgentDownloadPanel />
+        <AgentSetup csrfToken={csrfToken} />
 
         <section aria-label={t('guide.title')} className="space-y-3">
           <h2 className="text-sm font-medium">{t('guide.title')}</h2>

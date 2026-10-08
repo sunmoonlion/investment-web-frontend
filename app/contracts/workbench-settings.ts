@@ -3,6 +3,54 @@
 import { z } from 'zod'
 
 const uuid = z.uuid()
+const revision = z.string().regex(/^[a-f0-9]{64}$/)
+const expiry = z.iso.datetime({ offset: true }).nullable().optional()
+const relayUrl = z.string().refine((value) => {
+  try {
+    const u = new URL(value)
+    return (
+      ['ws:', 'wss:'].includes(u.protocol) &&
+      !u.username &&
+      !u.password &&
+      !u.search &&
+      !u.hash &&
+      !/\s/.test(value)
+    )
+  } catch {
+    return false
+  }
+})
+export const agentDownloadSchema = z
+  .object({
+    contract_version: z.literal(2),
+    download: z
+      .object({
+        url: z.string().refine((value) => {
+          try {
+            const u = new URL(value)
+            return (
+              u.protocol === 'https:' &&
+              !u.username &&
+              !u.password &&
+              !u.search &&
+              !u.hash &&
+              !/[\s\\]/.test(value)
+            )
+          } catch {
+            return false
+          }
+        }),
+        version: z.string().regex(/^[0-9]+\.[0-9]+\.[0-9]+(?:[-+][A-Za-z0-9.-]+)?$/),
+        zip_sha256: revision,
+        manifest_sha256: revision,
+        codex_version: z.string().regex(/^[0-9]+\.[0-9]+\.[0-9]+$/),
+        size_bytes: z.number().int().positive(),
+      })
+      .strict()
+      .nullable(),
+  })
+  .strict()
+export type AgentDownload = NonNullable<z.infer<typeof agentDownloadSchema>['download']>
 
 export const prefsSchema = z
   .object({
@@ -34,9 +82,17 @@ export const provisionedSandboxSchema = z
     status: z.string().nullable().optional(),
     ready: z.boolean().optional(),
     relay: z
-      .object({ url: z.string(), user: z.string(), agent_token: z.string().nullable() })
+      .object({
+        url: relayUrl,
+        user: z.string().regex(/^[a-zA-Z0-9_-]+$/),
+        agent_token: z.string().nullable(),
+        agent_token_expires_at: expiry,
+        identity_revision: revision.optional(),
+      })
       .optional(),
     relay_user: z.string().optional(),
+    agent_token_expires_at: expiry,
+    identity_revision: revision.optional(),
     credential_hint: z.string().optional(),
   })
   .loose()
