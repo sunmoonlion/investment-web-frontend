@@ -241,6 +241,8 @@
     },
     "toSettings": "去设置",
     "problem": {
+      "project_held_by_expert": "专家仍在处理这个项目。请等它完成，或打开专家任务后停止；聊天仍可使用。",
+      "openExpert": "查看专家任务",
       "backend_unavailable": "连不上服务，请稍后再试。",
       "preview_no_sample": "预览里只能看，不能发。",
       "other": "没有发出去，请再试一次。"

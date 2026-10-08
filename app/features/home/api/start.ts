@@ -1,6 +1,7 @@
 'use client'
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useRef } from 'react'
 
 import {
   createdConversationSchema,
@@ -15,17 +16,30 @@ import { workbenchKeys } from '@/lib/workbench/queries'
 export function useStart() {
   const { csrfToken } = useWorkbench()
   const client = useQueryClient()
+  // 第一条消息被明确拒绝后仍用已建的会话，避免每点一次重试就留下一个空会话。
+  const pending = useRef<{ kind: ConversationKind; project: string | null; id: string } | null>(
+    null,
+  )
   return useMutation({
     mutationFn: async (input: { kind: ConversationKind; project: string | null; text: string }) => {
-      const made = await sendJson(createdConversationSchema, '/api/workbench/sessions', {
-        csrfToken,
-        body: { kind: input.kind, ...(input.project ? { project_id: input.project } : {}) },
-      })
-      await sendJson(turnAcceptedSchema, `/api/workbench/sessions/${seg(made.session_id)}/turns`, {
+      if (
+        !pending.current ||
+        pending.current.kind !== input.kind ||
+        pending.current.project !== input.project
+      ) {
+        const made = await sendJson(createdConversationSchema, '/api/workbench/sessions', {
+          csrfToken,
+          body: { kind: input.kind, ...(input.project ? { project_id: input.project } : {}) },
+        })
+        pending.current = { id: made.session_id, project: input.project, kind: input.kind }
+      }
+      const id = pending.current.id
+      await sendJson(turnAcceptedSchema, `/api/workbench/sessions/${seg(id)}/turns`, {
         csrfToken,
         body: { text: input.text },
       })
-      return { id: made.session_id, project_id: input.project, kind: input.kind }
+      pending.current = null
+      return { id, project_id: input.project, kind: input.kind }
     },
     onSuccess: () => client.invalidateQueries({ queryKey: workbenchKeys.conversations }),
   })

@@ -241,6 +241,8 @@
     },
     "toSettings": "Go to settings",
     "problem": {
+      "project_held_by_expert": "An expert still holds this project. Wait for it to finish or open and stop its task. Chat remains available.",
+      "openExpert": "Open expert task",
       "backend_unavailable": "Cannot reach the service. Try again later.",
       "preview_no_sample": "The preview is read-only.",
       "other": "Not sent. Please try again."

@@ -44,9 +44,11 @@ class FakeEventSource {
 
 type Call = { method: string; path: string; body: unknown; csrf: string | null }
 let calls: Call[] = []
+let withoutNow = false
 
 beforeEach(() => {
   calls = []
+  withoutNow = false
   vi.stubGlobal('EventSource', FakeEventSource)
   vi.stubGlobal(
     'fetch',
@@ -60,7 +62,10 @@ beforeEach(() => {
         body: init.body ? JSON.parse(String(init.body)) : undefined,
         csrf: headers['X-CSRF-Token'] ?? null,
       })
-      const body = method === 'GET' ? sample(path) : { ok: true }
+      let body = method === 'GET' ? sample(path) : { ok: true }
+      if (withoutNow && method === 'GET' && path.endsWith('/steps') && body) {
+        body = { ...body, now: null }
+      }
       return new Response(JSON.stringify(body ?? { code: 'not_found' }), {
         status: body ? 200 : 404,
         headers: { 'Content-Type': 'application/json' },
@@ -135,6 +140,16 @@ describe('专家处理中', () => {
       path: `/api/workbench/tasks/${taskOf(conversation)}/cancel`,
       csrf: 'csrf-for-test',
     })
+  })
+
+  it('等待环境恢复时，即使 now 快照缺失也能停止，不依赖机器连接', async () => {
+    withoutNow = true
+    const conversation = conversationOf('专家停下来了：勾稽不平')
+    page(conversation)
+    fireEvent.click(await screen.findByRole('button', { name: '停止' }))
+    fireEvent.click(await screen.findByRole('button', { name: '停下' }))
+    await waitFor(() => expect(calls.some((call) => call.path.endsWith('/cancel'))).toBe(true))
+    expect(calls.find((call) => call.path.endsWith('/cancel'))?.csrf).toBe('csrf-for-test')
   })
 
   it('专家停下来问我：哪条没过、每个选项选了会怎样；答复带着凭证', async () => {

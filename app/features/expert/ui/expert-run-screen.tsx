@@ -54,15 +54,16 @@ export function ExpertRunScreen({ task }: { task: string }) {
   }
   const { task: sheet, now, position, steps } = run.data
   const waiting = sheet.state === 'WAITING'
-  const live = now !== null
+  // 操作权看任务状态。机器断开、实时快照暂缺时仍须能取消。
+  const live = ['RECEIVED', 'VALIDATING', 'QUEUED', 'RUNNING', 'WAITING'].includes(sheet.state)
   const offline = now?.doing.code === 'offline'
   // 审查面摆在停住的那一步下面；看别的步骤时不摆
   const reviewHere = review.data && shown === (review.data.where.step?.index ?? position?.step)
 
   return (
     <div className="flex h-full min-h-0 flex-col">
-      <header className="flex h-12 shrink-0 items-center gap-4 border-b px-4 text-sm">
-        <span className="font-medium">
+      <header className="flex min-h-12 shrink-0 flex-wrap items-center gap-x-3 gap-y-2 border-b px-4 py-2 text-sm">
+        <span className="w-full min-w-0 truncate font-medium sm:w-auto sm:flex-1">
           {offline
             ? t('band.offline')
             : waiting
@@ -72,17 +73,21 @@ export function ExpertRunScreen({ task }: { task: string }) {
                 : (sheet.state_word ?? sheet.expert.name)}
         </span>
         {position ? (
-          <span className="text-muted-foreground min-w-0 truncate">
+          <span className="text-muted-foreground order-last w-full truncate sm:order-none sm:w-auto sm:max-w-64">
             {t('band.position', { step: position.step, of: position.of, title: position.title })}
           </span>
         ) : null}
-        <div className="flex-1" />
         <span className="shrink-0 tabular-nums" data-testid="run-spent">
           {t('band.spent', { amount: amountText(sheet.budget.spent, sheet.budget.currency) })}
           <span className="text-muted-foreground ml-1 text-xs">{t('band.estimated')}</span>
         </span>
         {live ? (
-          <Button variant="destructive" size="sm" onClick={() => setConfirming(true)}>
+          <Button
+            className="shrink-0"
+            variant="destructive"
+            size="sm"
+            onClick={() => setConfirming(true)}
+          >
             {t('stop.button')}
           </Button>
         ) : null}

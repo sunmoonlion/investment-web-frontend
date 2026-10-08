@@ -55,6 +55,10 @@ export function HomeScreen() {
     machines: machines.data,
   })
   const names = new Map((projects.data ?? []).map((each) => [each.id, each.title]))
+  const held = start.isError && (start.error as WorkbenchError).code === 'project_held_by_expert'
+  const expertConversation = (conversations.data ?? []).find(
+    (each) => each.project_id === projectId && each.active_task_id !== null,
+  )
   const latest = [...(conversations.data ?? [])]
     .sort((a, b) =>
       (b.last_active_at ?? b.created_at).localeCompare(a.last_active_at ?? a.created_at),
@@ -174,6 +178,21 @@ export function HomeScreen() {
               {t.has(`problem.${(start.error as WorkbenchError).code}`)
                 ? t(`problem.${(start.error as WorkbenchError).code}`)
                 : t('problem.other')}
+              {held && projectId ? (
+                <>
+                  {' '}
+                  <Link
+                    href={
+                      expertConversation
+                        ? conversationRoute(locale, expertConversation)
+                        : routes.project(locale, projectId)
+                    }
+                    className="underline underline-offset-3"
+                  >
+                    {t('problem.openExpert')}
+                  </Link>
+                </>
+              ) : null}
             </p>
           ) : null}
         </section>

@@ -51,6 +51,7 @@ export function useRunActions(task: string) {
     Promise.all([
       client.invalidateQueries({ queryKey: runKey(task) }),
       client.invalidateQueries({ queryKey: ['workbench', 'conversation'] }),
+      client.invalidateQueries({ queryKey: ['workbench', 'project'] }),
       client.invalidateQueries({ queryKey: workbenchKeys.conversations }),
       client.invalidateQueries({ queryKey: workbenchKeys.pending }),
     ])
