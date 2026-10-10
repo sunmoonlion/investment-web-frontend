@@ -60,6 +60,9 @@ export function MachinesScreen({ embedded = false }: { embedded?: boolean }) {
               {current.name} · {isOnline(current) ? t('online') : t('offline')}
             </p>
           ) : null}
+          {machines.isSuccess && !current ? (
+            <p className="text-muted-foreground mt-1 text-sm">{t('none')}</p>
+          ) : null}
         </section>
         <AgentDownloadPanel csrfToken={csrfToken} />
         <ConnectComputer csrfToken={csrfToken} />
@@ -141,7 +144,7 @@ function ConnectComputer({ csrfToken }: { csrfToken: string }) {
           <p>{found.machine_name}</p>
           <p>{found.os}</p>
           <p>{found.agent_version}</p>
-          <p>{found.source_ip}</p>
+          <p>{found.source_ip ?? t('unknownSource')}</p>
           <p>{t('ago', { seconds: found.requested_seconds_ago })}</p>
           {found.replaces_machine ? <p className="font-semibold">{t('replace', { name: found.replaces_machine })}</p> : null}
           <div className="flex gap-2">

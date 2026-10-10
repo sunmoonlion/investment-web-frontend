@@ -292,7 +292,8 @@ describe('我的电脑', () => {
   it('还没有电脑：照五步做', async () => {
     scenario = 'empty'
     page(<MachinesScreen />)
-    expect(await screen.findByText('还没有电脑接入。')).toBeInTheDocument()
+    expect(await screen.findAllByText('还没有电脑接入。')).not.toHaveLength(0)
+    expect(document.getElementById('computer-status')).toHaveTextContent('还没有电脑接入。')
     expect(screen.getAllByLabelText('还没做')).toHaveLength(3)
   })
 })

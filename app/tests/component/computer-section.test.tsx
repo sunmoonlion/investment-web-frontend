@@ -127,6 +127,21 @@ describe('连接码', () => {
     )
   })
 
+  it('来源地址空着时显示未知，不当成码不对', async () => {
+    vi.stubGlobal('fetch', vi.fn(async (url: string) => {
+      if (String(url).endsWith('/lookup')) return json({ ...lookup, source_ip: null })
+      if (String(url).endsWith('/api/workbench/environments')) return json({ contract_version: 2, environments: [] })
+      if (String(url).endsWith('/api/workbench/agent/download')) return json({ contract_version: 2, download: null })
+      return json({ status: 'absent' })
+    }))
+    page(<MachinesScreen />)
+    const input = await screen.findByRole('textbox')
+    fireEvent.change(input, { target: { value: 'K3NPQ7R2' } })
+    fireEvent.click(screen.getByRole('button', { name: '核对这台电脑' }))
+    expect(await screen.findByText('未知')).toBeVisible()
+    expect(screen.queryByText('码不对或已过期')).toBeNull()
+  })
+
   it('页面带电脑锚点', async () => {
     vi.stubGlobal('fetch', vi.fn(async (url: string) => {
       if (String(url).endsWith('/api/workbench/environments')) return json({ contract_version: 2, environments: [] })

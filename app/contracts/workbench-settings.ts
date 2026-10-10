@@ -66,7 +66,7 @@ export const pairingLookupSchema = z
     os: z.string(),
     agent_version: z.string(),
     codex_version: z.string(),
-    source_ip: z.string(),
+    source_ip: z.string().nullable(),
     requested_seconds_ago: z.number().int().nonnegative(),
     replaces_machine: z.string().nullable(),
   })
