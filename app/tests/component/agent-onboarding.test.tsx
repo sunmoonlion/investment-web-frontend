@@ -2,8 +2,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { NextIntlClientProvider } from 'next-intl'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { AgentSetup } from '@/features/machines/ui/agent-setup'
-import { AgentDownloadPanel } from '@/features/machines/ui/agent-download'
+import { AgentSetup, ReconnectComputer } from '@/features/settings/ui/agent-setup'
+import { AgentDownloadPanel, AgentZipFallback } from '@/features/settings/ui/agent-download'
 import { WorkbenchProvider } from '@/lib/workbench/context'
 import messages from '@/messages/zh-CN.json'
 
@@ -38,8 +38,8 @@ describe('agent onboarding', () => {
   it('unconfigured download has no invented URL or automatic mutation', async () => {
     const fetch = vi.fn().mockResolvedValue(json({ contract_version: 2, download: null }))
     vi.stubGlobal('fetch', fetch)
-    page(<AgentDownloadPanel />)
-    expect(await screen.findByText('暂不可下载')).toBeVisible()
+    page(<AgentDownloadPanel csrfToken="csrf-fixture" />)
+    expect(await screen.findByText('下载暂未开放')).toBeVisible()
     expect(screen.queryByRole('link', { name: '下载 Windows ZIP' })).toBeNull()
     expect(fetch.mock.calls.every(([, init]) => init.method === 'GET')).toBe(true)
   })
@@ -56,17 +56,20 @@ describe('agent onboarding', () => {
       'fetch',
       vi.fn().mockResolvedValue(json({ contract_version: 2, download: release })),
     )
-    page(<AgentDownloadPanel />)
+    page(
+      <>
+        <AgentDownloadPanel csrfToken="csrf-fixture" />
+        <AgentZipFallback />
+      </>,
+    )
     expect(await screen.findByRole('link', { name: '下载 Windows ZIP' })).toHaveAttribute(
       'href',
       release.url,
     )
     expect(screen.getByText(/166.17 MiB/)).toBeVisible()
-    const pre = document.querySelector('pre')!
-    expect(pre.textContent).toContain(release.zip_sha256)
-    expect(pre.textContent).toContain(release.manifest_sha256)
-    expect(pre.textContent).toContain('Downloads/sunmoon-agent-0.2.0')
-    expect(pre.textContent).not.toContain('ExecutionPolicy')
+    expect(screen.getByText(release.zip_sha256)).toBeVisible()
+    expect(screen.getByText(release.manifest_sha256)).toBeVisible()
+    expect(screen.getByText(/解除锁定/)).toBeVisible()
   })
   it('first issue keeps token out of commands and query/mutation caches; refresh never issues', async () => {
     const calls: { url: string; method: string }[] = []
@@ -146,10 +149,10 @@ describe('agent onboarding', () => {
         })
       }),
     )
-    const p = page(<AgentSetup csrfToken="csrf-fixture" />)
-    fireEvent.click(await screen.findByRole('button', { name: '换代理令牌' }))
+    const p = page(<ReconnectComputer csrfToken="csrf-fixture" />)
+    fireEvent.click(await screen.findByRole('button', { name: '重新连接电脑' }))
     const dialog = screen.getByRole('alertdialog')
-    expect(dialog.textContent).toContain('在跑的沙箱可能滚动')
+    expect(dialog.textContent).toContain('会同时换掉电脑和云端沙箱的令牌')
     current = 'b'.repeat(64)
     await p.client.invalidateQueries({ queryKey: ['wb-provisioned'] })
     fireEvent.click(within(dialog).getByRole('button', { name: '确定更换' }))

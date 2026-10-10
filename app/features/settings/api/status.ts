@@ -1,7 +1,7 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { provisionedSandboxStatus } from './client'
+import { provisionedSandboxStatus } from './computer'
 
 // 引导与令牌面板共享只读状态；页面刷新不会签发或轮换身份。
 export function useAgentStatus() {

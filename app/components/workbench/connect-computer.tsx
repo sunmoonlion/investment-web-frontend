@@ -12,7 +12,7 @@ export function ConnectComputerLink({ className }: { className?: string }) {
   const t = useTranslations('computerConnection')
   const { locale } = useWorkbench()
   return (
-    <Link href={routes.machines(locale)} className={cn(buttonVariants({ size: 'sm' }), className)}>
+    <Link href={routes.computer(locale)} className={cn(buttonVariants({ size: 'sm' }), className)}>
       {t('action')}
     </Link>
   )

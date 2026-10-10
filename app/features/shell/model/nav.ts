@@ -97,7 +97,7 @@ export const FOOT: readonly FootEntry[] = [
   { key: 'pending', kind: 'page', page: 'home', href: (locale) => routes.home(locale) },
   // 知识库：用户自己的资料，服务端有专属副本（SDD 0011）
   { key: 'library', kind: 'page', page: 'library', href: routes.library },
-  { key: 'machines', kind: 'page', page: 'machines', href: routes.machines },
+  { key: 'machines', kind: 'page', page: 'machines', href: routes.computer },
   { key: 'settings', kind: 'page', page: 'settings', href: routes.settings },
 ]
 

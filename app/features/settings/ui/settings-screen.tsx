@@ -4,9 +4,9 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import Link from 'next/link'
-import { routes } from '@/lib/workbench/routes'
 import type { Prefs } from '@/contracts/workbench-settings'
+import { AgentSetup } from './agent-setup'
+import { MachinesScreen } from './machines-screen'
 import { useWorkbench } from '@/lib/workbench/context'
 
 import {
@@ -22,7 +22,7 @@ const POLICIES: Prefs['approval_policy'][] = ['untrusted', 'on-request', 'on-fai
 // 设置：模型 key、新对话默认值，以及机器接入入口。
 export function SettingsScreen() {
   const t = useTranslations('workbench.settings')
-  const { csrfToken, locale } = useWorkbench()
+  const { csrfToken } = useWorkbench()
   const prefs = useQuery({ queryKey: ['wb-prefs'], queryFn: () => fetchPrefs() })
   return (
     <div className="h-full overflow-y-auto">
@@ -32,13 +32,7 @@ export function SettingsScreen() {
           <p className="text-muted-foreground mt-1 text-sm">{t('lead')}</p>
         </header>
         <KeysSection csrfToken={csrfToken} />
-        <section className="rounded-xl border p-5">
-          <h2 className="text-base font-semibold">{t('machineEntry')}</h2>
-          <p className="text-muted-foreground mt-1 text-sm">{t('machineEntryHint')}</p>
-          <Link className="underline underline-offset-3" href={routes.machines(locale)}>
-            {t('toMachines')}
-          </Link>
-        </section>
+        <AgentSetup csrfToken={csrfToken} />
         {prefs.data ? (
           <ThreadSection
             key={`${prefs.data.model ?? ''}|${prefs.data.approval_policy}`}
@@ -50,6 +44,7 @@ export function SettingsScreen() {
             <h2 className="text-base font-semibold">{t('thread')}</h2>
           </section>
         )}
+        <MachinesScreen embedded />
       </div>
     </div>
   )

@@ -1,0 +1,10 @@
+{
+  "id": "11111111-1111-4111-8111-111111111111",
+  "machine_name": "家里的电脑",
+  "os": "windows",
+  "agent_version": "0.2.4",
+  "codex_version": "0.155.1",
+  "source_ip": "203.0.113.8",
+  "requested_seconds_ago": 12,
+  "replaces_machine": "办公室的电脑"
+}

@@ -2,11 +2,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useFormatter, useTranslations } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
-import Link from 'next/link'
-import { useWorkbench } from '@/lib/workbench/context'
-import { routes } from '@/lib/workbench/routes'
 import type { ProvisionedSandbox } from '@/contracts/workbench-settings'
-import { deprovisionSandbox, provisionSandbox, rotateRelayIdentity } from '../api/client'
+import { deprovisionSandbox, provisionSandbox, rotateRelayIdentity } from '../api/computer'
 import { useAgentStatus } from '../api/status'
 import { initCommand } from '../model/onboarding'
 
@@ -14,7 +11,6 @@ export function AgentSetup({ csrfToken }: { csrfToken: string }) {
   const t = useTranslations('workbench.settings')
   const u = useTranslations('machines.setup')
   const format = useFormatter()
-  const { locale } = useWorkbench()
   const queryClient = useQueryClient()
   const status = useAgentStatus()
   const [issued, setIssued] = useState<{
@@ -48,8 +44,7 @@ export function AgentSetup({ csrfToken }: { csrfToken: string }) {
   }
   // 每个动作做完都给一句人话（做了什么、接下来会看到什么）；失败也在这里说（KIND 09：点了没反应，用户不知道成没成）
   const [notice, setNotice] = useState<{ tone: 'ok' | 'error'; text: string } | null>(null)
-  const [confirming, setConfirming] = useState<'rotate' | 'delete' | null>(null)
-  const [rotationRevision, setRotationRevision] = useState<string | null>(null)
+  const [confirming, setConfirming] = useState(false)
   const errorText = (error: unknown) => {
     const code = (error as Error).message
     if (['relay_identity_changed', 'relay_identity_busy'].includes(code))
@@ -98,40 +93,16 @@ export function AgentSetup({ csrfToken }: { csrfToken: string }) {
       refresh()
     },
   })
-  const rotate = useMutation({
-    retry: false,
-    gcTime: 0,
-    mutationFn: () => {
-      if (!rotationRevision) throw new Error('relay_identity_changed')
-      return issue(() => rotateRelayIdentity(csrfToken, rotationRevision))
-    },
-    onMutate: () => {
-      setNotice(null)
-      setIssued(null)
-    },
-    onSuccess: () => {
-      setNotice({ tone: 'ok', text: t('noticeRotated') })
-      refresh()
-    },
-    onError: (error) => {
-      setNotice({ tone: 'error', text: errorText(error) })
-      refresh()
-    },
-  })
-  const hasIdentity = Boolean(status.data?.relay_user)
-  const busy = provision.isPending || remove.isPending || rotate.isPending
+  const busy = provision.isPending || remove.isPending
   const expiry = issued?.expires ?? status.data?.agent_token_expires_at
   const date = (value: string) =>
     format.dateTime(new Date(value), { dateStyle: 'medium', timeStyle: 'short' })
   return (
     <section id="agent-token" className="rounded-xl border p-5" aria-labelledby="settings-sandbox">
       <h2 id="settings-sandbox" className="text-base font-semibold">
-        {u('tokenTitle')}
+        {t('machineEntry')}
       </h2>
-      <p className="text-muted-foreground mt-1 text-sm">{t('sandboxHint')}</p>
-      <Link href={routes.settings(locale)} className="text-sm underline">
-        {u('toSettings')}
-      </Link>
+      <p className="text-muted-foreground mt-1 text-sm">{t('machineEntryHint')}</p>
       <p className="mt-2 text-sm">{u('oneMachine')}</p>
       <p className="text-muted-foreground text-sm">
         {u('expires', { value: expiry ? date(expiry) : u('unknownExpiry') })}
@@ -162,51 +133,31 @@ export function AgentSetup({ csrfToken }: { csrfToken: string }) {
             type="button"
             className="rounded-lg border px-3 py-2 text-sm disabled:opacity-50"
             disabled={busy || status.isPending || status.isError}
-            onClick={() => setConfirming('delete')}
+            onClick={() => setConfirming(true)}
           >
             {remove.isPending ? t('deleting') : t('sandboxDelete')}
           </button>
         ) : null}
-        {hasIdentity && status.data?.identity_revision ? (
-          <button
-            type="button"
-            className="rounded-lg border px-3 py-2 text-sm disabled:opacity-50"
-            disabled={busy || status.isPending || status.isError}
-            onClick={() => {
-              setRotationRevision(status.data!.identity_revision!)
-              setConfirming('rotate')
-            }}
-            title={t('rotateHint')}
-          >
-            {rotate.isPending ? t('rotating') : t('rotateToken')}
-          </button>
-        ) : null}
       </div>
       {confirming ? (
-        <div
-          className="mt-3 rounded-lg border border-amber-300 p-3 text-sm"
-          role="alertdialog"
-          data-confirm={confirming}
-        >
-          <p>{confirming === 'rotate' ? t('confirmRotate') : t('confirmDelete')}</p>
+        <div className="mt-3 rounded-lg border border-amber-300 p-3 text-sm" role="alertdialog" data-confirm="delete">
+          <p>{t('confirmDelete')}</p>
           <div className="mt-2 flex gap-2">
             <button
               type="button"
               className="bg-primary text-primary-foreground rounded-lg px-3 py-1.5 text-sm"
               disabled={busy || status.isError}
               onClick={() => {
-                const action = confirming
-                setConfirming(null)
-                if (action === 'rotate') rotate.mutate()
-                else remove.mutate()
+                setConfirming(false)
+                remove.mutate()
               }}
             >
-              {confirming === 'rotate' ? t('confirmRotateYes') : t('confirmDeleteYes')}
+              {t('confirmDeleteYes')}
             </button>
             <button
               type="button"
               className="rounded-lg border px-3 py-1.5 text-sm"
-              onClick={() => setConfirming(null)}
+              onClick={() => setConfirming(false)}
             >
               {t('cancel')}
             </button>
@@ -238,6 +189,72 @@ export function AgentSetup({ csrfToken }: { csrfToken: string }) {
         </div>
       ) : null}
     </section>
+  )
+}
+
+export function ReconnectComputer({ csrfToken }: { csrfToken: string }) {
+  const t = useTranslations('workbench.settings')
+  const u = useTranslations('machines.setup')
+  const status = useAgentStatus()
+  const queryClient = useQueryClient()
+  const [revision, setRevision] = useState<string | null>(null)
+  const [confirming, setConfirming] = useState(false)
+  const [notice, setNotice] = useState<string | null>(null)
+  const rotate = useMutation({
+    retry: false,
+    gcTime: 0,
+    mutationFn: () => {
+      if (!revision) throw new Error('relay_identity_changed')
+      return rotateRelayIdentity(csrfToken, revision)
+    },
+    onSuccess: (result) => {
+      setNotice(result.sandbox_rolled ? t('sandboxRolled') : t('noticeRotated'))
+      void queryClient.invalidateQueries({ queryKey: ['wb-provisioned'] })
+    },
+    onError: (error) => {
+      const code = (error as Error).message
+      setNotice(
+        ['relay_identity_changed', 'relay_identity_busy'].includes(code) ? u('refreshRequired') : code,
+      )
+    },
+  })
+  if (!status.data?.relay_user || !status.data.identity_revision) return null
+  return (
+    <div className="space-y-2">
+      <p className="text-sm">{t('reconnectHint')}</p>
+      <button
+        type="button"
+        className="rounded-lg border px-3 py-2 text-sm disabled:opacity-50"
+        disabled={rotate.isPending}
+        onClick={() => {
+          setRevision(status.data!.identity_revision!)
+          setConfirming(true)
+        }}
+      >
+        {rotate.isPending ? t('rotating') : t('rotateToken')}
+      </button>
+      {confirming ? (
+        <div className="rounded-lg border border-amber-300 p-3 text-sm" role="alertdialog">
+          <p>{t('confirmRotate')}</p>
+          <div className="mt-2 flex gap-2">
+            <button
+              type="button"
+              className="bg-primary text-primary-foreground rounded-lg px-3 py-1.5 text-sm"
+              onClick={() => {
+                setConfirming(false)
+                rotate.mutate()
+              }}
+            >
+              {t('confirmRotateYes')}
+            </button>
+            <button type="button" className="rounded-lg border px-3 py-1.5 text-sm" onClick={() => setConfirming(false)}>
+              {t('cancel')}
+            </button>
+          </div>
+        </div>
+      ) : null}
+      {notice ? <p role="status">{notice}</p> : null}
+    </div>
   )
 }
 

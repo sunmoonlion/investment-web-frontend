@@ -2,7 +2,12 @@
 import { z } from 'zod'
 import {
   agentDownloadSchema,
+  installCommandSchema,
+  pairingDecisionSchema,
+  pairingLookupSchema,
   provisionedSandboxSchema,
+  type InstallCommand,
+  type PairingLookup,
   type ProvisionedSandbox,
 } from '@/contracts/workbench-settings'
 import { getJson, sendJson } from '@/lib/workbench/http'
@@ -48,4 +53,43 @@ export function rotateRelayIdentity(
 }
 export function fetchAgentDownload(fetchImpl: Fetch = fetch) {
   return getJson(agentDownloadSchema, '/api/workbench/agent/download', fetchImpl)
+}
+export function issueInstallCommand(
+  csrfToken: string,
+  fetchImpl: Fetch = fetch,
+): Promise<InstallCommand> {
+  return sendJson(installCommandSchema, '/api/workbench/agent/install-command', { csrfToken }, fetchImpl)
+}
+export function lookupPairing(
+  csrfToken: string,
+  userCode: string,
+  fetchImpl: Fetch = fetch,
+): Promise<PairingLookup> {
+  return sendJson(
+    pairingLookupSchema,
+    '/api/workbench/agent-pairing/lookup',
+    { csrfToken, body: { user_code: userCode } },
+    fetchImpl,
+  )
+}
+export function approvePairing(
+  csrfToken: string,
+  id: string,
+  userCode: string,
+  fetchImpl: Fetch = fetch,
+) {
+  return sendJson(
+    pairingDecisionSchema,
+    `/api/workbench/agent-pairing/${encodeURIComponent(id)}/approve`,
+    { csrfToken, body: { user_code: userCode } },
+    fetchImpl,
+  )
+}
+export function denyPairing(csrfToken: string, id: string, fetchImpl: Fetch = fetch) {
+  return sendJson(
+    pairingDecisionSchema,
+    `/api/workbench/agent-pairing/${encodeURIComponent(id)}/deny`,
+    { csrfToken },
+    fetchImpl,
+  )
 }

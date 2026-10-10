@@ -110,6 +110,10 @@
   {
    "title": "知识库：一份交回物",
    "path": "/zh-CN/workbench/library/deliverable:d019b7ea-d96e-594c-9d38-4274df134fd9:profile"
+  },
+  {
+   "title": "我的电脑",
+   "path": "/zh-CN/workbench/settings#computer"
   }
  ],
  "responses": [
@@ -2280,6 +2284,30 @@
    "status": 200,
    "content_type": "application/json",
    "file": "agent-download.json"
+  },
+  {
+   "method": "POST",
+   "path": "/api/workbench/agent/install-command",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "agent-install-command.json"
+  },
+  {
+   "method": "POST",
+   "path": "/api/workbench/agent-pairing/lookup",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "agent-pairing-lookup.json"
+  },
+  {
+   "method": "POST",
+   "path": "/api/workbench/agent-pairing/11111111-1111-4111-8111-111111111111/approve",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "agent-pairing-approve.json"
   }
  ],
  "streams": [

@@ -1,8 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { agentDownloadSchema } from '@/contracts/workbench-settings'
-import { initCommand } from '@/features/machines/model/onboarding'
+import {
+  agentDownloadSchema,
+  installCommandSchema,
+  pairingDecisionSchema,
+  pairingLookupSchema,
+} from '@/contracts/workbench-settings'
+import { initCommand } from '@/features/settings/model/onboarding'
 
 describe('agent release contract and commands', () => {
   const release = {
@@ -35,6 +40,17 @@ describe('agent release contract and commands', () => {
       expect(body.download === null).toBe(scenario === 'empty')
     },
   )
+  it.each(['full', 'empty', 'offline'])('accepts recorded install and pairing responses: %s', (scenario) => {
+    const directory = join(process.cwd(), 'preview/fixtures', scenario)
+    const read = (file: string) => JSON.parse(readFileSync(join(directory, file), 'utf8'))
+    const command = installCommandSchema.parse(read('agent-install-command.json'))
+    expect(command.command).toContain('https://downloads.example/api/agent-install/')
+    const found = pairingLookupSchema.parse(read('agent-pairing-lookup.json'))
+    expect(found.replaces_machine).toBe(scenario === 'full' ? '办公室的电脑' : null)
+    const decision = pairingDecisionSchema.parse(read('agent-pairing-approve.json'))
+    expect(decision).toEqual({ status: 'approved', machine_name: '家里的电脑' })
+    expect(JSON.stringify(decision)).not.toContain('token')
+  })
   it('uses the same public contract for a same-origin backend download', () => {
     const download = { ...release, url: 'https://investment.example/api/workbench/agent/package' }
     expect(agentDownloadSchema.parse({ contract_version: 2, download }).download).toEqual(download)

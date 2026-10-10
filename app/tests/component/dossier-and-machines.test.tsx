@@ -16,8 +16,8 @@ import {
   sourceLine,
   tablesOf,
 } from '@/features/expert/model/dossier'
-import { MachinesScreen } from '@/features/machines'
-import { progress } from '@/features/machines/model/guide'
+import { MachinesScreen } from '@/features/settings'
+import { progress } from '@/features/settings/model/guide'
 import { SettingsScreen } from '@/features/settings'
 import { WorkbenchProvider } from '@/lib/workbench/context'
 import messages from '@/messages/zh-CN.json'
@@ -257,43 +257,30 @@ describe('底稿页', () => {
 })
 
 describe('我的电脑', () => {
-  it('五步：用户确认安装，服务端报告令牌、目录和在线状态', () => {
-    const machine = (roots: string[]) =>
-      ({ id: 'x', name: 'm', status: 'online', roots }) as Machine
-    const input = { downloaded: false, installed: false, identityIssued: false, machines: [] }
-    expect(progress(input)).toEqual({
-      download: false,
-      install: false,
-      token: false,
-      roots: false,
-      online: false,
+  it('三步：有在线电脑即完成；离线只算已安装和已选文件夹', () => {
+    const machine = (roots: string[], status: Machine['status'] = 'online') =>
+      ({ id: 'x', name: 'm', status, roots }) as Machine
+    expect(progress([])).toEqual({ install: false, connect: false, folders: false })
+    expect(progress(undefined)).toEqual({ install: false, connect: false, folders: false })
+    expect(progress([machine([])])).toEqual({ install: true, connect: true, folders: true })
+    expect(progress([machine(['/r'], 'offline')])).toEqual({
+      install: true,
+      connect: false,
+      folders: true,
     })
-    expect(progress({ ...input, identityIssued: true, machines: [machine([])] })).toEqual({
-      download: false,
-      install: false,
-      token: true,
-      roots: false,
-      online: false,
-    })
-    expect(progress({ ...input, machines: [machine(['/r'])] }).online).toBe(true)
-    expect(
-      progress({ ...input, machines: [{ ...machine(['/r']), status: 'offline' }, machine([])] })
-        .online,
-    ).toBe(false)
+    expect(progress([machine([], 'offline'), machine([])]).connect).toBe(true)
   })
 
   it('接入的机器：在线、版本、白名单里的目录、它自己定的上限', async () => {
     page(<MachinesScreen />)
     expect(await screen.findByRole('heading', { name: '办公室的电脑' })).toBeInTheDocument()
-    expect(screen.getByText('在线')).toBeInTheDocument()
+    expect(screen.getAllByText('在线').length).toBeGreaterThan(0)
     expect(screen.getByText('/home/demo/research')).toBeInTheDocument()
     expect(screen.getByText(/只能改白名单目录里的文件；不许联网/)).toBeInTheDocument()
     expect(screen.getByText(/这些只能在那台机器上改/)).toBeInTheDocument()
     // 已在线可证明持有可用令牌；下载与安装仍由本人确认。
     await waitFor(() => expect(screen.getAllByLabelText('已完成')).toHaveLength(3))
-    expect(screen.getAllByRole('checkbox').every((box) => !(box as HTMLInputElement).checked)).toBe(
-      true,
-    )
+    expect(screen.queryAllByRole('checkbox')).toHaveLength(0)
   })
 
   it('机器离线：写明本地代理没在运行', async () => {
@@ -305,8 +292,8 @@ describe('我的电脑', () => {
   it('还没有电脑：照五步做', async () => {
     scenario = 'empty'
     page(<MachinesScreen />)
-    expect(await screen.findByText('还没有电脑接入。请按上面的五步操作。')).toBeInTheDocument()
-    expect(screen.getAllByLabelText('还没做')).toHaveLength(5)
+    expect(await screen.findByText('还没有电脑接入。')).toBeInTheDocument()
+    expect(screen.getAllByLabelText('还没做')).toHaveLength(3)
   })
 })
 
@@ -318,5 +305,6 @@ describe('设置', () => {
       expect(await screen.findByRole('heading', { name })).toBeInTheDocument()
     }
     expect(document.body.textContent).not.toContain('会话')
+    expect(document.getElementById('computer')).not.toBeNull()
   })
 })

@@ -52,6 +52,36 @@ export const agentDownloadSchema = z
   .strict()
 export type AgentDownload = NonNullable<z.infer<typeof agentDownloadSchema>['download']>
 
+export const installCommandSchema = z
+  .object({
+    command: z.string().min(1),
+    expires_at: z.iso.datetime({ offset: true }),
+  })
+  .strict()
+
+export const pairingLookupSchema = z
+  .object({
+    id: z.string().min(1),
+    machine_name: z.string(),
+    os: z.string(),
+    agent_version: z.string(),
+    codex_version: z.string(),
+    source_ip: z.string(),
+    requested_seconds_ago: z.number().int().nonnegative(),
+    replaces_machine: z.string().nullable(),
+  })
+  .strict()
+
+export const pairingDecisionSchema = z
+  .object({
+    status: z.enum(['approved', 'denied']),
+    machine_name: z.string().optional(),
+  })
+  .strict()
+
+export type InstallCommand = z.infer<typeof installCommandSchema>
+export type PairingLookup = z.infer<typeof pairingLookupSchema>
+
 export const prefsSchema = z
   .object({
     model: z.string().nullable(),
@@ -94,6 +124,7 @@ export const provisionedSandboxSchema = z
     agent_token_expires_at: expiry,
     identity_revision: revision.optional(),
     credential_hint: z.string().optional(),
+    sandbox_rolled: z.boolean().optional(),
   })
   .loose()
   .refine((s) => !('app_server_token' in s) && !('model_key' in s), {

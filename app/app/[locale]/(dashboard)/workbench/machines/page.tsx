@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 
-import { MachinesScreen } from '@/features/machines'
+import { MachinesRedirect } from '@/features/settings'
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('machines')
@@ -9,5 +9,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function MachinesPage() {
-  return <MachinesScreen />
+  return <MachinesRedirect />
 }

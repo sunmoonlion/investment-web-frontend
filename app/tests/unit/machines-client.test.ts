@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { rotateRelayIdentity } from '@/features/machines/api/client'
+import { rotateRelayIdentity } from '@/features/settings/api/computer'
 const csrf = 'csrf-fixture-value'
 function json(body: unknown) {
   return new Response(JSON.stringify(body), { headers: { 'Content-Type': 'application/json' } })

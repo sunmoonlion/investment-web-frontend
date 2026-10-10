@@ -6,7 +6,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { HomeScreen } from '@/features/home'
 import { AskExpertScreen, ExpertHomeScreen } from '@/features/expert'
-import { MachinesScreen } from '@/features/machines'
+import { MachinesScreen } from '@/features/settings'
 import { NewProjectDialog } from '@/features/projects/ui/new-project-dialog'
 import { Sidebar } from '@/features/shell/ui/sidebar'
 import { WorkbenchProvider } from '@/lib/workbench/context'
@@ -106,7 +106,7 @@ function page(children: React.ReactNode, locale: 'zh-CN' | 'en' = 'zh-CN') {
 const checkLink = (locale: 'zh-CN' | 'en' = 'zh-CN') => {
   expect(
     screen.getByRole('link', { name: locale === 'zh-CN' ? '接入电脑' : 'Connect computer' }),
-  ).toHaveAttribute('href', `/${locale}/workbench/machines`)
+  ).toHaveAttribute('href', `/${locale}/workbench/settings#computer`)
 }
 
 describe('电脑接入入口', () => {
@@ -118,7 +118,7 @@ describe('电脑接入入口', () => {
       within(card)
         .getAllByRole('link')
         .map((link) => link.getAttribute('href')),
-    ).toEqual(['/zh-CN/workbench/settings', '/zh-CN/workbench/machines'])
+    ).toEqual(['/zh-CN/workbench/settings', '/zh-CN/workbench/settings#computer'])
     fireEvent.change(screen.getByRole('textbox'), { target: { value: '你好' } })
     expect(screen.queryByText(zh.home.blocker.noSandbox)).toBeNull()
     expect(screen.getByRole('button', { name: zh.home.mode.chat.send })).toBeDisabled()
@@ -175,7 +175,7 @@ describe('电脑接入入口', () => {
   it('侧栏状态是可见链接，聊天导航明确指向聊天入口', async () => {
     page(<Sidebar />)
     const status = await screen.findByText('还没有登记电脑')
-    expect(status.closest('a')).toHaveAttribute('href', '/zh-CN/workbench/machines')
+    expect(status.closest('a')).toHaveAttribute('href', '/zh-CN/workbench/settings#computer')
     expect(status.closest('a')).toHaveTextContent('我的电脑')
     expect(screen.getByRole('link', { name: '聊天' })).toHaveAttribute(
       'href',
@@ -194,50 +194,38 @@ describe('电脑接入入口', () => {
   })
 })
 
-describe('五步引导证据', () => {
-  it('电脑已在线，即使签发状态没有 relay_user，领取令牌步骤也完成', async () => {
+describe('三步引导证据', () => {
+  it('电脑已在线，三步都算完成，没有自己打勾', async () => {
     issuedIdentity = false
     environment = 'full'
     page(<MachinesScreen />)
     const guide = within(screen.getByRole('region', { name: zh.machines.guide.title }))
     await waitFor(() => expect(guide.getAllByLabelText('已完成')).toHaveLength(3))
-    expect(guide.getByText(zh.machines.guide.evidence)).toHaveTextContent(
-      '前两步做完自己打勾，后三步做完会自动打勾。',
-    )
-    expect(guide.getByLabelText(zh.machines.guide.confirmDownload)).not.toBeChecked()
-    expect(guide.getByLabelText(zh.machines.guide.confirmInstall)).not.toBeChecked()
+    expect(guide.getByText(zh.machines.guide.evidence)).toHaveTextContent('有电脑在线，这三步就算完成')
+    expect(guide.queryAllByRole('checkbox')).toHaveLength(0)
   })
-  it('下载/安装不自动打勾，不改令牌；目录与在线随只读状态更新', async () => {
+  it('没有电脑时三步都没做；离线算安装和选文件夹；在线三步完成', async () => {
     const p = page(<MachinesScreen />)
     const guide = within(screen.getByRole('region', { name: zh.machines.guide.title }))
-    await waitFor(() => expect(guide.getAllByLabelText('已完成')).toHaveLength(1))
+    await waitFor(() => expect(guide.getAllByLabelText('还没做')).toHaveLength(3))
     expect(guide.getAllByRole('link').map((link) => link.textContent)).toEqual([
-      '1. 下载安装包',
-      '2. 校验并安装',
-      '3. 领取代理令牌',
-      '4. 选择项目目录',
-      '5. 确认电脑在线',
+      '1. 下载安装',
+      '2. 在电脑上点「连接我的账号」，并在这里输入码',
+      '3. 选文件夹完成',
     ])
-    expect(screen.getByRole('link', { name: '下载 Windows ZIP' })).toHaveAttribute(
-      'href',
-      release.url,
-    )
-    expect(guide.getByLabelText(zh.machines.guide.confirmDownload)).not.toBeChecked()
-    expect(guide.getByLabelText(zh.machines.guide.confirmInstall)).not.toBeChecked()
-    fireEvent.click(guide.getByLabelText(zh.machines.guide.confirmDownload))
-    fireEvent.click(guide.getByLabelText(zh.machines.guide.confirmInstall))
-    expect(guide.getAllByLabelText('已完成')).toHaveLength(3)
+    expect(await screen.findByRole('button', { name: '复制安装命令' })).toBeVisible()
+    expect(screen.getByRole('link', { name: '下载 Windows ZIP' })).toHaveAttribute('href', release.url)
     act(() =>
       p.client.setQueryData(
         workbenchKeys.machines,
         connected.map((m: object) => ({ ...m, status: 'offline' })),
       ),
     )
-    await waitFor(() => expect(guide.getAllByLabelText('已完成')).toHaveLength(4))
+    await waitFor(() => expect(guide.getAllByLabelText('已完成')).toHaveLength(2))
     act(() => p.client.setQueryData(workbenchKeys.machines, connected))
-    await waitFor(() => expect(guide.getAllByLabelText('已完成')).toHaveLength(5))
+    await waitFor(() => expect(guide.getAllByLabelText('已完成')).toHaveLength(3))
     const sections = [...document.querySelectorAll('section[id]')].map((s) => s.id)
-    expect(sections).toEqual(['agent-download', 'agent-token', 'agent-roots', 'agent-online'])
+    expect(sections).toEqual(['computer', 'computer-status', 'agent-download', 'agent-connect', 'agent-online'])
     expect(calls.every((c) => c.method === 'GET')).toBe(true)
   })
   it('电脑状态失败不显示未登记或在线通过', async () => {
@@ -246,6 +234,6 @@ describe('五步引导证据', () => {
     await screen.findByText(zh.machines.loadFailed)
     expect(screen.queryByText(zh.machines.none)).toBeNull()
     const guide = within(screen.getByRole('region', { name: zh.machines.guide.title }))
-    expect(guide.getAllByLabelText('还没做')).toHaveLength(4)
+    expect(guide.getAllByLabelText('还没做')).toHaveLength(3)
   })
 })
