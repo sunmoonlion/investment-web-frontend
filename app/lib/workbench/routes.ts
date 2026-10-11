@@ -26,6 +26,8 @@ export const routes = {
   // 知识库（SDD 0011）：用户自己的底稿与交回物
   library: (locale: string) => at(locale, 'library'),
   libraryItem: (locale: string, item: string) => at(locale, 'library', item),
+  // 长期记忆（0019 §四）
+  memory: (locale: string) => at(locale, 'memory'),
 }
 
 // 一段对话在哪一页
@@ -52,6 +54,7 @@ export type Page =
   | 'settings'
   | 'library'
   | 'libraryItem'
+  | 'memory'
 
 const BUILT: ReadonlySet<Page> = new Set([
   'home',
@@ -66,6 +69,7 @@ const BUILT: ReadonlySet<Page> = new Set([
   'settings',
   'library',
   'libraryItem',
+  'memory',
 ])
 
 export function isBuilt(page: Page) {

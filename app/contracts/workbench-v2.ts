@@ -702,3 +702,18 @@ export const libraryContentSchema = z
   })
   .loose()
 export type LibraryContent = z.infer<typeof libraryContentSchema>
+
+// ---------------- 长期记忆：关于这位用户的几条事实（0019 §四）----------------
+export const memorySchema = z
+  .object({
+    id: uuid,
+    kind: z.enum(['fact', 'judgement']),
+    text: z.string(),
+    enabled: z.boolean(),
+    created_at: z.string(),
+    updated_at: z.string(),
+  })
+  .loose()
+export type Memory = z.infer<typeof memorySchema>
+export const memoriesSchema = z.object({ memories: z.array(memorySchema) }).loose()
+export const memoryMadeSchema = z.object({ memory: memorySchema }).loose()

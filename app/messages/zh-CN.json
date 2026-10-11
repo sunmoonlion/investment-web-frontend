@@ -190,7 +190,8 @@
       "pending": "待我决定",
       "machines": "我的电脑",
       "settings": "设置",
-      "library": "知识库"
+      "library": "知识库",
+      "memory": "长期记忆"
     },
     "machine": {
       "online": "电脑在线",
@@ -952,5 +953,25 @@
   "computerConnection": {
     "action": "接入电脑",
     "welcome": "先在设置里登记模型 key，再接入电脑，工作和专家就能读写你的文件。"
+  },
+  "memory": {
+    "title": "长期记忆",
+    "intro": "这里的内容会放进你每段对话的开头，只有你能看。写关于你自己的事实：关注什么、看什么口径、想要什么样的回答。",
+    "addTitle": "记一条",
+    "addLabel": "新的一条",
+    "addPlaceholder": "例：看银行股用拨备前利润；回答先结论后依据",
+    "add": "记住",
+    "examples": "关注的行业与公司、口径偏好、风险偏好、输出习惯",
+    "listTitle": "已记住的",
+    "loading": "加载中…",
+    "empty": "还没有记住任何事。",
+    "enabled": "启用",
+    "editLabel": "改这一条",
+    "save": "保存",
+    "cancel": "取消",
+    "edit": "改",
+    "remove": "删",
+    "clear": "全部清空",
+    "failed": "没有保存成功，请再试一次。"
   }
 }

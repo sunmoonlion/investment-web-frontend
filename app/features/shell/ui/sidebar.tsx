@@ -2,6 +2,7 @@
 
 import {
   BookOpenIcon,
+  BrainIcon,
   ChevronRightIcon,
   EllipsisIcon,
   FolderIcon,
@@ -426,6 +427,7 @@ export function Sidebar() {
             >
               {entry.key === 'settings' ? <SettingsIcon className="size-3.5 shrink-0" /> : null}
               {entry.key === 'library' ? <BookOpenIcon className="size-3.5 shrink-0" /> : null}
+              {entry.key === 'memory' ? <BrainIcon className="size-3.5 shrink-0" /> : null}
               <span>{t(`foot.${entry.key}`)}</span>
               {entry.key === 'pending' && waiting > 0 ? (
                 <span className="bg-foreground text-background ml-auto rounded-full px-1.5 text-xs">

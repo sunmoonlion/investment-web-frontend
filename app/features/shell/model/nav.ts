@@ -174,6 +174,8 @@ export const FOOT: readonly FootEntry[] = [
   { key: 'pending', kind: 'page', page: 'home', href: (locale) => routes.home(locale) },
   // 知识库：0018/0019 之后改为本地知识库（用户电脑上的目录）；页面改造前先沿用现有页
   { key: 'library', kind: 'page', page: 'library', href: routes.library },
+  // 长期记忆：关于这位用户的几条事实（0019 §四）
+  { key: 'memory', kind: 'page', page: 'memory', href: routes.memory },
   // 「我的电脑」不再单列：灯在中段的电脑行上，接入与上限在设置页（0016 S2）
   { key: 'settings', kind: 'page', page: 'settings', href: routes.settings },
 ]

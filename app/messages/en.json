@@ -190,7 +190,8 @@
       "pending": "Waiting for me",
       "machines": "My computers",
       "settings": "Settings",
-      "library": "Library"
+      "library": "Library",
+      "memory": "Memory"
     },
     "machine": {
       "online": "A computer is online",
@@ -952,5 +953,25 @@
   "computerConnection": {
     "action": "Connect computer",
     "welcome": "First add your model key in Settings, then connect your computer so Work and Expert can read and write your files."
+  },
+  "memory": {
+    "title": "Long-term memory",
+    "intro": "These lines go at the start of every conversation you have. Only you can see them. Write facts about yourself: what you follow, which figures you use, how you like answers.",
+    "addTitle": "Add one",
+    "addLabel": "New line",
+    "addPlaceholder": "e.g. For banks use pre-provision profit; answer conclusion first",
+    "add": "Remember",
+    "examples": "Sectors and companies you follow, metric preferences, risk appetite, output habits",
+    "listTitle": "Remembered",
+    "loading": "Loading…",
+    "empty": "Nothing remembered yet.",
+    "enabled": "Enabled",
+    "editLabel": "Edit this line",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "remove": "Delete",
+    "clear": "Clear all",
+    "failed": "Not saved. Please try again."
   }
 }
