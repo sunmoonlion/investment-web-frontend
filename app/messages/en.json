@@ -823,7 +823,7 @@
     "guide": {
       "title": "Connect a computer",
       "install": "Download and install",
-      "connect": "On the computer choose Connect my account, then enter the code here",
+      "connect": "A page opens on your computer showing a connection code; enter it here",
       "folders": "Choose folders to finish",
       "done": "done",
       "todo": "not yet",
