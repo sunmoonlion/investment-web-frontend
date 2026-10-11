@@ -217,7 +217,12 @@
         "expert": "Ask an expert"
       }
     },
-    "chats": "Chats"
+    "chats": "Chats",
+    "pending": {
+      "title": "Waiting for me",
+      "urgent": "urgent",
+      "minutes": "{minutes} min left"
+    }
   },
   "projectPicker": {
     "loading": "Loading…",

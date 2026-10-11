@@ -183,3 +183,60 @@ export const FOOT: readonly FootEntry[] = [
 export function footHref(entry: FootEntry, locale: string): string | null {
   return isBuilt(entry.page) ? entry.href(locale) : null
 }
+
+// ---------------- 「待我决定」的指针表（0016 S3）：哪个项目、哪段对话、哪一步、还剩多少分钟 ----------------
+// 工具级审批与模型提问挂着时 Codex 那一轮在等，一小时就停，算「急」；验收失败与预算可以放几天
+export type PendingPointer = {
+  id: string
+  urgent: boolean
+  about: string
+  project: string | null
+  conversation: string | null
+  step: string | null
+  minutesLeft: number | null
+  href: string | null
+}
+
+// 首页清单与侧栏弹层拿到的行形状略有不同，只用到这几样
+export type PendingLike = {
+  interaction_id: string
+  kind: string
+  expires_at?: string | null
+  where: {
+    about?: string | null
+    project?: { id: string; title: string | null } | null
+    conversation?: { id: string; title: string | null; kind: Conversation['kind'] } | null
+    step?: { index: number; title: string } | null
+  }
+}
+
+export function pendingPointers(
+  rows: PendingLike[],
+  locale: string,
+  now: number = Date.now(),
+): PendingPointer[] {
+  return rows
+    .map((row) => {
+      const where = row.where
+      const expires = row.expires_at ? Date.parse(row.expires_at) : NaN
+      return {
+        id: row.interaction_id,
+        urgent: row.kind === 'tool_approval' || row.kind === 'question',
+        about: where.about ?? row.kind,
+        project: where.project?.title ?? null,
+        conversation: where.conversation?.title ?? null,
+        step: where.step ? `${where.step.index}. ${where.step.title}` : null,
+        minutesLeft: Number.isNaN(expires)
+          ? null
+          : Math.max(0, Math.round((expires - now) / 60000)),
+        href: where.conversation
+          ? conversationRoute(locale, {
+              id: where.conversation.id,
+              project_id: where.project?.id ?? null,
+              kind: where.conversation.kind,
+            })
+          : null,
+      }
+    })
+    .sort((a, b) => Number(b.urgent) - Number(a.urgent))
+}

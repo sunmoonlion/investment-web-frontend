@@ -514,6 +514,7 @@ const waitingRowSchema = z
       .loose(),
     why: z.string().nullable(),
     failed: z.array(z.object({ label: z.string(), message: z.string() }).loose()),
+    expires_at: z.string().nullable().optional(),
   })
   .loose()
 export type WaitingRow = z.infer<typeof waitingRowSchema>

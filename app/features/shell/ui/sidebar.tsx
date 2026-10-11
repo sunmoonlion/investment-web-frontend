@@ -35,6 +35,7 @@ import {
   footHref,
   looseChats,
   modeOf,
+  pendingPointers,
   recent,
   type TreeConversation,
 } from '../model/nav'
@@ -115,6 +116,8 @@ export function Sidebar() {
   const currentProject = allProjects.find((project) => pathname.includes(project.id))
   const [toggled, setToggled] = useState<Record<string, boolean>>({})
   const [openMenu, setOpenMenu] = useState<string | null>(null)
+  const [showPending, setShowPending] = useState(false)
+  const pointers = pendingPointers(pending.data ?? [], locale)
   const isOpen = (key: string, fallback: boolean) => toggled[key] ?? fallback
   const flip = (key: string, fallback: boolean) =>
     setToggled({ ...toggled, [key]: !isOpen(key, fallback) })
@@ -417,8 +420,55 @@ export function Sidebar() {
       </div>
 
       <nav aria-label={t('more')} className="shrink-0 border-t pt-3">
+        {showPending && pointers.length > 0 ? (
+          <ul
+            aria-label={t('pending.title')}
+            className="bg-background mx-1 mb-2 max-h-64 divide-y overflow-y-auto rounded-md border text-[13px]"
+          >
+            {pointers.map((item) => (
+              <li key={item.id}>
+                <Destination href={item.href} className="flex-col items-start gap-0.5 py-2">
+                  <span className="flex w-full items-center gap-2">
+                    <span className="truncate font-medium">{item.about}</span>
+                    {item.urgent ? (
+                      <span className="rounded bg-amber-100 px-1 text-[10px] text-amber-900 dark:bg-amber-900/40 dark:text-amber-200">
+                        {t('pending.urgent')}
+                      </span>
+                    ) : null}
+                    {item.minutesLeft !== null && item.urgent ? (
+                      <span className="text-muted-foreground ml-auto text-xs">
+                        {t('pending.minutes', { minutes: item.minutesLeft })}
+                      </span>
+                    ) : null}
+                  </span>
+                  <span className="text-muted-foreground truncate text-xs">
+                    {[item.project, item.conversation, item.step].filter(Boolean).join(' · ')}
+                  </span>
+                </Destination>
+              </li>
+            ))}
+          </ul>
+        ) : null}
         {FOOT.map((entry) => {
           const href = footHref(entry, locale)
+          if (entry.key === 'pending') {
+            return (
+              <button
+                key={entry.key}
+                type="button"
+                aria-expanded={showPending}
+                onClick={() => setShowPending(!showPending)}
+                className={cn(row, rowLink, 'w-full text-left')}
+              >
+                <span>{t(`foot.${entry.key}`)}</span>
+                {waiting > 0 ? (
+                  <span className="bg-foreground text-background ml-auto rounded-full px-1.5 text-xs">
+                    {waiting}
+                  </span>
+                ) : null}
+              </button>
+            )
+          }
           return (
             <Destination
               key={entry.key}

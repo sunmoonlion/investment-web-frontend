@@ -217,7 +217,12 @@
         "expert": "请专家"
       }
     },
-    "chats": "聊天"
+    "chats": "聊天",
+    "pending": {
+      "title": "等我决定的事",
+      "urgent": "急",
+      "minutes": "还剩 {minutes} 分钟"
+    }
   },
   "projectPicker": {
     "loading": "加载中…",
