@@ -122,11 +122,20 @@ export function WorkScreen({
                         directory={directory}
                         waiting={waiting.data ?? []}
                         answering={act.answer.isPending}
-                        onAnswer={(approval, decision) =>
+                        onAnswer={(approval, answer) =>
                           act.answer.mutate({
                             pending: approval.id,
                             token: approval.token,
-                            decision,
+                            decision: answer.decision,
+                            answer: answer.answer,
+                          })
+                        }
+                        onQuestion={(answer) =>
+                          act.answer.mutate({
+                            pending: answer.id,
+                            token: answer.token,
+                            decision: answer.decision,
+                            answer: answer.answer,
                           })
                         }
                       />

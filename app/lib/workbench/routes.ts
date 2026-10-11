@@ -20,7 +20,6 @@ export const routes = {
   dossier: (locale: string, project: string, task: string) =>
     at(locale, 'projects', project, 'tasks', task),
   expert: (locale: string) => at(locale, 'expert'),
-  review: (locale: string, pending: string) => at(locale, 'review', pending),
   machines: (locale: string) => at(locale, 'machines'),
   settings: (locale: string) => at(locale, 'settings'),
   computer: (locale: string) => `${at(locale, 'settings')}#computer`,
@@ -49,7 +48,6 @@ export type Page =
   | 'askExpert'
   | 'dossier'
   | 'expert'
-  | 'review'
   | 'machines'
   | 'settings'
   | 'library'
@@ -64,7 +62,6 @@ const BUILT: ReadonlySet<Page> = new Set([
   'expert',
   'askExpert',
   'dossier',
-  'review',
   'machines',
   'settings',
   'library',

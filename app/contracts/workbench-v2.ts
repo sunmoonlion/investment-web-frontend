@@ -411,6 +411,34 @@ export const reviewSchema = z
           .loose(),
         validity: z.object({ expires_at: z.string().nullable(), after_expiry: z.string() }).loose(),
         decision: z.object({ decided: z.boolean(), chosen: z.string().nullable() }).loose(),
+        // 工具级审批与提问卡多带的：哪一步、后面谁依赖、刚拒绝过、问题清单
+        subject: z
+          .object({
+            command: z.string().nullable().optional(),
+            cwd: z.string().nullable().optional(),
+            after_decline: z.boolean().optional(),
+            dependents: z
+              .array(z.object({ step_id: z.string(), title: z.string() }).loose())
+              .optional(),
+            questions: z
+              .array(
+                z
+                  .object({
+                    id: z.string(),
+                    header: z.string(),
+                    question: z.string(),
+                    options: z.array(
+                      z.object({ label: z.string(), description: z.string() }).loose(),
+                    ),
+                    is_other: z.boolean(),
+                    is_secret: z.boolean(),
+                  })
+                  .loose(),
+              )
+              .optional(),
+          })
+          .loose()
+          .optional(),
       })
       .loose(),
   })

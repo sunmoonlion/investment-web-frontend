@@ -393,11 +393,21 @@
       "answered": {
         "accept": "你允许了这一次",
         "acceptForSession": "你允许了，这段对话里同样的事不再问",
-        "decline": "你拒绝了",
-        "other": "你答复了"
+        "decline": "你拒绝了这一条",
+        "other": "你答复了",
+        "accept_task": "你允许了，这个任务里同样的事不再问",
+        "cancel": "你让它停下了"
       },
       "expired": "这个请求过期了，没有执行",
-      "failed": "没有答复成功，请再试一次。"
+      "failed": "没有答复成功，请再试一次。",
+      "step": "哪一步",
+      "stepAt": "第 {index} 步「{title}」",
+      "dependents": "后面依赖它的步骤：{steps}",
+      "afterDecline": "这一步里刚拒绝过一条，之后它要做的每件事都会先问你。",
+      "noteToggle": "附一句话",
+      "noteLabel": "给它的话",
+      "notePlaceholder": "拒绝时写要它怎么改；停下时写重做这一步的要求",
+      "noteHint": "拒绝并附话 = 它这一轮里照你说的改；停下并附话 = 重做这一步时带上。"
     },
     "changes": {
       "title": "改动",
@@ -411,6 +421,18 @@
       "given": "交给了专家",
       "returned": "专家交回了",
       "inside": "专家做的每一步有它自己的进度页，这一部分还在做。"
+    },
+    "question": {
+      "title": "Codex 想问你",
+      "other": "自己写",
+      "send": "答复",
+      "answered": "你答复了它的问题",
+      "expired": "这个问题过期了，它按自己的假设继续了",
+      "secret": "只给这一次用，不留档"
+    },
+    "policy": {
+      "allowed": "按规则放行：{command}",
+      "denied": "顾问想做 {command}，按专家包规则拒绝了"
     }
   },
   "expert": {
@@ -498,7 +520,14 @@
       "noToken": "答复用的凭证没有取到，刷新页面再试。",
       "failedToSend": "没有答复成功，请再试一次。",
       "decided": "你已经选了：{choice}",
-      "loading": "加载中…"
+      "loading": "加载中…",
+      "afterDecline": "这一步里刚拒绝过一条，之后它要做的每件事都会先问你。",
+      "dependents": "后面依赖它的步骤：{steps}",
+      "noteLabel": "给它的话",
+      "notePlaceholder": "拒绝时写要它怎么改；停下或重做时写这一步的要求",
+      "other": "自己写",
+      "send": "答复",
+      "answered": "你已经答复了"
     },
     "sheet": {
       "title": "委托单",

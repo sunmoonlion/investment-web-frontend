@@ -233,16 +233,23 @@ export function HomeScreen() {
                           .join(' · ')}
                       </span>
                     </span>
-                    {isBuilt('review') ? (
-                      <span className="shrink-0 text-[13px] font-medium">{t('pending.open')}</span>
-                    ) : null}
+                    <span className="shrink-0 text-[13px] font-medium">{t('pending.open')}</span>
                   </>
                 )
+                // 答题只在事发处：点行回到那段对话，审查面就在它发生的位置
+                const where = each.where.conversation
+                const href = where
+                  ? conversationRoute(locale, {
+                      id: where.id,
+                      project_id: each.where.project?.id ?? null,
+                      kind: where.kind,
+                    })
+                  : null
                 return (
                   <li key={each.interaction_id}>
-                    {isBuilt('review') ? (
+                    {href ? (
                       <Link
-                        href={routes.review(locale, each.interaction_id)}
+                        href={href}
                         className="flex items-center gap-3 px-4 py-2.5 hover:bg-amber-100/60"
                       >
                         {inner}

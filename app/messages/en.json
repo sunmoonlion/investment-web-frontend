@@ -393,11 +393,21 @@
       "answered": {
         "accept": "You allowed it once",
         "acceptForSession": "You allowed it; the same thing will not be asked again in this conversation",
-        "decline": "You declined",
-        "other": "You answered"
+        "decline": "You declined this one",
+        "other": "You answered",
+        "accept_task": "You allowed it; the same thing will not be asked again in this task",
+        "cancel": "You stopped it"
       },
       "expired": "This request expired and was not executed",
-      "failed": "The answer was not sent. Please try again."
+      "failed": "The answer was not sent. Please try again.",
+      "step": "Step",
+      "stepAt": "Step {index} “{title}”",
+      "dependents": "Later steps that depend on it: {steps}",
+      "afterDecline": "Something was declined in this step just now; everything it wants to do next will be asked first.",
+      "noteToggle": "Add a note",
+      "noteLabel": "Note to it",
+      "notePlaceholder": "When declining: how it should change. When stopping: what to do differently when redoing this step",
+      "noteHint": "Decline with a note = it changes course in this turn; stop with a note = the note goes into the redo."
     },
     "changes": {
       "title": "Changes",
@@ -411,6 +421,18 @@
       "given": "Handed to the expert",
       "returned": "The expert handed back",
       "inside": "The expert's steps have their own progress view; that part is still being built."
+    },
+    "question": {
+      "title": "Codex is asking you",
+      "other": "Write your own",
+      "send": "Answer",
+      "answered": "You answered its question",
+      "expired": "This question expired; it continued on its own assumption",
+      "secret": "Used once, not kept"
+    },
+    "policy": {
+      "allowed": "Allowed by rule: {command}",
+      "denied": "The advisor wanted to {command}; declined by the expert pack's rules"
     }
   },
   "expert": {
@@ -498,7 +520,14 @@
       "noToken": "The credential for answering was not found. Reload the page and try again.",
       "failedToSend": "The answer was not sent. Please try again.",
       "decided": "You chose: {choice}",
-      "loading": "Loading…"
+      "loading": "Loading…",
+      "afterDecline": "Something was declined in this step just now; everything it wants to do next will be asked first.",
+      "dependents": "Later steps that depend on it: {steps}",
+      "noteLabel": "Note to it",
+      "notePlaceholder": "When declining: how it should change. When stopping or redoing: what this step must do",
+      "other": "Write your own",
+      "send": "Answer",
+      "answered": "You have answered"
     },
     "sheet": {
       "title": "Delegation",

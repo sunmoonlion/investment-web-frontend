@@ -118,9 +118,9 @@ export function ExpertRunScreen({ task }: { task: string }) {
               token={pending ? tokenOf(events, pending) : null}
               answering={act.answer.isPending}
               failed={act.answer.isError}
-              onAnswer={(decision) => {
+              onAnswer={(answer) => {
                 const token = pending ? tokenOf(events, pending) : null
-                if (pending && token) act.answer.mutate({ pending, token, decision })
+                if (pending && token) act.answer.mutate({ pending, token, ...answer })
               }}
             />
           ) : null}
