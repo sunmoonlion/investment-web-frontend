@@ -210,7 +210,7 @@ describe('三步引导证据', () => {
     await waitFor(() => expect(guide.getAllByLabelText('还没做')).toHaveLength(3))
     expect(guide.getAllByRole('link').map((link) => link.textContent)).toEqual([
       '1. 下载安装',
-      '2. 在电脑上点「连接我的账号」，并在这里输入码',
+      '2. 电脑上会自动打开一页显示连接码，在这里输入码',
       '3. 选文件夹完成',
     ])
     expect(await screen.findByRole('button', { name: '复制安装命令' })).toBeVisible()
