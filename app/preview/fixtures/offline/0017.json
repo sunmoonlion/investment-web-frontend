@@ -1,4 +1,6 @@
 {
  "contract_version": 2,
- "credentials": []
+ "model": "kimi-k3",
+ "approval_policy": "on-request",
+ "updated_at": "2026-10-11T17:40:02.967589+00:00"
 }

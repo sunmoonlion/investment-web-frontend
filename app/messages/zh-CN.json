@@ -174,8 +174,9 @@
       "work": "工作",
       "expert": "专家"
     },
-    "new": "新建",
-    "workspace": "工作区",
+    "workspace": {
+      "none": "还没有加目录。在这台电脑的代理里加一个，项目才有地方放。"
+    },
     "loading": "加载中…",
     "noWorkspace": "还没有工作区。",
     "noProjects": "这个工作区里还没有项目",
@@ -196,7 +197,26 @@
       "offline": "电脑都不在线",
       "none": "还没有登记电脑"
     },
-    "allProjects": "全部"
+    "allProjects": "全部",
+    "computers": "我的电脑与项目",
+    "computer": {
+      "none": "还没有接入电脑。接入后，你的目录和项目会出现在这里。",
+      "connect": "去接入",
+      "manage": "管理"
+    },
+    "project": {
+      "new": "新建项目",
+      "toggle": "展开或收起 {title}",
+      "more": "{title} 的更多",
+      "add": "在 {title} 里新建",
+      "noTalks": "还没有对话",
+      "addKind": {
+        "chat": "新聊天",
+        "work": "新工作",
+        "expert": "请专家"
+      }
+    },
+    "chats": "聊天"
   },
   "projectPicker": {
     "loading": "加载中…",
@@ -223,7 +243,7 @@
         "name": "专家",
         "what": "按固定的方法一步一步做，每一步都验收，交回一份底稿。慢一些，贵一些。",
         "placeholder": "要专家解决什么问题",
-        "send": "去请专家"
+        "send": "交给专家"
       }
     },
     "project": {
@@ -235,7 +255,8 @@
         "chat": "聊天可以不选项目。选了之后，它能读这个项目里的文件。",
         "work": "工作要在一个项目里做：它是你机器上的一个目录。",
         "expert": "专家接手的是整个项目：这段对话、项目里的文件、别的对话和底稿。"
-      }
+      },
+      "create": "新建项目"
     },
     "blocker": {
       "noSandbox": "还没有可用的沙箱：先登记模型的 key、拉起沙箱。",
@@ -264,6 +285,10 @@
     "kind": {
       "chat": "聊天",
       "work": "工作"
+    },
+    "expert": {
+      "who": "请哪一位",
+      "loading": "加载中…"
     }
   },
   "chat": {

@@ -139,7 +139,8 @@ describe('侧栏', () => {
 
   it('底部的条目由一份清单生成', () => {
     // 公共数据的入口不在用户侧（所有者 2026-10-07 定）：没有数据目录、申请入库
-    expect(FOOT.map((entry) => entry.key)).toEqual(['pending', 'library', 'machines', 'settings'])
+    // 「我的电脑」不再单列，灯在中段的电脑行上（0016 S2）
+    expect(FOOT.map((entry) => entry.key)).toEqual(['pending', 'library', 'settings'])
     const settings = FOOT.find((entry) => entry.key === 'settings')!
     expect(footHref(settings, 'zh-CN')).toBe('/zh-CN/workbench/settings')
     const library = FOOT.find((entry) => entry.key === 'library')!

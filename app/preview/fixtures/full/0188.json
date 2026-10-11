@@ -1,225 +1,50 @@
 {
  "contract_version": 2,
- "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
- "step": {
-  "index": 2,
-  "step_id": "profile",
-  "title": "数据摸底",
-  "summary": "确认有这家公司的数据、数据到哪一天、各期是什么口径",
-  "why": "先看我们有没有这家公司的数据、数据到哪一天。没有数据就停下，不拿别处的数来凑。",
-  "uses": [
-   {
-    "artifact": "scope",
-    "step": 1,
-    "title": "定范围"
-   }
-  ],
-  "tools": [
-   "list_datasets",
-   "describe_schema",
-   "metric_definitions",
-   "run_sql"
-  ],
-  "returns": "profile",
-  "checks": [
-   {
-    "label": "交回的格式对"
-   },
-   {
-    "label": "有数据集、数据版本、期间、口径断点"
-   },
-   {
-    "label": "有对应的数据集"
-   },
-   {
-    "label": "有数据版本"
-   },
-   {
-    "label": "范围内至少有一期数据"
-   }
-  ],
-  "after_rejection": {
-   "reworks": 1,
-   "then": "human",
-   "back_to": null,
-   "backs": 0,
-   "text": "重做，最多 1 次；仍不过，停下来问你"
-  },
-  "reserve": "0.05",
-  "status": "accepted",
-  "attempts": [
-   {
-    "attempt_id": "dc772d40-8177-5765-8436-dac2c0cce739",
-    "n": 1,
-    "outcome": "accepted",
-    "failure": null,
-    "spent": "0.05",
-    "started_at": "2026-10-07T04:58:26.322336Z",
-    "ended_at": "2026-10-07T04:58:26.334099Z",
-    "checks": [
-     {
-      "label": "交回的格式对",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有数据集、数据版本、期间、口径断点",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有对应的数据集",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有数据版本",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "范围内至少有一期数据",
-      "pass": true,
-      "message": ""
-     }
+ "artifacts": [
+  {
+   "id": "f74e8131-3723-5f74-aaaf-d308513eb622",
+   "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+   "attempt_id": "337096ff-8481-58c9-8d01-affe4377a90d",
+   "name": "rewritten",
+   "version": 1,
+   "kind": "step",
+   "content": {
+    "period": "2021 至 2025 年，年报",
+    "metrics": [
+     "毛利率"
     ],
-    "tools": {
-     "list_datasets": 1,
-     "describe_schema": 1,
-     "run_sql": 3
-    },
-    "returned": {
-     "artifact": "profile",
-     "version": 1,
-     "content": {
-      "as_of": "2025-12-31",
-      "notes": [
-       "样例数据：数字是为了预览编的，不是这家公司的真实数据",
-       "2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策"
-      ],
-      "dataset": "sh600519-financials",
-      "periods": [
-       {
-        "basis": "原始披露",
-        "verified": true,
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "official_disclosed_date": "2024-03-28"
-       },
-       {
-        "basis": "追溯调整后",
-        "verified": true,
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "official_disclosed_date": "2025-03-28"
-       },
-       {
-        "basis": "原始披露",
-        "verified": true,
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "official_disclosed_date": "2026-03-28"
-       }
-      ],
-      "basis_breaks": [
-       {
-        "basis": [
-         "原始披露",
-         "追溯调整后"
-        ],
-        "between": [
-         "2023",
-         "2024"
-        ]
-       },
-       {
-        "basis": [
-         "追溯调整后",
-         "原始披露"
-        ],
-        "between": [
-         "2024",
-         "2025"
-        ]
-       }
-      ],
-      "data_version": "sh600519-financials-sample600519",
-      "not_ingested": false,
-      "security_code": "600519"
-     },
-     "labels": {
-      "as_of": "数据到",
-      "notes": "说明",
-      "dataset": "数据集",
-      "periods": "期间",
-      "basis": "口径",
-      "verified": "核对过",
-      "fiscal_year": "年度",
-      "report_date": "报告期",
-      "report_type": "报告类型",
-      "official_disclosed_date": "官方披露日",
-      "basis_breaks": "口径断点",
-      "between": "在哪两期之间",
-      "data_version": "数据版本",
-      "not_ingested": "没有入库",
-      "security_code": "证券代码"
-     }
-    },
-    "process": [
+    "entities": [
+     "五粮液（000858）"
+    ],
+    "question": "五粮液 2021 至 2025 年年报的毛利率，按年列出"
+   },
+   "digest": "ec39488d520eda88e2d518566dd2f97e8876b10eb86c3d91d267ef37658e8a2f",
+   "workspace_path": null,
+   "created_at": "2026-10-11T17:39:47.340174+00:00"
+  },
+  {
+   "id": "8ba9f8b1-335b-51ee-bc68-79e8bc050334",
+   "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+   "attempt_id": "9576bd96-8790-519a-a5f2-ba154b09eba4",
+   "name": "sql",
+   "version": 1,
+   "kind": "step",
+   "content": {
+    "sql": "SELECT fiscal_year, report_type, (operate_income - operate_cost) / operate_income AS gross_margin FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2021 AND 2025 ORDER BY fiscal_year",
+    "columns": [
      {
-      "at": "2026-10-07T04:58:26.283412Z",
-      "kind": "tool",
-      "name": "list_datasets",
-      "dataset": null,
-      "brief": "",
-      "ok": true
+      "name": "fiscal_year",
+      "definition": "会计年度"
      },
      {
-      "at": "2026-10-07T04:58:26.288424Z",
-      "kind": "tool",
-      "name": "describe_schema",
-      "dataset": "sh600519-financials",
-      "brief": "",
-      "ok": true
-     },
-     {
-      "at": "2026-10-07T04:58:26.293263Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "SELECT key, value FROM dataset_metadata",
-      "ok": true
-     },
-     {
-      "at": "2026-10-07T04:58:26.297220Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "SELECT fiscal_year, report_type, basis, verified FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     },
-     {
-      "at": "2026-10-07T04:58:26.301256Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "SELECT report_date, disclosed_date FROM disclosure_calendar WHERE fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
+      "name": "gross_margin",
+      "definition": "(营业收入 − 营业成本) ÷ 营业收入，比率，0.25 表示 25%"
      }
     ]
-   }
-  ],
-  "times": 1,
-  "rejected": 0,
-  "spent": "0.05",
-  "data": {
-   "dataset": "sh600519-financials",
-   "data_version": "sh600519-financials-sample600519",
-   "as_of": "2025-12-31",
-   "security_code": "600519"
+   },
+   "digest": "cc594282d14ad283f752b1eda59802b844112867794dfdf320f55dbe37832b1b",
+   "workspace_path": null,
+   "created_at": "2026-10-11T17:39:47.424861+00:00"
   }
- }
+ ]
 }

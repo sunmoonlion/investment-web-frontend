@@ -1,14 +1,8 @@
 {
- "type": "urn:sunmoonai:problem:project_busy",
- "title": "the expert is already working on something in this project",
- "status": 409,
- "detail": "the expert is already working on something in this project",
- "instance": "/api/workbench/projects/b76b252a-dd57-5c80-90af-4a9823df06b0/delegations",
- "code": "project_busy",
- "operation_id": "operation-unavailable",
- "error": {
-  "code": "project_busy",
-  "message": "the expert is already working on something in this project",
-  "operation_id": "operation-unavailable"
- }
+ "id": "e360da80-c794-5489-9aef-1545babb5931",
+ "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+ "name": "conclusion",
+ "version": 1,
+ "kind": "user_draft",
+ "digest": "71854f6a828d7fcb7fc750cb1e6e9409101a33abe97b5eaa08ad898707c05e8d"
 }

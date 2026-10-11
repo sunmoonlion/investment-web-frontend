@@ -7,7 +7,8 @@ export const WORKBENCH_CONTRACT_VERSION = 2 as const
 const uuid = z.uuid()
 const record = z.record(z.string(), z.unknown())
 
-export const conversationKindSchema = z.enum(['chat', 'work'])
+// 三种对话：聊天、工作、专家（0017，所有者 2026-10-11）
+export const conversationKindSchema = z.enum(['chat', 'work', 'expert'])
 export type ConversationKind = z.infer<typeof conversationKindSchema>
 
 export const conversationSchema = z

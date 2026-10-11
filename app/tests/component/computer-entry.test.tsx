@@ -174,9 +174,13 @@ describe('电脑接入入口', () => {
   })
   it('侧栏状态是可见链接，聊天导航明确指向聊天入口', async () => {
     page(<Sidebar />)
-    const status = await screen.findByText('还没有登记电脑')
-    expect(status.closest('a')).toHaveAttribute('href', '/zh-CN/workbench/settings#computer')
-    expect(status.closest('a')).toHaveTextContent('我的电脑')
+    // 没有电脑：中段只一行，带去设置页的链接；底部不再有「我的电脑」（0016）
+    await screen.findByText(/还没有接入电脑/)
+    expect(screen.getByRole('link', { name: '去接入' })).toHaveAttribute(
+      'href',
+      '/zh-CN/workbench/settings#computer',
+    )
+    expect(screen.queryByText('我的电脑')).toBeNull()
     expect(screen.getByRole('link', { name: '聊天' })).toHaveAttribute(
       'href',
       '/zh-CN/workbench?mode=chat',
@@ -201,7 +205,9 @@ describe('三步引导证据', () => {
     page(<MachinesScreen />)
     const guide = within(screen.getByRole('region', { name: zh.machines.guide.title }))
     await waitFor(() => expect(guide.getAllByLabelText('已完成')).toHaveLength(3))
-    expect(guide.getByText(zh.machines.guide.evidence)).toHaveTextContent('有电脑在线，这三步就算完成')
+    expect(guide.getByText(zh.machines.guide.evidence)).toHaveTextContent(
+      '有电脑在线，这三步就算完成',
+    )
     expect(guide.queryAllByRole('checkbox')).toHaveLength(0)
   })
   it('没有电脑时三步都没做；离线算安装和选文件夹；在线三步完成', async () => {
@@ -214,7 +220,10 @@ describe('三步引导证据', () => {
       '3. 选文件夹完成',
     ])
     expect(await screen.findByRole('button', { name: '复制安装命令' })).toBeVisible()
-    expect(screen.getByRole('link', { name: '下载 Windows ZIP' })).toHaveAttribute('href', release.url)
+    expect(screen.getByRole('link', { name: '下载 Windows ZIP' })).toHaveAttribute(
+      'href',
+      release.url,
+    )
     act(() =>
       p.client.setQueryData(
         workbenchKeys.machines,
@@ -225,7 +234,13 @@ describe('三步引导证据', () => {
     act(() => p.client.setQueryData(workbenchKeys.machines, connected))
     await waitFor(() => expect(guide.getAllByLabelText('已完成')).toHaveLength(3))
     const sections = [...document.querySelectorAll('section[id]')].map((s) => s.id)
-    expect(sections).toEqual(['computer', 'computer-status', 'agent-download', 'agent-connect', 'agent-online'])
+    expect(sections).toEqual([
+      'computer',
+      'computer-status',
+      'agent-download',
+      'agent-connect',
+      'agent-online',
+    ])
     expect(calls.every((c) => c.method === 'GET')).toBe(true)
   })
   it('电脑状态失败不显示未登记或在线通过', async () => {

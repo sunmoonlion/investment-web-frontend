@@ -1,65 +1,41 @@
 {
  "contract_version": 2,
- "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+ "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
  "step": {
-  "index": 6,
-  "step_id": "crosscheck",
-  "title": "对照官方",
-  "summary": "拿取到的数和公司年报里自己披露的数逐项对照",
-  "why": "我们的数是采集来的。和公司年报里自己披露的数对一遍，对不上的要让你知道。",
-  "uses": [
-   {
-    "artifact": "scope",
-    "step": 1,
-    "title": "定范围"
-   },
-   {
-    "artifact": "profile",
-    "step": 2,
-    "title": "数据摸底"
-   },
-   {
-    "artifact": "facts",
-    "step": 4,
-    "title": "取数"
-   }
-  ],
-  "tools": [
-   "run_sql"
-  ],
-  "returns": "crosscheck",
+  "index": 1,
+  "step_id": "rewrite",
+  "title": "改写问题",
+  "summary": "把问题改写成没有歧义的：查什么、哪个期间、什么口径",
+  "why": "口语的问题常有歧义：哪一年、合并报表还是母公司。先说清楚查什么，免得查出来的不是你要的。",
+  "uses": [],
+  "tools": [],
+  "returns": "rewritten",
   "checks": [
    {
     "label": "交回的格式对"
    },
    {
-    "label": "有一致项、不一致项、覆盖说明"
-   },
-   {
-    "label": "说明了对照覆盖了哪些期"
-   },
-   {
-    "label": "和公司披露的数都对得上"
+    "label": "有改写后的问题和指标"
    }
   ],
   "after_rejection": {
-   "reworks": 0,
+   "reworks": 1,
    "then": "human",
    "back_to": null,
    "backs": 0,
-   "text": "停下来问你"
+   "text": "重做，最多 1 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
   "status": "accepted",
   "attempts": [
    {
-    "attempt_id": "63ce0782-3a1c-5515-b179-400c477c5b2e",
+    "attempt_id": "337096ff-8481-58c9-8d01-affe4377a90d",
     "n": 1,
     "outcome": "accepted",
     "failure": null,
     "spent": "0.05",
-    "started_at": "2026-10-07T04:58:26.830196Z",
-    "ended_at": "2026-10-07T04:58:26.839205Z",
+    "started_at": "2026-10-11T17:39:47.333531Z",
+    "ended_at": "2026-10-11T17:39:47.347122Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -67,162 +43,38 @@
       "message": ""
      },
      {
-      "label": "有一致项、不一致项、覆盖说明",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "说明了对照覆盖了哪些期",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "和公司披露的数都对得上",
+      "label": "有改写后的问题和指标",
       "pass": true,
       "message": ""
      }
     ],
-    "tools": {
-     "run_sql": 1
-    },
+    "tools": {},
     "returned": {
-     "artifact": "crosscheck",
+     "artifact": "rewritten",
      "version": 1,
      "content": {
-      "matched": [
-       {
-        "item": "operate_income",
-        "page": 6,
-        "basis": "原始披露",
-        "value": 150560000000.0,
-        "fiscal_year": 2023,
-        "source_report": "贵州茅台2023年年度报告"
-       },
-       {
-        "item": "net_profit",
-        "page": 6,
-        "basis": "原始披露",
-        "value": 79044000000.0,
-        "fiscal_year": 2023,
-        "source_report": "贵州茅台2023年年度报告"
-       },
-       {
-        "item": "total_assets",
-        "page": 6,
-        "basis": "原始披露",
-        "value": 286064000000.0,
-        "fiscal_year": 2023,
-        "source_report": "贵州茅台2023年年度报告"
-       },
-       {
-        "item": "total_equity",
-        "page": 6,
-        "basis": "原始披露",
-        "value": 234572480000.0,
-        "fiscal_year": 2023,
-        "source_report": "贵州茅台2023年年度报告"
-       },
-       {
-        "item": "operate_income",
-        "page": 6,
-        "basis": "追溯调整后",
-        "value": 174197920000.0,
-        "fiscal_year": 2024,
-        "source_report": "贵州茅台2024年年度报告"
-       },
-       {
-        "item": "net_profit",
-        "page": 6,
-        "basis": "追溯调整后",
-        "value": 90931314240.0,
-        "fiscal_year": 2024,
-        "source_report": "贵州茅台2024年年度报告"
-       },
-       {
-        "item": "total_assets",
-        "page": 6,
-        "basis": "追溯调整后",
-        "value": 330976048000.0,
-        "fiscal_year": 2024,
-        "source_report": "贵州茅台2024年年度报告"
-       },
-       {
-        "item": "total_equity",
-        "page": 6,
-        "basis": "追溯调整后",
-        "value": 271400359360.0,
-        "fiscal_year": 2024,
-        "source_report": "贵州茅台2024年年度报告"
-       },
-       {
-        "item": "operate_income",
-        "page": 6,
-        "basis": "原始披露",
-        "value": 190572524480.0,
-        "fiscal_year": 2025,
-        "source_report": "贵州茅台2025年年度报告"
-       },
-       {
-        "item": "net_profit",
-        "page": 6,
-        "basis": "原始披露",
-        "value": 98907140205.12,
-        "fiscal_year": 2025,
-        "source_report": "贵州茅台2025年年度报告"
-       },
-       {
-        "item": "total_assets",
-        "page": 6,
-        "basis": "原始披露",
-        "value": 362087796512.0,
-        "fiscal_year": 2025,
-        "source_report": "贵州茅台2025年年度报告"
-       },
-       {
-        "item": "total_equity",
-        "page": 6,
-        "basis": "原始披露",
-        "value": 296911993139.84,
-        "fiscal_year": 2025,
-        "source_report": "贵州茅台2025年年度报告"
-       }
+      "period": "2021 至 2025 年，年报",
+      "metrics": [
+       "毛利率"
       ],
-      "coverage": "范围内 3 期年报全部对照；现金流量表的项目年报的「主要会计数据」表里没有，没有对照",
-      "mismatched": [],
-      "not_covered": [],
-      "data_version": "sh600519-financials-sample600519"
+      "entities": [
+       "五粮液（000858）"
+      ],
+      "question": "五粮液 2021 至 2025 年年报的毛利率，按年列出"
      },
      "labels": {
-      "matched": "一致的",
-      "item": "科目",
-      "page": "页码",
-      "basis": "口径",
-      "value": "数值",
-      "fiscal_year": "年度",
-      "source_report": "出自",
-      "coverage": "覆盖说明",
-      "mismatched": "对不上的",
-      "not_covered": "没有对照到的",
-      "data_version": "数据版本"
+      "period": "期间",
+      "metrics": "指标",
+      "entities": "对象",
+      "question": "问题"
      }
     },
-    "process": [
-     {
-      "at": "2026-10-07T04:58:26.800929Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "SELECT fiscal_year, item, basis, value, source_report, page FROM official_key_figures WHERE fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     }
-    ]
+    "process": []
    }
   ],
   "times": 1,
   "rejected": 0,
   "spent": "0.05",
-  "data": {
-   "data_version": "sh600519-financials-sample600519"
-  }
+  "data": null
  }
 }

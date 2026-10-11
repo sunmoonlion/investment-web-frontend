@@ -1,67 +1,20 @@
 {
- "contract_version": 2,
- "price": {
-  "model": "kimi-k3",
-  "priced": true,
-  "currency": "CNY",
-  "as_of": "2026-10-04",
-  "per_million": {
-   "input": "20",
-   "cached_input": "2",
-   "cache_write": "20",
-   "output": "100"
-  },
-  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
-  "estimated": true
+ "session": {
+  "id": "19fac78f-4bd9-59e2-bc2a-136ded347780",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "sandbox_id": "81108b8f-3022-5de7-860c-36662e2db6fb",
+  "project_root": "/home/demo/research/恒瑞医药",
+  "thread_id": "thread-5d530b2efacc",
+  "wheel": "user",
+  "state_version": 0,
+  "active_task_id": null,
+  "thread_settings": {},
+  "created_at": "2026-10-11T17:39:50.045069+00:00",
+  "last_active_at": "2026-10-11T17:39:50.406525+00:00",
+  "kind": "chat",
+  "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
+  "title": "这个项目里有哪些文件？"
  },
- "cost": "0.123212",
- "tokens": {
-  "input": 370,
-  "cached_input": 18176,
-  "cache_write": 768,
-  "output": 641,
-  "total": 19955
- },
- "calls": 3,
- "turns": [
-  {
-   "turn_id": "turn-9a077aeb4284",
-   "calls": 1,
-   "cost": "0.037968",
-   "tokens": {
-    "input": 97,
-    "cached_input": 4864,
-    "cache_write": 0,
-    "output": 263,
-    "total": 5224
-   },
-   "at": "2026-10-07T04:58:29.912388+00:00"
-  },
-  {
-   "turn_id": "turn-f5c7cbe06af9",
-   "calls": 1,
-   "cost": "0.045708",
-   "tokens": {
-    "input": 133,
-    "cached_input": 4864,
-    "cache_write": 256,
-    "output": 282,
-    "total": 5535
-   },
-   "at": "2026-10-07T04:58:30.009851+00:00"
-  },
-  {
-   "turn_id": "turn-49d072a95424",
-   "calls": 1,
-   "cost": "0.039536",
-   "tokens": {
-    "input": 140,
-    "cached_input": 8448,
-    "cache_write": 512,
-    "output": 96,
-    "total": 9196
-   },
-   "at": "2026-10-07T04:58:30.145063+00:00"
-  }
- ]
+ "pending_interactions": []
 }

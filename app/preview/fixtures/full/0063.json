@@ -1,66 +1,56 @@
 {
- "session": {
-  "id": "865ec0cc-3044-56ea-b08d-12c2b85b89a3",
-  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-  "sandbox_id": "e622161e-278e-510c-a294-d321919a97e8",
-  "project_root": "/home/demo/research/恒瑞医药",
-  "thread_id": "thread-6e4f003b94e4",
-  "wheel": "user",
-  "state_version": 0,
-  "active_task_id": null,
-  "thread_settings": {},
-  "created_at": "2026-10-07T04:58:30.739929+00:00",
-  "last_active_at": "2026-10-07T04:58:31.120953+00:00",
-  "kind": "work",
-  "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
-  "title": "把毛利率、净利率、自由现金流三个指标的含义整理成 notes…"
- },
- "pending_interactions": [
+ "contract_version": 2,
+ "events": [
   {
-   "id": "ab81c556-789b-5c9f-834a-d591f5885019",
-   "session_id": "865ec0cc-3044-56ea-b08d-12c2b85b89a3",
+   "id": "8d3a2399-ffb5-5df1-8fec-b17559c6c8a8",
+   "session_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b",
+   "cursor": 1,
+   "kind": "session",
+   "type": "session/created",
+   "payload": {
+    "kind": "expert",
+    "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0",
+    "sandbox_id": "81108b8f-3022-5de7-860c-36662e2db6fb"
+   },
    "task_id": null,
    "attempt_id": null,
-   "kind": "tool_approval",
-   "audience": "owner",
-   "prompt": {
-    "title": "命令需要你批准",
-    "options": [
-     {
-      "id": "accept",
-      "label": "允许一次"
-     },
-     {
-      "id": "acceptForSession",
-      "label": "这段对话里都允许"
-     },
-     {
-      "id": "decline",
-      "label": "拒绝"
-     }
-    ],
-    "subject": {
-     "cwd": "/home/demo/research/恒瑞医药",
-     "itemId": "exec_command_3_e67b4901",
-     "method": "item/commandExecution/requestApproval",
-     "reason": "需要在项目上一级目录 /home/demo/research 创建 outside.txt，是否允许？",
-     "command": "/usr/bin/zsh -lc \"printf 'test' > /home/demo/research/outside.txt\"",
-     "request_id": "e622161e-278e-510c-a294-d321919a97e8:srv-5e8b2ede",
-     "environmentId": "user-pc"
+   "created_at": "2026-10-11T17:39:51.111177+00:00"
+  },
+  {
+   "id": "a8a3354a-fb27-5478-b029-dc46f75b3766",
+   "session_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b",
+   "cursor": 2,
+   "kind": "task",
+   "type": "task/received",
+   "payload": {
+    "budget": {
+     "used": "0",
+     "limit": null,
+     "currency": "CNY",
+     "reserved": "0"
     },
-    "evidence": [],
-    "question": "需要在项目上一级目录 /home/demo/research 创建 outside.txt，是否允许？",
-    "unknowns": []
+    "task_id": "e622161e-278e-510c-a294-d321919a97e8",
+    "profile_id": "DATA_QUERY",
+    "queued_behind": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1"
    },
-   "subject_digest": null,
-   "target_state_version": null,
-   "expires_at": "2026-10-07T05:58:31.201714+00:00",
-   "status": "pending",
-   "response": null,
-   "consumed_at": null,
-   "responded_by": null,
-   "created_at": "2026-10-07T04:58:31.201188+00:00"
+   "task_id": "e622161e-278e-510c-a294-d321919a97e8",
+   "attempt_id": null,
+   "created_at": "2026-10-11T17:39:51.111177+00:00"
+  },
+  {
+   "id": "5afb2686-6260-585d-9caa-a47b1ab0ee57",
+   "session_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b",
+   "cursor": 3,
+   "kind": "task",
+   "type": "task/queued",
+   "payload": {
+    "behind": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+    "task_id": "e622161e-278e-510c-a294-d321919a97e8"
+   },
+   "task_id": "e622161e-278e-510c-a294-d321919a97e8",
+   "attempt_id": null,
+   "created_at": "2026-10-11T17:39:51.111177+00:00"
   }
- ]
+ ],
+ "next_cursor": 3
 }

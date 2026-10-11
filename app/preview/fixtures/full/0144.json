@@ -1,119 +1,106 @@
 {
  "contract_version": 2,
- "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+ "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
  "step": {
-  "index": 4,
-  "step_id": "extract",
-  "title": "取数",
-  "summary": "把问题要用到的报表科目按期取出来，每个数带口径",
-  "why": "只取问题用得到的科目，每个数记下出自哪一期、什么口径。后面的指标只用这里取出来的数。",
-  "uses": [
-   {
-    "artifact": "scope",
-    "step": 1,
-    "title": "定范围"
-   },
-   {
-    "artifact": "profile",
-    "step": 2,
-    "title": "数据摸底"
-   }
-  ],
-  "tools": [
-   "describe_schema",
-   "run_sql"
-  ],
-  "returns": "facts",
+  "index": 1,
+  "step_id": "scope",
+  "title": "定范围",
+  "summary": "认出公司、期间、报告类型",
+  "why": "先把问的是哪家公司、哪几年、哪种报告认准。认错了，后面每一步都白做。",
+  "uses": [],
+  "tools": [],
+  "returns": "scope",
   "checks": [
    {
     "label": "交回的格式对"
    },
    {
-    "label": "有取数表和数据版本"
+    "label": "有证券代码、期间、报告类型"
    },
    {
-    "label": "取数表不是空的"
+    "label": "认得出是哪家公司"
    },
    {
-    "label": "有数据版本"
+    "label": "期间不是空的"
    }
   ],
   "after_rejection": {
    "reworks": 1,
-   "then": "back",
-   "back_to": 2,
-   "backs": 1,
-   "text": "重做，最多 1 次；仍不过，退回第 2 步，最多 1 次；仍不过，停下来问你"
+   "then": "human",
+   "back_to": null,
+   "backs": 0,
+   "text": "重做，最多 1 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
-  "status": "cancelled",
+  "status": "accepted",
   "attempts": [
    {
-    "attempt_id": "e0bb6f11-f25a-5b0f-a85e-f7c8ebd2db97",
+    "attempt_id": "66128326-530f-506f-a45a-f90c3772a39e",
     "n": 1,
-    "outcome": "cancelled",
-    "failure": "cancelled",
-    "spent": "0.30",
-    "started_at": "2026-10-07T04:58:28.455227Z",
-    "ended_at": "2026-10-07T04:58:28.466839Z",
+    "outcome": "accepted",
+    "failure": null,
+    "spent": "0.05",
+    "started_at": "2026-10-11T17:39:48.767823Z",
+    "ended_at": "2026-10-11T17:39:48.776922Z",
     "checks": [
      {
       "label": "交回的格式对",
-      "pass": null,
+      "pass": true,
       "message": ""
      },
      {
-      "label": "有取数表和数据版本",
-      "pass": null,
+      "label": "有证券代码、期间、报告类型",
+      "pass": true,
       "message": ""
      },
      {
-      "label": "取数表不是空的",
-      "pass": null,
+      "label": "认得出是哪家公司",
+      "pass": true,
       "message": ""
      },
      {
-      "label": "有数据版本",
-      "pass": null,
+      "label": "期间不是空的",
+      "pass": true,
       "message": ""
      }
     ],
-    "tools": {
-     "describe_schema": 1,
-     "run_sql": 2
-    },
-    "returned": null,
-    "process": [
-     {
-      "at": "2026-10-07T04:58:28.338874Z",
-      "kind": "tool",
-      "name": "describe_schema",
-      "dataset": "sh600009-financials",
-      "brief": "income_statement",
-      "ok": true
+    "tools": {},
+    "returned": {
+     "artifact": "scope",
+     "version": 1,
+     "content": {
+      "aspects": [
+       "盈利能力"
+      ],
+      "company": "比亚迪",
+      "periods": [
+       "2023",
+       "2024",
+       "2025"
+      ],
+      "question": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
+      "assumptions": [],
+      "report_types": [
+       "年报"
+      ],
+      "security_code": "002594"
      },
-     {
-      "at": "2026-10-07T04:58:28.349472Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600009-financials",
-      "brief": "SELECT report_date, basis, operate_income, operate_cost, net_profit FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     },
-     {
-      "at": "2026-10-07T04:58:28.356321Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600009-financials",
-      "brief": "SELECT report_date, basis, total_assets, total_liabilities, total_equity FROM balance_sheet WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
+     "labels": {
+      "aspects": "关注的方面",
+      "company": "公司",
+      "periods": "期间",
+      "question": "问题",
+      "assumptions": "假设",
+      "report_types": "报告类型",
+      "security_code": "证券代码"
      }
-    ]
+    },
+    "process": []
    }
   ],
   "times": 1,
   "rejected": 0,
-  "spent": "0.30",
+  "spent": "0.05",
   "data": null
  }
 }

@@ -80,6 +80,83 @@ export function recent(
     }))
 }
 
+// ---------------- 按真源分层的树：电脑 → 工作区 → 项目 → 对话（0016）----------------
+export type TreeConversation = {
+  id: string
+  title: string | null
+  kind: Conversation['kind']
+  busy: boolean
+  href: string
+}
+export type TreeProject = {
+  project: Project
+  busy: boolean // 专家正在这个项目的某段对话里做事
+  conversations: TreeConversation[]
+}
+export type TreeWorkspace = { key: string; root: string; online: boolean; projects: TreeProject[] }
+export type TreeMachine = {
+  id: string
+  name: string
+  status: string
+  workspaces: TreeWorkspace[]
+}
+
+export function computerTree(
+  machines: Machine[],
+  workspaces: Workspace[],
+  projects: Project[],
+  conversations: Conversation[],
+  locale: string,
+): TreeMachine[] {
+  const byProject = new Map<string, TreeConversation[]>()
+  for (const conversation of [...conversations].sort((a, b) =>
+    (b.last_active_at ?? b.created_at).localeCompare(a.last_active_at ?? a.created_at),
+  )) {
+    if (!conversation.project_id) continue
+    const list = byProject.get(conversation.project_id) ?? []
+    list.push({
+      id: conversation.id,
+      title: conversation.title,
+      kind: conversation.kind,
+      busy: conversation.wheel === 'advisor',
+      href: conversationRoute(locale, conversation),
+    })
+    byProject.set(conversation.project_id, list)
+  }
+  return machines.map((machine) => ({
+    id: machine.id,
+    name: machine.name,
+    status: machine.status,
+    workspaces: workspaces
+      .filter((workspace) => workspace.environment_id === machine.id)
+      .map((workspace) => ({
+        key: workspaceKey(workspace),
+        root: workspace.root,
+        online: workspace.online,
+        projects: projectsIn(projects, workspace).map((project) => {
+          const list = byProject.get(project.id) ?? []
+          return { project, busy: list.some((c) => c.busy), conversations: list }
+        }),
+      })),
+  }))
+}
+
+// 没归入项目的聊天：挂在树下面单独一节（0017：聊天新建时什么都不选）
+export function looseChats(conversations: Conversation[], locale: string): TreeConversation[] {
+  return [...conversations]
+    .filter((conversation) => conversation.project_id === null)
+    .sort((a, b) =>
+      (b.last_active_at ?? b.created_at).localeCompare(a.last_active_at ?? a.created_at),
+    )
+    .map((conversation) => ({
+      id: conversation.id,
+      title: conversation.title,
+      kind: conversation.kind,
+      busy: conversation.wheel === 'advisor',
+      href: conversationRoute(locale, conversation),
+    }))
+}
+
 // ---------------- 我的机器 ----------------
 export type MachineLight = 'online' | 'offline' | 'none'
 
@@ -95,9 +172,9 @@ export type FootEntry = { key: string; kind: 'page'; page: Page; href: (locale: 
 
 export const FOOT: readonly FootEntry[] = [
   { key: 'pending', kind: 'page', page: 'home', href: (locale) => routes.home(locale) },
-  // 知识库：用户自己的资料，服务端有专属副本（SDD 0011）
+  // 知识库：0018/0019 之后改为本地知识库（用户电脑上的目录）；页面改造前先沿用现有页
   { key: 'library', kind: 'page', page: 'library', href: routes.library },
-  { key: 'machines', kind: 'page', page: 'machines', href: routes.computer },
+  // 「我的电脑」不再单列：灯在中段的电脑行上，接入与上限在设置页（0016 S2）
   { key: 'settings', kind: 'page', page: 'settings', href: routes.settings },
 ]
 

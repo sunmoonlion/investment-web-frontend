@@ -116,7 +116,7 @@ describe('工作页', () => {
     expect(screen.getByRole('status')).toHaveTextContent('它在等你批准')
   })
 
-  it('等批准的命令：把命令、目录、理由摆出来；点「拒绝」，带着凭证答复', async () => {
+  it('等批准的命令：把命令、目录、理由摆出来；点「拒绝这一步」，带着凭证答复', async () => {
     const id = idOf('工作（')
     page(id)
     const card = await screen.findByRole('region', {
@@ -128,7 +128,7 @@ describe('工作页', () => {
     await waitFor(() =>
       expect(screen.getByRole('button', { name: '允许一次' })).toBeInTheDocument(),
     )
-    fireEvent.click(screen.getByRole('button', { name: '拒绝' }))
+    fireEvent.click(screen.getByRole('button', { name: '拒绝这一步' }))
     await waitFor(() => expect(calls.some((call) => call.path.endsWith('/respond'))).toBe(true))
     const view = sample(`/api/workbench/sessions/${id}`) as {
       pending_interactions: { id: string }[]

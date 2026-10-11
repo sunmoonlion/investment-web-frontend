@@ -1,46 +1,36 @@
 {
  "task": {
-  "id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
-  "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
+  "id": "e622161e-278e-510c-a294-d321919a97e8",
+  "session_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b",
   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
   "tenant": "default",
-  "idempotency_key": "preview-cancelled-0001",
-  "request_digest": "f2b9bc12b80689d4bdecff0b24d3fa24b43da697569e1332dae6dfea9160ab88",
-  "profile_id": "FIN_REVIEW",
+  "idempotency_key": "preview-busy-0001",
+  "request_digest": "4affb75e14ed035d11aa14bc8f180756b20a7bf442dc3db6a5fc8f05eafde3e6",
+  "profile_id": "DATA_QUERY",
   "profile_version": "1",
-  "expert_pack_version": "1",
+  "expert_pack_version": null,
   "original_input": {
    "input": {
-    "text": "招商银行 2023 到 2025 年的盈利能力怎么样？"
+    "text": "五粮液近五年的净利率分别是多少？"
    },
    "attachments": [],
    "client_context": {
-    "entry": "expert"
+    "entry": "expert",
+    "queued_behind": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1"
    }
   },
   "normalized_goal": null,
-  "thread_id": "thread-61184822f337",
+  "thread_id": null,
   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-  "project_root": "/home/demo/research/招商银行",
-  "state": "CANCELLED",
-  "state_version": 20,
-  "workflow_version": "1",
-  "current_step": 2,
-  "acceptance_contract": {
-   "steps": [
-    "scope",
-    "profile",
-    "reconcile",
-    "extract",
-    "metrics",
-    "crosscheck",
-    "note"
-   ],
-   "pack_id": "FIN_REVIEW"
-  },
+  "project_root": "/home/demo/research/五粮液",
+  "state": "RECEIVED",
+  "state_version": 0,
+  "workflow_version": null,
+  "current_step": 0,
+  "acceptance_contract": {},
   "execution_policy": {},
   "budget": {
-   "used": "0.150000",
+   "used": "0",
    "limit": null,
    "currency": "CNY",
    "reserved": "0"
@@ -50,191 +40,12 @@
   "waiting_reason": null,
   "active_interaction_id": null,
   "rejection": null,
-  "cancel_requested_at": "2026-10-07T04:58:29.686787+00:00",
-  "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-  "created_at": "2026-10-07T04:58:29.272124+00:00",
-  "updated_at": "2026-10-07T04:58:29.686157+00:00",
-  "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa"
+  "cancel_requested_at": null,
+  "cancel_requested_by": null,
+  "created_at": "2026-10-11T17:39:51.111177+00:00",
+  "updated_at": "2026-10-11T17:39:51.111177+00:00",
+  "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0"
  },
- "attempts": [
-  {
-   "id": "1fe55be8-9a82-5c3a-bd0d-8293b8444e2e",
-   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
-   "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
-   "thread_id": "thread-61184822f337",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "role": "execute",
-   "arm": 0,
-   "step_id": "scope",
-   "step_version": "1",
-   "input_artifact_versions": [],
-   "turn_ids": [
-    "turn-85f8dc8250a3"
-   ],
-   "status": "COMPLETED",
-   "codex_version": null,
-   "agent_version": null,
-   "model": null,
-   "model_provider": null,
-   "budget_allocated": {
-    "amount": "0.05"
-   },
-   "budget_consumed": {
-    "amount": "0.050000",
-    "tokens": {
-     "input": 2000,
-     "total": 2100,
-     "output": 100,
-     "cache_write": 0,
-     "cached_input": 0
-    }
-   },
-   "failure_code": null,
-   "retryable": null,
-   "output_artifacts": [
-    {
-     "id": "4f84de0b-201e-521c-b5d1-8be18da742cd",
-     "name": "scope",
-     "version": 1
-    }
-   ],
-   "refs": {
-    "reworks": 0
-   },
-   "started_at": "2026-10-07T04:58:29.376262+00:00",
-   "ended_at": "2026-10-07T04:58:29.384566+00:00",
-   "created_at": "2026-10-07T04:58:29.322244+00:00",
-   "updated_at": "2026-10-07T04:58:29.380882+00:00"
-  },
-  {
-   "id": "afe2be79-4e44-5e15-a212-c5bb25507e54",
-   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
-   "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
-   "thread_id": "thread-61184822f337",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "role": "execute",
-   "arm": 0,
-   "step_id": "profile",
-   "step_version": "1",
-   "input_artifact_versions": [
-    {
-     "name": "scope",
-     "version": 1
-    }
-   ],
-   "turn_ids": [
-    "turn-b4bbdebb11a4"
-   ],
-   "status": "COMPLETED",
-   "codex_version": null,
-   "agent_version": null,
-   "model": null,
-   "model_provider": null,
-   "budget_allocated": {
-    "amount": "0.05"
-   },
-   "budget_consumed": {
-    "amount": "0.050000",
-    "tokens": {
-     "input": 2000,
-     "total": 2100,
-     "output": 100,
-     "cache_write": 0,
-     "cached_input": 0
-    }
-   },
-   "failure_code": null,
-   "retryable": null,
-   "output_artifacts": [
-    {
-     "id": "5a2d2204-c8d8-5b74-9afe-4d279d625a99",
-     "name": "profile",
-     "version": 1
-    }
-   ],
-   "refs": {
-    "reworks": 0
-   },
-   "started_at": "2026-10-07T04:58:29.469255+00:00",
-   "ended_at": "2026-10-07T04:58:29.477473+00:00",
-   "created_at": "2026-10-07T04:58:29.399845+00:00",
-   "updated_at": "2026-10-07T04:58:29.473965+00:00"
-  },
-  {
-   "id": "dbbded79-08e7-5736-bd72-0bc0993a4700",
-   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
-   "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
-   "thread_id": "thread-61184822f337",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "role": "execute",
-   "arm": 0,
-   "step_id": "reconcile",
-   "step_version": "1",
-   "input_artifact_versions": [
-    {
-     "name": "scope",
-     "version": 1
-    },
-    {
-     "name": "profile",
-     "version": 1
-    }
-   ],
-   "turn_ids": [
-    "turn-723b19db1e24"
-   ],
-   "status": "FAILED",
-   "codex_version": null,
-   "agent_version": null,
-   "model": null,
-   "model_provider": null,
-   "budget_allocated": {
-    "amount": "0.05"
-   },
-   "budget_consumed": {
-    "amount": "0.050000",
-    "tokens": {
-     "input": 2000,
-     "total": 2100,
-     "output": 100,
-     "cache_write": 0,
-     "cached_input": 0
-    }
-   },
-   "failure_code": "acceptance",
-   "retryable": true,
-   "output_artifacts": [],
-   "refs": {
-    "reworks": 0
-   },
-   "started_at": "2026-10-07T04:58:29.593326+00:00",
-   "ended_at": "2026-10-07T04:58:29.600066+00:00",
-   "created_at": "2026-10-07T04:58:29.497016+00:00",
-   "updated_at": "2026-10-07T04:58:29.598239+00:00"
-  }
- ],
- "artifacts": [
-  {
-   "id": "5a2d2204-c8d8-5b74-9afe-4d279d625a99",
-   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
-   "attempt_id": "afe2be79-4e44-5e15-a212-c5bb25507e54",
-   "name": "profile",
-   "version": 1,
-   "kind": "step",
-   "digest": "0801c19adbe7145e42acecc360deb0f05b3f302a4640bade548d9a51b0a6ead8",
-   "workspace_path": null,
-   "created_at": "2026-10-07T04:58:29.473965+00:00"
-  },
-  {
-   "id": "4f84de0b-201e-521c-b5d1-8be18da742cd",
-   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
-   "attempt_id": "1fe55be8-9a82-5c3a-bd0d-8293b8444e2e",
-   "name": "scope",
-   "version": 1,
-   "kind": "step",
-   "digest": "b8d454f41c3ca74f8f6c0df1e9b96f59609c3abac41d247cc8974b3b42f79945",
-   "workspace_path": null,
-   "created_at": "2026-10-07T04:58:29.380882+00:00"
-  }
- ]
+ "attempts": [],
+ "artifacts": []
 }

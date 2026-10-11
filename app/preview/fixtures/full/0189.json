@@ -1,276 +1,256 @@
 {
  "contract_version": 2,
- "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
- "step": {
-  "index": 3,
-  "step_id": "reconcile",
-  "title": "勾稽",
-  "summary": "三张表之间、前后两年之间对不对得上",
-  "why": "三张表对不上，说明数据本身有问题；带着问题往下算，指标都不可信。所以对不上就停下来问你，不自己把数改平。",
-  "uses": [
-   {
-    "artifact": "scope",
-    "step": 1,
-    "title": "定范围"
-   },
-   {
-    "artifact": "profile",
-    "step": 2,
-    "title": "数据摸底"
-   }
-  ],
-  "tools": [
-   "run_sql"
-  ],
-  "returns": "reconcile",
-  "checks": [
-   {
-    "label": "交回的格式对"
-   },
-   {
-    "label": "有勾稽结果、跨期连续性、未解释的断点"
-   },
-   {
-    "label": "做了勾稽"
-   },
-   {
-    "label": "每条勾稽规则都平"
-   },
-   {
-    "label": "跨期的断点都有解释"
-   }
-  ],
-  "after_rejection": {
-   "reworks": 0,
-   "then": "human",
-   "back_to": null,
-   "backs": 0,
-   "text": "停下来问你"
+ "task": {
+  "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+  "session_id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
+  "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0",
+  "expert": {
+   "id": "DATA_QUERY",
+   "name": "问数",
+   "version": "1"
   },
-  "reserve": "0.05",
-  "status": "accepted",
-  "attempts": [
-   {
-    "attempt_id": "79c38232-b584-5267-b8e0-f617dcc89f19",
-    "n": 1,
-    "outcome": "accepted",
-    "failure": null,
-    "spent": "0.05",
-    "started_at": "2026-10-07T04:58:26.483100Z",
-    "ended_at": "2026-10-07T04:58:26.493562Z",
-    "checks": [
-     {
-      "label": "交回的格式对",
-      "pass": true,
-      "message": ""
+  "question": "五粮液近五年的毛利率分别是多少？",
+  "state": "RUNNING",
+  "state_word": null,
+  "waiting_reason": null,
+  "cancel_requested": false,
+  "reason": null,
+  "reason_text": "",
+  "budget": {
+   "currency": "CNY",
+   "limit": null,
+   "used": "0.10",
+   "reserved": "0.05",
+   "left": null,
+   "running": "0.05",
+   "spent": "0.15",
+   "estimated": true
+  },
+  "data": null,
+  "started_at": "2026-10-11T17:39:47.221681Z",
+  "ended_at": null,
+  "seconds": 4,
+  "active_interaction_id": null
+ },
+ "head": {
+  "kind": "running",
+  "text": "专家还在做"
+ },
+ "sections": [
+  {
+   "key": "answer",
+   "title": "回答",
+   "blocks": [
+    {
+     "key": "answer",
+     "title": "回答",
+     "kind": "text",
+     "folded": false,
+     "from": {
+      "step": 5,
+      "title": "成稿"
      },
-     {
-      "label": "有勾稽结果、跨期连续性、未解释的断点",
-      "pass": true,
-      "message": ""
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    }
+   ]
+  },
+  {
+   "key": "data",
+   "title": "数据",
+   "blocks": [
+    {
+     "key": "result",
+     "title": "结果表",
+     "kind": "table",
+     "folded": false,
+     "from": {
+      "step": 4,
+      "title": "整理结果"
      },
-     {
-      "label": "做了勾稽",
-      "pass": true,
-      "message": ""
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    }
+   ]
+  },
+  {
+   "key": "verified",
+   "title": "专家验过什么",
+   "blocks": [
+    {
+     "key": "definitions",
+     "title": "查询用的口径",
+     "kind": "table",
+     "folded": false,
+     "from": {
+      "step": 2,
+      "title": "生成 SQL"
      },
-     {
-      "label": "每条勾稽规则都平",
-      "pass": true,
-      "message": ""
+     "status": "done",
+     "note": null,
+     "content": [
+      {
+       "name": "fiscal_year",
+       "definition": "会计年度"
+      },
+      {
+       "name": "gross_margin",
+       "definition": "(营业收入 − 营业成本) ÷ 营业收入，比率，0.25 表示 25%"
+      }
+     ],
+     "columns": [
+      {
+       "key": "name",
+       "title": "列"
+      },
+      {
+       "key": "definition",
+       "title": "口径"
+      }
+     ],
+     "also": {
+      "sql": "SELECT fiscal_year, report_type, (operate_income - operate_cost) / operate_income AS gross_margin FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2021 AND 2025 ORDER BY fiscal_year"
      },
-     {
-      "label": "跨期的断点都有解释",
-      "pass": true,
-      "message": ""
-     }
-    ],
-    "tools": {
-     "run_sql": 10
+     "summary": null,
+     "artifact": {
+      "name": "sql",
+      "version": 1,
+      "digest": "cc594282d14ad283f752b1eda59802b844112867794dfdf320f55dbe37832b1b"
+     },
+     "source": null
     },
-    "returned": {
-     "artifact": "reconcile",
-     "version": 1,
-     "content": {
-      "checks": [
-       {
-        "rule": "资产 = 负债 + 所有者权益",
-        "rule_id": "R01",
-        "unbalanced": 0,
-        "periods_checked": 3,
-        "unbalanced_periods": []
-       },
-       {
-        "rule": "流动资产 + 非流动资产 = 资产总计",
-        "rule_id": "R02",
-        "unbalanced": 0,
-        "periods_checked": 3,
-        "unbalanced_periods": []
-       },
-       {
-        "rule": "流动负债 + 非流动负债 = 负债合计",
-        "rule_id": "R03",
-        "unbalanced": 0,
-        "periods_checked": 3,
-        "unbalanced_periods": []
-       },
-       {
-        "rule": "营业收入 − 营业成本 − 各项费用 = 营业利润（允许其他收益）",
-        "rule_id": "R04",
-        "unbalanced": 0,
-        "periods_checked": 3,
-        "unbalanced_periods": []
-       },
-       {
-        "rule": "利润总额 − 所得税 = 净利润",
-        "rule_id": "R05",
-        "unbalanced": 0,
-        "periods_checked": 3,
-        "unbalanced_periods": []
-       },
-       {
-        "rule": "归母净利润 + 少数股东损益 = 净利润",
-        "rule_id": "R06",
-        "unbalanced": 0,
-        "periods_checked": 3,
-        "unbalanced_periods": []
-       },
-       {
-        "rule": "经营 + 投资 + 筹资现金流 + 汇率影响 = 现金净增加额",
-        "rule_id": "R07",
-        "unbalanced": 0,
-        "periods_checked": 3,
-        "unbalanced_periods": []
-       },
-       {
-        "rule": "期初现金 + 现金净增加额 = 期末现金",
-        "rule_id": "R08",
-        "unbalanced": 0,
-        "periods_checked": 3,
-        "unbalanced_periods": []
-       },
-       {
-        "rule": "利润表净利润 = 现金流量表补充资料里的净利润",
-        "rule_id": "R09",
-        "unbalanced": 0,
-        "periods_checked": 3,
-        "unbalanced_periods": []
-       }
-      ],
-      "continuity": [
-       {
-        "diff": 1204.0,
-        "note": "2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策",
-        "fiscal_year": 2024
-       }
-      ],
-      "data_version": "sh600519-financials-sample600519",
-      "unexplained_breaks": []
+    {
+     "key": "rows",
+     "title": "查询带回的原样结果",
+     "kind": "table",
+     "folded": true,
+     "from": {
+      "step": 3,
+      "title": "执行 SQL"
      },
-     "labels": {
-      "checks": "勾稽结果",
-      "rule": "规则",
-      "rule_id": "编号",
-      "unbalanced": "不平的期数",
-      "periods_checked": "验了几期",
-      "unbalanced_periods": "不平的期间",
-      "continuity": "跨期连续性",
-      "diff": "差额",
-      "note": "说明",
-      "fiscal_year": "年度",
-      "data_version": "数据版本",
-      "unexplained_breaks": "没有解释的断点"
-     }
-    },
-    "process": [
-     {
-      "at": "2026-10-07T04:58:26.394091Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "SELECT rule_id, rule, tolerance FROM reconciliation_rules",
-      "ok": true
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    }
+   ]
+  },
+  {
+   "key": "limits",
+   "title": "局限",
+   "blocks": [
+    {
+     "key": "limitations",
+     "title": "局限",
+     "kind": "list",
+     "folded": false,
+     "from": {
+      "step": 5,
+      "title": "成稿"
      },
-     {
-      "at": "2026-10-07T04:58:26.400251Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "/* R01 资产 = 负债 + 所有者权益 */ SELECT report_date, diff FROM check_r01 WHERE fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    }
+   ]
+  },
+  {
+   "key": "sources",
+   "title": "出处",
+   "blocks": [
+    {
+     "key": "citations",
+     "title": "出处",
+     "kind": "list",
+     "folded": false,
+     "from": {
+      "step": 5,
+      "title": "成稿"
      },
-     {
-      "at": "2026-10-07T04:58:26.408841Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "/* R02 流动资产 + 非流动资产 = 资产总计 */ SELECT report_date, diff FROM check_r02 WHERE fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     },
-     {
-      "at": "2026-10-07T04:58:26.412870Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "/* R03 流动负债 + 非流动负债 = 负债合计 */ SELECT report_date, diff FROM check_r03 WHERE fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     },
-     {
-      "at": "2026-10-07T04:58:26.424449Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "/* R04 营业收入 − 营业成本 − 各项费用 = 营业利润（允许其他收益） */ SELECT report_date, diff FROM check_r04 WHERE fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     },
-     {
-      "at": "2026-10-07T04:58:26.434112Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "/* R05 利润总额 − 所得税 = 净利润 */ SELECT report_date, diff FROM check_r05 WHERE fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     },
-     {
-      "at": "2026-10-07T04:58:26.438854Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "/* R06 归母净利润 + 少数股东损益 = 净利润 */ SELECT report_date, diff FROM check_r06 WHERE fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     },
-     {
-      "at": "2026-10-07T04:58:26.443198Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "/* R07 经营 + 投资 + 筹资现金流 + 汇率影响 = 现金净增加额 */ SELECT report_date, diff FROM check_r07 WHERE fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     },
-     {
-      "at": "2026-10-07T04:58:26.449288Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "/* R08 期初现金 + 现金净增加额 = 期末现金 */ SELECT report_date, diff FROM check_r08 WHERE fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     },
-     {
-      "at": "2026-10-07T04:58:26.456837Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "/* R09 利润表净利润 = 现金流量表补充资料里的净利润 */ SELECT report_date, diff FROM check_r09 WHERE fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     }
-    ]
-   }
-  ],
-  "times": 1,
-  "rejected": 0,
-  "spent": "0.05",
-  "data": {
-   "data_version": "sh600519-financials-sample600519"
+     "status": "not_reached",
+     "note": "没有做到这一步",
+     "content": null,
+     "columns": [],
+     "also": {},
+     "summary": null,
+     "artifact": null,
+     "source": null
+    }
+   ]
   }
+ ],
+ "how": [
+  {
+   "index": 1,
+   "title": "改写问题",
+   "summary": "把问题改写成没有歧义的：查什么、哪个期间、什么口径",
+   "status": "accepted",
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.05"
+  },
+  {
+   "index": 2,
+   "title": "生成 SQL",
+   "summary": "对照数据的结构写出查询，并说明每一列的口径",
+   "status": "accepted",
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.05"
+  },
+  {
+   "index": 3,
+   "title": "执行 SQL",
+   "summary": "执行查询，原样带回结果和数据版本",
+   "status": "running",
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.00"
+  },
+  {
+   "index": 4,
+   "title": "整理结果",
+   "summary": "统一单位、币种、期间的写法，标出缺的值",
+   "status": "pending",
+   "times": 0,
+   "rejected": 0,
+   "spent": "0.00"
+  },
+  {
+   "index": 5,
+   "title": "成稿",
+   "summary": "写出答案：每个数带数据版本和口径，写明局限；结论栏留空",
+   "status": "pending",
+   "times": 0,
+   "rejected": 0,
+   "spent": "0.00"
+  }
+ ],
+ "conclusion": {
+  "text": "",
+  "kind": "user_draft",
+  "saved_at": null,
+  "version": null
  }
 }

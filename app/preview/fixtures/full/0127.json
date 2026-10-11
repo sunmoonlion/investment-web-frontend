@@ -1,0 +1,240 @@
+{
+ "task": {
+  "id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+  "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "tenant": "default",
+  "idempotency_key": "preview-cancelled-0001",
+  "request_digest": "26d62ad9533e380807fba4859f5e01f9fcb01653c2751c765c1a45af72de5988",
+  "profile_id": "FIN_REVIEW",
+  "profile_version": "1",
+  "expert_pack_version": "1",
+  "original_input": {
+   "input": {
+    "text": "招商银行 2023 到 2025 年的盈利能力怎么样？"
+   },
+   "attachments": [],
+   "client_context": {
+    "entry": "expert"
+   }
+  },
+  "normalized_goal": null,
+  "thread_id": "thread-744da9989da7",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "project_root": "/home/demo/research/招商银行",
+  "state": "CANCELLED",
+  "state_version": 20,
+  "workflow_version": "1",
+  "current_step": 2,
+  "acceptance_contract": {
+   "steps": [
+    "scope",
+    "profile",
+    "reconcile",
+    "extract",
+    "metrics",
+    "crosscheck",
+    "note"
+   ],
+   "pack_id": "FIN_REVIEW"
+  },
+  "execution_policy": {},
+  "budget": {
+   "used": "0.150000",
+   "limit": null,
+   "currency": "CNY",
+   "reserved": "0"
+  },
+  "active_attempt_id": null,
+  "terminal_result_ref": null,
+  "waiting_reason": null,
+  "active_interaction_id": null,
+  "rejection": null,
+  "cancel_requested_at": "2026-10-11T17:39:49.696502+00:00",
+  "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "created_at": "2026-10-11T17:39:49.340500+00:00",
+  "updated_at": "2026-10-11T17:39:49.695834+00:00",
+  "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa"
+ },
+ "attempts": [
+  {
+   "id": "ebebbe8e-681d-540d-8534-d2084d665026",
+   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
+   "thread_id": "thread-744da9989da7",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "scope",
+   "step_version": "1",
+   "input_artifact_versions": [],
+   "turn_ids": [
+    "turn-21e6ea3d3787"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "9e84de28-80db-59d4-aded-fc9b3a161534",
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-11T17:39:49.446639+00:00",
+   "ended_at": "2026-10-11T17:39:49.454803+00:00",
+   "created_at": "2026-10-11T17:39:49.390274+00:00",
+   "updated_at": "2026-10-11T17:39:49.451271+00:00"
+  },
+  {
+   "id": "f3b23b0d-a8a1-5c14-89a8-4577771582b4",
+   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
+   "thread_id": "thread-744da9989da7",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "profile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-f1bf87bb9c53"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "190b9e02-4e5d-5a47-8a86-a19c97f1b31b",
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-11T17:39:49.538119+00:00",
+   "ended_at": "2026-10-11T17:39:49.546331+00:00",
+   "created_at": "2026-10-11T17:39:49.470852+00:00",
+   "updated_at": "2026-10-11T17:39:49.542790+00:00"
+  },
+  {
+   "id": "50d3ef21-4d32-5636-9066-cae5ab7fd760",
+   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
+   "thread_id": "thread-744da9989da7",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "reconcile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-4c598845e93c"
+   ],
+   "status": "FAILED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": "acceptance",
+   "retryable": true,
+   "output_artifacts": [],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-11T17:39:49.661771+00:00",
+   "ended_at": "2026-10-11T17:39:49.668136+00:00",
+   "created_at": "2026-10-11T17:39:49.569697+00:00",
+   "updated_at": "2026-10-11T17:39:49.666222+00:00"
+  }
+ ],
+ "artifacts": [
+  {
+   "id": "190b9e02-4e5d-5a47-8a86-a19c97f1b31b",
+   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "attempt_id": "f3b23b0d-a8a1-5c14-89a8-4577771582b4",
+   "name": "profile",
+   "version": 1,
+   "kind": "step",
+   "digest": "0801c19adbe7145e42acecc360deb0f05b3f302a4640bade548d9a51b0a6ead8",
+   "workspace_path": null,
+   "created_at": "2026-10-11T17:39:49.542790+00:00"
+  },
+  {
+   "id": "9e84de28-80db-59d4-aded-fc9b3a161534",
+   "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "attempt_id": "ebebbe8e-681d-540d-8534-d2084d665026",
+   "name": "scope",
+   "version": 1,
+   "kind": "step",
+   "digest": "b8d454f41c3ca74f8f6c0df1e9b96f59609c3abac41d247cc8974b3b42f79945",
+   "workspace_path": null,
+   "created_at": "2026-10-11T17:39:49.451271+00:00"
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowUpIcon, FolderIcon, XIcon } from 'lucide-react'
+import { ArrowUpIcon, FolderIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -21,6 +21,8 @@ import {
 } from '@/lib/workbench/queries'
 import { conversationRoute, isBuilt, MODES, routes, type Mode } from '@/lib/workbench/routes'
 import { cn } from '@/lib/utils'
+
+import { useAsk, usePacks } from '@/lib/workbench/expert-desk'
 
 import { useStart } from '../api/start'
 import { blockerOf, projectIsRequired } from '../model/start'
@@ -45,8 +47,14 @@ export function HomeScreen() {
 
   const [text, setText] = useState('')
   const [chosen, setProjectId] = useState<string | null | undefined>(undefined)
-  const projectId = chosen === undefined ? given : chosen
+  // 聊天什么都不选（0017）：带进来的项目只对工作、专家有效
+  const projectId = mode === 'chat' ? null : chosen === undefined ? given : chosen
   const [picking, setPicking] = useState(false)
+  // 专家：在对话框里直接挑一位（专家市场上线前先用内置的清单，0017 §三）
+  const packs = usePacks()
+  const [expert, setExpert] = useState<string | null>(null)
+  const [askKey] = useState(() => crypto.randomUUID())
+  const ask = useAsk()
 
   const project = (projects.data ?? []).find((each) => each.id === projectId)
   const blocker = blockerOf({
@@ -68,11 +76,24 @@ export function HomeScreen() {
     .slice(0, 6)
 
   async function send() {
-    if (blocker !== null || start.isPending) return
+    if (blocker !== null || start.isPending || ask.isPending) return
     if (mode === 'expert') {
-      // 专家：带着问题去「请专家」那一页补全
-      window.sessionStorage.setItem('workbench.question', text.trim())
-      router.push(routes.askExpert(locale, projectId!))
+      // 专家：服务端先编排再进入对话。在这里直接请，不再跳到另一页（0017）
+      if (!expert || !projectId) return
+      try {
+        const made = await ask.mutateAsync({
+          project: projectId,
+          from: null,
+          expert,
+          question: text.trim(),
+          key: askKey,
+        })
+        if (made.conversation) {
+          router.push(routes.projectConversation(locale, projectId, made.conversation))
+        }
+      } catch {
+        // 原因显示在输入框下面
+      }
       return
     }
     try {
@@ -139,32 +160,54 @@ export function HomeScreen() {
               placeholder={t(`mode.${mode}.placeholder`)}
               className="max-h-64 min-h-20 resize-none border-0 bg-transparent px-2 text-[15px] shadow-none focus-visible:ring-0 dark:bg-transparent"
             />
+            {mode === 'expert' ? (
+              <div className="px-1 pt-1" aria-label={t('expert.who')}>
+                <p className="text-muted-foreground mb-1 text-xs">{t('expert.who')}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {(packs.data ?? []).map((each) => (
+                    <Button
+                      key={each.id}
+                      size="sm"
+                      variant={expert === each.id ? 'default' : 'outline'}
+                      title={each.tagline}
+                      aria-pressed={expert === each.id}
+                      onClick={() => setExpert(each.id)}
+                    >
+                      {each.name}
+                    </Button>
+                  ))}
+                  {packs.isPending ? (
+                    <span className="text-muted-foreground text-xs">{t('expert.loading')}</span>
+                  ) : null}
+                </div>
+              </div>
+            ) : null}
             <div className="flex items-center gap-2 px-1 pt-1">
-              {/* 在哪个项目里：就在输入框的角上选，不另起一步 */}
-              <Button variant="outline" size="sm" onClick={() => setPicking(true)}>
-                <FolderIcon />
-                {project
-                  ? project.title
-                  : projectIsRequired(mode)
-                    ? t('project.choose')
-                    : t('project.none')}
-              </Button>
-              {project && !projectIsRequired(mode) ? (
-                <Button
-                  variant="ghost"
-                  size="icon-sm"
-                  onClick={() => setProjectId(null)}
-                  aria-label={t('project.clear')}
-                  title={t('project.clear')}
-                >
-                  <XIcon />
-                </Button>
+              {/* 在哪个项目里：工作与专家在输入框的角上选；聊天什么都不选（0017） */}
+              {projectIsRequired(mode) ? (
+                <>
+                  <Button variant="outline" size="sm" onClick={() => setPicking(true)}>
+                    <FolderIcon />
+                    {project ? project.title : t('project.choose')}
+                  </Button>
+                  <Link
+                    href={routes.projects(locale)}
+                    className="text-muted-foreground hover:text-foreground text-[13px] underline-offset-3 hover:underline"
+                  >
+                    {t('project.create')}
+                  </Link>
+                </>
               ) : null}
               <div className="flex-1" />
               <Button
                 size="icon"
                 onClick={() => void send()}
-                disabled={blocker !== null || start.isPending}
+                disabled={
+                  blocker !== null ||
+                  start.isPending ||
+                  ask.isPending ||
+                  (mode === 'expert' && expert === null)
+                }
                 aria-label={t(`mode.${mode}.send`)}
                 title={t(`mode.${mode}.send`)}
               >
@@ -187,10 +230,10 @@ export function HomeScreen() {
               ) : null}
             </p>
           ) : null}
-          {start.isError ? (
+          {start.isError || ask.isError ? (
             <p role="alert" className="text-destructive mt-2 text-center text-[13px]">
-              {t.has(`problem.${(start.error as WorkbenchError).code}`)
-                ? t(`problem.${(start.error as WorkbenchError).code}`)
+              {t.has(`problem.${((start.error ?? ask.error) as WorkbenchError).code}`)
+                ? t(`problem.${((start.error ?? ask.error) as WorkbenchError).code}`)
                 : t('problem.other')}
               {held && projectId ? (
                 <>

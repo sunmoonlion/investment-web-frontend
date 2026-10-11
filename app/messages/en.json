@@ -174,8 +174,9 @@
       "work": "Work",
       "expert": "Expert"
     },
-    "new": "New",
-    "workspace": "Workspace",
+    "workspace": {
+      "none": "No folder yet. Add one in the agent on this computer so projects have a place."
+    },
     "loading": "Loading…",
     "noWorkspace": "No workspace yet.",
     "noProjects": "No projects in this workspace yet",
@@ -196,7 +197,26 @@
       "offline": "No computer is online",
       "none": "No computer registered"
     },
-    "allProjects": "All"
+    "allProjects": "All",
+    "computers": "Computers and projects",
+    "computer": {
+      "none": "No computer connected yet. Once connected, your folders and projects appear here.",
+      "connect": "Connect",
+      "manage": "Manage"
+    },
+    "project": {
+      "new": "New project",
+      "toggle": "Expand or collapse {title}",
+      "more": "More for {title}",
+      "add": "New in {title}",
+      "noTalks": "No conversations yet",
+      "addKind": {
+        "chat": "New chat",
+        "work": "New work",
+        "expert": "Ask an expert"
+      }
+    },
+    "chats": "Chats"
   },
   "projectPicker": {
     "loading": "Loading…",
@@ -223,7 +243,7 @@
         "name": "Expert",
         "what": "Follows a fixed method step by step, checks every step, and hands back a dossier. Slower and costlier.",
         "placeholder": "What should the expert solve",
-        "send": "Ask the expert"
+        "send": "Hand to the expert"
       }
     },
     "project": {
@@ -235,7 +255,8 @@
         "chat": "A chat does not need a project. With one, it can read the files in that project.",
         "work": "Work happens inside a project: a folder on your machine.",
         "expert": "The expert takes over the whole project: this conversation, its files, other conversations and dossiers."
-      }
+      },
+      "create": "New project"
     },
     "blocker": {
       "noSandbox": "No sandbox available yet: register a model key and start the sandbox first.",
@@ -264,6 +285,10 @@
     "kind": {
       "chat": "Chat",
       "work": "Work"
+    },
+    "expert": {
+      "who": "Which expert",
+      "loading": "Loading…"
     }
   },
   "chat": {

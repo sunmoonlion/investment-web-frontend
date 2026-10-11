@@ -1,4 +1,22 @@
 {
  "contract_version": 2,
- "tasks": []
+ "price": {
+  "model": null,
+  "priced": false,
+  "currency": "CNY",
+  "as_of": "2026-10-04",
+  "per_million": null,
+  "source": "",
+  "estimated": true
+ },
+ "cost": "0",
+ "tokens": {
+  "input": 0,
+  "cached_input": 0,
+  "cache_write": 0,
+  "output": 0,
+  "total": 0
+ },
+ "calls": 0,
+ "turns": []
 }
