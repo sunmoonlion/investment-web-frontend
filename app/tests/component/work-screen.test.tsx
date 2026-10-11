@@ -100,7 +100,11 @@ describe('工作页', () => {
       'data-state',
       'collapsed',
     )
-    fireEvent.click(within(screen.getByRole('complementary', { name: '结果' })).getByRole('button'))
+    fireEvent.click(
+      within(screen.getByRole('complementary', { name: '结果' })).getByRole('button', {
+        name: '改动',
+      }),
+    )
     const results = screen.getByRole('complementary', { name: '结果' })
     expect(results).toHaveAttribute('data-state', 'open')
     // 用补丁改的两个文件：时间线里一处，「改动」栏里一处
