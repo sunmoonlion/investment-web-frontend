@@ -65,7 +65,8 @@ export function MachinesScreen({ embedded = false }: { embedded?: boolean }) {
           {machines.isSuccess && current ? (
             <>
               <p className="mt-1 text-sm">
-                {current.name} · {isOnline(current) ? t('online') : t('offline')}
+                {current.name} · {isOnline(current) ? t('online') : t('offline')} · {t('agent')}{' '}
+                {current.agent_version ?? t('unknown')}
               </p>
               {/* 账号跟着人走、代理跟着电脑走；网页看不出自己在哪台电脑上（所有者 2026-10-12 定甲） */}
               <p className="text-muted-foreground mt-2 text-sm">
