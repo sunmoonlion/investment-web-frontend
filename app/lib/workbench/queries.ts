@@ -3,7 +3,10 @@
 import { useQuery } from '@tanstack/react-query'
 
 import {
+  agentServiceSchema,
   conversationsSchema,
+  directorySchema,
+  fileContentSchema,
   machinesSchema,
   pendingListSchema,
   projectDetailSchema,
@@ -22,6 +25,12 @@ export const workbenchKeys = {
   pending: ['workbench', 'pending'] as const,
   machines: ['workbench', 'machines'] as const,
   sandboxes: ['workbench', 'sandboxes'] as const,
+  // 代理服务流（0022）：按电脑、按路径
+  agentService: (environment: string) => ['workbench', 'agent', environment, 'service'] as const,
+  directory: (environment: string, path: string) =>
+    ['workbench', 'agent', environment, 'dir', path] as const,
+  file: (environment: string, path: string) =>
+    ['workbench', 'agent', environment, 'file', path] as const,
 }
 
 export function useWorkspaces() {
@@ -88,5 +97,46 @@ export function useAllProjects(includeArchived: boolean) {
           `/api/workbench/projects${includeArchived ? '?include_archived=true' : ''}`,
         )
       ).projects,
+  })
+}
+
+// ---------------- 代理服务流（0022）：那台电脑上的文件 ----------------
+// 代理此刻的白名单与知识库目录。代理离线 / 版本旧 / 没配通道时抛 WorkbenchError，页面按 code 说明
+export function useAgentService(environment: string | null) {
+  return useQuery({
+    queryKey: workbenchKeys.agentService(environment ?? ''),
+    enabled: environment !== null,
+    retry: false,
+    staleTime: 30_000,
+    queryFn: async () =>
+      getJson(agentServiceSchema, `/api/workbench/environments/${seg(environment!)}/service`),
+  })
+}
+
+export function useDirectory(environment: string | null, path: string | null) {
+  return useQuery({
+    queryKey: workbenchKeys.directory(environment ?? '', path ?? ''),
+    enabled: environment !== null && path !== null,
+    retry: false,
+    staleTime: 5_000,
+    queryFn: async () =>
+      getJson(
+        directorySchema,
+        `/api/workbench/environments/${seg(environment!)}/fs/dir?path=${encodeURIComponent(path!)}`,
+      ),
+  })
+}
+
+export function useFileContent(environment: string | null, path: string | null) {
+  return useQuery({
+    queryKey: workbenchKeys.file(environment ?? '', path ?? ''),
+    enabled: environment !== null && path !== null,
+    retry: false,
+    staleTime: 5_000,
+    queryFn: async () =>
+      getJson(
+        fileContentSchema,
+        `/api/workbench/environments/${seg(environment!)}/fs/file?path=${encodeURIComponent(path!)}`,
+      ),
   })
 }

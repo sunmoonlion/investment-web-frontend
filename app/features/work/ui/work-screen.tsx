@@ -164,7 +164,12 @@ export function WorkScreen({
             </Button>
           </Composer>
         </div>
-        <WorkSidePanel files={byFile(line.changes)} directory={directory} live={state === 'live'} />
+        <WorkSidePanel
+          files={byFile(line.changes)}
+          directory={directory}
+          live={state === 'live'}
+          environment={session?.environment_id ?? null}
+        />
       </div>
     </div>
   )

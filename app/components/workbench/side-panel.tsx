@@ -15,24 +15,31 @@ import { cn } from '@/lib/utils'
 
 import type { FileChanges } from '@/lib/workbench/timeline'
 import { ChangesPanel } from './changes-panel'
+import { FileTree } from './file-tree'
+import { FileView } from './file-view'
 
 export type SideTab = 'files' | 'changes' | 'terminal'
 
 // 工作页与专家页同一个右边栏（0017 §五、0015 §3.2）：文件 / 改动 / 终端 三个钮，一次只开一个。
 // 「改动」= 这段对话用补丁改的文件；本次打开页面后第一次出现改动时自动弹开一次，之后不抢焦点。
-// 「文件」「终端」要等本地代理开文件通道与终端通道（账 87、83），先占位说明。
+// 「文件」= 那台电脑上的文件树（0022，经代理服务流），当前项目默认展开，点文件看内容；没有电脑就说明。
+// 「终端」要等本地代理开终端通道（账 83），先占位说明。
 export function WorkSidePanel({
   files,
   directory,
   live,
+  environment = null,
 }: {
   files: FileChanges[]
   directory: string | null
   live: boolean
+  // 这段对话在哪台电脑上（环境 id）；专家页暂不传
+  environment?: string | null
 }) {
   const t = useTranslations('work')
   const tr = useTranslations('results')
   const [tab, setTab] = useState<SideTab | null>(null)
+  const [opened, setOpened] = useState<string | null>(null)
   // 页面刚打开时装进来的历史改动不算「出现」：接上实时流再过一会儿才开始数
   const [armed, setArmed] = useState(false)
   const [sawChanges, setSawChanges] = useState(false)
@@ -126,6 +133,19 @@ export function WorkSidePanel({
       <div className="min-h-0 flex-1 overflow-y-auto p-4 text-[13px]">
         {tab === 'changes' ? (
           <ChangesPanel files={files} directory={directory} />
+        ) : tab === 'files' ? (
+          opened && environment ? (
+            <FileView environment={environment} path={opened} onBack={() => setOpened(null)} />
+          ) : (
+            <section aria-label={t('panel.files')}>
+              <FileTree
+                environment={environment}
+                directory={directory}
+                selected={opened}
+                onSelect={setOpened}
+              />
+            </section>
+          )
         ) : (
           <section aria-label={t(`panel.${tab}`)}>
             <h2 className="text-sm font-medium">{t(`panel.${tab}`)}</h2>

@@ -483,8 +483,25 @@
       "files": "Files",
       "changes": "Changes",
       "terminal": "Terminal",
-      "filesSoon": "This will be the file tree of this workspace on your computer (current project expanded). It waits for the local agent's file channel (ledger 87).",
       "terminalSoon": "This will be a terminal in the project folder on your computer. It waits for the local agent's terminal channel (ledger 83)."
+    },
+    "files": {
+      "noComputer": "This conversation is not on any computer, so there are no files to show.",
+      "loading": "Loading…",
+      "noRoots": "The agent on this computer has no folders selected yet. Pick them in the tray settings.",
+      "library": "Local library",
+      "empty": "Empty folder",
+      "truncated": "Too many items; only the first 2000 are listed",
+      "back": "Back to the file tree",
+      "binary": "Not a text file; contents are not shown here.",
+      "partial": "The file is larger than 1 MiB; only the beginning is shown.",
+      "problem": {
+        "agent_offline": "The agent on this computer is offline, so its files cannot be read.",
+        "agent_outdated": "The agent on this computer is too old and has no file channel; upgrade to 0.4.0 or later.",
+        "agent_service_unconfigured": "This site has not enabled the file channel yet.",
+        "agent_busy": "This computer is busy; try again shortly.",
+        "other": "Could not read it."
+      }
     }
   },
   "expert": {

@@ -666,3 +666,46 @@ export const memorySchema = z
 export type Memory = z.infer<typeof memorySchema>
 export const memoriesSchema = z.object({ memories: z.array(memorySchema) }).loose()
 export const memoryMadeSchema = z.object({ memory: memorySchema }).loose()
+
+// ---------------- 代理服务流（0022，账 87）：那台电脑上的文件与设置 ----------------
+export const agentServiceSchema = z
+  .object({
+    agent: z.string().optional(),
+    version: z.string().optional(),
+    roots: z.array(z.string()),
+    libraryDir: z.string().nullable().optional(),
+    capabilities: z.array(z.string()).optional(),
+  })
+  .loose()
+export type AgentServiceInfo = z.infer<typeof agentServiceSchema>
+
+export const directoryEntrySchema = z
+  .object({
+    name: z.string(),
+    type: z.enum(['file', 'dir', 'link', 'other']),
+    size: z.number().int().nullable().optional(),
+    mtime: z.number().nullable().optional(),
+  })
+  .loose()
+export type DirectoryEntry = z.infer<typeof directoryEntrySchema>
+export const directorySchema = z
+  .object({
+    path: z.string(),
+    entries: z.array(directoryEntrySchema),
+    truncated: z.boolean().optional(),
+  })
+  .loose()
+export type Directory = z.infer<typeof directorySchema>
+
+export const fileContentSchema = z
+  .object({
+    path: z.string(),
+    offset: z.number().int(),
+    // base64；文本还是二进制由浏览器判
+    content: z.string(),
+    size: z.number().int(),
+    mtime: z.number().nullable().optional(),
+    eof: z.boolean(),
+  })
+  .loose()
+export type FileContent = z.infer<typeof fileContentSchema>
