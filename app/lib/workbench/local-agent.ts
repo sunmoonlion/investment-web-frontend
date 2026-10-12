@@ -16,7 +16,8 @@ import {
 
 import { getJson, seg, sendJson, WorkbenchError } from './http'
 
-export const LOCAL_PORTS = [47811, 47812] as const
+// 五个候选口按顺序试：所有者机器上 47811 被 Cursor 编辑器占着（2026-10-12 实测），代理退到了 47812；再多备三个
+export const LOCAL_PORTS = [47811, 47812, 47813, 47814, 47815] as const
 const PROBE_TIMEOUT_MS = 2000
 const TICKET_MARGIN_SECONDS = 60
 export const MAX_READ_BYTES = 1024 * 1024
@@ -61,7 +62,9 @@ export async function probeLocalAgent(
       )
       if (!response.ok) continue
       const parsed = presenceSchema.safeParse(await response.json().catch(() => null))
-      if (parsed.success) return { port, presence: parsed.data }
+      // 别的程序也可能占着这个口（Cursor 就占过 47811）：只认自报家门是我们代理的
+      if (parsed.success && parsed.data.agent === 'sunmoon-agent')
+        return { port, presence: parsed.data }
     } catch {
       // 这个口没人听，试下一个
     } finally {
