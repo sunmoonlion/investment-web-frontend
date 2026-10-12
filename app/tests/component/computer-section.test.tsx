@@ -4,9 +4,19 @@ import { NextIntlClientProvider } from 'next-intl'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import { MachinesRedirect, MachinesScreen } from '@/features/settings'
-import { formatPairingCode, minutesRemaining, pairingCodeComplete } from '@/features/settings/model/onboarding'
+import {
+  formatPairingCode,
+  minutesRemaining,
+  pairingCodeComplete,
+} from '@/features/settings/model/onboarding'
 import { WorkbenchProvider } from '@/lib/workbench/context'
 import messages from '@/messages/zh-CN.json'
+
+vi.mock('next/navigation', () => ({
+  useSearchParams: () => new URLSearchParams(),
+  useRouter: () => ({ push: vi.fn(), replace: vi.fn() }),
+  usePathname: () => '/zh-CN/workbench/settings',
+}))
 
 const lookup = {
   id: 'pair-1',
@@ -22,7 +32,9 @@ const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } })
 
 function page(node: React.ReactNode) {
-  const client = new QueryClient({ defaultOptions: { queries: { retry: false }, mutations: { retry: false } } })
+  const client = new QueryClient({
+    defaultOptions: { queries: { retry: false }, mutations: { retry: false } },
+  })
   return render(
     <NextIntlClientProvider locale="zh-CN" messages={messages} timeZone="Asia/Shanghai">
       <QueryClientProvider client={client}>
@@ -42,16 +54,24 @@ describe('连接码', () => {
     expect(formatPairingCode('k3np-q7r2')).toBe('K3NP-Q7R2')
     expect(pairingCodeComplete('K3NP-Q7R2')).toBe(true)
     expect(pairingCodeComplete('K3NPQ7R2')).toBe(false)
-    expect(minutesRemaining('2026-10-10T10:10:00+00:00', Date.parse('2026-10-10T10:03:30+00:00'))).toBe(7)
+    expect(
+      minutesRemaining('2026-10-10T10:10:00+00:00', Date.parse('2026-10-10T10:03:30+00:00')),
+    ).toBe(7)
   })
 
   it('码不对或已过期只说这一句', async () => {
-    vi.stubGlobal('fetch', vi.fn(async (url: string) => {
-      if (String(url).endsWith('/api/workbench/environments')) return json({ contract_version: 2, environments: [] })
-      if (String(url).endsWith('/api/workbench/agent/download')) return json({ contract_version: 2, download: null })
-      if (String(url).endsWith('/api/workbench/sandboxes/provisioned')) return json({ status: 'absent' })
-      return json({ code: 'agent_pairing_rejected' }, 404)
-    }))
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string) => {
+        if (String(url).endsWith('/api/workbench/environments'))
+          return json({ contract_version: 2, environments: [] })
+        if (String(url).endsWith('/api/workbench/agent/download'))
+          return json({ contract_version: 2, download: null })
+        if (String(url).endsWith('/api/workbench/sandboxes/provisioned'))
+          return json({ status: 'absent' })
+        return json({ code: 'agent_pairing_rejected' }, 404)
+      }),
+    )
     page(<MachinesScreen />)
     const input = await screen.findByRole('textbox')
     fireEvent.change(input, { target: { value: 'k3npq7r2' } })
@@ -61,15 +81,20 @@ describe('连接码', () => {
 
   it('有旧电脑才提示会断开，没有就不说', async () => {
     const withReplace = { ...lookup, replaces_machine: '办公室的电脑' }
-    vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => {
-      if (String(url).endsWith('/lookup')) {
-        const body = JSON.parse(String(init?.body)) as { user_code: string }
-        return json(body.user_code === 'K3NP-Q7R2' ? withReplace : lookup)
-      }
-      if (String(url).endsWith('/api/workbench/environments')) return json({ contract_version: 2, environments: [] })
-      if (String(url).endsWith('/api/workbench/agent/download')) return json({ contract_version: 2, download: null })
-      return json({ status: 'absent' })
-    }))
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string, init?: RequestInit) => {
+        if (String(url).endsWith('/lookup')) {
+          const body = JSON.parse(String(init?.body)) as { user_code: string }
+          return json(body.user_code === 'K3NP-Q7R2' ? withReplace : lookup)
+        }
+        if (String(url).endsWith('/api/workbench/environments'))
+          return json({ contract_version: 2, environments: [] })
+        if (String(url).endsWith('/api/workbench/agent/download'))
+          return json({ contract_version: 2, download: null })
+        return json({ status: 'absent' })
+      }),
+    )
     page(<MachinesScreen />)
     const input = await screen.findByRole('textbox')
     fireEvent.change(input, { target: { value: 'AAAA2222' } })
@@ -85,29 +110,35 @@ describe('连接码', () => {
     const writeText = vi.fn().mockResolvedValue(undefined)
     Object.assign(navigator, { clipboard: { writeText } })
     let installs = 0
-    vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => {
-      if (String(url).endsWith('/install-command')) {
-        installs += 1
-        if (installs > 1) return json({ code: 'request_invalid' }, 429)
-        return json({ command: 'irm https://downloads.example/script | iex', expires_at: '2026-10-10T10:10:00+00:00' })
-      }
-      if (String(url).endsWith('/api/workbench/agent/download')) {
-        return json({
-          contract_version: 2,
-          download: {
-            url: 'https://downloads.example/a.zip',
-            version: '0.2.4',
-            codex_version: '0.155.1',
-            zip_sha256: 'a'.repeat(64),
-            manifest_sha256: 'b'.repeat(64),
-            size_bytes: 1048576,
-          },
-        })
-      }
-      if (init?.method === 'GET' && String(url).endsWith('/api/workbench/environments'))
-        return json({ contract_version: 2, environments: [] })
-      return json({ status: 'absent' })
-    }))
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string, init?: RequestInit) => {
+        if (String(url).endsWith('/install-command')) {
+          installs += 1
+          if (installs > 1) return json({ code: 'request_invalid' }, 429)
+          return json({
+            command: 'irm https://downloads.example/script | iex',
+            expires_at: '2026-10-10T10:10:00+00:00',
+          })
+        }
+        if (String(url).endsWith('/api/workbench/agent/download')) {
+          return json({
+            contract_version: 2,
+            download: {
+              url: 'https://downloads.example/a.zip',
+              version: '0.2.4',
+              codex_version: '0.155.1',
+              zip_sha256: 'a'.repeat(64),
+              manifest_sha256: 'b'.repeat(64),
+              size_bytes: 1048576,
+            },
+          })
+        }
+        if (init?.method === 'GET' && String(url).endsWith('/api/workbench/environments'))
+          return json({ contract_version: 2, environments: [] })
+        return json({ status: 'absent' })
+      }),
+    )
     vi.spyOn(Date, 'now').mockReturnValue(Date.parse('2026-10-10T10:00:00+00:00'))
     page(<MachinesScreen />)
     fireEvent.click(await screen.findByRole('button', { name: '复制安装命令' }))
@@ -128,12 +159,17 @@ describe('连接码', () => {
   })
 
   it('来源地址空着时显示未知，不当成码不对', async () => {
-    vi.stubGlobal('fetch', vi.fn(async (url: string) => {
-      if (String(url).endsWith('/lookup')) return json({ ...lookup, source_ip: null })
-      if (String(url).endsWith('/api/workbench/environments')) return json({ contract_version: 2, environments: [] })
-      if (String(url).endsWith('/api/workbench/agent/download')) return json({ contract_version: 2, download: null })
-      return json({ status: 'absent' })
-    }))
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string) => {
+        if (String(url).endsWith('/lookup')) return json({ ...lookup, source_ip: null })
+        if (String(url).endsWith('/api/workbench/environments'))
+          return json({ contract_version: 2, environments: [] })
+        if (String(url).endsWith('/api/workbench/agent/download'))
+          return json({ contract_version: 2, download: null })
+        return json({ status: 'absent' })
+      }),
+    )
     page(<MachinesScreen />)
     const input = await screen.findByRole('textbox')
     fireEvent.change(input, { target: { value: 'K3NPQ7R2' } })
@@ -143,11 +179,16 @@ describe('连接码', () => {
   })
 
   it('页面带电脑锚点', async () => {
-    vi.stubGlobal('fetch', vi.fn(async (url: string) => {
-      if (String(url).endsWith('/api/workbench/environments')) return json({ contract_version: 2, environments: [] })
-      if (String(url).endsWith('/api/workbench/agent/download')) return json({ contract_version: 2, download: null })
-      return json({ status: 'absent' })
-    }))
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string) => {
+        if (String(url).endsWith('/api/workbench/environments'))
+          return json({ contract_version: 2, environments: [] })
+        if (String(url).endsWith('/api/workbench/agent/download'))
+          return json({ contract_version: 2, download: null })
+        return json({ status: 'absent' })
+      }),
+    )
     page(<MachinesScreen />)
     await waitFor(() => expect(document.getElementById('computer')).not.toBeNull())
   })
