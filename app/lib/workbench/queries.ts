@@ -12,7 +12,14 @@ import {
   workspacesSchema,
 } from '@/contracts/workbench-v2'
 import { getJson, seg } from './http'
-import { connectLocalAgent, readDirectory, readFile, type LocalAgent } from './local-agent'
+import {
+  connectLocalAgent,
+  probeLocalAgent,
+  readDirectory,
+  readFile,
+  readSettings,
+  type LocalAgent,
+} from './local-agent'
 
 // 好几个功能都要的清单：工作区、项目、对话、待办、机器、沙箱。
 // 键都以 'workbench' 开头：哪个功能改了东西，按键让别处重取。
@@ -127,5 +134,26 @@ export function useLocalFile(agent: LocalAgent | null, path: string | null) {
     retry: false,
     staleTime: 5_000,
     queryFn: () => readFile(agent!, path!),
+  })
+}
+
+// 这台电脑上有没有在跑的代理（账 92）：页面加载探一次，一分钟内不重探；探不到不是错
+export function useLocalPresence() {
+  return useQuery({
+    queryKey: ['workbench', 'local', 'presence'] as const,
+    queryFn: () => probeLocalAgent(),
+    retry: false,
+    staleTime: 60_000,
+  })
+}
+
+// 代理那头的设置（白名单、上限、自启、知识库目录），经回环口读
+export function useLocalSettings(agent: LocalAgent | null) {
+  return useQuery({
+    queryKey: ['workbench', 'local', agent?.info.userId ?? '', 'settings'] as const,
+    enabled: agent !== null,
+    retry: false,
+    staleTime: 5_000,
+    queryFn: () => readSettings(agent!),
   })
 }

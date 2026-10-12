@@ -21,6 +21,7 @@ import { LogoutButton } from '@/components/auth/logout-button'
 import { useWorkbench } from '@/lib/workbench/context'
 import {
   useConversations,
+  useLocalPresence,
   useMachines,
   usePending,
   useProjects,
@@ -32,12 +33,13 @@ import { MODES, routes } from '@/lib/workbench/routes'
 import { cn } from '@/lib/utils'
 
 import {
-  computerTree,
   FOOT,
+  computerTree,
   footHref,
   looseChats,
   modeOf,
   pendingPointers,
+  presenceHint,
   recent,
   type TreeConversation,
 } from '../model/nav'
@@ -147,6 +149,8 @@ export function Sidebar() {
   const conversations = useConversations()
   const pending = usePending()
   const machines = useMachines()
+  // 账 92：探一下本机回环口，知道「这台电脑还没接入」还是「就是这台」
+  const presence = useLocalPresence()
 
   const allProjects = projects.data ?? []
   const here = (conversations.data ?? []).find((c) => pathname.includes(c.id))
@@ -158,6 +162,10 @@ export function Sidebar() {
     allProjects,
     conversations.data ?? [],
     locale,
+  )
+  const hint = presenceHint(
+    machines.data ?? [],
+    presence.isSuccess ? (presence.data?.presence ?? null) : undefined,
   )
   const loose = looseChats(conversations.data ?? [], locale)
   // 当前项目所在的工作区默认展开，其余折叠；手动开合记在这一次
@@ -250,6 +258,11 @@ export function Sidebar() {
                       title={t(machine.status === 'online' ? 'machine.online' : 'machine.offline')}
                     />
                     <span className="truncate">{machine.name}</span>
+                    {hint.thisOne === machine.name ? (
+                      <span className="text-muted-foreground shrink-0 text-[11px] font-normal">
+                        {t('computer.thisOne')}
+                      </span>
+                    ) : null}
                     <Link
                       href={routes.computer(locale)}
                       className="text-muted-foreground hover:text-foreground ml-auto text-xs font-normal"
@@ -437,6 +450,14 @@ export function Sidebar() {
               ))}
             </ul>
           )}
+          {hint.notHere ? (
+            <p className="text-muted-foreground mt-2 px-2 text-xs">
+              {t('computer.notHere')}{' '}
+              <Link href={routes.computer(locale)} className="underline underline-offset-3">
+                {t('computer.connect')}
+              </Link>
+            </p>
+          ) : null}
         </section>
 
         {loose.length > 0 ? (

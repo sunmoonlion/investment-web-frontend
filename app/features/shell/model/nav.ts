@@ -176,7 +176,9 @@ export type FootEntry = { key: string; kind: 'page'; page: Page; href: (locale: 
 
 export const FOOT: readonly FootEntry[] = [
   { key: 'pending', kind: 'page', page: 'home', href: (locale) => routes.home(locale) },
-  // 知识库：0018/0019 之后改为本地知识库（用户电脑上的目录）；页面改造前先沿用现有页
+  // 本地知识库：用户电脑上的目录，网页直连代理回环口翻看（0019 §二、0022 乙案）
+  { key: 'localLibrary', kind: 'page', page: 'localLibrary', href: routes.localLibrary },
+  // 知识库（0011）：等账 85 撤
   { key: 'library', kind: 'page', page: 'library', href: routes.library },
   // 长期记忆：关于这位用户的几条事实（0019 §四）
   { key: 'memory', kind: 'page', page: 'memory', href: routes.memory },
@@ -243,4 +245,18 @@ export function pendingPointers(
       }
     })
     .sort((a, b) => Number(b.urgent) - Number(a.urgent))
+}
+
+// ---------------- 「这台电脑还没接入 / 就是这台」（账 92）：网页探本机回环口得到的结果和账号下的电脑对一对 ----------------
+export type PresenceHint = { thisOne: string | null; notHere: boolean }
+// presence 为 undefined = 还没探；null = 探过了，这台电脑上没有在跑的代理
+export function presenceHint(
+  machines: readonly { name: string }[],
+  presence: { machine_name: string } | null | undefined,
+): PresenceHint {
+  if (presence === undefined || machines.length === 0) return { thisOne: null, notHere: false }
+  if (presence === null) return { thisOne: null, notHere: true }
+  const same = machines.find((machine) => machine.name === presence.machine_name)
+  // 探到了代理但名字对不上账号下的电脑：多半是别的账号的代理，也算「这台还没接入」
+  return same ? { thisOne: same.name, notHere: false } : { thisOne: null, notHere: true }
 }

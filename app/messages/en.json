@@ -193,7 +193,8 @@
       "machines": "My computers",
       "settings": "Settings",
       "library": "Library",
-      "memory": "Memory"
+      "memory": "Memory",
+      "localLibrary": "Local library"
     },
     "machine": {
       "online": "A computer is online",
@@ -204,7 +205,9 @@
     "computer": {
       "none": "No computer connected yet. Once connected, your folders and projects appear here.",
       "connect": "Connect",
-      "manage": "Manage"
+      "manage": "Manage",
+      "thisOne": "this one",
+      "notHere": "The computer you are using now is not connected."
     },
     "project": {
       "new": "New project",
@@ -504,7 +507,8 @@
         "keys_unavailable": "The agent could not fetch the site's public key; try again later.",
         "rate_limited": "Too fast; wait a moment.",
         "other": "Could not read it."
-      }
+      },
+      "noLibrary": "This computer has no local library directory yet."
     }
   },
   "expert": {
@@ -1005,7 +1009,7 @@
     },
     "computer": {
       "local": "Settings on this computer",
-      "localLead": "Allowed folders, limits and autostart live in the agent on your computer. Change them in the tray's folder and limit settings for now; later you can change them here.",
+      "localLead": "Folders, limits, autostart and the local library directory live in the agent on your computer. Changes made here go straight to that computer, not through the cloud; widening changes (adding a folder, raising the limit, enabling network, setting the library directory, enabling autostart) need one confirmation on that computer, after which the agent restarts itself.",
       "roots": "Allowed folders",
       "noRoots": "No folders yet",
       "sandboxMode": "Sandbox mode",
@@ -1013,9 +1017,42 @@
       "allowed": "Allowed",
       "blocked": "Blocked",
       "unknown": "Unknown",
-      "none": "No computer connected yet."
+      "none": "No computer connected yet.",
+      "loading": "Loading…",
+      "cannotEdit": "Cannot change now:",
+      "readOnlyFrom": "Below is what the agent last reported (read-only):",
+      "addRoot": "Add folder",
+      "addRootPlaceholder": "Absolute path on the computer, e.g. D:\\research",
+      "sandbox": {
+        "read-only": "Read-only: can look, cannot change",
+        "workspace-write": "Write only inside the whitelisted folders"
+      },
+      "autostart": "Start at login",
+      "libraryDir": "Local library directory",
+      "libraryDirPlaceholder": "One directory; leave empty for none",
+      "clear": "Clear",
+      "save": "Save to the computer",
+      "saving": "Sending to the computer…",
+      "confirmOnComputer": "This widens access: enter the code in the confirmation window on the computer and allow it.",
+      "saved": "Saved. The agent is restarting; this refreshes in a few seconds.",
+      "failure": {
+        "local_denied": "Not allowed on the computer; nothing changed.",
+        "busy": "The agent is busy (maybe restarting); try again shortly.",
+        "invalid": "One item is not acceptable (folder missing, duplicated, or more than 32); nothing changed.",
+        "no_agent_here": "The agent on this computer is gone; nothing was sent.",
+        "ticket_invalid": "The local access ticket was not accepted; reload and try again.",
+        "other": "Could not reach the computer."
+      },
+      "lastChange": "Last changed from the web: {at}"
     },
     "baseUrl": "Endpoint (optional)",
     "baseUrlHint": "A self-hosted or proxied OpenAI-compatible endpoint; https only, no local or private addresses. Leave empty for the vendor default."
+  },
+  "localLibrary": {
+    "title": "Local library",
+    "lead": "A directory on your computer for material you want to keep; work and expert conversations can read it. This page reads straight from your computer, nothing goes to the cloud, so it is only visible on the computer that runs the agent.",
+    "noComputer": "No computer is connected yet.",
+    "noDir": "No local library directory has been chosen yet.",
+    "goComputer": "Set it under My computer"
   }
 }

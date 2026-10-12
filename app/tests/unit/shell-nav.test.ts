@@ -2,11 +2,12 @@ import { describe, expect, it } from 'vitest'
 
 import type { Conversation, Machine, Project, Workspace } from '@/contracts/workbench-v2'
 import {
-  defaultWorkspace,
   FOOT,
+  defaultWorkspace,
   footHref,
   machineLight,
   modeOf,
+  presenceHint,
   projectsIn,
   recent,
   workspaceKey,
@@ -140,7 +141,14 @@ describe('侧栏', () => {
   it('底部的条目由一份清单生成', () => {
     // 公共数据的入口不在用户侧（所有者 2026-10-07 定）：没有数据目录、申请入库
     // 「我的电脑」不再单列，灯在中段的电脑行上（0016 S2）
-    expect(FOOT.map((entry) => entry.key)).toEqual(['pending', 'library', 'memory', 'settings'])
+    // 本地知识库（0019/0022）排在旧知识库（0011，等账 85 撤）前面
+    expect(FOOT.map((entry) => entry.key)).toEqual([
+      'pending',
+      'localLibrary',
+      'library',
+      'memory',
+      'settings',
+    ])
     const settings = FOOT.find((entry) => entry.key === 'settings')!
     expect(footHref(settings, 'zh-CN')).toBe('/zh-CN/workbench/settings/cloud')
     const library = FOOT.find((entry) => entry.key === 'library')!
@@ -167,5 +175,28 @@ describe('首页：现在能不能开始', () => {
     expect(blockerOf({ ...ready, sandboxes: 0, mode: 'work' })).toBe('noMachine')
     expect(blockerOf({ ...ready, sandboxes: 0, mode: 'expert' })).toBe('noMachine')
     expect(blockerOf({ ...ready, sandboxes: 0, mode: 'chat' })).toBe('noSandbox')
+  })
+})
+
+describe('「这台电脑还没接入 / 就是这台」（账 92）', () => {
+  const machines = [{ name: 'zymun' }]
+  it('还没探：什么都不说', () => {
+    expect(presenceHint(machines, undefined)).toEqual({ thisOne: null, notHere: false })
+  })
+  it('探到了，名字对得上：就是这台', () => {
+    expect(presenceHint(machines, { machine_name: 'zymun' })).toEqual({
+      thisOne: 'zymun',
+      notHere: false,
+    })
+  })
+  it('探不到，或探到的是别的账号的代理：这台还没接入', () => {
+    expect(presenceHint(machines, null)).toEqual({ thisOne: null, notHere: true })
+    expect(presenceHint(machines, { machine_name: 'other' })).toEqual({
+      thisOne: null,
+      notHere: true,
+    })
+  })
+  it('账号下一台电脑都没有：不提示（那是「去接入」那句的事）', () => {
+    expect(presenceHint([], null)).toEqual({ thisOne: null, notHere: false })
   })
 })

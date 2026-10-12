@@ -29,6 +29,7 @@ const machines = {
 }
 let prefs: Record<string, unknown>
 const puts: unknown[] = []
+const localPuts: unknown[] = []
 const posts: unknown[] = []
 
 function page(children: React.ReactNode) {
@@ -49,6 +50,7 @@ function page(children: React.ReactNode) {
 beforeEach(() => {
   prefs = { model: null, approval_policy: 'on-request', mcp_sources: { knowledge: true } }
   puts.length = 0
+  localPuts.length = 0
   posts.length = 0
   window.localStorage.clear()
   document.documentElement.className = ''
@@ -114,6 +116,42 @@ beforeEach(() => {
             size_bytes: 1,
           },
         })
+      // 回环口（0022 乙案）：这台电脑上的代理
+      if (path === 'http://127.0.0.1:47811/presence')
+        return Response.json({
+          agent: 'sunmoon-agent',
+          version: '0.4.0',
+          machine_name: '办公室的电脑',
+          connected: true,
+        })
+      if (path === `/api/workbench/environments/${machines.environments[0].id}/local-ticket`)
+        return Response.json({
+          ticket: 'h.e.s',
+          expires_at: Math.floor(Date.now() / 1000) + 600,
+          relay_user: 'u-abc',
+        })
+      if (path === 'http://127.0.0.1:47811/local/v1/info')
+        return Response.json({
+          agent: 'sunmoon-agent',
+          version: '0.4.0',
+          userId: 'u-abc',
+          roots: ['D:\\研究'],
+          libraryDir: null,
+        })
+      if (path === 'http://127.0.0.1:47811/local/v1/settings' && init.method === 'PUT') {
+        localPuts.push(JSON.parse(String(init.body)))
+        return Response.json({ applied: true, restart: true })
+      }
+      if (path === 'http://127.0.0.1:47811/local/v1/settings')
+        return Response.json({
+          machineName: '办公室的电脑',
+          roots: ['D:\\研究'],
+          rootChoices: ['D:\\研究', 'D:\\笔记'],
+          ceiling: { sandbox: 'workspace-write', network: false },
+          autostart: true,
+          libraryDir: null,
+          version: '0.4.0',
+        })
       return Response.json({ code: 'not_found' }, { status: 404 })
     }),
   )
@@ -177,14 +215,28 @@ describe('设置分三类（0021）', () => {
     )
   })
 
-  it('我的电脑：显示代理那头的白名单与上限，只看不改', async () => {
+  it('我的电脑：代理那头的设置直接改——勾目录、开联网，保存送到那台电脑（经回环口）', async () => {
     page(<SettingsScreen section="computer" />)
     const local = (await screen.findByRole('heading', { name: '这台电脑上的设置' })).closest(
       'section',
     )!
-    expect(await within(local).findByText('D:\\研究')).toBeInTheDocument()
-    expect(within(local).getByText('workspace-write')).toBeInTheDocument()
-    expect(within(local).getByText('不允许')).toBeInTheDocument()
-    expect(within(local).getByText(/托盘「白名单与上限设置」里改/)).toBeInTheDocument()
+    // 候选目录两个，勾着一个
+    const research = await within(local).findByLabelText('D:\\研究')
+    const notes = within(local).getByLabelText('D:\\笔记')
+    expect(research).toBeChecked()
+    expect(notes).not.toBeChecked()
+    fireEvent.click(notes)
+    fireEvent.click(within(local).getByLabelText('联网'))
+    fireEvent.click(within(local).getByRole('button', { name: '保存到电脑' }))
+    await waitFor(() => expect(localPuts).toHaveLength(1))
+    // 只送改了的项
+    expect(localPuts[0]).toEqual({
+      roots: ['D:\\研究', 'D:\\笔记'],
+      ceiling: { sandbox: 'workspace-write', network: true },
+    })
+    expect(await within(local).findByRole('status')).toHaveTextContent('已保存')
+    // 文件与设置都没经工作台：工作台只被要了一张票
+    const cloudPuts = puts.length
+    expect(cloudPuts).toBe(0)
   })
 })

@@ -32,11 +32,14 @@ export function FileTree({
   directory,
   selected,
   onSelect,
+  scope = 'all',
 }: {
   environment: string | null
   directory: string | null
   selected: string | null
   onSelect: (path: string) => void
+  // 'library'：只画本地知识库那个根（本地知识库页用）
+  scope?: 'all' | 'library'
 }) {
   const t = useTranslations('work')
   const link = useLocalAgent(environment)
@@ -54,9 +57,15 @@ export function FileTree({
   if (link.isError) {
     return <ServiceProblem error={link.error} />
   }
-  const roots = treeRoots(link.data.info, directory)
+  const roots = treeRoots(link.data.info, directory).filter((root) =>
+    scope === 'library' ? root.kind === 'library' : true,
+  )
   if (roots.length === 0) {
-    return <p className="text-muted-foreground leading-6">{t('files.noRoots')}</p>
+    return (
+      <p className="text-muted-foreground leading-6">
+        {t(scope === 'library' ? 'files.noLibrary' : 'files.noRoots')}
+      </p>
+    )
   }
   return (
     <ul className="space-y-1" role="tree" aria-label={t('panel.files')}>
@@ -68,6 +77,7 @@ export function FileTree({
           expand={pathsToExpand(root.path, directory)}
           selected={selected}
           onSelect={onSelect}
+          openByDefault={root.kind === 'workspace' || scope === 'library'}
         />
       ))}
     </ul>
@@ -99,12 +109,14 @@ function RootNode({
   expand,
   selected,
   onSelect,
+  openByDefault,
 }: {
   agent: LocalAgent
   root: TreeRoot
   expand: string[]
   selected: string | null
   onSelect: (path: string) => void
+  openByDefault: boolean
 }) {
   const t = useTranslations('work')
   return (
@@ -124,7 +136,7 @@ function RootNode({
             </span>
           </span>
         }
-        initiallyOpen={root.kind === 'workspace'}
+        initiallyOpen={openByDefault}
         expand={expand}
         selected={selected}
         onSelect={onSelect}

@@ -28,6 +28,8 @@ export const routes = {
   // 知识库（SDD 0011）：用户自己的底稿与交回物
   library: (locale: string) => at(locale, 'library'),
   libraryItem: (locale: string, item: string) => at(locale, 'library', item),
+  // 本地知识库（0019 §二，0022 乙案）：用户电脑上的那个目录，网页直连代理回环口翻看
+  localLibrary: (locale: string) => at(locale, 'local-library'),
   // 长期记忆（0019 §四）
   memory: (locale: string) => at(locale, 'memory'),
 }
@@ -55,6 +57,7 @@ export type Page =
   | 'settings'
   | 'library'
   | 'libraryItem'
+  | 'localLibrary'
   | 'memory'
 
 const BUILT: ReadonlySet<Page> = new Set([
@@ -69,6 +72,7 @@ const BUILT: ReadonlySet<Page> = new Set([
   'settings',
   'library',
   'libraryItem',
+  'localLibrary',
   'memory',
 ])
 

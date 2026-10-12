@@ -8,7 +8,6 @@ import { useState } from 'react'
 
 import type { Prefs } from '@/contracts/workbench-settings'
 import { useWorkbench } from '@/lib/workbench/context'
-import { useMachines } from '@/lib/workbench/queries'
 import { routes, SETTINGS_SECTIONS, type SettingsSection } from '@/lib/workbench/routes'
 import { cn } from '@/lib/utils'
 
@@ -20,6 +19,7 @@ import {
   savePrefs,
 } from '../api/client'
 import { AgentSetup } from './agent-setup'
+import { LocalAgentSettings } from './local-agent-settings'
 import { MachinesScreen } from './machines-screen'
 import { PreferencesSection } from './preferences-section'
 
@@ -330,53 +330,5 @@ function ComputerSection() {
       <MachinesScreen embedded />
       <LocalAgentSettings />
     </>
-  )
-}
-
-// 存在电脑上的代理里的设置：现在只显示（hello 带来的白名单与上限），从网页改要等账 87 的通道。
-function LocalAgentSettings() {
-  const t = useTranslations('settings.computer')
-  const machines = useMachines()
-  return (
-    <section className="rounded-xl border p-5" aria-labelledby="settings-local">
-      <h3 id="settings-local" className="text-base font-semibold">
-        {t('local')}
-      </h3>
-      <p className="text-muted-foreground mt-1 text-sm">{t('localLead')}</p>
-      {machines.isSuccess && machines.data.length === 0 ? (
-        <p className="text-muted-foreground mt-3 text-sm">{t('none')}</p>
-      ) : null}
-      <ul className="mt-3 space-y-3">
-        {(machines.data ?? []).map((machine) => (
-          <li key={machine.id} className="rounded-lg border p-3 text-sm">
-            <p className="font-medium">{machine.name}</p>
-            <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1">
-              <dt className="text-muted-foreground">{t('roots')}</dt>
-              <dd>
-                {machine.roots.length === 0 ? (
-                  <span className="text-muted-foreground">{t('noRoots')}</span>
-                ) : (
-                  <ul className="font-mono text-xs">
-                    {machine.roots.map((root) => (
-                      <li key={root}>{root}</li>
-                    ))}
-                  </ul>
-                )}
-              </dd>
-              <dt className="text-muted-foreground">{t('sandboxMode')}</dt>
-              <dd>{machine.ceiling?.sandbox ?? t('unknown')}</dd>
-              <dt className="text-muted-foreground">{t('network')}</dt>
-              <dd>
-                {machine.ceiling?.network === undefined
-                  ? t('unknown')
-                  : machine.ceiling.network
-                    ? t('allowed')
-                    : t('blocked')}
-              </dd>
-            </dl>
-          </li>
-        ))}
-      </ul>
-    </section>
   )
 }
