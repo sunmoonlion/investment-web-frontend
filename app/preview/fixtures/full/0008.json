@@ -1,8 +1,9 @@
 {
- "id": "e360da80-c794-5489-9aef-1545babb5931",
- "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
- "name": "conclusion",
- "version": 1,
- "kind": "user_draft",
- "digest": "71854f6a828d7fcb7fc750cb1e6e9409101a33abe97b5eaa08ad898707c05e8d"
+ "contract_version": 2,
+ "task_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+ "session_id": "e622161e-278e-510c-a294-d321919a97e8",
+ "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0",
+ "state": "RECEIVED",
+ "created": true,
+ "queued_behind": "e360da80-c794-5489-9aef-1545babb5931"
 }

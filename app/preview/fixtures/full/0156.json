@@ -1,27 +1,41 @@
 {
  "contract_version": 2,
- "task_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+ "task_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
  "step": {
-  "index": 1,
-  "step_id": "scope",
-  "title": "定范围",
-  "summary": "认出公司、期间、报告类型",
-  "why": "先把问的是哪家公司、哪几年、哪种报告认准。认错了，后面每一步都白做。",
-  "uses": [],
-  "tools": [],
-  "returns": "scope",
+  "index": 2,
+  "step_id": "profile",
+  "title": "数据摸底",
+  "summary": "确认有这家公司的数据、数据到哪一天、各期是什么口径",
+  "why": "先看我们有没有这家公司的数据、数据到哪一天。没有数据就停下，不拿别处的数来凑。",
+  "uses": [
+   {
+    "artifact": "scope",
+    "step": 1,
+    "title": "定范围"
+   }
+  ],
+  "tools": [
+   "list_datasets",
+   "describe_schema",
+   "metric_definitions",
+   "run_sql"
+  ],
+  "returns": "profile",
   "checks": [
    {
     "label": "交回的格式对"
    },
    {
-    "label": "有证券代码、期间、报告类型"
+    "label": "有数据集、数据版本、期间、口径断点"
    },
    {
-    "label": "认得出是哪家公司"
+    "label": "有对应的数据集"
    },
    {
-    "label": "期间不是空的"
+    "label": "有数据版本"
+   },
+   {
+    "label": "范围内至少有一期数据"
    }
   ],
   "after_rejection": {
@@ -32,16 +46,16 @@
    "text": "重做，最多 1 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
-  "status": "accepted",
+  "status": "waiting",
   "attempts": [
    {
-    "attempt_id": "7a86ab6a-a7b5-57cc-94c8-21192d735865",
+    "attempt_id": "02bba996-2682-5aa4-81a4-7243cd3044e9",
     "n": 1,
-    "outcome": "accepted",
-    "failure": null,
-    "spent": "0.30",
-    "started_at": "2026-10-11T17:39:48.251712Z",
-    "ended_at": "2026-10-11T17:39:48.262993Z",
+    "outcome": "rejected",
+    "failure": "acceptance",
+    "spent": "0.05",
+    "started_at": "2026-10-12T04:50:32.805502Z",
+    "ended_at": "2026-10-12T04:50:32.812646Z",
     "checks": [
      {
       "label": "交回的格式对",
@@ -49,58 +63,69 @@
       "message": ""
      },
      {
-      "label": "有证券代码、期间、报告类型",
+      "label": "有数据集、数据版本、期间、口径断点",
       "pass": true,
       "message": ""
      },
      {
-      "label": "认得出是哪家公司",
-      "pass": true,
-      "message": ""
+      "label": "有对应的数据集",
+      "pass": false,
+      "message": "这家公司未入库：没有对应的数据集"
      },
      {
-      "label": "期间不是空的",
-      "pass": true,
-      "message": ""
+      "label": "有数据版本",
+      "pass": false,
+      "message": "没有数据版本"
+     },
+     {
+      "label": "范围内至少有一期数据",
+      "pass": false,
+      "message": "范围内没有任何一期的数据"
      }
     ],
-    "tools": {},
+    "tools": {
+     "list_datasets": 1
+    },
     "returned": {
-     "artifact": "scope",
-     "version": 1,
+     "artifact": "profile",
+     "version": null,
      "content": {
-      "aspects": [
-       "盈利能力"
-      ],
-      "company": "上海机场",
-      "periods": [
-       "2023",
-       "2024",
-       "2025"
-      ],
-      "question": "上海机场 2023 到 2025 年的盈利能力怎么样？",
-      "assumptions": [],
-      "report_types": [
-       "年报"
-      ],
-      "security_code": "600009"
+      "as_of": "",
+      "notes": [],
+      "dataset": null,
+      "periods": [],
+      "basis_breaks": [],
+      "data_version": "",
+      "not_ingested": true,
+      "security_code": "600436"
      },
+     "raw": null,
      "labels": {
-      "aspects": "关注的方面",
-      "company": "公司",
+      "as_of": "数据到",
+      "notes": "说明",
+      "dataset": "数据集",
       "periods": "期间",
-      "question": "问题",
-      "assumptions": "假设",
-      "report_types": "报告类型",
+      "basis_breaks": "口径断点",
+      "data_version": "数据版本",
+      "not_ingested": "没有入库",
       "security_code": "证券代码"
      }
     },
-    "process": []
+    "process": [
+     {
+      "at": "2026-10-12T04:50:32.787956Z",
+      "kind": "tool",
+      "name": "list_datasets",
+      "dataset": null,
+      "brief": "",
+      "ok": true
+     }
+    ]
    }
   ],
   "times": 1,
-  "rejected": 0,
-  "spent": "0.30",
+  "rejected": 1,
+  "spent": "0.05",
   "data": null
  }
 }

@@ -1,22 +1,50 @@
 {
  "contract_version": 2,
- "sessions": [
+ "project": {
+  "id": "f0410883-287b-578b-81dc-15f24e5b2d8f",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "workspace_root": "/home/demo/research",
+  "path": "上海机场",
+  "title": "上海机场",
+  "created_at": "2026-10-12T04:50:29.772679Z",
+  "updated_at": "2026-10-12T04:50:29.772679Z",
+  "archived_at": null,
+  "directory": "/home/demo/research/上海机场",
+  "archived": false,
+  "environment_name": "办公室的电脑",
+  "online": true
+ },
+ "active_task_id": null,
+ "conversations": [
+  {
+   "id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "kind": "expert",
+   "title": "上海机场 2023 到 2025 年的盈利能力怎么样？",
+   "wheel": "user",
+   "active_task_id": null,
+   "last_active_at": "2026-10-12T04:50:33.641133Z"
+  }
+ ],
+ "tasks": [
   {
    "id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "sandbox_id": "81108b8f-3022-5de7-860c-36662e2db6fb",
-   "project_root": "/home/demo/research/片仔癀",
-   "thread_id": "thread-e9fc1a901763",
-   "wheel": "advisor",
-   "state_version": 1,
-   "active_task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
-   "thread_settings": {},
-   "created_at": "2026-10-11T17:39:47.911194+00:00",
-   "last_active_at": "2026-10-11T17:39:47.942158+00:00",
-   "kind": "expert",
-   "project_id": "7679e7df-8718-5408-8ba3-5f59a9525cf4",
-   "title": "片仔癀 2023 到 2025 年的盈利能力怎么样？"
+   "session_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "profile_id": "FIN_REVIEW",
+   "expert": "财报体检",
+   "state": "CANCELLED",
+   "state_word": "已取消",
+   "question": "上海机场 2023 到 2025 年的盈利能力怎么样？",
+   "budget": {
+    "used": "1.200000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "spent": "1.20",
+   "currency": "CNY",
+   "created_at": "2026-10-12T04:50:32.913235Z",
+   "ended_at": "2026-10-12T04:50:33.641133Z"
   }
  ]
 }

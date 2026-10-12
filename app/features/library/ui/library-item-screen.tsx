@@ -102,14 +102,6 @@ export function LibraryItemScreen({ item: id }: { item: string }) {
           ) : null}
           <p className="text-muted-foreground text-xs">{t('copy')}</p>
           <div className="flex flex-wrap gap-2 pt-1">
-            {data.project_id ? (
-              <Link
-                href={routes.dossier(locale, data.project_id, data.task_id)}
-                className="text-muted-foreground text-xs underline underline-offset-3"
-              >
-                {t('toDossier')}
-              </Link>
-            ) : null}
             <Link
               href={
                 data.project_id

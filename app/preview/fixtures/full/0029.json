@@ -1,32 +1,8 @@
 {
  "contract_version": 2,
- "interactions": [
+ "waiting": [
   {
-   "interaction_id": "0a7e2507-2114-5a62-8025-04c93019a61b",
-   "kind": "tool_approval",
-   "status": "pending",
-   "where": {
-    "project": {
-     "id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
-     "title": "恒瑞医药"
-    },
-    "conversation": {
-     "id": "865ec0cc-3044-56ea-b08d-12c2b85b89a3",
-     "title": "把毛利率、净利率、自由现金流三个指标的含义整理成 notes…",
-     "kind": "work"
-    },
-    "task": null,
-    "step": null,
-    "about": "命令要你批准"
-   },
-   "why": "这个动作超出了当前允许的范围，要你点头才做",
-   "failed": [],
-   "missing_data": null,
-   "expires_at": "2026-10-11T18:39:50.962219Z",
-   "created_at": "2026-10-11T17:39:50.962622Z"
-  },
-  {
-   "interaction_id": "5b878ac4-da05-5183-aec1-10871091b1e4",
+   "interaction_id": "81108b8f-3022-5de7-860c-36662e2db6fb",
    "kind": "input",
    "status": "pending",
    "where": {
@@ -35,12 +11,12 @@
      "title": "片仔癀"
     },
     "conversation": {
-     "id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+     "id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
      "title": "片仔癀 2023 到 2025 年的盈利能力怎么样？",
      "kind": "expert"
     },
     "task": {
-     "id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+     "id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
      "question": "片仔癀 2023 到 2025 年的盈利能力怎么样？",
      "expert": "财报体检"
     },
@@ -71,11 +47,11 @@
     "dataset": null,
     "security_code": "600436"
    },
-   "expires_at": "2026-10-14T17:39:48.125915Z",
-   "created_at": "2026-10-11T17:39:48.125261Z"
+   "expires_at": "2026-10-15T04:50:32.836055Z",
+   "created_at": "2026-10-12T04:50:32.834438Z"
   },
   {
-   "interaction_id": "58bf41ed-2812-51fe-87d9-3a7ad7438f7a",
+   "interaction_id": "5b878ac4-da05-5183-aec1-10871091b1e4",
    "kind": "input",
    "status": "pending",
    "where": {
@@ -84,12 +60,12 @@
      "title": "宁德时代"
     },
     "conversation": {
-     "id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+     "id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
      "title": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
      "kind": "expert"
     },
     "task": {
-     "id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+     "id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
      "question": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
      "expert": "财报体检"
     },
@@ -107,8 +83,261 @@
     }
    ],
    "missing_data": null,
-   "expires_at": "2026-10-14T17:39:47.847234Z",
-   "created_at": "2026-10-11T17:39:47.846471Z"
+   "expires_at": "2026-10-15T04:50:32.524581Z",
+   "created_at": "2026-10-12T04:50:32.523920Z"
+  }
+ ],
+ "running": [
+  {
+   "task_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+   "session_id": "e622161e-278e-510c-a294-d321919a97e8",
+   "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0",
+   "question": "五粮液近五年的净利率分别是多少？",
+   "expert": "问数",
+   "state": "RECEIVED",
+   "state_word": null,
+   "waiting_reason": null,
+   "queued_behind": "e360da80-c794-5489-9aef-1545babb5931",
+   "position": {
+    "step": 1,
+    "of": 5,
+    "title": "改写问题",
+    "left": 5
+   },
+   "budget": {
+    "currency": "CNY",
+    "limit": null,
+    "used": "0.00",
+    "reserved": "0.00",
+    "left": null,
+    "running": "0.00",
+    "spent": "0.00",
+    "estimated": true
+   },
+   "started_at": "2026-10-12T04:50:36.776016Z",
+   "ended_at": null
+  },
+  {
+   "task_id": "e360da80-c794-5489-9aef-1545babb5931",
+   "session_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+   "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0",
+   "question": "五粮液近五年的毛利率分别是多少？",
+   "expert": "问数",
+   "state": "RUNNING",
+   "state_word": null,
+   "waiting_reason": null,
+   "queued_behind": null,
+   "position": {
+    "step": 3,
+    "of": 5,
+    "title": "执行 SQL",
+    "left": 3
+   },
+   "budget": {
+    "currency": "CNY",
+    "limit": null,
+    "used": "0.10",
+    "reserved": "0.05",
+    "left": null,
+    "running": "0.00",
+    "spent": "0.10",
+    "estimated": true
+   },
+   "started_at": "2026-10-12T04:50:31.832860Z",
+   "ended_at": null
+  }
+ ],
+ "returned": [
+  {
+   "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f",
+   "question": "中国平安 2025 年的偿付能力怎么样？",
+   "expert": "",
+   "state": "REJECTED",
+   "state_word": "打回",
+   "waiting_reason": null,
+   "queued_behind": null,
+   "position": null,
+   "budget": {
+    "currency": "CNY",
+    "limit": null,
+    "used": "0.00",
+    "reserved": "0.00",
+    "left": null,
+    "running": "0.00",
+    "spent": "0.00",
+    "estimated": true
+   },
+   "started_at": "2026-10-12T04:50:36.670381Z",
+   "ended_at": "2026-10-12T04:50:36.705443Z",
+   "reason": {
+    "code": "no_expert_pack",
+    "message": "这个问题不在专家范围，继续自己用 Codex 即可"
+   },
+   "reason_text": "这个问题不在专家的范围里，可以自己在对话里接着做"
+  },
+  {
+   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
+   "session_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa",
+   "question": "招商银行 2023 到 2025 年的盈利能力怎么样？",
+   "expert": "财报体检",
+   "state": "CANCELLED",
+   "state_word": "已取消",
+   "waiting_reason": null,
+   "queued_behind": null,
+   "position": {
+    "step": 3,
+    "of": 7,
+    "title": "勾稽",
+    "left": 5
+   },
+   "budget": {
+    "currency": "CNY",
+    "limit": null,
+    "used": "0.15",
+    "reserved": "0.00",
+    "left": null,
+    "running": "0.00",
+    "spent": "0.15",
+    "estimated": true
+   },
+   "started_at": "2026-10-12T04:50:34.492484Z",
+   "ended_at": "2026-10-12T04:50:35.033779Z",
+   "reason": {
+    "by": "user"
+   },
+   "reason_text": "你取消了这个委托"
+  },
+  {
+   "task_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "session_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "project_id": "06944124-075a-504f-b4f3-275ef032eb9c",
+   "question": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
+   "expert": "财报体检",
+   "state": "FAILED",
+   "state_word": "失败",
+   "waiting_reason": null,
+   "queued_behind": null,
+   "position": {
+    "step": 6,
+    "of": 7,
+    "title": "对照官方",
+    "left": 2
+   },
+   "budget": {
+    "currency": "CNY",
+    "limit": null,
+    "used": "0.30",
+    "reserved": "0.00",
+    "left": null,
+    "running": "0.00",
+    "spent": "0.30",
+    "estimated": true
+   },
+   "started_at": "2026-10-12T04:50:33.702906Z",
+   "ended_at": "2026-10-12T04:50:34.459168Z",
+   "reason": {
+    "by": "user stopped",
+    "interaction": "dd790e56-724e-5e57-9294-bae977583372"
+   },
+   "reason_text": "专家停下来问你，你选择了停止"
+  },
+  {
+   "task_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "session_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f",
+   "question": "上海机场 2023 到 2025 年的盈利能力怎么样？",
+   "expert": "财报体检",
+   "state": "CANCELLED",
+   "state_word": "已取消",
+   "waiting_reason": null,
+   "queued_behind": null,
+   "position": {
+    "step": 4,
+    "of": 7,
+    "title": "取数",
+    "left": 4
+   },
+   "budget": {
+    "currency": "CNY",
+    "limit": null,
+    "used": "1.20",
+    "reserved": "0.00",
+    "left": null,
+    "running": "0.00",
+    "spent": "1.20",
+    "estimated": true
+   },
+   "started_at": "2026-10-12T04:50:32.913235Z",
+   "ended_at": "2026-10-12T04:50:33.641133Z",
+   "reason": {
+    "by": "user"
+   },
+   "reason_text": "你取消了这个委托"
+  },
+  {
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10",
+   "question": "贵州茅台 2023 到 2025 年的盈利能力怎么样？",
+   "expert": "财报体检",
+   "state": "SUCCEEDED",
+   "state_word": "已完成",
+   "waiting_reason": null,
+   "queued_behind": null,
+   "position": {
+    "step": 7,
+    "of": 7,
+    "title": "成稿",
+    "left": 0
+   },
+   "budget": {
+    "currency": "CNY",
+    "limit": null,
+    "used": "0.35",
+    "reserved": "0.00",
+    "left": null,
+    "running": "0.00",
+    "spent": "0.35",
+    "estimated": true
+   },
+   "started_at": "2026-10-12T04:50:30.940732Z",
+   "ended_at": "2026-10-12T04:50:31.798203Z",
+   "reason": null,
+   "reason_text": ""
+  },
+  {
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
+   "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+   "expert": "财报体检",
+   "state": "SUCCEEDED",
+   "state_word": "已完成",
+   "waiting_reason": null,
+   "queued_behind": null,
+   "position": {
+    "step": 7,
+    "of": 7,
+    "title": "成稿",
+    "left": 0
+   },
+   "budget": {
+    "currency": "CNY",
+    "limit": null,
+    "used": "0.40",
+    "reserved": "0.00",
+    "left": null,
+    "running": "0.00",
+    "spent": "0.40",
+    "estimated": true
+   },
+   "started_at": "2026-10-12T04:50:29.830210Z",
+   "ended_at": "2026-10-12T04:50:30.884750Z",
+   "reason": null,
+   "reason_text": ""
   }
  ]
 }

@@ -2,5 +2,8 @@
  "contract_version": 2,
  "model": null,
  "approval_policy": "on-request",
+ "mcp_sources": {
+  "knowledge": true
+ },
  "updated_at": null
 }

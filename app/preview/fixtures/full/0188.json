@@ -1,50 +1,228 @@
 {
  "contract_version": 2,
- "artifacts": [
-  {
-   "id": "f74e8131-3723-5f74-aaaf-d308513eb622",
-   "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
-   "attempt_id": "337096ff-8481-58c9-8d01-affe4377a90d",
-   "name": "rewritten",
-   "version": 1,
-   "kind": "step",
-   "content": {
-    "period": "2021 至 2025 年，年报",
-    "metrics": [
-     "毛利率"
-    ],
-    "entities": [
-     "五粮液（000858）"
-    ],
-    "question": "五粮液 2021 至 2025 年年报的毛利率，按年列出"
+ "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+ "step": {
+  "index": 6,
+  "step_id": "crosscheck",
+  "title": "对照官方",
+  "summary": "拿取到的数和公司年报里自己披露的数逐项对照",
+  "why": "我们的数是采集来的。和公司年报里自己披露的数对一遍，对不上的要让你知道。",
+  "uses": [
+   {
+    "artifact": "scope",
+    "step": 1,
+    "title": "定范围"
    },
-   "digest": "ec39488d520eda88e2d518566dd2f97e8876b10eb86c3d91d267ef37658e8a2f",
-   "workspace_path": null,
-   "created_at": "2026-10-11T17:39:47.340174+00:00"
+   {
+    "artifact": "profile",
+    "step": 2,
+    "title": "数据摸底"
+   },
+   {
+    "artifact": "facts",
+    "step": 4,
+    "title": "取数"
+   }
+  ],
+  "tools": [
+   "run_sql"
+  ],
+  "returns": "crosscheck",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有一致项、不一致项、覆盖说明"
+   },
+   {
+    "label": "说明了对照覆盖了哪些期"
+   },
+   {
+    "label": "和公司披露的数都对得上"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 0,
+   "then": "human",
+   "back_to": null,
+   "backs": 0,
+   "text": "停下来问你"
   },
-  {
-   "id": "8ba9f8b1-335b-51ee-bc68-79e8bc050334",
-   "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
-   "attempt_id": "9576bd96-8790-519a-a5f2-ba154b09eba4",
-   "name": "sql",
-   "version": 1,
-   "kind": "step",
-   "content": {
-    "sql": "SELECT fiscal_year, report_type, (operate_income - operate_cost) / operate_income AS gross_margin FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2021 AND 2025 ORDER BY fiscal_year",
-    "columns": [
+  "reserve": "0.05",
+  "status": "accepted",
+  "attempts": [
+   {
+    "attempt_id": "dbd15078-554a-58de-85dd-db952fa2f343",
+    "n": 1,
+    "outcome": "accepted",
+    "failure": null,
+    "spent": "0.05",
+    "started_at": "2026-10-12T04:50:31.667104Z",
+    "ended_at": "2026-10-12T04:50:31.678384Z",
+    "checks": [
      {
-      "name": "fiscal_year",
-      "definition": "会计年度"
+      "label": "交回的格式对",
+      "pass": true,
+      "message": ""
      },
      {
-      "name": "gross_margin",
-      "definition": "(营业收入 − 营业成本) ÷ 营业收入，比率，0.25 表示 25%"
+      "label": "有一致项、不一致项、覆盖说明",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "说明了对照覆盖了哪些期",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "和公司披露的数都对得上",
+      "pass": true,
+      "message": ""
+     }
+    ],
+    "tools": {
+     "run_sql": 1
+    },
+    "returned": {
+     "artifact": "crosscheck",
+     "version": 1,
+     "content": {
+      "matched": [
+       {
+        "item": "operate_income",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 150560000000.0,
+        "fiscal_year": 2023,
+        "source_report": "贵州茅台2023年年度报告"
+       },
+       {
+        "item": "net_profit",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 79044000000.0,
+        "fiscal_year": 2023,
+        "source_report": "贵州茅台2023年年度报告"
+       },
+       {
+        "item": "total_assets",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 286064000000.0,
+        "fiscal_year": 2023,
+        "source_report": "贵州茅台2023年年度报告"
+       },
+       {
+        "item": "total_equity",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 234572480000.0,
+        "fiscal_year": 2023,
+        "source_report": "贵州茅台2023年年度报告"
+       },
+       {
+        "item": "operate_income",
+        "page": 6,
+        "basis": "追溯调整后",
+        "value": 174197920000.0,
+        "fiscal_year": 2024,
+        "source_report": "贵州茅台2024年年度报告"
+       },
+       {
+        "item": "net_profit",
+        "page": 6,
+        "basis": "追溯调整后",
+        "value": 90931314240.0,
+        "fiscal_year": 2024,
+        "source_report": "贵州茅台2024年年度报告"
+       },
+       {
+        "item": "total_assets",
+        "page": 6,
+        "basis": "追溯调整后",
+        "value": 330976048000.0,
+        "fiscal_year": 2024,
+        "source_report": "贵州茅台2024年年度报告"
+       },
+       {
+        "item": "total_equity",
+        "page": 6,
+        "basis": "追溯调整后",
+        "value": 271400359360.0,
+        "fiscal_year": 2024,
+        "source_report": "贵州茅台2024年年度报告"
+       },
+       {
+        "item": "operate_income",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 190572524480.0,
+        "fiscal_year": 2025,
+        "source_report": "贵州茅台2025年年度报告"
+       },
+       {
+        "item": "net_profit",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 98907140205.12,
+        "fiscal_year": 2025,
+        "source_report": "贵州茅台2025年年度报告"
+       },
+       {
+        "item": "total_assets",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 362087796512.0,
+        "fiscal_year": 2025,
+        "source_report": "贵州茅台2025年年度报告"
+       },
+       {
+        "item": "total_equity",
+        "page": 6,
+        "basis": "原始披露",
+        "value": 296911993139.84,
+        "fiscal_year": 2025,
+        "source_report": "贵州茅台2025年年度报告"
+       }
+      ],
+      "coverage": "范围内 3 期年报全部对照；现金流量表的项目年报的「主要会计数据」表里没有，没有对照",
+      "mismatched": [],
+      "not_covered": [],
+      "data_version": "sh600519-financials-sample600519"
+     },
+     "labels": {
+      "matched": "一致的",
+      "item": "科目",
+      "page": "页码",
+      "basis": "口径",
+      "value": "数值",
+      "fiscal_year": "年度",
+      "source_report": "出自",
+      "coverage": "覆盖说明",
+      "mismatched": "对不上的",
+      "not_covered": "没有对照到的",
+      "data_version": "数据版本"
+     }
+    },
+    "process": [
+     {
+      "at": "2026-10-12T04:50:31.643699Z",
+      "kind": "tool",
+      "name": "run_sql",
+      "dataset": "sh600519-financials",
+      "brief": "SELECT fiscal_year, item, basis, value, source_report, page FROM official_key_figures WHERE fiscal_year BETWEEN 2023 AND 2025",
+      "ok": true
      }
     ]
-   },
-   "digest": "cc594282d14ad283f752b1eda59802b844112867794dfdf320f55dbe37832b1b",
-   "workspace_path": null,
-   "created_at": "2026-10-11T17:39:47.424861+00:00"
+   }
+  ],
+  "times": 1,
+  "rejected": 0,
+  "spent": "0.05",
+  "data": {
+   "data_version": "sh600519-financials-sample600519"
   }
- ]
+ }
 }

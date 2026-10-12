@@ -1,228 +1,28 @@
 {
  "contract_version": 2,
- "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
- "step": {
-  "index": 6,
-  "step_id": "crosscheck",
-  "title": "对照官方",
-  "summary": "拿取到的数和公司年报里自己披露的数逐项对照",
-  "why": "我们的数是采集来的。和公司年报里自己披露的数对一遍，对不上的要让你知道。",
-  "uses": [
-   {
-    "artifact": "scope",
-    "step": 1,
-    "title": "定范围"
-   },
-   {
-    "artifact": "profile",
-    "step": 2,
-    "title": "数据摸底"
-   },
-   {
-    "artifact": "facts",
-    "step": 4,
-    "title": "取数"
-   }
-  ],
-  "tools": [
-   "run_sql"
-  ],
-  "returns": "crosscheck",
-  "checks": [
-   {
-    "label": "交回的格式对"
-   },
-   {
-    "label": "有一致项、不一致项、覆盖说明"
-   },
-   {
-    "label": "说明了对照覆盖了哪些期"
-   },
-   {
-    "label": "和公司披露的数都对得上"
-   }
-  ],
-  "after_rejection": {
-   "reworks": 0,
-   "then": "human",
-   "back_to": null,
-   "backs": 0,
-   "text": "停下来问你"
+ "item": {
+  "id": "dossier:607c2718-4eae-57a0-bb04-8aa28b096733",
+  "kind": "dossier",
+  "title": "财报体检：招商银行 2023 到 2025 年的盈利能力怎么样？",
+  "default_title": "财报体检：招商银行 2023 到 2025 年的盈利能力怎么样？",
+  "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa",
+  "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
+  "session_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+  "versions": 1,
+  "updated_at": "2026-10-12T04:50:34.719495Z",
+  "created_at": "2026-10-12T04:50:34.492484Z",
+  "size_bytes": null,
+  "source": {
+   "expert": "财报体检",
+   "question": "招商银行 2023 到 2025 年的盈利能力怎么样？"
   },
-  "reserve": "0.05",
-  "status": "accepted",
-  "attempts": [
+  "deleted": false,
+  "version_list": [
    {
-    "attempt_id": "9a4f84de-2cd4-5a3d-aeec-0e8cbc4d0b47",
-    "n": 1,
-    "outcome": "accepted",
-    "failure": null,
-    "spent": "0.05",
-    "started_at": "2026-10-11T17:39:47.047717Z",
-    "ended_at": "2026-10-11T17:39:47.057013Z",
-    "checks": [
-     {
-      "label": "交回的格式对",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有一致项、不一致项、覆盖说明",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "说明了对照覆盖了哪些期",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "和公司披露的数都对得上",
-      "pass": true,
-      "message": ""
-     }
-    ],
-    "tools": {
-     "run_sql": 1
-    },
-    "returned": {
-     "artifact": "crosscheck",
-     "version": 1,
-     "content": {
-      "matched": [
-       {
-        "item": "operate_income",
-        "page": 6,
-        "basis": "原始披露",
-        "value": 150560000000.0,
-        "fiscal_year": 2023,
-        "source_report": "贵州茅台2023年年度报告"
-       },
-       {
-        "item": "net_profit",
-        "page": 6,
-        "basis": "原始披露",
-        "value": 79044000000.0,
-        "fiscal_year": 2023,
-        "source_report": "贵州茅台2023年年度报告"
-       },
-       {
-        "item": "total_assets",
-        "page": 6,
-        "basis": "原始披露",
-        "value": 286064000000.0,
-        "fiscal_year": 2023,
-        "source_report": "贵州茅台2023年年度报告"
-       },
-       {
-        "item": "total_equity",
-        "page": 6,
-        "basis": "原始披露",
-        "value": 234572480000.0,
-        "fiscal_year": 2023,
-        "source_report": "贵州茅台2023年年度报告"
-       },
-       {
-        "item": "operate_income",
-        "page": 6,
-        "basis": "追溯调整后",
-        "value": 174197920000.0,
-        "fiscal_year": 2024,
-        "source_report": "贵州茅台2024年年度报告"
-       },
-       {
-        "item": "net_profit",
-        "page": 6,
-        "basis": "追溯调整后",
-        "value": 90931314240.0,
-        "fiscal_year": 2024,
-        "source_report": "贵州茅台2024年年度报告"
-       },
-       {
-        "item": "total_assets",
-        "page": 6,
-        "basis": "追溯调整后",
-        "value": 330976048000.0,
-        "fiscal_year": 2024,
-        "source_report": "贵州茅台2024年年度报告"
-       },
-       {
-        "item": "total_equity",
-        "page": 6,
-        "basis": "追溯调整后",
-        "value": 271400359360.0,
-        "fiscal_year": 2024,
-        "source_report": "贵州茅台2024年年度报告"
-       },
-       {
-        "item": "operate_income",
-        "page": 6,
-        "basis": "原始披露",
-        "value": 190572524480.0,
-        "fiscal_year": 2025,
-        "source_report": "贵州茅台2025年年度报告"
-       },
-       {
-        "item": "net_profit",
-        "page": 6,
-        "basis": "原始披露",
-        "value": 98907140205.12,
-        "fiscal_year": 2025,
-        "source_report": "贵州茅台2025年年度报告"
-       },
-       {
-        "item": "total_assets",
-        "page": 6,
-        "basis": "原始披露",
-        "value": 362087796512.0,
-        "fiscal_year": 2025,
-        "source_report": "贵州茅台2025年年度报告"
-       },
-       {
-        "item": "total_equity",
-        "page": 6,
-        "basis": "原始披露",
-        "value": 296911993139.84,
-        "fiscal_year": 2025,
-        "source_report": "贵州茅台2025年年度报告"
-       }
-      ],
-      "coverage": "范围内 3 期年报全部对照；现金流量表的项目年报的「主要会计数据」表里没有，没有对照",
-      "mismatched": [],
-      "not_covered": [],
-      "data_version": "sh600519-financials-sample600519"
-     },
-     "labels": {
-      "matched": "一致的",
-      "item": "科目",
-      "page": "页码",
-      "basis": "口径",
-      "value": "数值",
-      "fiscal_year": "年度",
-      "source_report": "出自",
-      "coverage": "覆盖说明",
-      "mismatched": "对不上的",
-      "not_covered": "没有对照到的",
-      "data_version": "数据版本"
-     }
-    },
-    "process": [
-     {
-      "at": "2026-10-11T17:39:47.031599Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "SELECT fiscal_year, item, basis, value, source_report, page FROM official_key_figures WHERE fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     }
-    ]
+    "version": 1,
+    "created_at": "2026-10-12T04:50:34.492484Z",
+    "note": "专家交回"
    }
-  ],
-  "times": 1,
-  "rejected": 0,
-  "spent": "0.05",
-  "data": {
-   "data_version": "sh600519-financials-sample600519"
-  }
+  ]
  }
 }

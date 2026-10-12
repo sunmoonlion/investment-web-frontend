@@ -3,9 +3,8 @@
 import { CheckIcon, LoaderIcon, MinusIcon, XIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import type { Attempt, Now, Run, RunStep } from '@/contracts/workbench-v2'
+import type { Attempt, Now, RunStep } from '@/contracts/workbench-v2'
 import { money, symbol, toMicros } from '@/lib/workbench/money'
-import { isBuilt } from '@/lib/workbench/routes'
 import { cn } from '@/lib/utils'
 
 import { MARK, minutesAndSeconds, plain, reassurance, shape } from '../model/run'
@@ -316,61 +315,5 @@ export function StepDetail({ step, loading }: { step: RunStep | undefined; loadi
         ))
       )}
     </article>
-  )
-}
-
-// 右边：委托单
-export function Sheet({ run, clock }: { run: Run; clock: number }) {
-  const t = useTranslations('expert')
-  const duration = useDuration()
-  const task = run.task
-  const until = task.ended_at ? Date.parse(task.ended_at) : clock
-  const elapsed = task.started_at
-    ? Math.max(0, Math.floor((until - Date.parse(task.started_at)) / 1000))
-    : 0
-  const label = 'text-muted-foreground text-xs font-medium'
-  return (
-    <aside
-      aria-label={t('sheet.title')}
-      className="hidden w-72 shrink-0 space-y-4 overflow-y-auto border-l p-4 text-[13px] xl:block"
-    >
-      <h2 className="text-sm font-medium">{t('sheet.title')}</h2>
-      <div>
-        <p className={label}>{t('sheet.question')}</p>
-        <p className="mt-0.5 whitespace-pre-wrap">{task.question}</p>
-      </div>
-      <div>
-        <p className={label}>{t('sheet.spent')}</p>
-        <p className="mt-0.5 text-lg font-semibold tabular-nums">
-          {amountText(task.budget.spent, task.budget.currency)}
-        </p>
-        <p className="text-muted-foreground tabular-nums">
-          {t('sheet.parts', {
-            used: amountText(task.budget.used, task.budget.currency),
-            running: amountText(task.budget.running, task.budget.currency),
-          })}
-        </p>
-      </div>
-      <div>
-        <p className={label}>{t('sheet.data')}</p>
-        {task.data?.dataset ? (
-          <p className="mt-0.5">
-            <span className="font-mono">{task.data.dataset}</span>
-            {task.data.as_of ? (
-              <span className="block">{t('sheet.dataAsOf', { asOf: task.data.as_of })}</span>
-            ) : null}
-          </p>
-        ) : (
-          <p className="text-muted-foreground mt-0.5">{t('sheet.dataUnknown')}</p>
-        )}
-      </div>
-      <div>
-        <p className={label}>{t('sheet.elapsed')}</p>
-        <p className="mt-0.5 tabular-nums">{duration(elapsed)}</p>
-      </div>
-      {isBuilt('dossier') ? null : (
-        <p className="text-muted-foreground border-t pt-3 text-xs">{t('sheet.dossierSoon')}</p>
-      )}
-    </aside>
   )
 }

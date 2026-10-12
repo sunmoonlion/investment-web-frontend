@@ -1,240 +1,80 @@
 {
- "task": {
-  "id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
-  "session_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
-  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-  "tenant": "default",
-  "idempotency_key": "preview-waiting-0001",
-  "request_digest": "d7153bd120082d98ad98f317b655a09579010830bf67482f485d5875d4d4b2de",
-  "profile_id": "FIN_REVIEW",
-  "profile_version": "1",
-  "expert_pack_version": "1",
-  "original_input": {
-   "input": {
-    "text": "宁德时代 2023 到 2025 年的盈利能力怎么样？"
+ "contract_version": 2,
+ "task_id": "e360da80-c794-5489-9aef-1545babb5931",
+ "step": {
+  "index": 1,
+  "step_id": "rewrite",
+  "title": "改写问题",
+  "summary": "把问题改写成没有歧义的：查什么、哪个期间、什么口径",
+  "why": "口语的问题常有歧义：哪一年、合并报表还是母公司。先说清楚查什么，免得查出来的不是你要的。",
+  "uses": [],
+  "tools": [],
+  "returns": "rewritten",
+  "checks": [
+   {
+    "label": "交回的格式对"
    },
-   "attachments": [],
-   "client_context": {
-    "entry": "expert"
+   {
+    "label": "有改写后的问题和指标"
    }
+  ],
+  "after_rejection": {
+   "reworks": 1,
+   "then": "human",
+   "back_to": null,
+   "backs": 0,
+   "text": "重做，最多 1 次；仍不过，停下来问你"
   },
-  "normalized_goal": null,
-  "thread_id": "thread-0a6a08843144",
-  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-  "project_root": "/home/demo/research/宁德时代",
-  "state": "WAITING",
-  "state_version": 18,
-  "workflow_version": "1",
-  "current_step": 2,
-  "acceptance_contract": {
-   "steps": [
-    "scope",
-    "profile",
-    "reconcile",
-    "extract",
-    "metrics",
-    "crosscheck",
-    "note"
-   ],
-   "pack_id": "FIN_REVIEW"
-  },
-  "execution_policy": {},
-  "budget": {
-   "used": "0.150000",
-   "limit": null,
-   "currency": "CNY",
-   "reserved": "0"
-  },
-  "active_attempt_id": null,
-  "terminal_result_ref": null,
-  "waiting_reason": "INPUT",
-  "active_interaction_id": "58bf41ed-2812-51fe-87d9-3a7ad7438f7a",
-  "rejection": null,
-  "cancel_requested_at": null,
-  "cancel_requested_by": null,
-  "created_at": "2026-10-11T17:39:47.474849+00:00",
-  "updated_at": "2026-10-11T17:39:47.846471+00:00",
-  "project_id": "d35d6a3c-0149-5775-a1c7-860389fb558a"
- },
- "attempts": [
-  {
-   "id": "844787e2-31bc-50cd-808e-dc440c0ead4f",
-   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
-   "session_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
-   "thread_id": "thread-0a6a08843144",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "role": "execute",
-   "arm": 0,
-   "step_id": "scope",
-   "step_version": "1",
-   "input_artifact_versions": [],
-   "turn_ids": [
-    "turn-f59a48214860"
-   ],
-   "status": "COMPLETED",
-   "codex_version": null,
-   "agent_version": null,
-   "model": null,
-   "model_provider": null,
-   "budget_allocated": {
-    "amount": "0.05"
-   },
-   "budget_consumed": {
-    "amount": "0.050000",
-    "tokens": {
-     "input": 2000,
-     "total": 2100,
-     "output": 100,
-     "cache_write": 0,
-     "cached_input": 0
-    }
-   },
-   "failure_code": null,
-   "retryable": null,
-   "output_artifacts": [
-    {
-     "id": "0dcbf52b-605b-5b10-a5cd-9c7bf241ea70",
-     "name": "scope",
-     "version": 1
-    }
-   ],
-   "refs": {
-    "reworks": 0
-   },
-   "started_at": "2026-10-11T17:39:47.581575+00:00",
-   "ended_at": "2026-10-11T17:39:47.592323+00:00",
-   "created_at": "2026-10-11T17:39:47.526754+00:00",
-   "updated_at": "2026-10-11T17:39:47.588096+00:00"
-  },
-  {
-   "id": "b7ff7773-a31b-5df3-a3ac-23f8c1ee682a",
-   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
-   "session_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
-   "thread_id": "thread-0a6a08843144",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "role": "execute",
-   "arm": 0,
-   "step_id": "profile",
-   "step_version": "1",
-   "input_artifact_versions": [
-    {
-     "name": "scope",
-     "version": 1
-    }
-   ],
-   "turn_ids": [
-    "turn-e4c9853d9bee"
-   ],
-   "status": "COMPLETED",
-   "codex_version": null,
-   "agent_version": null,
-   "model": null,
-   "model_provider": null,
-   "budget_allocated": {
-    "amount": "0.05"
-   },
-   "budget_consumed": {
-    "amount": "0.050000",
-    "tokens": {
-     "input": 2000,
-     "total": 2100,
-     "output": 100,
-     "cache_write": 0,
-     "cached_input": 0
-    }
-   },
-   "failure_code": null,
-   "retryable": null,
-   "output_artifacts": [
-    {
-     "id": "5a74c70e-0687-5046-add3-b21a5afaf70d",
-     "name": "profile",
-     "version": 1
-    }
-   ],
-   "refs": {
-    "reworks": 0
-   },
-   "started_at": "2026-10-11T17:39:47.682597+00:00",
-   "ended_at": "2026-10-11T17:39:47.693787+00:00",
-   "created_at": "2026-10-11T17:39:47.608820+00:00",
-   "updated_at": "2026-10-11T17:39:47.688971+00:00"
-  },
-  {
-   "id": "6d38a3ca-1d8b-58fa-8c9e-d7cd9abb8663",
-   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
-   "session_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
-   "thread_id": "thread-0a6a08843144",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "role": "execute",
-   "arm": 0,
-   "step_id": "reconcile",
-   "step_version": "1",
-   "input_artifact_versions": [
-    {
-     "name": "scope",
-     "version": 1
+  "reserve": "0.05",
+  "status": "accepted",
+  "attempts": [
+   {
+    "attempt_id": "8254efba-9cff-54fa-b810-cbf1a12c1425",
+    "n": 1,
+    "outcome": "accepted",
+    "failure": null,
+    "spent": "0.05",
+    "started_at": "2026-10-12T04:50:31.949665Z",
+    "ended_at": "2026-10-12T04:50:31.965762Z",
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有改写后的问题和指标",
+      "pass": true,
+      "message": ""
+     }
+    ],
+    "tools": {},
+    "returned": {
+     "artifact": "rewritten",
+     "version": 1,
+     "content": {
+      "period": "2021 至 2025 年，年报",
+      "metrics": [
+       "毛利率"
+      ],
+      "entities": [
+       "五粮液（000858）"
+      ],
+      "question": "五粮液 2021 至 2025 年年报的毛利率，按年列出"
+     },
+     "labels": {
+      "period": "期间",
+      "metrics": "指标",
+      "entities": "对象",
+      "question": "问题"
+     }
     },
-    {
-     "name": "profile",
-     "version": 1
-    }
-   ],
-   "turn_ids": [
-    "turn-f288d3dd291a"
-   ],
-   "status": "FAILED",
-   "codex_version": null,
-   "agent_version": null,
-   "model": null,
-   "model_provider": null,
-   "budget_allocated": {
-    "amount": "0.05"
-   },
-   "budget_consumed": {
-    "amount": "0.050000",
-    "tokens": {
-     "input": 2000,
-     "total": 2100,
-     "output": 100,
-     "cache_write": 0,
-     "cached_input": 0
-    }
-   },
-   "failure_code": "acceptance",
-   "retryable": true,
-   "output_artifacts": [],
-   "refs": {
-    "reworks": 0
-   },
-   "started_at": "2026-10-11T17:39:47.821537+00:00",
-   "ended_at": "2026-10-11T17:39:47.829295+00:00",
-   "created_at": "2026-10-11T17:39:47.719268+00:00",
-   "updated_at": "2026-10-11T17:39:47.826852+00:00"
-  }
- ],
- "artifacts": [
-  {
-   "id": "5a74c70e-0687-5046-add3-b21a5afaf70d",
-   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
-   "attempt_id": "b7ff7773-a31b-5df3-a3ac-23f8c1ee682a",
-   "name": "profile",
-   "version": 1,
-   "kind": "step",
-   "digest": "b3735d1760412b7e122f73ba16d44b60f4f558ecee20b3dc72daf79138fab94c",
-   "workspace_path": null,
-   "created_at": "2026-10-11T17:39:47.688971+00:00"
-  },
-  {
-   "id": "0dcbf52b-605b-5b10-a5cd-9c7bf241ea70",
-   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
-   "attempt_id": "844787e2-31bc-50cd-808e-dc440c0ead4f",
-   "name": "scope",
-   "version": 1,
-   "kind": "step",
-   "digest": "f77a558f3ba9620c552aba0f6d28ef5b64355e4e4f006ed494bb527bd55aa444",
-   "workspace_path": null,
-   "created_at": "2026-10-11T17:39:47.588096+00:00"
-  }
- ]
+    "process": []
+   }
+  ],
+  "times": 1,
+  "rejected": 0,
+  "spent": "0.05",
+  "data": null
+ }
 }

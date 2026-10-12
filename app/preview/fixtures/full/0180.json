@@ -1,106 +1,568 @@
 {
- "contract_version": 2,
- "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
- "step": {
-  "index": 1,
-  "step_id": "scope",
-  "title": "定范围",
-  "summary": "认出公司、期间、报告类型",
-  "why": "先把问的是哪家公司、哪几年、哪种报告认准。认错了，后面每一步都白做。",
-  "uses": [],
-  "tools": [],
-  "returns": "scope",
-  "checks": [
-   {
-    "label": "交回的格式对"
+ "task": {
+  "id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+  "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "tenant": "default",
+  "idempotency_key": "preview-done-concluded-0001",
+  "request_digest": "c12e2ce2ce9a01fb44f045ffa14d3b0e723eb59f961c5bd85ca60d4fbad5784a",
+  "profile_id": "FIN_REVIEW",
+  "profile_version": "1",
+  "expert_pack_version": "1",
+  "original_input": {
+   "input": {
+    "text": "贵州茅台 2023 到 2025 年的盈利能力怎么样？"
    },
-   {
-    "label": "有证券代码、期间、报告类型"
-   },
-   {
-    "label": "认得出是哪家公司"
-   },
-   {
-    "label": "期间不是空的"
+   "attachments": [],
+   "client_context": {
+    "entry": "expert"
    }
-  ],
-  "after_rejection": {
-   "reworks": 1,
-   "then": "human",
-   "back_to": null,
-   "backs": 0,
-   "text": "重做，最多 1 次；仍不过，停下来问你"
   },
-  "reserve": "0.05",
-  "status": "accepted",
-  "attempts": [
-   {
-    "attempt_id": "844787e2-31bc-50cd-808e-dc440c0ead4f",
-    "n": 1,
-    "outcome": "accepted",
-    "failure": null,
-    "spent": "0.05",
-    "started_at": "2026-10-11T17:39:47.581575Z",
-    "ended_at": "2026-10-11T17:39:47.592323Z",
-    "checks": [
-     {
-      "label": "交回的格式对",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有证券代码、期间、报告类型",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "认得出是哪家公司",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "期间不是空的",
-      "pass": true,
-      "message": ""
-     }
-    ],
-    "tools": {},
-    "returned": {
-     "artifact": "scope",
-     "version": 1,
-     "content": {
-      "aspects": [
-       "盈利能力"
-      ],
-      "company": "宁德时代",
-      "periods": [
-       "2023",
-       "2024",
-       "2025"
-      ],
-      "question": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
-      "assumptions": [],
-      "report_types": [
-       "年报"
-      ],
-      "security_code": "300750"
-     },
-     "labels": {
-      "aspects": "关注的方面",
-      "company": "公司",
-      "periods": "期间",
-      "question": "问题",
-      "assumptions": "假设",
-      "report_types": "报告类型",
-      "security_code": "证券代码"
-     }
+  "normalized_goal": null,
+  "thread_id": "thread-7b09f2035af3",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "project_root": "/home/demo/research/贵州茅台",
+  "state": "SUCCEEDED",
+  "state_version": 39,
+  "workflow_version": "1",
+  "current_step": 7,
+  "acceptance_contract": {
+   "steps": [
+    "scope",
+    "profile",
+    "reconcile",
+    "extract",
+    "metrics",
+    "crosscheck",
+    "note"
+   ],
+   "pack_id": "FIN_REVIEW"
+  },
+  "execution_policy": {},
+  "budget": {
+   "used": "0.350000",
+   "limit": null,
+   "currency": "CNY",
+   "reserved": "0"
+  },
+  "active_attempt_id": null,
+  "terminal_result_ref": "4816f691-3c61-5bff-a6ba-e4c76bd94692",
+  "waiting_reason": null,
+  "active_interaction_id": null,
+  "rejection": null,
+  "cancel_requested_at": null,
+  "cancel_requested_by": null,
+  "created_at": "2026-10-12T04:50:30.940732+00:00",
+  "updated_at": "2026-10-12T04:50:31.798203+00:00",
+  "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10"
+ },
+ "attempts": [
+  {
+   "id": "c6393859-f79d-52c2-95d7-f6b08cd8c528",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "thread_id": "thread-7b09f2035af3",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "scope",
+   "step_version": "1",
+   "input_artifact_versions": [],
+   "turn_ids": [
+    "turn-fd4068cc9c77"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "9d1d0427-0a59-5826-81ea-36db17578b35",
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-12T04:50:31.070943+00:00",
+   "ended_at": "2026-10-12T04:50:31.080988+00:00",
+   "created_at": "2026-10-12T04:50:31.005013+00:00",
+   "updated_at": "2026-10-12T04:50:31.076605+00:00"
+  },
+  {
+   "id": "c3ec4b71-0f35-52dc-a602-fb5b4a9e8ff6",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "thread_id": "thread-7b09f2035af3",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "profile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-477e2397139e"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "3ccffd5a-4b2f-5134-b35f-2acb049241f0",
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-12T04:50:31.213974+00:00",
+   "ended_at": "2026-10-12T04:50:31.232405+00:00",
+   "created_at": "2026-10-12T04:50:31.099494+00:00",
+   "updated_at": "2026-10-12T04:50:31.224794+00:00"
+  },
+  {
+   "id": "ee838cfe-73c8-53c5-9e8f-3d0e27e24911",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "thread_id": "thread-7b09f2035af3",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "reconcile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
     },
-    "process": []
-   }
-  ],
-  "times": 1,
-  "rejected": 0,
-  "spent": "0.05",
-  "data": null
- }
+    {
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-4c6a7edb58ba"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "74e76781-c7dd-55f8-a084-bd50123267a6",
+     "name": "reconcile",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-12T04:50:31.361624+00:00",
+   "ended_at": "2026-10-12T04:50:31.371560+00:00",
+   "created_at": "2026-10-12T04:50:31.256034+00:00",
+   "updated_at": "2026-10-12T04:50:31.367392+00:00"
+  },
+  {
+   "id": "752855e8-8bb8-5ddf-b9ac-2db2efe7ffa4",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "thread_id": "thread-7b09f2035af3",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "extract",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-f8c541e341ae"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "ad4ae0d3-2aca-5001-8b72-b5512fe47050",
+     "name": "facts",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-12T04:50:31.461557+00:00",
+   "ended_at": "2026-10-12T04:50:31.474229+00:00",
+   "created_at": "2026-10-12T04:50:31.388807+00:00",
+   "updated_at": "2026-10-12T04:50:31.467242+00:00"
+  },
+  {
+   "id": "77089b6c-bc26-548f-8359-fbbbdced111f",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "thread_id": "thread-7b09f2035af3",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "metrics",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    },
+    {
+     "name": "facts",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-b45400685a95"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "8fb17a2c-e81d-50b4-bc10-446287e84192",
+     "name": "metrics",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-12T04:50:31.559482+00:00",
+   "ended_at": "2026-10-12T04:50:31.568485+00:00",
+   "created_at": "2026-10-12T04:50:31.494886+00:00",
+   "updated_at": "2026-10-12T04:50:31.564590+00:00"
+  },
+  {
+   "id": "dbd15078-554a-58de-85dd-db952fa2f343",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "thread_id": "thread-7b09f2035af3",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "crosscheck",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    },
+    {
+     "name": "facts",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-9b27778da0aa"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "7f169d64-263f-50a1-bd54-af3262b1f82b",
+     "name": "crosscheck",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-12T04:50:31.667104+00:00",
+   "ended_at": "2026-10-12T04:50:31.678384+00:00",
+   "created_at": "2026-10-12T04:50:31.587945+00:00",
+   "updated_at": "2026-10-12T04:50:31.672705+00:00"
+  },
+  {
+   "id": "9faee99c-4305-52db-aaa1-c564f17719fd",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "thread_id": "thread-7b09f2035af3",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "note",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    },
+    {
+     "name": "reconcile",
+     "version": 1
+    },
+    {
+     "name": "facts",
+     "version": 1
+    },
+    {
+     "name": "metrics",
+     "version": 1
+    },
+    {
+     "name": "crosscheck",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-a491272428cb"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "4816f691-3c61-5bff-a6ba-e4c76bd94692",
+     "name": "note",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-12T04:50:31.768674+00:00",
+   "ended_at": "2026-10-12T04:50:31.780168+00:00",
+   "created_at": "2026-10-12T04:50:31.703530+00:00",
+   "updated_at": "2026-10-12T04:50:31.773740+00:00"
+  }
+ ],
+ "artifacts": [
+  {
+   "id": "7f169d64-263f-50a1-bd54-af3262b1f82b",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "attempt_id": "dbd15078-554a-58de-85dd-db952fa2f343",
+   "name": "crosscheck",
+   "version": 1,
+   "kind": "step",
+   "digest": "1d3a80507f5e3bf02eefe769c86b6d277d090dd34559d5913f24e716005505cd",
+   "workspace_path": null,
+   "created_at": "2026-10-12T04:50:31.672705+00:00"
+  },
+  {
+   "id": "ad4ae0d3-2aca-5001-8b72-b5512fe47050",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "attempt_id": "752855e8-8bb8-5ddf-b9ac-2db2efe7ffa4",
+   "name": "facts",
+   "version": 1,
+   "kind": "step",
+   "digest": "ec834560a9a570b13eda391f5c68d53eceaa0d28367676cd8e3fdafb65bac8e7",
+   "workspace_path": null,
+   "created_at": "2026-10-12T04:50:31.467242+00:00"
+  },
+  {
+   "id": "4681c7c1-fd99-50cc-bbed-09d3ce4d4e40",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "attempt_id": null,
+   "name": "handback",
+   "version": 1,
+   "kind": "handback",
+   "digest": "042ace86cf8b1aaf26ace6af7448565baa51c41fcd3f5b37bdae773eaafbf8b5",
+   "workspace_path": null,
+   "created_at": "2026-10-12T04:50:31.791515+00:00"
+  },
+  {
+   "id": "8fb17a2c-e81d-50b4-bc10-446287e84192",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "attempt_id": "77089b6c-bc26-548f-8359-fbbbdced111f",
+   "name": "metrics",
+   "version": 1,
+   "kind": "step",
+   "digest": "282ac3dd2287cf46b3b6fb9c1ef9afec4e52fbcc8b60dd66aa5870e606c3a774",
+   "workspace_path": null,
+   "created_at": "2026-10-12T04:50:31.564590+00:00"
+  },
+  {
+   "id": "4816f691-3c61-5bff-a6ba-e4c76bd94692",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "attempt_id": "9faee99c-4305-52db-aaa1-c564f17719fd",
+   "name": "note",
+   "version": 1,
+   "kind": "step",
+   "digest": "1a88e273da801bebbf1f0f3d00cfefe408cd8e58a52b8e13542f327dc2a5ca74",
+   "workspace_path": null,
+   "created_at": "2026-10-12T04:50:31.773740+00:00"
+  },
+  {
+   "id": "3ccffd5a-4b2f-5134-b35f-2acb049241f0",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "attempt_id": "c3ec4b71-0f35-52dc-a602-fb5b4a9e8ff6",
+   "name": "profile",
+   "version": 1,
+   "kind": "step",
+   "digest": "b276e519a4eaa8ced17db779760569e83d48062afd97ed9aa775becbee4de6fa",
+   "workspace_path": null,
+   "created_at": "2026-10-12T04:50:31.224794+00:00"
+  },
+  {
+   "id": "74e76781-c7dd-55f8-a084-bd50123267a6",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "attempt_id": "ee838cfe-73c8-53c5-9e8f-3d0e27e24911",
+   "name": "reconcile",
+   "version": 1,
+   "kind": "step",
+   "digest": "f59df00ae1108959ccd372e03f8b42a0cf0d6329518540052b419710cdc9632e",
+   "workspace_path": null,
+   "created_at": "2026-10-12T04:50:31.367392+00:00"
+  },
+  {
+   "id": "9d1d0427-0a59-5826-81ea-36db17578b35",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "attempt_id": "c6393859-f79d-52c2-95d7-f6b08cd8c528",
+   "name": "scope",
+   "version": 1,
+   "kind": "step",
+   "digest": "550342211a10e1f631b4d8e272f5ac4078da16ef4cdf40bd23627acf33f8ca23",
+   "workspace_path": null,
+   "created_at": "2026-10-12T04:50:31.076605+00:00"
+  }
+ ]
 }

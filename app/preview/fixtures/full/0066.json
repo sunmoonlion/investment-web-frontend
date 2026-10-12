@@ -1,52 +1,139 @@
 {
  "contract_version": 2,
- "tasks": [
+ "events": [
   {
-   "id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
-   "session_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "tenant": "default",
-   "idempotency_key": "preview-refused-0001",
-   "request_digest": "e26555543a44acbd13c3a088833d49a37b53558bb83a5047586edf8a0b76706f",
-   "profile_id": "BOND_REVIEW",
-   "profile_version": "1",
-   "expert_pack_version": null,
-   "original_input": {
-    "input": {
-     "text": "中国平安 2025 年的偿付能力怎么样？"
+   "id": "5afb2686-6260-585d-9caa-a47b1ab0ee57",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "cursor": 1,
+   "kind": "session",
+   "type": "session/created",
+   "payload": {
+    "kind": "work",
+    "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f",
+    "sandbox_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b"
+   },
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-10-12T04:50:36.635049+00:00"
+  },
+  {
+   "id": "e0c0094f-2586-5d30-b3c5-faed985dd034",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "cursor": 2,
+   "kind": "thread",
+   "type": "session/thread_started",
+   "payload": {
+    "model": "kimi-k3",
+    "thread_id": "thread-0c771b73bfbd",
+    "environment": "user-pc"
+   },
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-10-12T04:50:36.658044+00:00"
+  },
+  {
+   "id": "09f31f95-17ac-5100-b64a-13615f440018",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "cursor": 3,
+   "kind": "session",
+   "type": "session/kind_changed",
+   "payload": {
+    "to": "expert",
+    "from": "work"
+   },
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-10-12T04:50:36.670381+00:00"
+  },
+  {
+   "id": "ee0b227b-05c2-59da-a91c-e93caa9ad5aa",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "cursor": 4,
+   "kind": "task",
+   "type": "task/received",
+   "payload": {
+    "budget": {
+     "used": "0",
+     "limit": null,
+     "currency": "CNY",
+     "reserved": "0"
     },
-    "attachments": [],
-    "client_context": {}
+    "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+    "profile_id": "BOND_REVIEW",
+    "queued_behind": null
    },
-   "normalized_goal": null,
-   "thread_id": "thread-8d423a0092c4",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "project_root": "/home/demo/research/中国平安",
-   "state": "REJECTED",
-   "state_version": 2,
-   "workflow_version": null,
-   "current_step": 0,
-   "acceptance_contract": {},
-   "execution_policy": {},
-   "budget": {
-    "used": "0",
-    "limit": null,
-    "currency": "CNY",
-    "reserved": "0"
+   "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+   "attempt_id": null,
+   "created_at": "2026-10-12T04:50:36.670381+00:00"
+  },
+  {
+   "id": "a92d3ac7-558b-5941-8fa0-00e0bb81a337",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "cursor": 5,
+   "kind": "wheel",
+   "type": "wheel/handover",
+   "payload": {
+    "to": "advisor",
+    "from": "user",
+    "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa"
    },
-   "active_attempt_id": null,
-   "terminal_result_ref": null,
-   "waiting_reason": null,
-   "active_interaction_id": null,
-   "rejection": {
-    "code": "no_expert_pack",
-    "message": "这个问题不在专家范围，继续自己用 Codex 即可"
+   "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+   "attempt_id": null,
+   "created_at": "2026-10-12T04:50:36.670381+00:00"
+  },
+  {
+   "id": "856f152d-1a65-56c1-8b4c-e22f8cfa5844",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "cursor": 6,
+   "kind": "task",
+   "type": "task/state",
+   "payload": {
+    "to": "VALIDATING",
+    "from": "RECEIVED",
+    "reason": {},
+    "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+    "waiting_reason": null
    },
-   "cancel_requested_at": null,
-   "cancel_requested_by": null,
-   "created_at": "2026-10-11T17:39:51.010853+00:00",
-   "updated_at": "2026-10-11T17:39:51.046189+00:00",
-   "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f"
+   "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+   "attempt_id": null,
+   "created_at": "2026-10-12T04:50:36.697203+00:00"
+  },
+  {
+   "id": "a54e3525-bc3f-5658-a088-89b1c438021d",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "cursor": 7,
+   "kind": "task",
+   "type": "task/state",
+   "payload": {
+    "to": "REJECTED",
+    "from": "VALIDATING",
+    "reason": {
+     "code": "no_expert_pack",
+     "message": "这个问题不在专家范围，继续自己用 Codex 即可"
+    },
+    "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+    "waiting_reason": null
+   },
+   "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+   "attempt_id": null,
+   "created_at": "2026-10-12T04:50:36.705443+00:00"
+  },
+  {
+   "id": "fa811ecf-828d-5ade-b972-ccb7e2bf1321",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "cursor": 8,
+   "kind": "wheel",
+   "type": "wheel/return",
+   "payload": {
+    "to": "user",
+    "from": "advisor",
+    "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+    "final_state": "REJECTED"
+   },
+   "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+   "attempt_id": null,
+   "created_at": "2026-10-12T04:50:36.705443+00:00"
   }
- ]
+ ],
+ "next_cursor": 8
 }

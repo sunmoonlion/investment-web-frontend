@@ -1,0 +1,48 @@
+{
+ "contract_version": 2,
+ "task_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+ "step": {
+  "index": 2,
+  "step_id": "sql_generate",
+  "title": "生成 SQL",
+  "summary": "对照数据的结构写出查询，并说明每一列的口径",
+  "why": "查询照着数据的真实结构写，每一列是什么口径写明白。你看得到它到底查了什么。",
+  "uses": [
+   {
+    "artifact": "rewritten",
+    "step": 1,
+    "title": "改写问题"
+   }
+  ],
+  "tools": [
+   "describe_schema",
+   "metric_definitions"
+  ],
+  "returns": "sql",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有查询语句"
+   },
+   {
+    "label": "查询语句不是空的"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 2,
+   "then": "human",
+   "back_to": null,
+   "backs": 0,
+   "text": "重做，最多 2 次；仍不过，停下来问你"
+  },
+  "reserve": "0.05",
+  "status": "pending",
+  "attempts": [],
+  "times": 0,
+  "rejected": 0,
+  "spent": "0.00",
+  "data": null
+ }
+}

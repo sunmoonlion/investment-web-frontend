@@ -2,5 +2,8 @@
  "contract_version": 2,
  "model": "kimi-k3",
  "approval_policy": "on-request",
- "updated_at": "2026-10-11T17:40:02.967589+00:00"
+ "mcp_sources": {
+  "knowledge": true
+ },
+ "updated_at": "2026-10-12T04:50:49.286648+00:00"
 }

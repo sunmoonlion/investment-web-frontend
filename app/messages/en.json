@@ -251,7 +251,7 @@
       },
       "expert": {
         "name": "Expert",
-        "what": "Follows a fixed method step by step, checks every step, and hands back a dossier. Slower and costlier.",
+        "what": "Follows a fixed method step by step, checks every step, and writes the deliverable into the project files. Slower and costlier.",
         "placeholder": "What should the expert solve",
         "send": "Hand to the expert"
       }
@@ -264,7 +264,7 @@
       "pick": {
         "chat": "A chat does not need a project. With one, it can read the files in that project.",
         "work": "Work happens inside a project: a folder on your machine.",
-        "expert": "The expert takes over the whole project: this conversation, its files, other conversations and dossiers."
+        "expert": "The expert takes over the whole project: this conversation, its files and the other conversations."
       },
       "create": "New project"
     },
@@ -469,6 +469,17 @@
       "allowed": "Allowed by rule: {command}",
       "denied": "The advisor wanted to {command}; declined by the expert pack's rules"
     },
+    "local": {
+      "approved": "You allowed this once on your computer: {scope}. The same directory and scope will not ask again for up to 30 minutes. Digest {digest}",
+      "denied": "Not allowed on your computer: {scope}. To raise the limit for good, change it in the tray Settings. Digest {digest}",
+      "join": ", ",
+      "sandbox": {
+        "read-only": "read-only",
+        "workspace-write": "write in the workspace",
+        "danger-full-access": "no sandbox"
+      },
+      "network": { "on": "network on", "off": "network off" }
+    },
     "panel": {
       "files": "Files",
       "changes": "Changes",
@@ -489,7 +500,7 @@
     "stop": {
       "button": "Stop",
       "title": "Stop the expert?",
-      "body": "What has been spent is not refunded. The finished part is handed back and can be seen in the dossier.",
+      "body": "What has been spent is not refunded. The finished part is already in the project files; see Changes on the right.",
       "confirm": "Stop",
       "cancel": "Keep going",
       "failed": "Could not stop. Please try again."
@@ -571,25 +582,12 @@
       "send": "Answer",
       "answered": "You have answered"
     },
-    "sheet": {
-      "title": "Delegation",
-      "question": "Question",
-      "spent": "Spent (est.)",
-      "parts": "finished {used} + in progress {running}",
-      "data": "Data",
-      "dataUnknown": "not known yet",
-      "dataAsOf": "data as of {asOf}",
-      "elapsed": "Elapsed",
-      "dossier": "Open dossier",
-      "dossierSoon": "The dossier page is still being built"
-    },
     "loading": "Loading…",
-    "failedToLoad": "Could not load this delegation.",
-    "answer": "Answer"
+    "failedToLoad": "Could not load this delegation."
   },
   "expertHome": {
     "title": "Experts",
-    "lead": "Hand over a whole piece of work. The expert follows a method step by step, checks every step before moving on, and hands back a dossier.",
+    "lead": "Hand over a whole piece of work. The expert follows a method step by step, checks every step before moving on, and writes the deliverable into the project files.",
     "waiting": "Waiting for me",
     "running": "In progress",
     "packs": "The experts",
@@ -605,10 +603,9 @@
     "noData": "does not use our data",
     "ask": "Ask this expert",
     "none": "No expert has been asked yet.",
-    "dossier": "Open dossier",
     "loading": "Loading…",
     "pickTitle": "Ask this expert in which project",
-    "pickBody": "The expert takes over the whole project: its files, conversations and dossiers.",
+    "pickBody": "The expert takes over the whole project: its files and conversations.",
     "noMachine": "No computer registered. Connect one before starting Work or Expert."
   },
   "askExpert": {
@@ -625,14 +622,14 @@
     "sees": "What the expert can see",
     "seesThis": "This conversation ({turns} turns)",
     "seesFiles": "The files in the project (read-only, read when needed)",
-    "seesOthers": "{conversations} other conversations and {dossiers} dossiers in the project",
+    "seesOthers": "{conversations} other conversations and {dossiers} expert handbacks in the project",
     "will": "What it will do",
     "wont": "What it will not do",
     "returns": "What it hands back",
     "choose": "Choose an expert on the left first.",
     "confirm1": "The expert will work on: {question}",
     "confirm2": "What it costs is shown live at the top",
-    "confirm3": "It hands the dossier back when done; you can stop at any time",
+    "confirm3": "It writes the deliverable into the project files when done; you can stop at any time",
     "cancel": "Cancel",
     "submit": "Hand over to the expert",
     "submitting": "Handing over…",
@@ -734,10 +731,8 @@
       "askExpert": "Ask an expert",
       "offlineNote": "The machine is offline: you can look and chat, but not start work or ask an expert.",
       "conversations": "Conversations",
-      "dossiers": "Dossiers",
       "empty": "Nothing in this project yet. Start with the three buttons above.",
       "noConversations": "No conversations yet.",
-      "noDossiers": "No dossier handed back yet.",
       "expertWorking": "The expert is working",
       "untitled": "Untitled conversation",
       "kind": {
@@ -750,56 +745,16 @@
       "archive": "Archive",
       "unarchive": "Unarchive",
       "archiveTitle": "Archive this project?",
-      "archiveBody": "Once archived it no longer appears in the sidebar and the project list. Conversations and dossiers stay and it can be unarchived. Files on your computer are not affected.",
+      "archiveBody": "Once archived it no longer appears in the sidebar and the project list. Conversations and handbacks stay and it can be unarchived. Files on your computer are not affected.",
       "archiveConfirm": "Archive",
       "cancel": "Cancel",
       "archivedNote": "This project is archived.",
       "loading": "Loading…",
       "failed": "Could not load this project.",
-      "problem": "It did not work. Please try again."
+      "problem": "It did not work. Please try again.",
+      "handbacks": "Expert handbacks",
+      "noHandbacks": "No expert has handed back yet. Deliverables live in the project files."
     }
-  },
-  "dossier": {
-    "loading": "Loading…",
-    "failed": "Could not load this dossier.",
-    "spent": "spent {amount} (est.)",
-    "data": "Data: {dataset} · version …{version} · as of {asOf}",
-    "back": "Back to the conversation",
-    "again": "Ask the expert again",
-    "otherExpert": "Choose another expert",
-    "export": "Export",
-    "head": {
-      "running": "The expert is still working. Finished steps are below; the rest are not there yet.",
-      "noData": "There is no data for this company yet. Handle it in the conversation: request ingestion, then continue.",
-      "refused": "The expert did not take this on.",
-      "stopped": "Not finished. Finished steps are shown as usual; the rest say \"not reached\". What was spent stays on record."
-    },
-    "notReached": "This step was not reached",
-    "empty": "none",
-    "show": "Show",
-    "hide": "Hide",
-    "rows": "{n} rows",
-    "from": "from step {step} \"{title}\"",
-    "source": "Source: {dataset} · version …{version} · as of {asOf}",
-    "how": {
-      "title": "How it was done",
-      "redone": "redone {n} time(s)",
-      "detail": "Click a step to see what it handed back and every acceptance check",
-      "none": "The expert did not start."
-    },
-    "conclusion": {
-      "title": "My conclusion",
-      "draft": "user draft",
-      "note": "The expert draws no conclusion. This part is yours.",
-      "placeholder": "What do you make of it?",
-      "save": "Save",
-      "saving": "Saving…",
-      "saved": "Saved, version {version}, {at}",
-      "failed": "Not saved. Please try again.",
-      "unsaved": "There are unsaved changes"
-    },
-    "showDetail": "Show the detail of every number: basis, formula, source",
-    "hideDetail": "Hide the detail"
   },
   "machines": {
     "title": "My computers",
@@ -901,34 +856,7 @@
   "results": {
     "title": "Results",
     "open": "Open results",
-    "close": "Collapse results",
-    "filed": "Filed in your library",
-    "status": {
-      "idle": "No result yet",
-      "running": "Working",
-      "done": "Done",
-      "stopped": "Stopped",
-      "failed": "Failed"
-    },
-    "chat": {
-      "answer": "Answer",
-      "none": "No answer yet.",
-      "data": "Data consulted",
-      "noData": "No data was consulted.",
-      "missing": "Companies without data"
-    },
-    "work": {
-      "changes": "Changes",
-      "summary": "{count} files changed",
-      "none": "No result yet."
-    },
-    "expert": {
-      "sheet": "Delegation",
-      "dossier": "Working paper",
-      "full": "Open the full working paper",
-      "noAnswer": "No answer yet.",
-      "notFiled": "Filed in your library when done"
-    }
+    "close": "Collapse results"
   },
   "library": {
     "title": "Library",
@@ -959,7 +887,6 @@
       "version": "v{n}",
       "from": "From: {question}",
       "copy": "This item has a copy on the server that belongs only to you.",
-      "toDossier": "Open the working paper",
       "toConversation": "Open the conversation",
       "rename": "Rename",
       "save": "Save",

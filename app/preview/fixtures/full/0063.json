@@ -1,56 +1,21 @@
 {
- "contract_version": 2,
- "events": [
-  {
-   "id": "8d3a2399-ffb5-5df1-8fec-b17559c6c8a8",
-   "session_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b",
-   "cursor": 1,
-   "kind": "session",
-   "type": "session/created",
-   "payload": {
-    "kind": "expert",
-    "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0",
-    "sandbox_id": "81108b8f-3022-5de7-860c-36662e2db6fb"
-   },
-   "task_id": null,
-   "attempt_id": null,
-   "created_at": "2026-10-11T17:39:51.111177+00:00"
-  },
-  {
-   "id": "a8a3354a-fb27-5478-b029-dc46f75b3766",
-   "session_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b",
-   "cursor": 2,
-   "kind": "task",
-   "type": "task/received",
-   "payload": {
-    "budget": {
-     "used": "0",
-     "limit": null,
-     "currency": "CNY",
-     "reserved": "0"
-    },
-    "task_id": "e622161e-278e-510c-a294-d321919a97e8",
-    "profile_id": "DATA_QUERY",
-    "queued_behind": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1"
-   },
-   "task_id": "e622161e-278e-510c-a294-d321919a97e8",
-   "attempt_id": null,
-   "created_at": "2026-10-11T17:39:51.111177+00:00"
-  },
-  {
-   "id": "5afb2686-6260-585d-9caa-a47b1ab0ee57",
-   "session_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b",
-   "cursor": 3,
-   "kind": "task",
-   "type": "task/queued",
-   "payload": {
-    "behind": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
-    "task_id": "e622161e-278e-510c-a294-d321919a97e8"
-   },
-   "task_id": "e622161e-278e-510c-a294-d321919a97e8",
-   "attempt_id": null,
-   "created_at": "2026-10-11T17:39:51.111177+00:00"
-  }
- ],
- "next_cursor": 3
+ "session": {
+  "id": "ed482230-2f0f-51b2-ab02-68462b409785",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "sandbox_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b",
+  "project_root": "/home/demo/research/中国平安",
+  "thread_id": "thread-0c771b73bfbd",
+  "wheel": "user",
+  "state_version": 2,
+  "active_task_id": null,
+  "thread_settings": {},
+  "created_at": "2026-10-12T04:50:36.635049+00:00",
+  "last_active_at": "2026-10-12T04:50:36.705443+00:00",
+  "kind": "expert",
+  "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f",
+  "title": null,
+  "archived_at": null
+ },
+ "pending_interactions": []
 }

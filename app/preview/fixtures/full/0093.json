@@ -1,54 +1,62 @@
 {
  "contract_version": 2,
- "price": {
-  "model": "kimi-k3",
-  "priced": true,
-  "currency": "CNY",
-  "as_of": "2026-10-04",
-  "per_million": {
-   "input": "20",
-   "cached_input": "2",
-   "cache_write": "20",
-   "output": "100"
-  },
-  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
-  "estimated": true
- },
- "cost": "0.100000",
- "tokens": {
-  "input": 4000,
-  "cached_input": 0,
-  "cache_write": 0,
-  "output": 200,
-  "total": 4200
- },
- "calls": 2,
- "turns": [
+ "tasks": [
   {
-   "turn_id": "turn-b0042a02e5e2",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
+   "id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+   "session_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "tenant": "default",
+   "idempotency_key": "preview-no-data-0001",
+   "request_digest": "f70aac42f72ccb20f33e318c0142f41b61d5bd3654c9eafbee2834cb0d0e611e",
+   "profile_id": "FIN_REVIEW",
+   "profile_version": "1",
+   "expert_pack_version": "1",
+   "original_input": {
+    "input": {
+     "text": "片仔癀 2023 到 2025 年的盈利能力怎么样？"
+    },
+    "attachments": [],
+    "client_context": {
+     "entry": "expert"
+    }
    },
-   "at": "2026-10-11T17:39:48.009512+00:00"
-  },
-  {
-   "turn_id": "turn-0ef41d8c88ed",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
+   "normalized_goal": null,
+   "thread_id": "thread-1a8315f4a86b",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "project_root": "/home/demo/research/片仔癀",
+   "state": "WAITING",
+   "state_version": 13,
+   "workflow_version": "1",
+   "current_step": 1,
+   "acceptance_contract": {
+    "steps": [
+     "scope",
+     "profile",
+     "reconcile",
+     "extract",
+     "metrics",
+     "crosscheck",
+     "note"
+    ],
+    "pack_id": "FIN_REVIEW"
    },
-   "at": "2026-10-11T17:39:48.093361+00:00"
+   "execution_policy": {},
+   "budget": {
+    "used": "0.100000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "active_attempt_id": null,
+   "terminal_result_ref": null,
+   "waiting_reason": "INPUT",
+   "active_interaction_id": "81108b8f-3022-5de7-860c-36662e2db6fb",
+   "rejection": null,
+   "cancel_requested_at": null,
+   "cancel_requested_by": null,
+   "created_at": "2026-10-12T04:50:32.583069+00:00",
+   "updated_at": "2026-10-12T04:50:32.834438+00:00",
+   "project_id": "7679e7df-8718-5408-8ba3-5f59a9525cf4"
   }
  ]
 }

@@ -1,241 +1,36 @@
 {
  "contract_version": 2,
- "task": {
-  "task_id": "e622161e-278e-510c-a294-d321919a97e8",
-  "session_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b",
-  "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0",
-  "expert": {
-   "id": "DATA_QUERY",
-   "name": "问数",
-   "version": "1"
+ "task_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+ "step": {
+  "index": 1,
+  "step_id": "rewrite",
+  "title": "改写问题",
+  "summary": "把问题改写成没有歧义的：查什么、哪个期间、什么口径",
+  "why": "口语的问题常有歧义：哪一年、合并报表还是母公司。先说清楚查什么，免得查出来的不是你要的。",
+  "uses": [],
+  "tools": [],
+  "returns": "rewritten",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有改写后的问题和指标"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 1,
+   "then": "human",
+   "back_to": null,
+   "backs": 0,
+   "text": "重做，最多 1 次；仍不过，停下来问你"
   },
-  "question": "五粮液近五年的净利率分别是多少？",
-  "state": "RECEIVED",
-  "state_word": null,
-  "waiting_reason": null,
-  "cancel_requested": false,
-  "reason": null,
-  "reason_text": "",
-  "budget": {
-   "currency": "CNY",
-   "limit": null,
-   "used": "0.00",
-   "reserved": "0.00",
-   "left": null,
-   "running": "0.00",
-   "spent": "0.00",
-   "estimated": true
-  },
-  "data": null,
-  "started_at": "2026-10-11T17:39:51.111177Z",
-  "ended_at": null,
-  "seconds": 0,
-  "active_interaction_id": null
- },
- "head": {
-  "kind": "running",
-  "text": "专家还在做"
- },
- "sections": [
-  {
-   "key": "answer",
-   "title": "回答",
-   "blocks": [
-    {
-     "key": "answer",
-     "title": "回答",
-     "kind": "text",
-     "folded": false,
-     "from": {
-      "step": 5,
-      "title": "成稿"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    }
-   ]
-  },
-  {
-   "key": "data",
-   "title": "数据",
-   "blocks": [
-    {
-     "key": "result",
-     "title": "结果表",
-     "kind": "table",
-     "folded": false,
-     "from": {
-      "step": 4,
-      "title": "整理结果"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    }
-   ]
-  },
-  {
-   "key": "verified",
-   "title": "专家验过什么",
-   "blocks": [
-    {
-     "key": "definitions",
-     "title": "查询用的口径",
-     "kind": "table",
-     "folded": false,
-     "from": {
-      "step": 2,
-      "title": "生成 SQL"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [
-      {
-       "key": "name",
-       "title": "列"
-      },
-      {
-       "key": "definition",
-       "title": "口径"
-      }
-     ],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    },
-    {
-     "key": "rows",
-     "title": "查询带回的原样结果",
-     "kind": "table",
-     "folded": true,
-     "from": {
-      "step": 3,
-      "title": "执行 SQL"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    }
-   ]
-  },
-  {
-   "key": "limits",
-   "title": "局限",
-   "blocks": [
-    {
-     "key": "limitations",
-     "title": "局限",
-     "kind": "list",
-     "folded": false,
-     "from": {
-      "step": 5,
-      "title": "成稿"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    }
-   ]
-  },
-  {
-   "key": "sources",
-   "title": "出处",
-   "blocks": [
-    {
-     "key": "citations",
-     "title": "出处",
-     "kind": "list",
-     "folded": false,
-     "from": {
-      "step": 5,
-      "title": "成稿"
-     },
-     "status": "not_reached",
-     "note": "没有做到这一步",
-     "content": null,
-     "columns": [],
-     "also": {},
-     "summary": null,
-     "artifact": null,
-     "source": null
-    }
-   ]
-  }
- ],
- "how": [
-  {
-   "index": 1,
-   "title": "改写问题",
-   "summary": "把问题改写成没有歧义的：查什么、哪个期间、什么口径",
-   "status": "running",
-   "times": 0,
-   "rejected": 0,
-   "spent": "0.00"
-  },
-  {
-   "index": 2,
-   "title": "生成 SQL",
-   "summary": "对照数据的结构写出查询，并说明每一列的口径",
-   "status": "pending",
-   "times": 0,
-   "rejected": 0,
-   "spent": "0.00"
-  },
-  {
-   "index": 3,
-   "title": "执行 SQL",
-   "summary": "执行查询，原样带回结果和数据版本",
-   "status": "pending",
-   "times": 0,
-   "rejected": 0,
-   "spent": "0.00"
-  },
-  {
-   "index": 4,
-   "title": "整理结果",
-   "summary": "统一单位、币种、期间的写法，标出缺的值",
-   "status": "pending",
-   "times": 0,
-   "rejected": 0,
-   "spent": "0.00"
-  },
-  {
-   "index": 5,
-   "title": "成稿",
-   "summary": "写出答案：每个数带数据版本和口径，写明局限；结论栏留空",
-   "status": "pending",
-   "times": 0,
-   "rejected": 0,
-   "spent": "0.00"
-  }
- ],
- "conclusion": {
-  "text": "",
-  "kind": "user_draft",
-  "saved_at": null,
-  "version": null
+  "reserve": "0.05",
+  "status": "running",
+  "attempts": [],
+  "times": 0,
+  "rejected": 0,
+  "spent": "0.00",
+  "data": null
  }
 }

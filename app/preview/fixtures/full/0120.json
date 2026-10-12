@@ -1,47 +1,4 @@
 {
  "contract_version": 2,
- "task_id": "e622161e-278e-510c-a294-d321919a97e8",
- "step": {
-  "index": 4,
-  "step_id": "normalize",
-  "title": "整理结果",
-  "summary": "统一单位、币种、期间的写法，标出缺的值",
-  "why": "单位、币种、期间的写法统一之后才好比较。缺的值标出来，不补、不估。",
-  "uses": [
-   {
-    "artifact": "rewritten",
-    "step": 1,
-    "title": "改写问题"
-   },
-   {
-    "artifact": "rows",
-    "step": 3,
-    "title": "执行 SQL"
-   }
-  ],
-  "tools": [],
-  "returns": "table",
-  "checks": [
-   {
-    "label": "交回的格式对"
-   },
-   {
-    "label": "有整理后的表"
-   }
-  ],
-  "after_rejection": {
-   "reworks": 1,
-   "then": "human",
-   "back_to": null,
-   "backs": 0,
-   "text": "重做，最多 1 次；仍不过，停下来问你"
-  },
-  "reserve": "0.05",
-  "status": "pending",
-  "attempts": [],
-  "times": 0,
-  "rejected": 0,
-  "spent": "0.00",
-  "data": null
- }
+ "artifacts": []
 }

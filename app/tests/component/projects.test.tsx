@@ -147,7 +147,7 @@ describe('项目页', () => {
       .pages.find((each) => each.title.startsWith(title))!
       .path.split('/')[4]
 
-  it('对话、底稿；三种开始的办法', async () => {
+  it('对话、专家交回；三种开始的办法', async () => {
     const id = idOf('full', '项目页')
     page(<ProjectScreen project={id} />)
     expect(await screen.findByRole('button', { name: '恒瑞医药' })).toBeInTheDocument()
@@ -162,8 +162,9 @@ describe('项目页', () => {
     )
     const conversations = within(screen.getByRole('region', { name: '对话' }))
     expect(conversations.getAllByRole('link')).toHaveLength(3)
-    // 底稿：专家的名字、终态的白话、花了多少。没有代号
-    const dossiers = within(screen.getByRole('region', { name: '底稿' }))
+    // 专家交回：专家的名字、终态的白话、花了多少；点开回到那段对话。没有代号
+    const dossiers = within(screen.getByRole('region', { name: '专家交回' }))
+    expect(dossiers.getAllByRole('link')[0].getAttribute('href')).toMatch(/\/projects\/.+\/c\/.+/)
     expect(dossiers.getByText('财报体检')).toBeInTheDocument()
     expect(dossiers.getByText('已完成')).toBeInTheDocument()
     expect(dossiers.getByText('¥0.400')).toBeInTheDocument()

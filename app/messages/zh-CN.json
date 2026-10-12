@@ -251,7 +251,7 @@
       },
       "expert": {
         "name": "专家",
-        "what": "按固定的方法一步一步做，每一步都验收，交回一份底稿。慢一些，贵一些。",
+        "what": "按固定的方法一步一步做，每一步都验收，成稿写进项目文件。慢一些，贵一些。",
         "placeholder": "要专家解决什么问题",
         "send": "交给专家"
       }
@@ -264,7 +264,7 @@
       "pick": {
         "chat": "聊天可以不选项目。选了之后，它能读这个项目里的文件。",
         "work": "工作要在一个项目里做：它是你机器上的一个目录。",
-        "expert": "专家接手的是整个项目：这段对话、项目里的文件、别的对话和底稿。"
+        "expert": "专家接手的是整个项目：这段对话、项目里的文件和别的对话。"
       },
       "create": "新建项目"
     },
@@ -469,6 +469,17 @@
       "allowed": "按规则放行：{command}",
       "denied": "顾问想做 {command}，按专家包规则拒绝了"
     },
+    "local": {
+      "approved": "你在电脑上允许了一次：{scope}。同一目录、同样范围的请求在最长 30 分钟内不再问。摘要 {digest}",
+      "denied": "电脑上没有允许：{scope}。要长期放开，在电脑托盘的「设置」里改上限或目录。摘要 {digest}",
+      "join": "、",
+      "sandbox": {
+        "read-only": "只读",
+        "workspace-write": "可写工作目录",
+        "danger-full-access": "不设沙箱"
+      },
+      "network": { "on": "可联网", "off": "不联网" }
+    },
     "panel": {
       "files": "文件",
       "changes": "改动",
@@ -489,7 +500,7 @@
     "stop": {
       "button": "停止",
       "title": "停下专家？",
-      "body": "已经花的不退。做完的部分会交回给你，在底稿里看得到。",
+      "body": "已经花的不退。做完的部分已经写进项目文件，在右边「改动」里看得到。",
       "confirm": "停下",
       "cancel": "接着做",
       "failed": "没有停成，请再试一次。"
@@ -571,25 +582,12 @@
       "send": "答复",
       "answered": "你已经答复了"
     },
-    "sheet": {
-      "title": "委托单",
-      "question": "问题",
-      "spent": "已花（估算）",
-      "parts": "做完的 {used} ＋ 在做的 {running}",
-      "data": "数据",
-      "dataUnknown": "还不知道",
-      "dataAsOf": "数据到 {asOf}",
-      "elapsed": "已用时间",
-      "dossier": "看底稿",
-      "dossierSoon": "底稿页还在做"
-    },
     "loading": "加载中…",
-    "failedToLoad": "没有取到这件委托。",
-    "answer": "回答"
+    "failedToLoad": "没有取到这件委托。"
   },
   "expertHome": {
     "title": "专家",
-    "lead": "把一件事整个交出去。专家按方法一步一步做，每一步都验过才往下，做完交回一份底稿。",
+    "lead": "把一件事整个交出去。专家按方法一步一步做，每一步都验过才往下，做完把成稿写进项目文件。",
     "waiting": "等我决定",
     "running": "进行中",
     "packs": "有哪些专家",
@@ -605,10 +603,9 @@
     "noData": "不用我们的数据",
     "ask": "请这位专家",
     "none": "还没有请过专家。",
-    "dossier": "看底稿",
     "loading": "加载中…",
     "pickTitle": "在哪个项目里请这位专家",
-    "pickBody": "专家接手的是整个项目：项目里的文件、对话和底稿。",
+    "pickBody": "专家接手的是整个项目：项目里的文件和对话。",
     "noMachine": "还没有登记电脑。先接入电脑，再开始工作或请专家。"
   },
   "askExpert": {
@@ -625,14 +622,14 @@
     "sees": "专家看得到",
     "seesThis": "这段对话（{turns} 轮）",
     "seesFiles": "项目里的文件（只读，用到才读）",
-    "seesOthers": "项目里别的 {conversations} 段对话、{dossiers} 份底稿",
+    "seesOthers": "项目里别的 {conversations} 段对话、{dossiers} 次专家交回",
     "will": "它会这样做",
     "wont": "它不会做",
     "returns": "做完交回",
     "choose": "先在左边选一位专家。",
     "confirm1": "专家会接着做：{question}",
     "confirm2": "花了多少实时显示在顶部",
-    "confirm3": "做完把底稿交回给你，期间你可以随时停下",
+    "confirm3": "做完把成稿写进项目文件，期间你可以随时停下",
     "cancel": "取消",
     "submit": "交给专家",
     "submitting": "正在交出…",
@@ -734,10 +731,8 @@
       "askExpert": "请专家",
       "offlineNote": "机器不在线：可以看、可以聊天，不能新建工作、不能请专家。",
       "conversations": "对话",
-      "dossiers": "底稿",
       "empty": "这个项目里还什么都没有。用上面三个按钮开始。",
       "noConversations": "还没有对话。",
-      "noDossiers": "专家还没有交回过底稿。",
       "expertWorking": "专家正在处理",
       "untitled": "未命名的对话",
       "kind": {
@@ -756,50 +751,10 @@
       "archivedNote": "这个项目已经归档。",
       "loading": "加载中…",
       "failed": "没有取到这个项目。",
-      "problem": "没有做成，请再试一次。"
+      "problem": "没有做成，请再试一次。",
+      "handbacks": "专家交回",
+      "noHandbacks": "专家还没有交回过。成稿都在项目文件里。"
     }
-  },
-  "dossier": {
-    "loading": "加载中…",
-    "failed": "没有取到这份底稿。",
-    "spent": "花了 {amount}（估算）",
-    "data": "数据：{dataset} · 版本 …{version} · 数据到 {asOf}",
-    "back": "回到对话",
-    "again": "重新请专家",
-    "otherExpert": "换一位专家",
-    "export": "导出",
-    "head": {
-      "running": "专家还在做。做完的步骤已经在下面，其余的还没有。",
-      "noData": "这家公司还没有数据。回到对话里去处理：可以申请入库，入库之后接着做。",
-      "refused": "专家没有接这件事。",
-      "stopped": "没有做完。做完的步骤照常显示；没做到的写着「没有做到这一步」。已经花的照记。"
-    },
-    "notReached": "没有做到这一步",
-    "empty": "没有",
-    "show": "展开",
-    "hide": "收起",
-    "rows": "{n} 行",
-    "from": "出自第 {step} 步「{title}」",
-    "source": "出处：{dataset} · 版本 …{version} · 数据到 {asOf}",
-    "how": {
-      "title": "它是怎么做的",
-      "redone": "重做过 {n} 次",
-      "detail": "点一步，看它交回了什么、验收的每一条",
-      "none": "专家没有开始做。"
-    },
-    "conclusion": {
-      "title": "我的结论",
-      "draft": "用户草稿",
-      "note": "专家不下结论。这一栏是你的。",
-      "placeholder": "你怎么看？",
-      "save": "保存",
-      "saving": "正在保存…",
-      "saved": "已保存，第 {version} 版，{at}",
-      "failed": "没有保存成功，请再试一次。",
-      "unsaved": "有改动还没有保存"
-    },
-    "showDetail": "看每一个数的明细：口径、算法、来源",
-    "hideDetail": "收起明细"
   },
   "machines": {
     "title": "我的电脑",
@@ -901,34 +856,7 @@
   "results": {
     "title": "结果",
     "open": "打开结果",
-    "close": "收起结果",
-    "filed": "已归入知识库",
-    "status": {
-      "idle": "还没有结果",
-      "running": "正在做",
-      "done": "做完了",
-      "stopped": "停下了",
-      "failed": "没有做成"
-    },
-    "chat": {
-      "answer": "回答",
-      "none": "还没有回答。",
-      "data": "查过的数据",
-      "noData": "没有查数据。",
-      "missing": "没有数据的公司"
-    },
-    "work": {
-      "changes": "改动",
-      "summary": "改了 {count} 个文件",
-      "none": "还没有结果。"
-    },
-    "expert": {
-      "sheet": "委托单",
-      "dossier": "底稿",
-      "full": "打开整份底稿",
-      "noAnswer": "还没有回答。",
-      "notFiled": "做完后归入知识库"
-    }
+    "close": "收起结果"
   },
   "library": {
     "title": "知识库",
@@ -959,7 +887,6 @@
       "version": "第 {n} 版",
       "from": "来自：{question}",
       "copy": "这份资料在服务端有一份只属于你的副本。",
-      "toDossier": "去底稿",
       "toConversation": "去对话",
       "rename": "改名",
       "save": "保存",
