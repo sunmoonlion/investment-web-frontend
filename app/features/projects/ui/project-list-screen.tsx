@@ -3,7 +3,7 @@
 import { FolderIcon, PlusIcon } from 'lucide-react'
 import { useFormatter, useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -21,11 +21,24 @@ export function ProjectListScreen() {
   const format = useFormatter()
   const router = useRouter()
   const { locale } = useWorkbench()
+  const params = useSearchParams()
+  // 侧边栏工作区行的「全部」带 ?workspace=<电脑id\n目录>，「+」再带 new=1（0016，所有者 2026-10-12 定）
+  const only = params.get('workspace')
+  const [environmentId, workspaceRoot] = only ? only.split('\n') : [null, null]
+  const preset =
+    environmentId && workspaceRoot
+      ? { environment_id: environmentId, workspace_root: workspaceRoot }
+      : null
   const [archived, setArchived] = useState(false)
-  const [creating, setCreating] = useState(false)
+  const [creating, setCreating] = useState(() => params.get('new') === '1')
   const workspaces = useWorkspaces()
   const projects = useAllProjects(archived)
-  const groups = byWorkspace(workspaces.data ?? [], projects.data ?? [])
+  const groups = byWorkspace(workspaces.data ?? [], projects.data ?? []).filter(
+    (group) =>
+      !preset ||
+      (group.workspace.environment_id === preset.environment_id &&
+        group.workspace.root === preset.workspace_root),
+  )
   const ready = workspaces.data !== undefined && projects.data !== undefined
 
   return (
@@ -63,6 +76,14 @@ export function ProjectListScreen() {
           </section>
         ) : (
           <>
+            {preset ? (
+              <p className="text-muted-foreground text-[13px]">
+                {t('onlyWorkspace', { root: preset.workspace_root })}{' '}
+                <Link href={routes.projects(locale)} className="underline underline-offset-3">
+                  {t('seeAll')}
+                </Link>
+              </p>
+            ) : null}
             <label className="flex items-center gap-2 text-[13px]">
               <input
                 type="checkbox"
@@ -133,9 +154,11 @@ export function ProjectListScreen() {
       </div>
 
       <NewProjectDialog
+        key={only ?? ''}
         open={creating}
         onOpenChange={setCreating}
         onCreated={(project) => router.push(routes.project(locale, project))}
+        preset={preset}
       />
     </div>
   )

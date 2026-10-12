@@ -175,7 +175,9 @@
       "expert": "Expert"
     },
     "workspace": {
-      "none": "No folder yet. Add one in the agent on this computer so projects have a place."
+      "none": "No folder yet. Add one in the agent on this computer so projects have a place.",
+      "all": "All",
+      "add": "New project in {name}"
     },
     "loading": "Loading…",
     "noWorkspace": "No workspace yet.",
@@ -198,7 +200,6 @@
       "offline": "No computer is online",
       "none": "No computer registered"
     },
-    "allProjects": "All",
     "computers": "Computers and projects",
     "computer": {
       "none": "No computer connected yet. Once connected, your folders and projects appear here.",
@@ -208,20 +209,22 @@
     "project": {
       "new": "New project",
       "toggle": "Expand or collapse {title}",
-      "more": "More for {title}",
-      "add": "New in {title}",
       "noTalks": "No conversations yet",
-      "addKind": {
-        "chat": "New chat",
-        "work": "New work",
-        "expert": "Ask an expert"
-      }
+      "remove": "Remove project {title}"
     },
     "chats": "Chats",
     "pending": {
       "title": "Waiting for me",
       "urgent": "urgent",
       "minutes": "{minutes} min left"
+    },
+    "conversation": {
+      "remove": "Remove conversation {title}"
+    },
+    "remove": {
+      "confirm": "Remove",
+      "cancel": "Cancel",
+      "note": "Removed from here only; the folder on your computer stays"
     }
   },
   "projectPicker": {
@@ -685,7 +688,9 @@
         "agent": "No local agent connected yet: install the local agent on your machine and add a folder in it.",
         "account": "Signed in with a different account: the local agent and the web page must use the same account.",
         "note": "Workspaces are added and removed in the local agent on your machine, not on the web."
-      }
+      },
+      "onlyWorkspace": "Only this workspace: {root}",
+      "seeAll": "Show all"
     },
     "create": {
       "title": "New project",

@@ -175,7 +175,9 @@
       "expert": "专家"
     },
     "workspace": {
-      "none": "还没有加目录。在这台电脑的代理里加一个，项目才有地方放。"
+      "none": "还没有加目录。在这台电脑的代理里加一个，项目才有地方放。",
+      "all": "全部",
+      "add": "在 {name} 里新建项目"
     },
     "loading": "加载中…",
     "noWorkspace": "还没有工作区。",
@@ -198,7 +200,6 @@
       "offline": "电脑都不在线",
       "none": "还没有登记电脑"
     },
-    "allProjects": "全部",
     "computers": "我的电脑与项目",
     "computer": {
       "none": "还没有接入电脑。接入后，你的目录和项目会出现在这里。",
@@ -208,20 +209,22 @@
     "project": {
       "new": "新建项目",
       "toggle": "展开或收起 {title}",
-      "more": "{title} 的更多",
-      "add": "在 {title} 里新建",
       "noTalks": "还没有对话",
-      "addKind": {
-        "chat": "新聊天",
-        "work": "新工作",
-        "expert": "请专家"
-      }
+      "remove": "删除项目 {title}"
     },
     "chats": "聊天",
     "pending": {
       "title": "等我决定的事",
       "urgent": "急",
       "minutes": "还剩 {minutes} 分钟"
+    },
+    "conversation": {
+      "remove": "删除对话 {title}"
+    },
+    "remove": {
+      "confirm": "确定删除",
+      "cancel": "取消",
+      "note": "只从这里移除，电脑上的文件夹不动"
     }
   },
   "projectPicker": {
@@ -685,7 +688,9 @@
         "agent": "还没有接入本地代理：在你的机器上装好本地代理，在里面加一个目录。",
         "account": "登录的账号不对：本地代理登的和网页登的要是同一个账号。",
         "note": "工作区的增减不在网页上做，在你机器上的本地代理里做。"
-      }
+      },
+      "onlyWorkspace": "只看这个工作区：{root}",
+      "seeAll": "看全部"
     },
     "create": {
       "title": "新建项目",

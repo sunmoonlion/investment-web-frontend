@@ -28,17 +28,20 @@ export function NewProjectDialog({
   open,
   onOpenChange,
   onCreated,
+  preset,
 }: {
   open: boolean
   onOpenChange: (open: boolean) => void
   onCreated: (project: string) => void
+  // 从侧边栏某个工作区的「+」进来：电脑和目录已经定了
+  preset?: { environment_id: string; workspace_root: string } | null
 }) {
   const t = useTranslations('projects.create')
   const machines = useMachines()
   const { create } = useProjectActions()
   const all = machines.data ?? []
-  const [picked, setPicked] = useState<string | null>(null)
-  const [root, setRoot] = useState<string | null>(null)
+  const [picked, setPicked] = useState<string | null>(preset?.environment_id ?? null)
+  const [root, setRoot] = useState<string | null>(preset?.workspace_root ?? null)
   const [path, setPath] = useState('')
   const [title, setTitle] = useState('')
 

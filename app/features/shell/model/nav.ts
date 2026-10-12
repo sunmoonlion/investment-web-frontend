@@ -63,21 +63,25 @@ export function recent(
   limit = 8,
 ): RecentItem[] {
   const names = new Map(projects.map((project) => [project.id, project.title]))
-  return [...conversations]
-    .sort((a, b) =>
-      (b.last_active_at ?? b.created_at).localeCompare(a.last_active_at ?? a.created_at),
-    )
-    .slice(0, limit)
-    .map((conversation) => ({
-      id: conversation.id,
-      title: conversation.title,
-      kind: conversation.kind,
-      busy: conversation.wheel === 'advisor',
-      project: conversation.project_id ? (names.get(conversation.project_id) ?? null) : null,
-      href: isBuilt(conversation.project_id === null ? 'chat' : 'projectConversation')
-        ? conversationRoute(locale, conversation)
-        : null,
-    }))
+  return (
+    [...conversations]
+      // 项目已从工作台移除（归档）的对话不再算「最近」
+      .filter((conversation) => !conversation.project_id || names.has(conversation.project_id))
+      .sort((a, b) =>
+        (b.last_active_at ?? b.created_at).localeCompare(a.last_active_at ?? a.created_at),
+      )
+      .slice(0, limit)
+      .map((conversation) => ({
+        id: conversation.id,
+        title: conversation.title,
+        kind: conversation.kind,
+        busy: conversation.wheel === 'advisor',
+        project: conversation.project_id ? (names.get(conversation.project_id) ?? null) : null,
+        href: isBuilt(conversation.project_id === null ? 'chat' : 'projectConversation')
+          ? conversationRoute(locale, conversation)
+          : null,
+      }))
+  )
 }
 
 // ---------------- 按真源分层的树：电脑 → 工作区 → 项目 → 对话（0016）----------------

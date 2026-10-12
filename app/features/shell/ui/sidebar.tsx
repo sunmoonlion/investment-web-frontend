@@ -4,17 +4,17 @@ import {
   BookOpenIcon,
   BrainIcon,
   ChevronRightIcon,
-  EllipsisIcon,
   FolderIcon,
   GraduationCapIcon,
   MessageSquareIcon,
   PlusIcon,
   SettingsIcon,
+  Trash2Icon,
   WrenchIcon,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
 import { LogoutButton } from '@/components/auth/logout-button'
@@ -26,6 +26,7 @@ import {
   useProjects,
   useWorkspaces,
 } from '@/lib/workbench/queries'
+import { useRemove } from '@/lib/workbench/remove'
 import { MODES, routes } from '@/lib/workbench/routes'
 import { cn } from '@/lib/utils'
 
@@ -87,6 +88,52 @@ function KindIcon({ kind, label }: { kind: TreeConversation['kind']; label: stri
   return <WrenchIcon className={className} aria-label={label} />
 }
 
+// 行尾的「删除」：先一个小垃圾桶，点了换成「确定删除 / 取消」，不弹浏览器对话框
+function RemoveControl({
+  label,
+  asking,
+  onAsk,
+  onCancel,
+  onConfirm,
+  busy = false,
+}: {
+  label: string
+  asking: boolean
+  onAsk: () => void
+  onCancel: () => void
+  onConfirm: () => void
+  busy?: boolean
+}) {
+  const t = useTranslations('shell')
+  if (!asking) {
+    return (
+      <button
+        type="button"
+        aria-label={label}
+        onClick={onAsk}
+        className="text-muted-foreground hover:text-foreground shrink-0 opacity-0 group-hover:opacity-100 focus:opacity-100"
+      >
+        <Trash2Icon className="size-3.5" />
+      </button>
+    )
+  }
+  return (
+    <span className="flex shrink-0 items-center gap-1 text-xs" title={t('remove.note')}>
+      <button
+        type="button"
+        disabled={busy}
+        onClick={onConfirm}
+        className="rounded bg-red-600 px-1.5 py-0.5 text-white disabled:opacity-50"
+      >
+        {t('remove.confirm')}
+      </button>
+      <button type="button" onClick={onCancel} className="rounded border px-1.5 py-0.5">
+        {t('remove.cancel')}
+      </button>
+    </span>
+  )
+}
+
 export function Sidebar() {
   const t = useTranslations('shell')
   const tAuth = useTranslations('auth')
@@ -115,7 +162,24 @@ export function Sidebar() {
   // 当前项目所在的工作区默认展开，其余折叠；手动开合记在这一次
   const currentProject = allProjects.find((project) => pathname.includes(project.id))
   const [toggled, setToggled] = useState<Record<string, boolean>>({})
-  const [openMenu, setOpenMenu] = useState<string | null>(null)
+  // 哪一行正在问「确定删除？」
+  const [asking, setAsking] = useState<string | null>(null)
+  const remove = useRemove()
+  const router = useRouter()
+  const removeProject = (id: string) =>
+    remove.project.mutate(id, {
+      onSuccess: () => {
+        setAsking(null)
+        if (pathname.includes(id)) router.push(routes.home(locale))
+      },
+    })
+  const removeConversation = (id: string) =>
+    remove.conversation.mutate(id, {
+      onSuccess: () => {
+        setAsking(null)
+        if (pathname.includes(id)) router.push(routes.home(locale))
+      },
+    })
   const [showPending, setShowPending] = useState(false)
   const pointers = pendingPointers(pending.data ?? [], locale)
   const isOpen = (key: string, fallback: boolean) => toggled[key] ?? fallback
@@ -158,15 +222,7 @@ export function Sidebar() {
       {/* 中间这一段自己滚：电脑 → 工作区 → 项目 → 对话 */}
       <div className="-mx-1 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-1">
         <section aria-label={t('computers')}>
-          <h2 className={cn(heading, 'flex items-center')}>
-            {t('computers')}
-            <Link
-              href={routes.projects(locale)}
-              className="hover:text-foreground ml-auto font-normal underline-offset-3 hover:underline"
-            >
-              {t('allProjects')}
-            </Link>
-          </h2>
+          <h2 className={heading}>{t('computers')}</h2>
           {machines.isPending ? (
             <p className="text-muted-foreground px-2 text-xs">{t('loading')}</p>
           ) : tree.length === 0 ? (
@@ -208,33 +264,51 @@ export function Sidebar() {
                           workspace.key,
                           holdsCurrent || machine.workspaces.length === 1,
                         )
+                        const name = workspace.root.split(/[\\/]/).pop() || workspace.root
+                        const listHref = `${routes.projects(locale)}?workspace=${encodeURIComponent(workspace.key)}`
                         return (
                           <li key={workspace.key}>
-                            <button
-                              type="button"
-                              onClick={() =>
-                                flip(workspace.key, holdsCurrent || machine.workspaces.length === 1)
-                              }
-                              aria-expanded={open}
-                              title={workspace.root}
-                              className={cn(row, rowLink, 'w-full pl-4 text-left')}
-                            >
-                              <ChevronRightIcon
-                                className={cn(
-                                  'text-muted-foreground size-3.5 shrink-0 transition-transform',
-                                  open && 'rotate-90',
-                                )}
-                              />
-                              <span className="truncate">
-                                {workspace.root.split(/[\\/]/).pop() || workspace.root}
-                              </span>
-                            </button>
+                            <div className={cn(row, rowLink, 'pl-4')}>
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  flip(
+                                    workspace.key,
+                                    holdsCurrent || machine.workspaces.length === 1,
+                                  )
+                                }
+                                aria-expanded={open}
+                                title={workspace.root}
+                                className="flex min-w-0 flex-1 items-center gap-2 text-left"
+                              >
+                                <ChevronRightIcon
+                                  className={cn(
+                                    'text-muted-foreground size-3.5 shrink-0 transition-transform',
+                                    open && 'rotate-90',
+                                  )}
+                                />
+                                <span className="truncate">{name}</span>
+                              </button>
+                              <Link
+                                href={listHref}
+                                className="text-muted-foreground hover:text-foreground shrink-0 text-xs"
+                              >
+                                {t('workspace.all')}
+                              </Link>
+                              <Link
+                                href={`${listHref}&new=1`}
+                                aria-label={t('workspace.add', { name })}
+                                className="text-muted-foreground hover:text-foreground shrink-0"
+                              >
+                                <PlusIcon className="size-3.5" />
+                              </Link>
+                            </div>
                             {open ? (
                               <ul>
                                 {workspace.projects.length === 0 ? (
                                   <li>
                                     <Link
-                                      href={routes.projects(locale)}
+                                      href={`${listHref}&new=1`}
                                       className={cn(
                                         row,
                                         rowLink,
@@ -288,51 +362,26 @@ export function Sidebar() {
                                               {waitingHere}
                                             </span>
                                           ) : null}
-                                          <Link
-                                            href={routes.project(locale, project.id)}
-                                            aria-label={t('project.more', { title: project.title })}
-                                            className="text-muted-foreground hover:text-foreground shrink-0"
-                                          >
-                                            <EllipsisIcon className="size-3.5" />
-                                          </Link>
-                                          <button
-                                            type="button"
-                                            aria-label={t('project.add', { title: project.title })}
-                                            aria-expanded={openMenu === project.id}
-                                            onClick={() =>
-                                              setOpenMenu(
-                                                openMenu === project.id ? null : project.id,
-                                              )
-                                            }
-                                            className="text-muted-foreground hover:text-foreground shrink-0"
-                                          >
-                                            <PlusIcon className="size-3.5" />
-                                          </button>
+                                          <RemoveControl
+                                            label={t('project.remove', { title: project.title })}
+                                            asking={asking === project.id}
+                                            busy={remove.project.isPending}
+                                            onAsk={() => setAsking(project.id)}
+                                            onCancel={() => setAsking(null)}
+                                            onConfirm={() => removeProject(project.id)}
+                                          />
                                         </div>
-                                        {openMenu === project.id ? (
-                                          <ul className="bg-background mx-2 mb-1 rounded-md border p-1 text-[13px]">
-                                            {MODES.map((each) => (
-                                              <li key={each}>
-                                                <Link
-                                                  href={`${routes.home(locale, each)}&project=${project.id}`}
-                                                  onClick={() => setOpenMenu(null)}
-                                                  className={cn(row, rowLink)}
-                                                >
-                                                  <KindIcon kind={each} label={t(`mode.${each}`)} />
-                                                  {t(`project.addKind.${each}`)}
-                                                </Link>
-                                              </li>
-                                            ))}
-                                          </ul>
-                                        ) : null}
                                         {expanded ? (
                                           <ul>
                                             {talks.map((talk) => (
-                                              <li key={talk.id}>
+                                              <li
+                                                key={talk.id}
+                                                className="group flex items-center pr-2"
+                                              >
                                                 <Destination
                                                   href={talk.href}
                                                   active={pathname.includes(talk.id)}
-                                                  className="pl-14"
+                                                  className="min-w-0 flex-1 pl-14"
                                                 >
                                                   <KindIcon
                                                     kind={talk.kind}
@@ -348,6 +397,16 @@ export function Sidebar() {
                                                     />
                                                   ) : null}
                                                 </Destination>
+                                                <RemoveControl
+                                                  label={t('conversation.remove', {
+                                                    title: talk.title ?? t('untitled'),
+                                                  })}
+                                                  asking={asking === talk.id}
+                                                  busy={remove.conversation.isPending}
+                                                  onAsk={() => setAsking(talk.id)}
+                                                  onCancel={() => setAsking(null)}
+                                                  onConfirm={() => removeConversation(talk.id)}
+                                                />
                                               </li>
                                             ))}
                                             {talks.length === 0 ? (

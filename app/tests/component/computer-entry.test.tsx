@@ -186,6 +186,57 @@ describe('电脑接入入口', () => {
       '/zh-CN/workbench?mode=chat',
     )
   })
+  it('侧栏树：工作区行有「全部」和「+」，项目与对话行有删除，确认后才发请求（0016，所有者 2026-10-12 定）', async () => {
+    environment = 'full'
+    const base = globalThis.fetch
+    const removed: string[] = []
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: string, init: RequestInit = {}) => {
+        if (init.method === 'DELETE') {
+          removed.push(String(input))
+          return new Response(null, { status: 204 })
+        }
+        // 这个文件的公共桩只让「电脑」按 full 回；树还要工作区、项目、对话
+        const path = String(input).split('?')[0]
+        if (
+          [
+            '/api/workbench/workspaces',
+            '/api/workbench/projects',
+            '/api/workbench/sessions',
+          ].includes(path)
+        ) {
+          return Response.json(fixture('full', path))
+        }
+        return base(input, init)
+      }),
+    )
+    page(<Sidebar />)
+    const workspaceKey = encodeURIComponent(
+      '0f79a87c-7bf3-5956-be15-01e3988797ee\n/home/demo/research',
+    )
+    await screen.findByText('办公室的电脑')
+    const all = await screen.findAllByRole('link', { name: '全部' })
+    expect(all[0]).toHaveAttribute('href', `/zh-CN/workbench/projects?workspace=${workspaceKey}`)
+    expect(screen.getByRole('link', { name: '在 research 里新建项目' })).toHaveAttribute(
+      'href',
+      `/zh-CN/workbench/projects?workspace=${workspaceKey}&new=1`,
+    )
+    // 顶上不再有总的「全部」，项目行不再有「更多」「新建」
+    expect(screen.queryByRole('link', { name: /的更多$/ })).toBeNull()
+    expect(screen.queryByRole('button', { name: /里新建$/ })).toBeNull()
+    // 两个工作区默认都折叠：点开 research 才看得到项目行
+    fireEvent.click(screen.getByRole('button', { name: 'research' }))
+    // 项目行：先问一句，取消不发请求；确定才发 DELETE
+    fireEvent.click(screen.getByRole('button', { name: '删除项目 上海机场' }))
+    fireEvent.click(screen.getByRole('button', { name: '取消' }))
+    expect(removed).toEqual([])
+    fireEvent.click(screen.getByRole('button', { name: '删除项目 上海机场' }))
+    fireEvent.click(screen.getByRole('button', { name: '确定删除' }))
+    await waitFor(() =>
+      expect(removed).toEqual(['/api/workbench/projects/f0410883-287b-578b-81dc-15f24e5b2d8f']),
+    )
+  })
   it.each(['pending', 'error'] as const)('新建项目 %s 不误报没有电脑或创建项目', async (state) => {
     environment = state
     page(<NewProjectDialog open onOpenChange={() => {}} onCreated={() => {}} />)
