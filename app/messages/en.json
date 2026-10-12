@@ -494,7 +494,7 @@
       "truncated": "Too many items; only the first 2000 are listed",
       "back": "Back to the file tree",
       "binary": "Not a text file; contents are not shown here.",
-      "partial": "The file is larger than 1 MiB; only the beginning is shown.",
+      "partial": "The file is larger than 512 KiB; only the beginning is shown.",
       "problem": {
         "agent_offline": "The agent on this computer is offline, so its files cannot be read.",
         "agent_outdated": "The agent on this computer is too old and has no file channel; upgrade to 0.4.0 or later.",
