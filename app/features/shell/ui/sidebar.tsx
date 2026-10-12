@@ -362,6 +362,13 @@ export function Sidebar() {
                                               {waitingHere}
                                             </span>
                                           ) : null}
+                                          <Link
+                                            href={`${routes.home(locale, mode === 'chat' ? 'work' : mode)}&project=${project.id}`}
+                                            aria-label={t('project.add', { title: project.title })}
+                                            className="text-muted-foreground hover:text-foreground shrink-0"
+                                          >
+                                            <PlusIcon className="size-3.5" />
+                                          </Link>
                                           <RemoveControl
                                             label={t('project.remove', { title: project.title })}
                                             asking={asking === project.id}

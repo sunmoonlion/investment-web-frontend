@@ -222,11 +222,16 @@ describe('电脑接入入口', () => {
       'href',
       `/zh-CN/workbench/projects?workspace=${workspaceKey}&new=1`,
     )
-    // 顶上不再有总的「全部」，项目行不再有「更多」「新建」
+    // 顶上不再有总的「全部」，项目行不再有「更多」
     expect(screen.queryByRole('link', { name: /的更多$/ })).toBeNull()
-    expect(screen.queryByRole('button', { name: /里新建$/ })).toBeNull()
     // 两个工作区默认都折叠：点开 research 才看得到项目行
     fireEvent.click(screen.getByRole('button', { name: 'research' }))
+    // 项目行的「+」不弹菜单，直接去右边的新建框，项目已选好（所有者 2026-10-12 实测定）
+    expect(screen.getByRole('link', { name: '在 上海机场 里新建' })).toHaveAttribute(
+      'href',
+      '/zh-CN/workbench?mode=work&project=f0410883-287b-578b-81dc-15f24e5b2d8f',
+    )
+    expect(screen.queryByRole('button', { name: /里新建$/ })).toBeNull()
     // 项目行：先问一句，取消不发请求；确定才发 DELETE
     fireEvent.click(screen.getByRole('button', { name: '删除项目 上海机场' }))
     fireEvent.click(screen.getByRole('button', { name: '取消' }))

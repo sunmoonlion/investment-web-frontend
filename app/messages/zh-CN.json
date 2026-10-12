@@ -210,7 +210,8 @@
       "new": "新建项目",
       "toggle": "展开或收起 {title}",
       "noTalks": "还没有对话",
-      "remove": "删除项目 {title}"
+      "remove": "删除项目 {title}",
+      "add": "在 {title} 里新建"
     },
     "chats": "聊天",
     "pending": {

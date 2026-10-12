@@ -210,7 +210,8 @@
       "new": "New project",
       "toggle": "Expand or collapse {title}",
       "noTalks": "No conversations yet",
-      "remove": "Remove project {title}"
+      "remove": "Remove project {title}",
+      "add": "New in {title}"
     },
     "chats": "Chats",
     "pending": {
