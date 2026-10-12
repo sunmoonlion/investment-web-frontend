@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -52,9 +52,9 @@
   /* 用系统自带的字体，不下载字体文件。原来这里写成了 --font-sans 指向它自己，等于没有设，
      页面用的是浏览器默认的衬线字体。 */
   --font-app-sans:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif;
-  --font-app-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', 'Noto Sans CJK SC', 'Noto Sans SC', sans-serif;
+  --font-app-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -133,4 +133,35 @@
   html {
     @apply font-sans;
   }
+}
+/* 个人偏好里的主题色预设（0021 §二之 1）：只换主色与焦点环，其余不动 */
+:root[data-accent='blue'] {
+  --primary: oklch(0.52 0.17 255);
+  --primary-foreground: oklch(0.985 0 0);
+  --ring: oklch(0.52 0.17 255);
+}
+:root[data-accent='green'] {
+  --primary: oklch(0.5 0.14 150);
+  --primary-foreground: oklch(0.985 0 0);
+  --ring: oklch(0.5 0.14 150);
+}
+:root[data-accent='orange'] {
+  --primary: oklch(0.62 0.17 50);
+  --primary-foreground: oklch(0.145 0 0);
+  --ring: oklch(0.62 0.17 50);
+}
+.dark[data-accent='blue'] {
+  --primary: oklch(0.74 0.13 255);
+  --primary-foreground: oklch(0.2 0 0);
+  --ring: oklch(0.74 0.13 255);
+}
+.dark[data-accent='green'] {
+  --primary: oklch(0.74 0.13 150);
+  --primary-foreground: oklch(0.2 0 0);
+  --ring: oklch(0.74 0.13 150);
+}
+.dark[data-accent='orange'] {
+  --primary: oklch(0.78 0.15 55);
+  --primary-foreground: oklch(0.2 0 0);
+  --ring: oklch(0.78 0.15 55);
 }

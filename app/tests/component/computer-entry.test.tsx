@@ -106,7 +106,7 @@ function page(children: React.ReactNode, locale: 'zh-CN' | 'en' = 'zh-CN') {
 const checkLink = (locale: 'zh-CN' | 'en' = 'zh-CN') => {
   expect(
     screen.getByRole('link', { name: locale === 'zh-CN' ? '接入电脑' : 'Connect computer' }),
-  ).toHaveAttribute('href', `/${locale}/workbench/settings#computer`)
+  ).toHaveAttribute('href', `/${locale}/workbench/settings/computer`)
 }
 
 describe('电脑接入入口', () => {
@@ -118,7 +118,7 @@ describe('电脑接入入口', () => {
       within(card)
         .getAllByRole('link')
         .map((link) => link.getAttribute('href')),
-    ).toEqual(['/zh-CN/workbench/settings', '/zh-CN/workbench/settings#computer'])
+    ).toEqual(['/zh-CN/workbench/settings/cloud', '/zh-CN/workbench/settings/computer'])
     fireEvent.change(screen.getByRole('textbox'), { target: { value: '你好' } })
     expect(screen.queryByText(zh.home.blocker.noSandbox)).toBeNull()
     expect(screen.getByRole('button', { name: zh.home.mode.chat.send })).toBeDisabled()
@@ -178,7 +178,7 @@ describe('电脑接入入口', () => {
     await screen.findByText(/还没有接入电脑/)
     expect(screen.getByRole('link', { name: '去接入' })).toHaveAttribute(
       'href',
-      '/zh-CN/workbench/settings#computer',
+      '/zh-CN/workbench/settings/computer',
     )
     expect(screen.queryByText('我的电脑')).toBeNull()
     expect(screen.getByRole('link', { name: '聊天' })).toHaveAttribute(
@@ -224,8 +224,9 @@ describe('电脑接入入口', () => {
     )
     // 顶上不再有总的「全部」，项目行不再有「更多」
     expect(screen.queryByRole('link', { name: /的更多$/ })).toBeNull()
-    // 两个工作区默认都折叠：点开 research 才看得到项目行
-    fireEvent.click(screen.getByRole('button', { name: 'research' }))
+    // 工作区按个人偏好默认展开（0021）；没展开就点开 research
+    const research = screen.getByRole('button', { name: 'research' })
+    if (research.getAttribute('aria-expanded') !== 'true') fireEvent.click(research)
     // 项目行的「+」不弹菜单，直接去右边的新建框，项目已选好（所有者 2026-10-12 实测定）
     expect(screen.getByRole('link', { name: '在 上海机场 里新建' })).toHaveAttribute(
       'href',

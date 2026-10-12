@@ -159,7 +159,7 @@
       "copyManual": "Automatic copying is unavailable. The text is selected; press Ctrl+C.",
       "agentTokenTitle": "Local initialization (enter token separately)",
       "agentTokenHint": "Run this command in local PowerShell, then paste the token into the hidden prompt.",
-      "lead": "Register your model key and choose defaults for new conversations. Install agents and manage sandboxes in My computers.",
+      "lead": "Register your own model key and set the model and approval policy for new conversations.",
       "machineEntry": "Computers and sandbox",
       "machineEntryHint": "The cloud sandbox only starts, updates and is removed here. Connecting a computer is in My computer below.",
       "toMachines": "Connect computer"
@@ -742,7 +742,8 @@
       "untitled": "Untitled conversation",
       "kind": {
         "chat": "Chat",
-        "work": "Work"
+        "work": "Work",
+        "expert": "Expert"
       },
       "running": "in progress",
       "rename": "Rename",
@@ -993,5 +994,83 @@
     "remove": "Delete",
     "clear": "Clear all",
     "failed": "Not saved. Please try again."
+  },
+  "settings": {
+    "title": "Settings",
+    "nav": {
+      "preferences": "Preferences",
+      "cloud": "Cloud & models",
+      "computer": "My computer"
+    },
+    "navHint": {
+      "preferences": "Stored in this browser only",
+      "cloud": "Follows your account",
+      "computer": "Lives in the agent on your computer"
+    },
+    "preferences": {
+      "title": "Preferences",
+      "lead": "These live in this browser only; another browser starts fresh.",
+      "language": "Language",
+      "languageOf": {
+        "zh-CN": "中文",
+        "en": "English"
+      },
+      "appearance": "Appearance",
+      "appearanceOf": {
+        "system": "Follow system",
+        "light": "Light",
+        "dark": "Dark"
+      },
+      "accent": "Accent color",
+      "accentOf": {
+        "ink": "Ink",
+        "blue": "Blue",
+        "green": "Green",
+        "orange": "Orange"
+      },
+      "sidebar": "Sidebar width",
+      "sidebarOf": {
+        "narrow": "Narrow",
+        "normal": "Normal",
+        "wide": "Wide"
+      },
+      "expand": "Sidebar expanded to",
+      "expandOf": {
+        "computer": "Computers",
+        "workspace": "Workspaces",
+        "project": "Projects"
+      }
+    },
+    "cloud": {
+      "title": "Cloud & models",
+      "lead": "Model keys and endpoints, defaults for new conversations, the cloud sandbox and the data sources Codex may use. All follow your account.",
+      "memory": "Long-term memory",
+      "memoryHint": "A few facts about you, carried into every conversation.",
+      "memoryOpen": "Open"
+    },
+    "mcp": {
+      "title": "MCP connections",
+      "lead": "Which data sources Codex may use in the cloud. After a change, press Update sandbox above to apply it.",
+      "knowledge": "Public data",
+      "knowledgeHint": "Public material curated by the platform.",
+      "advisor": "The chosen expert's knowledge base",
+      "advisorHint": "Appears once you pick an expert.",
+      "on": "On",
+      "off": "Off"
+    },
+    "computer": {
+      "local": "Settings on this computer",
+      "localLead": "Allowed folders, limits and autostart live in the agent on your computer. Change them in the tray's folder and limit settings for now; later you can change them here.",
+      "roots": "Allowed folders",
+      "noRoots": "No folders yet",
+      "sandboxMode": "Sandbox mode",
+      "network": "Network",
+      "allowed": "Allowed",
+      "blocked": "Blocked",
+      "unknown": "Unknown",
+      "none": "No computer connected yet."
+    },
+    "baseUrl": "Endpoint (optional)",
+    "baseUrlHint": "A self-hosted or proxied OpenAI-compatible endpoint; https only, no local or private addresses. Leave empty for the vendor default."
   }
 }

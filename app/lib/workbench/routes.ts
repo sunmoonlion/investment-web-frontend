@@ -3,6 +3,9 @@ import type { ConversationKind } from '@/contracts/workbench-v2'
 
 export type Mode = 'chat' | 'work' | 'expert'
 export const MODES: readonly Mode[] = ['chat', 'work', 'expert']
+// 设置分三类（0021）：个人偏好 / 云端与模型 / 我的电脑
+export const SETTINGS_SECTIONS = ['preferences', 'cloud', 'computer'] as const
+export type SettingsSection = (typeof SETTINGS_SECTIONS)[number]
 
 function at(locale: string, ...parts: string[]) {
   return `/${[locale, 'workbench', ...parts].map(encodeURIComponent).join('/')}`
@@ -21,8 +24,9 @@ export const routes = {
     at(locale, 'projects', project, 'tasks', task),
   expert: (locale: string) => at(locale, 'expert'),
   machines: (locale: string) => at(locale, 'machines'),
-  settings: (locale: string) => at(locale, 'settings'),
-  computer: (locale: string) => `${at(locale, 'settings')}#computer`,
+  settings: (locale: string, section: SettingsSection = 'cloud') => at(locale, 'settings', section),
+  // 接入电脑是第三类；旧的 settings#computer 由 SettingsRedirect 转过来
+  computer: (locale: string) => at(locale, 'settings', 'computer'),
   // 知识库（SDD 0011）：用户自己的底稿与交回物
   library: (locale: string) => at(locale, 'library'),
   libraryItem: (locale: string, item: string) => at(locale, 'library', item),

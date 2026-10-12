@@ -86,6 +86,8 @@ export const prefsSchema = z
   .object({
     model: z.string().nullable(),
     approval_policy: z.enum(['untrusted', 'on-request', 'on-failure', 'never']),
+    // Codex 在云端能用哪些数据源（0021 §二之 2）
+    mcp_sources: z.record(z.string(), z.boolean()).optional(),
   })
   .loose()
 
@@ -96,6 +98,8 @@ export const credentialSchema = z
     hint: z.string(),
     status: z.enum(['active', 'revoked']),
     sandbox_id: uuid.nullable().optional(),
+    // 自建或代理的接入地址；空 = 厂商默认
+    base_url: z.string().nullable().optional(),
     // 列表接口还带这两个时间（后端 list_credentials 的 select）；strict 仍然挡住任何多出来的字段，尤其是密钥
     created_at: z.string().nullable().optional(),
     revoked_at: z.string().nullable().optional(),

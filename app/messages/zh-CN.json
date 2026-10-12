@@ -159,7 +159,7 @@
       "copyManual": "浏览器不允许自动复制；内容已选中，请按 Ctrl+C。",
       "agentTokenTitle": "本机初始化（令牌单独输入）",
       "agentTokenHint": "在本机 PowerShell 运行下面的命令，再在隐藏输入提示中粘贴令牌。",
-      "lead": "登记你自己的模型 key，设置新对话的模型与审批策略。安装代理、管理沙箱请到「我的电脑」。",
+      "lead": "登记你自己的模型 key，设置新对话的模型与审批策略。",
       "machineEntry": "电脑与沙箱",
       "machineEntryHint": "云端沙箱只负责拉起、更新和回收。连接电脑在下面的「我的电脑」。",
       "toMachines": "接入电脑"
@@ -742,7 +742,8 @@
       "untitled": "未命名的对话",
       "kind": {
         "chat": "聊天",
-        "work": "工作"
+        "work": "工作",
+        "expert": "专家"
       },
       "running": "进行中",
       "rename": "改名",
@@ -993,5 +994,83 @@
     "remove": "删",
     "clear": "全部清空",
     "failed": "没有保存成功，请再试一次。"
+  },
+  "settings": {
+    "title": "设置",
+    "nav": {
+      "preferences": "个人偏好",
+      "cloud": "云端与模型",
+      "computer": "我的电脑"
+    },
+    "navHint": {
+      "preferences": "只存在这个浏览器里",
+      "cloud": "跟着账号走",
+      "computer": "存在你电脑上的代理里"
+    },
+    "preferences": {
+      "title": "个人偏好",
+      "lead": "这些只存在这个浏览器里，换浏览器要重设。",
+      "language": "语言",
+      "languageOf": {
+        "zh-CN": "中文",
+        "en": "English"
+      },
+      "appearance": "外观",
+      "appearanceOf": {
+        "system": "跟随系统",
+        "light": "浅色",
+        "dark": "深色"
+      },
+      "accent": "主题色",
+      "accentOf": {
+        "ink": "墨",
+        "blue": "蓝",
+        "green": "绿",
+        "orange": "橙"
+      },
+      "sidebar": "侧边栏宽度",
+      "sidebarOf": {
+        "narrow": "窄",
+        "normal": "标准",
+        "wide": "宽"
+      },
+      "expand": "侧边栏默认展开到",
+      "expandOf": {
+        "computer": "电脑",
+        "workspace": "工作区",
+        "project": "项目"
+      }
+    },
+    "cloud": {
+      "title": "云端与模型",
+      "lead": "模型 key 与接入地址、新对话的默认、云端沙箱、Codex 能用的数据源。都跟着账号走，在哪台电脑登录都一样。",
+      "memory": "长期记忆",
+      "memoryHint": "关于你的几条事实，每段对话开头都带上。",
+      "memoryOpen": "去看"
+    },
+    "mcp": {
+      "title": "MCP 连接",
+      "lead": "Codex 在云端能用哪些数据源。改了之后点上面的「更新沙箱」才带进去。",
+      "knowledge": "公共数据",
+      "knowledgeHint": "平台整理好的公开资料。",
+      "advisor": "选定专家的知识库",
+      "advisorHint": "选了专家之后才出现。",
+      "on": "开",
+      "off": "关"
+    },
+    "computer": {
+      "local": "这台电脑上的设置",
+      "localLead": "白名单目录、上限、开机自启存在电脑上的代理里。现在要在托盘「白名单与上限设置」里改；以后可以在这里改。",
+      "roots": "白名单目录",
+      "noRoots": "还没有加目录",
+      "sandboxMode": "沙箱模式",
+      "network": "联网",
+      "allowed": "允许",
+      "blocked": "不允许",
+      "unknown": "未知",
+      "none": "还没有接入电脑。"
+    },
+    "baseUrl": "接入地址（可选）",
+    "baseUrlHint": "自建或代理的 OpenAI 兼容端点，只收 https、不收本机和内网地址；空着用厂商默认。"
   }
 }

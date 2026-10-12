@@ -15,7 +15,7 @@ import {
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { LogoutButton } from '@/components/auth/logout-button'
 import { useWorkbench } from '@/lib/workbench/context'
@@ -26,6 +26,7 @@ import {
   useProjects,
   useWorkspaces,
 } from '@/lib/workbench/queries'
+import { usePreferences } from '@/lib/preferences'
 import { useRemove } from '@/lib/workbench/remove'
 import { MODES, routes } from '@/lib/workbench/routes'
 import { cn } from '@/lib/utils'
@@ -162,6 +163,10 @@ export function Sidebar() {
   // 当前项目所在的工作区默认展开，其余折叠；手动开合记在这一次
   const currentProject = allProjects.find((project) => pathname.includes(project.id))
   const [toggled, setToggled] = useState<Record<string, boolean>>({})
+  // 个人偏好（0021）：侧边栏宽度与默认展开到哪一级
+  const { preferences, restore } = usePreferences()
+  useEffect(() => restore(), [restore])
+  const width = { narrow: 'w-52', normal: 'w-60', wide: 'w-72' }[preferences.sidebar]
   // 哪一行正在问「确定删除？」
   const [asking, setAsking] = useState<string | null>(null)
   const remove = useRemove()
@@ -191,7 +196,7 @@ export function Sidebar() {
   return (
     <aside
       aria-label={t('brand')}
-      className="bg-muted/40 flex h-full w-60 shrink-0 flex-col gap-4 border-r p-3"
+      className={cn('bg-muted/40 flex h-full shrink-0 flex-col gap-4 border-r p-3', width)}
     >
       <Link href={routes.home(locale)} className="px-2 pt-1 text-sm font-semibold">
         {t('brand')}
@@ -260,10 +265,11 @@ export function Sidebar() {
                         const holdsCurrent = workspace.projects.some(
                           (each) => each.project.id === currentProject?.id,
                         )
-                        const open = isOpen(
-                          workspace.key,
-                          holdsCurrent || machine.workspaces.length === 1,
-                        )
+                        const openByDefault =
+                          holdsCurrent ||
+                          machine.workspaces.length === 1 ||
+                          preferences.expand !== 'computer'
+                        const open = isOpen(workspace.key, openByDefault)
                         const name = workspace.root.split(/[\\/]/).pop() || workspace.root
                         const listHref = `${routes.projects(locale)}?workspace=${encodeURIComponent(workspace.key)}`
                         return (
@@ -271,12 +277,7 @@ export function Sidebar() {
                             <div className={cn(row, rowLink, 'pl-4')}>
                               <button
                                 type="button"
-                                onClick={() =>
-                                  flip(
-                                    workspace.key,
-                                    holdsCurrent || machine.workspaces.length === 1,
-                                  )
-                                }
+                                onClick={() => flip(workspace.key, openByDefault)}
                                 aria-expanded={open}
                                 title={workspace.root}
                                 className="flex min-w-0 flex-1 items-center gap-2 text-left"
@@ -322,10 +323,10 @@ export function Sidebar() {
                                 ) : null}
                                 {workspace.projects.map(
                                   ({ project, busy, conversations: talks }) => {
-                                    const expanded = isOpen(
-                                      project.id,
-                                      project.id === currentProject?.id,
-                                    )
+                                    const expandedByDefault =
+                                      project.id === currentProject?.id ||
+                                      preferences.expand === 'project'
+                                    const expanded = isOpen(project.id, expandedByDefault)
                                     const waitingHere = waitingIn(project.id)
                                     return (
                                       <li key={project.id}>
@@ -343,9 +344,7 @@ export function Sidebar() {
                                             aria-label={t('project.toggle', {
                                               title: project.title,
                                             })}
-                                            onClick={() =>
-                                              flip(project.id, project.id === currentProject?.id)
-                                            }
+                                            onClick={() => flip(project.id, expandedByDefault)}
                                             className="flex min-w-0 flex-1 items-center gap-2 text-left"
                                           >
                                             <FolderIcon className="size-3.5 shrink-0" />

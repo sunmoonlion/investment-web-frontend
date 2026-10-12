@@ -299,13 +299,30 @@ describe('我的电脑', () => {
 })
 
 describe('设置', () => {
-  it('三块：模型 key、我的沙箱、新对话的默认。给用户看的字里没有「会话」', async () => {
-    page(<SettingsScreen />)
+  it('云端与模型：模型 key、电脑与沙箱、新对话的默认、MCP 连接。给用户看的字里没有「会话」', async () => {
+    page(<SettingsScreen section="cloud" />)
     expect(await screen.findByRole('heading', { name: '设置' })).toBeInTheDocument()
-    for (const name of ['模型 key', '电脑与沙箱', '新对话的默认']) {
+    for (const name of ['模型 key', '电脑与沙箱', '新对话的默认', 'MCP 连接']) {
       expect(await screen.findByRole('heading', { name })).toBeInTheDocument()
     }
     expect(document.body.textContent).not.toContain('会话')
-    expect(document.getElementById('computer')).not.toBeNull()
+    // 左列三类（0021）
+    expect(
+      screen
+        .getAllByRole('link', { name: /个人偏好|云端与模型|我的电脑/ })
+        .map((a) => a.getAttribute('href')),
+    ).toEqual([
+      '/zh-CN/workbench/settings/preferences',
+      '/zh-CN/workbench/settings/cloud',
+      '/zh-CN/workbench/settings/computer',
+    ])
+    expect(document.getElementById('computer')).toBeNull()
+  })
+
+  it('我的电脑：接入电脑整节在第三类', async () => {
+    page(<SettingsScreen section="computer" />)
+    expect(await screen.findByRole('heading', { name: '设置' })).toBeInTheDocument()
+    await waitFor(() => expect(document.getElementById('computer')).not.toBeNull())
+    expect(await screen.findByRole('heading', { name: '这台电脑上的设置' })).toBeInTheDocument()
   })
 })

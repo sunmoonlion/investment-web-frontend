@@ -142,7 +142,7 @@ describe('侧栏', () => {
     // 「我的电脑」不再单列，灯在中段的电脑行上（0016 S2）
     expect(FOOT.map((entry) => entry.key)).toEqual(['pending', 'library', 'memory', 'settings'])
     const settings = FOOT.find((entry) => entry.key === 'settings')!
-    expect(footHref(settings, 'zh-CN')).toBe('/zh-CN/workbench/settings')
+    expect(footHref(settings, 'zh-CN')).toBe('/zh-CN/workbench/settings/cloud')
     const library = FOOT.find((entry) => entry.key === 'library')!
     expect(footHref(library, 'zh-CN')).toBe('/zh-CN/workbench/library')
   })

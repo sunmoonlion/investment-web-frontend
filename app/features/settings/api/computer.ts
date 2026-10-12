@@ -58,7 +58,12 @@ export function issueInstallCommand(
   csrfToken: string,
   fetchImpl: Fetch = fetch,
 ): Promise<InstallCommand> {
-  return sendJson(installCommandSchema, '/api/workbench/agent/install-command', { csrfToken }, fetchImpl)
+  return sendJson(
+    installCommandSchema,
+    '/api/workbench/agent/install-command',
+    { csrfToken },
+    fetchImpl,
+  )
 }
 export function lookupPairing(
   csrfToken: string,

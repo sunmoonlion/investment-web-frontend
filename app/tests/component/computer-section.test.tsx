@@ -15,7 +15,7 @@ import messages from '@/messages/zh-CN.json'
 vi.mock('next/navigation', () => ({
   useSearchParams: () => new URLSearchParams(),
   useRouter: () => ({ push: vi.fn(), replace: vi.fn() }),
-  usePathname: () => '/zh-CN/workbench/settings',
+  usePathname: () => '/zh-CN/workbench/settings/cloud',
 }))
 
 const lookup = {
@@ -154,7 +154,7 @@ describe('连接码', () => {
     page(<MachinesRedirect />)
     expect(screen.getByRole('link', { name: '我的电脑' })).toHaveAttribute(
       'href',
-      '/zh-CN/workbench/settings#computer',
+      '/zh-CN/workbench/settings/computer',
     )
   })
 
