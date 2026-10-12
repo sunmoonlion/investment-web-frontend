@@ -216,7 +216,7 @@ describe('三步引导证据', () => {
     await waitFor(() => expect(guide.getAllByLabelText('还没做')).toHaveLength(3))
     expect(guide.getAllByRole('link').map((link) => link.textContent)).toEqual([
       '1. 下载安装',
-      '2. 电脑上会自动打开一页显示连接码，在这里输入码',
+      '2. 装完后电脑会自动打开本站这一页并带上连接码，核对电脑名后点允许',
       '3. 选文件夹完成',
     ])
     expect(await screen.findByRole('button', { name: '复制安装命令' })).toBeVisible()
@@ -242,6 +242,38 @@ describe('三步引导证据', () => {
       'agent-online',
     ])
     expect(calls.every((c) => c.method === 'GET')).toBe(true)
+  })
+  it('地址里带着码就自动核对，用户只剩点允许', async () => {
+    navigation.query = 'code=ab3d7k9q'
+    const base = globalThis.fetch
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: string, init: RequestInit = {}) => {
+        if (String(input) === '/api/workbench/agent-pairing/lookup' && init.method === 'POST') {
+          calls.push({ path: String(input), method: 'POST' })
+          expect(JSON.parse(String(init.body))).toEqual({ user_code: 'AB3D-7K9Q' })
+          return Response.json({
+            id: '6f1c2b1e-3c5d-4a7e-9b8f-0d1e2f3a4b5c',
+            machine_name: '书房电脑',
+            os: 'Windows 11',
+            agent_version: '0.3.0',
+            codex_version: '0.155.1',
+            source_ip: null,
+            requested_seconds_ago: 3,
+            replaces_machine: null,
+          })
+        }
+        return base(input, init)
+      }),
+    )
+    page(<MachinesScreen />)
+    expect(await screen.findByText('书房电脑')).toBeVisible()
+    expect(screen.getByText(zh.machines.connect.prefilled)).toBeVisible()
+    expect(screen.getByRole('button', { name: zh.machines.connect.allow })).toBeVisible()
+    expect((screen.getByLabelText(zh.machines.connect.code) as HTMLInputElement).value).toBe(
+      'AB3D-7K9Q',
+    )
+    expect(calls.filter((c) => c.method === 'POST')).toHaveLength(1)
   })
   it('电脑状态失败不显示未登记或在线通过', async () => {
     environment = 'error'

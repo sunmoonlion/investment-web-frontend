@@ -823,7 +823,7 @@
     "guide": {
       "title": "Connect a computer",
       "install": "Download and install",
-      "connect": "A page opens on your computer showing a connection code; enter it here",
+      "connect": "After installing, your computer opens this page with the code filled in; check the computer name and allow it",
       "folders": "Choose folders to finish",
       "done": "done",
       "todo": "not yet",
@@ -833,7 +833,8 @@
     "connect": {
       "title": "Connect a computer",
       "code": "Connection code",
-      "hint": "Eight characters. They are uppercased and a hyphen is inserted after the fourth.",
+      "hint": "Eight characters. They are uppercased and a hyphen is inserted after the fourth. If this page did not open by itself, type the code shown on your computer here.",
+      "prefilled": "The connection code came from your computer. Make sure the computer below is yours, then allow it.",
       "lookup": "Check this computer",
       "wrong": "The code is wrong or expired",
       "unknownSource": "Unknown",
