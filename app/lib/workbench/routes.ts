@@ -22,7 +22,9 @@ export const routes = {
   expert: (locale: string) => at(locale, 'expert'),
   machines: (locale: string) => at(locale, 'machines'),
   settings: (locale: string) => at(locale, 'settings'),
-  computer: (locale: string) => `${at(locale, 'settings')}#computer`,
+  settingsSection: (locale: string, section: 'preferences' | 'cloud' | 'computer') =>
+    at(locale, 'settings', section),
+  computer: (locale: string) => at(locale, 'settings', 'computer'),
   // 知识库（SDD 0011）：用户自己的底稿与交回物
   library: (locale: string) => at(locale, 'library'),
   libraryItem: (locale: string, item: string) => at(locale, 'library', item),

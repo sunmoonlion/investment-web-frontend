@@ -3,11 +3,14 @@
 // 设置（F-WEB-01）：key 只提交一次，页面不留、不回显；模型与审批策略用在新开的对话上。
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
+import Link from 'next/link'
 import { useState } from 'react'
 import type { Prefs } from '@/contracts/workbench-settings'
 import { AgentSetup } from './agent-setup'
 import { MachinesScreen } from './machines-screen'
 import { useWorkbench } from '@/lib/workbench/context'
+import { routes } from '@/lib/workbench/routes'
+import { PersonalPreferencesSection } from './personal-preferences-section'
 
 import {
   addCredential,
@@ -20,32 +23,70 @@ import {
 const POLICIES: Prefs['approval_policy'][] = ['untrusted', 'on-request', 'on-failure', 'never']
 
 // 设置：模型 key、新对话默认值，以及机器接入入口。
-export function SettingsScreen() {
+export type SettingsSection = 'preferences' | 'cloud' | 'computer'
+
+export function SettingsScreen({ section }: { section: SettingsSection }) {
   const t = useTranslations('workbench.settings')
-  const { csrfToken } = useWorkbench()
-  const prefs = useQuery({ queryKey: ['wb-prefs'], queryFn: () => fetchPrefs() })
+  const { csrfToken, locale } = useWorkbench()
+  const prefs = useQuery({
+    queryKey: ['wb-prefs'],
+    queryFn: () => fetchPrefs(),
+    enabled: section === 'cloud',
+  })
+  const sections: SettingsSection[] = ['preferences', 'cloud', 'computer']
   return (
-    <div className="h-full overflow-y-auto">
-      <div className="mx-auto w-full max-w-3xl space-y-6 px-6 py-10">
-        <header>
-          <h1 className="text-2xl font-semibold tracking-tight">{t('title')}</h1>
-          <p className="text-muted-foreground mt-1 text-sm">{t('lead')}</p>
-        </header>
-        <KeysSection csrfToken={csrfToken} />
-        <AgentSetup csrfToken={csrfToken} />
-        {prefs.data ? (
-          <ThreadSection
-            key={`${prefs.data.model ?? ''}|${prefs.data.approval_policy}`}
-            csrfToken={csrfToken}
-            initial={prefs.data}
-          />
-        ) : (
-          <section className="rounded-xl border p-5">
-            <h2 className="text-base font-semibold">{t('thread')}</h2>
-          </section>
-        )}
-        <MachinesScreen embedded />
-      </div>
+    <div className="flex h-full min-h-0 overflow-hidden">
+      <nav aria-label={t('sections.title')} className="bg-muted/20 w-48 shrink-0 border-r p-3">
+        <h1 className="px-2 py-2 text-lg font-semibold">{t('title')}</h1>
+        <ul className="mt-2 space-y-1">
+          {sections.map((item) => (
+            <li key={item}>
+              <Link
+                href={routes.settingsSection(locale, item)}
+                aria-current={section === item ? 'page' : undefined}
+                className="hover:bg-foreground/5 aria-[current=page]:bg-foreground/10 block rounded-md px-3 py-2 text-sm"
+              >
+                {t(`sections.${item}`)}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <main className="min-w-0 flex-1 overflow-y-auto">
+        <div className="mx-auto w-full max-w-3xl space-y-6 px-6 py-10">
+          {section === 'preferences' ? <PersonalPreferencesSection /> : null}
+          {section === 'cloud' ? (
+            <>
+              <header>
+                <h2 className="text-xl font-semibold">{t('sections.cloud')}</h2>
+                <p className="text-muted-foreground mt-1 text-sm">{t('lead')}</p>
+              </header>
+              <KeysSection csrfToken={csrfToken} />
+              <AgentSetup csrfToken={csrfToken} />
+              {prefs.data ? (
+                <ThreadSection
+                  key={`${prefs.data.model ?? ''}|${prefs.data.approval_policy}`}
+                  csrfToken={csrfToken}
+                  initial={prefs.data}
+                />
+              ) : (
+                <section className="rounded-xl border p-5">
+                  <h2 className="text-base font-semibold">{t('thread')}</h2>
+                </section>
+              )}
+            </>
+          ) : null}
+          {section === 'computer' ? (
+            <>
+              <header>
+                <h2 className="text-xl font-semibold">{t('sections.computer')}</h2>
+                <p className="text-muted-foreground mt-1 text-sm">{t('computerLead')}</p>
+              </header>
+              <MachinesScreen embedded />
+            </>
+          ) : null}
+        </div>
+      </main>
     </div>
   )
 }
@@ -116,11 +157,21 @@ function KeysSection({ csrfToken }: { csrfToken: string }) {
   const queryClient = useQueryClient()
   const creds = useQuery({ queryKey: ['wb-credentials'], queryFn: () => listCredentials() })
   const [provider, setProvider] = useState('kimi')
+  const [baseUrl, setBaseUrl] = useState('')
   const [apiKey, setApiKey] = useState('')
   const add = useMutation({
-    mutationFn: () => addCredential({ provider: provider.trim(), api_key: apiKey }, csrfToken),
+    mutationFn: () =>
+      addCredential(
+        {
+          provider: provider.trim(),
+          api_key: apiKey,
+          base_url: baseUrl.trim() || null,
+        },
+        csrfToken,
+      ),
     onSuccess: () => {
       setApiKey('')
+      setBaseUrl('')
       void queryClient.invalidateQueries({ queryKey: ['wb-credentials'] })
     },
   })
@@ -160,6 +211,18 @@ function KeysSection({ csrfToken }: { csrfToken: string }) {
             onChange={(e) => setApiKey(e.target.value)}
           />
         </label>
+        <label className="block text-sm font-medium">
+          {t('baseUrl')}
+          <input
+            className="bg-background mt-1 w-full rounded-lg border px-3 py-2 font-normal"
+            type="url"
+            autoComplete="url"
+            value={baseUrl}
+            placeholder="https://api.example.com/v1"
+            onChange={(e) => setBaseUrl(e.target.value)}
+          />
+          <span className="text-muted-foreground mt-1 block text-xs">{t('baseUrlHint')}</span>
+        </label>
         <button
           type="submit"
           className="bg-primary text-primary-foreground rounded-lg px-4 py-2 text-sm font-medium disabled:opacity-50"
@@ -181,7 +244,9 @@ function KeysSection({ csrfToken }: { csrfToken: string }) {
             data-credential-status={c.status}
           >
             <span>
-              {c.provider} · ****{c.hint} · {c.status === 'active' ? t('active') : t('revoked')}
+              {c.provider} · ****{c.hint}
+              {c.base_url ? ` · ${c.base_url}` : ''} ·{' '}
+              {c.status === 'active' ? t('active') : t('revoked')}
             </span>
             {c.status === 'active' ? (
               <button

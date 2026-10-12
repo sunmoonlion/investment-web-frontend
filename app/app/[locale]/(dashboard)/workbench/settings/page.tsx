@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 
-import { SettingsScreen } from '@/features/settings'
+import { SettingsDefaultRoute } from '@/features/settings'
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('workbench.settings')
@@ -9,5 +9,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function WorkbenchSettingsPage() {
-  return <SettingsScreen />
+  return <SettingsDefaultRoute />
 }

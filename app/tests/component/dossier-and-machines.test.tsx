@@ -300,12 +300,12 @@ describe('我的电脑', () => {
 
 describe('设置', () => {
   it('三块：模型 key、我的沙箱、新对话的默认。给用户看的字里没有「会话」', async () => {
-    page(<SettingsScreen />)
+    page(<SettingsScreen section="cloud" />)
     expect(await screen.findByRole('heading', { name: '设置' })).toBeInTheDocument()
     for (const name of ['模型 key', '电脑与沙箱', '新对话的默认']) {
       expect(await screen.findByRole('heading', { name })).toBeInTheDocument()
     }
     expect(document.body.textContent).not.toContain('会话')
-    expect(document.getElementById('computer')).not.toBeNull()
+    expect(document.getElementById('computer')).toBeNull()
   })
 })

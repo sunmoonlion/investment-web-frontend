@@ -106,7 +106,7 @@ function page(children: React.ReactNode, locale: 'zh-CN' | 'en' = 'zh-CN') {
 const checkLink = (locale: 'zh-CN' | 'en' = 'zh-CN') => {
   expect(
     screen.getByRole('link', { name: locale === 'zh-CN' ? '接入电脑' : 'Connect computer' }),
-  ).toHaveAttribute('href', `/${locale}/workbench/settings#computer`)
+  ).toHaveAttribute('href', `/${locale}/workbench/settings/computer`)
 }
 
 describe('电脑接入入口', () => {
@@ -118,7 +118,7 @@ describe('电脑接入入口', () => {
       within(card)
         .getAllByRole('link')
         .map((link) => link.getAttribute('href')),
-    ).toEqual(['/zh-CN/workbench/settings', '/zh-CN/workbench/settings#computer'])
+    ).toEqual(['/zh-CN/workbench/settings', '/zh-CN/workbench/settings/computer'])
     fireEvent.change(screen.getByRole('textbox'), { target: { value: '你好' } })
     expect(screen.queryByText(zh.home.blocker.noSandbox)).toBeNull()
     expect(screen.getByRole('button', { name: zh.home.mode.chat.send })).toBeDisabled()
@@ -178,7 +178,7 @@ describe('电脑接入入口', () => {
     await screen.findByText(/还没有接入电脑/)
     expect(screen.getByRole('link', { name: '去接入' })).toHaveAttribute(
       'href',
-      '/zh-CN/workbench/settings#computer',
+      '/zh-CN/workbench/settings/computer',
     )
     expect(screen.queryByText('我的电脑')).toBeNull()
     expect(screen.getByRole('link', { name: '聊天' })).toHaveAttribute(

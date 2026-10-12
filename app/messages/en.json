@@ -102,10 +102,32 @@
   "workbench": {
     "settings": {
       "title": "Settings",
+      "sections": {
+        "title": "Settings sections",
+        "preferences": "Personal preferences",
+        "cloud": "Cloud and model",
+        "computer": "My computer"
+      },
+      "computerLead": "Manage connected computers, downloads, and local connection status.",
+      "preferences": {
+        "title": "Personal preferences",
+        "hint": "These settings stay in this browser and take effect immediately.",
+        "language": "Language",
+        "appearance": "Appearance",
+        "appearanceOptions": { "system": "System", "light": "Light", "dark": "Dark" },
+        "theme": "Theme color",
+        "themeOptions": { "neutral": "Neutral", "blue": "Blue", "green": "Green", "violet": "Violet" },
+        "sidebarWidth": "Sidebar width",
+        "sidebarWidthOptions": { "compact": "Compact", "standard": "Standard", "wide": "Wide" },
+        "expandedLevel": "Expand by default through",
+        "expandedLevelOptions": { "computer": "Computer", "workspace": "Workspace", "project": "Project" }
+      },
       "keys": "Model keys",
       "keysHint": "A key is submitted once over HTTPS, stored encrypted server-side, never kept or echoed here; revoke any time.",
       "provider": "Provider",
       "apiKey": "API key",
+      "baseUrl": "Model endpoint (optional)",
+      "baseUrlHint": "Leave blank to use the provider default. Only publicly reachable HTTPS OpenAI-compatible endpoints are accepted; loopback and private networks are rejected.",
       "submitKey": "Submit key",
       "active": "active",
       "revoked": "revoked",
@@ -159,7 +181,7 @@
       "copyManual": "Automatic copying is unavailable. The text is selected; press Ctrl+C.",
       "agentTokenTitle": "Local initialization (enter token separately)",
       "agentTokenHint": "Run this command in local PowerShell, then paste the token into the hidden prompt.",
-      "lead": "Register your model key and choose defaults for new conversations. Install agents and manage sandboxes in My computers.",
+      "lead": "Register a model key and optional endpoint, choose defaults for new conversations, and manage cloud sandboxes.",
       "machineEntry": "Computers and sandbox",
       "machineEntryHint": "The cloud sandbox only starts, updates and is removed here. Connecting a computer is in My computer below.",
       "toMachines": "Connect computer"
@@ -202,6 +224,7 @@
     },
     "computers": "Computers and projects",
     "computer": {
+      "toggle": "Expand or collapse computer {name}",
       "none": "No computer connected yet. Once connected, your folders and projects appear here.",
       "connect": "Connect",
       "manage": "Manage"

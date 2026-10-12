@@ -35,7 +35,7 @@ export async function listCredentials(fetchImpl: Fetch = fetch): Promise<Credent
   ).credentials
 }
 export function addCredential(
-  input: { provider: string; api_key: string; sandbox_id?: string },
+  input: { provider: string; api_key: string; base_url?: string | null; sandbox_id?: string },
   csrfToken: string,
   fetchImpl: Fetch = fetch,
 ): Promise<Credential> {

@@ -123,6 +123,37 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+:root[data-theme='blue'] {
+  --primary: oklch(0.54 0.19 255);
+  --ring: oklch(0.62 0.17 255);
+  --sidebar-primary: oklch(0.54 0.19 255);
+}
+.dark[data-theme='blue'] {
+  --primary: oklch(0.68 0.15 255);
+  --ring: oklch(0.68 0.15 255);
+  --sidebar-primary: oklch(0.68 0.15 255);
+}
+:root[data-theme='green'] {
+  --primary: oklch(0.52 0.14 155);
+  --ring: oklch(0.6 0.14 155);
+  --sidebar-primary: oklch(0.52 0.14 155);
+}
+.dark[data-theme='green'] {
+  --primary: oklch(0.7 0.13 155);
+  --ring: oklch(0.7 0.13 155);
+  --sidebar-primary: oklch(0.7 0.13 155);
+}
+:root[data-theme='violet'] {
+  --primary: oklch(0.53 0.2 295);
+  --ring: oklch(0.62 0.18 295);
+  --sidebar-primary: oklch(0.53 0.2 295);
+}
+.dark[data-theme='violet'] {
+  --primary: oklch(0.7 0.16 295);
+  --ring: oklch(0.7 0.16 295);
+  --sidebar-primary: oklch(0.7 0.16 295);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

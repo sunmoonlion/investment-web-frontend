@@ -1,7 +1,12 @@
 'use client'
 
 import { TooltipProvider } from '@/components/ui/tooltip'
+import {
+  applySystemAppearance,
+  usePersonalPreferences,
+} from '@/features/settings/model/personal-preferences'
 import { WorkbenchProvider } from '@/lib/workbench/context'
+import { useEffect } from 'react'
 
 import { Sidebar } from './sidebar'
 
@@ -15,6 +20,14 @@ export function WorkbenchShell({
   locale: string
   children: React.ReactNode
 }) {
+  const restorePreferences = usePersonalPreferences((state) => state.restore)
+  useEffect(() => {
+    restorePreferences(locale === 'en' ? 'en' : 'zh-CN')
+    const media = window.matchMedia('(prefers-color-scheme: dark)')
+    media.addEventListener('change', applySystemAppearance)
+    return () => media.removeEventListener('change', applySystemAppearance)
+  }, [locale, restorePreferences])
+
   return (
     <WorkbenchProvider csrfToken={csrfToken} locale={locale}>
       <TooltipProvider>

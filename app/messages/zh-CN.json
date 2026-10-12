@@ -102,10 +102,32 @@
   "workbench": {
     "settings": {
       "title": "设置",
+      "sections": {
+        "title": "设置分类",
+        "preferences": "个人偏好",
+        "cloud": "云端与模型",
+        "computer": "我的电脑"
+      },
+      "computerLead": "管理接入电脑、安装包和本机连接状态。",
+      "preferences": {
+        "title": "个人偏好",
+        "hint": "这些设置只保存在当前浏览器中，修改后立即生效。",
+        "language": "语言",
+        "appearance": "外观",
+        "appearanceOptions": { "system": "跟随系统", "light": "浅色", "dark": "深色" },
+        "theme": "主题色",
+        "themeOptions": { "neutral": "中性", "blue": "蓝色", "green": "绿色", "violet": "紫色" },
+        "sidebarWidth": "侧边栏宽度",
+        "sidebarWidthOptions": { "compact": "窄", "standard": "标准", "wide": "宽" },
+        "expandedLevel": "默认展开到",
+        "expandedLevelOptions": { "computer": "电脑", "workspace": "工作区", "project": "项目" }
+      },
       "keys": "模型 key",
       "keysHint": "key 只经 HTTPS 提交一次，服务端加密保存，页面不留、不回显；可随时撤换。",
       "provider": "厂商",
       "apiKey": "API key",
+      "baseUrl": "模型接入地址（可选）",
+      "baseUrlHint": "留空使用厂商默认地址。仅支持可公开访问的 HTTPS OpenAI 兼容端点；不接受回环或内网地址。",
       "submitKey": "提交 key",
       "active": "有效",
       "revoked": "已撤销",
@@ -159,7 +181,7 @@
       "copyManual": "浏览器不允许自动复制；内容已选中，请按 Ctrl+C。",
       "agentTokenTitle": "本机初始化（令牌单独输入）",
       "agentTokenHint": "在本机 PowerShell 运行下面的命令，再在隐藏输入提示中粘贴令牌。",
-      "lead": "登记你自己的模型 key，设置新对话的模型与审批策略。安装代理、管理沙箱请到「我的电脑」。",
+      "lead": "登记模型 key 与可选接入地址，设置新对话默认值并管理云端沙箱。",
       "machineEntry": "电脑与沙箱",
       "machineEntryHint": "云端沙箱只负责拉起、更新和回收。连接电脑在下面的「我的电脑」。",
       "toMachines": "接入电脑"
@@ -202,6 +224,7 @@
     },
     "computers": "我的电脑与项目",
     "computer": {
+      "toggle": "展开或收起电脑 {name}",
       "none": "还没有接入电脑。接入后，你的目录和项目会出现在这里。",
       "connect": "去接入",
       "manage": "管理"

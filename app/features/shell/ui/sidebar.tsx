@@ -15,10 +15,11 @@ import {
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { LogoutButton } from '@/components/auth/logout-button'
 import { useWorkbench } from '@/lib/workbench/context'
+import { usePersonalPreferences } from '@/features/settings/model/personal-preferences'
 import {
   useConversations,
   useMachines,
@@ -138,6 +139,8 @@ export function Sidebar() {
   const t = useTranslations('shell')
   const tAuth = useTranslations('auth')
   const { csrfToken, locale } = useWorkbench()
+  const sidebarWidth = usePersonalPreferences((state) => state.sidebarWidth)
+  const expandedLevel = usePersonalPreferences((state) => state.expandedLevel)
   const pathname = usePathname()
   const search = useSearchParams().toString()
 
@@ -162,6 +165,7 @@ export function Sidebar() {
   // 当前项目所在的工作区默认展开，其余折叠；手动开合记在这一次
   const currentProject = allProjects.find((project) => pathname.includes(project.id))
   const [toggled, setToggled] = useState<Record<string, boolean>>({})
+  useEffect(() => setToggled({}), [expandedLevel])
   // 哪一行正在问「确定删除？」
   const [asking, setAsking] = useState<string | null>(null)
   const remove = useRemove()
@@ -191,7 +195,10 @@ export function Sidebar() {
   return (
     <aside
       aria-label={t('brand')}
-      className="bg-muted/40 flex h-full w-60 shrink-0 flex-col gap-4 border-r p-3"
+      className={cn(
+        'bg-muted/40 flex h-full shrink-0 flex-col gap-4 border-r p-3',
+        sidebarWidth === 'compact' ? 'w-52' : sidebarWidth === 'wide' ? 'w-72' : 'w-60',
+      )}
     >
       <Link href={routes.home(locale)} className="px-2 pt-1 text-sm font-semibold">
         {t('brand')}
@@ -237,14 +244,28 @@ export function Sidebar() {
               {tree.map((machine) => (
                 <li key={machine.id} className={machine.status !== 'online' ? 'opacity-60' : ''}>
                   <div className={cn(row, 'font-medium')}>
-                    <span
-                      className={cn(
-                        'size-2 shrink-0 rounded-full',
-                        machine.status === 'online' ? 'bg-green-600' : 'bg-amber-500',
-                      )}
-                      title={t(machine.status === 'online' ? 'machine.online' : 'machine.offline')}
-                    />
-                    <span className="truncate">{machine.name}</span>
+                    <button
+                      type="button"
+                      aria-expanded={isOpen(machine.id, expandedLevel !== 'computer')}
+                      aria-label={t('computer.toggle', { name: machine.name })}
+                      onClick={() => flip(machine.id, expandedLevel !== 'computer')}
+                      className="flex min-w-0 flex-1 items-center gap-2 text-left"
+                    >
+                      <ChevronRightIcon
+                        className={cn(
+                          'text-muted-foreground size-3.5 shrink-0 transition-transform',
+                          isOpen(machine.id, expandedLevel !== 'computer') && 'rotate-90',
+                        )}
+                      />
+                      <span
+                        className={cn(
+                          'size-2 shrink-0 rounded-full',
+                          machine.status === 'online' ? 'bg-green-600' : 'bg-amber-500',
+                        )}
+                        title={t(machine.status === 'online' ? 'machine.online' : 'machine.offline')}
+                      />
+                      <span className="truncate">{machine.name}</span>
+                    </button>
                     <Link
                       href={routes.computer(locale)}
                       className="text-muted-foreground hover:text-foreground ml-auto text-xs font-normal"
@@ -252,18 +273,19 @@ export function Sidebar() {
                       {t('computer.manage')}
                     </Link>
                   </div>
-                  {machine.workspaces.length === 0 ? (
+                  {isOpen(machine.id, expandedLevel !== 'computer') &&
+                  machine.workspaces.length === 0 ? (
                     <p className="text-muted-foreground px-7 text-xs">{t('workspace.none')}</p>
-                  ) : (
+                  ) : isOpen(machine.id, expandedLevel !== 'computer') ? (
                     <ul>
                       {machine.workspaces.map((workspace) => {
                         const holdsCurrent = workspace.projects.some(
                           (each) => each.project.id === currentProject?.id,
                         )
-                        const open = isOpen(
-                          workspace.key,
-                          holdsCurrent || machine.workspaces.length === 1,
-                        )
+                        const workspaceDefault =
+                          expandedLevel === 'project' &&
+                          (holdsCurrent || machine.workspaces.length === 1)
+                        const open = isOpen(workspace.key, workspaceDefault)
                         const name = workspace.root.split(/[\\/]/).pop() || workspace.root
                         const listHref = `${routes.projects(locale)}?workspace=${encodeURIComponent(workspace.key)}`
                         return (
@@ -271,12 +293,7 @@ export function Sidebar() {
                             <div className={cn(row, rowLink, 'pl-4')}>
                               <button
                                 type="button"
-                                onClick={() =>
-                                  flip(
-                                    workspace.key,
-                                    holdsCurrent || machine.workspaces.length === 1,
-                                  )
-                                }
+                                onClick={() => flip(workspace.key, workspaceDefault)}
                                 aria-expanded={open}
                                 title={workspace.root}
                                 className="flex min-w-0 flex-1 items-center gap-2 text-left"
@@ -322,10 +339,10 @@ export function Sidebar() {
                                 ) : null}
                                 {workspace.projects.map(
                                   ({ project, busy, conversations: talks }) => {
-                                    const expanded = isOpen(
-                                      project.id,
-                                      project.id === currentProject?.id,
-                                    )
+                                    const projectDefault =
+                                      expandedLevel === 'project' &&
+                                      project.id === currentProject?.id
+                                    const expanded = isOpen(project.id, projectDefault)
                                     const waitingHere = waitingIn(project.id)
                                     return (
                                       <li key={project.id}>
@@ -344,7 +361,10 @@ export function Sidebar() {
                                               title: project.title,
                                             })}
                                             onClick={() =>
-                                              flip(project.id, project.id === currentProject?.id)
+                                              flip(
+                                                project.id,
+                                                projectDefault,
+                                              )
                                             }
                                             className="flex min-w-0 flex-1 items-center gap-2 text-left"
                                           >

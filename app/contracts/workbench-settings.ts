@@ -93,6 +93,7 @@ export const credentialSchema = z
   .object({
     id: uuid,
     provider: z.string(),
+    base_url: z.string().nullable(),
     hint: z.string(),
     status: z.enum(['active', 'revoked']),
     sandbox_id: uuid.nullable().optional(),
