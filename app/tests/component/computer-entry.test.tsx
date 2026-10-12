@@ -291,13 +291,8 @@ describe('三步引导证据', () => {
     act(() => p.client.setQueryData(workbenchKeys.machines, connected))
     await waitFor(() => expect(guide.getAllByLabelText('已完成')).toHaveLength(3))
     const sections = [...document.querySelectorAll('section[id]')].map((s) => s.id)
-    expect(sections).toEqual([
-      'computer',
-      'computer-status',
-      'agent-download',
-      'agent-connect',
-      'agent-online',
-    ])
+    // 一个账号一台电脑：顶上那块就是那台电脑的全部，不再另列「已经接入的电脑」
+    expect(sections).toEqual(['computer', 'computer-status', 'agent-download', 'agent-connect'])
     expect(calls.every((c) => c.method === 'GET')).toBe(true)
   })
   it('地址里带着码就自动核对，用户只剩点允许', async () => {

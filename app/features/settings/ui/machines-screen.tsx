@@ -26,9 +26,8 @@ export function MachinesScreen({ embedded = false }: { embedded?: boolean }) {
   const steps = [
     { key: 'install', target: 'agent-download' },
     { key: 'connect', target: 'agent-connect' },
-    { key: 'folders', target: 'agent-online' },
+    { key: 'folders', target: 'computer-status' },
   ] as const
-  const current = (machines.data ?? []).find(isOnline) ?? machines.data?.[0]
   const body = (
     <div className="mx-auto w-full max-w-3xl space-y-8 px-6 py-10">
       <section id="computer" aria-label={t('title')} className="space-y-8">
@@ -60,27 +59,9 @@ export function MachinesScreen({ embedded = false }: { embedded?: boolean }) {
             ))}
           </ol>
         </section>
-        <section id="computer-status" className="rounded-xl border p-5">
-          <h3 className="text-base font-semibold">{t('current')}</h3>
-          {machines.isSuccess && current ? (
-            <>
-              <p className="mt-1 text-sm">
-                {current.name} · {isOnline(current) ? t('online') : t('offline')} · {t('agent')}{' '}
-                {current.agent_version ?? t('unknown')}
-              </p>
-              {/* 账号跟着人走、代理跟着电脑走；网页看不出自己在哪台电脑上（所有者 2026-10-12 定甲） */}
-              <p className="text-muted-foreground mt-2 text-sm">
-                {t('elsewhere', { name: current.name })}
-              </p>
-            </>
-          ) : null}
-          {machines.isSuccess && !current ? (
-            <p className="text-muted-foreground mt-1 text-sm">{t('none')}</p>
-          ) : null}
-        </section>
+        <MachineList />
         <AgentDownloadPanel csrfToken={csrfToken} />
         <ConnectComputer csrfToken={csrfToken} />
-        <MachineList />
         <details id="agent-advanced" className="rounded-xl border p-5">
           <summary className="cursor-pointer text-base font-semibold">
             {t('advanced.title')}
@@ -217,8 +198,9 @@ function MachineList() {
   const machines = useMachines(5000)
   const label = 'text-muted-foreground'
   return (
-    <section id="agent-online" aria-label={t('list')} className="space-y-3">
-      <h3 className="text-sm font-medium">{t('list')}</h3>
+    // 一个账号同一时刻一台电脑（所有者 2026-10-12 定甲）：这一块就是那台电脑的全部，不另列清单
+    <section id="computer-status" aria-label={t('current')} className="space-y-3">
+      <h3 className="text-base font-semibold">{t('current')}</h3>
       <p className="text-muted-foreground text-sm">{t('guide.onlineHint')}</p>
       {machines.isPending ? (
         <p className="text-muted-foreground text-sm">{t('loading')}</p>
@@ -287,6 +269,12 @@ function MachineList() {
         })
       )}
       <p className="text-muted-foreground text-[13px]">{t('ceiling.note')}</p>
+      {/* 账号跟着人走、代理跟着电脑走；网页看不出自己在哪台电脑上（所有者 2026-10-12 定甲） */}
+      {(machines.data ?? []).length > 0 ? (
+        <p className="text-muted-foreground text-sm">
+          {t('elsewhere', { name: machines.data![0].name })}
+        </p>
+      ) : null}
     </section>
   )
 }
