@@ -38,7 +38,7 @@
     "loginSubtitle": "You will be redirected to the identity provider to sign in.",
     "loginCasdoorHint": "If you only registered on Casdoor, still click Login here to open this app.",
     "continueToDashboard": "Already signed in to this site? Go to dashboard",
-    "errorAuthFailed": "Sign-in could not finish (token exchange failed). Check backend logs for Casdoor/Redis errors and ensure the redirect URI in Casdoor matches CASDOOR_REDIRECT_URI exactly.",
+    "errorAuthFailed": "Sign-in did not complete: this attempt timed out or is no longer valid (a login page left open too long, or a page submitted twice). Please sign in again; if it keeps happening, contact your administrator.",
     "errorNoCode": "No authorization code was returned. Click Login again from this page.",
     "errorOAuthGeneric": "Authorization was denied or cancelled. Please try again.",
     "dashboardWelcome": "Welcome to Investment",

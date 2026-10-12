@@ -38,7 +38,7 @@
     "loginSubtitle": "点击下方按钮将前往统一身份服务完成登录。",
     "loginCasdoorHint": "若仅在 Casdoor 网站注册/登录过，请仍从本站点「登录」以进入控制台。",
     "continueToDashboard": "已有本站登录态？尝试进入控制台",
-    "errorAuthFailed": "登录未完成（与身份服务交换令牌失败）。若持续出现，请查看后端日志中的 Casdoor/Redis 报错，并确认 Casdoor 应用中的回调地址与 CASDOOR_REDIRECT_URI 完全一致。",
+    "errorAuthFailed": "登录没有完成：这次登录已超时或已失效（登录页开得太久、或页面被重复提交都会这样）。请重新登录；反复出现请联系管理员。",
     "errorNoCode": "未收到授权码，请从本页重新点击登录。",
     "errorOAuthGeneric": "授权被拒绝或已取消，请重试。",
     "dashboardWelcome": "欢迎使用 Investment",
