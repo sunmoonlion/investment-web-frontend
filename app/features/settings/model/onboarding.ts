@@ -26,3 +26,4 @@ const ps = (value: string) => `'${value.replaceAll("'", "''")}'`
 export function initCommand(relay: string, user: string) {
   return String.raw`& "$env:LOCALAPPDATA\Programs\sunmoon-agent\sunmoon-agent.cmd" init --relay ${ps(relay)} --user ${ps(user)} --token-prompt`
 }
+

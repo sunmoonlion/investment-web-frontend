@@ -35,19 +35,11 @@ export function AgentDownloadPanel({ csrfToken }: { csrfToken: string }) {
       }
     },
     onError: (error) => {
-      setNotice(
-        error instanceof WorkbenchError && error.status === 429
-          ? t('tooFast')
-          : t('downloadFailed'),
-      )
+      setNotice(error instanceof WorkbenchError && error.status === 429 ? t('tooFast') : t('downloadFailed'))
     },
   })
   return (
-    <section
-      id="agent-download"
-      className="space-y-3 rounded-xl border p-5"
-      aria-label={t('downloadTitle')}
-    >
+    <section id="agent-download" className="space-y-3 rounded-xl border p-5" aria-label={t('downloadTitle')}>
       <h2 className="text-base font-semibold">{t('downloadTitle')}</h2>
       {query.isPending ? (
         <p role="status">{t('loading')}</p>

@@ -140,11 +140,7 @@ export function AgentSetup({ csrfToken }: { csrfToken: string }) {
         ) : null}
       </div>
       {confirming ? (
-        <div
-          className="mt-3 rounded-lg border border-amber-300 p-3 text-sm"
-          role="alertdialog"
-          data-confirm="delete"
-        >
+        <div className="mt-3 rounded-lg border border-amber-300 p-3 text-sm" role="alertdialog" data-confirm="delete">
           <p>{t('confirmDelete')}</p>
           <div className="mt-2 flex gap-2">
             <button
@@ -218,9 +214,7 @@ export function ReconnectComputer({ csrfToken }: { csrfToken: string }) {
     onError: (error) => {
       const code = (error as Error).message
       setNotice(
-        ['relay_identity_changed', 'relay_identity_busy'].includes(code)
-          ? u('refreshRequired')
-          : code,
+        ['relay_identity_changed', 'relay_identity_busy'].includes(code) ? u('refreshRequired') : code,
       )
     },
   })
@@ -253,11 +247,7 @@ export function ReconnectComputer({ csrfToken }: { csrfToken: string }) {
             >
               {t('confirmRotateYes')}
             </button>
-            <button
-              type="button"
-              className="rounded-lg border px-3 py-1.5 text-sm"
-              onClick={() => setConfirming(false)}
-            >
+            <button type="button" className="rounded-lg border px-3 py-1.5 text-sm" onClick={() => setConfirming(false)}>
               {t('cancel')}
             </button>
           </div>
