@@ -1,378 +1,575 @@
 {
  "contract_version": 2,
- "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
- "step": {
-  "index": 4,
-  "step_id": "extract",
-  "title": "取数",
-  "summary": "把问题要用到的报表科目按期取出来，每个数带口径",
-  "why": "只取问题用得到的科目，每个数记下出自哪一期、什么口径。后面的指标只用这里取出来的数。",
-  "uses": [
-   {
-    "artifact": "scope",
-    "step": 1,
-    "title": "定范围"
+ "items": [
+  {
+   "id": "dossier:607c2718-4eae-57a0-bb04-8aa28b096733",
+   "kind": "dossier",
+   "title": "财报体检：招商银行 2023 到 2025 年的盈利能力怎么样？",
+   "default_title": "财报体检：招商银行 2023 到 2025 年的盈利能力怎么样？",
+   "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa",
+   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
+   "session_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:34.719495Z",
+   "created_at": "2026-10-12T04:50:34.492484Z",
+   "size_bytes": null,
+   "source": {
+    "expert": "财报体检",
+    "question": "招商银行 2023 到 2025 年的盈利能力怎么样？"
    },
-   {
-    "artifact": "profile",
-    "step": 2,
-    "title": "数据摸底"
-   }
-  ],
-  "tools": [
-   "describe_schema",
-   "run_sql"
-  ],
-  "returns": "facts",
-  "checks": [
-   {
-    "label": "交回的格式对"
-   },
-   {
-    "label": "有取数表和数据版本"
-   },
-   {
-    "label": "取数表不是空的"
-   },
-   {
-    "label": "有数据版本"
-   }
-  ],
-  "after_rejection": {
-   "reworks": 1,
-   "then": "back",
-   "back_to": 2,
-   "backs": 1,
-   "text": "重做，最多 1 次；仍不过，退回第 2 步，最多 1 次；仍不过，停下来问你"
+   "deleted": false
   },
-  "reserve": "0.05",
-  "status": "accepted",
-  "attempts": [
-   {
-    "attempt_id": "cae430e4-6144-589b-b8a9-f6681f80ec5e",
-    "n": 1,
-    "outcome": "accepted",
-    "failure": null,
-    "spent": "0.05",
-    "started_at": "2026-10-11T17:39:46.880068Z",
-    "ended_at": "2026-10-11T17:39:46.890058Z",
-    "checks": [
-     {
-      "label": "交回的格式对",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有取数表和数据版本",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "取数表不是空的",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有数据版本",
-      "pass": true,
-      "message": ""
-     }
-    ],
-    "tools": {
-     "describe_schema": 1,
-     "run_sql": 2
-    },
-    "returned": {
-     "artifact": "facts",
-     "version": 1,
-     "content": {
-      "sql": [
-       "SELECT report_date, basis, operate_income, operate_cost, net_profit FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
-       "SELECT report_date, basis, total_assets, total_liabilities, total_equity FROM balance_sheet WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025"
-      ],
-      "table": [
-       {
-        "item": "operate_income",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 150560000000.0,
-        "statement": "income_statement",
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "display_name": "营业收入"
-       },
-       {
-        "item": "operate_cost",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 12195360000.0,
-        "statement": "income_statement",
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "display_name": "营业成本"
-       },
-       {
-        "item": "net_profit",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 79044000000.0,
-        "statement": "income_statement",
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "display_name": "净利润"
-       },
-       {
-        "item": "net_operate_cash_flow",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 88529280000.0,
-        "statement": "cash_flow_statement",
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "display_name": "经营活动现金流量净额"
-       },
-       {
-        "item": "total_assets",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 286064000000.0,
-        "statement": "balance_sheet",
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "display_name": "资产总计"
-       },
-       {
-        "item": "total_liabilities",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 51491520000.0,
-        "statement": "balance_sheet",
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "display_name": "负债合计"
-       },
-       {
-        "item": "total_equity",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 234572480000.0,
-        "statement": "balance_sheet",
-        "fiscal_year": 2023,
-        "report_date": "2023-12-31",
-        "report_type": "年报",
-        "display_name": "所有者权益合计"
-       },
-       {
-        "item": "operate_income",
-        "unit": "元",
-        "basis": "追溯调整后",
-        "value": 174197920000.0,
-        "statement": "income_statement",
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "display_name": "营业收入"
-       },
-       {
-        "item": "operate_cost",
-        "unit": "元",
-        "basis": "追溯调整后",
-        "value": 13935833600.0,
-        "statement": "income_statement",
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "display_name": "营业成本"
-       },
-       {
-        "item": "net_profit",
-        "unit": "元",
-        "basis": "追溯调整后",
-        "value": 90931314240.0,
-        "statement": "income_statement",
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "display_name": "净利润"
-       },
-       {
-        "item": "net_operate_cash_flow",
-        "unit": "元",
-        "basis": "追溯调整后",
-        "value": 101843071948.8,
-        "statement": "cash_flow_statement",
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "display_name": "经营活动现金流量净额"
-       },
-       {
-        "item": "total_assets",
-        "unit": "元",
-        "basis": "追溯调整后",
-        "value": 330976048000.0,
-        "statement": "balance_sheet",
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "display_name": "资产总计"
-       },
-       {
-        "item": "total_liabilities",
-        "unit": "元",
-        "basis": "追溯调整后",
-        "value": 59575688640.0,
-        "statement": "balance_sheet",
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "display_name": "负债合计"
-       },
-       {
-        "item": "total_equity",
-        "unit": "元",
-        "basis": "追溯调整后",
-        "value": 271400359360.0,
-        "statement": "balance_sheet",
-        "fiscal_year": 2024,
-        "report_date": "2024-12-31",
-        "report_type": "年报",
-        "display_name": "所有者权益合计"
-       },
-       {
-        "item": "operate_income",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 190572524480.0,
-        "statement": "income_statement",
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "display_name": "营业收入"
-       },
-       {
-        "item": "operate_cost",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 15626947007.36,
-        "statement": "income_statement",
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "display_name": "营业成本"
-       },
-       {
-        "item": "net_profit",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 98907140205.12,
-        "statement": "income_statement",
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "display_name": "净利润"
-       },
-       {
-        "item": "net_operate_cash_flow",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 110775997029.73,
-        "statement": "cash_flow_statement",
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "display_name": "经营活动现金流量净额"
-       },
-       {
-        "item": "total_assets",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 362087796512.0,
-        "statement": "balance_sheet",
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "display_name": "资产总计"
-       },
-       {
-        "item": "total_liabilities",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 65175803372.16,
-        "statement": "balance_sheet",
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "display_name": "负债合计"
-       },
-       {
-        "item": "total_equity",
-        "unit": "元",
-        "basis": "原始披露",
-        "value": 296911993139.84,
-        "statement": "balance_sheet",
-        "fiscal_year": 2025,
-        "report_date": "2025-12-31",
-        "report_type": "年报",
-        "display_name": "所有者权益合计"
-       }
-      ],
-      "data_version": "sh600519-financials-sample600519"
-     },
-     "labels": {
-      "sql": "查询语句",
-      "table": "表",
-      "item": "科目",
-      "unit": "单位",
-      "basis": "口径",
-      "value": "数值",
-      "statement": "报表",
-      "fiscal_year": "年度",
-      "report_date": "报告期",
-      "report_type": "报告类型",
-      "display_name": "名称",
-      "data_version": "数据版本"
-     }
-    },
-    "process": [
-     {
-      "at": "2026-10-11T17:39:46.856052Z",
-      "kind": "tool",
-      "name": "describe_schema",
-      "dataset": "sh600519-financials",
-      "brief": "income_statement",
-      "ok": true
-     },
-     {
-      "at": "2026-10-11T17:39:46.859794Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "SELECT report_date, basis, operate_income, operate_cost, net_profit FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     },
-     {
-      "at": "2026-10-11T17:39:46.863427Z",
-      "kind": "tool",
-      "name": "run_sql",
-      "dataset": "sh600519-financials",
-      "brief": "SELECT report_date, basis, total_assets, total_liabilities, total_equity FROM balance_sheet WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
-      "ok": true
-     }
-    ]
-   }
-  ],
-  "times": 1,
-  "rejected": 0,
-  "spent": "0.05",
-  "data": {
-   "data_version": "sh600519-financials-sample600519"
+  {
+   "id": "deliverable:607c2718-4eae-57a0-bb04-8aa28b096733:profile",
+   "kind": "deliverable",
+   "title": "数据摸底（财报体检）",
+   "default_title": "数据摸底（财报体检）",
+   "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa",
+   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
+   "session_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:34.719495Z",
+   "created_at": "2026-10-12T04:50:34.492484Z",
+   "size_bytes": 837,
+   "source": {
+    "expert": "财报体检",
+    "question": "招商银行 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "数据摸底",
+    "artifact": "profile"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:607c2718-4eae-57a0-bb04-8aa28b096733:scope",
+   "kind": "deliverable",
+   "title": "定范围（财报体检）",
+   "default_title": "定范围（财报体检）",
+   "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa",
+   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
+   "session_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:34.614634Z",
+   "created_at": "2026-10-12T04:50:34.492484Z",
+   "size_bytes": 190,
+   "source": {
+    "expert": "财报体检",
+    "question": "招商银行 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "定范围",
+    "artifact": "scope"
+   },
+   "deleted": false
+  },
+  {
+   "id": "dossier:47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "kind": "dossier",
+   "title": "财报体检：比亚迪 2023 到 2025 年的盈利能力怎么样？",
+   "default_title": "财报体检：比亚迪 2023 到 2025 年的盈利能力怎么样？",
+   "project_id": "06944124-075a-504f-b4f3-275ef032eb9c",
+   "task_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "session_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:34.313319Z",
+   "created_at": "2026-10-12T04:50:33.702906Z",
+   "size_bytes": null,
+   "source": {
+    "expert": "财报体检",
+    "question": "比亚迪 2023 到 2025 年的盈利能力怎么样？"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:47e8e56e-d165-52d3-87a7-fd15c9cb8728:metrics",
+   "kind": "deliverable",
+   "title": "算指标（财报体检）",
+   "default_title": "算指标（财报体检）",
+   "project_id": "06944124-075a-504f-b4f3-275ef032eb9c",
+   "task_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "session_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:34.313319Z",
+   "created_at": "2026-10-12T04:50:33.702906Z",
+   "size_bytes": 3916,
+   "source": {
+    "expert": "财报体检",
+    "question": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "算指标",
+    "artifact": "metrics"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:47e8e56e-d165-52d3-87a7-fd15c9cb8728:facts",
+   "kind": "deliverable",
+   "title": "取数（财报体检）",
+   "default_title": "取数（财报体检）",
+   "project_id": "06944124-075a-504f-b4f3-275ef032eb9c",
+   "task_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "session_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:34.206033Z",
+   "created_at": "2026-10-12T04:50:33.702906Z",
+   "size_bytes": 4830,
+   "source": {
+    "expert": "财报体检",
+    "question": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "取数",
+    "artifact": "facts"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:47e8e56e-d165-52d3-87a7-fd15c9cb8728:reconcile",
+   "kind": "deliverable",
+   "title": "勾稽（财报体检）",
+   "default_title": "勾稽（财报体检）",
+   "project_id": "06944124-075a-504f-b4f3-275ef032eb9c",
+   "task_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "session_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:34.091217Z",
+   "created_at": "2026-10-12T04:50:33.702906Z",
+   "size_bytes": 1262,
+   "source": {
+    "expert": "财报体检",
+    "question": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "勾稽",
+    "artifact": "reconcile"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:47e8e56e-d165-52d3-87a7-fd15c9cb8728:profile",
+   "kind": "deliverable",
+   "title": "数据摸底（财报体检）",
+   "default_title": "数据摸底（财报体检）",
+   "project_id": "06944124-075a-504f-b4f3-275ef032eb9c",
+   "task_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "session_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:33.959182Z",
+   "created_at": "2026-10-12T04:50:33.702906Z",
+   "size_bytes": 837,
+   "source": {
+    "expert": "财报体检",
+    "question": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "数据摸底",
+    "artifact": "profile"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:47e8e56e-d165-52d3-87a7-fd15c9cb8728:scope",
+   "kind": "deliverable",
+   "title": "定范围（财报体检）",
+   "default_title": "定范围（财报体检）",
+   "project_id": "06944124-075a-504f-b4f3-275ef032eb9c",
+   "task_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+   "session_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:33.851279Z",
+   "created_at": "2026-10-12T04:50:33.702906Z",
+   "size_bytes": 188,
+   "source": {
+    "expert": "财报体检",
+    "question": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "定范围",
+    "artifact": "scope"
+   },
+   "deleted": false
+  },
+  {
+   "id": "dossier:142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "kind": "dossier",
+   "title": "财报体检：上海机场 2023 到 2025 年的盈利能力怎么样？",
+   "default_title": "财报体检：上海机场 2023 到 2025 年的盈利能力怎么样？",
+   "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f",
+   "task_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "session_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:33.333426Z",
+   "created_at": "2026-10-12T04:50:32.913235Z",
+   "size_bytes": null,
+   "source": {
+    "expert": "财报体检",
+    "question": "上海机场 2023 到 2025 年的盈利能力怎么样？"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:142e50b8-d8c0-53b4-9da0-891383dcef15:reconcile",
+   "kind": "deliverable",
+   "title": "勾稽（财报体检）",
+   "default_title": "勾稽（财报体检）",
+   "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f",
+   "task_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "session_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:33.333426Z",
+   "created_at": "2026-10-12T04:50:32.913235Z",
+   "size_bytes": 1262,
+   "source": {
+    "expert": "财报体检",
+    "question": "上海机场 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "勾稽",
+    "artifact": "reconcile"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:142e50b8-d8c0-53b4-9da0-891383dcef15:profile",
+   "kind": "deliverable",
+   "title": "数据摸底（财报体检）",
+   "default_title": "数据摸底（财报体检）",
+   "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f",
+   "task_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "session_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:33.165011Z",
+   "created_at": "2026-10-12T04:50:32.913235Z",
+   "size_bytes": 837,
+   "source": {
+    "expert": "财报体检",
+    "question": "上海机场 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "数据摸底",
+    "artifact": "profile"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:142e50b8-d8c0-53b4-9da0-891383dcef15:scope",
+   "kind": "deliverable",
+   "title": "定范围（财报体检）",
+   "default_title": "定范围（财报体检）",
+   "project_id": "f0410883-287b-578b-81dc-15f24e5b2d8f",
+   "task_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
+   "session_id": "a8d00557-4ee4-5cdf-918b-e69884980326",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:33.034820Z",
+   "created_at": "2026-10-12T04:50:32.913235Z",
+   "size_bytes": 190,
+   "source": {
+    "expert": "财报体检",
+    "question": "上海机场 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "定范围",
+    "artifact": "scope"
+   },
+   "deleted": false
+  },
+  {
+   "id": "dossier:dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "kind": "dossier",
+   "title": "财报体检：贵州茅台 2023 到 2025 年的盈利能力怎么样？",
+   "default_title": "财报体检：贵州茅台 2023 到 2025 年的盈利能力怎么样？",
+   "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:31.773740Z",
+   "created_at": "2026-10-12T04:50:30.940732Z",
+   "size_bytes": null,
+   "source": {
+    "expert": "财报体检",
+    "question": "贵州茅台 2023 到 2025 年的盈利能力怎么样？"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:note",
+   "kind": "deliverable",
+   "title": "成稿（财报体检）",
+   "default_title": "成稿（财报体检）",
+   "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:31.773740Z",
+   "created_at": "2026-10-12T04:50:30.940732Z",
+   "size_bytes": 728,
+   "source": {
+    "expert": "财报体检",
+    "question": "贵州茅台 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "成稿",
+    "artifact": "note"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:crosscheck",
+   "kind": "deliverable",
+   "title": "对照官方（财报体检）",
+   "default_title": "对照官方（财报体检）",
+   "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:31.672705Z",
+   "created_at": "2026-10-12T04:50:30.940732Z",
+   "size_bytes": 1771,
+   "source": {
+    "expert": "财报体检",
+    "question": "贵州茅台 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "对照官方",
+    "artifact": "crosscheck"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:metrics",
+   "kind": "deliverable",
+   "title": "算指标（财报体检）",
+   "default_title": "算指标（财报体检）",
+   "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:31.564590Z",
+   "created_at": "2026-10-12T04:50:30.940732Z",
+   "size_bytes": 3909,
+   "source": {
+    "expert": "财报体检",
+    "question": "贵州茅台 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "算指标",
+    "artifact": "metrics"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:facts",
+   "kind": "deliverable",
+   "title": "取数（财报体检）",
+   "default_title": "取数（财报体检）",
+   "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:31.467242Z",
+   "created_at": "2026-10-12T04:50:30.940732Z",
+   "size_bytes": 4825,
+   "source": {
+    "expert": "财报体检",
+    "question": "贵州茅台 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "取数",
+    "artifact": "facts"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:reconcile",
+   "kind": "deliverable",
+   "title": "勾稽（财报体检）",
+   "default_title": "勾稽（财报体检）",
+   "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:31.367392Z",
+   "created_at": "2026-10-12T04:50:30.940732Z",
+   "size_bytes": 1262,
+   "source": {
+    "expert": "财报体检",
+    "question": "贵州茅台 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "勾稽",
+    "artifact": "reconcile"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:profile",
+   "kind": "deliverable",
+   "title": "数据摸底（财报体检）",
+   "default_title": "数据摸底（财报体检）",
+   "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:31.224794Z",
+   "created_at": "2026-10-12T04:50:30.940732Z",
+   "size_bytes": 837,
+   "source": {
+    "expert": "财报体检",
+    "question": "贵州茅台 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "数据摸底",
+    "artifact": "profile"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:dad4ff9f-c1e2-5e51-a63c-fff965195623:scope",
+   "kind": "deliverable",
+   "title": "定范围（财报体检）",
+   "default_title": "定范围（财报体检）",
+   "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10",
+   "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
+   "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:31.076605Z",
+   "created_at": "2026-10-12T04:50:30.940732Z",
+   "size_bytes": 190,
+   "source": {
+    "expert": "财报体检",
+    "question": "贵州茅台 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "定范围",
+    "artifact": "scope"
+   },
+   "deleted": false
+  },
+  {
+   "id": "dossier:e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "kind": "dossier",
+   "title": "财报体检：恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+   "default_title": "财报体检：恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:30.850230Z",
+   "created_at": "2026-10-12T04:50:29.830210Z",
+   "size_bytes": null,
+   "source": {
+    "expert": "财报体检",
+    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:note",
+   "kind": "deliverable",
+   "title": "成稿（财报体检）",
+   "default_title": "成稿（财报体检）",
+   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:30.850230Z",
+   "created_at": "2026-10-12T04:50:29.830210Z",
+   "size_bytes": 728,
+   "source": {
+    "expert": "财报体检",
+    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "成稿",
+    "artifact": "note"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:crosscheck",
+   "kind": "deliverable",
+   "title": "对照官方（财报体检）",
+   "default_title": "对照官方（财报体检）",
+   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:30.760367Z",
+   "created_at": "2026-10-12T04:50:29.830210Z",
+   "size_bytes": 1759,
+   "source": {
+    "expert": "财报体检",
+    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "对照官方",
+    "artifact": "crosscheck"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:metrics",
+   "kind": "deliverable",
+   "title": "算指标（财报体检）",
+   "default_title": "算指标（财报体检）",
+   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:30.648384Z",
+   "created_at": "2026-10-12T04:50:29.830210Z",
+   "size_bytes": 3886,
+   "source": {
+    "expert": "财报体检",
+    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "算指标",
+    "artifact": "metrics"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:facts",
+   "kind": "deliverable",
+   "title": "取数（财报体检）",
+   "default_title": "取数（财报体检）",
+   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:30.438269Z",
+   "created_at": "2026-10-12T04:50:29.830210Z",
+   "size_bytes": 4802,
+   "source": {
+    "expert": "财报体检",
+    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "取数",
+    "artifact": "facts"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:reconcile",
+   "kind": "deliverable",
+   "title": "勾稽（财报体检）",
+   "default_title": "勾稽（财报体检）",
+   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:30.333550Z",
+   "created_at": "2026-10-12T04:50:29.830210Z",
+   "size_bytes": 1262,
+   "source": {
+    "expert": "财报体检",
+    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "勾稽",
+    "artifact": "reconcile"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:profile",
+   "kind": "deliverable",
+   "title": "数据摸底（财报体检）",
+   "default_title": "数据摸底（财报体检）",
+   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:30.186705Z",
+   "created_at": "2026-10-12T04:50:29.830210Z",
+   "size_bytes": 837,
+   "source": {
+    "expert": "财报体检",
+    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "数据摸底",
+    "artifact": "profile"
+   },
+   "deleted": false
+  },
+  {
+   "id": "deliverable:e8d7f8a6-42c8-52b1-948d-742b459fa460:scope",
+   "kind": "deliverable",
+   "title": "定范围（财报体检）",
+   "default_title": "定范围（财报体检）",
+   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
+   "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
+   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
+   "versions": 1,
+   "updated_at": "2026-10-12T04:50:30.054911Z",
+   "created_at": "2026-10-12T04:50:29.830210Z",
+   "size_bytes": 190,
+   "source": {
+    "expert": "财报体检",
+    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
+    "step_title": "定范围",
+    "artifact": "scope"
+   },
+   "deleted": false
   }
- }
+ ]
 }

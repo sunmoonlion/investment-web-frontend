@@ -18,7 +18,7 @@ import { ConversationTitle } from '@/components/workbench/conversation-title'
 import { useWorkbench } from '@/lib/workbench/context'
 import { money, symbol, toMicros } from '@/lib/workbench/money'
 import { useProjectDetail } from '@/lib/workbench/queries'
-import { isBuilt, routes } from '@/lib/workbench/routes'
+import { routes } from '@/lib/workbench/routes'
 import { cn } from '@/lib/utils'
 
 import { useProjectActions } from '../api/projects'
@@ -28,7 +28,7 @@ function amount(value: string, currency: string) {
   return micros === null ? value : `${symbol(currency)}${money(micros)}`
 }
 
-// 项目页：一个项目里的东西都在这。对话、底稿；三种开始的办法；改名、归档。
+// 项目页：一个项目里的东西都在这。对话、专家交回；三种开始的办法；改名、归档。成稿在项目文件里（0015）。
 // 不显示文件列表：文件在用户的机器上，第一期不做远程浏览。
 export function ProjectScreen({ project: id }: { project: string }) {
   const t = useTranslations('projects.page')
@@ -174,10 +174,10 @@ export function ProjectScreen({ project: id }: { project: string }) {
               )}
             </section>
 
-            <section aria-label={t('dossiers')}>
-              <h2 className={heading}>{t('dossiers')}</h2>
+            <section aria-label={t('handbacks')}>
+              <h2 className={heading}>{t('handbacks')}</h2>
               {tasks.length === 0 ? (
-                <p className="text-muted-foreground text-sm">{t('noDossiers')}</p>
+                <p className="text-muted-foreground text-sm">{t('noHandbacks')}</p>
               ) : (
                 <ul className="divide-y rounded-xl border">
                   {tasks.map((task) => {
@@ -206,16 +206,12 @@ export function ProjectScreen({ project: id }: { project: string }) {
                     const cell = 'flex items-center gap-3 px-4 py-2.5 text-sm'
                     return (
                       <li key={task.id}>
-                        {isBuilt('dossier') ? (
-                          <Link
-                            href={routes.dossier(locale, id, task.id)}
-                            className={cn(cell, 'hover:bg-muted/60')}
-                          >
-                            {row}
-                          </Link>
-                        ) : (
-                          <div className={cell}>{row}</div>
-                        )}
+                        <Link
+                          href={routes.projectConversation(locale, id, task.session_id)}
+                          className={cn(cell, 'hover:bg-muted/60')}
+                        >
+                          {row}
+                        </Link>
                       </li>
                     )
                   })}

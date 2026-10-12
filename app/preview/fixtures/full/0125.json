@@ -1,0 +1,106 @@
+{
+ "contract_version": 2,
+ "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
+ "step": {
+  "index": 1,
+  "step_id": "scope",
+  "title": "定范围",
+  "summary": "认出公司、期间、报告类型",
+  "why": "先把问的是哪家公司、哪几年、哪种报告认准。认错了，后面每一步都白做。",
+  "uses": [],
+  "tools": [],
+  "returns": "scope",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有证券代码、期间、报告类型"
+   },
+   {
+    "label": "认得出是哪家公司"
+   },
+   {
+    "label": "期间不是空的"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 1,
+   "then": "human",
+   "back_to": null,
+   "backs": 0,
+   "text": "重做，最多 1 次；仍不过，停下来问你"
+  },
+  "reserve": "0.05",
+  "status": "accepted",
+  "attempts": [
+   {
+    "attempt_id": "4d24a11c-4177-528f-80af-115e4266dadb",
+    "n": 1,
+    "outcome": "accepted",
+    "failure": null,
+    "spent": "0.05",
+    "started_at": "2026-10-12T04:50:34.609629Z",
+    "ended_at": "2026-10-12T04:50:34.618195Z",
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有证券代码、期间、报告类型",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "认得出是哪家公司",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "期间不是空的",
+      "pass": true,
+      "message": ""
+     }
+    ],
+    "tools": {},
+    "returned": {
+     "artifact": "scope",
+     "version": 1,
+     "content": {
+      "aspects": [
+       "盈利能力"
+      ],
+      "company": "招商银行",
+      "periods": [
+       "2023",
+       "2024",
+       "2025"
+      ],
+      "question": "招商银行 2023 到 2025 年的盈利能力怎么样？",
+      "assumptions": [],
+      "report_types": [
+       "年报"
+      ],
+      "security_code": "600036"
+     },
+     "labels": {
+      "aspects": "关注的方面",
+      "company": "公司",
+      "periods": "期间",
+      "question": "问题",
+      "assumptions": "假设",
+      "report_types": "报告类型",
+      "security_code": "证券代码"
+     }
+    },
+    "process": []
+   }
+  ],
+  "times": 1,
+  "rejected": 0,
+  "spent": "0.05",
+  "data": null
+ }
+}

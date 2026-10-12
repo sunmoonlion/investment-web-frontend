@@ -595,58 +595,6 @@ export const reviewPlaceSchema = z
 
 export const createdProjectSchema = z.object({ id: uuid }).loose()
 
-// ---------------- 底稿 ----------------
-export const dossierBlockSchema = z
-  .object({
-    key: z.string(),
-    title: z.string(),
-    kind: z.enum(['text', 'list', 'table', 'tables', 'checks', 'coverage']),
-    folded: z.boolean(),
-    from: z.object({ step: z.number().int().nullable(), title: z.string() }).loose().nullable(),
-    // done：有内容；别的：没有做到这一步，note 里是原因
-    status: z.string(),
-    note: z.string().nullable(),
-    content: z.unknown(),
-    columns: z.array(z.object({ key: z.string(), title: z.string() })),
-    also: z.record(z.string(), z.unknown()),
-    summary: z.object({ text: z.string() }).loose().nullable(),
-    source: z
-      .object({
-        dataset: z.string().nullable().optional(),
-        data_version: z.string().nullable().optional(),
-        as_of: z.string().nullable().optional(),
-      })
-      .loose()
-      .nullable(),
-  })
-  .loose()
-export type DossierBlock = z.infer<typeof dossierBlockSchema>
-
-export const dossierSchema = z
-  .object({
-    task: runSheetSchema,
-    head: z.object({ kind: z.string(), text: z.string() }).loose(),
-    sections: z.array(
-      z.object({ key: z.string(), title: z.string(), blocks: z.array(dossierBlockSchema) }).loose(),
-    ),
-    how: z.array(
-      z
-        .object({
-          index: z.number().int(),
-          title: z.string(),
-          status: stepStatusSchema,
-          times: z.number().int(),
-          rejected: z.number().int(),
-        })
-        .loose(),
-    ),
-    conclusion: z
-      .object({ text: z.string(), saved_at: z.string().nullable(), version: z.number().nullable() })
-      .loose(),
-  })
-  .loose()
-export type Dossier = z.infer<typeof dossierSchema>
-
 // ---------------- 知识库（SDD 0011 第一期）----------------
 export const libraryItemSchema = z
   .object({

@@ -319,7 +319,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069/dossier",
+   "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069/steps",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -327,27 +327,11 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069/dossier/export",
-   "query": "",
-   "status": 200,
-   "content_type": "text/markdown; charset=utf-8",
-   "file": "0038.md"
-  },
-  {
-   "method": "GET",
-   "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069/steps",
-   "query": "",
-   "status": 200,
-   "content_type": "application/json",
-   "file": "0039.json"
-  },
-  {
-   "method": "GET",
    "path": "/api/workbench/tasks/8b109ead-42d9-513b-be23-d3fa0e086069/steps/1",
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0040.json"
+   "file": "0038.json"
   },
   {
    "method": "GET",
@@ -355,7 +339,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0041.json"
+   "file": "0039.json"
   },
   {
    "method": "GET",
@@ -363,7 +347,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0042.json"
+   "file": "0040.json"
   },
   {
    "method": "GET",
@@ -371,7 +355,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0043.json"
+   "file": "0041.json"
   },
   {
    "method": "GET",
@@ -379,7 +363,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0044.json"
+   "file": "0042.json"
   },
   {
    "method": "GET",
@@ -387,7 +371,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0045.json"
+   "file": "0043.json"
   },
   {
    "method": "GET",
@@ -395,7 +379,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0046.json"
+   "file": "0044.json"
   },
   {
    "method": "GET",
@@ -403,7 +387,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0047.json"
+   "file": "0045.json"
   },
   {
    "method": "GET",
@@ -411,7 +395,7 @@
    "query": "kind=dossier",
    "status": 200,
    "content_type": "application/json",
-   "file": "0048.json"
+   "file": "0046.json"
   },
   {
    "method": "GET",
@@ -419,7 +403,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0049.json"
+   "file": "0047.json"
   },
   {
    "method": "GET",
@@ -427,7 +411,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0050.json"
+   "file": "0048.json"
   },
   {
    "method": "GET",
@@ -435,7 +419,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0051.json"
+   "file": "0049.json"
   },
   {
    "method": "GET",
@@ -443,7 +427,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0052.json"
+   "file": "0050.json"
   },
   {
    "method": "GET",
@@ -451,7 +435,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0053.json"
+   "file": "0051.json"
   },
   {
    "method": "GET",
@@ -459,7 +443,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0054.json"
+   "file": "0052.json"
   },
   {
    "method": "GET",
@@ -467,7 +451,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0055.json"
+   "file": "0053.json"
   },
   {
    "method": "GET",
@@ -475,7 +459,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0056.json"
+   "file": "0054.json"
   },
   {
    "method": "GET",
@@ -483,7 +467,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0057.json"
+   "file": "0055.json"
   },
   {
    "method": "GET",
@@ -491,7 +475,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0058.json"
+   "file": "0056.json"
   },
   {
    "method": "GET",
@@ -499,7 +483,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0059.json"
+   "file": "0057.json"
   },
   {
    "method": "GET",
@@ -507,7 +491,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0060.json"
+   "file": "0058.json"
   },
   {
    "method": "GET",
@@ -515,7 +499,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0061.json"
+   "file": "0059.json"
   },
   {
    "method": "GET",
@@ -523,7 +507,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0062.json"
+   "file": "0060.json"
   },
   {
    "method": "GET",
@@ -531,7 +515,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0063.json"
+   "file": "0061.json"
   },
   {
    "method": "GET",
@@ -539,7 +523,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0064.json"
+   "file": "0062.json"
   },
   {
    "method": "GET",

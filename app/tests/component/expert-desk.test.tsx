@@ -128,7 +128,7 @@ describe('请专家', () => {
     expect(screen.getByText('3 执行 SQL')).toBeInTheDocument()
     // 不填预算；专家看得到什么只数数
     expect(screen.queryByText(/预算/)).toBeNull()
-    expect(screen.getByText('项目里别的 3 段对话、1 份底稿')).toBeInTheDocument()
+    expect(screen.getByText('项目里别的 3 段对话、1 次专家交回')).toBeInTheDocument()
   })
 
   it('从专家入口交出：建对话并交出，一次提交；不带预算上限', async () => {

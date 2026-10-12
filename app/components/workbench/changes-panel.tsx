@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { DiffBlock } from '@/components/workbench/step-line'
 import { relativeTo } from '@/lib/workbench/items'
 
-import type { FileChanges } from '../model/timeline'
+import type { FileChanges } from '@/lib/workbench/timeline'
 
 // 结果边栏里的「改动」：这段对话改了哪些文件、改了什么。
 export function ChangesPanel({

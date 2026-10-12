@@ -1,22 +1,186 @@
 {
  "contract_version": 2,
- "sessions": [
+ "interactions": [
   {
-   "id": "7702656d-c17f-5a36-a101-1c6cf4e19611",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "environment_id": null,
-   "sandbox_id": "81108b8f-3022-5de7-860c-36662e2db6fb",
-   "project_root": null,
-   "thread_id": "thread-dd0c8478b50e",
-   "wheel": "user",
-   "state_version": 0,
-   "active_task_id": null,
-   "thread_settings": {},
-   "created_at": "2026-10-11T17:39:49.724380+00:00",
-   "last_active_at": "2026-10-11T17:39:49.951549+00:00",
-   "kind": "chat",
-   "project_id": null,
-   "title": "毛利率和净利率有什么区别？用三句话说清楚。"
+   "interaction_id": "7a2555b7-cc4f-5722-af30-bffeae1c3659",
+   "kind": "tool_approval",
+   "status": "pending",
+   "where": {
+    "project": {
+     "id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
+     "title": "恒瑞医药"
+    },
+    "conversation": {
+     "id": "f9bf9962-ad05-5a2d-8cd9-6c46baa661f7",
+     "title": "把毛利率、净利率、自由现金流三个指标的含义整理成 notes…",
+     "kind": "work"
+    },
+    "task": null,
+    "step": null,
+    "about": "命令要你批准"
+   },
+   "why": "这个动作超出了当前允许的范围，要你点头才做",
+   "failed": [],
+   "missing_data": null,
+   "expires_at": "2026-10-12T05:50:36.567652Z",
+   "created_at": "2026-10-12T04:50:36.568097Z"
+  },
+  {
+   "interaction_id": "0a7e2507-2114-5a62-8025-04c93019a61b",
+   "kind": "input",
+   "status": "cancelled",
+   "where": {
+    "project": {
+     "id": "5acd21f7-5aec-5da2-a689-3ed150887faa",
+     "title": "招商银行"
+    },
+    "conversation": {
+     "id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+     "title": "招商银行 2023 到 2025 年的盈利能力怎么样？",
+     "kind": "expert"
+    },
+    "task": {
+     "id": "607c2718-4eae-57a0-bb04-8aa28b096733",
+     "question": "招商银行 2023 到 2025 年的盈利能力怎么样？",
+     "expert": "财报体检"
+    },
+    "step": {
+     "index": 3,
+     "title": "勾稽"
+    },
+    "about": "验收没有通过"
+   },
+   "why": "这一步没有通过验收。这一步不通过时专家不重做，直接问你",
+   "failed": [
+    {
+     "label": "每条勾稽规则都平",
+     "message": "有勾稽规则不平，不往下算"
+    }
+   ],
+   "missing_data": null,
+   "expires_at": "2026-10-15T04:50:34.964740Z",
+   "created_at": "2026-10-12T04:50:34.962615Z"
+  },
+  {
+   "interaction_id": "dd790e56-724e-5e57-9294-bae977583372",
+   "kind": "input",
+   "status": "consumed",
+   "where": {
+    "project": {
+     "id": "06944124-075a-504f-b4f3-275ef032eb9c",
+     "title": "比亚迪"
+    },
+    "conversation": {
+     "id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+     "title": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
+     "kind": "expert"
+    },
+    "task": {
+     "id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+     "question": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
+     "expert": "财报体检"
+    },
+    "step": {
+     "index": 6,
+     "title": "对照官方"
+    },
+    "about": "验收没有通过"
+   },
+   "why": "这一步没有通过验收。这一步不通过时专家不重做，直接问你",
+   "failed": [
+    {
+     "label": "和公司披露的数都对得上",
+     "message": "有数字与公司披露的原文对不上，不往下写"
+    }
+   ],
+   "missing_data": null,
+   "expires_at": "2026-10-15T04:50:34.411727Z",
+   "created_at": "2026-10-12T04:50:34.411039Z"
+  },
+  {
+   "interaction_id": "81108b8f-3022-5de7-860c-36662e2db6fb",
+   "kind": "input",
+   "status": "pending",
+   "where": {
+    "project": {
+     "id": "7679e7df-8718-5408-8ba3-5f59a9525cf4",
+     "title": "片仔癀"
+    },
+    "conversation": {
+     "id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+     "title": "片仔癀 2023 到 2025 年的盈利能力怎么样？",
+     "kind": "expert"
+    },
+    "task": {
+     "id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+     "question": "片仔癀 2023 到 2025 年的盈利能力怎么样？",
+     "expert": "财报体检"
+    },
+    "step": {
+     "index": 2,
+     "title": "数据摸底"
+    },
+    "about": "验收没有通过"
+   },
+   "why": "这家公司还没有入库。没有数据，专家不往下做，也不重做",
+   "failed": [
+    {
+     "label": "有对应的数据集",
+     "message": "这家公司未入库：没有对应的数据集"
+    },
+    {
+     "label": "有数据版本",
+     "message": "没有数据版本"
+    },
+    {
+     "label": "范围内至少有一期数据",
+     "message": "范围内没有任何一期的数据"
+    }
+   ],
+   "missing_data": {
+    "market": null,
+    "source": "expert",
+    "dataset": null,
+    "security_code": "600436"
+   },
+   "expires_at": "2026-10-15T04:50:32.836055Z",
+   "created_at": "2026-10-12T04:50:32.834438Z"
+  },
+  {
+   "interaction_id": "5b878ac4-da05-5183-aec1-10871091b1e4",
+   "kind": "input",
+   "status": "pending",
+   "where": {
+    "project": {
+     "id": "d35d6a3c-0149-5775-a1c7-860389fb558a",
+     "title": "宁德时代"
+    },
+    "conversation": {
+     "id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+     "title": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
+     "kind": "expert"
+    },
+    "task": {
+     "id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
+     "question": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
+     "expert": "财报体检"
+    },
+    "step": {
+     "index": 3,
+     "title": "勾稽"
+    },
+    "about": "验收没有通过"
+   },
+   "why": "这一步没有通过验收。这一步不通过时专家不重做，直接问你",
+   "failed": [
+    {
+     "label": "每条勾稽规则都平",
+     "message": "有勾稽规则不平，不往下算"
+    }
+   ],
+   "missing_data": null,
+   "expires_at": "2026-10-15T04:50:32.524581Z",
+   "created_at": "2026-10-12T04:50:32.523920Z"
   }
  ]
 }

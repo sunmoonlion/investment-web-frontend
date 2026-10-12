@@ -20,8 +20,6 @@ export const routes = {
     at(locale, 'projects', project, 'c', conversation),
   askExpert: (locale: string, project: string, from?: string) =>
     `${at(locale, 'projects', project, 'expert', 'new')}${from ? `?from=${encodeURIComponent(from)}` : ''}`,
-  dossier: (locale: string, project: string, task: string) =>
-    at(locale, 'projects', project, 'tasks', task),
   expert: (locale: string) => at(locale, 'expert'),
   machines: (locale: string) => at(locale, 'machines'),
   settings: (locale: string, section: SettingsSection = 'cloud') => at(locale, 'settings', section),
@@ -52,7 +50,6 @@ export type Page =
   | 'project'
   | 'projectConversation'
   | 'askExpert'
-  | 'dossier'
   | 'expert'
   | 'machines'
   | 'settings'
@@ -68,7 +65,6 @@ const BUILT: ReadonlySet<Page> = new Set([
   'projectConversation',
   'expert',
   'askExpert',
-  'dossier',
   'machines',
   'settings',
   'library',

@@ -1,188 +1,110 @@
 {
  "contract_version": 2,
- "task_id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
- "step": {
-  "index": 7,
-  "step_id": "note",
-  "title": "成稿",
-  "summary": "只用前面各步的结果写底稿：列事实和提醒，结论栏留空",
-  "why": "底稿只写前面各步验过的事实和提醒。结论栏留空：下结论是你的事。",
-  "uses": [
+ "item": {
+  "id": "deliverable:47e8e56e-d165-52d3-87a7-fd15c9cb8728:reconcile",
+  "kind": "deliverable",
+  "title": "勾稽（财报体检）",
+  "default_title": "勾稽（财报体检）",
+  "project_id": "06944124-075a-504f-b4f3-275ef032eb9c",
+  "task_id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+  "session_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+  "versions": 1,
+  "updated_at": "2026-10-12T04:50:34.091217Z",
+  "created_at": "2026-10-12T04:50:33.702906Z",
+  "size_bytes": 1262,
+  "source": {
+   "expert": "财报体检",
+   "question": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
+   "step_title": "勾稽",
+   "artifact": "reconcile"
+  },
+  "deleted": false,
+  "version_list": [
    {
-    "artifact": "scope",
-    "step": 1,
-    "title": "定范围"
-   },
-   {
-    "artifact": "profile",
-    "step": 2,
-    "title": "数据摸底"
-   },
-   {
-    "artifact": "reconcile",
-    "step": 3,
-    "title": "勾稽"
-   },
-   {
-    "artifact": "facts",
-    "step": 4,
-    "title": "取数"
-   },
-   {
-    "artifact": "metrics",
-    "step": 5,
-    "title": "算指标"
-   },
-   {
-    "artifact": "crosscheck",
-    "step": 6,
-    "title": "对照官方"
+    "version": 1,
+    "created_at": "2026-10-12T04:50:34.091217Z",
+    "sha256": "e496230c49a9c974ca4d7c66ed95575578c665a757a3584c48db56ad19c82852"
    }
-  ],
-  "tools": [],
-  "returns": "note",
+  ]
+ },
+ "version": 1,
+ "sha256": "e496230c49a9c974ca4d7c66ed95575578c665a757a3584c48db56ad19c82852",
+ "kind": "deliverable",
+ "content": {
   "checks": [
    {
-    "label": "交回的格式对"
+    "rule": "资产 = 负债 + 所有者权益",
+    "rule_id": "R01",
+    "unbalanced": 0,
+    "periods_checked": 3,
+    "unbalanced_periods": []
    },
    {
-    "label": "有回答、提醒、出处、数据版本"
+    "rule": "流动资产 + 非流动资产 = 资产总计",
+    "rule_id": "R02",
+    "unbalanced": 0,
+    "periods_checked": 3,
+    "unbalanced_periods": []
    },
    {
-    "label": "回答不是空的"
+    "rule": "流动负债 + 非流动负债 = 负债合计",
+    "rule_id": "R03",
+    "unbalanced": 0,
+    "periods_checked": 3,
+    "unbalanced_periods": []
    },
    {
-    "label": "有提醒"
+    "rule": "营业收入 − 营业成本 − 各项费用 = 营业利润（允许其他收益）",
+    "rule_id": "R04",
+    "unbalanced": 0,
+    "periods_checked": 3,
+    "unbalanced_periods": []
    },
    {
-    "label": "有出处"
+    "rule": "利润总额 − 所得税 = 净利润",
+    "rule_id": "R05",
+    "unbalanced": 0,
+    "periods_checked": 3,
+    "unbalanced_periods": []
    },
    {
-    "label": "有数据版本"
+    "rule": "归母净利润 + 少数股东损益 = 净利润",
+    "rule_id": "R06",
+    "unbalanced": 0,
+    "periods_checked": 3,
+    "unbalanced_periods": []
    },
    {
-    "label": "结论栏是空的"
+    "rule": "经营 + 投资 + 筹资现金流 + 汇率影响 = 现金净增加额",
+    "rule_id": "R07",
+    "unbalanced": 0,
+    "periods_checked": 3,
+    "unbalanced_periods": []
    },
    {
-    "label": "没有评级、目标价、买卖建议"
+    "rule": "期初现金 + 现金净增加额 = 期末现金",
+    "rule_id": "R08",
+    "unbalanced": 0,
+    "periods_checked": 3,
+    "unbalanced_periods": []
    },
    {
-    "label": "底稿没有超长"
+    "rule": "利润表净利润 = 现金流量表补充资料里的净利润",
+    "rule_id": "R09",
+    "unbalanced": 0,
+    "periods_checked": 3,
+    "unbalanced_periods": []
    }
   ],
-  "after_rejection": {
-   "reworks": 1,
-   "then": "human",
-   "back_to": null,
-   "backs": 0,
-   "text": "重做，最多 1 次；仍不过，停下来问你"
-  },
-  "reserve": "0.05",
-  "status": "accepted",
-  "attempts": [
+  "continuity": [
    {
-    "attempt_id": "2f23eadc-75c5-57fe-9ab2-003fe6d5f7a5",
-    "n": 1,
-    "outcome": "accepted",
-    "failure": null,
-    "spent": "0.05",
-    "started_at": "2026-10-11T17:39:46.377645Z",
-    "ended_at": "2026-10-11T17:39:46.389196Z",
-    "checks": [
-     {
-      "label": "交回的格式对",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有回答、提醒、出处、数据版本",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "回答不是空的",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有提醒",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有出处",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有数据版本",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "结论栏是空的",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "没有评级、目标价、买卖建议",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "底稿没有超长",
-      "pass": true,
-      "message": ""
-     }
-    ],
-    "tools": {},
-    "returned": {
-     "artifact": "note",
-     "version": 1,
-     "content": {
-      "answer": "恒瑞医药 2023 到 2025 年年报：毛利率分别为 84.6%、85.9%、86.2%，净利率分别为 18.8%、20.1%、21.4%。2024 年的数是追溯调整后的口径，与 2023、2025 年的原始披露口径不同，三年之间不能直接相比。本次体检只列事实与口径，不给投资建议。",
-      "tables": [],
-      "caveats": [
-       "样例数据：数字是为了预览编的，不是这家公司的真实数据",
-       "2023 年与 2024 年之间、2024 年与 2025 年之间口径不同：2024 年年报的数是追溯调整后的口径，公司当年变更了收入确认的会计政策",
-       "净资产收益率三年都标为不适用：第一年没有上一年的期末数，后两年与上一年口径不同",
-       "2024 年期初现金与上一年期末现金相差 1,204.00 元，数据集的说明里有解释"
-      ],
-      "citations": [
-       "sh600276-financials，数据版本 sh600276-financials-sample600276，数据到 2025-12-31",
-       "恒瑞医药2023年、2024年、2025年年度报告，第 6 页「主要会计数据」"
-      ],
-      "conclusion": "",
-      "limitations": [
-       "没有做附注与经营数据",
-       "现金流量表的项目没有与公司披露的原文对照"
-      ],
-      "data_version": "sh600276-financials-sample600276",
-      "observations": [
-       "营业收入 2023 到 2025 年逐年增加",
-       "毛利率 2025 年高于 2023 年",
-       "经营活动现金流量净额三年都高于净利润"
-      ]
-     },
-     "labels": {
-      "answer": "回答",
-      "tables": "表",
-      "caveats": "提醒",
-      "citations": "出处",
-      "conclusion": "结论",
-      "limitations": "局限",
-      "data_version": "数据版本",
-      "observations": "观察"
-     }
-    },
-    "process": []
+    "diff": 1204.0,
+    "note": "2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策",
+    "fiscal_year": 2024
    }
   ],
-  "times": 1,
-  "rejected": 0,
-  "spent": "0.05",
-  "data": {
-   "data_version": "sh600276-financials-sample600276"
-  }
- }
+  "data_version": "sz002594-financials-sample002594",
+  "unexplained_breaks": []
+ },
+ "text": "{\n  \"checks\": [\n    {\n      \"rule\": \"资产 = 负债 + 所有者权益\",\n      \"rule_id\": \"R01\",\n      \"unbalanced\": 0,\n      \"periods_checked\": 3,\n      \"unbalanced_periods\": []\n    },\n    {\n      \"rule\": \"流动资产 + 非流动资产 = 资产总计\",\n      \"rule_id\": \"R02\",\n      \"unbalanced\": 0,\n      \"periods_checked\": 3,\n      \"unbalanced_periods\": []\n    },\n    {\n      \"rule\": \"流动负债 + 非流动负债 = 负债合计\",\n      \"rule_id\": \"R03\",\n      \"unbalanced\": 0,\n      \"periods_checked\": 3,\n      \"unbalanced_periods\": []\n    },\n    {\n      \"rule\": \"营业收入 − 营业成本 − 各项费用 = 营业利润（允许其他收益）\",\n      \"rule_id\": \"R04\",\n      \"unbalanced\": 0,\n      \"periods_checked\": 3,\n      \"unbalanced_periods\": []\n    },\n    {\n      \"rule\": \"利润总额 − 所得税 = 净利润\",\n      \"rule_id\": \"R05\",\n      \"unbalanced\": 0,\n      \"periods_checked\": 3,\n      \"unbalanced_periods\": []\n    },\n    {\n      \"rule\": \"归母净利润 + 少数股东损益 = 净利润\",\n      \"rule_id\": \"R06\",\n      \"unbalanced\": 0,\n      \"periods_checked\": 3,\n      \"unbalanced_periods\": []\n    },\n    {\n      \"rule\": \"经营 + 投资 + 筹资现金流 + 汇率影响 = 现金净增加额\",\n      \"rule_id\": \"R07\",\n      \"unbalanced\": 0,\n      \"periods_checked\": 3,\n      \"unbalanced_periods\": []\n    },\n    {\n      \"rule\": \"期初现金 + 现金净增加额 = 期末现金\",\n      \"rule_id\": \"R08\",\n      \"unbalanced\": 0,\n      \"periods_checked\": 3,\n      \"unbalanced_periods\": []\n    },\n    {\n      \"rule\": \"利润表净利润 = 现金流量表补充资料里的净利润\",\n      \"rule_id\": \"R09\",\n      \"unbalanced\": 0,\n      \"periods_checked\": 3,\n      \"unbalanced_periods\": []\n    }\n  ],\n  \"continuity\": [\n    {\n      \"diff\": 1204.0,\n      \"note\": \"2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策\",\n      \"fiscal_year\": 2024\n    }\n  ],\n  \"data_version\": \"sz002594-financials-sample002594\",\n  \"unexplained_breaks\": []\n}"
 }

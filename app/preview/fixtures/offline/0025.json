@@ -7,8 +7,8 @@
   "workspace_root": "/home/demo/research",
   "path": "恒瑞医药",
   "title": "恒瑞医药",
-  "created_at": "2026-10-11T17:40:02.974468Z",
-  "updated_at": "2026-10-11T17:40:02.974468Z",
+  "created_at": "2026-10-12T04:50:49.295412Z",
+  "updated_at": "2026-10-12T04:50:49.295412Z",
   "archived_at": null,
   "directory": "/home/demo/research/恒瑞医药",
   "archived": false,
@@ -23,7 +23,7 @@
    "title": "这个项目里有哪些文件？",
    "wheel": "user",
    "active_task_id": null,
-   "last_active_at": "2026-10-11T17:40:04.253274Z"
+   "last_active_at": "2026-10-12T04:50:50.780588Z"
   },
   {
    "id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
@@ -31,7 +31,7 @@
    "title": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
    "wheel": "user",
    "active_task_id": null,
-   "last_active_at": "2026-10-11T17:40:03.802167Z"
+   "last_active_at": "2026-10-12T04:50:50.261408Z"
   }
  ],
  "tasks": [
@@ -51,8 +51,8 @@
    },
    "spent": "0.35",
    "currency": "CNY",
-   "created_at": "2026-10-11T17:40:02.985162Z",
-   "ended_at": "2026-10-11T17:40:03.802167Z"
+   "created_at": "2026-10-12T04:50:49.305768Z",
+   "ended_at": "2026-10-12T04:50:50.261408Z"
   }
  ]
 }

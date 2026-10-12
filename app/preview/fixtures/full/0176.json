@@ -1,103 +1,120 @@
 {
  "contract_version": 2,
- "artifacts": [
-  {
-   "id": "5a74c70e-0687-5046-add3-b21a5afaf70d",
-   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
-   "attempt_id": "b7ff7773-a31b-5df3-a3ac-23f8c1ee682a",
-   "name": "profile",
-   "version": 1,
-   "kind": "step",
-   "content": {
-    "as_of": "2025-12-31",
-    "notes": [
-     "样例数据：数字是为了预览编的，不是这家公司的真实数据",
-     "2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策"
-    ],
-    "dataset": "sz300750-financials",
-    "periods": [
-     {
-      "basis": "原始披露",
-      "verified": true,
-      "fiscal_year": 2023,
-      "report_date": "2023-12-31",
-      "report_type": "年报",
-      "official_disclosed_date": "2024-03-28"
-     },
-     {
-      "basis": "追溯调整后",
-      "verified": true,
-      "fiscal_year": 2024,
-      "report_date": "2024-12-31",
-      "report_type": "年报",
-      "official_disclosed_date": "2025-03-28"
-     },
-     {
-      "basis": "原始披露",
-      "verified": true,
-      "fiscal_year": 2025,
-      "report_date": "2025-12-31",
-      "report_type": "年报",
-      "official_disclosed_date": "2026-03-28"
-     }
-    ],
-    "basis_breaks": [
-     {
-      "basis": [
-       "原始披露",
-       "追溯调整后"
-      ],
-      "between": [
-       "2023",
-       "2024"
-      ]
-     },
-     {
-      "basis": [
-       "追溯调整后",
-       "原始披露"
-      ],
-      "between": [
-       "2024",
-       "2025"
-      ]
-     }
-    ],
-    "data_version": "sz300750-financials-sample300750",
-    "not_ingested": false,
-    "security_code": "300750"
+ "task_id": "e360da80-c794-5489-9aef-1545babb5931",
+ "step": {
+  "index": 2,
+  "step_id": "sql_generate",
+  "title": "生成 SQL",
+  "summary": "对照数据的结构写出查询，并说明每一列的口径",
+  "why": "查询照着数据的真实结构写，每一列是什么口径写明白。你看得到它到底查了什么。",
+  "uses": [
+   {
+    "artifact": "rewritten",
+    "step": 1,
+    "title": "改写问题"
+   }
+  ],
+  "tools": [
+   "describe_schema",
+   "metric_definitions"
+  ],
+  "returns": "sql",
+  "checks": [
+   {
+    "label": "交回的格式对"
    },
-   "digest": "b3735d1760412b7e122f73ba16d44b60f4f558ecee20b3dc72daf79138fab94c",
-   "workspace_path": null,
-   "created_at": "2026-10-11T17:39:47.688971+00:00"
+   {
+    "label": "有查询语句"
+   },
+   {
+    "label": "查询语句不是空的"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 2,
+   "then": "human",
+   "back_to": null,
+   "backs": 0,
+   "text": "重做，最多 2 次；仍不过，停下来问你"
   },
-  {
-   "id": "0dcbf52b-605b-5b10-a5cd-9c7bf241ea70",
-   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
-   "attempt_id": "844787e2-31bc-50cd-808e-dc440c0ead4f",
-   "name": "scope",
-   "version": 1,
-   "kind": "step",
-   "content": {
-    "aspects": [
-     "盈利能力"
+  "reserve": "0.05",
+  "status": "accepted",
+  "attempts": [
+   {
+    "attempt_id": "a3f193ae-a985-58a9-887a-355d78ff80a5",
+    "n": 1,
+    "outcome": "accepted",
+    "failure": null,
+    "spent": "0.05",
+    "started_at": "2026-10-12T04:50:32.052513Z",
+    "ended_at": "2026-10-12T04:50:32.060915Z",
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有查询语句",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "查询语句不是空的",
+      "pass": true,
+      "message": ""
+     }
     ],
-    "company": "宁德时代",
-    "periods": [
-     "2023",
-     "2024",
-     "2025"
-    ],
-    "question": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
-    "assumptions": [],
-    "report_types": [
-     "年报"
-    ],
-    "security_code": "300750"
-   },
-   "digest": "f77a558f3ba9620c552aba0f6d28ef5b64355e4e4f006ed494bb527bd55aa444",
-   "workspace_path": null,
-   "created_at": "2026-10-11T17:39:47.588096+00:00"
-  }
- ]
+    "tools": {
+     "describe_schema": 1,
+     "metric_definitions": 1
+    },
+    "returned": {
+     "artifact": "sql",
+     "version": 1,
+     "content": {
+      "sql": "SELECT fiscal_year, report_type, (operate_income - operate_cost) / operate_income AS gross_margin FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2021 AND 2025 ORDER BY fiscal_year",
+      "columns": [
+       {
+        "name": "fiscal_year",
+        "definition": "会计年度"
+       },
+       {
+        "name": "gross_margin",
+        "definition": "(营业收入 − 营业成本) ÷ 营业收入，比率，0.25 表示 25%"
+       }
+      ]
+     },
+     "labels": {
+      "sql": "查询语句",
+      "columns": "列",
+      "name": "名字",
+      "definition": "口径"
+     }
+    },
+    "process": [
+     {
+      "at": "2026-10-12T04:50:32.028076Z",
+      "kind": "tool",
+      "name": "describe_schema",
+      "dataset": "sz000858-financials",
+      "brief": "",
+      "ok": true
+     },
+     {
+      "at": "2026-10-12T04:50:32.034422Z",
+      "kind": "tool",
+      "name": "metric_definitions",
+      "dataset": "sz000858-financials",
+      "brief": "",
+      "ok": true
+     }
+    ]
+   }
+  ],
+  "times": 1,
+  "rejected": 0,
+  "spent": "0.05",
+  "data": null
+ }
 }

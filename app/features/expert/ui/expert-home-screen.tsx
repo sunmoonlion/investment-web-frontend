@@ -10,7 +10,7 @@ import { ProjectPicker } from '@/components/workbench/project-picker'
 import { ConnectComputerLink } from '@/components/workbench/connect-computer'
 import { useWorkbench } from '@/lib/workbench/context'
 import { useMachines, useProjects } from '@/lib/workbench/queries'
-import { conversationRoute, isBuilt, routes } from '@/lib/workbench/routes'
+import { conversationRoute, routes } from '@/lib/workbench/routes'
 import { cn } from '@/lib/utils'
 
 import { useOverview, usePacks } from '../api/desk'
@@ -198,14 +198,6 @@ export function ExpertHomeScreen() {
                   <span className="w-20 shrink-0 text-right tabular-nums">
                     {amountText(each.budget.spent, each.budget.currency)}
                   </span>
-                  {isBuilt('dossier') && each.project_id ? (
-                    <Link
-                      href={routes.dossier(locale, each.project_id, each.task_id)}
-                      className="shrink-0 underline underline-offset-3"
-                    >
-                      {t('dossier')}
-                    </Link>
-                  ) : null}
                 </li>
               ))}
             </ul>

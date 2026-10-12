@@ -1,106 +1,90 @@
 {
  "contract_version": 2,
- "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
- "step": {
-  "index": 1,
-  "step_id": "scope",
-  "title": "定范围",
-  "summary": "认出公司、期间、报告类型",
-  "why": "先把问的是哪家公司、哪几年、哪种报告认准。认错了，后面每一步都白做。",
-  "uses": [],
-  "tools": [],
-  "returns": "scope",
-  "checks": [
-   {
-    "label": "交回的格式对"
+ "interaction": {
+  "interaction_id": "dd790e56-724e-5e57-9294-bae977583372",
+  "kind": "input",
+  "status": "consumed",
+  "where": {
+   "project": {
+    "id": "06944124-075a-504f-b4f3-275ef032eb9c",
+    "title": "比亚迪"
    },
-   {
-    "label": "有证券代码、期间、报告类型"
+   "conversation": {
+    "id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+    "title": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
+    "kind": "expert"
    },
-   {
-    "label": "认得出是哪家公司"
+   "task": {
+    "id": "47e8e56e-d165-52d3-87a7-fd15c9cb8728",
+    "question": "比亚迪 2023 到 2025 年的盈利能力怎么样？",
+    "expert": "财报体检"
    },
-   {
-    "label": "期间不是空的"
-   }
-  ],
-  "after_rejection": {
-   "reworks": 1,
-   "then": "human",
-   "back_to": null,
-   "backs": 0,
-   "text": "重做，最多 1 次；仍不过，停下来问你"
+   "step": {
+    "index": 6,
+    "title": "对照官方"
+   },
+   "about": "验收没有通过"
   },
-  "reserve": "0.05",
-  "status": "accepted",
-  "attempts": [
+  "why": "这一步没有通过验收。这一步不通过时专家不重做，直接问你",
+  "failed": [
    {
-    "attempt_id": "62eee973-4951-54dc-baf5-e486e8870748",
-    "n": 1,
-    "outcome": "accepted",
-    "failure": null,
-    "spent": "0.05",
-    "started_at": "2026-10-11T17:39:46.580585Z",
-    "ended_at": "2026-10-11T17:39:46.591566Z",
-    "checks": [
-     {
-      "label": "交回的格式对",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有证券代码、期间、报告类型",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "认得出是哪家公司",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "期间不是空的",
-      "pass": true,
-      "message": ""
-     }
-    ],
-    "tools": {},
-    "returned": {
-     "artifact": "scope",
-     "version": 1,
-     "content": {
-      "aspects": [
-       "盈利能力"
-      ],
-      "company": "贵州茅台",
-      "periods": [
-       "2023",
-       "2024",
-       "2025"
-      ],
-      "question": "贵州茅台 2023 到 2025 年的盈利能力怎么样？",
-      "assumptions": [],
-      "report_types": [
-       "年报"
-      ],
-      "security_code": "600519"
-     },
-     "labels": {
-      "aspects": "关注的方面",
-      "company": "公司",
-      "periods": "期间",
-      "question": "问题",
-      "assumptions": "假设",
-      "report_types": "报告类型",
-      "security_code": "证券代码"
-     }
-    },
-    "process": []
+    "label": "和公司披露的数都对得上",
+    "message": "有数字与公司披露的原文对不上，不往下写"
    }
   ],
-  "times": 1,
-  "rejected": 0,
-  "spent": "0.05",
-  "data": null
+  "missing_data": null,
+  "expires_at": "2026-10-15T04:50:34.411727Z",
+  "created_at": "2026-10-12T04:50:34.411039Z",
+  "pending": {
+   "title": "第「对照官方」步没有通过验收",
+   "question": "要再试一次，还是停止？",
+   "options": [
+    {
+     "id": "rework",
+     "label": "再试一次",
+     "consequence": "专家重做这一步。重做要再花钱，花了多少顶部实时显示",
+     "needs_amount": false
+    },
+    {
+     "id": "stop",
+     "label": "停止",
+     "consequence": "专家停下，把做完的 5 步交回给你。已花的不退",
+     "needs_amount": false
+    }
+   ],
+   "unknowns": [
+    "list_empty(mismatched): 有数字与公司披露的原文对不上，不往下写"
+   ],
+   "evidence": []
+  },
+  "subject": {
+   "digest": null,
+   "target_state_version": 33,
+   "command": null,
+   "cwd": null,
+   "returned": "{\"matched\": [{\"fiscal_year\": 2023, \"item\": \"operate_income\", \"basis\": \"原始披露\", \"value\": 602300000000.0, \"source_report\": \"比亚迪2023年年度报告\", \"page\": 6}, {\"fiscal_year\": 2023, \"item\": \"net_profit\", \"basis\": \"原始披露\", \"value\": 31319600000.0, \"source_report\": \"比亚迪2023年年度报告\", \"page\": 6}, {\"fiscal_year\": 2023, \"item\": \"total_assets\", \"basis\": \"原始披露\", \"value\": 1144370000000.0, \"source_report\": \"比亚迪2023年年度报告\", \"page\": 6}, {\"fiscal_year\": 2023, \"item\": \"total_equity\", \"basis\": \"原始披露\", \"value\": 286092500000.0, \"source_report\": \"比亚迪2023年年度报告\", \"page\": 6}, {\"fiscal_year\": 2024, \"item\": \"operate_income\", \"basis\": \"追溯调整后\", \"value\": 776967000000.0, \"source_report\": \"比亚迪2024年年度报告\", \"page\": 6}, {\"fiscal_year\": 2024, \"item\": \"net_profit\", \"basis\": \"追溯调整后\", \"value\": 41956218000.0, \"source_report\": \"比亚迪2024年年度报告\", \"page\": 6}, {\"fiscal_year\": 2024, \"item\": \"total_assets\", \"basis\": \"追溯调整后\", \"value\": 1476237300000.0, \"source_report\": \"比亚迪2024年年度报告\", \"page\": 6}, {\"fiscal_year\": 2024, \"item\": \"total_equity\", \"basis\": \"追溯调整后\", \"value\": 369059325000.0, \"source_report\": \"比亚迪2024年年度报告\", \"page\": 6}, {\"fiscal_year\": 2025, \"item\": \"operate_income\", \"basis\": \"原始披露\", \"value\": 903612621000.0, \"source_report\": \"比亚迪2025年年度报告\", \"page\": 6}, {\"fiscal_year\": 2025, \"item\": \"net_profit\", \"basis\": \"原始披露\", \"value\": 51505919397.0, \"source_report\": \"比亚迪2025年年度报告\", \"page\": 6}, {\"fiscal_year\": 2025, \"item\": \"total_assets\", \"basis\": \"原始披露\", \"value\": 1716863979900.0, \"source_report\": \"比亚迪2025年年度报告\", \"page\": 6}], \"mismatched\": [{\"fiscal_year\": 2025, \"item\": \"total_equity\", \"basis\": \"原始披露\", \"official\": 429216114975.0, \"dataset\": 429215994975.0, \"source_report\": \"比亚迪2025年年度报告\", \"page\": 6}], \"not_covered\": [], \"coverage\": \"范围内 3 期年报全部对照；现金流量表的项目年报的「主要会计数据」表里没有，没有对照\", \"data_version\": \"sz002594-financials-sample002594\"}",
+   "budget": null,
+   "after_decline": false,
+   "dependents": [],
+   "questions": [],
+   "note": null
+  },
+  "validity": {
+   "expires_at": "2026-10-15T04:50:34.411727Z",
+   "seconds_left": 259196,
+   "after_expiry": "过期不等于同意，也不等于拒绝：委托停在等待，要重新请专家或重新发起"
+  },
+  "decision": {
+   "decided": true,
+   "at": "2026-10-12T04:50:34.459168Z",
+   "by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+   "chosen": "stop",
+   "amount": null,
+   "cancelled_because": null
+  },
+  "opened_event": {
+   "session_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "cursor": 95
+  }
  }
 }

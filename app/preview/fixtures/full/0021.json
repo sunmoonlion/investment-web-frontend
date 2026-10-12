@@ -1,5 +1,6 @@
 {
- "request_id": "3d3b3fb6-b19e-5292-b36c-2643d99977bb",
- "command_id": "ed482230-2f0f-51b2-ab02-68462b409785",
- "cursor": 50
+ "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+ "state": "RECEIVED",
+ "created": true,
+ "queued_behind": null
 }

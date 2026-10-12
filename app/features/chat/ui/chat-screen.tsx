@@ -26,7 +26,6 @@ import { isBuilt, routes } from '@/lib/workbench/routes'
 
 import { useConversation, useConversationActions } from '@/lib/workbench/conversation'
 import { running, thread } from '../model/thread'
-import { ChatResults } from './results'
 import { Turn } from './turn'
 
 type Asking = 'project' | 'work' | 'expert' | null
@@ -176,7 +175,6 @@ export function ChatScreen({
             </Button>
           </Composer>
         </div>
-        <ChatResults turns={turns} live={state === 'live'} />
       </div>
 
       <ProjectPicker

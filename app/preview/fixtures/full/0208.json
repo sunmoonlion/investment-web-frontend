@@ -1,188 +1,33 @@
 {
  "contract_version": 2,
- "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
- "step": {
-  "index": 7,
-  "step_id": "note",
-  "title": "成稿",
-  "summary": "只用前面各步的结果写底稿：列事实和提醒，结论栏留空",
-  "why": "底稿只写前面各步验过的事实和提醒。结论栏留空：下结论是你的事。",
-  "uses": [
-   {
-    "artifact": "scope",
-    "step": 1,
-    "title": "定范围"
-   },
-   {
-    "artifact": "profile",
-    "step": 2,
-    "title": "数据摸底"
-   },
-   {
-    "artifact": "reconcile",
-    "step": 3,
-    "title": "勾稽"
-   },
-   {
-    "artifact": "facts",
-    "step": 4,
-    "title": "取数"
-   },
-   {
-    "artifact": "metrics",
-    "step": 5,
-    "title": "算指标"
-   },
-   {
-    "artifact": "crosscheck",
-    "step": 6,
-    "title": "对照官方"
-   }
-  ],
-  "tools": [],
-  "returns": "note",
-  "checks": [
-   {
-    "label": "交回的格式对"
-   },
-   {
-    "label": "有回答、提醒、出处、数据版本"
-   },
-   {
-    "label": "回答不是空的"
-   },
-   {
-    "label": "有提醒"
-   },
-   {
-    "label": "有出处"
-   },
-   {
-    "label": "有数据版本"
-   },
-   {
-    "label": "结论栏是空的"
-   },
-   {
-    "label": "没有评级、目标价、买卖建议"
-   },
-   {
-    "label": "底稿没有超长"
-   }
-  ],
-  "after_rejection": {
-   "reworks": 1,
-   "then": "human",
-   "back_to": null,
-   "backs": 0,
-   "text": "重做，最多 1 次；仍不过，停下来问你"
+ "item": {
+  "id": "dossier:607c2718-4eae-57a0-bb04-8aa28b096733",
+  "kind": "dossier",
+  "title": "财报体检：招商银行 2023 到 2025 年的盈利能力怎么样？",
+  "default_title": "财报体检：招商银行 2023 到 2025 年的盈利能力怎么样？",
+  "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa",
+  "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
+  "session_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
+  "versions": 1,
+  "updated_at": "2026-10-12T04:50:34.719495Z",
+  "created_at": "2026-10-12T04:50:34.492484Z",
+  "size_bytes": null,
+  "source": {
+   "expert": "财报体检",
+   "question": "招商银行 2023 到 2025 年的盈利能力怎么样？"
   },
-  "reserve": "0.05",
-  "status": "accepted",
-  "attempts": [
+  "deleted": false,
+  "version_list": [
    {
-    "attempt_id": "854f32e4-ffea-5216-8b6a-69d14708ff97",
-    "n": 1,
-    "outcome": "accepted",
-    "failure": null,
-    "spent": "0.05",
-    "started_at": "2026-10-11T17:39:47.128571Z",
-    "ended_at": "2026-10-11T17:39:47.137053Z",
-    "checks": [
-     {
-      "label": "交回的格式对",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有回答、提醒、出处、数据版本",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "回答不是空的",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有提醒",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有出处",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有数据版本",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "结论栏是空的",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "没有评级、目标价、买卖建议",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "底稿没有超长",
-      "pass": true,
-      "message": ""
-     }
-    ],
-    "tools": {},
-    "returned": {
-     "artifact": "note",
-     "version": 1,
-     "content": {
-      "answer": "贵州茅台 2023 到 2025 年年报：毛利率分别为 91.9%、92.0%、91.8%，净利率分别为 52.5%、52.2%、51.9%。2024 年的数是追溯调整后的口径，与 2023、2025 年的原始披露口径不同，三年之间不能直接相比。本次体检只列事实与口径，不给投资建议。",
-      "tables": [],
-      "caveats": [
-       "样例数据：数字是为了预览编的，不是这家公司的真实数据",
-       "2023 年与 2024 年之间、2024 年与 2025 年之间口径不同：2024 年年报的数是追溯调整后的口径，公司当年变更了收入确认的会计政策",
-       "净资产收益率三年都标为不适用：第一年没有上一年的期末数，后两年与上一年口径不同",
-       "2024 年期初现金与上一年期末现金相差 1,204.00 元，数据集的说明里有解释"
-      ],
-      "citations": [
-       "sh600519-financials，数据版本 sh600519-financials-sample600519，数据到 2025-12-31",
-       "贵州茅台2023年、2024年、2025年年度报告，第 6 页「主要会计数据」"
-      ],
-      "conclusion": "",
-      "limitations": [
-       "没有做附注与经营数据",
-       "现金流量表的项目没有与公司披露的原文对照"
-      ],
-      "data_version": "sh600519-financials-sample600519",
-      "observations": [
-       "营业收入 2023 到 2025 年逐年增加",
-       "毛利率 2025 年高于 2023 年",
-       "经营活动现金流量净额三年都高于净利润"
-      ]
-     },
-     "labels": {
-      "answer": "回答",
-      "tables": "表",
-      "caveats": "提醒",
-      "citations": "出处",
-      "conclusion": "结论",
-      "limitations": "局限",
-      "data_version": "数据版本",
-      "observations": "观察"
-     }
-    },
-    "process": []
+    "version": 1,
+    "created_at": "2026-10-12T04:50:34.492484Z",
+    "note": "专家交回"
    }
-  ],
-  "times": 1,
-  "rejected": 0,
-  "spent": "0.05",
-  "data": {
-   "data_version": "sh600519-financials-sample600519"
-  }
- }
+  ]
+ },
+ "version": 1,
+ "sha256": "d6fa8584cb17e42459b650d07becdd6c0bf4903ad7f2e3dee6a29e41846a1f47",
+ "kind": "dossier",
+ "content": null,
+ "text": "# 招商银行 2023 到 2025 年的盈利能力怎么样？\n\n财报体检 v1 · 已取消 · 花了 0.15 CNY（估算）\n\n> 做到第 3 步停下了\n\n## 一、回答\n\n**回答**：没有做到这一步\n\n## 二、数据\n\n**指标表**：没有做到这一步\n\n**取数表**：没有做到这一步\n\n## 三、专家验过什么\n\n**勾稽**：没有做到这一步\n\n**对照官方**：没有做到这一步\n\n**和公司披露的数对不上的**：没有做到这一步\n\n**没有对照到的**：没有做到这一步\n\n**和公司披露的数一致的**：没有做到这一步\n\n## 四、观察与提醒\n\n**观察**：没有做到这一步\n\n**提醒**：没有做到这一步\n\n## 五、局限\n\n**局限**：没有做到这一步\n\n## 六、出处\n\n**出处**：没有做到这一步\n\n## 七、它是怎么做的\n\n1. 定范围：做完，验收通过\n2. 数据摸底：做完，验收通过\n3. 勾稽：取消时停在这一步（验收没过 1 次）\n4. 取数：没有做到这一步\n5. 算指标：没有做到这一步\n6. 对照官方：没有做到这一步\n7. 成稿：没有做到这一步\n\n## 八、我的结论\n\n（用户草稿）\n\n（还没有写）\n"
 }

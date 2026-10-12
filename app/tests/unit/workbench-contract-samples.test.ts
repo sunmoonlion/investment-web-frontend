@@ -8,7 +8,6 @@ import type { z } from 'zod'
 import {
   conversationViewSchema,
   conversationsSchema,
-  dossierSchema,
   eventsPageSchema,
   libraryContentSchema,
   libraryDetailSchema,
@@ -45,7 +44,6 @@ const contracts: [RegExp, z.ZodType][] = [
   [new RegExp(`^/api/workbench/interactions/${ID}$`), reviewPlaceSchema],
   [/^\/api\/workbench\/expert\/overview$/, overviewSchema],
   [/^\/api\/workbench\/packs$/, packsSchema],
-  [new RegExp(`^/api/workbench/tasks/${ID}/dossier$`), dossierSchema],
   [new RegExp(`^/api/workbench/projects/${ID}$`), projectDetailSchema],
   [/^\/api\/workbench\/library$/, libraryListSchema],
   [new RegExp(`^/api/workbench/library/(dossier|deliverable):[^/]+$`), libraryDetailSchema],

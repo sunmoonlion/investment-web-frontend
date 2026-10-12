@@ -12,15 +12,14 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
+import { WorkSidePanel } from '@/components/workbench/side-panel'
 import { useConversationEvents } from '@/lib/workbench/conversation-events'
+import { byFile, timeline } from '@/lib/workbench/timeline'
 import { useClock } from '@/lib/workbench/use-clock'
 
-import { useDossier } from '../api/desk'
 import { useReview, useRun, useRunActions, useRunStep } from '../api/run'
-import { answerLine } from '../model/dossier'
 import { shownStep, tokenOf } from '../model/run'
 import { amountText, NowStrip, StepDetail, StepRail } from './parts'
-import { ExpertResults } from './results'
 import { ReviewPanel } from './review-panel'
 
 // 专家处理中。三栏：步骤、这一步的细节、委托单。
@@ -38,10 +37,8 @@ export function ExpertRunScreen({ task }: { task: string }) {
 
   const shown = shownStep(run.data, picked)
   const detail = useRunStep(task, shown, beat)
-  // 做完了：把「回答」摘一行放在顶上，不用点进底稿才看到（所有者 2026-10-07）
-  const ended = run.data?.task.ended_at != null
-  const dossier = useDossier(task, ended ? beat : null)
-  const answer = ended && dossier.data ? answerLine(dossier.data) : null
+  // 成稿写在项目文件里（0015）：右边栏「改动」就是产出视图，和工作页同一个
+  const line = timeline(events)
   const pending = run.data?.task.active_interaction_id ?? null
   const review = useReview(pending)
 
@@ -94,16 +91,6 @@ export function ExpertRunScreen({ task }: { task: string }) {
       </header>
 
       {now ? <NowStrip now={now} clock={clock} /> : null}
-      {answer ? (
-        <p
-          role="status"
-          className="bg-muted/40 shrink-0 truncate border-b px-4 py-2 text-sm"
-          title={answer}
-        >
-          <span className="text-muted-foreground mr-2">{t('answer')}</span>
-          {answer}
-        </p>
-      ) : null}
 
       <div className="flex min-h-0 flex-1">
         <StepRail steps={steps} shown={shown} onPick={setPicked} />
@@ -125,13 +112,7 @@ export function ExpertRunScreen({ task }: { task: string }) {
             />
           ) : null}
         </div>
-        <ExpertResults
-          task={task}
-          run={run.data}
-          clock={clock}
-          beat={beat}
-          live={state === 'live'}
-        />
+        <WorkSidePanel files={byFile(line.changes)} directory={null} live={state === 'live'} />
       </div>
 
       <Dialog open={confirming} onOpenChange={setConfirming}>

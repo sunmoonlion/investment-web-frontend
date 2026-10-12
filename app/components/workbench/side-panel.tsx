@@ -13,12 +13,12 @@ import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
-import type { FileChanges } from '../model/timeline'
+import type { FileChanges } from '@/lib/workbench/timeline'
 import { ChangesPanel } from './changes-panel'
 
 export type SideTab = 'files' | 'changes' | 'terminal'
 
-// 工作页右边栏（0017 §五、0015 §3.2）：文件 / 改动 / 终端 三个钮，一次只开一个。
+// 工作页与专家页同一个右边栏（0017 §五、0015 §3.2）：文件 / 改动 / 终端 三个钮，一次只开一个。
 // 「改动」= 这段对话用补丁改的文件；本次打开页面后第一次出现改动时自动弹开一次，之后不抢焦点。
 // 「文件」「终端」要等本地代理开文件通道与终端通道（账 87、83），先占位说明。
 export function WorkSidePanel({

@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/message-scroller'
 import { Composer } from '@/components/workbench/composer'
 import { ConversationTitle } from '@/components/workbench/conversation-title'
+import { WorkSidePanel } from '@/components/workbench/side-panel'
 import { useWorkbench } from '@/lib/workbench/context'
 import { useConversation, useConversationActions, useWaiting } from '@/lib/workbench/conversation'
 import { useConversationEvents } from '@/lib/workbench/conversation-events'
@@ -24,7 +25,6 @@ import { useProjects } from '@/lib/workbench/queries'
 import { isBuilt, routes } from '@/lib/workbench/routes'
 
 import { byFile, timeline } from '../model/timeline'
-import { WorkSidePanel } from './side-panel'
 import { TimelineEntry } from './entries'
 
 // 工作页：看它干活，随时插话，要紧的事由你点头。

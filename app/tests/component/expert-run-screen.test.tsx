@@ -106,16 +106,14 @@ describe('专家处理中', () => {
     expect(rail.getByRole('button', { name: /1 改写问题/ })).toHaveAttribute('title', '通过')
     expect(rail.getByRole('button', { name: /3 执行 SQL/ })).toHaveAttribute('title', '在做')
     expect(rail.getByRole('button', { name: /5 成稿/ })).toHaveAttribute('title', '还没做')
-    // 右边的结果边栏平时折叠成一条：还在做，不会自己展开；点开才看到委托单
+    // 右边是和工作页同一个边栏（0015 §3.2）：平时折叠成一条，点「改动」才开；没有「底稿」字样
     const strip = screen.getByRole('complementary', { name: '结果' })
     expect(strip).toHaveAttribute('data-state', 'collapsed')
-    fireEvent.click(within(strip).getByRole('button'))
-    const panel = within(screen.getByRole('complementary', { name: '结果' }))
-    const sheet = within(panel.getByRole('region', { name: '委托单' }))
-    expect(sheet.getByText('五粮液近五年的毛利率分别是多少？')).toBeInTheDocument()
-    expect(sheet.getByText('做完的 ¥0.100 ＋ 在做的 ¥0.050')).toBeInTheDocument()
-    // 底稿还没做完：边栏说还没有回答，做完后归入知识库
-    expect(panel.getByText('做完后归入知识库')).toBeInTheDocument()
+    fireEvent.click(within(strip).getByRole('button', { name: '改动' }))
+    const panel = screen.getByRole('complementary', { name: '结果' })
+    expect(panel).toHaveAttribute('data-state', 'open')
+    expect(within(panel).getByRole('region', { name: '改动' })).toBeInTheDocument()
+    expect(document.body.textContent).not.toContain('底稿')
   })
 
   it('点别的步骤看它交回了什么、验收的每一条', async () => {

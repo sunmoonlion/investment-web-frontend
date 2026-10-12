@@ -1,22 +1,77 @@
 {
  "contract_version": 2,
- "sessions": [
+ "project": {
+  "id": "b76b252a-dd57-5c80-90af-4a9823df06b0",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "workspace_root": "/home/demo/research",
+  "path": "五粮液",
+  "title": "五粮液",
+  "created_at": "2026-10-12T04:50:29.753706Z",
+  "updated_at": "2026-10-12T04:50:29.753706Z",
+  "archived_at": null,
+  "directory": "/home/demo/research/五粮液",
+  "archived": false,
+  "environment_name": "办公室的电脑",
+  "online": true
+ },
+ "active_task_id": "e360da80-c794-5489-9aef-1545babb5931",
+ "conversations": [
   {
-   "id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "sandbox_id": "81108b8f-3022-5de7-860c-36662e2db6fb",
-   "project_root": "/home/demo/research/贵州茅台",
-   "thread_id": "thread-194e9f4796c1",
-   "wheel": "user",
-   "state_version": 2,
-   "active_task_id": null,
-   "thread_settings": {},
-   "created_at": "2026-10-11T17:39:46.468544+00:00",
-   "last_active_at": "2026-10-11T17:39:47.157286+00:00",
+   "id": "e622161e-278e-510c-a294-d321919a97e8",
    "kind": "expert",
-   "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10",
-   "title": "贵州茅台 2023 到 2025 年的盈利能力怎么样？"
+   "title": "五粮液近五年的净利率分别是多少？",
+   "wheel": "user",
+   "active_task_id": null,
+   "last_active_at": "2026-10-12T04:50:36.776016Z"
+  },
+  {
+   "id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+   "kind": "expert",
+   "title": "五粮液近五年的毛利率分别是多少？",
+   "wheel": "advisor",
+   "active_task_id": "e360da80-c794-5489-9aef-1545babb5931",
+   "last_active_at": "2026-10-12T04:50:31.860398Z"
+  }
+ ],
+ "tasks": [
+  {
+   "id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+   "session_id": "e622161e-278e-510c-a294-d321919a97e8",
+   "profile_id": "DATA_QUERY",
+   "expert": "问数",
+   "state": "RECEIVED",
+   "state_word": null,
+   "question": "五粮液近五年的净利率分别是多少？",
+   "budget": {
+    "used": "0",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "spent": "0.00",
+   "currency": "CNY",
+   "created_at": "2026-10-12T04:50:36.776016Z",
+   "ended_at": null
+  },
+  {
+   "id": "e360da80-c794-5489-9aef-1545babb5931",
+   "session_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+   "profile_id": "DATA_QUERY",
+   "expert": "问数",
+   "state": "RUNNING",
+   "state_word": null,
+   "question": "五粮液近五年的毛利率分别是多少？",
+   "budget": {
+    "used": "0.100000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0.05"
+   },
+   "spent": "0.10",
+   "currency": "CNY",
+   "created_at": "2026-10-12T04:50:31.832860Z",
+   "ended_at": null
   }
  ]
 }

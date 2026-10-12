@@ -1,20 +1,106 @@
 {
- "session": {
-  "id": "dd790e56-724e-5e57-9294-bae977583372",
-  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-  "sandbox_id": "81108b8f-3022-5de7-860c-36662e2db6fb",
-  "project_root": "/home/demo/research/比亚迪",
-  "thread_id": "thread-9f0900dfdfe1",
-  "wheel": "user",
-  "state_version": 2,
-  "active_task_id": null,
-  "thread_settings": {},
-  "created_at": "2026-10-11T17:39:48.659591+00:00",
-  "last_active_at": "2026-10-11T17:39:49.308489+00:00",
-  "kind": "expert",
-  "project_id": "06944124-075a-504f-b4f3-275ef032eb9c",
-  "title": "比亚迪 2023 到 2025 年的盈利能力怎么样？"
+ "contract_version": 2,
+ "price": {
+  "model": "kimi-k3",
+  "priced": true,
+  "currency": "CNY",
+  "as_of": "2026-10-04",
+  "per_million": {
+   "input": "20",
+   "cached_input": "2",
+   "cache_write": "20",
+   "output": "100"
+  },
+  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
+  "estimated": true
  },
- "pending_interactions": []
+ "cost": "0.300000",
+ "tokens": {
+  "input": 12000,
+  "cached_input": 0,
+  "cache_write": 0,
+  "output": 600,
+  "total": 12600
+ },
+ "calls": 6,
+ "turns": [
+  {
+   "turn_id": "turn-63d6b24edb59",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-12T04:50:33.832215+00:00"
+  },
+  {
+   "turn_id": "turn-a67bf64b6527",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-12T04:50:33.942502+00:00"
+  },
+  {
+   "turn_id": "turn-3ab57e512be4",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-12T04:50:34.072796+00:00"
+  },
+  {
+   "turn_id": "turn-b903d5b9dd2e",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-12T04:50:34.190631+00:00"
+  },
+  {
+   "turn_id": "turn-bde55b755466",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-12T04:50:34.292657+00:00"
+  },
+  {
+   "turn_id": "turn-92a4036a4771",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-12T04:50:34.382759+00:00"
+  }
+ ]
 }
