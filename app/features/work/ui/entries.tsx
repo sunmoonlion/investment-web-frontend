@@ -355,6 +355,22 @@ export function TimelineEntry({
           </MarkerContent>
         </Marker>
       )
+    case 'local': {
+      const scope = [
+        t(`local.sandbox.${entry.sandbox}`),
+        t(entry.network ? 'local.network.on' : 'local.network.off'),
+      ].join(t('local.join'))
+      return (
+        <Marker>
+          <MarkerContent>
+            {t(entry.decision === 'approved' ? 'local.approved' : 'local.denied', {
+              scope,
+              digest: entry.digest,
+            })}
+          </MarkerContent>
+        </Marker>
+      )
+    }
     case 'missing':
       return <MissingDataCard code={entry.code} dataset={entry.dataset} />
     case 'handover':

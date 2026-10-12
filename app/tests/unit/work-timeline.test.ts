@@ -135,3 +135,68 @@ describe('工作页的时间线', () => {
     expect(relativeTo(null, '/q/a.md')).toBe('/q/a.md')
   })
 })
+
+// 本机上限（approval.md 第三条路）：代理经会合点报上来的那次决定，摆成一行
+describe('电脑上的那次允许', () => {
+  const base = {
+    id: '11111111-1111-4111-8111-111111111111',
+    session_id: '22222222-2222-4222-8222-222222222222',
+    kind: 'record',
+    task_id: null,
+    attempt_id: null,
+    created_at: '2026-10-12T08:00:00Z',
+  }
+  const report = (cursor: number, decision: string, sandbox: string, network: boolean) =>
+    conversationEventSchema.parse({
+      ...base,
+      cursor,
+      type: 'agent/localPermission',
+      payload: {
+        id: '33333333-3333-4333-8333-333333333333',
+        conn: 'abcd1234',
+        threadId: '44444444-4444-4444-8444-444444444444',
+        requestDigest: 'f0e1d2c3b4a5968778695a4b3c2d1e0f' + 'f0e1d2c3b4a5968778695a4b3c2d1e0f',
+        permissionDigest: '0'.repeat(64),
+        decision,
+        scope: { sandbox, network },
+        expiresAt: 1760256000,
+      },
+    })
+
+  it('允许了：范围、摘要前 12 位，一条一行', () => {
+    const line = timeline([report(1, 'approved', 'workspace-write', true)])
+    expect(line.entries).toEqual([
+      {
+        kind: 'local',
+        key: 'local:33333333-3333-4333-8333-333333333333',
+        decision: 'approved',
+        sandbox: 'workspace-write',
+        network: true,
+        digest: 'f0e1d2c3b4a5',
+      },
+    ])
+    // 它不是一轮对话，不改「在干什么」和「上一轮怎么结束的」
+    expect(line.live).toBeNull()
+    expect(line.last).toBe('none')
+  })
+
+  it('没允许：照样摆出来；不认识的沙箱档位当只读', () => {
+    const line = timeline([report(2, 'denied', 'something-new', false)])
+    expect(line.entries[0]).toMatchObject({
+      kind: 'local',
+      decision: 'denied',
+      sandbox: 'read-only',
+    })
+  })
+
+  it('专家拿着方向盘时也不藏：那是你在电脑上做的决定', () => {
+    const handover = conversationEventSchema.parse({
+      ...base,
+      cursor: 1,
+      type: 'wheel/handover',
+      payload: {},
+    })
+    const line = timeline([handover, report(2, 'approved', 'read-only', true)])
+    expect(line.entries.map((entry) => entry.kind)).toEqual(['handover', 'local'])
+  })
+})

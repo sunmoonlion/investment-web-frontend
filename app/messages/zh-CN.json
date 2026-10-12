@@ -469,6 +469,17 @@
       "allowed": "按规则放行：{command}",
       "denied": "顾问想做 {command}，按专家包规则拒绝了"
     },
+    "local": {
+      "approved": "你在电脑上允许了一次：{scope}。同一目录、同样范围的请求在最长 30 分钟内不再问。摘要 {digest}",
+      "denied": "电脑上没有允许：{scope}。要长期放开，在电脑托盘的「设置」里改上限或目录。摘要 {digest}",
+      "join": "、",
+      "sandbox": {
+        "read-only": "只读",
+        "workspace-write": "可写工作目录",
+        "danger-full-access": "不设沙箱"
+      },
+      "network": { "on": "可联网", "off": "不联网" }
+    },
     "panel": {
       "files": "文件",
       "changes": "改动",

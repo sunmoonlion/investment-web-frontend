@@ -63,6 +63,17 @@ export type Entry =
   | { kind: 'question'; key: string; question: Question }
   // 策略替用户答的：放行折叠一行，拒绝说明「顾问想做 X，按专家包规则拒绝了」
   | { kind: 'policy'; key: string; decision: 'accept' | 'decline'; command: string; source: string }
+  // 本机上限（approval.md 第三条路）：请求越出了你电脑上的默认上限，你在电脑上当面允许或没允许。
+  // 云端没有人能替你答；这里只是把那次决定摆出来
+  | {
+      kind: 'local'
+      key: string
+      decision: 'approved' | 'denied'
+      sandbox: 'read-only' | 'workspace-write' | 'danger-full-access'
+      network: boolean
+      // 请求摘要（SHA-256）的前 12 位，和电脑上弹窗里的那一串对得上
+      digest: string
+    }
   | { kind: 'missing'; key: string; code: string; dataset: string | null }
   // 交给专家之后、交回之前：专家做的事不进这条时间线（它有自己的步骤进度）
   | { kind: 'handover'; key: string; what: 'given' | 'returned' }
@@ -130,6 +141,7 @@ export function timeline(events: readonly ConversationEvent[]): Timeline {
       expert &&
       event.type !== 'wheel/return' &&
       event.type !== 'data.missing' &&
+      event.type !== 'agent/localPermission' &&
       !event.type.startsWith('interaction/')
     ) {
       continue
@@ -262,6 +274,23 @@ export function timeline(events: readonly ConversationEvent[]): Timeline {
           decision: payload.decision === 'decline' ? 'decline' : 'accept',
           command: text(subject.command) || text(subject.category),
           source: text(payload.source),
+        })
+        break
+      }
+      case 'agent/localPermission': {
+        // 本地代理经会合点报上来的记录，机器同步时才落库，所以它多半排在那条命令之后
+        const scope = (payload.scope ?? {}) as Item
+        const sandbox = text(scope.sandbox)
+        entries.push({
+          kind: 'local',
+          key: `local:${text(payload.id) || event.cursor}`,
+          decision: payload.decision === 'approved' ? 'approved' : 'denied',
+          sandbox:
+            sandbox === 'workspace-write' || sandbox === 'danger-full-access'
+              ? sandbox
+              : 'read-only',
+          network: scope.network === true,
+          digest: text(payload.requestDigest).slice(0, 12),
         })
         break
       }

@@ -469,6 +469,17 @@
       "allowed": "Allowed by rule: {command}",
       "denied": "The advisor wanted to {command}; declined by the expert pack's rules"
     },
+    "local": {
+      "approved": "You allowed this once on your computer: {scope}. The same directory and scope will not ask again for up to 30 minutes. Digest {digest}",
+      "denied": "Not allowed on your computer: {scope}. To raise the limit for good, change it in the tray Settings. Digest {digest}",
+      "join": ", ",
+      "sandbox": {
+        "read-only": "read-only",
+        "workspace-write": "write in the workspace",
+        "danger-full-access": "no sandbox"
+      },
+      "network": { "on": "network on", "off": "network off" }
+    },
     "panel": {
       "files": "Files",
       "changes": "Changes",
