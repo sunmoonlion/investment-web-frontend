@@ -333,6 +333,8 @@
   "usage": {
     "button": "What this conversation has cost",
     "estimated": "est.",
+    "prefix": "This conversation",
+    "callCount": "{count} calls",
     "tokens": "{count} tokens",
     "title": "Cost so far",
     "why": "Each model call is counted once. Your own model key is used, so the real bill is with the model vendor; this is an estimate at public prices.",
@@ -405,13 +407,7 @@
     "toEnd": "Back to latest",
     "empty": "Nothing started yet.",
     "band": {
-      "you": "You are driving",
-      "expert": "The expert is working",
-      "idle": "Idle, waiting for you",
-      "running": "Working",
-      "waiting": "Waiting for your approval",
-      "stopped": "You stopped the last turn",
-      "failed": "The last turn did not succeed"
+      "expert": "The expert is working"
     },
     "expertBusy": "The expert is working. You can watch progress, answer what is waiting, or cancel.",
     "phase": {
@@ -478,7 +474,10 @@
         "workspace-write": "write in the workspace",
         "danger-full-access": "no sandbox"
       },
-      "network": { "on": "network on", "off": "network off" }
+      "network": {
+        "on": "network on",
+        "off": "network off"
+      }
     },
     "panel": {
       "files": "Files",

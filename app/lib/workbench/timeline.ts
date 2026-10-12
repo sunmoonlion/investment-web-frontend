@@ -391,3 +391,19 @@ export function phaseTally(steps: readonly (DataStep | CommandStep)[]) {
     running: steps.some((step) => step.running),
   }
 }
+
+// 活动行要的那一句细节：正在跑的命令、正在查的数据。找最后一段过程里还在跑的那一步
+export function liveDetail(line: Timeline): string | null {
+  if (line.live !== 'command' && line.live !== 'data') return null
+  for (let at = line.entries.length - 1; at >= 0; at -= 1) {
+    const entry = line.entries[at]
+    if (entry.kind !== 'phase') continue
+    for (let each = entry.steps.length - 1; each >= 0; each -= 1) {
+      const step = entry.steps[each]
+      if (!step.running) continue
+      if (step.kind === 'file') return step.label || step.command || null
+      return step.dataset ?? step.tool ?? null
+    }
+  }
+  return null
+}

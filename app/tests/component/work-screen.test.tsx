@@ -115,9 +115,9 @@ describe('工作页', () => {
     // 点开看改了什么
     fireEvent.click(panel.getByText('README.md'))
     expect(panel.getByText('+# 恒瑞医药研究笔记')).toBeInTheDocument()
-    // 状态带：我在操作，它在等我批准
-    expect(screen.getByRole('status')).toHaveTextContent('你在操作')
-    expect(screen.getByRole('status')).toHaveTextContent('它在等你批准')
+    // 活动行在时间线末尾：它在等我批准。顶栏没有状态带了
+    expect(screen.getByRole('status')).toHaveTextContent('在等你批准')
+    expect(document.body.textContent).not.toContain('你在操作')
   })
 
   it('等批准的命令：把命令、目录、理由摆出来；点「拒绝这一步」，带着凭证答复', async () => {

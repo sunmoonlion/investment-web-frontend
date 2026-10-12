@@ -3,7 +3,6 @@
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
-import { Button } from '@/components/ui/button'
 import {
   Popover,
   PopoverContent,
@@ -19,8 +18,9 @@ import { money, symbol, toMicros } from '@/lib/workbench/money'
 
 import { spent } from '../model/spent'
 
-// 花费钮：这段对话到现在花了多少。模型每调用一次跳一次。点开看每一轮的明细和单价。
-export function CostButton({ conversation }: { conversation: string }) {
+// 花费：输入框下面一行小字——这段对话到现在花了多少、调用了几次。模型每调用一次跳一次。
+// 点开看每一轮的明细和单价。一次都没调用过就不显示（0002 第九节）。
+export function CostLine({ conversation }: { conversation: string }) {
   const t = useTranslations('usage')
   const { events } = useConversationEvents()
   const [open, setOpen] = useState(false)
@@ -28,18 +28,29 @@ export function CostButton({ conversation }: { conversation: string }) {
   const usage = useUsage(conversation, total.calls, open)
   const sign = symbol(total.currency)
   const price = usage.data?.price
+  if (total.calls === 0) return null
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger render={<Button variant="outline" size="sm" aria-label={t('button')} />}>
+      <PopoverTrigger
+        render={
+          <button
+            type="button"
+            aria-label={t('button')}
+            className="hover:text-foreground flex min-w-0 items-center gap-1 whitespace-nowrap"
+          />
+        }
+      >
+        <span>{t('prefix')}</span>
         <span className="tabular-nums" data-testid="cost-amount">
           {total.micros === null
             ? t('tokens', { count: total.tokens })
             : `${sign}${money(total.micros)}`}
         </span>
-        <span className="text-muted-foreground text-xs">{t('estimated')}</span>
+        <span>{t('estimated')}</span>
+        <span>· {t('callCount', { count: total.calls })}</span>
       </PopoverTrigger>
-      <PopoverContent align="end" className="w-96">
+      <PopoverContent align="start" className="w-96">
         <PopoverHeader>
           <PopoverTitle>{t('title')}</PopoverTitle>
           <PopoverDescription>{t('why')}</PopoverDescription>

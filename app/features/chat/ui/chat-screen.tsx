@@ -31,13 +31,13 @@ import { Turn } from './turn'
 type Asking = 'project' | 'work' | 'expert' | null
 
 // 聊天页：一问一答。气泡对话；过程收成一行；模型在答的时候可以随时停。
-// `actions` 是页面放进顶部右边的东西（花费钮）：聊天这个功能不认识别的功能。
+// `cost` 是页面放进输入框下面的东西（花费那行小字）：聊天这个功能不认识别的功能。
 export function ChatScreen({
   conversation: id,
-  actions,
+  cost,
 }: {
   conversation: string
-  actions?: React.ReactNode
+  cost?: React.ReactNode
 }) {
   const t = useTranslations('chat')
   const tc = useTranslations('conversation')
@@ -111,7 +111,6 @@ export function ChatScreen({
         {state === 'offline' ? (
           <span className="text-[13px] text-amber-600">{tc('stream.offline')}</span>
         ) : null}
-        {actions}
       </header>
 
       <div className="flex min-h-0 flex-1">
@@ -150,6 +149,7 @@ export function ChatScreen({
             onSend={(text) => act.say.mutateAsync(text)}
             onStop={() => act.stop.mutate()}
             placeholder={t('placeholder')}
+            footer={cost}
           >
             <Button
               variant="outline"

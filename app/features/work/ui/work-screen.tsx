@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/message-scroller'
 import { Composer } from '@/components/workbench/composer'
 import { ConversationTitle } from '@/components/workbench/conversation-title'
+import { ActivityLine } from '@/components/workbench/activity-line'
 import { WorkSidePanel } from '@/components/workbench/side-panel'
 import { useWorkbench } from '@/lib/workbench/context'
 import { useConversation, useConversationActions, useWaiting } from '@/lib/workbench/conversation'
@@ -24,17 +25,18 @@ import { WorkbenchError } from '@/lib/workbench/http'
 import { useProjects } from '@/lib/workbench/queries'
 import { isBuilt, routes } from '@/lib/workbench/routes'
 
-import { byFile, timeline } from '../model/timeline'
+import { byFile, liveDetail, timeline } from '../model/timeline'
 import { TimelineEntry } from './entries'
 
 // 工作页：看它干活，随时插话，要紧的事由你点头。
-// 过程时间线在中间，右边是这段对话改了哪些文件。`actions` 是页面放进顶部右边的东西（花费钮）。
+// 过程时间线在中间，右边是这段对话改了哪些文件。它这会儿在干什么写在时间线末尾的活动行里；
+// `cost` 是页面放进输入框下面的东西（花费那行小字）：工作这个功能不认识别的功能。
 export function WorkScreen({
   conversation: id,
-  actions,
+  cost,
 }: {
   conversation: string
-  actions?: React.ReactNode
+  cost?: React.ReactNode
 }) {
   const t = useTranslations('work')
   const tc = useTranslations('conversation')
@@ -61,17 +63,6 @@ export function WorkScreen({
         ? tc(`problem.${(failed as WorkbenchError).code}`)
         : tc('problem.other')
     : null
-  const status =
-    line.live === 'approval'
-      ? t('band.waiting')
-      : line.live !== null
-        ? `${t('band.running')} · ${tc(`activity.${line.live}`)}`
-        : line.last === 'stopped'
-          ? t('band.stopped')
-          : line.last === 'failed'
-            ? t('band.failed')
-            : t('band.idle')
-
   return (
     <div className="flex h-full min-h-0 flex-col">
       <header className="flex h-12 shrink-0 items-center gap-3 border-b px-4">
@@ -86,20 +77,16 @@ export function WorkScreen({
           </span>
         ) : null}
         <div className="flex-1" />
+        {/* 顶栏只放慢变的状态：专家拿着方向盘（决定你能不能打字）、连接断了 */}
+        {expert ? (
+          <span role="status" className="shrink-0 text-[13px] font-medium">
+            {t('band.expert')}
+          </span>
+        ) : null}
         {state === 'offline' ? (
           <span className="shrink-0 text-[13px] text-amber-600">{tc('stream.offline')}</span>
         ) : null}
-        {actions}
       </header>
-
-      {/* 状态带：谁在处理、这会儿怎么样 */}
-      <div
-        role="status"
-        className="bg-muted/40 flex h-9 shrink-0 items-center gap-3 border-b px-4 text-[13px]"
-      >
-        <span className="font-medium">{expert ? t('band.expert') : t('band.you')}</span>
-        {expert ? null : <span className="text-muted-foreground">{status}</span>}
-      </div>
 
       <div className="flex min-h-0 flex-1">
         <div className="flex min-w-0 flex-1 flex-col">
@@ -140,6 +127,11 @@ export function WorkScreen({
                       />
                     </MessageScrollerItem>
                   ))}
+                  {line.live !== null ? (
+                    <MessageScrollerItem key="live">
+                      <ActivityLine activity={line.live} detail={liveDetail(line)} />
+                    </MessageScrollerItem>
+                  ) : null}
                 </MessageScrollerContent>
               </MessageScrollerViewport>
               <MessageScrollerButton aria-label={t('toEnd')} />
@@ -155,6 +147,7 @@ export function WorkScreen({
             onStop={() => act.stop.mutate()}
             placeholder={t('placeholder')}
             disabledReason={expert ? t('expertBusy') : null}
+            footer={cost}
           >
             <Button
               variant="outline"

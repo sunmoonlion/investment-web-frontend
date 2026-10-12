@@ -333,6 +333,8 @@
   "usage": {
     "button": "这段对话花了多少",
     "estimated": "估算",
+    "prefix": "这段对话",
+    "callCount": "{count} 次调用",
     "tokens": "{count} token",
     "title": "花了多少",
     "why": "模型每调用一次算一笔。用的是你自己的模型 key，真正的账单在模型厂商那边；这里按公开单价估算。",
@@ -405,13 +407,7 @@
     "toEnd": "回到最新",
     "empty": "还没有开始。",
     "band": {
-      "you": "你在操作",
-      "expert": "专家正在处理",
-      "idle": "它停着，等你说话",
-      "running": "它正在做",
-      "waiting": "它在等你批准",
-      "stopped": "上一轮被你停下了",
-      "failed": "上一轮没有做成"
+      "expert": "专家正在处理"
     },
     "expertBusy": "专家正在处理，你可以看进度、答复待办或取消。",
     "phase": {
@@ -478,7 +474,10 @@
         "workspace-write": "可写工作目录",
         "danger-full-access": "不设沙箱"
       },
-      "network": { "on": "可联网", "off": "不联网" }
+      "network": {
+        "on": "可联网",
+        "off": "不联网"
+      }
     },
     "panel": {
       "files": "文件",

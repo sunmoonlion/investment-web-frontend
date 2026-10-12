@@ -4,7 +4,7 @@ import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 
 import { conversationEventSchema, type ConversationEvent } from '@/contracts/workbench-v2'
-import { byFile, phaseTally, timeline } from '@/features/work/model/timeline'
+import { byFile, liveDetail, phaseTally, timeline } from '@/features/work/model/timeline'
 import { relativeTo } from '@/lib/workbench/items'
 
 const full = join(process.cwd(), 'preview/fixtures/full')
@@ -198,5 +198,51 @@ describe('电脑上的那次允许', () => {
     })
     const line = timeline([handover, report(2, 'approved', 'read-only', true)])
     expect(line.entries.map((entry) => entry.kind)).toEqual(['handover', 'local'])
+  })
+})
+
+// 活动行的那句细节（0002 第九节）：正在跑的命令、正在查的数据；别的没有
+describe('活动行的细节', () => {
+  const base = {
+    id: '11111111-1111-4111-8111-111111111111',
+    session_id: '22222222-2222-4222-8222-222222222222',
+    kind: 'item',
+    task_id: null,
+    attempt_id: null,
+    created_at: '2026-10-12T08:00:00Z',
+  }
+  const ev = (cursor: number, type: string, payload: Record<string, unknown>) =>
+    conversationEventSchema.parse({ ...base, cursor, type, payload })
+
+  it('样例里停在等批准：没有细节', () => {
+    expect(liveDetail(timeline(work()))).toBeNull()
+  })
+
+  it('正在跑命令：细节是命令本身', () => {
+    const running = timeline([
+      ev(1, 'turn/requested', { text: '列一下目录' }),
+      ev(2, 'turn/started', { turn: { id: 't1' } }),
+      ev(3, 'item/started', {
+        item: {
+          id: 'c1',
+          type: 'commandExecution',
+          command: 'ls -la',
+          cwd: '/p',
+          status: 'inProgress',
+        },
+        turn_id: 't1',
+      }),
+    ])
+    expect(running.live).toBe('command')
+    expect(liveDetail(running)).toBe('ls -la')
+  })
+
+  it('在想：没有细节', () => {
+    const thinking = timeline([
+      ev(1, 'turn/requested', { text: '你好' }),
+      ev(2, 'turn/started', { turn: { id: 't1' } }),
+    ])
+    expect(thinking.live).toBe('thinking')
+    expect(liveDetail(thinking)).toBeNull()
   })
 })

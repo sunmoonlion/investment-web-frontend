@@ -6,6 +6,7 @@ import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
+import { cn } from '@/lib/utils'
 
 // 输入框。模型在答的时候，发送钮变成停止钮：随时能停。
 export function Composer({
@@ -18,6 +19,7 @@ export function Composer({
   children,
   placeholder,
   disabledReason = null,
+  footer = null,
 }: {
   busy: boolean
   sending: boolean
@@ -29,6 +31,8 @@ export function Composer({
   placeholder: string
   // 不能说话的时候（专家正在处理）：输入框禁用，这里写原因
   disabledReason?: string | null
+  // 输入框下面那行小字的左半边（花费）；右半边是固定的提示
+  footer?: React.ReactNode
 }) {
   const t = useTranslations('conversation')
   const [draft, setDraft] = useState('')
@@ -97,7 +101,15 @@ export function Composer({
           )}
         </div>
       </div>
-      <p className="text-muted-foreground mt-1.5 text-center text-xs">{t('composer.hint')}</p>
+      <div
+        className={cn(
+          'text-muted-foreground mt-1.5 flex items-center gap-3 text-xs',
+          footer ? 'justify-between' : 'justify-center',
+        )}
+      >
+        {footer}
+        <p className="truncate">{t('composer.hint')}</p>
+      </div>
     </div>
   )
 }

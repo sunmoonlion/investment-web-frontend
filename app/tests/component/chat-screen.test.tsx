@@ -7,7 +7,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { ChatScreen } from '@/features/chat'
-import { CostButton } from '@/features/usage'
+import { CostLine } from '@/features/usage'
 import { WorkbenchProvider } from '@/lib/workbench/context'
 import { ConversationEventsProvider } from '@/lib/workbench/conversation-events'
 import messages from '@/messages/zh-CN.json'
@@ -92,7 +92,7 @@ function page() {
       <QueryClientProvider client={client}>
         <WorkbenchProvider csrfToken="csrf-for-test" locale="zh-CN">
           <ConversationEventsProvider conversation={CHAT}>
-            <ChatScreen conversation={CHAT} actions={<CostButton conversation={CHAT} />} />
+            <ChatScreen conversation={CHAT} cost={<CostLine conversation={CHAT} />} />
           </ConversationEventsProvider>
         </WorkbenchProvider>
       </QueryClientProvider>
@@ -127,7 +127,7 @@ describe('聊天页', () => {
     // 过程收成一行；模型的思考不出现
     expect(screen.getByRole('button', { name: /查了 1 次数据/ })).toBeInTheDocument()
     expect(document.body.textContent).not.toContain('The user is asking')
-    // 花费钮：三次调用相加，和后端的合计一样
+    // 输入框下面的花费小字：三次调用相加，和后端的合计一样
     const usage = sample(`/api/workbench/sessions/${CHAT}/usage`) as { cost: string }
     expect(screen.getByTestId('cost-amount').textContent).toBe(`¥${Number(usage.cost).toFixed(3)}`)
     // 都答完了：是发送钮，不是停止钮

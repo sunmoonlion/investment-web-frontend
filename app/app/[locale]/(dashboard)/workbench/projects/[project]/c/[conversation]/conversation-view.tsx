@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 
 import { ChatScreen } from '@/features/chat'
 import { ExpertRunScreen } from '@/features/expert'
-import { CostButton } from '@/features/usage'
+import { CostLine } from '@/features/usage'
 import { WorkScreen } from '@/features/work'
 import { useConversation } from '@/lib/workbench/conversation'
 import { useConversationEvents } from '@/lib/workbench/conversation-events'
@@ -23,11 +23,11 @@ export function ConversationView({ conversation }: { conversation: string }) {
     if (turns > 0) void client.invalidateQueries({ queryKey: ['workbench', 'conversation'] })
   }, [turns, client])
 
-  const actions = <CostButton conversation={conversation} />
+  const cost = <CostLine conversation={conversation} />
   if (found.data?.active_task_id) return <ExpertRunScreen task={found.data.active_task_id} />
   if (found.data?.kind === 'chat') {
-    return <ChatScreen conversation={conversation} actions={actions} />
+    return <ChatScreen conversation={conversation} cost={cost} />
   }
   // 还没取到是哪一种的时候先按工作页摆：项目里的对话多数是工作
-  return <WorkScreen conversation={conversation} actions={actions} />
+  return <WorkScreen conversation={conversation} cost={cost} />
 }
