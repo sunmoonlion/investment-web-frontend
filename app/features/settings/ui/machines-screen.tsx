@@ -63,9 +63,15 @@ export function MachinesScreen({ embedded = false }: { embedded?: boolean }) {
         <section id="computer-status" className="rounded-xl border p-5">
           <h3 className="text-base font-semibold">{t('current')}</h3>
           {machines.isSuccess && current ? (
-            <p className="mt-1 text-sm">
-              {current.name} · {isOnline(current) ? t('online') : t('offline')}
-            </p>
+            <>
+              <p className="mt-1 text-sm">
+                {current.name} · {isOnline(current) ? t('online') : t('offline')}
+              </p>
+              {/* 账号跟着人走、代理跟着电脑走；网页看不出自己在哪台电脑上（所有者 2026-10-12 定甲） */}
+              <p className="text-muted-foreground mt-2 text-sm">
+                {t('elsewhere', { name: current.name })}
+              </p>
+            </>
           ) : null}
           {machines.isSuccess && !current ? (
             <p className="text-muted-foreground mt-1 text-sm">{t('none')}</p>
