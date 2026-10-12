@@ -494,12 +494,15 @@
       "truncated": "Too many items; only the first 2000 are listed",
       "back": "Back to the file tree",
       "binary": "Not a text file; contents are not shown here.",
-      "partial": "The file is larger than 512 KiB; only the beginning is shown.",
+      "partial": "The file is larger than 1 MiB; only the beginning is shown.",
       "problem": {
-        "agent_offline": "The agent on this computer is offline, so its files cannot be read.",
-        "agent_outdated": "The agent on this computer is too old and has no file channel; upgrade to 0.4.0 or later.",
-        "agent_service_unconfigured": "This site has not enabled the file channel yet.",
-        "agent_busy": "This computer is busy; try again shortly.",
+        "no_agent_here": "No agent is running on the computer you are using, so files cannot be shown. Files are only visible on the computer that runs the agent; they never go through the cloud.",
+        "other_account": "The agent on this computer is paired with another account.",
+        "agent_offline": "This account has not connected a computer yet.",
+        "agent_service_unconfigured": "This site has not enabled local access yet.",
+        "ticket_invalid": "The agent did not accept the local access ticket; reload and try again.",
+        "keys_unavailable": "The agent could not fetch the site's public key; try again later.",
+        "rate_limited": "Too fast; wait a moment.",
         "other": "Could not read it."
       }
     }

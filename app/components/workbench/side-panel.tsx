@@ -15,8 +15,9 @@ import { cn } from '@/lib/utils'
 
 import type { FileChanges } from '@/lib/workbench/timeline'
 import { ChangesPanel } from './changes-panel'
-import { FileTree } from './file-tree'
+import { FileTree, ServiceProblem } from './file-tree'
 import { FileView } from './file-view'
+import { useLocalAgent } from '@/lib/workbench/queries'
 
 export type SideTab = 'files' | 'changes' | 'terminal'
 
@@ -135,7 +136,7 @@ export function WorkSidePanel({
           <ChangesPanel files={files} directory={directory} />
         ) : tab === 'files' ? (
           opened && environment ? (
-            <FileView environment={environment} path={opened} onBack={() => setOpened(null)} />
+            <OpenedFile environment={environment} path={opened} onBack={() => setOpened(null)} />
           ) : (
             <section aria-label={t('panel.files')}>
               <FileTree
@@ -155,4 +156,19 @@ export function WorkSidePanel({
       </div>
     </aside>
   )
+}
+
+// 看文件要先有那台电脑的连接（探口 + 票）；树已经连过，这里从缓存里拿同一份
+function OpenedFile({
+  environment,
+  path,
+  onBack,
+}: {
+  environment: string
+  path: string
+  onBack: () => void
+}) {
+  const link = useLocalAgent(environment)
+  if (!link.data) return link.error ? <ServiceProblem error={link.error} /> : null
+  return <FileView agent={link.data} path={path} onBack={onBack} />
 }

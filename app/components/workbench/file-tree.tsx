@@ -12,7 +12,6 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
 import type { DirectoryEntry } from '@/contracts/workbench-v2'
-import { WorkbenchError } from '@/lib/workbench/http'
 import {
   baseName,
   childPath,
@@ -21,11 +20,13 @@ import {
   treeRoots,
   type TreeRoot,
 } from '@/lib/workbench/file-tree'
-import { useAgentService, useDirectory } from '@/lib/workbench/queries'
+import { localProblemCode, type LocalAgent } from '@/lib/workbench/local-agent'
+import { useLocalAgent, useLocalDirectory } from '@/lib/workbench/queries'
 import { cn } from '@/lib/utils'
 
-// 右边栏「文件」（0017 §五、0022）：根是那台电脑的白名单目录加本地知识库目录，当前项目默认展开，
-// 目录点开才去读（经工作台 → 会合点 → 代理）。只读。代理离线 / 版本旧 / 通道没配时各说一句，不装作空。
+// 右边栏「文件」（0017 §五、0022 乙案）：根是那台电脑的白名单目录加本地知识库目录，当前项目默认展开，
+// 目录点开才去读——浏览器直接问本机 127.0.0.1 上的代理，文件不经云端。只读。
+// 这台电脑上没代理 / 接的是别的账号 / 没配对 时各说一句，不装作空。
 export function FileTree({
   environment,
   directory,
@@ -38,11 +39,11 @@ export function FileTree({
   onSelect: (path: string) => void
 }) {
   const t = useTranslations('work')
-  const info = useAgentService(environment)
+  const link = useLocalAgent(environment)
   if (environment === null) {
     return <p className="text-muted-foreground leading-6">{t('files.noComputer')}</p>
   }
-  if (info.isPending) {
+  if (link.isPending) {
     return (
       <p className="text-muted-foreground flex items-center gap-2">
         <LoaderIcon className="size-3.5 animate-spin" />
@@ -50,10 +51,10 @@ export function FileTree({
       </p>
     )
   }
-  if (info.isError) {
-    return <ServiceProblem error={info.error} />
+  if (link.isError) {
+    return <ServiceProblem error={link.error} />
   }
-  const roots = treeRoots(info.data, directory)
+  const roots = treeRoots(link.data.info, directory)
   if (roots.length === 0) {
     return <p className="text-muted-foreground leading-6">{t('files.noRoots')}</p>
   }
@@ -62,7 +63,7 @@ export function FileTree({
       {roots.map((root) => (
         <RootNode
           key={root.path}
-          environment={environment}
+          agent={link.data}
           root={root}
           expand={pathsToExpand(root.path, directory)}
           selected={selected}
@@ -75,8 +76,16 @@ export function FileTree({
 
 export function ServiceProblem({ error }: { error: unknown }) {
   const t = useTranslations('work')
-  const code = error instanceof WorkbenchError ? error.code : 'other'
-  const known = ['agent_offline', 'agent_outdated', 'agent_service_unconfigured', 'agent_busy']
+  const code = localProblemCode(error)
+  const known = [
+    'no_agent_here',
+    'other_account',
+    'agent_offline',
+    'agent_service_unconfigured',
+    'ticket_invalid',
+    'keys_unavailable',
+    'rate_limited',
+  ]
   return (
     <p role="alert" className="text-muted-foreground leading-6">
       {t(`files.problem.${known.includes(code) ? code : 'other'}`)}
@@ -85,13 +94,13 @@ export function ServiceProblem({ error }: { error: unknown }) {
 }
 
 function RootNode({
-  environment,
+  agent,
   root,
   expand,
   selected,
   onSelect,
 }: {
-  environment: string
+  agent: LocalAgent
   root: TreeRoot
   expand: string[]
   selected: string | null
@@ -101,7 +110,7 @@ function RootNode({
   return (
     <li>
       <DirNode
-        environment={environment}
+        agent={agent}
         path={root.path}
         label={
           <span className="flex min-w-0 items-center gap-1.5">
@@ -126,7 +135,7 @@ function RootNode({
 }
 
 function DirNode({
-  environment,
+  agent,
   path,
   label,
   initiallyOpen,
@@ -135,7 +144,7 @@ function DirNode({
   onSelect,
   depth,
 }: {
-  environment: string
+  agent: LocalAgent
   path: string
   label: React.ReactNode
   initiallyOpen: boolean
@@ -146,7 +155,7 @@ function DirNode({
 }) {
   const t = useTranslations('work')
   const [open, setOpen] = useState(initiallyOpen)
-  const listing = useDirectory(environment, open ? path : null)
+  const listing = useLocalDirectory(agent, open ? path : null)
   const entries = listing.data ? sortEntries(listing.data.entries) : []
   return (
     <div>
@@ -182,7 +191,7 @@ function DirNode({
             {entries.map((entry) => (
               <EntryNode
                 key={entry.name}
-                environment={environment}
+                agent={agent}
                 parent={path}
                 entry={entry}
                 expand={expand}
@@ -215,7 +224,7 @@ function DirNode({
 }
 
 function EntryNode({
-  environment,
+  agent,
   parent,
   entry,
   expand,
@@ -223,7 +232,7 @@ function EntryNode({
   onSelect,
   depth,
 }: {
-  environment: string
+  agent: LocalAgent
   parent: string
   entry: DirectoryEntry
   expand: string[]
@@ -236,7 +245,7 @@ function EntryNode({
     return (
       <li>
         <DirNode
-          environment={environment}
+          agent={agent}
           path={path}
           label={
             <span className="flex min-w-0 items-center gap-1.5">

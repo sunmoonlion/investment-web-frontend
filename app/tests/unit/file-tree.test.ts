@@ -56,9 +56,9 @@ describe('文件树的路径算术（Windows 与 POSIX 都认）', () => {
   })
 
   it('内容：前 8 KiB 有 NUL 当二进制，否则按 UTF-8 解', () => {
-    expect(decodeText(btoa('hello'))).toEqual({ text: 'hello' })
-    expect(decodeText(btoa('a\u0000b'))).toEqual({ binary: true })
-    const utf8 = btoa(String.fromCharCode(...new TextEncoder().encode('中文')))
-    expect(decodeText(utf8)).toEqual({ text: '中文' })
+    const bytes = (text: string) => new TextEncoder().encode(text)
+    expect(decodeText(bytes('hello'))).toEqual({ text: 'hello' })
+    expect(decodeText(new Uint8Array([97, 0, 98]))).toEqual({ binary: true })
+    expect(decodeText(bytes('中文'))).toEqual({ text: '中文' })
   })
 })

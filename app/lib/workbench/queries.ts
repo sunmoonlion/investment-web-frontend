@@ -3,10 +3,7 @@
 import { useQuery } from '@tanstack/react-query'
 
 import {
-  agentServiceSchema,
   conversationsSchema,
-  directorySchema,
-  fileContentSchema,
   machinesSchema,
   pendingListSchema,
   projectDetailSchema,
@@ -15,6 +12,7 @@ import {
   workspacesSchema,
 } from '@/contracts/workbench-v2'
 import { getJson, seg } from './http'
+import { connectLocalAgent, readDirectory, readFile, type LocalAgent } from './local-agent'
 
 // 好几个功能都要的清单：工作区、项目、对话、待办、机器、沙箱。
 // 键都以 'workbench' 开头：哪个功能改了东西，按键让别处重取。
@@ -100,43 +98,34 @@ export function useAllProjects(includeArchived: boolean) {
   })
 }
 
-// ---------------- 代理服务流（0022）：那台电脑上的文件 ----------------
-// 代理此刻的白名单与知识库目录。代理离线 / 版本旧 / 没配通道时抛 WorkbenchError，页面按 code 说明
-export function useAgentService(environment: string | null) {
+// ---------------- 代理回环口（0022 乙案）：那台电脑上的文件，不经工作台 ----------------
+// 探口、要票、问代理是谁，三步合成一个查询；失败的 code 由页面挑话说
+export function useLocalAgent(environment: string | null) {
   return useQuery({
     queryKey: workbenchKeys.agentService(environment ?? ''),
     enabled: environment !== null,
     retry: false,
     staleTime: 30_000,
-    queryFn: async () =>
-      getJson(agentServiceSchema, `/api/workbench/environments/${seg(environment!)}/service`),
+    queryFn: () => connectLocalAgent(environment!),
   })
 }
 
-export function useDirectory(environment: string | null, path: string | null) {
+export function useLocalDirectory(agent: LocalAgent | null, path: string | null) {
   return useQuery({
-    queryKey: workbenchKeys.directory(environment ?? '', path ?? ''),
-    enabled: environment !== null && path !== null,
+    queryKey: workbenchKeys.directory(agent?.info.userId ?? '', path ?? ''),
+    enabled: agent !== null && path !== null,
     retry: false,
     staleTime: 5_000,
-    queryFn: async () =>
-      getJson(
-        directorySchema,
-        `/api/workbench/environments/${seg(environment!)}/fs/dir?path=${encodeURIComponent(path!)}`,
-      ),
+    queryFn: () => readDirectory(agent!, path!),
   })
 }
 
-export function useFileContent(environment: string | null, path: string | null) {
+export function useLocalFile(agent: LocalAgent | null, path: string | null) {
   return useQuery({
-    queryKey: workbenchKeys.file(environment ?? '', path ?? ''),
-    enabled: environment !== null && path !== null,
+    queryKey: workbenchKeys.file(agent?.info.userId ?? '', path ?? ''),
+    enabled: agent !== null && path !== null,
     retry: false,
     staleTime: 5_000,
-    queryFn: async () =>
-      getJson(
-        fileContentSchema,
-        `/api/workbench/environments/${seg(environment!)}/fs/file?path=${encodeURIComponent(path!)}`,
-      ),
+    queryFn: () => readFile(agent!, path!),
   })
 }

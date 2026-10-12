@@ -667,17 +667,26 @@ export type Memory = z.infer<typeof memorySchema>
 export const memoriesSchema = z.object({ memories: z.array(memorySchema) }).loose()
 export const memoryMadeSchema = z.object({ memory: memorySchema }).loose()
 
-// ---------------- 代理服务流（0022，账 87）：那台电脑上的文件与设置 ----------------
-export const agentServiceSchema = z
+// ---------------- 代理回环口（0022 乙案，账 87）：那台电脑上的文件与设置，不经工作台 ----------------
+// 工作台只发票：网页拿它去敲 127.0.0.1:47811
+export const localTicketSchema = z
+  .object({ ticket: z.string(), expires_at: z.number().int(), relay_user: z.string() })
+  .loose()
+export type LocalTicket = z.infer<typeof localTicketSchema>
+
+// 代理回环口的 /local/v1/info
+export const localInfoSchema = z
   .object({
     agent: z.string().optional(),
     version: z.string().optional(),
+    userId: z.string(),
     roots: z.array(z.string()),
     libraryDir: z.string().nullable().optional(),
     capabilities: z.array(z.string()).optional(),
+    lastSettingsChange: z.string().nullable().optional(),
   })
   .loose()
-export type AgentServiceInfo = z.infer<typeof agentServiceSchema>
+export type LocalInfo = z.infer<typeof localInfoSchema>
 
 export const directoryEntrySchema = z
   .object({
@@ -697,15 +706,16 @@ export const directorySchema = z
   .loose()
 export type Directory = z.infer<typeof directorySchema>
 
-export const fileContentSchema = z
+export const localSettingsSchema = z
   .object({
-    path: z.string(),
-    offset: z.number().int(),
-    // base64；文本还是二进制由浏览器判
-    content: z.string(),
-    size: z.number().int(),
-    mtime: z.number().nullable().optional(),
-    eof: z.boolean(),
+    machineName: z.string().optional(),
+    roots: z.array(z.string()),
+    rootChoices: z.array(z.string()).optional(),
+    ceiling: z.object({ sandbox: z.string(), network: z.boolean() }).loose(),
+    autostart: z.boolean().optional(),
+    libraryDir: z.string().nullable().optional(),
+    version: z.string().optional(),
+    lastSettingsChange: z.string().nullable().optional(),
   })
   .loose()
-export type FileContent = z.infer<typeof fileContentSchema>
+export type LocalSettings = z.infer<typeof localSettingsSchema>

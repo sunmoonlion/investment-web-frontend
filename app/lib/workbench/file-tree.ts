@@ -1,5 +1,5 @@
 // 文件树的纯函数（0022）：路径是用户电脑上的绝对路径，Windows 用反斜杠、别的用斜杠；分隔符看根长什么样。
-import type { AgentServiceInfo, DirectoryEntry } from '@/contracts/workbench-v2'
+import type { DirectoryEntry, LocalInfo } from '@/contracts/workbench-v2'
 
 export function separatorOf(path: string): '\\' | '/' {
   return /^[A-Za-z]:\\/.test(path) || path.startsWith('\\\\') ? '\\' : '/'
@@ -27,7 +27,10 @@ export function isUnder(path: string, root: string): boolean {
 export type TreeRoot = { path: string; kind: 'workspace' | 'library' }
 
 // 树根 = 代理白名单里的目录 + 本地知识库目录（0019）；当前项目所在的那个根排最前
-export function treeRoots(info: AgentServiceInfo, directory: string | null): TreeRoot[] {
+export function treeRoots(
+  info: Pick<LocalInfo, 'roots' | 'libraryDir'>,
+  directory: string | null,
+): TreeRoot[] {
   const roots: TreeRoot[] = info.roots.map((path) => ({ path, kind: 'workspace' as const }))
   if (info.libraryDir) roots.push({ path: info.libraryDir, kind: 'library' })
   if (!directory) return roots
@@ -66,8 +69,7 @@ export function sortEntries(entries: readonly DirectoryEntry[]): DirectoryEntry[
 }
 
 // 前 8 KiB 里有 NUL 就当二进制；否则按 UTF-8 解
-export function decodeText(base64: string): { text: string } | { binary: true } {
-  const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0))
+export function decodeText(bytes: Uint8Array): { text: string } | { binary: true } {
   const head = bytes.subarray(0, 8192)
   if (head.includes(0)) return { binary: true }
   return { text: new TextDecoder('utf-8').decode(bytes) }
