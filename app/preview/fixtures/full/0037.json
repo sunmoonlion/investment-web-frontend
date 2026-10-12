@@ -12,6 +12,8 @@
   "who_judges": "用户。专家只取数、说明口径",
   "on_failure": "查询带不回结果时退回重写查询；成稿不合格时交人处理",
   "uses_our_data": true,
+  "status": "ready",
+  "preparing_note": "",
   "steps": [
    {
     "index": 1,

@@ -1,58 +1,198 @@
 {
  "contract_version": 2,
- "project": {
-  "id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
-  "owner_actor_id": "e824e960-e14f-5f42-8843-61bc18a78346",
-  "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
-  "workspace_root": "/home/demo/research",
-  "path": "恒瑞医药",
-  "title": "恒瑞医药",
-  "created_at": "2026-10-12T04:50:49.295412Z",
-  "updated_at": "2026-10-12T04:50:49.295412Z",
-  "archived_at": null,
-  "directory": "/home/demo/research/恒瑞医药",
-  "archived": false,
-  "environment_name": "家里的电脑",
-  "online": false
- },
- "active_task_id": null,
- "conversations": [
-  {
-   "id": "75fb7092-625a-5c48-b9e0-b1f5fad22e94",
-   "kind": "chat",
-   "title": "这个项目里有哪些文件？",
-   "wheel": "user",
-   "active_task_id": null,
-   "last_active_at": "2026-10-12T04:50:50.780588Z"
-  },
-  {
-   "id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "kind": "expert",
-   "title": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
-   "wheel": "user",
-   "active_task_id": null,
-   "last_active_at": "2026-10-12T04:50:50.261408Z"
-  }
- ],
- "tasks": [
-  {
-   "id": "8b109ead-42d9-513b-be23-d3fa0e086069",
-   "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "profile_id": "FIN_REVIEW",
-   "expert": "财报体检",
-   "state": "SUCCEEDED",
-   "state_word": "已完成",
-   "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
-   "budget": {
-    "used": "0.350000",
-    "limit": null,
-    "currency": "CNY",
-    "reserved": "0"
+ "pack": {
+  "id": "FIN_FORECAST",
+  "version": "0",
+  "name": "财务分析与预测",
+  "tagline": "看清收入、成本、现金流的走势，给出可核对的预测",
+  "solves": "对一家公司（样例是一家电商）的收入、成本、订单与现金流做趋势与结构分析，并按可说清的方法给出下几期的预测与区间",
+  "does_not_solve": "不做估值、不给买卖建议；没有数据的公司不做；预测只是外推，不是承诺",
+  "input": "一个问题，和分析的时间范围（例如：近两年按月的收入与毛利趋势，预测下两个季度）",
+  "output": "成稿：口径、取数表（每列带来源）、分析发现、预测表（方法、假设、区间）、局限",
+  "who_judges": "用户。专家只摆数、说趋势、给带假设的预测",
+  "on_failure": "数据没接入或口径说不清时停下交人，不硬算",
+  "uses_our_data": true,
+  "status": "preparing",
+  "preparing_note": "数据和方法正在接入（样例是一家电商的订单、支付、商品、客户九张表）；接好后这里直接可用。",
+  "steps": [
+   {
+    "index": 1,
+    "step_id": "scope",
+    "title": "定范围",
+    "summary": "说清分析哪段时间、哪些口径：收入按支付还是按订单，成本含不含运费",
+    "why": "口径先定，后面的数和预测才有意义；口径不同，同一问题答案可以差一倍。",
+    "uses": [],
+    "tools": [],
+    "returns": "scope",
+    "checks": [
+     {
+      "label": "交回的格式对"
+     },
+     {
+      "label": "有问题和期间"
+     }
+    ],
+    "after_rejection": {
+     "reworks": 1,
+     "then": "human",
+     "back_to": null,
+     "backs": 0,
+     "text": "重做，最多 1 次；仍不过，停下来问你"
+    },
+    "reserve": "0.05"
    },
-   "spent": "0.35",
-   "currency": "CNY",
-   "created_at": "2026-10-12T04:50:49.305768Z",
-   "ended_at": "2026-10-12T04:50:50.261408Z"
-  }
- ]
+   {
+    "index": 2,
+    "step_id": "pull",
+    "title": "取数",
+    "summary": "按口径把收入、成本、订单量按月取出来，列出每一列的来源",
+    "why": "预测要建立在你看得到的数上：每一列从哪张表、怎么算，先摆出来。",
+    "uses": [
+     {
+      "artifact": "scope",
+      "step": 1,
+      "title": "定范围"
+     }
+    ],
+    "tools": [
+     "describe_schema",
+     "run_sql"
+    ],
+    "returns": "series",
+    "checks": [
+     {
+      "label": "交回的格式对"
+     },
+     {
+      "label": "有列和行"
+     }
+    ],
+    "after_rejection": {
+     "reworks": 1,
+     "then": "human",
+     "back_to": null,
+     "backs": 0,
+     "text": "重做，最多 1 次；仍不过，停下来问你"
+    },
+    "reserve": "0.05"
+   },
+   {
+    "index": 3,
+    "step_id": "analyze",
+    "title": "分析",
+    "summary": "看趋势、季节性、结构：哪些品类和地区在涨，利润率怎么变",
+    "why": "先把过去说清楚，预测才有依据；结构变化比总数更能说明问题。",
+    "uses": [
+     {
+      "artifact": "series",
+      "step": 2,
+      "title": "取数"
+     }
+    ],
+    "tools": [],
+    "returns": "analysis",
+    "checks": [
+     {
+      "label": "交回的格式对"
+     },
+     {
+      "label": "至少一条发现"
+     }
+    ],
+    "after_rejection": {
+     "reworks": 1,
+     "then": "human",
+     "back_to": null,
+     "backs": 0,
+     "text": "重做，最多 1 次；仍不过，停下来问你"
+    },
+    "reserve": "0.05"
+   },
+   {
+    "index": 4,
+    "step_id": "forecast",
+    "title": "预测",
+    "summary": "按简单、能说清的方法外推下几期，给区间，写明假设",
+    "why": "预测一定带假设和区间；只给一个数等于没说。",
+    "uses": [
+     {
+      "artifact": "series",
+      "step": 2,
+      "title": "取数"
+     },
+     {
+      "artifact": "analysis",
+      "step": 3,
+      "title": "分析"
+     }
+    ],
+    "tools": [],
+    "returns": "forecast",
+    "checks": [
+     {
+      "label": "交回的格式对"
+     },
+     {
+      "label": "有方法、假设和预测值"
+     }
+    ],
+    "after_rejection": {
+     "reworks": 1,
+     "then": "human",
+     "back_to": null,
+     "backs": 0,
+     "text": "重做，最多 1 次；仍不过，停下来问你"
+    },
+    "reserve": "0.05"
+   },
+   {
+    "index": 5,
+    "step_id": "writeup",
+    "title": "成稿",
+    "summary": "把范围、数据、分析、预测写成一篇可核对的稿子，落到项目文件里",
+    "why": "给你的是一篇能逐条核对的稿子，不是几个数。",
+    "uses": [
+     {
+      "artifact": "scope",
+      "step": 1,
+      "title": "定范围"
+     },
+     {
+      "artifact": "series",
+      "step": 2,
+      "title": "取数"
+     },
+     {
+      "artifact": "analysis",
+      "step": 3,
+      "title": "分析"
+     },
+     {
+      "artifact": "forecast",
+      "step": 4,
+      "title": "预测"
+     }
+    ],
+    "tools": [],
+    "returns": "note",
+    "checks": [
+     {
+      "label": "交回的格式对"
+     },
+     {
+      "label": "有正文"
+     }
+    ],
+    "after_rejection": {
+     "reworks": 1,
+     "then": "human",
+     "back_to": null,
+     "backs": 0,
+     "text": "重做，最多 1 次；仍不过，停下来问你"
+    },
+    "reserve": "0.05"
+   }
+  ],
+  "least_budget": "0.25"
+ }
 }

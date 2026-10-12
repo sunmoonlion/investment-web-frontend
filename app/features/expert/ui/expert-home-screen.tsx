@@ -139,8 +139,18 @@ export function ExpertHomeScreen() {
             <ul className="grid gap-4 md:grid-cols-2">
               {(packs.data ?? []).map((pack) => (
                 <li key={pack.id} className="flex flex-col rounded-xl border p-4">
-                  <h3 className="text-base font-semibold">{pack.name}</h3>
+                  <h3 className="flex items-center gap-2 text-base font-semibold">
+                    {pack.name}
+                    {pack.status === 'preparing' ? (
+                      <span className="bg-muted text-muted-foreground rounded-full px-2 py-0.5 text-[11px] font-normal">
+                        {t('preparing')}
+                      </span>
+                    ) : null}
+                  </h3>
                   <p className="text-muted-foreground text-sm">{pack.tagline}</p>
+                  {pack.status === 'preparing' && pack.preparing_note ? (
+                    <p className="text-muted-foreground mt-1 text-xs">{pack.preparing_note}</p>
+                  ) : null}
                   <dl className="mt-3 space-y-2 text-[13px]">
                     <div>
                       <dt className="text-muted-foreground inline">{t('solves')}：</dt>
@@ -156,7 +166,11 @@ export function ExpertHomeScreen() {
                       {t('stepsCount', { n: pack.steps.length })} ·{' '}
                       {pack.uses_our_data ? t('usesData') : t('noData')}
                     </span>
-                    <Button size="sm" disabled={noComputer} onClick={() => setAsking(pack.id)}>
+                    <Button
+                      size="sm"
+                      disabled={noComputer || pack.status === 'preparing'}
+                      onClick={() => setAsking(pack.id)}
+                    >
                       {t('ask')}
                     </Button>
                   </div>

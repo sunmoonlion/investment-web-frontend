@@ -1,62 +1,132 @@
 {
  "contract_version": 2,
- "tasks": [
+ "price": {
+  "model": "kimi-k3",
+  "priced": true,
+  "currency": "CNY",
+  "as_of": "2026-10-04",
+  "per_million": {
+   "input": "20",
+   "cached_input": "2",
+   "cache_write": "20",
+   "output": "100"
+  },
+  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
+  "estimated": true
+ },
+ "cost": "0.400000",
+ "tokens": {
+  "input": 16000,
+  "cached_input": 0,
+  "cache_write": 0,
+  "output": 800,
+  "total": 16800
+ },
+ "calls": 8,
+ "turns": [
   {
-   "id": "e8d7f8a6-42c8-52b1-948d-742b459fa460",
-   "session_id": "74272681-9132-5e5b-b7ca-e245b2c9da6b",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "tenant": "default",
-   "idempotency_key": "preview-done-redone-0001",
-   "request_digest": "8e08af894ee3199be8001230c930673ba179fbf9c9c128fe7188b2819dc9bc48",
-   "profile_id": "FIN_REVIEW",
-   "profile_version": "1",
-   "expert_pack_version": "1",
-   "original_input": {
-    "input": {
-     "text": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？"
-    },
-    "attachments": [],
-    "client_context": {
-     "entry": "expert"
-    }
+   "turn_id": "turn-f50aea4d6487",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "normalized_goal": null,
-   "thread_id": "thread-302905ceffa9",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "project_root": "/home/demo/research/恒瑞医药",
-   "state": "SUCCEEDED",
-   "state_version": 43,
-   "workflow_version": "1",
-   "current_step": 7,
-   "acceptance_contract": {
-    "steps": [
-     "scope",
-     "profile",
-     "reconcile",
-     "extract",
-     "metrics",
-     "crosscheck",
-     "note"
-    ],
-    "pack_id": "FIN_REVIEW"
+   "at": "2026-10-12T13:02:46.056604+00:00"
+  },
+  {
+   "turn_id": "turn-51b5deca3435",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "execution_policy": {},
-   "budget": {
-    "used": "0.400000",
-    "limit": null,
-    "currency": "CNY",
-    "reserved": "0"
+   "at": "2026-10-12T13:02:46.191050+00:00"
+  },
+  {
+   "turn_id": "turn-f384b86fc726",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "active_attempt_id": null,
-   "terminal_result_ref": "ab81c556-789b-5c9f-834a-d591f5885019",
-   "waiting_reason": null,
-   "active_interaction_id": null,
-   "rejection": null,
-   "cancel_requested_at": null,
-   "cancel_requested_by": null,
-   "created_at": "2026-10-12T04:50:29.830210+00:00",
-   "updated_at": "2026-10-12T04:50:30.884750+00:00",
-   "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e"
+   "at": "2026-10-12T13:02:46.354633+00:00"
+  },
+  {
+   "turn_id": "turn-98c42c794a5b",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-12T13:02:46.500982+00:00"
+  },
+  {
+   "turn_id": "turn-f8a92b9e3ff3",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-12T13:02:46.611058+00:00"
+  },
+  {
+   "turn_id": "turn-ca065d5fd4fc",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-12T13:02:46.723000+00:00"
+  },
+  {
+   "turn_id": "turn-7c37f9711d61",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-12T13:02:46.899575+00:00"
+  },
+  {
+   "turn_id": "turn-466bbfb8fc8e",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
+   },
+   "at": "2026-10-12T13:02:46.991672+00:00"
   }
  ]
 }

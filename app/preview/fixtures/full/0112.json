@@ -1,4 +1,51 @@
 {
- "contract_version": 2,
+ "task": {
+  "id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+  "session_id": "e622161e-278e-510c-a294-d321919a97e8",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "tenant": "default",
+  "idempotency_key": "preview-busy-0001",
+  "request_digest": "8c617a2c3a8b8cc0b23a6891c0cb9e3165b1b43b0a85ff4d0943cdf6e080424a",
+  "profile_id": "DATA_QUERY",
+  "profile_version": "1",
+  "expert_pack_version": null,
+  "original_input": {
+   "input": {
+    "text": "五粮液近五年的净利率分别是多少？"
+   },
+   "attachments": [],
+   "client_context": {
+    "entry": "expert",
+    "queued_behind": "e360da80-c794-5489-9aef-1545babb5931"
+   }
+  },
+  "normalized_goal": null,
+  "thread_id": null,
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "project_root": "/home/demo/research/五粮液",
+  "state": "RECEIVED",
+  "state_version": 0,
+  "workflow_version": null,
+  "current_step": 0,
+  "acceptance_contract": {},
+  "execution_policy": {},
+  "budget": {
+   "used": "0",
+   "limit": null,
+   "currency": "CNY",
+   "reserved": "0"
+  },
+  "active_attempt_id": null,
+  "terminal_result_ref": null,
+  "waiting_reason": null,
+  "active_interaction_id": null,
+  "rejection": null,
+  "cancel_requested_at": null,
+  "cancel_requested_by": null,
+  "created_at": "2026-10-12T13:02:52.874227+00:00",
+  "updated_at": "2026-10-12T13:02:52.874227+00:00",
+  "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0"
+ },
+ "attempts": [],
  "artifacts": []
 }

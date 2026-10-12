@@ -103,24 +103,44 @@ export function AskExpertScreen({
             <section>
               <p className={label}>{t('who')}</p>
               <ul className="grid gap-2 sm:grid-cols-2">
-                {(packs.data ?? []).map((each) => (
-                  <li key={each.id}>
-                    <button
-                      type="button"
-                      aria-pressed={chosen === each.id}
-                      onClick={() => setChosen(each.id)}
-                      className={cn(
-                        'hover:bg-muted/60 w-full rounded-lg border p-3 text-left',
-                        chosen === each.id && 'border-foreground bg-muted/60',
-                      )}
-                    >
-                      <span className="block text-sm font-medium">{each.name}</span>
-                      <span className="text-muted-foreground block text-[13px]">
-                        {each.tagline}
-                      </span>
-                    </button>
-                  </li>
-                ))}
+                {(packs.data ?? []).map((each) => {
+                  // 筹备中的专家：看得见、读得到它要做什么，请不了
+                  const preparing = each.status === 'preparing'
+                  return (
+                    <li key={each.id}>
+                      <button
+                        type="button"
+                        aria-pressed={chosen === each.id}
+                        aria-disabled={preparing || undefined}
+                        onClick={() => {
+                          if (!preparing) setChosen(each.id)
+                        }}
+                        className={cn(
+                          'hover:bg-muted/60 w-full rounded-lg border p-3 text-left',
+                          chosen === each.id && 'border-foreground bg-muted/60',
+                          preparing && 'cursor-default opacity-70 hover:bg-transparent',
+                        )}
+                      >
+                        <span className="flex items-center gap-2 text-sm font-medium">
+                          {each.name}
+                          {preparing ? (
+                            <span className="bg-muted text-muted-foreground rounded-full px-2 py-0.5 text-[11px] font-normal">
+                              {t('preparing')}
+                            </span>
+                          ) : null}
+                        </span>
+                        <span className="text-muted-foreground block text-[13px]">
+                          {each.tagline}
+                        </span>
+                        {preparing && each.preparing_note ? (
+                          <span className="text-muted-foreground mt-1 block text-xs">
+                            {each.preparing_note}
+                          </span>
+                        ) : null}
+                      </button>
+                    </li>
+                  )
+                })}
               </ul>
               {packs.isPending ? (
                 <p className="text-muted-foreground text-sm">{t('loading')}</p>

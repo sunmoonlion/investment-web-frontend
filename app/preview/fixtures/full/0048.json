@@ -1,23 +1,50 @@
 {
  "contract_version": 2,
- "sessions": [
+ "project": {
+  "id": "7679e7df-8718-5408-8ba3-5f59a9525cf4",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "workspace_root": "/home/demo/research",
+  "path": "片仔癀",
+  "title": "片仔癀",
+  "created_at": "2026-10-12T13:02:45.749130Z",
+  "updated_at": "2026-10-12T13:02:45.749130Z",
+  "archived_at": null,
+  "directory": "/home/demo/research/片仔癀",
+  "archived": false,
+  "environment_name": "办公室的电脑",
+  "online": true
+ },
+ "active_task_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+ "conversations": [
   {
    "id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "sandbox_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b",
-   "project_root": "/home/demo/research/片仔癀",
-   "thread_id": "thread-1a8315f4a86b",
-   "wheel": "advisor",
-   "state_version": 1,
-   "active_task_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
-   "thread_settings": {},
-   "created_at": "2026-10-12T04:50:32.583069+00:00",
-   "last_active_at": "2026-10-12T04:50:32.625888+00:00",
    "kind": "expert",
-   "project_id": "7679e7df-8718-5408-8ba3-5f59a9525cf4",
    "title": "片仔癀 2023 到 2025 年的盈利能力怎么样？",
-   "archived_at": null
+   "wheel": "advisor",
+   "active_task_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+   "last_active_at": "2026-10-12T13:02:48.763986Z"
+  }
+ ],
+ "tasks": [
+  {
+   "id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+   "session_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "profile_id": "FIN_REVIEW",
+   "expert": "财报体检",
+   "state": "WAITING",
+   "state_word": null,
+   "question": "片仔癀 2023 到 2025 年的盈利能力怎么样？",
+   "budget": {
+    "used": "0.100000",
+    "limit": null,
+    "currency": "CNY",
+    "reserved": "0"
+   },
+   "spent": "0.10",
+   "currency": "CNY",
+   "created_at": "2026-10-12T13:02:48.737125Z",
+   "ended_at": null
   }
  ]
 }

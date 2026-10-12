@@ -1,5 +1,160 @@
 {
- "contract_version": 2,
+ "task": {
+  "id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+  "session_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "tenant": "default",
+  "idempotency_key": "preview-no-data-0001",
+  "request_digest": "3fb4bb4f7f197e28ac9d57c142a8e728576448cc8799379c733634a303a370b6",
+  "profile_id": "FIN_REVIEW",
+  "profile_version": "1",
+  "expert_pack_version": "1",
+  "original_input": {
+   "input": {
+    "text": "片仔癀 2023 到 2025 年的盈利能力怎么样？"
+   },
+   "attachments": [],
+   "client_context": {
+    "entry": "expert"
+   }
+  },
+  "normalized_goal": null,
+  "thread_id": "thread-e31ca48e3ded",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "project_root": "/home/demo/research/片仔癀",
+  "state": "WAITING",
+  "state_version": 13,
+  "workflow_version": "1",
+  "current_step": 1,
+  "acceptance_contract": {
+   "steps": [
+    "scope",
+    "profile",
+    "reconcile",
+    "extract",
+    "metrics",
+    "crosscheck",
+    "note"
+   ],
+   "pack_id": "FIN_REVIEW"
+  },
+  "execution_policy": {},
+  "budget": {
+   "used": "0.100000",
+   "limit": null,
+   "currency": "CNY",
+   "reserved": "0"
+  },
+  "active_attempt_id": null,
+  "terminal_result_ref": null,
+  "waiting_reason": "INPUT",
+  "active_interaction_id": "81108b8f-3022-5de7-860c-36662e2db6fb",
+  "rejection": null,
+  "cancel_requested_at": null,
+  "cancel_requested_by": null,
+  "created_at": "2026-10-12T13:02:48.737125+00:00",
+  "updated_at": "2026-10-12T13:02:48.960305+00:00",
+  "project_id": "7679e7df-8718-5408-8ba3-5f59a9525cf4"
+ },
+ "attempts": [
+  {
+   "id": "d52a401e-0c5f-57c0-b7af-bc1b084822a8",
+   "task_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+   "session_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "thread_id": "thread-e31ca48e3ded",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "scope",
+   "step_version": "1",
+   "input_artifact_versions": [],
+   "turn_ids": [
+    "turn-373a7f3240d1"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "2bc51e87-6667-5f54-9be7-355fdf250336",
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-12T13:02:48.856050+00:00",
+   "ended_at": "2026-10-12T13:02:48.864676+00:00",
+   "created_at": "2026-10-12T13:02:48.794321+00:00",
+   "updated_at": "2026-10-12T13:02:48.860931+00:00"
+  },
+  {
+   "id": "02bba996-2682-5aa4-81a4-7243cd3044e9",
+   "task_id": "2a01542e-376c-535f-ba1a-aa5d28c46cca",
+   "session_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
+   "thread_id": "thread-e31ca48e3ded",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "profile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-0a7ccc57ba90"
+   ],
+   "status": "FAILED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": "acceptance",
+   "retryable": true,
+   "output_artifacts": [],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-12T13:02:48.937798+00:00",
+   "ended_at": "2026-10-12T13:02:48.944944+00:00",
+   "created_at": "2026-10-12T13:02:48.882866+00:00",
+   "updated_at": "2026-10-12T13:02:48.942852+00:00"
+  }
+ ],
  "artifacts": [
   {
    "id": "2bc51e87-6667-5f54-9be7-355fdf250336",
@@ -8,26 +163,9 @@
    "name": "scope",
    "version": 1,
    "kind": "step",
-   "content": {
-    "aspects": [
-     "盈利能力"
-    ],
-    "company": "片仔癀",
-    "periods": [
-     "2023",
-     "2024",
-     "2025"
-    ],
-    "question": "片仔癀 2023 到 2025 年的盈利能力怎么样？",
-    "assumptions": [],
-    "report_types": [
-     "年报"
-    ],
-    "security_code": "600436"
-   },
    "digest": "ba37233edfe10f95b97200707ee4107c2dc0f0698c97eb92c42a53f9af1bcfed",
    "workspace_path": null,
-   "created_at": "2026-10-12T04:50:32.718077+00:00"
+   "created_at": "2026-10-12T13:02:48.860931+00:00"
   }
  ]
 }

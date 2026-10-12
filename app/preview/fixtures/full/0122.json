@@ -1,240 +1,41 @@
 {
+ "contract_version": 2,
  "task": {
-  "id": "607c2718-4eae-57a0-bb04-8aa28b096733",
-  "session_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
-  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-  "tenant": "default",
-  "idempotency_key": "preview-cancelled-0001",
-  "request_digest": "889fc129e2c09f563ce161f50a415c283eea24121e8f655b71935f10674fa46e",
-  "profile_id": "FIN_REVIEW",
-  "profile_version": "1",
-  "expert_pack_version": "1",
-  "original_input": {
-   "input": {
-    "text": "招商银行 2023 到 2025 年的盈利能力怎么样？"
-   },
-   "attachments": [],
-   "client_context": {
-    "entry": "expert"
-   }
+  "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+  "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+  "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f",
+  "expert": {
+   "id": "BOND_REVIEW",
+   "name": "",
+   "version": "1"
   },
-  "normalized_goal": null,
-  "thread_id": "thread-f9a380370f36",
-  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-  "project_root": "/home/demo/research/招商银行",
-  "state": "CANCELLED",
-  "state_version": 20,
-  "workflow_version": "1",
-  "current_step": 2,
-  "acceptance_contract": {
-   "steps": [
-    "scope",
-    "profile",
-    "reconcile",
-    "extract",
-    "metrics",
-    "crosscheck",
-    "note"
-   ],
-   "pack_id": "FIN_REVIEW"
-  },
-  "execution_policy": {},
-  "budget": {
-   "used": "0.150000",
-   "limit": null,
-   "currency": "CNY",
-   "reserved": "0"
-  },
-  "active_attempt_id": null,
-  "terminal_result_ref": null,
+  "question": "中国平安 2025 年的偿付能力怎么样？",
+  "state": "REJECTED",
+  "state_word": "打回",
   "waiting_reason": null,
-  "active_interaction_id": null,
-  "rejection": null,
-  "cancel_requested_at": "2026-10-12T04:50:35.034397+00:00",
-  "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-  "created_at": "2026-10-12T04:50:34.492484+00:00",
-  "updated_at": "2026-10-12T04:50:35.033779+00:00",
-  "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa"
+  "cancel_requested": false,
+  "reason": {
+   "code": "no_expert_pack",
+   "message": "这个问题不在专家范围，继续自己用 Codex 即可"
+  },
+  "reason_text": "这个问题不在专家的范围里，可以自己在对话里接着做",
+  "budget": {
+   "currency": "CNY",
+   "limit": null,
+   "used": "0.00",
+   "reserved": "0.00",
+   "left": null,
+   "running": "0.00",
+   "spent": "0.00",
+   "estimated": true
+  },
+  "data": null,
+  "started_at": "2026-10-12T13:02:52.761385Z",
+  "ended_at": "2026-10-12T13:02:52.805770Z",
+  "seconds": 0,
+  "active_interaction_id": null
  },
- "attempts": [
-  {
-   "id": "4d24a11c-4177-528f-80af-115e4266dadb",
-   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
-   "session_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
-   "thread_id": "thread-f9a380370f36",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "role": "execute",
-   "arm": 0,
-   "step_id": "scope",
-   "step_version": "1",
-   "input_artifact_versions": [],
-   "turn_ids": [
-    "turn-2b95833ed157"
-   ],
-   "status": "COMPLETED",
-   "codex_version": null,
-   "agent_version": null,
-   "model": null,
-   "model_provider": null,
-   "budget_allocated": {
-    "amount": "0.05"
-   },
-   "budget_consumed": {
-    "amount": "0.050000",
-    "tokens": {
-     "input": 2000,
-     "total": 2100,
-     "output": 100,
-     "cache_write": 0,
-     "cached_input": 0
-    }
-   },
-   "failure_code": null,
-   "retryable": null,
-   "output_artifacts": [
-    {
-     "id": "e7bb4979-0709-5f8d-bf7a-081d391d2a75",
-     "name": "scope",
-     "version": 1
-    }
-   ],
-   "refs": {
-    "reworks": 0
-   },
-   "started_at": "2026-10-12T04:50:34.609629+00:00",
-   "ended_at": "2026-10-12T04:50:34.618195+00:00",
-   "created_at": "2026-10-12T04:50:34.544764+00:00",
-   "updated_at": "2026-10-12T04:50:34.614634+00:00"
-  },
-  {
-   "id": "2f43eab0-204d-5b09-bb48-13a67d51c819",
-   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
-   "session_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
-   "thread_id": "thread-f9a380370f36",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "role": "execute",
-   "arm": 0,
-   "step_id": "profile",
-   "step_version": "1",
-   "input_artifact_versions": [
-    {
-     "name": "scope",
-     "version": 1
-    }
-   ],
-   "turn_ids": [
-    "turn-f9a0c1d827fa"
-   ],
-   "status": "COMPLETED",
-   "codex_version": null,
-   "agent_version": null,
-   "model": null,
-   "model_provider": null,
-   "budget_allocated": {
-    "amount": "0.05"
-   },
-   "budget_consumed": {
-    "amount": "0.050000",
-    "tokens": {
-     "input": 2000,
-     "total": 2100,
-     "output": 100,
-     "cache_write": 0,
-     "cached_input": 0
-    }
-   },
-   "failure_code": null,
-   "retryable": null,
-   "output_artifacts": [
-    {
-     "id": "05220b61-8ba0-567d-bec3-5ad21e37c350",
-     "name": "profile",
-     "version": 1
-    }
-   ],
-   "refs": {
-    "reworks": 0
-   },
-   "started_at": "2026-10-12T04:50:34.713203+00:00",
-   "ended_at": "2026-10-12T04:50:34.725357+00:00",
-   "created_at": "2026-10-12T04:50:34.634208+00:00",
-   "updated_at": "2026-10-12T04:50:34.719495+00:00"
-  },
-  {
-   "id": "63a3672f-5c16-5a76-b1d6-f9468470c8ae",
-   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
-   "session_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
-   "thread_id": "thread-f9a380370f36",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "role": "execute",
-   "arm": 0,
-   "step_id": "reconcile",
-   "step_version": "1",
-   "input_artifact_versions": [
-    {
-     "name": "scope",
-     "version": 1
-    },
-    {
-     "name": "profile",
-     "version": 1
-    }
-   ],
-   "turn_ids": [
-    "turn-de892f8476ed"
-   ],
-   "status": "FAILED",
-   "codex_version": null,
-   "agent_version": null,
-   "model": null,
-   "model_provider": null,
-   "budget_allocated": {
-    "amount": "0.05"
-   },
-   "budget_consumed": {
-    "amount": "0.050000",
-    "tokens": {
-     "input": 2000,
-     "total": 2100,
-     "output": 100,
-     "cache_write": 0,
-     "cached_input": 0
-    }
-   },
-   "failure_code": "acceptance",
-   "retryable": true,
-   "output_artifacts": [],
-   "refs": {
-    "reworks": 0
-   },
-   "started_at": "2026-10-12T04:50:34.904365+00:00",
-   "ended_at": "2026-10-12T04:50:34.925251+00:00",
-   "created_at": "2026-10-12T04:50:34.754881+00:00",
-   "updated_at": "2026-10-12T04:50:34.922830+00:00"
-  }
- ],
- "artifacts": [
-  {
-   "id": "05220b61-8ba0-567d-bec3-5ad21e37c350",
-   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
-   "attempt_id": "2f43eab0-204d-5b09-bb48-13a67d51c819",
-   "name": "profile",
-   "version": 1,
-   "kind": "step",
-   "digest": "0801c19adbe7145e42acecc360deb0f05b3f302a4640bade548d9a51b0a6ead8",
-   "workspace_path": null,
-   "created_at": "2026-10-12T04:50:34.719495+00:00"
-  },
-  {
-   "id": "e7bb4979-0709-5f8d-bf7a-081d391d2a75",
-   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
-   "attempt_id": "4d24a11c-4177-528f-80af-115e4266dadb",
-   "name": "scope",
-   "version": 1,
-   "kind": "step",
-   "digest": "b8d454f41c3ca74f8f6c0df1e9b96f59609c3abac41d247cc8974b3b42f79945",
-   "workspace_path": null,
-   "created_at": "2026-10-12T04:50:34.614634+00:00"
-  }
- ]
+ "now": null,
+ "position": null,
+ "steps": []
 }

@@ -1,82 +1,139 @@
 {
- "session": {
-  "id": "f9bf9962-ad05-5a2d-8cd9-6c46baa661f7",
-  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-  "sandbox_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b",
-  "project_root": "/home/demo/research/恒瑞医药",
-  "thread_id": "thread-b12b6d5bae35",
-  "wheel": "user",
-  "state_version": 0,
-  "active_task_id": null,
-  "thread_settings": {},
-  "created_at": "2026-10-12T04:50:36.027237+00:00",
-  "last_active_at": "2026-10-12T04:50:36.459795+00:00",
-  "kind": "work",
-  "project_id": "d1d13ed0-4e39-5486-b0c6-c7b80742eb0e",
-  "title": "把毛利率、净利率、自由现金流三个指标的含义整理成 notes…",
-  "archived_at": null
- },
- "pending_interactions": [
+ "contract_version": 2,
+ "events": [
   {
-   "id": "7a2555b7-cc4f-5722-af30-bffeae1c3659",
-   "session_id": "f9bf9962-ad05-5a2d-8cd9-6c46baa661f7",
+   "id": "5afb2686-6260-585d-9caa-a47b1ab0ee57",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "cursor": 1,
+   "kind": "session",
+   "type": "session/created",
+   "payload": {
+    "kind": "work",
+    "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f",
+    "sandbox_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b"
+   },
    "task_id": null,
    "attempt_id": null,
-   "kind": "tool_approval",
-   "audience": "owner",
-   "prompt": {
-    "title": "命令需要你批准",
-    "options": [
-     {
-      "id": "accept",
-      "label": "允许一次"
-     },
-     {
-      "id": "accept_task",
-      "label": "这段驾驶里都允许"
-     },
-     {
-      "id": "decline",
-      "label": "拒绝这一步"
-     },
-     {
-      "id": "cancel",
-      "label": "停下"
-     }
-    ],
-    "subject": {
-     "cwd": "/home/demo/research/恒瑞医药",
-     "step": null,
-     "wheel": "user",
-     "itemId": "exec_command_3_e67b4901",
-     "method": "item/commandExecution/requestApproval",
-     "reason": "需要在项目上一级目录 /home/demo/research 创建 outside.txt，是否允许？",
-     "tokens": [
-      "/usr/bin/zsh",
-      "-lc",
-      "printf 'test' > /home/demo/research/outside.txt"
-     ],
-     "command": "/usr/bin/zsh -lc \"printf 'test' > /home/demo/research/outside.txt\"",
-     "category": "command",
-     "grantRoot": null,
-     "dependents": [],
-     "request_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b:srv-0af9077a",
-     "after_decline": false,
-     "environmentId": "user-pc"
-    },
-    "evidence": [],
-    "question": "需要在项目上一级目录 /home/demo/research 创建 outside.txt，是否允许？",
-    "unknowns": []
+   "created_at": "2026-10-12T13:02:52.712030+00:00"
+  },
+  {
+   "id": "e0c0094f-2586-5d30-b3c5-faed985dd034",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "cursor": 2,
+   "kind": "thread",
+   "type": "session/thread_started",
+   "payload": {
+    "model": "kimi-k3",
+    "thread_id": "thread-1442ca9755df",
+    "environment": "user-pc"
    },
-   "subject_digest": null,
-   "target_state_version": null,
-   "expires_at": "2026-10-12T05:50:36.567652+00:00",
-   "status": "pending",
-   "response": null,
-   "consumed_at": null,
-   "responded_by": null,
-   "created_at": "2026-10-12T04:50:36.568097+00:00"
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-10-12T13:02:52.743300+00:00"
+  },
+  {
+   "id": "09f31f95-17ac-5100-b64a-13615f440018",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "cursor": 3,
+   "kind": "session",
+   "type": "session/kind_changed",
+   "payload": {
+    "to": "expert",
+    "from": "work"
+   },
+   "task_id": null,
+   "attempt_id": null,
+   "created_at": "2026-10-12T13:02:52.761385+00:00"
+  },
+  {
+   "id": "ee0b227b-05c2-59da-a91c-e93caa9ad5aa",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "cursor": 4,
+   "kind": "task",
+   "type": "task/received",
+   "payload": {
+    "budget": {
+     "used": "0",
+     "limit": null,
+     "currency": "CNY",
+     "reserved": "0"
+    },
+    "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+    "profile_id": "BOND_REVIEW",
+    "queued_behind": null
+   },
+   "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+   "attempt_id": null,
+   "created_at": "2026-10-12T13:02:52.761385+00:00"
+  },
+  {
+   "id": "a92d3ac7-558b-5941-8fa0-00e0bb81a337",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "cursor": 5,
+   "kind": "wheel",
+   "type": "wheel/handover",
+   "payload": {
+    "to": "advisor",
+    "from": "user",
+    "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa"
+   },
+   "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+   "attempt_id": null,
+   "created_at": "2026-10-12T13:02:52.761385+00:00"
+  },
+  {
+   "id": "856f152d-1a65-56c1-8b4c-e22f8cfa5844",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "cursor": 6,
+   "kind": "task",
+   "type": "task/state",
+   "payload": {
+    "to": "VALIDATING",
+    "from": "RECEIVED",
+    "reason": {},
+    "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+    "waiting_reason": null
+   },
+   "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+   "attempt_id": null,
+   "created_at": "2026-10-12T13:02:52.796279+00:00"
+  },
+  {
+   "id": "a54e3525-bc3f-5658-a088-89b1c438021d",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "cursor": 7,
+   "kind": "task",
+   "type": "task/state",
+   "payload": {
+    "to": "REJECTED",
+    "from": "VALIDATING",
+    "reason": {
+     "code": "no_expert_pack",
+     "message": "这个问题不在专家范围，继续自己用 Codex 即可"
+    },
+    "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+    "waiting_reason": null
+   },
+   "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+   "attempt_id": null,
+   "created_at": "2026-10-12T13:02:52.805770+00:00"
+  },
+  {
+   "id": "fa811ecf-828d-5ade-b972-ccb7e2bf1321",
+   "session_id": "ed482230-2f0f-51b2-ab02-68462b409785",
+   "cursor": 8,
+   "kind": "wheel",
+   "type": "wheel/return",
+   "payload": {
+    "to": "user",
+    "from": "advisor",
+    "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+    "final_state": "REJECTED"
+   },
+   "task_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+   "attempt_id": null,
+   "created_at": "2026-10-12T13:02:52.805770+00:00"
   }
- ]
+ ],
+ "next_cursor": 8
 }

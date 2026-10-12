@@ -12,6 +12,8 @@
   "who_judges": "用户。专家只列事实、算指标、提示口径问题",
   "on_failure": "公司未入库、勾稽不平、与官方对不上时，不往下算，交人处理",
   "uses_our_data": true,
+  "status": "ready",
+  "preparing_note": "",
   "steps": [
    {
     "index": 1,

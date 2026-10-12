@@ -12,7 +12,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.492484+00:00"
+  "created_at": "2026-10-12T13:02:50.702180+00:00"
  },
  {
   "id": "b23ce05b-47d2-5b87-883c-4e683365145d",
@@ -33,7 +33,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.492484+00:00"
+  "created_at": "2026-10-12T13:02:50.702180+00:00"
  },
  {
   "id": "1fe55be8-9a82-5c3a-bd0d-8293b8444e2e",
@@ -48,7 +48,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.492484+00:00"
+  "created_at": "2026-10-12T13:02:50.702180+00:00"
  },
  {
   "id": "dc4310f9-065d-567c-86b0-d7a474ad34dd",
@@ -58,12 +58,12 @@
   "type": "session/thread_started",
   "payload": {
    "model": "kimi-k3",
-   "thread_id": "thread-f9a380370f36",
+   "thread_id": "thread-35e2b6f58423",
    "environment": "user-pc"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.518846+00:00"
+  "created_at": "2026-10-12T13:02:50.729173+00:00"
  },
  {
   "id": "990d2d76-d9aa-566e-ad82-aa8b7fb09579",
@@ -80,7 +80,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.526333+00:00"
+  "created_at": "2026-10-12T13:02:50.736918+00:00"
  },
  {
   "id": "73b1928b-4c2f-5080-b878-b6dec0fd62cd",
@@ -97,7 +97,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.540387+00:00"
+  "created_at": "2026-10-12T13:02:50.749061+00:00"
  },
  {
   "id": "896cc576-86a8-5bde-99de-27d69722d09a",
@@ -112,7 +112,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": "4d24a11c-4177-528f-80af-115e4266dadb",
-  "created_at": "2026-10-12T04:50:34.544764+00:00"
+  "created_at": "2026-10-12T13:02:50.754030+00:00"
  },
  {
   "id": "ebebbe8e-681d-540d-8534-d2084d665026",
@@ -127,7 +127,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.544764+00:00"
+  "created_at": "2026-10-12T13:02:50.754030+00:00"
  },
  {
   "id": "a1e9c9f2-147d-5862-8fcb-8b4ca2bf2cd1",
@@ -143,7 +143,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": "4d24a11c-4177-528f-80af-115e4266dadb",
-  "created_at": "2026-10-12T04:50:34.555233+00:00"
+  "created_at": "2026-10-12T13:02:50.764231+00:00"
  },
  {
   "id": "af78e9e2-3eda-5c94-aa26-770d356dcfc4",
@@ -159,7 +159,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.565221+00:00"
+  "created_at": "2026-10-12T13:02:50.774780+00:00"
  },
  {
   "id": "a9a55290-081d-5bda-872b-09b69e71c670",
@@ -169,15 +169,15 @@
   "type": "turn/started",
   "payload": {
    "turn": {
-    "id": "turn-2b95833ed157",
+    "id": "turn-260a22d1da60",
     "status": "inProgress"
    },
-   "turnId": "turn-2b95833ed157",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-260a22d1da60",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.579964+00:00"
+  "created_at": "2026-10-12T13:02:50.790329+00:00"
  },
  {
   "id": "1bbbec64-aa3f-5062-beeb-7b26f0b7b113",
@@ -187,16 +187,16 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "msg-turn-2b95833ed157",
+    "id": "msg-turn-260a22d1da60",
     "text": "{\"company\": \"招商银行\", \"security_code\": \"600036\", \"periods\": [\"2023\", \"2024\", \"2025\"], \"report_types\": [\"年报\"], \"aspects\": [\"盈利能力\"], \"assumptions\": [], \"question\": \"招商银行 2023 到 2025 年的盈利能力怎么样？\"}",
     "type": "agentMessage"
    },
-   "turnId": "turn-2b95833ed157",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-260a22d1da60",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.584666+00:00"
+  "created_at": "2026-10-12T13:02:50.794351+00:00"
  },
  {
   "id": "4f84de0b-201e-521c-b5d1-8be18da742cd",
@@ -227,8 +227,8 @@
      "cached_input": 0
     }
    },
-   "turnId": "turn-2b95833ed157",
-   "threadId": "thread-f9a380370f36",
+   "turnId": "turn-260a22d1da60",
+   "threadId": "thread-35e2b6f58423",
    "tokenUsage": {
     "last": {
      "inputTokens": 2000,
@@ -250,7 +250,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.593224+00:00"
+  "created_at": "2026-10-12T13:02:50.798755+00:00"
  },
  {
   "id": "e6e1da98-d1c1-5efa-acdd-6e16351a7453",
@@ -260,14 +260,14 @@
   "type": "turn/completed",
   "payload": {
    "turn": {
-    "id": "turn-2b95833ed157",
+    "id": "turn-260a22d1da60",
     "status": "completed"
    },
-   "threadId": "thread-f9a380370f36"
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.603054+00:00"
+  "created_at": "2026-10-12T13:02:50.805400+00:00"
  },
  {
   "id": "f41ff370-1b35-57a7-a4fb-3e4d95931400",
@@ -284,7 +284,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": "4d24a11c-4177-528f-80af-115e4266dadb",
-  "created_at": "2026-10-12T04:50:34.608050+00:00"
+  "created_at": "2026-10-12T13:02:50.812532+00:00"
  },
  {
   "id": "afe2be79-4e44-5e15-a212-c5bb25507e54",
@@ -301,7 +301,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": "4d24a11c-4177-528f-80af-115e4266dadb",
-  "created_at": "2026-10-12T04:50:34.614634+00:00"
+  "created_at": "2026-10-12T13:02:50.819904+00:00"
  },
  {
   "id": "3b54fe8b-3d86-5ce8-8c51-5a16fd338733",
@@ -357,7 +357,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": "4d24a11c-4177-528f-80af-115e4266dadb",
-  "created_at": "2026-10-12T04:50:34.623637+00:00"
+  "created_at": "2026-10-12T13:02:50.829955+00:00"
  },
  {
   "id": "9e84de28-80db-59d4-aded-fc9b3a161534",
@@ -374,7 +374,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.628590+00:00"
+  "created_at": "2026-10-12T13:02:50.837475+00:00"
  },
  {
   "id": "1d6502ae-83b6-53bb-a8b8-456bcf03b388",
@@ -389,7 +389,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": "2f43eab0-204d-5b09-bb48-13a67d51c819",
-  "created_at": "2026-10-12T04:50:34.634208+00:00"
+  "created_at": "2026-10-12T13:02:50.844034+00:00"
  },
  {
   "id": "f3b23b0d-a8a1-5c14-89a8-4577771582b4",
@@ -404,7 +404,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.634208+00:00"
+  "created_at": "2026-10-12T13:02:50.844034+00:00"
  },
  {
   "id": "029096fa-2d5e-5f04-b2b8-b24ab06806ad",
@@ -420,7 +420,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": "2f43eab0-204d-5b09-bb48-13a67d51c819",
-  "created_at": "2026-10-12T04:50:34.646668+00:00"
+  "created_at": "2026-10-12T13:02:50.856255+00:00"
  },
  {
   "id": "f55601ed-c3cf-5159-8e7b-647ef2a54972",
@@ -430,15 +430,15 @@
   "type": "turn/started",
   "payload": {
    "turn": {
-    "id": "turn-f9a0c1d827fa",
+    "id": "turn-eace0a1981f9",
     "status": "inProgress"
    },
-   "turnId": "turn-f9a0c1d827fa",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-eace0a1981f9",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.671390+00:00"
+  "created_at": "2026-10-12T13:02:50.878251+00:00"
  },
  {
   "id": "33279656-fda0-51e6-9a59-dc19d72de374",
@@ -448,7 +448,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-f9a0c1d827fa-0",
+    "id": "call-turn-eace0a1981f9-0",
     "tool": "list_datasets",
     "type": "mcpToolCall",
     "error": null,
@@ -464,12 +464,12 @@
     "status": "completed",
     "arguments": {}
    },
-   "turnId": "turn-f9a0c1d827fa",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-eace0a1981f9",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.675180+00:00"
+  "created_at": "2026-10-12T13:02:50.882372+00:00"
  },
  {
   "id": "fdba20c2-6229-5c40-926f-fa3c5d6bd45b",
@@ -479,7 +479,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-f9a0c1d827fa-1",
+    "id": "call-turn-eace0a1981f9-1",
     "tool": "describe_schema",
     "type": "mcpToolCall",
     "error": null,
@@ -497,12 +497,12 @@
      "dataset": "sh600036-financials"
     }
    },
-   "turnId": "turn-f9a0c1d827fa",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-eace0a1981f9",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.679855+00:00"
+  "created_at": "2026-10-12T13:02:50.886762+00:00"
  },
  {
   "id": "d6a8563c-f186-5bf1-93da-c2fa9e77b290",
@@ -512,7 +512,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-f9a0c1d827fa-2",
+    "id": "call-turn-eace0a1981f9-2",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -531,12 +531,12 @@
      "dataset": "sh600036-financials"
     }
    },
-   "turnId": "turn-f9a0c1d827fa",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-eace0a1981f9",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.684753+00:00"
+  "created_at": "2026-10-12T13:02:50.890607+00:00"
  },
  {
   "id": "d8104919-fd99-50c2-a7a9-b1c20569d799",
@@ -546,7 +546,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-f9a0c1d827fa-3",
+    "id": "call-turn-eace0a1981f9-3",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -565,12 +565,12 @@
      "dataset": "sh600036-financials"
     }
    },
-   "turnId": "turn-f9a0c1d827fa",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-eace0a1981f9",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.689460+00:00"
+  "created_at": "2026-10-12T13:02:50.894327+00:00"
  },
  {
   "id": "ff7900d7-6e18-5c03-beb3-69982f96ba75",
@@ -580,7 +580,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-f9a0c1d827fa-4",
+    "id": "call-turn-eace0a1981f9-4",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -599,12 +599,12 @@
      "dataset": "sh600036-financials"
     }
    },
-   "turnId": "turn-f9a0c1d827fa",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-eace0a1981f9",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.694049+00:00"
+  "created_at": "2026-10-12T13:02:50.898282+00:00"
  },
  {
   "id": "cd59090b-562a-5297-915e-cfbe632753e8",
@@ -614,16 +614,16 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "msg-turn-f9a0c1d827fa",
+    "id": "msg-turn-eace0a1981f9",
     "text": "{\"dataset\": \"sh600036-financials\", \"not_ingested\": false, \"security_code\": \"600036\", \"data_version\": \"sh600036-financials-sample600036\", \"as_of\": \"2025-12-31\", \"notes\": [\"样例数据：数字是为了预览编的，不是这家公司的真实数据\", \"2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策\"], \"periods\": [{\"fiscal_year\": 2023, \"report_type\": \"年报\", \"report_date\": \"2023-12-31\", \"basis\": \"原始披露\", \"verified\": true, \"official_disclosed_date\": \"2024-03-28\"}, {\"fiscal_year\": 2024, \"report_type\": \"年报\", \"report_date\": \"2024-12-31\", \"basis\": \"追溯调整后\", \"verified\": true, \"official_disclosed_date\": \"2025-03-28\"}, {\"fiscal_year\": 2025, \"report_type\": \"年报\", \"report_date\": \"2025-12-31\", \"basis\": \"原始披露\", \"verified\": true, \"official_disclosed_date\": \"2026-03-28\"}], \"basis_breaks\": [{\"between\": [\"2023\", \"2024\"], \"basis\": [\"原始披露\", \"追溯调整后\"]}, {\"between\": [\"2024\", \"2025\"], \"basis\": [\"追溯调整后\", \"原始披露\"]}]}",
     "type": "agentMessage"
    },
-   "turnId": "turn-f9a0c1d827fa",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-eace0a1981f9",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.698844+00:00"
+  "created_at": "2026-10-12T13:02:50.903282+00:00"
  },
  {
   "id": "5a2d2204-c8d8-5b74-9afe-4d279d625a99",
@@ -654,8 +654,8 @@
      "cached_input": 0
     }
    },
-   "turnId": "turn-f9a0c1d827fa",
-   "threadId": "thread-f9a380370f36",
+   "turnId": "turn-eace0a1981f9",
+   "threadId": "thread-35e2b6f58423",
    "tokenUsage": {
     "last": {
      "inputTokens": 2000,
@@ -677,7 +677,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.702611+00:00"
+  "created_at": "2026-10-12T13:02:50.907342+00:00"
  },
  {
   "id": "ea2d446c-9d5e-5693-bbb6-601cb6eda528",
@@ -687,14 +687,14 @@
   "type": "turn/completed",
   "payload": {
    "turn": {
-    "id": "turn-f9a0c1d827fa",
+    "id": "turn-eace0a1981f9",
     "status": "completed"
    },
-   "threadId": "thread-f9a380370f36"
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.706587+00:00"
+  "created_at": "2026-10-12T13:02:50.912380+00:00"
  },
  {
   "id": "ea41e8aa-f24b-584b-aa68-59e0d5b405c5",
@@ -711,7 +711,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": "2f43eab0-204d-5b09-bb48-13a67d51c819",
-  "created_at": "2026-10-12T04:50:34.711850+00:00"
+  "created_at": "2026-10-12T13:02:50.916631+00:00"
  },
  {
   "id": "dbbded79-08e7-5736-bd72-0bc0993a4700",
@@ -728,7 +728,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": "2f43eab0-204d-5b09-bb48-13a67d51c819",
-  "created_at": "2026-10-12T04:50:34.719495+00:00"
+  "created_at": "2026-10-12T13:02:50.923175+00:00"
  },
  {
   "id": "9bb50275-d9d3-5039-b420-804695214293",
@@ -792,7 +792,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": "2f43eab0-204d-5b09-bb48-13a67d51c819",
-  "created_at": "2026-10-12T04:50:34.735533+00:00"
+  "created_at": "2026-10-12T13:02:50.934771+00:00"
  },
  {
   "id": "190b9e02-4e5d-5a47-8a86-a19c97f1b31b",
@@ -809,7 +809,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.745579+00:00"
+  "created_at": "2026-10-12T13:02:50.945697+00:00"
  },
  {
   "id": "dd97e99d-868e-57f5-aba6-2f7a30a479f3",
@@ -824,7 +824,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": "63a3672f-5c16-5a76-b1d6-f9468470c8ae",
-  "created_at": "2026-10-12T04:50:34.754881+00:00"
+  "created_at": "2026-10-12T13:02:50.952800+00:00"
  },
  {
   "id": "50d3ef21-4d32-5636-9066-cae5ab7fd760",
@@ -839,7 +839,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.754881+00:00"
+  "created_at": "2026-10-12T13:02:50.952800+00:00"
  },
  {
   "id": "0f9f2fb9-1ee6-519a-b79d-28faf3208d1b",
@@ -855,7 +855,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": "63a3672f-5c16-5a76-b1d6-f9468470c8ae",
-  "created_at": "2026-10-12T04:50:34.766261+00:00"
+  "created_at": "2026-10-12T13:02:50.964785+00:00"
  },
  {
   "id": "e7b449ae-8e67-5c03-b102-5269bca6432b",
@@ -865,15 +865,15 @@
   "type": "turn/started",
   "payload": {
    "turn": {
-    "id": "turn-de892f8476ed",
+    "id": "turn-71de66705fcc",
     "status": "inProgress"
    },
-   "turnId": "turn-de892f8476ed",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-71de66705fcc",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.787455+00:00"
+  "created_at": "2026-10-12T13:02:50.986391+00:00"
  },
  {
   "id": "a9f8123d-9599-587f-b115-9fd8a556068e",
@@ -883,7 +883,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-de892f8476ed-0",
+    "id": "call-turn-71de66705fcc-0",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -902,12 +902,12 @@
      "dataset": "sh600036-financials"
     }
    },
-   "turnId": "turn-de892f8476ed",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-71de66705fcc",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.796873+00:00"
+  "created_at": "2026-10-12T13:02:50.990904+00:00"
  },
  {
   "id": "db8ca52b-99c1-57b1-b072-79adc490afd8",
@@ -917,7 +917,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-de892f8476ed-1",
+    "id": "call-turn-71de66705fcc-1",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -936,12 +936,12 @@
      "dataset": "sh600036-financials"
     }
    },
-   "turnId": "turn-de892f8476ed",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-71de66705fcc",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.803466+00:00"
+  "created_at": "2026-10-12T13:02:50.994664+00:00"
  },
  {
   "id": "ffd52113-a485-598b-8665-1eaf8536d74a",
@@ -951,7 +951,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-de892f8476ed-2",
+    "id": "call-turn-71de66705fcc-2",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -970,12 +970,12 @@
      "dataset": "sh600036-financials"
     }
    },
-   "turnId": "turn-de892f8476ed",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-71de66705fcc",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.807651+00:00"
+  "created_at": "2026-10-12T13:02:50.998677+00:00"
  },
  {
   "id": "623a3018-124a-5fa1-996d-0f4733a232ac",
@@ -985,7 +985,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-de892f8476ed-3",
+    "id": "call-turn-71de66705fcc-3",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -1004,12 +1004,12 @@
      "dataset": "sh600036-financials"
     }
    },
-   "turnId": "turn-de892f8476ed",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-71de66705fcc",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.811503+00:00"
+  "created_at": "2026-10-12T13:02:51.004220+00:00"
  },
  {
   "id": "522cbaa1-8ca8-5956-b076-bf65b75c0cad",
@@ -1019,7 +1019,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-de892f8476ed-4",
+    "id": "call-turn-71de66705fcc-4",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -1038,12 +1038,12 @@
      "dataset": "sh600036-financials"
     }
    },
-   "turnId": "turn-de892f8476ed",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-71de66705fcc",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.815225+00:00"
+  "created_at": "2026-10-12T13:02:51.012183+00:00"
  },
  {
   "id": "5fe1d6a8-6df7-583a-9aee-b96ebbb8f1b4",
@@ -1053,7 +1053,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-de892f8476ed-5",
+    "id": "call-turn-71de66705fcc-5",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -1072,12 +1072,12 @@
      "dataset": "sh600036-financials"
     }
    },
-   "turnId": "turn-de892f8476ed",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-71de66705fcc",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.819707+00:00"
+  "created_at": "2026-10-12T13:02:51.018628+00:00"
  },
  {
   "id": "d1dd5c6c-ec97-53dc-bff7-43ebcde4f8e3",
@@ -1087,7 +1087,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-de892f8476ed-6",
+    "id": "call-turn-71de66705fcc-6",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -1106,12 +1106,12 @@
      "dataset": "sh600036-financials"
     }
    },
-   "turnId": "turn-de892f8476ed",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-71de66705fcc",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.824383+00:00"
+  "created_at": "2026-10-12T13:02:51.022312+00:00"
  },
  {
   "id": "e7992c00-eea5-50b1-9e62-e43d3c9e3801",
@@ -1121,7 +1121,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-de892f8476ed-7",
+    "id": "call-turn-71de66705fcc-7",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -1140,12 +1140,12 @@
      "dataset": "sh600036-financials"
     }
    },
-   "turnId": "turn-de892f8476ed",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-71de66705fcc",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.829554+00:00"
+  "created_at": "2026-10-12T13:02:51.026661+00:00"
  },
  {
   "id": "94e580f6-51a9-5b21-a46f-7419dbff9e88",
@@ -1155,7 +1155,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-de892f8476ed-8",
+    "id": "call-turn-71de66705fcc-8",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -1174,12 +1174,12 @@
      "dataset": "sh600036-financials"
     }
    },
-   "turnId": "turn-de892f8476ed",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-71de66705fcc",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.834386+00:00"
+  "created_at": "2026-10-12T13:02:51.031545+00:00"
  },
  {
   "id": "3461860b-239f-58f3-891f-61185a184438",
@@ -1189,7 +1189,7 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "call-turn-de892f8476ed-9",
+    "id": "call-turn-71de66705fcc-9",
     "tool": "run_sql",
     "type": "mcpToolCall",
     "error": null,
@@ -1208,12 +1208,12 @@
      "dataset": "sh600036-financials"
     }
    },
-   "turnId": "turn-de892f8476ed",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-71de66705fcc",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.838211+00:00"
+  "created_at": "2026-10-12T13:02:51.035350+00:00"
  },
  {
   "id": "7c141b71-878b-524a-a1aa-1de5e2df2dc2",
@@ -1223,16 +1223,16 @@
   "type": "item/completed",
   "payload": {
    "item": {
-    "id": "msg-turn-de892f8476ed",
+    "id": "msg-turn-71de66705fcc",
     "text": "{\"checks\": [{\"rule_id\": \"R01\", \"rule\": \"资产 = 负债 + 所有者权益\", \"periods_checked\": 3, \"unbalanced\": 1, \"unbalanced_periods\": [\"2024-12-31\"]}, {\"rule_id\": \"R02\", \"rule\": \"流动资产 + 非流动资产 = 资产总计\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R03\", \"rule\": \"流动负债 + 非流动负债 = 负债合计\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R04\", \"rule\": \"营业收入 − 营业成本 − 各项费用 = 营业利润（允许其他收益）\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R05\", \"rule\": \"利润总额 − 所得税 = 净利润\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R06\", \"rule\": \"归母净利润 + 少数股东损益 = 净利润\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R07\", \"rule\": \"经营 + 投资 + 筹资现金流 + 汇率影响 = 现金净增加额\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R08\", \"rule\": \"期初现金 + 现金净增加额 = 期末现金\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}, {\"rule_id\": \"R09\", \"rule\": \"利润表净利润 = 现金流量表补充资料里的净利润\", \"periods_checked\": 3, \"unbalanced\": 0, \"unbalanced_periods\": []}], \"continuity\": [{\"fiscal_year\": 2024, \"diff\": 1204.0, \"note\": \"2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策\"}], \"unexplained_breaks\": [], \"data_version\": \"sh600036-financials-sample600036\"}",
     "type": "agentMessage"
    },
-   "turnId": "turn-de892f8476ed",
-   "threadId": "thread-f9a380370f36"
+   "turnId": "turn-71de66705fcc",
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.842269+00:00"
+  "created_at": "2026-10-12T13:02:51.039200+00:00"
  },
  {
   "id": "f6c23e58-8e6f-55ca-8b66-7683363baf6a",
@@ -1263,8 +1263,8 @@
      "cached_input": 0
     }
    },
-   "turnId": "turn-de892f8476ed",
-   "threadId": "thread-f9a380370f36",
+   "turnId": "turn-71de66705fcc",
+   "threadId": "thread-35e2b6f58423",
    "tokenUsage": {
     "last": {
      "inputTokens": 2000,
@@ -1286,7 +1286,7 @@
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.850802+00:00"
+  "created_at": "2026-10-12T13:02:51.043239+00:00"
  },
  {
   "id": "3d81600f-f30c-56c3-99b9-70232be0ce22",
@@ -1296,14 +1296,14 @@
   "type": "turn/completed",
   "payload": {
    "turn": {
-    "id": "turn-de892f8476ed",
+    "id": "turn-71de66705fcc",
     "status": "completed"
    },
-   "threadId": "thread-f9a380370f36"
+   "threadId": "thread-35e2b6f58423"
   },
   "task_id": null,
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.897169+00:00"
+  "created_at": "2026-10-12T13:02:51.047273+00:00"
  },
  {
   "id": "a73a430f-dbbe-57e8-87ef-16c58c2f35be",
@@ -1320,7 +1320,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": "63a3672f-5c16-5a76-b1d6-f9468470c8ae",
-  "created_at": "2026-10-12T04:50:34.902915+00:00"
+  "created_at": "2026-10-12T13:02:51.050895+00:00"
  },
  {
   "id": "612b53db-2160-544e-bc51-928e0cdf954c",
@@ -1337,7 +1337,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": "63a3672f-5c16-5a76-b1d6-f9468470c8ae",
-  "created_at": "2026-10-12T04:50:34.922830+00:00"
+  "created_at": "2026-10-12T13:02:51.057339+00:00"
  },
  {
   "id": "5fd50d8c-3c77-5756-9736-cd587b900b88",
@@ -1478,7 +1478,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": "63a3672f-5c16-5a76-b1d6-f9468470c8ae",
-  "created_at": "2026-10-12T04:50:34.948930+00:00"
+  "created_at": "2026-10-12T13:02:51.065656+00:00"
  },
  {
   "id": "3cece2ba-63a6-59f6-a81c-8fe796e529a6",
@@ -1494,7 +1494,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:34.962615+00:00"
+  "created_at": "2026-10-12T13:02:51.072052+00:00"
  },
  {
   "id": "66fa1afe-7336-58bb-93cf-3a53be588409",
@@ -1543,7 +1543,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": "63a3672f-5c16-5a76-b1d6-f9468470c8ae",
-  "created_at": "2026-10-12T04:50:34.962615+00:00"
+  "created_at": "2026-10-12T13:02:51.072052+00:00"
  },
  {
   "id": "ccddca55-43b2-5e68-a80c-ba128b77c307",
@@ -1556,7 +1556,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:35.033779+00:00"
+  "created_at": "2026-10-12T13:02:51.152020+00:00"
  },
  {
   "id": "cfcfd02d-de65-5e63-9041-a2b6b6613cf6",
@@ -1575,7 +1575,7 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:35.033779+00:00"
+  "created_at": "2026-10-12T13:02:51.152020+00:00"
  },
  {
   "id": "65a2a57f-3d23-5435-a6c1-e0fc24707f30",
@@ -1591,6 +1591,6 @@
   },
   "task_id": "607c2718-4eae-57a0-bb04-8aa28b096733",
   "attempt_id": null,
-  "created_at": "2026-10-12T04:50:35.033779+00:00"
+  "created_at": "2026-10-12T13:02:51.152020+00:00"
  }
 ]

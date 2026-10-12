@@ -1,163 +1,188 @@
 {
  "contract_version": 2,
- "items": [
-  {
-   "id": "dossier:8b109ead-42d9-513b-be23-d3fa0e086069",
-   "kind": "dossier",
-   "title": "财报体检：恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
-   "default_title": "财报体检：恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
-   "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
-   "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
-   "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "versions": 1,
-   "updated_at": "2026-10-12T04:50:50.238254Z",
-   "created_at": "2026-10-12T04:50:49.305768Z",
-   "size_bytes": null,
-   "source": {
-    "expert": "财报体检",
-    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？"
+ "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
+ "step": {
+  "index": 7,
+  "step_id": "note",
+  "title": "成稿",
+  "summary": "只用前面各步的结果写底稿：列事实和提醒，结论栏留空",
+  "why": "底稿只写前面各步验过的事实和提醒。结论栏留空：下结论是你的事。",
+  "uses": [
+   {
+    "artifact": "scope",
+    "step": 1,
+    "title": "定范围"
    },
-   "deleted": false
+   {
+    "artifact": "profile",
+    "step": 2,
+    "title": "数据摸底"
+   },
+   {
+    "artifact": "reconcile",
+    "step": 3,
+    "title": "勾稽"
+   },
+   {
+    "artifact": "facts",
+    "step": 4,
+    "title": "取数"
+   },
+   {
+    "artifact": "metrics",
+    "step": 5,
+    "title": "算指标"
+   },
+   {
+    "artifact": "crosscheck",
+    "step": 6,
+    "title": "对照官方"
+   }
+  ],
+  "tools": [],
+  "returns": "note",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有回答、提醒、出处、数据版本"
+   },
+   {
+    "label": "回答不是空的"
+   },
+   {
+    "label": "有提醒"
+   },
+   {
+    "label": "有出处"
+   },
+   {
+    "label": "有数据版本"
+   },
+   {
+    "label": "结论栏是空的"
+   },
+   {
+    "label": "没有评级、目标价、买卖建议"
+   },
+   {
+    "label": "底稿没有超长"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 1,
+   "then": "human",
+   "back_to": null,
+   "backs": 0,
+   "text": "重做，最多 1 次；仍不过，停下来问你"
   },
-  {
-   "id": "deliverable:8b109ead-42d9-513b-be23-d3fa0e086069:note",
-   "kind": "deliverable",
-   "title": "成稿（财报体检）",
-   "default_title": "成稿（财报体检）",
-   "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
-   "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
-   "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "versions": 1,
-   "updated_at": "2026-10-12T04:50:50.238254Z",
-   "created_at": "2026-10-12T04:50:49.305768Z",
-   "size_bytes": 728,
-   "source": {
-    "expert": "财报体检",
-    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
-    "step_title": "成稿",
-    "artifact": "note"
-   },
-   "deleted": false
-  },
-  {
-   "id": "deliverable:8b109ead-42d9-513b-be23-d3fa0e086069:crosscheck",
-   "kind": "deliverable",
-   "title": "对照官方（财报体检）",
-   "default_title": "对照官方（财报体检）",
-   "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
-   "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
-   "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "versions": 1,
-   "updated_at": "2026-10-12T04:50:50.145360Z",
-   "created_at": "2026-10-12T04:50:49.305768Z",
-   "size_bytes": 1759,
-   "source": {
-    "expert": "财报体检",
-    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
-    "step_title": "对照官方",
-    "artifact": "crosscheck"
-   },
-   "deleted": false
-  },
-  {
-   "id": "deliverable:8b109ead-42d9-513b-be23-d3fa0e086069:metrics",
-   "kind": "deliverable",
-   "title": "算指标（财报体检）",
-   "default_title": "算指标（财报体检）",
-   "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
-   "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
-   "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "versions": 1,
-   "updated_at": "2026-10-12T04:50:50.047206Z",
-   "created_at": "2026-10-12T04:50:49.305768Z",
-   "size_bytes": 3886,
-   "source": {
-    "expert": "财报体检",
-    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
-    "step_title": "算指标",
-    "artifact": "metrics"
-   },
-   "deleted": false
-  },
-  {
-   "id": "deliverable:8b109ead-42d9-513b-be23-d3fa0e086069:facts",
-   "kind": "deliverable",
-   "title": "取数（财报体检）",
-   "default_title": "取数（财报体检）",
-   "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
-   "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
-   "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "versions": 1,
-   "updated_at": "2026-10-12T04:50:49.937999Z",
-   "created_at": "2026-10-12T04:50:49.305768Z",
-   "size_bytes": 4802,
-   "source": {
-    "expert": "财报体检",
-    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
-    "step_title": "取数",
-    "artifact": "facts"
-   },
-   "deleted": false
-  },
-  {
-   "id": "deliverable:8b109ead-42d9-513b-be23-d3fa0e086069:reconcile",
-   "kind": "deliverable",
-   "title": "勾稽（财报体检）",
-   "default_title": "勾稽（财报体检）",
-   "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
-   "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
-   "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "versions": 1,
-   "updated_at": "2026-10-12T04:50:49.813934Z",
-   "created_at": "2026-10-12T04:50:49.305768Z",
-   "size_bytes": 1262,
-   "source": {
-    "expert": "财报体检",
-    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
-    "step_title": "勾稽",
-    "artifact": "reconcile"
-   },
-   "deleted": false
-  },
-  {
-   "id": "deliverable:8b109ead-42d9-513b-be23-d3fa0e086069:profile",
-   "kind": "deliverable",
-   "title": "数据摸底（财报体检）",
-   "default_title": "数据摸底（财报体检）",
-   "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
-   "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
-   "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "versions": 1,
-   "updated_at": "2026-10-12T04:50:49.661892Z",
-   "created_at": "2026-10-12T04:50:49.305768Z",
-   "size_bytes": 837,
-   "source": {
-    "expert": "财报体检",
-    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
-    "step_title": "数据摸底",
-    "artifact": "profile"
-   },
-   "deleted": false
-  },
-  {
-   "id": "deliverable:8b109ead-42d9-513b-be23-d3fa0e086069:scope",
-   "kind": "deliverable",
-   "title": "定范围（财报体检）",
-   "default_title": "定范围（财报体检）",
-   "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
-   "task_id": "8b109ead-42d9-513b-be23-d3fa0e086069",
-   "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
-   "versions": 1,
-   "updated_at": "2026-10-12T04:50:49.515646Z",
-   "created_at": "2026-10-12T04:50:49.305768Z",
-   "size_bytes": 190,
-   "source": {
-    "expert": "财报体检",
-    "question": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？",
-    "step_title": "定范围",
-    "artifact": "scope"
-   },
-   "deleted": false
+  "reserve": "0.05",
+  "status": "accepted",
+  "attempts": [
+   {
+    "attempt_id": "596eea7e-b780-589d-b98b-168edf296206",
+    "n": 1,
+    "outcome": "accepted",
+    "failure": null,
+    "spent": "0.05",
+    "started_at": "2026-10-12T13:03:06.887985Z",
+    "ended_at": "2026-10-12T13:03:06.900530Z",
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有回答、提醒、出处、数据版本",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "回答不是空的",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有提醒",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有出处",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有数据版本",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "结论栏是空的",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "没有评级、目标价、买卖建议",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "底稿没有超长",
+      "pass": true,
+      "message": ""
+     }
+    ],
+    "tools": {},
+    "returned": {
+     "artifact": "note",
+     "version": 1,
+     "content": {
+      "answer": "恒瑞医药 2023 到 2025 年年报：毛利率分别为 84.6%、85.9%、86.2%，净利率分别为 18.8%、20.1%、21.4%。2024 年的数是追溯调整后的口径，与 2023、2025 年的原始披露口径不同，三年之间不能直接相比。本次体检只列事实与口径，不给投资建议。",
+      "tables": [],
+      "caveats": [
+       "样例数据：数字是为了预览编的，不是这家公司的真实数据",
+       "2023 年与 2024 年之间、2024 年与 2025 年之间口径不同：2024 年年报的数是追溯调整后的口径，公司当年变更了收入确认的会计政策",
+       "净资产收益率三年都标为不适用：第一年没有上一年的期末数，后两年与上一年口径不同",
+       "2024 年期初现金与上一年期末现金相差 1,204.00 元，数据集的说明里有解释"
+      ],
+      "citations": [
+       "sh600276-financials，数据版本 sh600276-financials-sample600276，数据到 2025-12-31",
+       "恒瑞医药2023年、2024年、2025年年度报告，第 6 页「主要会计数据」"
+      ],
+      "conclusion": "",
+      "limitations": [
+       "没有做附注与经营数据",
+       "现金流量表的项目没有与公司披露的原文对照"
+      ],
+      "data_version": "sh600276-financials-sample600276",
+      "observations": [
+       "营业收入 2023 到 2025 年逐年增加",
+       "毛利率 2025 年高于 2023 年",
+       "经营活动现金流量净额三年都高于净利润"
+      ]
+     },
+     "labels": {
+      "answer": "回答",
+      "tables": "表",
+      "caveats": "提醒",
+      "citations": "出处",
+      "conclusion": "结论",
+      "limitations": "局限",
+      "data_version": "数据版本",
+      "observations": "观察"
+     }
+    },
+    "process": []
+   }
+  ],
+  "times": 1,
+  "rejected": 0,
+  "spent": "0.05",
+  "data": {
+   "data_version": "sh600276-financials-sample600276"
   }
- ]
+ }
 }

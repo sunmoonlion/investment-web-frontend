@@ -2,36 +2,40 @@
  "contract_version": 2,
  "task_id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
  "step": {
-  "index": 3,
-  "step_id": "sql_execute",
-  "title": "执行 SQL",
-  "summary": "执行查询，原样带回结果和数据版本",
-  "why": "查询的结果原样带回，不改数；同时记下数据版本，以后能复查。",
+  "index": 2,
+  "step_id": "sql_generate",
+  "title": "生成 SQL",
+  "summary": "对照数据的结构写出查询，并说明每一列的口径",
+  "why": "查询照着数据的真实结构写，每一列是什么口径写明白。你看得到它到底查了什么。",
   "uses": [
    {
-    "artifact": "sql",
-    "step": 2,
-    "title": "生成 SQL"
+    "artifact": "rewritten",
+    "step": 1,
+    "title": "改写问题"
    }
   ],
   "tools": [
-   "run_sql"
+   "describe_schema",
+   "metric_definitions"
   ],
-  "returns": "rows",
+  "returns": "sql",
   "checks": [
    {
     "label": "交回的格式对"
    },
    {
-    "label": "有结果和数据版本"
+    "label": "有查询语句"
+   },
+   {
+    "label": "查询语句不是空的"
    }
   ],
   "after_rejection": {
-   "reworks": 1,
-   "then": "back",
-   "back_to": 2,
-   "backs": 1,
-   "text": "重做，最多 1 次；仍不过，退回第 2 步，最多 1 次；仍不过，停下来问你"
+   "reworks": 2,
+   "then": "human",
+   "back_to": null,
+   "backs": 0,
+   "text": "重做，最多 2 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
   "status": "pending",

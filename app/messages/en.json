@@ -301,7 +301,8 @@
     },
     "expert": {
       "who": "Which expert",
-      "loading": "Loading…"
+      "loading": "Loading…",
+      "preparing": "Coming soon"
     }
   },
   "chat": {
@@ -629,7 +630,8 @@
     "loading": "Loading…",
     "pickTitle": "Ask this expert in which project",
     "pickBody": "The expert takes over the whole project: its files and conversations.",
-    "noMachine": "No computer registered. Connect one before starting Work or Expert."
+    "noMachine": "No computer registered. Connect one before starting Work or Expert.",
+    "preparing": "Coming soon"
   },
   "askExpert": {
     "title": "Ask an expert",
@@ -675,7 +677,8 @@
       "other": "Not handed over. Please try again."
     },
     "loading": "Loading…",
-    "packsFailed": "The list of experts could not be loaded; refresh and try again."
+    "packsFailed": "The list of experts could not be loaded; refresh and try again.",
+    "preparing": "Coming soon"
   },
   "reviewPage": {
     "title": "Waiting for me",

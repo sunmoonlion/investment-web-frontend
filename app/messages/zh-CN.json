@@ -301,7 +301,8 @@
     },
     "expert": {
       "who": "请哪一位",
-      "loading": "加载中…"
+      "loading": "加载中…",
+      "preparing": "筹备中"
     }
   },
   "chat": {
@@ -629,7 +630,8 @@
     "loading": "加载中…",
     "pickTitle": "在哪个项目里请这位专家",
     "pickBody": "专家接手的是整个项目：项目里的文件和对话。",
-    "noMachine": "还没有登记电脑。先接入电脑，再开始工作或请专家。"
+    "noMachine": "还没有登记电脑。先接入电脑，再开始工作或请专家。",
+    "preparing": "筹备中"
   },
   "askExpert": {
     "title": "请专家",
@@ -675,7 +677,8 @@
       "other": "没有交出去，请再试一次。"
     },
     "loading": "加载中…",
-    "packsFailed": "没有取到专家清单，请刷新再试。"
+    "packsFailed": "没有取到专家清单，请刷新再试。",
+    "preparing": "筹备中"
   },
   "reviewPage": {
     "title": "待我决定",

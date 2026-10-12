@@ -169,11 +169,14 @@ export function HomeScreen() {
                       key={each.id}
                       size="sm"
                       variant={expert === each.id ? 'default' : 'outline'}
-                      title={each.tagline}
+                      title={each.status === 'preparing' ? each.preparing_note : each.tagline}
                       aria-pressed={expert === each.id}
+                      // 筹备中的专家：看得见、请不了
+                      disabled={each.status === 'preparing'}
                       onClick={() => setExpert(each.id)}
                     >
                       {each.name}
+                      {each.status === 'preparing' ? ` · ${t('expert.preparing')}` : ''}
                     </Button>
                   ))}
                   {packs.isPending ? (

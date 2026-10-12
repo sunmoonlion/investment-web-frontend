@@ -461,6 +461,9 @@ export const packSchema = z
     input: z.string(),
     output: z.string(),
     uses_our_data: z.boolean(),
+    // 筹备中的专家：看得见、请不了（所有者 2026-10-13 定先占位）
+    status: z.enum(['ready', 'preparing']).optional(),
+    preparing_note: z.string().optional(),
     steps: z.array(
       z
         .object({
