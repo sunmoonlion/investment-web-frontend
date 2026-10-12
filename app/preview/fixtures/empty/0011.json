@@ -1,4 +1,6 @@
 {
  "contract_version": 2,
- "credentials": []
+ "model": null,
+ "approval_policy": "on-request",
+ "updated_at": null
 }

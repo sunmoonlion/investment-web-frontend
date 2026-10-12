@@ -1,341 +1,342 @@
 {
  "contract_version": 2,
- "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
- "step": {
-  "index": 5,
-  "step_id": "metrics",
-  "title": "算指标",
-  "summary": "按数据集里登记的口径算指标；分母不成立或口径不同的，标为不适用",
-  "why": "指标按数据集里登记的口径算，不临时发明算法。分母不成立的标「不适用」，不硬算。",
-  "uses": [
-   {
-    "artifact": "scope",
-    "step": 1,
-    "title": "定范围"
-   },
-   {
-    "artifact": "profile",
-    "step": 2,
-    "title": "数据摸底"
-   },
-   {
-    "artifact": "facts",
-    "step": 4,
-    "title": "取数"
-   }
-  ],
-  "tools": [
-   "metric_definitions",
-   "query_metric",
-   "run_sql"
-  ],
-  "returns": "metrics",
-  "checks": [
-   {
-    "label": "交回的格式对"
-   },
-   {
-    "label": "有指标表和数据版本"
-   },
-   {
-    "label": "指标表不是空的"
-   }
-  ],
-  "after_rejection": {
-   "reworks": 2,
-   "then": "human",
-   "back_to": null,
-   "backs": 0,
-   "text": "重做，最多 2 次；仍不过，停下来问你"
+ "task": {
+  "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+  "session_id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
+  "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0",
+  "expert": {
+   "id": "DATA_QUERY",
+   "name": "问数",
+   "version": "1"
   },
-  "reserve": "0.05",
-  "status": "accepted",
-  "attempts": [
-   {
-    "attempt_id": "e70ec205-26c6-53eb-a8ec-52d796d7ee28",
-    "n": 1,
-    "outcome": "accepted",
-    "failure": null,
-    "spent": "0.05",
-    "started_at": "2026-10-07T04:58:26.687179Z",
-    "ended_at": "2026-10-07T04:58:26.708999Z",
-    "checks": [
-     {
-      "label": "交回的格式对",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "有指标表和数据版本",
-      "pass": true,
-      "message": ""
-     },
-     {
-      "label": "指标表不是空的",
-      "pass": true,
-      "message": ""
-     }
-    ],
-    "tools": {
-     "metric_definitions": 1,
-     "query_metric": 1
+  "question": "五粮液近五年的毛利率分别是多少？",
+  "state": "RUNNING",
+  "state_word": null,
+  "waiting_reason": null,
+  "cancel_requested": false,
+  "reason": null,
+  "reason_text": "",
+  "budget": {
+   "currency": "CNY",
+   "limit": null,
+   "used": "0.10",
+   "reserved": "0.05",
+   "left": null,
+   "running": "0.05",
+   "spent": "0.15",
+   "estimated": true
+  },
+  "data": null,
+  "started_at": "2026-10-11T17:39:47.221681Z",
+  "ended_at": null,
+  "seconds": 4,
+  "active_interaction_id": null
+ },
+ "now": {
+  "step": {
+   "index": 3,
+   "of": 5,
+   "title": "执行 SQL",
+   "summary": "执行查询，原样带回结果和数据版本",
+   "why": "查询的结果原样带回，不改数；同时记下数据版本，以后能复查。"
+  },
+  "doing": {
+   "code": "thinking",
+   "text": "在想这一步怎么做"
+  },
+  "redo": null,
+  "since": "2026-10-11T17:39:47.454069Z",
+  "last_event_at": "2026-10-11T17:39:47.483075Z",
+  "held": true
+ },
+ "position": {
+  "step": 3,
+  "of": 5,
+  "title": "执行 SQL",
+  "left": 3
+ },
+ "steps": [
+  {
+   "index": 1,
+   "step_id": "rewrite",
+   "title": "改写问题",
+   "summary": "把问题改写成没有歧义的：查什么、哪个期间、什么口径",
+   "why": "口语的问题常有歧义：哪一年、合并报表还是母公司。先说清楚查什么，免得查出来的不是你要的。",
+   "uses": [],
+   "tools": [],
+   "returns": "rewritten",
+   "checks": [
+    {
+     "label": "交回的格式对"
     },
-    "returned": {
-     "artifact": "metrics",
-     "version": 1,
-     "content": {
-      "sql": [],
-      "table": [
-       {
-        "unit": "比率",
-        "basis": "原始披露",
-        "value": 0.919,
-        "inputs": {
-         "operate_cost": 12195360000.0,
-         "operate_income": 150560000000.0
-        },
-        "source": "query_metric",
-        "formula": "(营业收入 − 营业成本) ÷ 营业收入",
-        "applicable": true,
-        "fiscal_year": 2023,
-        "metric_name": "gross_margin",
-        "report_type": "年报",
-        "display_name": "毛利率",
-        "reason_if_not": ""
-       },
-       {
-        "unit": "比率",
-        "basis": "原始披露",
-        "value": 0.525,
-        "inputs": {
-         "net_profit": 79044000000.0,
-         "operate_income": 150560000000.0
-        },
-        "source": "query_metric",
-        "formula": "净利润 ÷ 营业收入",
-        "applicable": true,
-        "fiscal_year": 2023,
-        "metric_name": "net_margin",
-        "report_type": "年报",
-        "display_name": "净利率",
-        "reason_if_not": ""
-       },
-       {
-        "unit": "比率",
-        "basis": "原始披露",
-        "value": 0.18,
-        "inputs": {
-         "total_assets": 286064000000.0,
-         "total_liabilities": 51491520000.0
-        },
-        "source": "query_metric",
-        "formula": "负债合计 ÷ 资产总计",
-        "applicable": true,
-        "fiscal_year": 2023,
-        "metric_name": "debt_to_assets",
-        "report_type": "年报",
-        "display_name": "资产负债率",
-        "reason_if_not": ""
-       },
-       {
-        "unit": "比率",
-        "basis": "原始披露",
-        "value": null,
-        "inputs": {
-         "net_profit": 79044000000.0,
-         "total_equity": 234572480000.0
-        },
-        "source": "query_metric",
-        "formula": "净利润 ÷ 期初与期末所有者权益的平均",
-        "applicable": false,
-        "fiscal_year": 2023,
-        "metric_name": "roe",
-        "report_type": "年报",
-        "display_name": "净资产收益率",
-        "reason_if_not": "要用上一年的期末数，范围内没有"
-       },
-       {
-        "unit": "比率",
-        "basis": "追溯调整后",
-        "value": 0.92,
-        "inputs": {
-         "operate_cost": 13935833600.0,
-         "operate_income": 174197920000.0
-        },
-        "source": "query_metric",
-        "formula": "(营业收入 − 营业成本) ÷ 营业收入",
-        "applicable": true,
-        "fiscal_year": 2024,
-        "metric_name": "gross_margin",
-        "report_type": "年报",
-        "display_name": "毛利率",
-        "reason_if_not": ""
-       },
-       {
-        "unit": "比率",
-        "basis": "追溯调整后",
-        "value": 0.522,
-        "inputs": {
-         "net_profit": 90931314240.0,
-         "operate_income": 174197920000.0
-        },
-        "source": "query_metric",
-        "formula": "净利润 ÷ 营业收入",
-        "applicable": true,
-        "fiscal_year": 2024,
-        "metric_name": "net_margin",
-        "report_type": "年报",
-        "display_name": "净利率",
-        "reason_if_not": ""
-       },
-       {
-        "unit": "比率",
-        "basis": "追溯调整后",
-        "value": 0.18,
-        "inputs": {
-         "total_assets": 330976048000.0,
-         "total_liabilities": 59575688640.0
-        },
-        "source": "query_metric",
-        "formula": "负债合计 ÷ 资产总计",
-        "applicable": true,
-        "fiscal_year": 2024,
-        "metric_name": "debt_to_assets",
-        "report_type": "年报",
-        "display_name": "资产负债率",
-        "reason_if_not": ""
-       },
-       {
-        "unit": "比率",
-        "basis": "追溯调整后",
-        "value": null,
-        "inputs": {
-         "net_profit": 90931314240.0,
-         "total_equity": 271400359360.0
-        },
-        "source": "query_metric",
-        "formula": "净利润 ÷ 期初与期末所有者权益的平均",
-        "applicable": false,
-        "fiscal_year": 2024,
-        "metric_name": "roe",
-        "report_type": "年报",
-        "display_name": "净资产收益率",
-        "reason_if_not": "口径不同"
-       },
-       {
-        "unit": "比率",
-        "basis": "原始披露",
-        "value": 0.918,
-        "inputs": {
-         "operate_cost": 15626947007.36,
-         "operate_income": 190572524480.0
-        },
-        "source": "query_metric",
-        "formula": "(营业收入 − 营业成本) ÷ 营业收入",
-        "applicable": true,
-        "fiscal_year": 2025,
-        "metric_name": "gross_margin",
-        "report_type": "年报",
-        "display_name": "毛利率",
-        "reason_if_not": ""
-       },
-       {
-        "unit": "比率",
-        "basis": "原始披露",
-        "value": 0.519,
-        "inputs": {
-         "net_profit": 98907140205.12,
-         "operate_income": 190572524480.0
-        },
-        "source": "query_metric",
-        "formula": "净利润 ÷ 营业收入",
-        "applicable": true,
-        "fiscal_year": 2025,
-        "metric_name": "net_margin",
-        "report_type": "年报",
-        "display_name": "净利率",
-        "reason_if_not": ""
-       },
-       {
-        "unit": "比率",
-        "basis": "原始披露",
-        "value": 0.18,
-        "inputs": {
-         "total_assets": 362087796512.0,
-         "total_liabilities": 65175803372.16
-        },
-        "source": "query_metric",
-        "formula": "负债合计 ÷ 资产总计",
-        "applicable": true,
-        "fiscal_year": 2025,
-        "metric_name": "debt_to_assets",
-        "report_type": "年报",
-        "display_name": "资产负债率",
-        "reason_if_not": ""
-       },
-       {
-        "unit": "比率",
-        "basis": "原始披露",
-        "value": null,
-        "inputs": {
-         "net_profit": 98907140205.12,
-         "total_equity": 296911993139.84
-        },
-        "source": "query_metric",
-        "formula": "净利润 ÷ 期初与期末所有者权益的平均",
-        "applicable": false,
-        "fiscal_year": 2025,
-        "metric_name": "roe",
-        "report_type": "年报",
-        "display_name": "净资产收益率",
-        "reason_if_not": "口径不同"
-       }
-      ],
-      "data_version": "sh600519-financials-sample600519"
-     },
-     "labels": {
-      "sql": "查询语句",
-      "table": "表",
-      "unit": "单位",
-      "basis": "口径",
-      "value": "数值",
-      "inputs": "用到的数",
-      "source": "来源",
-      "formula": "算法",
-      "applicable": "适用",
-      "fiscal_year": "年度",
-      "metric_name": "指标",
-      "report_type": "报告类型",
-      "display_name": "名称",
-      "reason_if_not": "不适用的原因",
-      "data_version": "数据版本"
-     }
+    {
+     "label": "有改写后的问题和指标"
+    }
+   ],
+   "after_rejection": {
+    "reworks": 1,
+    "then": "human",
+    "back_to": null,
+    "backs": 0,
+    "text": "重做，最多 1 次；仍不过，停下来问你"
+   },
+   "reserve": "0.05",
+   "status": "accepted",
+   "attempts": [
+    {
+     "attempt_id": "337096ff-8481-58c9-8d01-affe4377a90d",
+     "n": 1,
+     "outcome": "accepted",
+     "failure": null,
+     "spent": "0.05",
+     "started_at": "2026-10-11T17:39:47.333531Z",
+     "ended_at": "2026-10-11T17:39:47.347122Z",
+     "checks": [
+      {
+       "label": "交回的格式对",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "有改写后的问题和指标",
+       "pass": true,
+       "message": ""
+      }
+     ],
+     "tools": {}
+    }
+   ],
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.05",
+   "data": null
+  },
+  {
+   "index": 2,
+   "step_id": "sql_generate",
+   "title": "生成 SQL",
+   "summary": "对照数据的结构写出查询，并说明每一列的口径",
+   "why": "查询照着数据的真实结构写，每一列是什么口径写明白。你看得到它到底查了什么。",
+   "uses": [
+    {
+     "artifact": "rewritten",
+     "step": 1,
+     "title": "改写问题"
+    }
+   ],
+   "tools": [
+    "describe_schema",
+    "metric_definitions"
+   ],
+   "returns": "sql",
+   "checks": [
+    {
+     "label": "交回的格式对"
     },
-    "process": [
-     {
-      "at": "2026-10-07T04:58:26.658663Z",
-      "kind": "tool",
-      "name": "metric_definitions",
-      "dataset": "sh600519-financials",
-      "brief": "",
-      "ok": true
-     },
-     {
-      "at": "2026-10-07T04:58:26.663578Z",
-      "kind": "tool",
-      "name": "query_metric",
-      "dataset": "sh600519-financials",
-      "brief": "['gross_margin', 'net_margin', 'debt_to_assets', 'roe']",
-      "ok": true
+    {
+     "label": "有查询语句"
+    },
+    {
+     "label": "查询语句不是空的"
+    }
+   ],
+   "after_rejection": {
+    "reworks": 2,
+    "then": "human",
+    "back_to": null,
+    "backs": 0,
+    "text": "重做，最多 2 次；仍不过，停下来问你"
+   },
+   "reserve": "0.05",
+   "status": "accepted",
+   "attempts": [
+    {
+     "attempt_id": "9576bd96-8790-519a-a5f2-ba154b09eba4",
+     "n": 1,
+     "outcome": "accepted",
+     "failure": null,
+     "spent": "0.05",
+     "started_at": "2026-10-11T17:39:47.419794Z",
+     "ended_at": "2026-10-11T17:39:47.428392Z",
+     "checks": [
+      {
+       "label": "交回的格式对",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "有查询语句",
+       "pass": true,
+       "message": ""
+      },
+      {
+       "label": "查询语句不是空的",
+       "pass": true,
+       "message": ""
+      }
+     ],
+     "tools": {
+      "describe_schema": 1,
+      "metric_definitions": 1
      }
-    ]
-   }
-  ],
-  "times": 1,
-  "rejected": 0,
-  "spent": "0.05",
-  "data": {
-   "data_version": "sh600519-financials-sample600519"
+    }
+   ],
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.05",
+   "data": null
+  },
+  {
+   "index": 3,
+   "step_id": "sql_execute",
+   "title": "执行 SQL",
+   "summary": "执行查询，原样带回结果和数据版本",
+   "why": "查询的结果原样带回，不改数；同时记下数据版本，以后能复查。",
+   "uses": [
+    {
+     "artifact": "sql",
+     "step": 2,
+     "title": "生成 SQL"
+    }
+   ],
+   "tools": [
+    "run_sql"
+   ],
+   "returns": "rows",
+   "checks": [
+    {
+     "label": "交回的格式对"
+    },
+    {
+     "label": "有结果和数据版本"
+    }
+   ],
+   "after_rejection": {
+    "reworks": 1,
+    "then": "back",
+    "back_to": 2,
+    "backs": 1,
+    "text": "重做，最多 1 次；仍不过，退回第 2 步，最多 1 次；仍不过，停下来问你"
+   },
+   "reserve": "0.05",
+   "status": "running",
+   "attempts": [
+    {
+     "attempt_id": "4816f691-3c61-5bff-a6ba-e4c76bd94692",
+     "n": 1,
+     "outcome": "running",
+     "failure": null,
+     "spent": "0.00",
+     "started_at": "2026-10-11T17:39:47.443768Z",
+     "ended_at": null,
+     "checks": [
+      {
+       "label": "交回的格式对",
+       "pass": null,
+       "message": ""
+      },
+      {
+       "label": "有结果和数据版本",
+       "pass": null,
+       "message": ""
+      }
+     ],
+     "tools": {}
+    }
+   ],
+   "times": 1,
+   "rejected": 0,
+   "spent": "0.00",
+   "data": null
+  },
+  {
+   "index": 4,
+   "step_id": "normalize",
+   "title": "整理结果",
+   "summary": "统一单位、币种、期间的写法，标出缺的值",
+   "why": "单位、币种、期间的写法统一之后才好比较。缺的值标出来，不补、不估。",
+   "uses": [
+    {
+     "artifact": "rewritten",
+     "step": 1,
+     "title": "改写问题"
+    },
+    {
+     "artifact": "rows",
+     "step": 3,
+     "title": "执行 SQL"
+    }
+   ],
+   "tools": [],
+   "returns": "table",
+   "checks": [
+    {
+     "label": "交回的格式对"
+    },
+    {
+     "label": "有整理后的表"
+    }
+   ],
+   "after_rejection": {
+    "reworks": 1,
+    "then": "human",
+    "back_to": null,
+    "backs": 0,
+    "text": "重做，最多 1 次；仍不过，停下来问你"
+   },
+   "reserve": "0.05",
+   "status": "pending",
+   "attempts": [],
+   "times": 0,
+   "rejected": 0,
+   "spent": "0.00",
+   "data": null
+  },
+  {
+   "index": 5,
+   "step_id": "final",
+   "title": "成稿",
+   "summary": "写出答案：每个数带数据版本和口径，写明局限；结论栏留空",
+   "why": "答案里每个数都带出处和口径，并写明局限。只给事实，不给评级和买卖建议。",
+   "uses": [
+    {
+     "artifact": "rewritten",
+     "step": 1,
+     "title": "改写问题"
+    },
+    {
+     "artifact": "table",
+     "step": 4,
+     "title": "整理结果"
+    }
+   ],
+   "tools": [],
+   "returns": "note",
+   "checks": [
+    {
+     "label": "交回的格式对"
+    },
+    {
+     "label": "有回答和出处"
+    },
+    {
+     "label": "没有评级、目标价、买卖建议"
+    }
+   ],
+   "after_rejection": {
+    "reworks": 1,
+    "then": "human",
+    "back_to": null,
+    "backs": 0,
+    "text": "重做，最多 1 次；仍不过，停下来问你"
+   },
+   "reserve": "0.05",
+   "status": "pending",
+   "attempts": [],
+   "times": 0,
+   "rejected": 0,
+   "spent": "0.00",
+   "data": null
   }
- }
+ ]
 }

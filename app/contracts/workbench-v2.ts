@@ -7,7 +7,8 @@ export const WORKBENCH_CONTRACT_VERSION = 2 as const
 const uuid = z.uuid()
 const record = z.record(z.string(), z.unknown())
 
-export const conversationKindSchema = z.enum(['chat', 'work'])
+// 三种对话：聊天、工作、专家（0017，所有者 2026-10-11）
+export const conversationKindSchema = z.enum(['chat', 'work', 'expert'])
 export type ConversationKind = z.infer<typeof conversationKindSchema>
 
 export const conversationSchema = z
@@ -411,6 +412,34 @@ export const reviewSchema = z
           .loose(),
         validity: z.object({ expires_at: z.string().nullable(), after_expiry: z.string() }).loose(),
         decision: z.object({ decided: z.boolean(), chosen: z.string().nullable() }).loose(),
+        // 工具级审批与提问卡多带的：哪一步、后面谁依赖、刚拒绝过、问题清单
+        subject: z
+          .object({
+            command: z.string().nullable().optional(),
+            cwd: z.string().nullable().optional(),
+            after_decline: z.boolean().optional(),
+            dependents: z
+              .array(z.object({ step_id: z.string(), title: z.string() }).loose())
+              .optional(),
+            questions: z
+              .array(
+                z
+                  .object({
+                    id: z.string(),
+                    header: z.string(),
+                    question: z.string(),
+                    options: z.array(
+                      z.object({ label: z.string(), description: z.string() }).loose(),
+                    ),
+                    is_other: z.boolean(),
+                    is_secret: z.boolean(),
+                  })
+                  .loose(),
+              )
+              .optional(),
+          })
+          .loose()
+          .optional(),
       })
       .loose(),
   })
@@ -485,6 +514,7 @@ const waitingRowSchema = z
       .loose(),
     why: z.string().nullable(),
     failed: z.array(z.object({ label: z.string(), message: z.string() }).loose()),
+    expires_at: z.string().nullable().optional(),
   })
   .loose()
 export type WaitingRow = z.infer<typeof waitingRowSchema>
@@ -673,3 +703,18 @@ export const libraryContentSchema = z
   })
   .loose()
 export type LibraryContent = z.infer<typeof libraryContentSchema>
+
+// ---------------- 长期记忆：关于这位用户的几条事实（0019 §四）----------------
+export const memorySchema = z
+  .object({
+    id: uuid,
+    kind: z.enum(['fact', 'judgement']),
+    text: z.string(),
+    enabled: z.boolean(),
+    created_at: z.string(),
+    updated_at: z.string(),
+  })
+  .loose()
+export type Memory = z.infer<typeof memorySchema>
+export const memoriesSchema = z.object({ memories: z.array(memorySchema) }).loose()
+export const memoryMadeSchema = z.object({ memory: memorySchema }).loose()

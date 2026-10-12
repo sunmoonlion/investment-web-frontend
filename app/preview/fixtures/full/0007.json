@@ -1,8 +1,9 @@
 {
- "id": "e360da80-c794-5489-9aef-1545babb5931",
+ "contract_version": 2,
  "task_id": "dad4ff9f-c1e2-5e51-a63c-fff965195623",
- "name": "conclusion",
- "version": 1,
- "kind": "user_draft",
- "digest": "71854f6a828d7fcb7fc750cb1e6e9409101a33abe97b5eaa08ad898707c05e8d"
+ "session_id": "db9ab979-c91b-5a0c-8e2b-019d695ce103",
+ "project_id": "868e3e7e-acfc-5d8c-9340-fba470994d10",
+ "state": "RECEIVED",
+ "created": true,
+ "queued_behind": null
 }

@@ -1,62 +1,67 @@
 {
  "contract_version": 2,
- "tasks": [
+ "price": {
+  "model": "kimi-k3",
+  "priced": true,
+  "currency": "CNY",
+  "as_of": "2026-10-04",
+  "per_million": {
+   "input": "20",
+   "cached_input": "2",
+   "cache_write": "20",
+   "output": "100"
+  },
+  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
+  "estimated": true
+ },
+ "cost": "0.150000",
+ "tokens": {
+  "input": 6000,
+  "cached_input": 0,
+  "cache_write": 0,
+  "output": 300,
+  "total": 6300
+ },
+ "calls": 3,
+ "turns": [
   {
-   "id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
-   "session_id": "dd790e56-724e-5e57-9294-bae977583372",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "tenant": "default",
-   "idempotency_key": "preview-failed-0001",
-   "request_digest": "2a3949dbc8e6d4a147205d729a17b0f943bedcc84a22e2fc69eb8cf0047ccd50",
-   "profile_id": "FIN_REVIEW",
-   "profile_version": "1",
-   "expert_pack_version": "1",
-   "original_input": {
-    "input": {
-     "text": "比亚迪 2023 到 2025 年的盈利能力怎么样？"
-    },
-    "attachments": [],
-    "client_context": {
-     "entry": "expert"
-    }
+   "turn_id": "turn-21e6ea3d3787",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "normalized_goal": null,
-   "thread_id": "thread-1a4e7ee9ede7",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "project_root": "/home/demo/research/比亚迪",
-   "state": "FAILED",
-   "state_version": 35,
-   "workflow_version": "1",
-   "current_step": 5,
-   "acceptance_contract": {
-    "steps": [
-     "scope",
-     "profile",
-     "reconcile",
-     "extract",
-     "metrics",
-     "crosscheck",
-     "note"
-    ],
-    "pack_id": "FIN_REVIEW"
+   "at": "2026-10-11T17:39:49.433858+00:00"
+  },
+  {
+   "turn_id": "turn-f1bf87bb9c53",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "execution_policy": {},
-   "budget": {
-    "used": "0.300000",
-    "limit": null,
-    "currency": "CNY",
-    "reserved": "0"
+   "at": "2026-10-11T17:39:49.529629+00:00"
+  },
+  {
+   "turn_id": "turn-4c598845e93c",
+   "calls": 1,
+   "cost": "0.050000",
+   "tokens": {
+    "input": 2000,
+    "cached_input": 0,
+    "cache_write": 0,
+    "output": 100,
+    "total": 2100
    },
-   "active_attempt_id": null,
-   "terminal_result_ref": null,
-   "waiting_reason": null,
-   "active_interaction_id": null,
-   "rejection": null,
-   "cancel_requested_at": null,
-   "cancel_requested_by": null,
-   "created_at": "2026-10-07T04:58:28.532005+00:00",
-   "updated_at": "2026-10-07T04:58:29.242641+00:00",
-   "project_id": "06944124-075a-504f-b4f3-275ef032eb9c"
+   "at": "2026-10-11T17:39:49.653391+00:00"
   }
  ]
 }

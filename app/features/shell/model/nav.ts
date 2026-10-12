@@ -63,20 +63,101 @@ export function recent(
   limit = 8,
 ): RecentItem[] {
   const names = new Map(projects.map((project) => [project.id, project.title]))
+  return (
+    [...conversations]
+      // 项目已从工作台移除（归档）的对话不再算「最近」
+      .filter((conversation) => !conversation.project_id || names.has(conversation.project_id))
+      .sort((a, b) =>
+        (b.last_active_at ?? b.created_at).localeCompare(a.last_active_at ?? a.created_at),
+      )
+      .slice(0, limit)
+      .map((conversation) => ({
+        id: conversation.id,
+        title: conversation.title,
+        kind: conversation.kind,
+        busy: conversation.wheel === 'advisor',
+        project: conversation.project_id ? (names.get(conversation.project_id) ?? null) : null,
+        href: isBuilt(conversation.project_id === null ? 'chat' : 'projectConversation')
+          ? conversationRoute(locale, conversation)
+          : null,
+      }))
+  )
+}
+
+// ---------------- 按真源分层的树：电脑 → 工作区 → 项目 → 对话（0016）----------------
+export type TreeConversation = {
+  id: string
+  title: string | null
+  kind: Conversation['kind']
+  busy: boolean
+  href: string
+}
+export type TreeProject = {
+  project: Project
+  busy: boolean // 专家正在这个项目的某段对话里做事
+  conversations: TreeConversation[]
+}
+export type TreeWorkspace = { key: string; root: string; online: boolean; projects: TreeProject[] }
+export type TreeMachine = {
+  id: string
+  name: string
+  status: string
+  workspaces: TreeWorkspace[]
+}
+
+export function computerTree(
+  machines: Machine[],
+  workspaces: Workspace[],
+  projects: Project[],
+  conversations: Conversation[],
+  locale: string,
+): TreeMachine[] {
+  const byProject = new Map<string, TreeConversation[]>()
+  for (const conversation of [...conversations].sort((a, b) =>
+    (b.last_active_at ?? b.created_at).localeCompare(a.last_active_at ?? a.created_at),
+  )) {
+    if (!conversation.project_id) continue
+    const list = byProject.get(conversation.project_id) ?? []
+    list.push({
+      id: conversation.id,
+      title: conversation.title,
+      kind: conversation.kind,
+      busy: conversation.wheel === 'advisor',
+      href: conversationRoute(locale, conversation),
+    })
+    byProject.set(conversation.project_id, list)
+  }
+  return machines.map((machine) => ({
+    id: machine.id,
+    name: machine.name,
+    status: machine.status,
+    workspaces: workspaces
+      .filter((workspace) => workspace.environment_id === machine.id)
+      .map((workspace) => ({
+        key: workspaceKey(workspace),
+        root: workspace.root,
+        online: workspace.online,
+        projects: projectsIn(projects, workspace).map((project) => {
+          const list = byProject.get(project.id) ?? []
+          return { project, busy: list.some((c) => c.busy), conversations: list }
+        }),
+      })),
+  }))
+}
+
+// 没归入项目的聊天：挂在树下面单独一节（0017：聊天新建时什么都不选）
+export function looseChats(conversations: Conversation[], locale: string): TreeConversation[] {
   return [...conversations]
+    .filter((conversation) => conversation.project_id === null)
     .sort((a, b) =>
       (b.last_active_at ?? b.created_at).localeCompare(a.last_active_at ?? a.created_at),
     )
-    .slice(0, limit)
     .map((conversation) => ({
       id: conversation.id,
       title: conversation.title,
       kind: conversation.kind,
       busy: conversation.wheel === 'advisor',
-      project: conversation.project_id ? (names.get(conversation.project_id) ?? null) : null,
-      href: isBuilt(conversation.project_id === null ? 'chat' : 'projectConversation')
-        ? conversationRoute(locale, conversation)
-        : null,
+      href: conversationRoute(locale, conversation),
     }))
 }
 
@@ -95,12 +176,71 @@ export type FootEntry = { key: string; kind: 'page'; page: Page; href: (locale: 
 
 export const FOOT: readonly FootEntry[] = [
   { key: 'pending', kind: 'page', page: 'home', href: (locale) => routes.home(locale) },
-  // 知识库：用户自己的资料，服务端有专属副本（SDD 0011）
+  // 知识库：0018/0019 之后改为本地知识库（用户电脑上的目录）；页面改造前先沿用现有页
   { key: 'library', kind: 'page', page: 'library', href: routes.library },
-  { key: 'machines', kind: 'page', page: 'machines', href: routes.computer },
+  // 长期记忆：关于这位用户的几条事实（0019 §四）
+  { key: 'memory', kind: 'page', page: 'memory', href: routes.memory },
+  // 「我的电脑」不再单列：灯在中段的电脑行上，接入与上限在设置页（0016 S2）
   { key: 'settings', kind: 'page', page: 'settings', href: routes.settings },
 ]
 
 export function footHref(entry: FootEntry, locale: string): string | null {
   return isBuilt(entry.page) ? entry.href(locale) : null
+}
+
+// ---------------- 「待我决定」的指针表（0016 S3）：哪个项目、哪段对话、哪一步、还剩多少分钟 ----------------
+// 工具级审批与模型提问挂着时 Codex 那一轮在等，一小时就停，算「急」；验收失败与预算可以放几天
+export type PendingPointer = {
+  id: string
+  urgent: boolean
+  about: string
+  project: string | null
+  conversation: string | null
+  step: string | null
+  minutesLeft: number | null
+  href: string | null
+}
+
+// 首页清单与侧栏弹层拿到的行形状略有不同，只用到这几样
+export type PendingLike = {
+  interaction_id: string
+  kind: string
+  expires_at?: string | null
+  where: {
+    about?: string | null
+    project?: { id: string; title: string | null } | null
+    conversation?: { id: string; title: string | null; kind: Conversation['kind'] } | null
+    step?: { index: number; title: string } | null
+  }
+}
+
+export function pendingPointers(
+  rows: PendingLike[],
+  locale: string,
+  now: number = Date.now(),
+): PendingPointer[] {
+  return rows
+    .map((row) => {
+      const where = row.where
+      const expires = row.expires_at ? Date.parse(row.expires_at) : NaN
+      return {
+        id: row.interaction_id,
+        urgent: row.kind === 'tool_approval' || row.kind === 'question',
+        about: where.about ?? row.kind,
+        project: where.project?.title ?? null,
+        conversation: where.conversation?.title ?? null,
+        step: where.step ? `${where.step.index}. ${where.step.title}` : null,
+        minutesLeft: Number.isNaN(expires)
+          ? null
+          : Math.max(0, Math.round((expires - now) / 60000)),
+        href: where.conversation
+          ? conversationRoute(locale, {
+              id: where.conversation.id,
+              project_id: where.project?.id ?? null,
+              kind: where.conversation.kind,
+            })
+          : null,
+      }
+    })
+    .sort((a, b) => Number(b.urgent) - Number(a.urgent))
 }

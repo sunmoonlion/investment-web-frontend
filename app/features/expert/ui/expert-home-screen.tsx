@@ -10,7 +10,7 @@ import { ProjectPicker } from '@/components/workbench/project-picker'
 import { ConnectComputerLink } from '@/components/workbench/connect-computer'
 import { useWorkbench } from '@/lib/workbench/context'
 import { useMachines, useProjects } from '@/lib/workbench/queries'
-import { isBuilt, routes } from '@/lib/workbench/routes'
+import { conversationRoute, isBuilt, routes } from '@/lib/workbench/routes'
 import { cn } from '@/lib/utils'
 
 import { useOverview, usePacks } from '../api/desk'
@@ -79,13 +79,19 @@ export function ExpertHomeScreen() {
                       {each.failed[0]?.message || each.why}
                     </p>
                   </div>
-                  {/* 去别的页：是链接，不是按钮 */}
-                  <Link
-                    href={routes.review(locale, each.interaction_id)}
-                    className={cn(buttonVariants({ size: 'sm' }))}
-                  >
-                    {t('handle')}
-                  </Link>
+                  {/* 答题只在事发处：回到那段对话，审查面就在它发生的位置 */}
+                  {each.where.conversation ? (
+                    <Link
+                      href={conversationRoute(locale, {
+                        id: each.where.conversation.id,
+                        project_id: each.where.project?.id ?? null,
+                        kind: each.where.conversation.kind,
+                      })}
+                      className={cn(buttonVariants({ size: 'sm' }))}
+                    >
+                      {t('handle')}
+                    </Link>
+                  ) : null}
                 </li>
               ))}
             </ul>

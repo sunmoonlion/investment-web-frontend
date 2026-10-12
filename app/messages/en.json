@@ -38,7 +38,7 @@
     "loginSubtitle": "You will be redirected to the identity provider to sign in.",
     "loginCasdoorHint": "If you only registered on Casdoor, still click Login here to open this app.",
     "continueToDashboard": "Already signed in to this site? Go to dashboard",
-    "errorAuthFailed": "Sign-in could not finish (token exchange failed). Check backend logs for Casdoor/Redis errors and ensure the redirect URI in Casdoor matches CASDOOR_REDIRECT_URI exactly.",
+    "errorAuthFailed": "Sign-in did not complete: this attempt timed out or is no longer valid (a login page left open too long, or a page submitted twice). Please sign in again; if it keeps happening, contact your administrator.",
     "errorNoCode": "No authorization code was returned. Click Login again from this page.",
     "errorOAuthGeneric": "Authorization was denied or cancelled. Please try again.",
     "dashboardWelcome": "Welcome to Investment",
@@ -174,8 +174,11 @@
       "work": "Work",
       "expert": "Expert"
     },
-    "new": "New",
-    "workspace": "Workspace",
+    "workspace": {
+      "none": "No folder yet. Add one in the agent on this computer so projects have a place.",
+      "all": "All",
+      "add": "New project in {name}"
+    },
     "loading": "Loading…",
     "noWorkspace": "No workspace yet.",
     "noProjects": "No projects in this workspace yet",
@@ -189,14 +192,41 @@
       "pending": "Waiting for me",
       "machines": "My computers",
       "settings": "Settings",
-      "library": "Library"
+      "library": "Library",
+      "memory": "Memory"
     },
     "machine": {
       "online": "A computer is online",
       "offline": "No computer is online",
       "none": "No computer registered"
     },
-    "allProjects": "All"
+    "computers": "Computers and projects",
+    "computer": {
+      "none": "No computer connected yet. Once connected, your folders and projects appear here.",
+      "connect": "Connect",
+      "manage": "Manage"
+    },
+    "project": {
+      "new": "New project",
+      "toggle": "Expand or collapse {title}",
+      "noTalks": "No conversations yet",
+      "remove": "Remove project {title}",
+      "add": "New in {title}"
+    },
+    "chats": "Chats",
+    "pending": {
+      "title": "Waiting for me",
+      "urgent": "urgent",
+      "minutes": "{minutes} min left"
+    },
+    "conversation": {
+      "remove": "Remove conversation {title}"
+    },
+    "remove": {
+      "confirm": "Remove",
+      "cancel": "Cancel",
+      "note": "Removed from here only; the folder on your computer stays"
+    }
   },
   "projectPicker": {
     "loading": "Loading…",
@@ -223,7 +253,7 @@
         "name": "Expert",
         "what": "Follows a fixed method step by step, checks every step, and hands back a dossier. Slower and costlier.",
         "placeholder": "What should the expert solve",
-        "send": "Ask the expert"
+        "send": "Hand to the expert"
       }
     },
     "project": {
@@ -235,7 +265,8 @@
         "chat": "A chat does not need a project. With one, it can read the files in that project.",
         "work": "Work happens inside a project: a folder on your machine.",
         "expert": "The expert takes over the whole project: this conversation, its files, other conversations and dossiers."
-      }
+      },
+      "create": "New project"
     },
     "blocker": {
       "noSandbox": "No sandbox available yet: register a model key and start the sandbox first.",
@@ -264,6 +295,10 @@
     "kind": {
       "chat": "Chat",
       "work": "Work"
+    },
+    "expert": {
+      "who": "Which expert",
+      "loading": "Loading…"
     }
   },
   "chat": {
@@ -393,11 +428,21 @@
       "answered": {
         "accept": "You allowed it once",
         "acceptForSession": "You allowed it; the same thing will not be asked again in this conversation",
-        "decline": "You declined",
-        "other": "You answered"
+        "decline": "You declined this one",
+        "other": "You answered",
+        "accept_task": "You allowed it; the same thing will not be asked again in this task",
+        "cancel": "You stopped it"
       },
       "expired": "This request expired and was not executed",
-      "failed": "The answer was not sent. Please try again."
+      "failed": "The answer was not sent. Please try again.",
+      "step": "Step",
+      "stepAt": "Step {index} “{title}”",
+      "dependents": "Later steps that depend on it: {steps}",
+      "afterDecline": "Something was declined in this step just now; everything it wants to do next will be asked first.",
+      "noteToggle": "Add a note",
+      "noteLabel": "Note to it",
+      "notePlaceholder": "When declining: how it should change. When stopping: what to do differently when redoing this step",
+      "noteHint": "Decline with a note = it changes course in this turn; stop with a note = the note goes into the redo."
     },
     "changes": {
       "title": "Changes",
@@ -411,6 +456,25 @@
       "given": "Handed to the expert",
       "returned": "The expert handed back",
       "inside": "The expert's steps have their own progress view; that part is still being built."
+    },
+    "question": {
+      "title": "Codex is asking you",
+      "other": "Write your own",
+      "send": "Answer",
+      "answered": "You answered its question",
+      "expired": "This question expired; it continued on its own assumption",
+      "secret": "Used once, not kept"
+    },
+    "policy": {
+      "allowed": "Allowed by rule: {command}",
+      "denied": "The advisor wanted to {command}; declined by the expert pack's rules"
+    },
+    "panel": {
+      "files": "Files",
+      "changes": "Changes",
+      "terminal": "Terminal",
+      "filesSoon": "This will be the file tree of this workspace on your computer (current project expanded). It waits for the local agent's file channel (ledger 87).",
+      "terminalSoon": "This will be a terminal in the project folder on your computer. It waits for the local agent's terminal channel (ledger 83)."
     }
   },
   "expert": {
@@ -498,7 +562,14 @@
       "noToken": "The credential for answering was not found. Reload the page and try again.",
       "failedToSend": "The answer was not sent. Please try again.",
       "decided": "You chose: {choice}",
-      "loading": "Loading…"
+      "loading": "Loading…",
+      "afterDecline": "Something was declined in this step just now; everything it wants to do next will be asked first.",
+      "dependents": "Later steps that depend on it: {steps}",
+      "noteLabel": "Note to it",
+      "notePlaceholder": "When declining: how it should change. When stopping or redoing: what this step must do",
+      "other": "Write your own",
+      "send": "Answer",
+      "answered": "You have answered"
     },
     "sheet": {
       "title": "Delegation",
@@ -618,7 +689,9 @@
         "agent": "No local agent connected yet: install the local agent on your machine and add a folder in it.",
         "account": "Signed in with a different account: the local agent and the web page must use the same account.",
         "note": "Workspaces are added and removed in the local agent on your machine, not on the web."
-      }
+      },
+      "onlyWorkspace": "Only this workspace: {root}",
+      "seeAll": "Show all"
     },
     "create": {
       "title": "New project",
@@ -732,7 +805,8 @@
     "lead": "Work and Expert read and write projects on your own computer. A local agent runs there and lets us touch only the folders you whitelisted.",
     "list": "Registered computers",
     "none": "No computer connected yet.",
-    "current": "Current computer",
+    "current": "Connected computer",
+    "elsewhere": "This is the computer connected to your account. If you are on a different computer now, install and connect it with the three steps below; {name} then disconnects, because an account drives one computer at a time.",
     "online": "online",
     "offline": "offline",
     "offlineNote": "The agent is offline. Check the reason in the local tray and start it; if logon startup is enabled it starts after login.",
@@ -756,7 +830,7 @@
     "guide": {
       "title": "Connect a computer",
       "install": "Download and install",
-      "connect": "A page opens on your computer showing a connection code; enter it here",
+      "connect": "After installing, your computer opens this page with the code filled in; check the computer name and allow it",
       "folders": "Choose folders to finish",
       "done": "done",
       "todo": "not yet",
@@ -766,7 +840,8 @@
     "connect": {
       "title": "Connect a computer",
       "code": "Connection code",
-      "hint": "Eight characters. They are uppercased and a hyphen is inserted after the fourth.",
+      "hint": "Eight characters. They are uppercased and a hyphen is inserted after the fourth. If this page did not open by itself, type the code shown on your computer here.",
+      "prefilled": "The connection code came from your computer. Make sure the computer below is yours, then allow it.",
       "lookup": "Check this computer",
       "wrong": "The code is wrong or expired",
       "unknownSource": "Unknown",
@@ -898,5 +973,25 @@
   "computerConnection": {
     "action": "Connect computer",
     "welcome": "First add your model key in Settings, then connect your computer so Work and Expert can read and write your files."
+  },
+  "memory": {
+    "title": "Long-term memory",
+    "intro": "These lines go at the start of every conversation you have. Only you can see them. Write facts about yourself: what you follow, which figures you use, how you like answers.",
+    "addTitle": "Add one",
+    "addLabel": "New line",
+    "addPlaceholder": "e.g. For banks use pre-provision profit; answer conclusion first",
+    "add": "Remember",
+    "examples": "Sectors and companies you follow, metric preferences, risk appetite, output habits",
+    "listTitle": "Remembered",
+    "loading": "Loading…",
+    "empty": "Nothing remembered yet.",
+    "enabled": "Enabled",
+    "editLabel": "Edit this line",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "remove": "Delete",
+    "clear": "Clear all",
+    "failed": "Not saved. Please try again."
   }
 }

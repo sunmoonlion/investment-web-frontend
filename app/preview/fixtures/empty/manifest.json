@@ -39,7 +39,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0001.json"
+   "file": "0002.json"
   },
   {
    "method": "GET",
@@ -47,7 +47,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0002.json"
+   "file": "0003.json"
   },
   {
    "method": "GET",
@@ -55,7 +55,7 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0003.json"
+   "file": "0004.json"
   },
   {
    "method": "GET",
@@ -63,19 +63,11 @@
    "query": "",
    "status": 200,
    "content_type": "application/json",
-   "file": "0004.json"
-  },
-  {
-   "method": "GET",
-   "path": "/api/workbench/sessions",
-   "query": "",
-   "status": 200,
-   "content_type": "application/json",
    "file": "0005.json"
   },
   {
    "method": "GET",
-   "path": "/api/workbench/tasks",
+   "path": "/api/workbench/sessions",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -83,7 +75,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/interactions",
+   "path": "/api/workbench/tasks",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -91,7 +83,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/expert/overview",
+   "path": "/api/workbench/interactions",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -99,7 +91,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/packs",
+   "path": "/api/workbench/expert/overview",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -107,7 +99,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/prefs",
+   "path": "/api/workbench/packs",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -115,7 +107,7 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/credentials",
+   "path": "/api/workbench/prefs",
    "query": "",
    "status": 200,
    "content_type": "application/json",
@@ -123,11 +115,19 @@
   },
   {
    "method": "GET",
-   "path": "/api/workbench/sandboxes/provisioned",
+   "path": "/api/workbench/credentials",
    "query": "",
    "status": 200,
    "content_type": "application/json",
    "file": "0012.json"
+  },
+  {
+   "method": "GET",
+   "path": "/api/workbench/sandboxes/provisioned",
+   "query": "",
+   "status": 200,
+   "content_type": "application/json",
+   "file": "0013.json"
   },
   {
    "method": "POST",
@@ -135,7 +135,7 @@
    "query": "",
    "status": 409,
    "content_type": "application/problem+json",
-   "file": "0013.json"
+   "file": "0014.json"
   },
   {
    "method": "GET",

@@ -1,60 +1,51 @@
 {
- "contract_version": 2,
- "task_id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
- "step": {
-  "index": 6,
-  "step_id": "crosscheck",
-  "title": "对照官方",
-  "summary": "拿取到的数和公司年报里自己披露的数逐项对照",
-  "why": "我们的数是采集来的。和公司年报里自己披露的数对一遍，对不上的要让你知道。",
-  "uses": [
-   {
-    "artifact": "scope",
-    "step": 1,
-    "title": "定范围"
+ "task": {
+  "id": "f0fb1647-6d14-5a5a-a59e-f5660c17edce",
+  "session_id": "03e833d1-4f51-5912-8c00-94f7793c46aa",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "tenant": "default",
+  "idempotency_key": "preview-refused-0001",
+  "request_digest": "e26555543a44acbd13c3a088833d49a37b53558bb83a5047586edf8a0b76706f",
+  "profile_id": "BOND_REVIEW",
+  "profile_version": "1",
+  "expert_pack_version": null,
+  "original_input": {
+   "input": {
+    "text": "中国平安 2025 年的偿付能力怎么样？"
    },
-   {
-    "artifact": "profile",
-    "step": 2,
-    "title": "数据摸底"
-   },
-   {
-    "artifact": "facts",
-    "step": 4,
-    "title": "取数"
-   }
-  ],
-  "tools": [
-   "run_sql"
-  ],
-  "returns": "crosscheck",
-  "checks": [
-   {
-    "label": "交回的格式对"
-   },
-   {
-    "label": "有一致项、不一致项、覆盖说明"
-   },
-   {
-    "label": "说明了对照覆盖了哪些期"
-   },
-   {
-    "label": "和公司披露的数都对得上"
-   }
-  ],
-  "after_rejection": {
-   "reworks": 0,
-   "then": "human",
-   "back_to": null,
-   "backs": 0,
-   "text": "停下来问你"
+   "attachments": [],
+   "client_context": {}
   },
-  "reserve": "0.05",
-  "status": "not_reached",
-  "attempts": [],
-  "times": 0,
-  "rejected": 0,
-  "spent": "0.00",
-  "data": null
- }
+  "normalized_goal": null,
+  "thread_id": "thread-8d423a0092c4",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "project_root": "/home/demo/research/中国平安",
+  "state": "REJECTED",
+  "state_version": 2,
+  "workflow_version": null,
+  "current_step": 0,
+  "acceptance_contract": {},
+  "execution_policy": {},
+  "budget": {
+   "used": "0",
+   "limit": null,
+   "currency": "CNY",
+   "reserved": "0"
+  },
+  "active_attempt_id": null,
+  "terminal_result_ref": null,
+  "waiting_reason": null,
+  "active_interaction_id": null,
+  "rejection": {
+   "code": "no_expert_pack",
+   "message": "这个问题不在专家范围，继续自己用 Codex 即可"
+  },
+  "cancel_requested_at": null,
+  "cancel_requested_by": null,
+  "created_at": "2026-10-11T17:39:51.010853+00:00",
+  "updated_at": "2026-10-11T17:39:51.046189+00:00",
+  "project_id": "69268fa0-44c9-5bb1-8187-e0ddab71455f"
+ },
+ "attempts": [],
+ "artifacts": []
 }

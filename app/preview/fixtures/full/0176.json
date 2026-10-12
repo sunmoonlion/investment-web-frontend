@@ -1,342 +1,103 @@
 {
  "contract_version": 2,
- "task": {
-  "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
-  "session_id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
-  "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0",
-  "expert": {
-   "id": "DATA_QUERY",
-   "name": "问数",
-   "version": "1"
-  },
-  "question": "五粮液近五年的毛利率分别是多少？",
-  "state": "RUNNING",
-  "state_word": null,
-  "waiting_reason": null,
-  "cancel_requested": false,
-  "reason": null,
-  "reason_text": "",
-  "budget": {
-   "currency": "CNY",
-   "limit": null,
-   "used": "0.10",
-   "reserved": "0.05",
-   "left": null,
-   "running": "0.05",
-   "spent": "0.15",
-   "estimated": true
-  },
-  "data": null,
-  "started_at": "2026-10-07T04:58:27.020649Z",
-  "ended_at": null,
-  "seconds": 5,
-  "active_interaction_id": null
- },
- "now": {
-  "step": {
-   "index": 3,
-   "of": 5,
-   "title": "执行 SQL",
-   "summary": "执行查询，原样带回结果和数据版本",
-   "why": "查询的结果原样带回，不改数；同时记下数据版本，以后能复查。"
-  },
-  "doing": {
-   "code": "thinking",
-   "text": "在想这一步怎么做"
-  },
-  "redo": null,
-  "since": "2026-10-07T04:58:27.278309Z",
-  "last_event_at": "2026-10-07T04:58:27.309654Z",
-  "held": true
- },
- "position": {
-  "step": 3,
-  "of": 5,
-  "title": "执行 SQL",
-  "left": 3
- },
- "steps": [
+ "artifacts": [
   {
-   "index": 1,
-   "step_id": "rewrite",
-   "title": "改写问题",
-   "summary": "把问题改写成没有歧义的：查什么、哪个期间、什么口径",
-   "why": "口语的问题常有歧义：哪一年、合并报表还是母公司。先说清楚查什么，免得查出来的不是你要的。",
-   "uses": [],
-   "tools": [],
-   "returns": "rewritten",
-   "checks": [
-    {
-     "label": "交回的格式对"
-    },
-    {
-     "label": "有改写后的问题和指标"
-    }
-   ],
-   "after_rejection": {
-    "reworks": 1,
-    "then": "human",
-    "back_to": null,
-    "backs": 0,
-    "text": "重做，最多 1 次；仍不过，停下来问你"
-   },
-   "reserve": "0.05",
-   "status": "accepted",
-   "attempts": [
-    {
-     "attempt_id": "54a98f60-a531-5ced-a9e9-89afe72225d8",
-     "n": 1,
-     "outcome": "accepted",
-     "failure": null,
-     "spent": "0.05",
-     "started_at": "2026-10-07T04:58:27.145869Z",
-     "ended_at": "2026-10-07T04:58:27.160954Z",
-     "checks": [
-      {
-       "label": "交回的格式对",
-       "pass": true,
-       "message": ""
-      },
-      {
-       "label": "有改写后的问题和指标",
-       "pass": true,
-       "message": ""
-      }
-     ],
-     "tools": {}
-    }
-   ],
-   "times": 1,
-   "rejected": 0,
-   "spent": "0.05",
-   "data": null
-  },
-  {
-   "index": 2,
-   "step_id": "sql_generate",
-   "title": "生成 SQL",
-   "summary": "对照数据的结构写出查询，并说明每一列的口径",
-   "why": "查询照着数据的真实结构写，每一列是什么口径写明白。你看得到它到底查了什么。",
-   "uses": [
-    {
-     "artifact": "rewritten",
-     "step": 1,
-     "title": "改写问题"
-    }
-   ],
-   "tools": [
-    "describe_schema",
-    "metric_definitions"
-   ],
-   "returns": "sql",
-   "checks": [
-    {
-     "label": "交回的格式对"
-    },
-    {
-     "label": "有查询语句"
-    },
-    {
-     "label": "查询语句不是空的"
-    }
-   ],
-   "after_rejection": {
-    "reworks": 2,
-    "then": "human",
-    "back_to": null,
-    "backs": 0,
-    "text": "重做，最多 2 次；仍不过，停下来问你"
-   },
-   "reserve": "0.05",
-   "status": "accepted",
-   "attempts": [
-    {
-     "attempt_id": "02022332-277b-5d39-963b-947829025012",
-     "n": 1,
-     "outcome": "accepted",
-     "failure": null,
-     "spent": "0.05",
-     "started_at": "2026-10-07T04:58:27.239367Z",
-     "ended_at": "2026-10-07T04:58:27.248262Z",
-     "checks": [
-      {
-       "label": "交回的格式对",
-       "pass": true,
-       "message": ""
-      },
-      {
-       "label": "有查询语句",
-       "pass": true,
-       "message": ""
-      },
-      {
-       "label": "查询语句不是空的",
-       "pass": true,
-       "message": ""
-      }
-     ],
-     "tools": {
-      "describe_schema": 1,
-      "metric_definitions": 1
+   "id": "5a74c70e-0687-5046-add3-b21a5afaf70d",
+   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+   "attempt_id": "b7ff7773-a31b-5df3-a3ac-23f8c1ee682a",
+   "name": "profile",
+   "version": 1,
+   "kind": "step",
+   "content": {
+    "as_of": "2025-12-31",
+    "notes": [
+     "样例数据：数字是为了预览编的，不是这家公司的真实数据",
+     "2024 年年报的数是追溯调整后的口径：公司当年变更了收入确认的会计政策"
+    ],
+    "dataset": "sz300750-financials",
+    "periods": [
+     {
+      "basis": "原始披露",
+      "verified": true,
+      "fiscal_year": 2023,
+      "report_date": "2023-12-31",
+      "report_type": "年报",
+      "official_disclosed_date": "2024-03-28"
+     },
+     {
+      "basis": "追溯调整后",
+      "verified": true,
+      "fiscal_year": 2024,
+      "report_date": "2024-12-31",
+      "report_type": "年报",
+      "official_disclosed_date": "2025-03-28"
+     },
+     {
+      "basis": "原始披露",
+      "verified": true,
+      "fiscal_year": 2025,
+      "report_date": "2025-12-31",
+      "report_type": "年报",
+      "official_disclosed_date": "2026-03-28"
      }
-    }
-   ],
-   "times": 1,
-   "rejected": 0,
-   "spent": "0.05",
-   "data": null
+    ],
+    "basis_breaks": [
+     {
+      "basis": [
+       "原始披露",
+       "追溯调整后"
+      ],
+      "between": [
+       "2023",
+       "2024"
+      ]
+     },
+     {
+      "basis": [
+       "追溯调整后",
+       "原始披露"
+      ],
+      "between": [
+       "2024",
+       "2025"
+      ]
+     }
+    ],
+    "data_version": "sz300750-financials-sample300750",
+    "not_ingested": false,
+    "security_code": "300750"
+   },
+   "digest": "b3735d1760412b7e122f73ba16d44b60f4f558ecee20b3dc72daf79138fab94c",
+   "workspace_path": null,
+   "created_at": "2026-10-11T17:39:47.688971+00:00"
   },
   {
-   "index": 3,
-   "step_id": "sql_execute",
-   "title": "执行 SQL",
-   "summary": "执行查询，原样带回结果和数据版本",
-   "why": "查询的结果原样带回，不改数；同时记下数据版本，以后能复查。",
-   "uses": [
-    {
-     "artifact": "sql",
-     "step": 2,
-     "title": "生成 SQL"
-    }
-   ],
-   "tools": [
-    "run_sql"
-   ],
-   "returns": "rows",
-   "checks": [
-    {
-     "label": "交回的格式对"
-    },
-    {
-     "label": "有结果和数据版本"
-    }
-   ],
-   "after_rejection": {
-    "reworks": 1,
-    "then": "back",
-    "back_to": 2,
-    "backs": 1,
-    "text": "重做，最多 1 次；仍不过，退回第 2 步，最多 1 次；仍不过，停下来问你"
+   "id": "0dcbf52b-605b-5b10-a5cd-9c7bf241ea70",
+   "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
+   "attempt_id": "844787e2-31bc-50cd-808e-dc440c0ead4f",
+   "name": "scope",
+   "version": 1,
+   "kind": "step",
+   "content": {
+    "aspects": [
+     "盈利能力"
+    ],
+    "company": "宁德时代",
+    "periods": [
+     "2023",
+     "2024",
+     "2025"
+    ],
+    "question": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
+    "assumptions": [],
+    "report_types": [
+     "年报"
+    ],
+    "security_code": "300750"
    },
-   "reserve": "0.05",
-   "status": "running",
-   "attempts": [
-    {
-     "attempt_id": "5b878ac4-da05-5183-aec1-10871091b1e4",
-     "n": 1,
-     "outcome": "running",
-     "failure": null,
-     "spent": "0.00",
-     "started_at": "2026-10-07T04:58:27.265829Z",
-     "ended_at": null,
-     "checks": [
-      {
-       "label": "交回的格式对",
-       "pass": null,
-       "message": ""
-      },
-      {
-       "label": "有结果和数据版本",
-       "pass": null,
-       "message": ""
-      }
-     ],
-     "tools": {}
-    }
-   ],
-   "times": 1,
-   "rejected": 0,
-   "spent": "0.00",
-   "data": null
-  },
-  {
-   "index": 4,
-   "step_id": "normalize",
-   "title": "整理结果",
-   "summary": "统一单位、币种、期间的写法，标出缺的值",
-   "why": "单位、币种、期间的写法统一之后才好比较。缺的值标出来，不补、不估。",
-   "uses": [
-    {
-     "artifact": "rewritten",
-     "step": 1,
-     "title": "改写问题"
-    },
-    {
-     "artifact": "rows",
-     "step": 3,
-     "title": "执行 SQL"
-    }
-   ],
-   "tools": [],
-   "returns": "table",
-   "checks": [
-    {
-     "label": "交回的格式对"
-    },
-    {
-     "label": "有整理后的表"
-    }
-   ],
-   "after_rejection": {
-    "reworks": 1,
-    "then": "human",
-    "back_to": null,
-    "backs": 0,
-    "text": "重做，最多 1 次；仍不过，停下来问你"
-   },
-   "reserve": "0.05",
-   "status": "pending",
-   "attempts": [],
-   "times": 0,
-   "rejected": 0,
-   "spent": "0.00",
-   "data": null
-  },
-  {
-   "index": 5,
-   "step_id": "final",
-   "title": "成稿",
-   "summary": "写出答案：每个数带数据版本和口径，写明局限；结论栏留空",
-   "why": "答案里每个数都带出处和口径，并写明局限。只给事实，不给评级和买卖建议。",
-   "uses": [
-    {
-     "artifact": "rewritten",
-     "step": 1,
-     "title": "改写问题"
-    },
-    {
-     "artifact": "table",
-     "step": 4,
-     "title": "整理结果"
-    }
-   ],
-   "tools": [],
-   "returns": "note",
-   "checks": [
-    {
-     "label": "交回的格式对"
-    },
-    {
-     "label": "有回答和出处"
-    },
-    {
-     "label": "没有评级、目标价、买卖建议"
-    }
-   ],
-   "after_rejection": {
-    "reworks": 1,
-    "then": "human",
-    "back_to": null,
-    "backs": 0,
-    "text": "重做，最多 1 次；仍不过，停下来问你"
-   },
-   "reserve": "0.05",
-   "status": "pending",
-   "attempts": [],
-   "times": 0,
-   "rejected": 0,
-   "spent": "0.00",
-   "data": null
+   "digest": "f77a558f3ba9620c552aba0f6d28ef5b64355e4e4f006ed494bb527bd55aa444",
+   "workspace_path": null,
+   "created_at": "2026-10-11T17:39:47.588096+00:00"
   }
  ]
 }

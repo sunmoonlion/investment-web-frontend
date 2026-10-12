@@ -63,10 +63,19 @@ export function useRunActions(task: string) {
       onSuccess: changed,
     }),
     answer: useMutation({
-      mutationFn: (input: { pending: string; token: string; decision: string }) =>
+      mutationFn: (input: {
+        pending: string
+        token: string
+        decision: string
+        answer?: Record<string, unknown>
+      }) =>
         sendJson(acceptedSchema, `/api/workbench/interactions/${seg(input.pending)}/respond`, {
           csrfToken,
-          body: { token: input.token, decision: input.decision },
+          body: {
+            token: input.token,
+            decision: input.decision,
+            ...(input.answer ? { answer: input.answer } : {}),
+          },
         }),
       onSuccess: changed,
     }),

@@ -2,25 +2,22 @@
 
 import {
   BookOpenIcon,
+  BrainIcon,
+  ChevronRightIcon,
   FolderIcon,
+  GraduationCapIcon,
   MessageSquareIcon,
   PlusIcon,
   SettingsIcon,
+  Trash2Icon,
   WrenchIcon,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { usePathname, useSearchParams } from 'next/navigation'
-import { useEffect } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useState } from 'react'
 
 import { LogoutButton } from '@/components/auth/logout-button'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import { useWorkbench } from '@/lib/workbench/context'
 import {
   useConversations,
@@ -29,20 +26,20 @@ import {
   useProjects,
   useWorkspaces,
 } from '@/lib/workbench/queries'
-import { isBuilt, MODES, routes } from '@/lib/workbench/routes'
+import { useRemove } from '@/lib/workbench/remove'
+import { MODES, routes } from '@/lib/workbench/routes'
 import { cn } from '@/lib/utils'
 
 import {
-  defaultWorkspace,
+  computerTree,
   FOOT,
   footHref,
-  machineLight,
+  looseChats,
   modeOf,
-  projectsIn,
+  pendingPointers,
   recent,
-  workspaceKey,
+  type TreeConversation,
 } from '../model/nav'
-import { useWorkspaceChoice } from '../model/workspace-choice'
 
 const row = 'flex items-center gap-2 rounded-md px-2 py-1.5 text-[13px] leading-5'
 const rowLink = 'hover:bg-foreground/5'
@@ -84,6 +81,59 @@ function Destination({
   )
 }
 
+function KindIcon({ kind, label }: { kind: TreeConversation['kind']; label: string }) {
+  const className = 'size-3.5 shrink-0'
+  if (kind === 'chat') return <MessageSquareIcon className={className} aria-label={label} />
+  if (kind === 'expert') return <GraduationCapIcon className={className} aria-label={label} />
+  return <WrenchIcon className={className} aria-label={label} />
+}
+
+// 行尾的「删除」：先一个小垃圾桶，点了换成「确定删除 / 取消」，不弹浏览器对话框
+function RemoveControl({
+  label,
+  asking,
+  onAsk,
+  onCancel,
+  onConfirm,
+  busy = false,
+}: {
+  label: string
+  asking: boolean
+  onAsk: () => void
+  onCancel: () => void
+  onConfirm: () => void
+  busy?: boolean
+}) {
+  const t = useTranslations('shell')
+  if (!asking) {
+    return (
+      <button
+        type="button"
+        aria-label={label}
+        onClick={onAsk}
+        className="text-muted-foreground hover:text-foreground shrink-0 opacity-0 group-hover:opacity-100 focus:opacity-100"
+      >
+        <Trash2Icon className="size-3.5" />
+      </button>
+    )
+  }
+  return (
+    <span className="flex shrink-0 items-center gap-1 text-xs" title={t('remove.note')}>
+      <button
+        type="button"
+        disabled={busy}
+        onClick={onConfirm}
+        className="rounded bg-red-600 px-1.5 py-0.5 text-white disabled:opacity-50"
+      >
+        {t('remove.confirm')}
+      </button>
+      <button type="button" onClick={onCancel} className="rounded border px-1.5 py-0.5">
+        {t('remove.cancel')}
+      </button>
+    </span>
+  )
+}
+
 export function Sidebar() {
   const t = useTranslations('shell')
   const tAuth = useTranslations('auth')
@@ -97,18 +147,46 @@ export function Sidebar() {
   const pending = usePending()
   const machines = useMachines()
 
-  const { chosen, restore, choose } = useWorkspaceChoice()
-  useEffect(restore, [restore])
-
-  const allWorkspaces = workspaces.data ?? []
   const allProjects = projects.data ?? []
-  const workspace =
-    allWorkspaces.find((w) => workspaceKey(w) === chosen) ??
-    defaultWorkspace(allWorkspaces, allProjects)
   const here = (conversations.data ?? []).find((c) => pathname.includes(c.id))
   const mode = modeOf(pathname, search, here)
-  const light = machineLight(machines.data ?? [])
   const waiting = pending.data?.length ?? 0
+  const tree = computerTree(
+    machines.data ?? [],
+    workspaces.data ?? [],
+    allProjects,
+    conversations.data ?? [],
+    locale,
+  )
+  const loose = looseChats(conversations.data ?? [], locale)
+  // 当前项目所在的工作区默认展开，其余折叠；手动开合记在这一次
+  const currentProject = allProjects.find((project) => pathname.includes(project.id))
+  const [toggled, setToggled] = useState<Record<string, boolean>>({})
+  // 哪一行正在问「确定删除？」
+  const [asking, setAsking] = useState<string | null>(null)
+  const remove = useRemove()
+  const router = useRouter()
+  const removeProject = (id: string) =>
+    remove.project.mutate(id, {
+      onSuccess: () => {
+        setAsking(null)
+        if (pathname.includes(id)) router.push(routes.home(locale))
+      },
+    })
+  const removeConversation = (id: string) =>
+    remove.conversation.mutate(id, {
+      onSuccess: () => {
+        setAsking(null)
+        if (pathname.includes(id)) router.push(routes.home(locale))
+      },
+    })
+  const [showPending, setShowPending] = useState(false)
+  const pointers = pendingPointers(pending.data ?? [], locale)
+  const isOpen = (key: string, fallback: boolean) => toggled[key] ?? fallback
+  const flip = (key: string, fallback: boolean) =>
+    setToggled({ ...toggled, [key]: !isOpen(key, fallback) })
+  const waitingIn = (projectId: string) =>
+    (pending.data ?? []).filter((each) => each.where.project?.id === projectId).length
 
   return (
     <aside
@@ -119,6 +197,7 @@ export function Sidebar() {
         {t('brand')}
       </Link>
 
+      {/* 三个标签就是新建入口：点哪个，中间出哪种对话框（0017）。不再有单独的「新建」钮 */}
       <nav
         aria-label={t('modes')}
         className="bg-muted grid grid-cols-3 gap-0.5 rounded-lg border p-0.5"
@@ -126,7 +205,7 @@ export function Sidebar() {
         {MODES.map((each) => (
           <Link
             key={each}
-            href={each === 'expert' ? routes.expert(locale) : routes.home(locale, each)}
+            href={routes.home(locale, each)}
             aria-current={mode === each ? 'true' : undefined}
             className={cn(
               'rounded-md py-1 text-center text-[13px]',
@@ -140,78 +219,242 @@ export function Sidebar() {
         ))}
       </nav>
 
-      <Link
-        href={routes.home(locale, mode)}
-        className={cn(row, 'bg-background justify-center border font-medium', rowLink)}
-      >
-        <PlusIcon className="size-3.5" />
-        {t('new')}
-      </Link>
-
-      {/* 中间这一段自己滚：项目和对话再多，底部的条目也一直看得见 */}
+      {/* 中间这一段自己滚：电脑 → 工作区 → 项目 → 对话 */}
       <div className="-mx-1 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-1">
-        <section aria-label={t('workspace')}>
-          <h2 className={cn(heading, 'flex items-center')}>
-            {t('workspace')}
-            <Link
-              href={routes.projects(locale)}
-              className="hover:text-foreground ml-auto font-normal underline-offset-3 hover:underline"
-            >
-              {t('allProjects')}
-            </Link>
-          </h2>
-          {allWorkspaces.length === 0 ? (
+        <section aria-label={t('computers')}>
+          <h2 className={heading}>{t('computers')}</h2>
+          {machines.isPending ? (
+            <p className="text-muted-foreground px-2 text-xs">{t('loading')}</p>
+          ) : tree.length === 0 ? (
             <p className="text-muted-foreground px-2 text-xs">
-              {workspaces.isPending ? t('loading') : t('noWorkspace')}
+              {t('computer.none')}{' '}
+              <Link href={routes.computer(locale)} className="underline underline-offset-3">
+                {t('computer.connect')}
+              </Link>
             </p>
           ) : (
-            <>
-              <Select
-                value={workspace ? workspaceKey(workspace) : null}
-                onValueChange={(key) => key && choose(String(key))}
-              >
-                <SelectTrigger
-                  size="sm"
-                  className="bg-background mb-1 w-full"
-                  aria-label={t('workspace')}
-                >
-                  <SelectValue>
-                    {workspace ? (
-                      <span className="truncate">
-                        {workspace.environment_name}
-                        <span className="text-muted-foreground"> · {workspace.root}</span>
-                      </span>
-                    ) : null}
-                  </SelectValue>
-                </SelectTrigger>
-                <SelectContent>
-                  {allWorkspaces.map((each) => (
-                    <SelectItem key={workspaceKey(each)} value={workspaceKey(each)}>
-                      {each.environment_name} · {each.root}
-                      {each.online ? '' : `（${t('offline')}）`}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <ul>
-                {projectsIn(allProjects, workspace).map((project) => (
-                  <li key={project.id}>
-                    <Destination
-                      href={isBuilt('project') ? routes.project(locale, project.id) : null}
-                      active={pathname.includes(project.id)}
+            <ul className="space-y-1">
+              {tree.map((machine) => (
+                <li key={machine.id} className={machine.status !== 'online' ? 'opacity-60' : ''}>
+                  <div className={cn(row, 'font-medium')}>
+                    <span
+                      className={cn(
+                        'size-2 shrink-0 rounded-full',
+                        machine.status === 'online' ? 'bg-green-600' : 'bg-amber-500',
+                      )}
+                      title={t(machine.status === 'online' ? 'machine.online' : 'machine.offline')}
+                    />
+                    <span className="truncate">{machine.name}</span>
+                    <Link
+                      href={routes.computer(locale)}
+                      className="text-muted-foreground hover:text-foreground ml-auto text-xs font-normal"
                     >
-                      <FolderIcon className="size-3.5 shrink-0" />
-                      <span className="truncate">{project.title}</span>
-                    </Destination>
-                  </li>
-                ))}
-                {projects.data && projectsIn(allProjects, workspace).length === 0 ? (
-                  <li className="text-muted-foreground px-2 py-1 text-xs">{t('noProjects')}</li>
-                ) : null}
-              </ul>
-            </>
+                      {t('computer.manage')}
+                    </Link>
+                  </div>
+                  {machine.workspaces.length === 0 ? (
+                    <p className="text-muted-foreground px-7 text-xs">{t('workspace.none')}</p>
+                  ) : (
+                    <ul>
+                      {machine.workspaces.map((workspace) => {
+                        const holdsCurrent = workspace.projects.some(
+                          (each) => each.project.id === currentProject?.id,
+                        )
+                        const open = isOpen(
+                          workspace.key,
+                          holdsCurrent || machine.workspaces.length === 1,
+                        )
+                        const name = workspace.root.split(/[\\/]/).pop() || workspace.root
+                        const listHref = `${routes.projects(locale)}?workspace=${encodeURIComponent(workspace.key)}`
+                        return (
+                          <li key={workspace.key}>
+                            <div className={cn(row, rowLink, 'pl-4')}>
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  flip(
+                                    workspace.key,
+                                    holdsCurrent || machine.workspaces.length === 1,
+                                  )
+                                }
+                                aria-expanded={open}
+                                title={workspace.root}
+                                className="flex min-w-0 flex-1 items-center gap-2 text-left"
+                              >
+                                <ChevronRightIcon
+                                  className={cn(
+                                    'text-muted-foreground size-3.5 shrink-0 transition-transform',
+                                    open && 'rotate-90',
+                                  )}
+                                />
+                                <span className="truncate">{name}</span>
+                              </button>
+                              <Link
+                                href={listHref}
+                                className="text-muted-foreground hover:text-foreground shrink-0 text-xs"
+                              >
+                                {t('workspace.all')}
+                              </Link>
+                              <Link
+                                href={`${listHref}&new=1`}
+                                aria-label={t('workspace.add', { name })}
+                                className="text-muted-foreground hover:text-foreground shrink-0"
+                              >
+                                <PlusIcon className="size-3.5" />
+                              </Link>
+                            </div>
+                            {open ? (
+                              <ul>
+                                {workspace.projects.length === 0 ? (
+                                  <li>
+                                    <Link
+                                      href={`${listHref}&new=1`}
+                                      className={cn(
+                                        row,
+                                        rowLink,
+                                        'text-muted-foreground pl-9 text-xs',
+                                      )}
+                                    >
+                                      <PlusIcon className="size-3 shrink-0" />
+                                      {t('project.new')}
+                                    </Link>
+                                  </li>
+                                ) : null}
+                                {workspace.projects.map(
+                                  ({ project, busy, conversations: talks }) => {
+                                    const expanded = isOpen(
+                                      project.id,
+                                      project.id === currentProject?.id,
+                                    )
+                                    const waitingHere = waitingIn(project.id)
+                                    return (
+                                      <li key={project.id}>
+                                        <div
+                                          className={cn(
+                                            row,
+                                            rowLink,
+                                            'group pl-9',
+                                            pathname.includes(project.id) && rowActive,
+                                          )}
+                                        >
+                                          <button
+                                            type="button"
+                                            aria-expanded={expanded}
+                                            aria-label={t('project.toggle', {
+                                              title: project.title,
+                                            })}
+                                            onClick={() =>
+                                              flip(project.id, project.id === currentProject?.id)
+                                            }
+                                            className="flex min-w-0 flex-1 items-center gap-2 text-left"
+                                          >
+                                            <FolderIcon className="size-3.5 shrink-0" />
+                                            <span className="truncate">{project.title}</span>
+                                          </button>
+                                          {busy ? (
+                                            <span
+                                              className="size-1.5 shrink-0 rounded-full bg-amber-500"
+                                              title={t('busy')}
+                                            />
+                                          ) : null}
+                                          {waitingHere > 0 ? (
+                                            <span className="bg-foreground text-background rounded-full px-1 text-[10px]">
+                                              {waitingHere}
+                                            </span>
+                                          ) : null}
+                                          <Link
+                                            href={`${routes.home(locale, mode === 'chat' ? 'work' : mode)}&project=${project.id}`}
+                                            aria-label={t('project.add', { title: project.title })}
+                                            className="text-muted-foreground hover:text-foreground shrink-0"
+                                          >
+                                            <PlusIcon className="size-3.5" />
+                                          </Link>
+                                          <RemoveControl
+                                            label={t('project.remove', { title: project.title })}
+                                            asking={asking === project.id}
+                                            busy={remove.project.isPending}
+                                            onAsk={() => setAsking(project.id)}
+                                            onCancel={() => setAsking(null)}
+                                            onConfirm={() => removeProject(project.id)}
+                                          />
+                                        </div>
+                                        {expanded ? (
+                                          <ul>
+                                            {talks.map((talk) => (
+                                              <li
+                                                key={talk.id}
+                                                className="group flex items-center pr-2"
+                                              >
+                                                <Destination
+                                                  href={talk.href}
+                                                  active={pathname.includes(talk.id)}
+                                                  className="min-w-0 flex-1 pl-14"
+                                                >
+                                                  <KindIcon
+                                                    kind={talk.kind}
+                                                    label={t(`mode.${talk.kind}`)}
+                                                  />
+                                                  <span className="truncate">
+                                                    {talk.title ?? t('untitled')}
+                                                  </span>
+                                                  {talk.busy ? (
+                                                    <span
+                                                      className="ml-auto size-1.5 shrink-0 rounded-full bg-amber-500"
+                                                      title={t('busy')}
+                                                    />
+                                                  ) : null}
+                                                </Destination>
+                                                <RemoveControl
+                                                  label={t('conversation.remove', {
+                                                    title: talk.title ?? t('untitled'),
+                                                  })}
+                                                  asking={asking === talk.id}
+                                                  busy={remove.conversation.isPending}
+                                                  onAsk={() => setAsking(talk.id)}
+                                                  onCancel={() => setAsking(null)}
+                                                  onConfirm={() => removeConversation(talk.id)}
+                                                />
+                                              </li>
+                                            ))}
+                                            {talks.length === 0 ? (
+                                              <li className="text-muted-foreground pl-14 text-xs">
+                                                {t('project.noTalks')}
+                                              </li>
+                                            ) : null}
+                                          </ul>
+                                        ) : null}
+                                      </li>
+                                    )
+                                  },
+                                )}
+                              </ul>
+                            ) : null}
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
           )}
         </section>
+
+        {loose.length > 0 ? (
+          <section aria-label={t('chats')}>
+            <h2 className={heading}>{t('chats')}</h2>
+            <ul>
+              {loose.map((talk) => (
+                <li key={talk.id}>
+                  <Destination href={talk.href} active={pathname.includes(talk.id)}>
+                    <KindIcon kind={talk.kind} label={t('mode.chat')} />
+                    <span className="truncate">{talk.title ?? t('untitled')}</span>
+                  </Destination>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
 
         <section aria-label={t('recent')}>
           <h2 className={heading}>{t('recent')}</h2>
@@ -219,12 +462,13 @@ export function Sidebar() {
             {recent(conversations.data ?? [], allProjects, locale).map((item) => (
               <li key={item.id}>
                 <Destination href={item.href} active={pathname.includes(item.id)}>
-                  {item.kind === 'chat' ? (
-                    <MessageSquareIcon className="size-3.5 shrink-0" aria-label={t('mode.chat')} />
-                  ) : (
-                    <WrenchIcon className="size-3.5 shrink-0" aria-label={t('mode.work')} />
-                  )}
+                  <KindIcon kind={item.kind} label={t(`mode.${item.kind}`)} />
                   <span className="truncate">{item.title ?? t('untitled')}</span>
+                  {item.project ? (
+                    <span className="text-muted-foreground ml-1 truncate text-xs">
+                      · {item.project}
+                    </span>
+                  ) : null}
                   {item.busy ? (
                     <span
                       className="ml-auto size-1.5 shrink-0 rounded-full bg-amber-500"
@@ -242,35 +486,65 @@ export function Sidebar() {
       </div>
 
       <nav aria-label={t('more')} className="shrink-0 border-t pt-3">
+        {showPending && pointers.length > 0 ? (
+          <ul
+            aria-label={t('pending.title')}
+            className="bg-background mx-1 mb-2 max-h-64 divide-y overflow-y-auto rounded-md border text-[13px]"
+          >
+            {pointers.map((item) => (
+              <li key={item.id}>
+                <Destination href={item.href} className="flex-col items-start gap-0.5 py-2">
+                  <span className="flex w-full items-center gap-2">
+                    <span className="truncate font-medium">{item.about}</span>
+                    {item.urgent ? (
+                      <span className="rounded bg-amber-100 px-1 text-[10px] text-amber-900 dark:bg-amber-900/40 dark:text-amber-200">
+                        {t('pending.urgent')}
+                      </span>
+                    ) : null}
+                    {item.minutesLeft !== null && item.urgent ? (
+                      <span className="text-muted-foreground ml-auto text-xs">
+                        {t('pending.minutes', { minutes: item.minutesLeft })}
+                      </span>
+                    ) : null}
+                  </span>
+                  <span className="text-muted-foreground truncate text-xs">
+                    {[item.project, item.conversation, item.step].filter(Boolean).join(' · ')}
+                  </span>
+                </Destination>
+              </li>
+            ))}
+          </ul>
+        ) : null}
         {FOOT.map((entry) => {
           const href = footHref(entry, locale)
+          if (entry.key === 'pending') {
+            return (
+              <button
+                key={entry.key}
+                type="button"
+                aria-expanded={showPending}
+                onClick={() => setShowPending(!showPending)}
+                className={cn(row, rowLink, 'w-full text-left')}
+              >
+                <span>{t(`foot.${entry.key}`)}</span>
+                {waiting > 0 ? (
+                  <span className="bg-foreground text-background ml-auto rounded-full px-1.5 text-xs">
+                    {waiting}
+                  </span>
+                ) : null}
+              </button>
+            )
+          }
           return (
             <Destination
               key={entry.key}
               href={href}
               active={href === pathname && entry.key !== 'pending'}
             >
-              {entry.key === 'machines' && machines.isSuccess ? (
-                <span
-                  className={cn(
-                    'size-2 shrink-0 rounded-full',
-                    light === 'online' && 'bg-green-600',
-                    light === 'offline' && 'bg-amber-500',
-                    light === 'none' && 'bg-muted-foreground/40',
-                  )}
-                  title={t(`machine.${light}`)}
-                />
-              ) : null}
               {entry.key === 'settings' ? <SettingsIcon className="size-3.5 shrink-0" /> : null}
               {entry.key === 'library' ? <BookOpenIcon className="size-3.5 shrink-0" /> : null}
-              <span>
-                {t(`foot.${entry.key}`)}
-                {entry.key === 'machines' && machines.isSuccess ? (
-                  <span className="text-muted-foreground block text-xs">
-                    {t(`machine.${light}`)}
-                  </span>
-                ) : null}
-              </span>
+              {entry.key === 'memory' ? <BrainIcon className="size-3.5 shrink-0" /> : null}
+              <span>{t(`foot.${entry.key}`)}</span>
               {entry.key === 'pending' && waiting > 0 ? (
                 <span className="bg-foreground text-background ml-auto rounded-full px-1.5 text-xs">
                   {waiting}

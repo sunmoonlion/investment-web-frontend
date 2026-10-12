@@ -1,62 +1,67 @@
 {
  "contract_version": 2,
- "tasks": [
+ "price": {
+  "model": "kimi-k3",
+  "priced": true,
+  "currency": "CNY",
+  "as_of": "2026-10-04",
+  "per_million": {
+   "input": "20",
+   "cached_input": "2",
+   "cache_write": "20",
+   "output": "100"
+  },
+  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
+  "estimated": true
+ },
+ "cost": "0.123212",
+ "tokens": {
+  "input": 370,
+  "cached_input": 18176,
+  "cache_write": 768,
+  "output": 641,
+  "total": 19955
+ },
+ "calls": 3,
+ "turns": [
   {
-   "id": "d019b7ea-d96e-594c-9d38-4274df134fd9",
-   "session_id": "3ad15f47-e433-5ab0-b668-72afa9b2fba6",
-   "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "tenant": "default",
-   "idempotency_key": "preview-cancelled-0001",
-   "request_digest": "f2b9bc12b80689d4bdecff0b24d3fa24b43da697569e1332dae6dfea9160ab88",
-   "profile_id": "FIN_REVIEW",
-   "profile_version": "1",
-   "expert_pack_version": "1",
-   "original_input": {
-    "input": {
-     "text": "招商银行 2023 到 2025 年的盈利能力怎么样？"
-    },
-    "attachments": [],
-    "client_context": {
-     "entry": "expert"
-    }
+   "turn_id": "turn-5429403124b7",
+   "calls": 1,
+   "cost": "0.037968",
+   "tokens": {
+    "input": 97,
+    "cached_input": 4864,
+    "cache_write": 0,
+    "output": 263,
+    "total": 5224
    },
-   "normalized_goal": null,
-   "thread_id": "thread-61184822f337",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "project_root": "/home/demo/research/招商银行",
-   "state": "CANCELLED",
-   "state_version": 20,
-   "workflow_version": "1",
-   "current_step": 2,
-   "acceptance_contract": {
-    "steps": [
-     "scope",
-     "profile",
-     "reconcile",
-     "extract",
-     "metrics",
-     "crosscheck",
-     "note"
-    ],
-    "pack_id": "FIN_REVIEW"
+   "at": "2026-10-11T17:39:49.827098+00:00"
+  },
+  {
+   "turn_id": "turn-a650f0525114",
+   "calls": 1,
+   "cost": "0.045708",
+   "tokens": {
+    "input": 133,
+    "cached_input": 4864,
+    "cache_write": 256,
+    "output": 282,
+    "total": 5535
    },
-   "execution_policy": {},
-   "budget": {
-    "used": "0.150000",
-    "limit": null,
-    "currency": "CNY",
-    "reserved": "0"
+   "at": "2026-10-11T17:39:49.924208+00:00"
+  },
+  {
+   "turn_id": "turn-df402cb4e1f7",
+   "calls": 1,
+   "cost": "0.039536",
+   "tokens": {
+    "input": 140,
+    "cached_input": 8448,
+    "cache_write": 512,
+    "output": 96,
+    "total": 9196
    },
-   "active_attempt_id": null,
-   "terminal_result_ref": null,
-   "waiting_reason": null,
-   "active_interaction_id": null,
-   "rejection": null,
-   "cancel_requested_at": "2026-10-07T04:58:29.686787+00:00",
-   "cancel_requested_by": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-   "created_at": "2026-10-07T04:58:29.272124+00:00",
-   "updated_at": "2026-10-07T04:58:29.686157+00:00",
-   "project_id": "5acd21f7-5aec-5da2-a689-3ed150887faa"
+   "at": "2026-10-11T17:39:49.996888+00:00"
   }
  ]
 }

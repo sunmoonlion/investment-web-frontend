@@ -24,6 +24,28 @@ export type Approval = {
   reason: string
   state: 'pending' | 'answered' | 'expired'
   decision: string | null
+  // 后端给的按钮；没有就用默认的两个
+  options: { id: string; label: string }[]
+  // 顾问驾驶时：属于哪一步、之后哪些步骤依赖它、同一步里是不是刚拒绝过
+  step: { index: number; title: string } | null
+  dependents: { step_id: string; title: string }[]
+  afterDecline: boolean
+}
+
+// Codex 反过来问用户：一到三个问题，每题可选可答（approval.md「澄清，不是审批」）
+export type Question = {
+  id: string
+  token: string
+  title: string
+  questions: {
+    id: string
+    header: string
+    question: string
+    options: { label: string; description: string }[]
+    is_other: boolean
+    is_secret: boolean
+  }[]
+  state: 'pending' | 'answered' | 'expired'
 }
 
 export type Entry =
@@ -38,6 +60,9 @@ export type Entry =
     }
   | { kind: 'change'; key: string; step: ChangeStep }
   | { kind: 'approval'; key: string; approval: Approval }
+  | { kind: 'question'; key: string; question: Question }
+  // 策略替用户答的：放行折叠一行，拒绝说明「顾问想做 X，按专家包规则拒绝了」
+  | { kind: 'policy'; key: string; decision: 'accept' | 'decline'; command: string; source: string }
   | { kind: 'missing'; key: string; code: string; dataset: string | null }
   // 交给专家之后、交回之前：专家做的事不进这条时间线（它有自己的步骤进度）
   | { kind: 'handover'; key: string; what: 'given' | 'returned' }
@@ -150,19 +175,61 @@ export function timeline(events: readonly ConversationEvent[]): Timeline {
         break
       }
       case 'interaction/opened': {
+        const prompt = (payload.prompt ?? {}) as Item
+        const subject = (payload.subject ?? prompt.subject ?? {}) as Item
+        if (payload.kind === 'question') {
+          entries.push({
+            kind: 'question',
+            key: `question:${text(payload.interaction_id)}`,
+            question: {
+              id: text(payload.interaction_id),
+              token: text(payload.token),
+              title: text(prompt.title),
+              questions: Array.isArray(subject.questions)
+                ? (subject.questions as Item[]).map((q) => ({
+                    id: text(q.id),
+                    header: text(q.header),
+                    question: text(q.question),
+                    options: Array.isArray(q.options)
+                      ? (q.options as Item[]).map((o) => ({
+                          label: text(o.label),
+                          description: text(o.description),
+                        }))
+                      : [],
+                    is_other: q.is_other !== false,
+                    is_secret: q.is_secret === true,
+                  }))
+                : [],
+              state: 'pending',
+            },
+          })
+          live = 'approval'
+          break
+        }
         if (payload.kind !== 'tool_approval') break
-        const subject = (payload.subject ?? {}) as Item
+        const step = (subject.step ?? null) as Item | null
         entries.push({
           kind: 'approval',
           key: `approval:${text(payload.interaction_id)}`,
           approval: {
             id: text(payload.interaction_id),
             token: text(payload.token),
-            command: text(subject.command),
+            command: text(subject.command) || text(subject.category),
             cwd: text(subject.cwd),
             reason: text(subject.reason),
             state: 'pending',
             decision: null,
+            options: Array.isArray(prompt.options)
+              ? (prompt.options as Item[]).map((o) => ({ id: text(o.id), label: text(o.label) }))
+              : [],
+            step: step ? { index: Number(step.index ?? 0), title: text(step.title) } : null,
+            dependents: Array.isArray(subject.dependents)
+              ? (subject.dependents as Item[]).map((d) => ({
+                  step_id: text(d.step_id),
+                  title: text(d.title),
+                }))
+              : [],
+            afterDecline: subject.after_decline === true,
           },
         })
         live = 'approval'
@@ -170,16 +237,32 @@ export function timeline(events: readonly ConversationEvent[]): Timeline {
       }
       case 'interaction/consumed':
       case 'interaction/expired': {
+        const state = event.type === 'interaction/expired' ? 'expired' : 'answered'
         const found = entries.find(
           (entry) =>
-            entry.kind === 'approval' && entry.approval.id === text(payload.interaction_id),
+            (entry.kind === 'approval' && entry.approval.id === text(payload.interaction_id)) ||
+            (entry.kind === 'question' && entry.question.id === text(payload.interaction_id)),
         )
         if (found?.kind === 'approval') {
-          found.approval.state = event.type === 'interaction/expired' ? 'expired' : 'answered'
+          found.approval.state = state
           found.approval.decision =
             text(((payload.response ?? {}) as Item).decision) || found.approval.decision
           if (live === 'approval') live = 'thinking'
+        } else if (found?.kind === 'question') {
+          found.question.state = state
+          if (live === 'approval') live = 'thinking'
         }
+        break
+      }
+      case 'approval/policy': {
+        const subject = (payload.subject ?? {}) as Item
+        entries.push({
+          kind: 'policy',
+          key: `policy:${event.cursor}`,
+          decision: payload.decision === 'decline' ? 'decline' : 'accept',
+          command: text(subject.command) || text(subject.category),
+          source: text(payload.source),
+        })
         break
       }
       case 'wheel/handover':

@@ -24,8 +24,7 @@ import { useProjects } from '@/lib/workbench/queries'
 import { isBuilt, routes } from '@/lib/workbench/routes'
 
 import { byFile, timeline } from '../model/timeline'
-import { ChangesPanel } from './changes-panel'
-import { WorkResults } from './results'
+import { WorkSidePanel } from './side-panel'
 import { TimelineEntry } from './entries'
 
 // 工作页：看它干活，随时插话，要紧的事由你点头。
@@ -122,11 +121,20 @@ export function WorkScreen({
                         directory={directory}
                         waiting={waiting.data ?? []}
                         answering={act.answer.isPending}
-                        onAnswer={(approval, decision) =>
+                        onAnswer={(approval, answer) =>
                           act.answer.mutate({
                             pending: approval.id,
                             token: approval.token,
-                            decision,
+                            decision: answer.decision,
+                            answer: answer.answer,
+                          })
+                        }
+                        onQuestion={(answer) =>
+                          act.answer.mutate({
+                            pending: answer.id,
+                            token: answer.token,
+                            decision: answer.decision,
+                            answer: answer.answer,
                           })
                         }
                       />
@@ -163,9 +171,7 @@ export function WorkScreen({
             </Button>
           </Composer>
         </div>
-        <WorkResults line={line} live={state === 'live'}>
-          <ChangesPanel files={byFile(line.changes)} directory={directory} />
-        </WorkResults>
+        <WorkSidePanel files={byFile(line.changes)} directory={directory} live={state === 'live'} />
       </div>
     </div>
   )

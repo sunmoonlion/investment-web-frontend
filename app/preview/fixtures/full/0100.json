@@ -1,119 +1,20 @@
 {
- "contract_version": 2,
- "price": {
-  "model": "kimi-k3",
-  "priced": true,
-  "currency": "CNY",
-  "as_of": "2026-10-04",
-  "per_million": {
-   "input": "20",
-   "cached_input": "2",
-   "cache_write": "20",
-   "output": "100"
-  },
-  "source": "https://platform.kimi.com/docs/pricing/chat-k3",
-  "estimated": true
+ "session": {
+  "id": "9f4186ca-406e-57ec-bafb-f6fab531ad14",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "sandbox_id": "81108b8f-3022-5de7-860c-36662e2db6fb",
+  "project_root": "/home/demo/research/五粮液",
+  "thread_id": "thread-97da49b71193",
+  "wheel": "advisor",
+  "state_version": 1,
+  "active_task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+  "thread_settings": {},
+  "created_at": "2026-10-11T17:39:47.221681+00:00",
+  "last_active_at": "2026-10-11T17:39:47.256342+00:00",
+  "kind": "expert",
+  "project_id": "b76b252a-dd57-5c80-90af-4a9823df06b0",
+  "title": "五粮液近五年的毛利率分别是多少？"
  },
- "cost": "0.350000",
- "tokens": {
-  "input": 14000,
-  "cached_input": 0,
-  "cache_write": 0,
-  "output": 700,
-  "total": 14700
- },
- "calls": 7,
- "turns": [
-  {
-   "turn_id": "turn-7b37b8540901",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-07T04:58:26.196629+00:00"
-  },
-  {
-   "turn_id": "turn-e4cd31b044bc",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-07T04:58:26.310354+00:00"
-  },
-  {
-   "turn_id": "turn-df61d8959894",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-07T04:58:26.473558+00:00"
-  },
-  {
-   "turn_id": "turn-b503a9082c67",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-07T04:58:26.567123+00:00"
-  },
-  {
-   "turn_id": "turn-392b0266f667",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-07T04:58:26.676985+00:00"
-  },
-  {
-   "turn_id": "turn-b938cfb472c6",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-07T04:58:26.814327+00:00"
-  },
-  {
-   "turn_id": "turn-30c57ce00047",
-   "calls": 1,
-   "cost": "0.050000",
-   "tokens": {
-    "input": 2000,
-    "cached_input": 0,
-    "cache_write": 0,
-    "output": 100,
-    "total": 2100
-   },
-   "at": "2026-10-07T04:58:26.898809+00:00"
-  }
- ]
+ "pending_interactions": []
 }

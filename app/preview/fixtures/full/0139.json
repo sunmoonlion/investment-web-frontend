@@ -1,0 +1,455 @@
+{
+ "task": {
+  "id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+  "session_id": "dd790e56-724e-5e57-9294-bae977583372",
+  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
+  "tenant": "default",
+  "idempotency_key": "preview-failed-0001",
+  "request_digest": "4407fdc8db531f1e1a7d217d51e7b4e290b2946dc221bc5a566538b199c98b13",
+  "profile_id": "FIN_REVIEW",
+  "profile_version": "1",
+  "expert_pack_version": "1",
+  "original_input": {
+   "input": {
+    "text": "比亚迪 2023 到 2025 年的盈利能力怎么样？"
+   },
+   "attachments": [],
+   "client_context": {
+    "entry": "expert"
+   }
+  },
+  "normalized_goal": null,
+  "thread_id": "thread-9f0900dfdfe1",
+  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+  "project_root": "/home/demo/research/比亚迪",
+  "state": "FAILED",
+  "state_version": 35,
+  "workflow_version": "1",
+  "current_step": 5,
+  "acceptance_contract": {
+   "steps": [
+    "scope",
+    "profile",
+    "reconcile",
+    "extract",
+    "metrics",
+    "crosscheck",
+    "note"
+   ],
+   "pack_id": "FIN_REVIEW"
+  },
+  "execution_policy": {},
+  "budget": {
+   "used": "0.300000",
+   "limit": null,
+   "currency": "CNY",
+   "reserved": "0"
+  },
+  "active_attempt_id": null,
+  "terminal_result_ref": null,
+  "waiting_reason": null,
+  "active_interaction_id": null,
+  "rejection": null,
+  "cancel_requested_at": null,
+  "cancel_requested_by": null,
+  "created_at": "2026-10-11T17:39:48.659591+00:00",
+  "updated_at": "2026-10-11T17:39:49.308489+00:00",
+  "project_id": "06944124-075a-504f-b4f3-275ef032eb9c"
+ },
+ "attempts": [
+  {
+   "id": "66128326-530f-506f-a45a-f90c3772a39e",
+   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "session_id": "dd790e56-724e-5e57-9294-bae977583372",
+   "thread_id": "thread-9f0900dfdfe1",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "scope",
+   "step_version": "1",
+   "input_artifact_versions": [],
+   "turn_ids": [
+    "turn-8388ce1306cf"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "3eb45f19-8fd8-5e88-a00a-b9703bf1117e",
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-11T17:39:48.767823+00:00",
+   "ended_at": "2026-10-11T17:39:48.776922+00:00",
+   "created_at": "2026-10-11T17:39:48.714788+00:00",
+   "updated_at": "2026-10-11T17:39:48.773212+00:00"
+  },
+  {
+   "id": "36221d3b-710c-54fc-998d-74cf53216154",
+   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "session_id": "dd790e56-724e-5e57-9294-bae977583372",
+   "thread_id": "thread-9f0900dfdfe1",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "profile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-801cf4bbfb48"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "dac372b8-6a6e-5e0c-b2d7-edf005f18e11",
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-11T17:39:48.863693+00:00",
+   "ended_at": "2026-10-11T17:39:48.872004+00:00",
+   "created_at": "2026-10-11T17:39:48.793696+00:00",
+   "updated_at": "2026-10-11T17:39:48.868445+00:00"
+  },
+  {
+   "id": "de62814a-97c2-524a-8690-06dc3afbcc01",
+   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "session_id": "dd790e56-724e-5e57-9294-bae977583372",
+   "thread_id": "thread-9f0900dfdfe1",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "reconcile",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-8a28414135f6"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "80947c1a-203d-52ec-bcd9-6bd473cdc1dd",
+     "name": "reconcile",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-11T17:39:48.986183+00:00",
+   "ended_at": "2026-10-11T17:39:48.995047+00:00",
+   "created_at": "2026-10-11T17:39:48.888522+00:00",
+   "updated_at": "2026-10-11T17:39:48.991272+00:00"
+  },
+  {
+   "id": "306c98d8-578b-514a-a84c-5c458e22eb8f",
+   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "session_id": "dd790e56-724e-5e57-9294-bae977583372",
+   "thread_id": "thread-9f0900dfdfe1",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "extract",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-26d503870a90"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "890f5a28-b926-5fc1-abf4-8928b05d4a14",
+     "name": "facts",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-11T17:39:49.076801+00:00",
+   "ended_at": "2026-10-11T17:39:49.090395+00:00",
+   "created_at": "2026-10-11T17:39:49.012338+00:00",
+   "updated_at": "2026-10-11T17:39:49.082914+00:00"
+  },
+  {
+   "id": "e7aa25d9-011f-52d6-b5c9-2eac3c9b8e46",
+   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "session_id": "dd790e56-724e-5e57-9294-bae977583372",
+   "thread_id": "thread-9f0900dfdfe1",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "metrics",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    },
+    {
+     "name": "facts",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-9d6103b99dc9"
+   ],
+   "status": "COMPLETED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": null,
+   "retryable": null,
+   "output_artifacts": [
+    {
+     "id": "7d757572-3f84-5f77-ad81-0db8a7c7f66a",
+     "name": "metrics",
+     "version": 1
+    }
+   ],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-11T17:39:49.171542+00:00",
+   "ended_at": "2026-10-11T17:39:49.180258+00:00",
+   "created_at": "2026-10-11T17:39:49.107536+00:00",
+   "updated_at": "2026-10-11T17:39:49.176318+00:00"
+  },
+  {
+   "id": "d33a9724-92bf-5c13-8cee-4641094f0a13",
+   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "session_id": "dd790e56-724e-5e57-9294-bae977583372",
+   "thread_id": "thread-9f0900dfdfe1",
+   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
+   "role": "execute",
+   "arm": 0,
+   "step_id": "crosscheck",
+   "step_version": "1",
+   "input_artifact_versions": [
+    {
+     "name": "scope",
+     "version": 1
+    },
+    {
+     "name": "profile",
+     "version": 1
+    },
+    {
+     "name": "facts",
+     "version": 1
+    }
+   ],
+   "turn_ids": [
+    "turn-c181cdee4601"
+   ],
+   "status": "FAILED",
+   "codex_version": null,
+   "agent_version": null,
+   "model": null,
+   "model_provider": null,
+   "budget_allocated": {
+    "amount": "0.05"
+   },
+   "budget_consumed": {
+    "amount": "0.050000",
+    "tokens": {
+     "input": 2000,
+     "total": 2100,
+     "output": 100,
+     "cache_write": 0,
+     "cached_input": 0
+    }
+   },
+   "failure_code": "acceptance",
+   "retryable": true,
+   "output_artifacts": [],
+   "refs": {
+    "reworks": 0
+   },
+   "started_at": "2026-10-11T17:39:49.253261+00:00",
+   "ended_at": "2026-10-11T17:39:49.260455+00:00",
+   "created_at": "2026-10-11T17:39:49.196255+00:00",
+   "updated_at": "2026-10-11T17:39:49.258439+00:00"
+  }
+ ],
+ "artifacts": [
+  {
+   "id": "890f5a28-b926-5fc1-abf4-8928b05d4a14",
+   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "attempt_id": "306c98d8-578b-514a-a84c-5c458e22eb8f",
+   "name": "facts",
+   "version": 1,
+   "kind": "step",
+   "digest": "9e4a7193b04518066d8050663eaad6986132456e791929e903824202858dccc4",
+   "workspace_path": null,
+   "created_at": "2026-10-11T17:39:49.082914+00:00"
+  },
+  {
+   "id": "7d757572-3f84-5f77-ad81-0db8a7c7f66a",
+   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "attempt_id": "e7aa25d9-011f-52d6-b5c9-2eac3c9b8e46",
+   "name": "metrics",
+   "version": 1,
+   "kind": "step",
+   "digest": "2574161f44275fcd93a083532e90e9117540eef0bcd165848c299c29e7e22efa",
+   "workspace_path": null,
+   "created_at": "2026-10-11T17:39:49.176318+00:00"
+  },
+  {
+   "id": "dac372b8-6a6e-5e0c-b2d7-edf005f18e11",
+   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "attempt_id": "36221d3b-710c-54fc-998d-74cf53216154",
+   "name": "profile",
+   "version": 1,
+   "kind": "step",
+   "digest": "9b7a6af0cd2ce8a97c11675c41e5195c82f7f6a24b02154fb9f738d4f9c95acd",
+   "workspace_path": null,
+   "created_at": "2026-10-11T17:39:48.868445+00:00"
+  },
+  {
+   "id": "80947c1a-203d-52ec-bcd9-6bd473cdc1dd",
+   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "attempt_id": "de62814a-97c2-524a-8690-06dc3afbcc01",
+   "name": "reconcile",
+   "version": 1,
+   "kind": "step",
+   "digest": "e496230c49a9c974ca4d7c66ed95575578c665a757a3584c48db56ad19c82852",
+   "workspace_path": null,
+   "created_at": "2026-10-11T17:39:48.991272+00:00"
+  },
+  {
+   "id": "3eb45f19-8fd8-5e88-a00a-b9703bf1117e",
+   "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+   "attempt_id": "66128326-530f-506f-a45a-f90c3772a39e",
+   "name": "scope",
+   "version": 1,
+   "kind": "step",
+   "digest": "77c8d58109e6f20d2cdbf7bcc943c4ec479b7b6a72a468604d0fbfbeff0b5b22",
+   "workspace_path": null,
+   "created_at": "2026-10-11T17:39:48.773212+00:00"
+  }
+ ]
+}

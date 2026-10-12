@@ -1,32 +1,27 @@
 {
  "contract_version": 2,
- "task_id": "70e43539-fc2b-5bde-a0c6-9e9ceea16ac1",
+ "task_id": "990f81f4-f185-51e0-b9b0-527b7d3b9294",
  "step": {
-  "index": 4,
-  "step_id": "normalize",
-  "title": "整理结果",
-  "summary": "统一单位、币种、期间的写法，标出缺的值",
-  "why": "单位、币种、期间的写法统一之后才好比较。缺的值标出来，不补、不估。",
-  "uses": [
-   {
-    "artifact": "rewritten",
-    "step": 1,
-    "title": "改写问题"
-   },
-   {
-    "artifact": "rows",
-    "step": 3,
-    "title": "执行 SQL"
-   }
-  ],
+  "index": 1,
+  "step_id": "scope",
+  "title": "定范围",
+  "summary": "认出公司、期间、报告类型",
+  "why": "先把问的是哪家公司、哪几年、哪种报告认准。认错了，后面每一步都白做。",
+  "uses": [],
   "tools": [],
-  "returns": "table",
+  "returns": "scope",
   "checks": [
    {
     "label": "交回的格式对"
    },
    {
-    "label": "有整理后的表"
+    "label": "有证券代码、期间、报告类型"
+   },
+   {
+    "label": "认得出是哪家公司"
+   },
+   {
+    "label": "期间不是空的"
    }
   ],
   "after_rejection": {
@@ -37,11 +32,75 @@
    "text": "重做，最多 1 次；仍不过，停下来问你"
   },
   "reserve": "0.05",
-  "status": "pending",
-  "attempts": [],
-  "times": 0,
+  "status": "accepted",
+  "attempts": [
+   {
+    "attempt_id": "844787e2-31bc-50cd-808e-dc440c0ead4f",
+    "n": 1,
+    "outcome": "accepted",
+    "failure": null,
+    "spent": "0.05",
+    "started_at": "2026-10-11T17:39:47.581575Z",
+    "ended_at": "2026-10-11T17:39:47.592323Z",
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有证券代码、期间、报告类型",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "认得出是哪家公司",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "期间不是空的",
+      "pass": true,
+      "message": ""
+     }
+    ],
+    "tools": {},
+    "returned": {
+     "artifact": "scope",
+     "version": 1,
+     "content": {
+      "aspects": [
+       "盈利能力"
+      ],
+      "company": "宁德时代",
+      "periods": [
+       "2023",
+       "2024",
+       "2025"
+      ],
+      "question": "宁德时代 2023 到 2025 年的盈利能力怎么样？",
+      "assumptions": [],
+      "report_types": [
+       "年报"
+      ],
+      "security_code": "300750"
+     },
+     "labels": {
+      "aspects": "关注的方面",
+      "company": "公司",
+      "periods": "期间",
+      "question": "问题",
+      "assumptions": "假设",
+      "report_types": "报告类型",
+      "security_code": "证券代码"
+     }
+    },
+    "process": []
+   }
+  ],
+  "times": 1,
   "rejected": 0,
-  "spent": "0.00",
+  "spent": "0.05",
   "data": null
  }
 }

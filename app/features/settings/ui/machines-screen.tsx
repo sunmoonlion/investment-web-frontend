@@ -3,7 +3,8 @@
 import { CheckIcon, CircleIcon } from 'lucide-react'
 import { useMutation } from '@tanstack/react-query'
 import { useFormatter, useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { useEffect, useRef, useState } from 'react'
 
 import { useWorkbench } from '@/lib/workbench/context'
 import { WorkbenchError } from '@/lib/workbench/http'
@@ -42,9 +43,15 @@ export function MachinesScreen({ embedded = false }: { embedded?: boolean }) {
             {steps.map((step, index) => (
               <li key={step.key} className="flex items-start gap-3 px-4 py-3 text-sm">
                 {done[step.key] ? (
-                  <CheckIcon className="mt-0.5 size-4 shrink-0 text-green-700" aria-label={t('guide.done')} />
+                  <CheckIcon
+                    className="mt-0.5 size-4 shrink-0 text-green-700"
+                    aria-label={t('guide.done')}
+                  />
                 ) : (
-                  <CircleIcon className="text-muted-foreground mt-0.5 size-4 shrink-0" aria-label={t('guide.todo')} />
+                  <CircleIcon
+                    className="text-muted-foreground mt-0.5 size-4 shrink-0"
+                    aria-label={t('guide.todo')}
+                  />
                 )}
                 <a href={`#${step.target}`} className="underline underline-offset-3">
                   {index + 1}. {t(`guide.${step.key}`)}
@@ -56,9 +63,15 @@ export function MachinesScreen({ embedded = false }: { embedded?: boolean }) {
         <section id="computer-status" className="rounded-xl border p-5">
           <h3 className="text-base font-semibold">{t('current')}</h3>
           {machines.isSuccess && current ? (
-            <p className="mt-1 text-sm">
-              {current.name} · {isOnline(current) ? t('online') : t('offline')}
-            </p>
+            <>
+              <p className="mt-1 text-sm">
+                {current.name} · {isOnline(current) ? t('online') : t('offline')}
+              </p>
+              {/* 账号跟着人走、代理跟着电脑走；网页看不出自己在哪台电脑上（所有者 2026-10-12 定甲） */}
+              <p className="text-muted-foreground mt-2 text-sm">
+                {t('elsewhere', { name: current.name })}
+              </p>
+            </>
           ) : null}
           {machines.isSuccess && !current ? (
             <p className="text-muted-foreground mt-1 text-sm">{t('none')}</p>
@@ -68,7 +81,9 @@ export function MachinesScreen({ embedded = false }: { embedded?: boolean }) {
         <ConnectComputer csrfToken={csrfToken} />
         <MachineList />
         <details id="agent-advanced" className="rounded-xl border p-5">
-          <summary className="cursor-pointer text-base font-semibold">{t('advanced.title')}</summary>
+          <summary className="cursor-pointer text-base font-semibold">
+            {t('advanced.title')}
+          </summary>
           <div className="mt-3 space-y-4">
             <AgentZipFallback />
             <ReconnectComputer csrfToken={csrfToken} />
@@ -84,7 +99,11 @@ export function MachinesScreen({ embedded = false }: { embedded?: boolean }) {
 function ConnectComputer({ csrfToken }: { csrfToken: string }) {
   const t = useTranslations('machines.connect')
   const s = useTranslations('machines.setup')
-  const [code, setCode] = useState('')
+  const params = useSearchParams()
+  // 本机代理打开的地址带着码（0012 §4，2026-10-12）：自动填、自动核对，用户只看机器名点允许。
+  const prefilled = formatPairingCode(params.get('code') ?? '')
+  const [code, setCode] = useState(() => (pairingCodeComplete(prefilled) ? prefilled : ''))
+  const [auto, setAuto] = useState(() => pairingCodeComplete(prefilled))
   const [found, setFound] = useState<PairingLookup | null>(null)
   const [message, setMessage] = useState<string | null>(null)
   const fail = (error: unknown) => {
@@ -92,15 +111,31 @@ function ConnectComputer({ csrfToken }: { csrfToken: string }) {
     setMessage(error instanceof WorkbenchError && error.status === 429 ? s('tooFast') : t('wrong'))
   }
   const lookup = useMutation({
-    mutationFn: () => lookupPairing(csrfToken, code),
+    mutationFn: (value: string) => lookupPairing(csrfToken, value),
     onMutate: () => setMessage(null),
     onSuccess: (result) => setFound(result),
     onError: fail,
   })
+  const lookupNow = lookup.mutate
+  const started = useRef(false)
+  useEffect(() => {
+    if (started.current || !pairingCodeComplete(prefilled)) return
+    started.current = true
+    lookupNow(prefilled)
+    document.getElementById('agent-connect')?.scrollIntoView?.({ block: 'start' })
+  }, [prefilled, lookupNow])
+  // 决定之后把地址里的码去掉：刷新不再重复核对，历史里也不留着。
+  const decided = () => {
+    setFound(null)
+    if (auto && typeof window !== 'undefined') {
+      window.history.replaceState(null, '', `${window.location.pathname}#computer`)
+    }
+    setAuto(false)
+  }
   const approve = useMutation({
     mutationFn: () => approvePairing(csrfToken, found!.id, code),
     onSuccess: (result) => {
-      setFound(null)
+      decided()
       setMessage(t('approved', { name: result.machine_name ?? '' }))
     },
     onError: fail,
@@ -108,7 +143,7 @@ function ConnectComputer({ csrfToken }: { csrfToken: string }) {
   const deny = useMutation({
     mutationFn: () => denyPairing(csrfToken, found!.id),
     onSuccess: () => {
-      setFound(null)
+      decided()
       setMessage(t('denied'))
     },
     onError: fail,
@@ -116,6 +151,9 @@ function ConnectComputer({ csrfToken }: { csrfToken: string }) {
   return (
     <section id="agent-connect" className="space-y-3 rounded-xl border p-5" aria-label={t('title')}>
       <h3 className="text-base font-semibold">{t('title')}</h3>
+      {auto && (found || lookup.isPending) ? (
+        <p className="text-sm font-medium">{t('prefilled')}</p>
+      ) : null}
       <label className="block text-sm">
         {t('code')}
         <input
@@ -135,7 +173,7 @@ function ConnectComputer({ csrfToken }: { csrfToken: string }) {
         type="button"
         className="rounded-lg border px-3 py-2 text-sm disabled:opacity-50"
         disabled={!pairingCodeComplete(code) || lookup.isPending}
-        onClick={() => lookup.mutate()}
+        onClick={() => lookup.mutate(code)}
       >
         {t('lookup')}
       </button>
@@ -146,12 +184,22 @@ function ConnectComputer({ csrfToken }: { csrfToken: string }) {
           <p>{found.agent_version}</p>
           <p>{found.source_ip ?? t('unknownSource')}</p>
           <p>{t('ago', { seconds: found.requested_seconds_ago })}</p>
-          {found.replaces_machine ? <p className="font-semibold">{t('replace', { name: found.replaces_machine })}</p> : null}
+          {found.replaces_machine ? (
+            <p className="font-semibold">{t('replace', { name: found.replaces_machine })}</p>
+          ) : null}
           <div className="flex gap-2">
-            <button type="button" className="bg-primary text-primary-foreground rounded-lg px-3 py-1.5 text-sm" onClick={() => approve.mutate()}>
+            <button
+              type="button"
+              className="bg-primary text-primary-foreground rounded-lg px-3 py-1.5 text-sm"
+              onClick={() => approve.mutate()}
+            >
               {t('allow')}
             </button>
-            <button type="button" className="rounded-lg border px-3 py-1.5 text-sm" onClick={() => deny.mutate()}>
+            <button
+              type="button"
+              className="rounded-lg border px-3 py-1.5 text-sm"
+              onClick={() => deny.mutate()}
+            >
               {t('deny')}
             </button>
           </div>
@@ -189,7 +237,9 @@ function MachineList() {
           return (
             <article key={machine.id} className="space-y-3 rounded-xl border p-5">
               <header className="flex items-center gap-2">
-                <span className={cn('size-2 rounded-full', online ? 'bg-green-600' : 'bg-amber-500')} />
+                <span
+                  className={cn('size-2 rounded-full', online ? 'bg-green-600' : 'bg-amber-500')}
+                />
                 <h3 className="text-base font-semibold">{machine.name}</h3>
                 <span className={cn('text-sm', online ? label : 'text-amber-700')}>
                   {online ? t('online') : t('offline')}
@@ -204,7 +254,10 @@ function MachineList() {
                 <dt className={label}>{t('lastSeen')}</dt>
                 <dd>
                   {machine.last_seen_at
-                    ? format.dateTime(new Date(machine.last_seen_at), { dateStyle: 'medium', timeStyle: 'short' })
+                    ? format.dateTime(new Date(machine.last_seen_at), {
+                        dateStyle: 'medium',
+                        timeStyle: 'short',
+                      })
                     : t('unknown')}
                 </dd>
                 <dt className={label}>{t('roots')}</dt>
@@ -221,7 +274,9 @@ function MachineList() {
                 </dd>
                 <dt className={label}>{t('ceiling.title')}</dt>
                 <dd>
-                  {mode && t.has(`ceiling.sandbox.${mode}`) ? t(`ceiling.sandbox.${mode}`) : (mode ?? t('unknown'))}
+                  {mode && t.has(`ceiling.sandbox.${mode}`)
+                    ? t(`ceiling.sandbox.${mode}`)
+                    : (mode ?? t('unknown'))}
                   {'；'}
                   {machine.ceiling?.network ? t('ceiling.networkOn') : t('ceiling.networkOff')}
                 </dd>

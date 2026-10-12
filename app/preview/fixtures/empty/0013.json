@@ -1,14 +1,5 @@
 {
- "type": "urn:sunmoonai:problem:no_sandbox",
- "title": "no sandbox yet; register a model key and start one",
- "status": 409,
- "detail": "no sandbox yet; register a model key and start one",
- "instance": "/api/workbench/sessions",
- "code": "no_sandbox",
- "operation_id": "operation-unavailable",
- "error": {
-  "code": "no_sandbox",
-  "message": "no sandbox yet; register a model key and start one",
-  "operation_id": "operation-unavailable"
- }
+ "contract_version": 2,
+ "status": "absent",
+ "ready": false
 }

@@ -1,171 +1,341 @@
 {
- "task": {
-  "id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
-  "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
-  "owner_actor_id": "32acccbe-ed1a-57c5-9d32-d928a7337e57",
-  "tenant": "default",
-  "idempotency_key": "preview-no-data-0001",
-  "request_digest": "1da9e7f5d147b73e42f42d64458c965c300cedb033e563c929195beb9a257aca",
-  "profile_id": "FIN_REVIEW",
-  "profile_version": "1",
-  "expert_pack_version": "1",
-  "original_input": {
-   "input": {
-    "text": "片仔癀 2023 到 2025 年的盈利能力怎么样？"
+ "contract_version": 2,
+ "task_id": "6f6344cd-9eb1-5bb5-ac3e-2f10f7be7032",
+ "step": {
+  "index": 5,
+  "step_id": "metrics",
+  "title": "算指标",
+  "summary": "按数据集里登记的口径算指标；分母不成立或口径不同的，标为不适用",
+  "why": "指标按数据集里登记的口径算，不临时发明算法。分母不成立的标「不适用」，不硬算。",
+  "uses": [
+   {
+    "artifact": "scope",
+    "step": 1,
+    "title": "定范围"
    },
-   "attachments": [],
-   "client_context": {
-    "entry": "expert"
+   {
+    "artifact": "profile",
+    "step": 2,
+    "title": "数据摸底"
+   },
+   {
+    "artifact": "facts",
+    "step": 4,
+    "title": "取数"
    }
+  ],
+  "tools": [
+   "metric_definitions",
+   "query_metric",
+   "run_sql"
+  ],
+  "returns": "metrics",
+  "checks": [
+   {
+    "label": "交回的格式对"
+   },
+   {
+    "label": "有指标表和数据版本"
+   },
+   {
+    "label": "指标表不是空的"
+   }
+  ],
+  "after_rejection": {
+   "reworks": 2,
+   "then": "human",
+   "back_to": null,
+   "backs": 0,
+   "text": "重做，最多 2 次；仍不过，停下来问你"
   },
-  "normalized_goal": null,
-  "thread_id": "thread-4a5bc52ada47",
-  "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-  "project_root": "/home/demo/research/片仔癀",
-  "state": "WAITING",
-  "state_version": 13,
-  "workflow_version": "1",
-  "current_step": 1,
-  "acceptance_contract": {
-   "steps": [
-    "scope",
-    "profile",
-    "reconcile",
-    "extract",
-    "metrics",
-    "crosscheck",
-    "note"
-   ],
-   "pack_id": "FIN_REVIEW"
-  },
-  "execution_policy": {},
-  "budget": {
-   "used": "0.100000",
-   "limit": null,
-   "currency": "CNY",
-   "reserved": "0"
-  },
-  "active_attempt_id": null,
-  "terminal_result_ref": null,
-  "waiting_reason": "INPUT",
-  "active_interaction_id": "5ae7813b-a5b7-5c98-881b-33152b36aa7b",
-  "rejection": null,
-  "cancel_requested_at": null,
-  "cancel_requested_by": null,
-  "created_at": "2026-10-07T04:58:27.702172+00:00",
-  "updated_at": "2026-10-07T04:58:27.911719+00:00",
-  "project_id": "7679e7df-8718-5408-8ba3-5f59a9525cf4"
- },
- "attempts": [
-  {
-   "id": "0393f853-1f2c-5616-bc67-f3d197988a7a",
-   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
-   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
-   "thread_id": "thread-4a5bc52ada47",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "role": "execute",
-   "arm": 0,
-   "step_id": "scope",
-   "step_version": "1",
-   "input_artifact_versions": [],
-   "turn_ids": [
-    "turn-94ed01388668"
-   ],
-   "status": "COMPLETED",
-   "codex_version": null,
-   "agent_version": null,
-   "model": null,
-   "model_provider": null,
-   "budget_allocated": {
-    "amount": "0.05"
-   },
-   "budget_consumed": {
-    "amount": "0.050000",
-    "tokens": {
-     "input": 2000,
-     "total": 2100,
-     "output": 100,
-     "cache_write": 0,
-     "cached_input": 0
-    }
-   },
-   "failure_code": null,
-   "retryable": null,
-   "output_artifacts": [
-    {
-     "id": "7ae0b929-5cbf-5c1a-b46f-42869662c6d8",
-     "name": "scope",
-     "version": 1
-    }
-   ],
-   "refs": {
-    "reworks": 0
-   },
-   "started_at": "2026-10-07T04:58:27.813117+00:00",
-   "ended_at": "2026-10-07T04:58:27.821391+00:00",
-   "created_at": "2026-10-07T04:58:27.756829+00:00",
-   "updated_at": "2026-10-07T04:58:27.817987+00:00"
-  },
-  {
-   "id": "d3d74add-e02c-5001-a894-5da79e267f53",
-   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
-   "session_id": "142e50b8-d8c0-53b4-9da0-891383dcef15",
-   "thread_id": "thread-4a5bc52ada47",
-   "environment_id": "0f79a87c-7bf3-5956-be15-01e3988797ee",
-   "role": "execute",
-   "arm": 0,
-   "step_id": "profile",
-   "step_version": "1",
-   "input_artifact_versions": [
-    {
-     "name": "scope",
-     "version": 1
-    }
-   ],
-   "turn_ids": [
-    "turn-12f054167604"
-   ],
-   "status": "FAILED",
-   "codex_version": null,
-   "agent_version": null,
-   "model": null,
-   "model_provider": null,
-   "budget_allocated": {
-    "amount": "0.05"
-   },
-   "budget_consumed": {
-    "amount": "0.050000",
-    "tokens": {
-     "input": 2000,
-     "total": 2100,
-     "output": 100,
-     "cache_write": 0,
-     "cached_input": 0
-    }
-   },
-   "failure_code": "acceptance",
-   "retryable": true,
-   "output_artifacts": [],
-   "refs": {
-    "reworks": 0
-   },
-   "started_at": "2026-10-07T04:58:27.889580+00:00",
-   "ended_at": "2026-10-07T04:58:27.897166+00:00",
-   "created_at": "2026-10-07T04:58:27.838580+00:00",
-   "updated_at": "2026-10-07T04:58:27.895330+00:00"
+  "reserve": "0.05",
+  "status": "accepted",
+  "attempts": [
+   {
+    "attempt_id": "e7aa25d9-011f-52d6-b5c9-2eac3c9b8e46",
+    "n": 1,
+    "outcome": "accepted",
+    "failure": null,
+    "spent": "0.05",
+    "started_at": "2026-10-11T17:39:49.171542Z",
+    "ended_at": "2026-10-11T17:39:49.180258Z",
+    "checks": [
+     {
+      "label": "交回的格式对",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "有指标表和数据版本",
+      "pass": true,
+      "message": ""
+     },
+     {
+      "label": "指标表不是空的",
+      "pass": true,
+      "message": ""
+     }
+    ],
+    "tools": {
+     "metric_definitions": 1,
+     "query_metric": 1
+    },
+    "returned": {
+     "artifact": "metrics",
+     "version": 1,
+     "content": {
+      "sql": [],
+      "table": [
+       {
+        "unit": "比率",
+        "basis": "原始披露",
+        "value": 0.202,
+        "inputs": {
+         "operate_cost": 480635400000.0,
+         "operate_income": 602300000000.0
+        },
+        "source": "query_metric",
+        "formula": "(营业收入 − 营业成本) ÷ 营业收入",
+        "applicable": true,
+        "fiscal_year": 2023,
+        "metric_name": "gross_margin",
+        "report_type": "年报",
+        "display_name": "毛利率",
+        "reason_if_not": ""
+       },
+       {
+        "unit": "比率",
+        "basis": "原始披露",
+        "value": 0.052,
+        "inputs": {
+         "net_profit": 31319600000.0,
+         "operate_income": 602300000000.0
+        },
+        "source": "query_metric",
+        "formula": "净利润 ÷ 营业收入",
+        "applicable": true,
+        "fiscal_year": 2023,
+        "metric_name": "net_margin",
+        "report_type": "年报",
+        "display_name": "净利率",
+        "reason_if_not": ""
+       },
+       {
+        "unit": "比率",
+        "basis": "原始披露",
+        "value": 0.75,
+        "inputs": {
+         "total_assets": 1144370000000.0,
+         "total_liabilities": 858277500000.0
+        },
+        "source": "query_metric",
+        "formula": "负债合计 ÷ 资产总计",
+        "applicable": true,
+        "fiscal_year": 2023,
+        "metric_name": "debt_to_assets",
+        "report_type": "年报",
+        "display_name": "资产负债率",
+        "reason_if_not": ""
+       },
+       {
+        "unit": "比率",
+        "basis": "原始披露",
+        "value": null,
+        "inputs": {
+         "net_profit": 31319600000.0,
+         "total_equity": 286092500000.0
+        },
+        "source": "query_metric",
+        "formula": "净利润 ÷ 期初与期末所有者权益的平均",
+        "applicable": false,
+        "fiscal_year": 2023,
+        "metric_name": "roe",
+        "report_type": "年报",
+        "display_name": "净资产收益率",
+        "reason_if_not": "要用上一年的期末数，范围内没有"
+       },
+       {
+        "unit": "比率",
+        "basis": "追溯调整后",
+        "value": 0.194,
+        "inputs": {
+         "operate_cost": 626235402000.0,
+         "operate_income": 776967000000.0
+        },
+        "source": "query_metric",
+        "formula": "(营业收入 − 营业成本) ÷ 营业收入",
+        "applicable": true,
+        "fiscal_year": 2024,
+        "metric_name": "gross_margin",
+        "report_type": "年报",
+        "display_name": "毛利率",
+        "reason_if_not": ""
+       },
+       {
+        "unit": "比率",
+        "basis": "追溯调整后",
+        "value": 0.054,
+        "inputs": {
+         "net_profit": 41956218000.0,
+         "operate_income": 776967000000.0
+        },
+        "source": "query_metric",
+        "formula": "净利润 ÷ 营业收入",
+        "applicable": true,
+        "fiscal_year": 2024,
+        "metric_name": "net_margin",
+        "report_type": "年报",
+        "display_name": "净利率",
+        "reason_if_not": ""
+       },
+       {
+        "unit": "比率",
+        "basis": "追溯调整后",
+        "value": 0.75,
+        "inputs": {
+         "total_assets": 1476237300000.0,
+         "total_liabilities": 1107177975000.0
+        },
+        "source": "query_metric",
+        "formula": "负债合计 ÷ 资产总计",
+        "applicable": true,
+        "fiscal_year": 2024,
+        "metric_name": "debt_to_assets",
+        "report_type": "年报",
+        "display_name": "资产负债率",
+        "reason_if_not": ""
+       },
+       {
+        "unit": "比率",
+        "basis": "追溯调整后",
+        "value": null,
+        "inputs": {
+         "net_profit": 41956218000.0,
+         "total_equity": 369059325000.0
+        },
+        "source": "query_metric",
+        "formula": "净利润 ÷ 期初与期末所有者权益的平均",
+        "applicable": false,
+        "fiscal_year": 2024,
+        "metric_name": "roe",
+        "report_type": "年报",
+        "display_name": "净资产收益率",
+        "reason_if_not": "口径不同"
+       },
+       {
+        "unit": "比率",
+        "basis": "原始披露",
+        "value": 0.198,
+        "inputs": {
+         "operate_cost": 724697322042.0,
+         "operate_income": 903612621000.0
+        },
+        "source": "query_metric",
+        "formula": "(营业收入 − 营业成本) ÷ 营业收入",
+        "applicable": true,
+        "fiscal_year": 2025,
+        "metric_name": "gross_margin",
+        "report_type": "年报",
+        "display_name": "毛利率",
+        "reason_if_not": ""
+       },
+       {
+        "unit": "比率",
+        "basis": "原始披露",
+        "value": 0.057,
+        "inputs": {
+         "net_profit": 51505919397.0,
+         "operate_income": 903612621000.0
+        },
+        "source": "query_metric",
+        "formula": "净利润 ÷ 营业收入",
+        "applicable": true,
+        "fiscal_year": 2025,
+        "metric_name": "net_margin",
+        "report_type": "年报",
+        "display_name": "净利率",
+        "reason_if_not": ""
+       },
+       {
+        "unit": "比率",
+        "basis": "原始披露",
+        "value": 0.75,
+        "inputs": {
+         "total_assets": 1716863979900.0,
+         "total_liabilities": 1287647984925.0
+        },
+        "source": "query_metric",
+        "formula": "负债合计 ÷ 资产总计",
+        "applicable": true,
+        "fiscal_year": 2025,
+        "metric_name": "debt_to_assets",
+        "report_type": "年报",
+        "display_name": "资产负债率",
+        "reason_if_not": ""
+       },
+       {
+        "unit": "比率",
+        "basis": "原始披露",
+        "value": null,
+        "inputs": {
+         "net_profit": 51505919397.0,
+         "total_equity": 429215994975.0
+        },
+        "source": "query_metric",
+        "formula": "净利润 ÷ 期初与期末所有者权益的平均",
+        "applicable": false,
+        "fiscal_year": 2025,
+        "metric_name": "roe",
+        "report_type": "年报",
+        "display_name": "净资产收益率",
+        "reason_if_not": "口径不同"
+       }
+      ],
+      "data_version": "sz002594-financials-sample002594"
+     },
+     "labels": {
+      "sql": "查询语句",
+      "table": "表",
+      "unit": "单位",
+      "basis": "口径",
+      "value": "数值",
+      "inputs": "用到的数",
+      "source": "来源",
+      "formula": "算法",
+      "applicable": "适用",
+      "fiscal_year": "年度",
+      "metric_name": "指标",
+      "report_type": "报告类型",
+      "display_name": "名称",
+      "reason_if_not": "不适用的原因",
+      "data_version": "数据版本"
+     }
+    },
+    "process": [
+     {
+      "at": "2026-10-11T17:39:49.144670Z",
+      "kind": "tool",
+      "name": "metric_definitions",
+      "dataset": "sz002594-financials",
+      "brief": "",
+      "ok": true
+     },
+     {
+      "at": "2026-10-11T17:39:49.150177Z",
+      "kind": "tool",
+      "name": "query_metric",
+      "dataset": "sz002594-financials",
+      "brief": "['gross_margin', 'net_margin', 'debt_to_assets', 'roe']",
+      "ok": true
+     }
+    ]
+   }
+  ],
+  "times": 1,
+  "rejected": 0,
+  "spent": "0.05",
+  "data": {
+   "data_version": "sz002594-financials-sample002594"
   }
- ],
- "artifacts": [
-  {
-   "id": "7ae0b929-5cbf-5c1a-b46f-42869662c6d8",
-   "task_id": "f12f11d1-c5ab-500d-a8ae-386aa5364f48",
-   "attempt_id": "0393f853-1f2c-5616-bc67-f3d197988a7a",
-   "name": "scope",
-   "version": 1,
-   "kind": "step",
-   "digest": "ba37233edfe10f95b97200707ee4107c2dc0f0698c97eb92c42a53f9af1bcfed",
-   "workspace_path": null,
-   "created_at": "2026-10-07T04:58:27.817987+00:00"
-  }
- ]
+ }
 }

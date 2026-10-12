@@ -6,6 +6,8 @@ import { useState } from 'react'
 
 import { Markdown } from '@/components/common/markdown'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 import { Marker, MarkerContent } from '@/components/ui/marker'
 import { MissingDataCard } from '@/components/workbench/missing-data-card'
 import { ChangeLine, StepLine } from '@/components/workbench/step-line'
@@ -13,7 +15,9 @@ import type { Waiting } from '@/contracts/workbench-v2'
 import { relativeTo } from '@/lib/workbench/items'
 import { cn } from '@/lib/utils'
 
-import { phaseTally, type Approval, type Entry } from '../model/timeline'
+import { phaseTally, type Approval, type Entry, type Question } from '../model/timeline'
+
+export type Answer = { decision: string; answer?: Record<string, unknown> }
 
 // 一段过程：它说了一句要做什么，接着跑了几条命令。收成一行，点开才看细节。
 function Phase({ entry }: { entry: Extract<Entry, { kind: 'phase' }> }) {
@@ -57,7 +61,9 @@ function Phase({ entry }: { entry: Extract<Entry, { kind: 'phase' }> }) {
   )
 }
 
-// 等你批准：命令、在哪个目录、它的理由，都摆出来；能选什么由后端给。
+// 等你批准：命令、在哪个目录、它的理由，都摆出来；能选什么由后端给（四个按钮：允许一次 /
+// 这个任务里都允许 / 拒绝这一步 / 停下，approval.md「问人怎么问」）。拒绝和停下可以附一句话：
+// 拒绝附话 = 拒绝并告诉它怎么改；停下附话 = 这一步重做时的要求。
 function ApprovalCard({
   approval,
   waiting,
@@ -67,11 +73,15 @@ function ApprovalCard({
   approval: Approval
   waiting: Waiting | undefined
   answering: boolean
-  onAnswer: (approval: Approval, decision: string) => void
+  onAnswer: (approval: Approval, answer: Answer) => void
 }) {
   const t = useTranslations('work')
+  const [noteFor, setNoteFor] = useState<string | null>(null)
+  const [note, setNote] = useState('')
   if (approval.state !== 'pending') {
-    const known = ['accept', 'acceptForSession', 'decline'].includes(approval.decision ?? '')
+    const known = ['accept', 'accept_task', 'acceptForSession', 'decline', 'cancel'].includes(
+      approval.decision ?? '',
+    )
     return (
       <Marker>
         <MarkerContent>
@@ -83,10 +93,19 @@ function ApprovalCard({
       </Marker>
     )
   }
-  const options = waiting?.prompt.options ?? [
-    { id: 'accept', label: t('approval.answered.accept') },
-    { id: 'decline', label: t('approval.answered.decline') },
-  ]
+  const options =
+    waiting?.prompt.options ??
+    (approval.options.length
+      ? approval.options
+      : [
+          { id: 'accept', label: t('approval.answered.accept') },
+          { id: 'decline', label: t('approval.answered.decline') },
+        ])
+  const send = (id: string) =>
+    onAnswer(
+      approval,
+      note.trim() ? { decision: id, answer: { text: note.trim() } } : { decision: id },
+    )
   return (
     <section
       aria-label={t('approval.title')}
@@ -96,15 +115,39 @@ function ApprovalCard({
         <ShieldAlertIcon className="size-4 shrink-0" />
         {t('approval.title')}
       </p>
+      {approval.afterDecline ? (
+        <p className="mt-1 text-[13px] text-amber-900 dark:text-amber-200">
+          {t('approval.afterDecline')}
+        </p>
+      ) : null}
       <dl className="mt-2 grid grid-cols-[5.5rem_1fr] gap-x-3 gap-y-1 text-[13px]">
         <dt className="text-muted-foreground">{t('approval.command')}</dt>
         <dd className="font-mono break-all">{approval.command}</dd>
-        <dt className="text-muted-foreground">{t('approval.where')}</dt>
-        <dd className="font-mono break-all">{approval.cwd}</dd>
+        {approval.cwd ? (
+          <>
+            <dt className="text-muted-foreground">{t('approval.where')}</dt>
+            <dd className="font-mono break-all">{approval.cwd}</dd>
+          </>
+        ) : null}
         {approval.reason ? (
           <>
             <dt className="text-muted-foreground">{t('approval.reason')}</dt>
             <dd>{approval.reason}</dd>
+          </>
+        ) : null}
+        {approval.step ? (
+          <>
+            <dt className="text-muted-foreground">{t('approval.step')}</dt>
+            <dd>
+              {t('approval.stepAt', { index: approval.step.index, title: approval.step.title })}
+              {approval.dependents.length ? (
+                <span className="text-muted-foreground block">
+                  {t('approval.dependents', {
+                    steps: approval.dependents.map((d) => d.title).join('、'),
+                  })}
+                </span>
+              ) : null}
+            </dd>
           </>
         ) : null}
       </dl>
@@ -113,13 +156,131 @@ function ApprovalCard({
           <Button
             key={option.id}
             size="sm"
-            variant={option.id === 'decline' ? 'outline' : 'default'}
+            variant={option.id === 'decline' || option.id === 'cancel' ? 'outline' : 'default'}
             disabled={answering}
-            onClick={() => onAnswer(approval, option.id)}
+            onClick={() => send(option.id)}
           >
             {option.label}
           </Button>
         ))}
+        <Button
+          size="sm"
+          variant="ghost"
+          disabled={answering}
+          aria-pressed={noteFor !== null}
+          onClick={() => setNoteFor(noteFor === null ? 'note' : null)}
+        >
+          {t('approval.noteToggle')}
+        </Button>
+      </div>
+      {noteFor !== null ? (
+        <div className="mt-2">
+          <Textarea
+            value={note}
+            onChange={(event) => setNote(event.target.value)}
+            rows={2}
+            aria-label={t('approval.noteLabel')}
+            placeholder={t('approval.notePlaceholder')}
+            className="text-[13px]"
+          />
+          <p className="text-muted-foreground mt-1 text-xs">{t('approval.noteHint')}</p>
+        </div>
+      ) : null}
+    </section>
+  )
+}
+
+// Codex 问你：每题给选项，也能自己写；答完一起发回去
+function QuestionCard({
+  question,
+  answering,
+  onAnswer,
+}: {
+  question: Question
+  answering: boolean
+  onAnswer: (answer: Answer & { id: string; token: string }) => void
+}) {
+  const t = useTranslations('work')
+  const [answers, setAnswers] = useState<Record<string, string>>({})
+  if (question.state !== 'pending') {
+    return (
+      <Marker>
+        <MarkerContent>
+          {question.state === 'expired' ? t('question.expired') : t('question.answered')}
+        </MarkerContent>
+      </Marker>
+    )
+  }
+  const complete = question.questions.every((q) => (answers[q.id] ?? '').trim() !== '')
+  return (
+    <section
+      aria-label={t('question.title')}
+      className="rounded-lg border border-sky-300 bg-sky-50 p-3 text-sm dark:border-sky-900 dark:bg-sky-950/40"
+    >
+      <p className="font-medium">{question.title || t('question.title')}</p>
+      <ol className="mt-2 space-y-3">
+        {question.questions.map((q) => (
+          <li key={q.id}>
+            <p className="text-[13px] font-medium">
+              {q.header ? <span className="text-muted-foreground mr-2">{q.header}</span> : null}
+              {q.question}
+            </p>
+            {q.options.length ? (
+              <div className="mt-1 flex flex-wrap gap-2">
+                {q.options.map((o) => (
+                  <Button
+                    key={o.label}
+                    size="sm"
+                    variant={answers[q.id] === o.label ? 'default' : 'outline'}
+                    title={o.description || undefined}
+                    disabled={answering}
+                    onClick={() => setAnswers({ ...answers, [q.id]: o.label })}
+                  >
+                    {o.label}
+                  </Button>
+                ))}
+              </div>
+            ) : null}
+            {q.is_secret ? (
+              <Input
+                type="password"
+                autoComplete="off"
+                value={answers[q.id] ?? ''}
+                onChange={(event) => setAnswers({ ...answers, [q.id]: event.target.value })}
+                aria-label={t('question.secret')}
+                placeholder={t('question.secret')}
+                className="mt-1 text-[13px]"
+              />
+            ) : q.is_other || q.options.length === 0 ? (
+              <Textarea
+                value={
+                  q.options.some((o) => o.label === answers[q.id]) ? '' : (answers[q.id] ?? '')
+                }
+                onChange={(event) => setAnswers({ ...answers, [q.id]: event.target.value })}
+                rows={1}
+                aria-label={t('question.other')}
+                placeholder={t('question.other')}
+                className="mt-1 text-[13px]"
+              />
+            ) : null}
+          </li>
+        ))}
+      </ol>
+      <div className="mt-3">
+        <Button
+          size="sm"
+          disabled={answering || !complete}
+          onClick={() =>
+            onAnswer({
+              id: question.id,
+              token: question.token,
+              decision: 'answer',
+              answer: { answers },
+            })
+          }
+        >
+          {t('question.send')}
+        </Button>
       </div>
     </section>
   )
@@ -131,12 +292,14 @@ export function TimelineEntry({
   waiting,
   answering,
   onAnswer,
+  onQuestion,
 }: {
   entry: Entry
   directory: string | null
   waiting: Waiting[]
   answering: boolean
-  onAnswer: (approval: Approval, decision: string) => void
+  onAnswer: (approval: Approval, answer: Answer) => void
+  onQuestion?: (answer: Answer & { id: string; token: string }) => void
 }) {
   const t = useTranslations('work')
   const tc = useTranslations('conversation')
@@ -173,6 +336,24 @@ export function TimelineEntry({
           answering={answering}
           onAnswer={onAnswer}
         />
+      )
+    case 'question':
+      return (
+        <QuestionCard
+          question={entry.question}
+          answering={answering}
+          onAnswer={(answer) => onQuestion?.(answer)}
+        />
+      )
+    case 'policy':
+      return (
+        <Marker className={entry.decision === 'decline' ? 'text-destructive' : undefined}>
+          <MarkerContent>
+            {t(entry.decision === 'decline' ? 'policy.denied' : 'policy.allowed', {
+              command: entry.command,
+            })}
+          </MarkerContent>
+        </Marker>
       )
     case 'missing':
       return <MissingDataCard code={entry.code} dataset={entry.dataset} />

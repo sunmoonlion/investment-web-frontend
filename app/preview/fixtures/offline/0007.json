@@ -1,17 +1,5 @@
 {
- "contract_version": 2,
- "workspaces": [
-  {
-   "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
-   "environment_name": "家里的电脑",
-   "online": false,
-   "root": "/home/demo/research"
-  },
-  {
-   "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
-   "environment_name": "家里的电脑",
-   "online": false,
-   "root": "/home/demo/notes"
-  }
- ]
+ "request_id": "d93f313f-1bac-582b-b6a2-568e3f60b393",
+ "command_id": "6c47a995-6f12-5cb9-af31-81dd05d3254a",
+ "cursor": 48
 }

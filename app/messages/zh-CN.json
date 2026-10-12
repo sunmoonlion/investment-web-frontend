@@ -38,7 +38,7 @@
     "loginSubtitle": "点击下方按钮将前往统一身份服务完成登录。",
     "loginCasdoorHint": "若仅在 Casdoor 网站注册/登录过，请仍从本站点「登录」以进入控制台。",
     "continueToDashboard": "已有本站登录态？尝试进入控制台",
-    "errorAuthFailed": "登录未完成（与身份服务交换令牌失败）。若持续出现，请查看后端日志中的 Casdoor/Redis 报错，并确认 Casdoor 应用中的回调地址与 CASDOOR_REDIRECT_URI 完全一致。",
+    "errorAuthFailed": "登录没有完成：这次登录已超时或已失效（登录页开得太久、或页面被重复提交都会这样）。请重新登录；反复出现请联系管理员。",
     "errorNoCode": "未收到授权码，请从本页重新点击登录。",
     "errorOAuthGeneric": "授权被拒绝或已取消，请重试。",
     "dashboardWelcome": "欢迎使用 Investment",
@@ -174,8 +174,11 @@
       "work": "工作",
       "expert": "专家"
     },
-    "new": "新建",
-    "workspace": "工作区",
+    "workspace": {
+      "none": "还没有加目录。在这台电脑的代理里加一个，项目才有地方放。",
+      "all": "全部",
+      "add": "在 {name} 里新建项目"
+    },
     "loading": "加载中…",
     "noWorkspace": "还没有工作区。",
     "noProjects": "这个工作区里还没有项目",
@@ -189,14 +192,41 @@
       "pending": "待我决定",
       "machines": "我的电脑",
       "settings": "设置",
-      "library": "知识库"
+      "library": "知识库",
+      "memory": "长期记忆"
     },
     "machine": {
       "online": "电脑在线",
       "offline": "电脑都不在线",
       "none": "还没有登记电脑"
     },
-    "allProjects": "全部"
+    "computers": "我的电脑与项目",
+    "computer": {
+      "none": "还没有接入电脑。接入后，你的目录和项目会出现在这里。",
+      "connect": "去接入",
+      "manage": "管理"
+    },
+    "project": {
+      "new": "新建项目",
+      "toggle": "展开或收起 {title}",
+      "noTalks": "还没有对话",
+      "remove": "删除项目 {title}",
+      "add": "在 {title} 里新建"
+    },
+    "chats": "聊天",
+    "pending": {
+      "title": "等我决定的事",
+      "urgent": "急",
+      "minutes": "还剩 {minutes} 分钟"
+    },
+    "conversation": {
+      "remove": "删除对话 {title}"
+    },
+    "remove": {
+      "confirm": "确定删除",
+      "cancel": "取消",
+      "note": "只从这里移除，电脑上的文件夹不动"
+    }
   },
   "projectPicker": {
     "loading": "加载中…",
@@ -223,7 +253,7 @@
         "name": "专家",
         "what": "按固定的方法一步一步做，每一步都验收，交回一份底稿。慢一些，贵一些。",
         "placeholder": "要专家解决什么问题",
-        "send": "去请专家"
+        "send": "交给专家"
       }
     },
     "project": {
@@ -235,7 +265,8 @@
         "chat": "聊天可以不选项目。选了之后，它能读这个项目里的文件。",
         "work": "工作要在一个项目里做：它是你机器上的一个目录。",
         "expert": "专家接手的是整个项目：这段对话、项目里的文件、别的对话和底稿。"
-      }
+      },
+      "create": "新建项目"
     },
     "blocker": {
       "noSandbox": "还没有可用的沙箱：先登记模型的 key、拉起沙箱。",
@@ -264,6 +295,10 @@
     "kind": {
       "chat": "聊天",
       "work": "工作"
+    },
+    "expert": {
+      "who": "请哪一位",
+      "loading": "加载中…"
     }
   },
   "chat": {
@@ -393,11 +428,21 @@
       "answered": {
         "accept": "你允许了这一次",
         "acceptForSession": "你允许了，这段对话里同样的事不再问",
-        "decline": "你拒绝了",
-        "other": "你答复了"
+        "decline": "你拒绝了这一条",
+        "other": "你答复了",
+        "accept_task": "你允许了，这个任务里同样的事不再问",
+        "cancel": "你让它停下了"
       },
       "expired": "这个请求过期了，没有执行",
-      "failed": "没有答复成功，请再试一次。"
+      "failed": "没有答复成功，请再试一次。",
+      "step": "哪一步",
+      "stepAt": "第 {index} 步「{title}」",
+      "dependents": "后面依赖它的步骤：{steps}",
+      "afterDecline": "这一步里刚拒绝过一条，之后它要做的每件事都会先问你。",
+      "noteToggle": "附一句话",
+      "noteLabel": "给它的话",
+      "notePlaceholder": "拒绝时写要它怎么改；停下时写重做这一步的要求",
+      "noteHint": "拒绝并附话 = 它这一轮里照你说的改；停下并附话 = 重做这一步时带上。"
     },
     "changes": {
       "title": "改动",
@@ -411,6 +456,25 @@
       "given": "交给了专家",
       "returned": "专家交回了",
       "inside": "专家做的每一步有它自己的进度页，这一部分还在做。"
+    },
+    "question": {
+      "title": "Codex 想问你",
+      "other": "自己写",
+      "send": "答复",
+      "answered": "你答复了它的问题",
+      "expired": "这个问题过期了，它按自己的假设继续了",
+      "secret": "只给这一次用，不留档"
+    },
+    "policy": {
+      "allowed": "按规则放行：{command}",
+      "denied": "顾问想做 {command}，按专家包规则拒绝了"
+    },
+    "panel": {
+      "files": "文件",
+      "changes": "改动",
+      "terminal": "终端",
+      "filesSoon": "这里会是你电脑上这个工作区的文件树（当前项目默认展开）。要等本地代理开出文件通道（账 87），现在先不显示。",
+      "terminalSoon": "这里会是你电脑上项目目录里的终端。要等本地代理开出终端通道（账 83），现在先不显示。"
     }
   },
   "expert": {
@@ -498,7 +562,14 @@
       "noToken": "答复用的凭证没有取到，刷新页面再试。",
       "failedToSend": "没有答复成功，请再试一次。",
       "decided": "你已经选了：{choice}",
-      "loading": "加载中…"
+      "loading": "加载中…",
+      "afterDecline": "这一步里刚拒绝过一条，之后它要做的每件事都会先问你。",
+      "dependents": "后面依赖它的步骤：{steps}",
+      "noteLabel": "给它的话",
+      "notePlaceholder": "拒绝时写要它怎么改；停下或重做时写这一步的要求",
+      "other": "自己写",
+      "send": "答复",
+      "answered": "你已经答复了"
     },
     "sheet": {
       "title": "委托单",
@@ -618,7 +689,9 @@
         "agent": "还没有接入本地代理：在你的机器上装好本地代理，在里面加一个目录。",
         "account": "登录的账号不对：本地代理登的和网页登的要是同一个账号。",
         "note": "工作区的增减不在网页上做，在你机器上的本地代理里做。"
-      }
+      },
+      "onlyWorkspace": "只看这个工作区：{root}",
+      "seeAll": "看全部"
     },
     "create": {
       "title": "新建项目",
@@ -732,7 +805,8 @@
     "lead": "工作和专家要在你自己的电脑上读写项目。电脑上跑着一个本地代理，它只让我们碰你加进白名单的目录。",
     "list": "已经接入的电脑",
     "none": "还没有电脑接入。",
-    "current": "当前电脑",
+    "current": "已接入的电脑",
+    "elsewhere": "这是你账号下接入的电脑。你现在用的如果是另一台电脑，要在那台上按下面三步安装并接入；接入后 {name} 会断开——一个账号同一时刻只连一台电脑。",
     "online": "在线",
     "offline": "离线",
     "offlineNote": "代理当前离线。请在本机托盘查看原因并启动；已开启登录自启时会在登录后自动启动。",
@@ -756,7 +830,7 @@
     "guide": {
       "title": "接入电脑",
       "install": "下载安装",
-      "connect": "电脑上会自动打开一页显示连接码，在这里输入码",
+      "connect": "装完后电脑会自动打开本站这一页并带上连接码，核对电脑名后点允许",
       "folders": "选文件夹完成",
       "done": "已完成",
       "todo": "还没做",
@@ -766,7 +840,8 @@
     "connect": {
       "title": "连接一台电脑",
       "code": "连接码",
-      "hint": "8 位。会自动大写，并在第四位后补上横线。",
+      "hint": "8 位。会自动大写，并在第四位后补上横线。没有自动跳到这里时，把电脑上页面显示的码填在这里。",
+      "prefilled": "连接码已从你的电脑自动带过来。确认下面这台电脑是你自己的，再点允许。",
       "lookup": "核对这台电脑",
       "wrong": "码不对或已过期",
       "unknownSource": "未知",
@@ -898,5 +973,25 @@
   "computerConnection": {
     "action": "接入电脑",
     "welcome": "先在设置里登记模型 key，再接入电脑，工作和专家就能读写你的文件。"
+  },
+  "memory": {
+    "title": "长期记忆",
+    "intro": "这里的内容会放进你每段对话的开头，只有你能看。写关于你自己的事实：关注什么、看什么口径、想要什么样的回答。",
+    "addTitle": "记一条",
+    "addLabel": "新的一条",
+    "addPlaceholder": "例：看银行股用拨备前利润；回答先结论后依据",
+    "add": "记住",
+    "examples": "关注的行业与公司、口径偏好、风险偏好、输出习惯",
+    "listTitle": "已记住的",
+    "loading": "加载中…",
+    "empty": "还没有记住任何事。",
+    "enabled": "启用",
+    "editLabel": "改这一条",
+    "save": "保存",
+    "cancel": "取消",
+    "edit": "改",
+    "remove": "删",
+    "clear": "全部清空",
+    "failed": "没有保存成功，请再试一次。"
   }
 }

@@ -6,7 +6,7 @@ import { fireEvent, render, screen, waitFor, within } from '@testing-library/rea
 import { NextIntlClientProvider } from 'next-intl'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { AskExpertScreen, ExpertHomeScreen, ReviewScreen } from '@/features/expert'
+import { AskExpertScreen, ExpertHomeScreen } from '@/features/expert'
 import { WorkbenchProvider } from '@/lib/workbench/context'
 import messages from '@/messages/zh-CN.json'
 
@@ -188,18 +188,5 @@ describe('请专家', () => {
       target: { value: '问' },
     })
     expect(screen.getByRole('button', { name: '交给专家' })).toBeDisabled()
-  })
-})
-
-describe('单独的审查面', () => {
-  it('先说清这件事在哪，再摆审查面', async () => {
-    const pending = parts('审查面：验收没有通过')[4]
-    page(<ReviewScreen pending={pending} />)
-    expect(await screen.findByRole('heading', { name: '待我决定' })).toBeInTheDocument()
-    expect(await screen.findByText('宁德时代')).toBeInTheDocument()
-    expect(screen.getByText(/财报体检 · 宁德时代 2023 到 2025 年的盈利能力怎么样？/)).toBeVisible()
-    const review = within(await screen.findByRole('region', { name: '第「勾稽」步没有通过验收' }))
-    expect(review.getByRole('button', { name: '再试一次' })).toBeInTheDocument()
-    expect(review.getByText(/重做要再花钱/)).toBeInTheDocument()
   })
 })

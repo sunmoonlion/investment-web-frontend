@@ -1,62 +1,39 @@
 {
  "contract_version": 2,
- "tasks": [
+ "sessions": [
   {
-   "id": "8b109ead-42d9-513b-be23-d3fa0e086069",
-   "session_id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
+   "id": "75fb7092-625a-5c48-b9e0-b1f5fad22e94",
    "owner_actor_id": "e824e960-e14f-5f42-8843-61bc18a78346",
-   "tenant": "default",
-   "idempotency_key": "preview-done-0001",
-   "request_digest": "e9ba3e34733d0b48b0277be107a62813b415e9ae02ae1407538a2b4dca62354e",
-   "profile_id": "FIN_REVIEW",
-   "profile_version": "1",
-   "expert_pack_version": "1",
-   "original_input": {
-    "input": {
-     "text": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？"
-    },
-    "attachments": [],
-    "client_context": {
-     "entry": "expert"
-    }
-   },
-   "normalized_goal": null,
-   "thread_id": "thread-94bd8ceb3160",
    "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
+   "sandbox_id": "09e06f6e-eee5-5c37-b579-b534b06bfda2",
    "project_root": "/home/demo/research/恒瑞医药",
-   "state": "SUCCEEDED",
-   "state_version": 39,
-   "workflow_version": "1",
-   "current_step": 7,
-   "acceptance_contract": {
-    "steps": [
-     "scope",
-     "profile",
-     "reconcile",
-     "extract",
-     "metrics",
-     "crosscheck",
-     "note"
-    ],
-    "pack_id": "FIN_REVIEW"
-   },
-   "execution_policy": {},
-   "budget": {
-    "used": "0.350000",
-    "limit": null,
-    "currency": "CNY",
-    "reserved": "0"
-   },
-   "active_attempt_id": null,
-   "terminal_result_ref": "12512834-06a3-53da-8e9e-51a716855f27",
-   "waiting_reason": null,
-   "active_interaction_id": null,
-   "rejection": null,
-   "cancel_requested_at": null,
-   "cancel_requested_by": null,
-   "created_at": "2026-10-07T04:58:42.726505+00:00",
-   "updated_at": "2026-10-07T04:58:43.512294+00:00",
-   "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b"
+   "thread_id": "thread-64c0b4d1def2",
+   "wheel": "user",
+   "state_version": 0,
+   "active_task_id": null,
+   "thread_settings": {},
+   "created_at": "2026-10-11T17:40:03.870437+00:00",
+   "last_active_at": "2026-10-11T17:40:04.253274+00:00",
+   "kind": "chat",
+   "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
+   "title": "这个项目里有哪些文件？"
+  },
+  {
+   "id": "e6f3eb7c-18e1-57d5-9ac0-20aa86b86a0e",
+   "owner_actor_id": "e824e960-e14f-5f42-8843-61bc18a78346",
+   "environment_id": "00736fe0-2700-5cd5-977e-e0e594884060",
+   "sandbox_id": "09e06f6e-eee5-5c37-b579-b534b06bfda2",
+   "project_root": "/home/demo/research/恒瑞医药",
+   "thread_id": "thread-28eca8acd00f",
+   "wheel": "user",
+   "state_version": 2,
+   "active_task_id": null,
+   "thread_settings": {},
+   "created_at": "2026-10-11T17:40:02.985162+00:00",
+   "last_active_at": "2026-10-11T17:40:03.802167+00:00",
+   "kind": "expert",
+   "project_id": "68a4a7ff-cdfe-53f4-a0c8-38dce439d35b",
+   "title": "恒瑞医药 2023 到 2025 年的盈利能力怎么样？"
   }
  ]
 }
