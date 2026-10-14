@@ -5,6 +5,7 @@ import {
   byWorkspace,
   defaultTitle,
   fullDirectory,
+  repoFolder,
   onlyMachine,
   pathProblem,
   rootsOf,
@@ -84,5 +85,10 @@ describe('新建项目', () => {
     expect(defaultTitle('/home/me/research', '')).toBe('research')
     expect(fullDirectory('/home/me/research', ' 医药/恒瑞/ ')).toBe('/home/me/research/医药/恒瑞')
     expect(fullDirectory('/home/me/research/', '')).toBe('/home/me/research/')
+    expect(fullDirectory('C:\\Users\\me\\Desktop', ' 财务/预测 ')).toBe(
+      'C:\\Users\\me\\Desktop\\财务\\预测',
+    )
+    expect(repoFolder('https://github.com/o/Hello-World.git')).toBe('Hello-World')
+    expect(repoFolder('git@example.com:team/repo')).toBe('repo')
   })
 })

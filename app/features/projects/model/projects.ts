@@ -66,7 +66,22 @@ export function defaultTitle(root: string, path: string): string {
   return parts[parts.length - 1] ?? ''
 }
 
+// 分隔符跟着工作区的写法走（同后端 project_dir）：Windows 工作区用反斜杠，代理与工作台核的是同一串
 export function fullDirectory(root: string, path: string): string {
   const cleaned = path.trim().replace(/^[\\/]+|[\\/]+$/g, '')
-  return cleaned ? `${root.replace(/\/+$/, '')}/${cleaned}` : root
+  if (!cleaned) return root
+  if (/^[A-Za-z]:\\/.test(root))
+    return `${root.replace(/[\\/]+$/, '')}\\${cleaned.replace(/\//g, '\\')}`
+  return `${root.replace(/\/+$/, '')}/${cleaned}`
+}
+
+// 拉取仓库时子目录默认用仓库名：地址最后一段去掉 .git
+export function repoFolder(url: string): string {
+  const last =
+    url
+      .trim()
+      .replace(/[\\/]+$/, '')
+      .split(/[\\/:]/)
+      .pop() ?? ''
+  return last.replace(/\.git$/i, '')
 }

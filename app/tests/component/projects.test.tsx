@@ -44,6 +44,33 @@ beforeEach(() => {
     vi.fn(async (input: string, init: RequestInit = {}) => {
       const [path, query = ''] = String(input).split('?')
       const method = init.method ?? 'GET'
+      const json = (value: unknown) =>
+        new Response(JSON.stringify(value), { headers: { 'Content-Type': 'application/json' } })
+      // 这台电脑上的代理（0024：新建项目先请它建好文件夹）
+      if (path === 'http://127.0.0.1:47811/presence')
+        return json({
+          agent: 'sunmoon-agent',
+          version: '0.4.1',
+          machine_name: 'demo',
+          connected: true,
+        })
+      if (/^\/api\/workbench\/environments\/[^/]+\/local-ticket$/.test(path))
+        return json({
+          ticket: 'h.e.s',
+          expires_at: Math.floor(Date.now() / 1000) + 600,
+          relay_user: 'u-demo',
+        })
+      if (path === 'http://127.0.0.1:47811/local/v1/info')
+        return json({
+          userId: 'u-demo',
+          roots: ['/home/demo/research'],
+          capabilities: ['local-fs-v1', 'local-project-v1'],
+        })
+      if (path === 'http://127.0.0.1:47811/local/v1/projects/folder') {
+        const body = JSON.parse(String(init.body))
+        calls.push({ method, path, body })
+        return json({ path: body.path, created: true })
+      }
       if (method !== 'GET') {
         calls.push({ method, path, body: JSON.parse(String(init.body ?? '{}')) })
         return new Response(JSON.stringify({ id: '33333333-3333-4333-8333-333333333333' }), {
@@ -104,16 +131,23 @@ describe('项目列表', () => {
     expect(screen.getByRole('alert')).toHaveTextContent('不能往上走')
     expect(screen.getByRole('button', { name: '建立' })).toBeDisabled()
     fireEvent.change(path, { target: { value: '医药/恒瑞二期' } })
+    await waitFor(() => expect(screen.getByRole('button', { name: '建立' })).toBeEnabled())
     expect(screen.getByText('/home/demo/research/医药/恒瑞二期')).toBeInTheDocument()
     expect(screen.getByText('不填就用目录的最后一段：恒瑞二期')).toBeInTheDocument()
     fireEvent.click(screen.getByRole('button', { name: '建立' }))
-    await waitFor(() => expect(calls).toHaveLength(1))
-    expect(calls[0]).toMatchObject({ method: 'POST', path: '/api/workbench/projects' })
-    expect(calls[0].body).toMatchObject({
+    await waitFor(() => expect(calls).toHaveLength(2))
+    // 先请电脑上的代理建好文件夹，再登记（0024）
+    expect(calls[0]).toEqual({
+      method: 'POST',
+      path: 'http://127.0.0.1:47811/local/v1/projects/folder',
+      body: { path: '/home/demo/research/医药/恒瑞二期' },
+    })
+    expect(calls[1]).toMatchObject({ method: 'POST', path: '/api/workbench/projects' })
+    expect(calls[1].body).toMatchObject({
       workspace_root: '/home/demo/research',
       path: '医药/恒瑞二期',
     })
-    expect('title' in calls[0].body).toBe(false)
+    expect('title' in calls[1].body).toBe(false)
     await waitFor(() =>
       expect(push).toHaveBeenCalledWith(
         '/zh-CN/workbench/projects/33333333-3333-4333-8333-333333333333',

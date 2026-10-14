@@ -241,6 +241,59 @@ export function writeSettings(
   )
 }
 
+// 新建项目（0024）：代理在工作区里建好文件夹、或拉好仓库，网页再去工作台登记。代理是 0.4.1 起才有这两个口
+export const PROJECT_CAPABILITY = 'local-project-v1'
+export const canMakeProjects = (agent: LocalAgent) =>
+  (agent.info.capabilities ?? []).includes(PROJECT_CAPABILITY)
+
+export function makeFolder(
+  agent: LocalAgent,
+  path: string,
+  fetchImpl: Fetch = fetch,
+): Promise<{ path: string; created: boolean }> {
+  return localJson(
+    z.object({ path: z.string(), created: z.boolean() }).loose(),
+    agent.port,
+    agent.ticket,
+    '/local/v1/projects/folder',
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path }),
+    },
+    fetchImpl,
+  )
+}
+
+export type CloneAuth = { username?: string; token: string; remember?: boolean }
+
+// 令牌只发往 127.0.0.1 上的代理，用这一次；不经工作台。拉大仓库要几分钟，取消就断开请求，代理那头停 git、删半截
+export async function cloneRepository(
+  agent: LocalAgent,
+  request: { url: string; path: string; auth?: CloneAuth },
+  signal?: AbortSignal,
+  fetchImpl: Fetch = fetch,
+): Promise<{ path: string; branch: string | null }> {
+  try {
+    return await localJson(
+      z.object({ path: z.string(), branch: z.string().nullable() }).loose(),
+      agent.port,
+      agent.ticket,
+      '/local/v1/projects/clone',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(request),
+        signal,
+      },
+      fetchImpl,
+    )
+  } catch (error) {
+    if (signal?.aborted) throw new LocalAgentError('cancelled')
+    throw error
+  }
+}
+
 // 工作台那头的错也可能到这里（要票时）：统一成一个 code 给页面挑话说
 export function localProblemCode(error: unknown): string {
   if (error instanceof LocalAgentError) return error.code
