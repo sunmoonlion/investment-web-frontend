@@ -174,6 +174,12 @@ describe('工作页的时间线', () => {
       at('wheel/return', { final_state: 'FAILED' }),
     ])
     expect(failed.entries[1]).toMatchObject({ outcome: 'failed' })
+    // 受理时就打回（2026-10-14 现网：版本对不上）：不是「没做完」，带上为什么
+    const rejected = timeline([
+      at('wheel/handover', {}),
+      at('wheel/return', { final_state: 'REJECTED', reason_text: '旧版已经换下' }),
+    ])
+    expect(rejected.entries[1]).toMatchObject({ outcome: 'rejected', reason: '旧版已经换下' })
   })
 
   it('同一个文件改了两次：在「改动」栏里合成一行', () => {

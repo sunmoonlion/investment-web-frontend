@@ -384,8 +384,14 @@ export function TimelineEntry({
           </Marker>
           {entry.what === 'returned' ? (
             <div className="text-muted-foreground flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[13px]">
-              <span>{t(`handover.${entry.outcome ?? 'failed'}`)}</span>
-              {onOpenDossier ? (
+              <span>
+                {entry.outcome === 'rejected'
+                  ? entry.reason
+                    ? t('handover.rejected', { reason: entry.reason })
+                    : t('handover.rejectedPlain')
+                  : t(`handover.${entry.outcome ?? 'failed'}`)}
+              </span>
+              {onOpenDossier && entry.outcome !== 'rejected' ? (
                 <Button variant="link" size="sm" className="h-auto p-0" onClick={onOpenDossier}>
                   {t('handover.open')}
                 </Button>

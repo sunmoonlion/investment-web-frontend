@@ -75,12 +75,14 @@ export type Entry =
       digest: string
     }
   | { kind: 'missing'; key: string; code: string; dataset: string | null }
-  // 交给专家、专家交回。交回时带上这件委托怎么结束的，好告诉用户去「工作底稿」看
+  // 交给专家、专家交回。交回时带上这件委托怎么结束的，好告诉用户去「工作底稿」看；
+  // 打回是受理时就没接（一步没做、没有底稿），带上为什么，不叫人去看底稿
   | {
       kind: 'handover'
       key: string
       what: 'given' | 'returned'
-      outcome?: 'succeeded' | 'stopped' | 'failed'
+      outcome?: 'succeeded' | 'stopped' | 'failed' | 'rejected'
+      reason?: string
     }
   // 专家开始做哪一步。同一步重做不再摆一次：对话里只看过程，不数第几次（所有者 2026-10-14）
   | { kind: 'stage'; key: string; title: string }
@@ -329,7 +331,14 @@ export function timeline(events: readonly ConversationEvent[]): Timeline {
           key: `handover:${event.cursor}`,
           what: 'returned',
           outcome:
-            final === 'SUCCEEDED' ? 'succeeded' : final === 'CANCELLED' ? 'stopped' : 'failed',
+            final === 'SUCCEEDED'
+              ? 'succeeded'
+              : final === 'CANCELLED'
+                ? 'stopped'
+                : final === 'REJECTED'
+                  ? 'rejected'
+                  : 'failed',
+          reason: text(payload.reason_text),
         })
         expert = false
         live = null
