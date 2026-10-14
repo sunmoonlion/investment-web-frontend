@@ -532,6 +532,7 @@
   "expert": {
     "band": {
       "running": "The expert is working: {name}",
+      "stopping": "Stopping: interrupting the step it is on; files already written stay in the project",
       "waiting": "The expert stopped and is waiting for you",
       "offline": "Your machine is offline; the expert is waiting for it",
       "position": "Step {step} of {of}: {title}",
@@ -539,6 +540,7 @@
       "estimated": "est."
     },
     "stop": {
+      "stopping": "Stopping…",
       "button": "Stop",
       "title": "Stop the expert?",
       "body": "What has been spent is not refunded. The finished part is already in the project files; see Changes on the right.",

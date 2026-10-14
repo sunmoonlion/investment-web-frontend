@@ -328,6 +328,8 @@ export const runSheetSchema = z
     state: z.string(),
     state_word: z.string().nullable(),
     waiting_reason: z.string().nullable(),
+    // 用户点了停止、还没收住（正在打断那一轮）
+    cancel_requested: z.boolean().optional(),
     reason_text: z.string(),
     budget: budgetSchema,
     data: z

@@ -54,6 +54,8 @@ export function ExpertRunScreen({ task }: { task: string }) {
   // 操作权看任务状态。机器断开、实时快照暂缺时仍须能取消。
   const live = ['RECEIVED', 'VALIDATING', 'QUEUED', 'RUNNING', 'WAITING'].includes(sheet.state)
   const offline = now?.doing.code === 'offline'
+  // 点了停止、那一轮还没收住：顶上马上说「正在停下」，按钮不再能点，免得以为没点上
+  const stopping = live && (sheet.cancel_requested === true || act.stop.isSuccess)
   // 审查面摆在停住的那一步下面；看别的步骤时不摆
   const reviewHere = review.data && shown === (review.data.where.step?.index ?? position?.step)
 
@@ -61,13 +63,15 @@ export function ExpertRunScreen({ task }: { task: string }) {
     <div className="flex h-full min-h-0 flex-col">
       <header className="flex min-h-12 shrink-0 flex-wrap items-center gap-x-3 gap-y-2 border-b px-4 py-2 text-sm">
         <span className="w-full min-w-0 truncate font-medium sm:w-auto sm:flex-1">
-          {offline
-            ? t('band.offline')
-            : waiting
-              ? t('band.waiting')
-              : live
-                ? t('band.running', { name: sheet.expert.name })
-                : (sheet.state_word ?? sheet.expert.name)}
+          {stopping
+            ? t('band.stopping')
+            : offline
+              ? t('band.offline')
+              : waiting
+                ? t('band.waiting')
+                : live
+                  ? t('band.running', { name: sheet.expert.name })
+                  : (sheet.state_word ?? sheet.expert.name)}
         </span>
         {position ? (
           <span className="text-muted-foreground order-last w-full truncate sm:order-none sm:w-auto sm:max-w-64">
@@ -83,9 +87,10 @@ export function ExpertRunScreen({ task }: { task: string }) {
             className="shrink-0"
             variant="destructive"
             size="sm"
+            disabled={stopping}
             onClick={() => setConfirming(true)}
           >
-            {t('stop.button')}
+            {t(stopping ? 'stop.stopping' : 'stop.button')}
           </Button>
         ) : null}
       </header>

@@ -138,6 +138,9 @@ describe('专家处理中', () => {
       path: `/api/workbench/tasks/${taskOf(conversation)}/cancel`,
       csrf: 'csrf-for-test',
     })
+    // 那一轮还没收住时：顶上马上说「正在停下」，按钮变灰，不让人以为没点上（2026-10-14）
+    expect(await screen.findByText(/正在停下/)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: '停下中…' })).toBeDisabled()
   })
 
   it('等待环境恢复时，即使 now 快照缺失也能停止，不依赖机器连接', async () => {
