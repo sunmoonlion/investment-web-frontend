@@ -107,7 +107,7 @@ describe('工作页的时间线', () => {
     expect(after.live).toBe('thinking')
   })
 
-  it('专家拿着方向盘的那一段：它交回的原样不摆进时间线', () => {
+  it('专家拿着方向盘的那一段：过程照常摆，每一步交回的 JSON 原样不摆', () => {
     const page = manifest.pages.find((each) => each.title.startsWith('专家处理中'))!
     const id = page.path.split('/').pop()!
     const found = manifest.responses.find(
@@ -115,9 +115,65 @@ describe('工作页的时间线', () => {
     )!
     const body = JSON.parse(readFileSync(join(full, found.file), 'utf8')) as { events: unknown[] }
     const during = timeline(body.events.map((event) => conversationEventSchema.parse(event)))
-    expect(during.entries.map((entry) => entry.kind)).toEqual(['handover'])
-    expect(JSON.stringify(during.entries)).not.toContain('SELECT')
+    // 交给专家 → 第一步（只交回了 JSON，没有过程）→ 第二步查了两次数 → 第三步在查
+    expect(during.entries.map((entry) => entry.kind)).toEqual([
+      'handover',
+      'stage',
+      'stage',
+      'phase',
+      'stage',
+      'phase',
+    ])
+    expect(during.entries.filter((entry) => entry.kind === 'stage')).toMatchObject([
+      { title: '改写问题' },
+      { title: '生成 SQL' },
+      { title: '执行 SQL' },
+    ])
+    expect(during.entries.some((entry) => entry.kind === 'model')).toBe(false)
     expect(during.live).toBeNull()
+  })
+
+  it('同一步重做不再摆一次标题、不数第几次；一轮超时也不报「停下了」；交回时说结果', () => {
+    const base = {
+      id: '11111111-1111-4111-8111-111111111111',
+      session_id: '22222222-2222-4222-8222-222222222222',
+      kind: 'task',
+      task_id: null,
+      attempt_id: null,
+      created_at: '2026-10-14T01:00:00Z',
+    }
+    let cursor = 0
+    const at = (type: string, payload: Record<string, unknown>) =>
+      conversationEventSchema.parse({ ...base, cursor: ++cursor, type, payload })
+    const said = (text: string) =>
+      at('item/completed', { item: { type: 'agentMessage', id: `m${cursor}`, text } })
+    const line = timeline([
+      at('wheel/handover', {}),
+      at('step/started', { step_id: 'writeup', title: '成稿', rework: 0 }),
+      said('先把两份文件写进去。'),
+      at('turn/completed', { turn: { status: 'interrupted' } }),
+      at('step/started', { step_id: 'writeup', title: '成稿', rework: 1 }),
+      said('```json\n{"answer": "x"}\n```'),
+      at('turn/completed', { turn: { status: 'completed' } }),
+      at('wheel/return', { final_state: 'SUCCEEDED' }),
+    ])
+    expect(line.entries.map((entry) => entry.kind)).toEqual([
+      'handover',
+      'stage',
+      'model',
+      'handover',
+    ])
+    expect(line.entries[3]).toMatchObject({ what: 'returned', outcome: 'succeeded' })
+    const stopped = timeline([
+      at('wheel/handover', {}),
+      at('wheel/return', { final_state: 'CANCELLED' }),
+    ])
+    expect(stopped.entries[1]).toMatchObject({ outcome: 'stopped' })
+    const failed = timeline([
+      at('wheel/handover', {}),
+      at('wheel/return', { final_state: 'FAILED' }),
+    ])
+    expect(failed.entries[1]).toMatchObject({ outcome: 'failed' })
   })
 
   it('同一个文件改了两次：在「改动」栏里合成一行', () => {

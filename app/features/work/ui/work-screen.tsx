@@ -3,6 +3,7 @@
 import { FolderIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Marker, MarkerContent } from '@/components/ui/marker'
@@ -17,7 +18,7 @@ import {
 import { Composer } from '@/components/workbench/composer'
 import { ConversationTitle } from '@/components/workbench/conversation-title'
 import { ActivityLine } from '@/components/workbench/activity-line'
-import { WorkSidePanel } from '@/components/workbench/side-panel'
+import { WorkSidePanel, type SideTab } from '@/components/workbench/side-panel'
 import { useWorkbench } from '@/lib/workbench/context'
 import { useConversation, useConversationActions, useWaiting } from '@/lib/workbench/conversation'
 import { useConversationEvents } from '@/lib/workbench/conversation-events'
@@ -47,6 +48,8 @@ export function WorkScreen({
   const waiting = useWaiting(id)
   const projects = useProjects()
   const act = useConversationActions(id)
+  // 专家交回那一行点「打开工作底稿」：右边栏切到那一栏
+  const [side, setSide] = useState<{ tab: SideTab; at: number } | null>(null)
 
   const line = timeline(events)
   const session = conversation.data
@@ -116,6 +119,7 @@ export function WorkScreen({
                             answer: answer.answer,
                           })
                         }
+                        onOpenDossier={() => setSide({ tab: 'dossier', at: Date.now() })}
                         onQuestion={(answer) =>
                           act.answer.mutate({
                             pending: answer.id,
@@ -169,6 +173,8 @@ export function WorkScreen({
           directory={directory}
           live={state === 'live'}
           environment={session?.environment_id ?? null}
+          conversation={id}
+          request={side}
         />
       </div>
     </div>

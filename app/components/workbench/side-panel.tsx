@@ -1,6 +1,7 @@
 'use client'
 
 import {
+  BookOpenIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
   FilesIcon,
@@ -15,32 +16,48 @@ import { cn } from '@/lib/utils'
 
 import type { FileChanges } from '@/lib/workbench/timeline'
 import { ChangesPanel } from './changes-panel'
+import { DossierPanel } from './dossier-panel'
 import { FileTree, ServiceProblem } from './file-tree'
 import { FileView } from './file-view'
 import { useLocalAgent } from '@/lib/workbench/queries'
 
-export type SideTab = 'files' | 'changes' | 'terminal'
+export type SideTab = 'dossier' | 'files' | 'changes' | 'terminal'
 
 // 工作页与专家页同一个右边栏（0017 §五、0015 §3.2）：文件 / 改动 / 终端 三个钮，一次只开一个。
 // 「改动」= 这段对话用补丁改的文件；本次打开页面后第一次出现改动时自动弹开一次，之后不抢焦点。
 // 「文件」= 那台电脑上的文件树（0022，经代理服务流），当前项目默认展开，点文件看内容；没有电脑就说明。
 // 「终端」要等本地代理开终端通道（账 83），先占位说明。
+// 「工作底稿」= 这段对话每请一次专家写的底稿，按次分开列（所有者 2026-10-14）；专家交回那一行能直接切过来。
 export function WorkSidePanel({
   files,
   directory,
   live,
   environment = null,
+  conversation = null,
+  request = null,
 }: {
   files: FileChanges[]
   directory: string | null
   live: boolean
   // 这段对话在哪台电脑上（环境 id）；专家页暂不传
   environment?: string | null
+  // 这段对话的编号：「工作底稿」栏按它列各次委托
+  conversation?: string | null
+  // 页面要求切到某一栏（at 每次不同，同一栏也能再切一次）
+  request?: { tab: SideTab; at: number } | null
 }) {
   const t = useTranslations('work')
   const tr = useTranslations('results')
   const [tab, setTab] = useState<SideTab | null>(null)
   const [opened, setOpened] = useState<string | null>(null)
+  const [paper, setPaper] = useState<string | null>(null)
+  const [served, setServed] = useState<number | null>(null)
+  // 渲染中推导：页面来了新的切栏要求就切过去，回到底稿清单
+  if (request && request.at !== served) {
+    setServed(request.at)
+    setTab(request.tab)
+    if (request.tab === 'dossier') setPaper(null)
+  }
   // 页面刚打开时装进来的历史改动不算「出现」：接上实时流再过一会儿才开始数
   const [armed, setArmed] = useState(false)
   const [sawChanges, setSawChanges] = useState(false)
@@ -57,6 +74,10 @@ export function WorkSidePanel({
     }
   }
   const tabs: { key: SideTab; icon: React.ReactNode }[] = [
+    // 「工作底稿」按对话列：不知道是哪段对话（专家进度页）就不摆
+    ...(conversation
+      ? [{ key: 'dossier' as const, icon: <BookOpenIcon className="size-4" /> }]
+      : []),
     { key: 'files', icon: <FilesIcon className="size-4" /> },
     { key: 'changes', icon: <GitCompareIcon className="size-4" /> },
     { key: 'terminal', icon: <TerminalIcon className="size-4" /> },
@@ -134,6 +155,16 @@ export function WorkSidePanel({
       <div className="min-h-0 flex-1 overflow-y-auto p-4 text-[13px]">
         {tab === 'changes' ? (
           <ChangesPanel files={files} directory={directory} />
+        ) : tab === 'dossier' ? (
+          paper && environment ? (
+            <OpenedFile environment={environment} path={paper} onBack={() => setPaper(null)} />
+          ) : (
+            <DossierPanel
+              conversation={conversation}
+              directory={environment ? directory : null}
+              onOpen={setPaper}
+            />
+          )
         ) : tab === 'files' ? (
           opened && environment ? (
             <OpenedFile environment={environment} path={opened} onBack={() => setOpened(null)} />

@@ -293,6 +293,7 @@ export function TimelineEntry({
   answering,
   onAnswer,
   onQuestion,
+  onOpenDossier,
 }: {
   entry: Entry
   directory: string | null
@@ -300,6 +301,8 @@ export function TimelineEntry({
   answering: boolean
   onAnswer: (approval: Approval, answer: Answer) => void
   onQuestion?: (answer: Answer & { id: string; token: string }) => void
+  // 专家交回那一行的「打开工作底稿」：页面把右边栏切到那一栏
+  onOpenDossier?: () => void
 }) {
   const t = useTranslations('work')
   const tc = useTranslations('conversation')
@@ -379,10 +382,23 @@ export function TimelineEntry({
           <Marker variant="separator">
             <MarkerContent>{t(`handover.${entry.what}`)}</MarkerContent>
           </Marker>
-          {entry.what === 'given' ? (
-            <p className="text-muted-foreground text-center text-[13px]">{t('handover.inside')}</p>
+          {entry.what === 'returned' ? (
+            <div className="text-muted-foreground flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[13px]">
+              <span>{t(`handover.${entry.outcome ?? 'failed'}`)}</span>
+              {onOpenDossier ? (
+                <Button variant="link" size="sm" className="h-auto p-0" onClick={onOpenDossier}>
+                  {t('handover.open')}
+                </Button>
+              ) : null}
+            </div>
           ) : null}
         </div>
+      )
+    case 'stage':
+      return (
+        <p className="text-muted-foreground pt-1 text-[13px] font-medium">
+          {t('handover.stage', { title: entry.title })}
+        </p>
       )
     case 'notice':
       return (

@@ -455,7 +455,11 @@
     "handover": {
       "given": "Handed to the expert",
       "returned": "The expert handed back",
-      "inside": "The expert's steps have their own progress view; that part is still being built."
+      "stage": "Expert step: {title}",
+      "succeeded": "The expert is done. The write-up and handback are under Work papers in the right panel; each request in this conversation is kept separately and never overwritten.",
+      "stopped": "The expert was stopped. Whatever it wrote is under Work papers in the right panel.",
+      "failed": "The expert did not finish. Whatever it wrote is under Work papers in the right panel.",
+      "open": "Open work papers"
     },
     "question": {
       "title": "Codex is asking you",
@@ -484,10 +488,23 @@
       }
     },
     "panel": {
+      "dossier": "Work papers",
       "files": "Files",
       "changes": "Changes",
       "terminal": "Terminal",
       "terminalSoon": "This will be a terminal in the project folder on your computer. It waits for the local agent's terminal channel (ledger 83)."
+    },
+    "dossier": {
+      "lead": "Each time this conversation asks an expert, its papers go into their own folder under 底稿/对话-…/ in the project directory, newest first. The files live on your computer and are read from there.",
+      "empty": "This conversation has not asked an expert yet, or the expert writes no papers.",
+      "noDirectory": "This conversation is not on a computer, so there are no papers to show.",
+      "failed": "Could not load the experts this conversation asked. Refresh and try again.",
+      "state": {
+        "done": "Done",
+        "stopped": "Stopped",
+        "failed": "Not finished",
+        "running": "Working"
+      }
     },
     "files": {
       "noComputer": "This conversation is not on any computer, so there are no files to show.",

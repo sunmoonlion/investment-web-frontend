@@ -10,6 +10,13 @@ export function childPath(parent: string, name: string): string {
   return parent.endsWith(sep) ? parent + name : parent + sep + name
 }
 
+// 项目目录（绝对）+ 项目里的相对路径（正斜杠）→ 那台电脑上的绝对路径
+export function underDirectory(directory: string, relative: string): string {
+  const sep = separatorOf(directory)
+  const tail = relative.split('/').filter(Boolean).join(sep)
+  return directory.endsWith(sep) ? directory + tail : directory + sep + tail
+}
+
 export function baseName(path: string): string {
   const sep = separatorOf(path)
   const trimmed = path.endsWith(sep) && path.length > 1 ? path.slice(0, -1) : path

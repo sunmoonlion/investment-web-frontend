@@ -75,8 +75,15 @@ export type Entry =
       digest: string
     }
   | { kind: 'missing'; key: string; code: string; dataset: string | null }
-  // 交给专家之后、交回之前：专家做的事不进这条时间线（它有自己的步骤进度）
-  | { kind: 'handover'; key: string; what: 'given' | 'returned' }
+  // 交给专家、专家交回。交回时带上这件委托怎么结束的，好告诉用户去「工作底稿」看
+  | {
+      kind: 'handover'
+      key: string
+      what: 'given' | 'returned'
+      outcome?: 'succeeded' | 'stopped' | 'failed'
+    }
+  // 专家开始做哪一步。同一步重做不再摆一次：对话里只看过程，不数第几次（所有者 2026-10-14）
+  | { kind: 'stage'; key: string; title: string }
   | { kind: 'notice'; key: string; what: 'stopped' | 'failed' }
 
 export type Activity =
@@ -104,8 +111,11 @@ export function timeline(events: readonly ConversationEvent[]): Timeline {
   let live: Activity | null = null
   let last: Timeline['last'] = 'none'
   let asked = 0
-  // 专家拿着方向盘的时候：它每一步交回的是给验收看的原样，不是给人读的话，不摆进来
+  // 专家拿着方向盘的时候：过程照常摆（查数、命令、改文件、它说的话），只是每一步最后交回的
+  // 那段 JSON 是给验收看的原样，不是给人读的话，不摆进来；一轮结束也不报「停下了 / 出错了」，
+  // 那是专家自己的返工，结果在交回那一行说
   let expert = false
+  let stage: string | null = null
 
   const attach = (step: DataStep | CommandStep, turn: string | null) => {
     for (const entry of entries) {
@@ -136,15 +146,27 @@ export function timeline(events: readonly ConversationEvent[]): Timeline {
   for (const event of events) {
     const payload = event.payload as Item
     const turn = turnIdOf(payload)
-    // 专家那一段里只留三样：交回、没有数据、要用户批准的命令（批准不能等专家页做好）
-    if (
-      expert &&
-      event.type !== 'wheel/return' &&
-      event.type !== 'data.missing' &&
-      event.type !== 'agent/localPermission' &&
-      !event.type.startsWith('interaction/')
-    ) {
-      continue
+    if (expert) {
+      if (event.type === 'step/started') {
+        const id = text(payload.step_id)
+        if (id && id !== stage) {
+          stage = id
+          entries.push({ kind: 'stage', key: `stage:${event.cursor}`, title: text(payload.title) })
+        }
+        continue
+      }
+      if (event.type === 'turn/completed') {
+        live = null
+        for (const entry of entries) {
+          if (entry.kind === 'phase') for (const step of entry.steps) step.running = false
+        }
+        continue
+      }
+      if (event.type === 'command/failed') continue
+      if (event.type === 'item/completed') {
+        const item = (payload.item ?? {}) as Item
+        if (item.type === 'agentMessage' && looksLikeArtifact(text(item.text))) continue
+      }
     }
     switch (event.type) {
       case 'turn/requested':
@@ -297,13 +319,22 @@ export function timeline(events: readonly ConversationEvent[]): Timeline {
       case 'wheel/handover':
         entries.push({ kind: 'handover', key: `handover:${event.cursor}`, what: 'given' })
         expert = true
+        stage = null
         live = null
         break
-      case 'wheel/return':
-        entries.push({ kind: 'handover', key: `handover:${event.cursor}`, what: 'returned' })
+      case 'wheel/return': {
+        const final = text(payload.final_state)
+        entries.push({
+          kind: 'handover',
+          key: `handover:${event.cursor}`,
+          what: 'returned',
+          outcome:
+            final === 'SUCCEEDED' ? 'succeeded' : final === 'CANCELLED' ? 'stopped' : 'failed',
+        })
         expert = false
         live = null
         break
+      }
       case 'item/started':
       case 'item/completed': {
         const item = (payload.item ?? {}) as Item
@@ -349,6 +380,12 @@ export function timeline(events: readonly ConversationEvent[]): Timeline {
     last,
     changes: [...changes.values()].flatMap((step) => step.files),
   }
+}
+
+// 专家一步交回的原样：一个 JSON 对象（可能包在 ```json 围栏里）。它说的过程话不是这样
+export function looksLikeArtifact(said: string): boolean {
+  const body = said.trim()
+  return body.startsWith('{') || body.startsWith('```')
 }
 
 // 「改动」栏：一个文件一行，同一个文件改了几次合在一起

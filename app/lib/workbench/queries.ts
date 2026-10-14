@@ -9,6 +9,7 @@ import {
   projectDetailSchema,
   projectsSchema,
   sandboxesSchema,
+  tasksSchema,
   workspacesSchema,
 } from '@/contracts/workbench-v2'
 import { getJson, seg } from './http'
@@ -36,6 +37,22 @@ export const workbenchKeys = {
     ['workbench', 'agent', environment, 'dir', path] as const,
   file: (environment: string, path: string) =>
     ['workbench', 'agent', environment, 'file', path] as const,
+  // 一段对话里请过的专家，带各次的底稿位置
+  tasks: (conversation: string) => ['workbench', 'tasks', conversation] as const,
+}
+
+export function useConversationTasks(conversation: string | null) {
+  return useQuery({
+    queryKey: workbenchKeys.tasks(conversation ?? ''),
+    enabled: Boolean(conversation),
+    queryFn: async () =>
+      (
+        await getJson(
+          tasksSchema,
+          `/api/workbench/tasks?session_id=${encodeURIComponent(conversation ?? '')}`,
+        )
+      ).tasks,
+  })
 }
 
 export function useWorkspaces() {

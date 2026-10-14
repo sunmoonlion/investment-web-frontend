@@ -446,8 +446,26 @@ export const reviewSchema = z
   .loose()
 export type Review = z.infer<typeof reviewSchema>['interaction']
 
+// 一段对话里请过的专家（新的在前）。dossier = 这一次在项目目录里写的底稿：按对话、按次各一格，
+// 路径相对项目目录；文件在用户电脑上，是真源，经本机回环口读（所有者 2026-10-14）
+export const taskDossierSchema = z
+  .object({ folder: z.string(), expert: z.string(), files: z.array(z.string()) })
+  .loose()
+export type TaskDossier = z.infer<typeof taskDossierSchema>
+
 export const tasksSchema = z
-  .object({ tasks: z.array(z.object({ id: uuid, state: z.string() }).loose()) })
+  .object({
+    tasks: z.array(
+      z
+        .object({
+          id: uuid,
+          state: z.string(),
+          created_at: z.string().optional(),
+          dossier: taskDossierSchema.nullable().optional(),
+        })
+        .loose(),
+    ),
+  })
   .loose()
 
 // ---------------- 专家首页与请专家 ----------------
