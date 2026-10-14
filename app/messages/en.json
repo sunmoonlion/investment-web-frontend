@@ -228,7 +228,9 @@
     "remove": {
       "confirm": "Remove",
       "cancel": "Cancel",
-      "note": "Removed from here only; the folder on your computer stays"
+      "note": "Removed from here only; the folder on your computer stays",
+      "busy": "Not removed: an expert is still working in this conversation. Wait for it to finish or stop it first.",
+      "failed": "Not removed. Please try again."
     }
   },
   "projectPicker": {
@@ -289,15 +291,6 @@
     "pending": {
       "title": "Waiting for me",
       "open": "Open"
-    },
-    "recent": {
-      "title": "Recent conversations",
-      "untitled": "Untitled conversation",
-      "noProject": "No project"
-    },
-    "kind": {
-      "chat": "Chat",
-      "work": "Work"
     },
     "expert": {
       "who": "Which expert",

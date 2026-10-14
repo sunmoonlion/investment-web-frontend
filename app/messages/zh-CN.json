@@ -228,7 +228,9 @@
     "remove": {
       "confirm": "确定删除",
       "cancel": "取消",
-      "note": "只从这里移除，电脑上的文件夹不动"
+      "note": "只从这里移除，电脑上的文件夹不动",
+      "busy": "没有删掉：专家正在这段对话里干活，等它做完或先停下再删。",
+      "failed": "没有删掉，请再试一次。"
     }
   },
   "projectPicker": {
@@ -289,15 +291,6 @@
     "pending": {
       "title": "待我决定",
       "open": "去看看"
-    },
-    "recent": {
-      "title": "最近的对话",
-      "untitled": "未命名的对话",
-      "noProject": "未归入项目"
-    },
-    "kind": {
-      "chat": "聊天",
-      "work": "工作"
     },
     "expert": {
       "who": "请哪一位",

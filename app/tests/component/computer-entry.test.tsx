@@ -242,6 +242,14 @@ describe('电脑接入入口', () => {
     await waitFor(() =>
       expect(removed).toEqual(['/api/workbench/projects/f0410883-287b-578b-81dc-15f24e5b2d8f']),
     )
+    // 「最近」里的对话也能删（所有者 2026-10-14）：同样先问一句，确定才发 DELETE
+    const latest = within(screen.getByRole('region', { name: '最近' }))
+    fireEvent.click(latest.getAllByRole('button', { name: /^删除对话 / })[0])
+    expect(screen.getAllByRole('button', { name: '确定删除' })).toHaveLength(1)
+    fireEvent.click(latest.getByRole('button', { name: '确定删除' }))
+    await waitFor(() =>
+      expect(removed.filter((path) => path.startsWith('/api/workbench/sessions/'))).toHaveLength(1),
+    )
   })
   it.each(['pending', 'error'] as const)('新建项目 %s 不误报没有电脑或创建项目', async (state) => {
     environment = state

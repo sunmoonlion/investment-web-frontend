@@ -64,16 +64,10 @@ export function HomeScreen() {
     sandboxes: sandboxes.data?.length,
     machines: machines.isSuccess ? machines.data : undefined,
   })
-  const names = new Map((projects.data ?? []).map((each) => [each.id, each.title]))
   const held = start.isError && (start.error as WorkbenchError).code === 'project_held_by_expert'
   const expertConversation = (conversations.data ?? []).find(
     (each) => each.project_id === projectId && each.active_task_id !== null,
   )
-  const latest = [...(conversations.data ?? [])]
-    .sort((a, b) =>
-      (b.last_active_at ?? b.created_at).localeCompare(a.last_active_at ?? a.created_at),
-    )
-    .slice(0, 6)
 
   async function send() {
     if (blocker !== null || start.isPending || ask.isPending) return
@@ -302,49 +296,6 @@ export function HomeScreen() {
                       </Link>
                     ) : (
                       <div className="flex items-center gap-3 px-4 py-2.5">{inner}</div>
-                    )}
-                  </li>
-                )
-              })}
-            </ul>
-          </section>
-        ) : null}
-
-        {latest.length > 0 ? (
-          <section aria-label={t('recent.title')}>
-            <h2 className="mb-2 text-sm font-medium">{t('recent.title')}</h2>
-            <ul className="divide-y rounded-xl border">
-              {latest.map((each) => {
-                const built = isBuilt(each.project_id === null ? 'chat' : 'projectConversation')
-                const inner = (
-                  <>
-                    <span className="text-muted-foreground w-10 shrink-0 text-xs">
-                      {t(`kind.${each.kind}`)}
-                    </span>
-                    <span className="min-w-0 flex-1 truncate text-sm">
-                      {each.title ?? t('recent.untitled')}
-                    </span>
-                    <span className="text-muted-foreground shrink-0 text-[13px]">
-                      {each.project_id ? names.get(each.project_id) : t('recent.noProject')}
-                    </span>
-                  </>
-                )
-                return (
-                  <li key={each.id}>
-                    {built ? (
-                      <Link
-                        href={conversationRoute(locale, each)}
-                        className="hover:bg-muted/60 flex items-center gap-3 px-4 py-2.5"
-                      >
-                        {inner}
-                      </Link>
-                    ) : (
-                      <div
-                        className="flex items-center gap-3 px-4 py-2.5"
-                        title={t('blocker.notBuilt')}
-                      >
-                        {inner}
-                      </div>
                     )}
                   </li>
                 )

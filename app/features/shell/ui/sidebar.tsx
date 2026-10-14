@@ -28,6 +28,7 @@ import {
   useWorkspaces,
 } from '@/lib/workbench/queries'
 import { usePreferences } from '@/lib/preferences'
+import type { WorkbenchError } from '@/lib/workbench/http'
 import { useRemove } from '@/lib/workbench/remove'
 import { MODES, routes } from '@/lib/workbench/routes'
 import { cn } from '@/lib/utils'
@@ -465,11 +466,24 @@ export function Sidebar() {
             <h2 className={heading}>{t('chats')}</h2>
             <ul>
               {loose.map((talk) => (
-                <li key={talk.id}>
-                  <Destination href={talk.href} active={pathname.includes(talk.id)}>
+                <li key={talk.id} className="group flex items-center pr-2">
+                  <Destination
+                    href={talk.href}
+                    active={pathname.includes(talk.id)}
+                    className="min-w-0 flex-1"
+                  >
                     <KindIcon kind={talk.kind} label={t('mode.chat')} />
                     <span className="truncate">{talk.title ?? t('untitled')}</span>
                   </Destination>
+                  {/* 同一段对话可能同时在「聊天」和「最近」里：问「确定删除」只在点的那一行 */}
+                  <RemoveControl
+                    label={t('conversation.remove', { title: talk.title ?? t('untitled') })}
+                    asking={asking === `chat:${talk.id}`}
+                    busy={remove.conversation.isPending}
+                    onAsk={() => setAsking(`chat:${talk.id}`)}
+                    onCancel={() => setAsking(null)}
+                    onConfirm={() => removeConversation(talk.id)}
+                  />
                 </li>
               ))}
             </ul>
@@ -478,10 +492,23 @@ export function Sidebar() {
 
         <section aria-label={t('recent')}>
           <h2 className={heading}>{t('recent')}</h2>
+          {remove.conversation.isError ? (
+            <p role="alert" className="text-destructive px-2 pb-1 text-xs">
+              {t(
+                (remove.conversation.error as WorkbenchError | null)?.code === 'project_busy'
+                  ? 'remove.busy'
+                  : 'remove.failed',
+              )}
+            </p>
+          ) : null}
           <ul>
             {recent(conversations.data ?? [], allProjects, locale).map((item) => (
-              <li key={item.id}>
-                <Destination href={item.href} active={pathname.includes(item.id)}>
+              <li key={item.id} className="group flex items-center pr-2">
+                <Destination
+                  href={item.href}
+                  active={pathname.includes(item.id)}
+                  className="min-w-0 flex-1"
+                >
                   <KindIcon kind={item.kind} label={t(`mode.${item.kind}`)} />
                   <span className="truncate">{item.title ?? t('untitled')}</span>
                   {item.project ? (
@@ -496,6 +523,17 @@ export function Sidebar() {
                     />
                   ) : null}
                 </Destination>
+                {/* 专家正在这段对话里干活时服务端不许删：不摆按钮，免得点了没反应 */}
+                {item.busy ? null : (
+                  <RemoveControl
+                    label={t('conversation.remove', { title: item.title ?? t('untitled') })}
+                    asking={asking === `recent:${item.id}`}
+                    busy={remove.conversation.isPending}
+                    onAsk={() => setAsking(`recent:${item.id}`)}
+                    onCancel={() => setAsking(null)}
+                    onConfirm={() => removeConversation(item.id)}
+                  />
+                )}
               </li>
             ))}
             {conversations.data?.length === 0 ? (
