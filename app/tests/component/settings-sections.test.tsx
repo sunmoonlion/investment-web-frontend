@@ -48,7 +48,7 @@ function page(children: React.ReactNode) {
 }
 
 beforeEach(() => {
-  prefs = { model: null, approval_policy: 'on-request', mcp_sources: { knowledge: true } }
+  prefs = { model: null, approval_policy: 'on-request', mcp_sources: { knowbase: true } }
   puts.length = 0
   localPuts.length = 0
   posts.length = 0
@@ -205,7 +205,7 @@ describe('设置分三类（0021）', () => {
     await waitFor(() => expect(puts).toHaveLength(1))
     expect(puts[0]).toMatchObject({
       approval_policy: 'on-request',
-      mcp_sources: { knowledge: false },
+      mcp_sources: { knowbase: false },
     })
     await waitFor(() =>
       expect(screen.getByRole('switch', { name: '公共数据' })).toHaveAttribute(

@@ -54,7 +54,7 @@ describe('聊天：事件变成一轮一轮', () => {
     expect(third.steps).toHaveLength(1)
     expect(third.steps[0]).toMatchObject({
       kind: 'data',
-      server: 'sunmoon_knowledge',
+      server: 'sunmoon_knowbase',
       tool: 'describe_schema',
       dataset: 'sh600436-financials',
       failed: true,

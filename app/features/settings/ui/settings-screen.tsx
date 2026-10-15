@@ -272,14 +272,14 @@ function KeysSection({ csrfToken }: { csrfToken: string }) {
 function McpSection({ csrfToken, prefs }: { csrfToken: string; prefs: Prefs }) {
   const t = useTranslations('settings.mcp')
   const queryClient = useQueryClient()
-  const knowledge = prefs.mcp_sources?.knowledge ?? true
+  const knowledge = prefs.mcp_sources?.knowbase ?? true
   const toggle = useMutation({
     mutationFn: (on: boolean) =>
       savePrefs(
         {
           model: prefs.model,
           approval_policy: prefs.approval_policy,
-          mcp_sources: { ...(prefs.mcp_sources ?? {}), knowledge: on },
+          mcp_sources: { ...(prefs.mcp_sources ?? {}), knowbase: on },
         },
         csrfToken,
       ),

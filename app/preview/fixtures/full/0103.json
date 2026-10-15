@@ -446,7 +446,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "dataset": "sz000858-financials"
@@ -479,7 +479,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "dataset": "sz000858-financials"
@@ -765,7 +765,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "SELECT fiscal_year, report_type, (operate_income - operate_cost) / operate_income AS gross_margin FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2021 AND 2025 ORDER BY fiscal_year",

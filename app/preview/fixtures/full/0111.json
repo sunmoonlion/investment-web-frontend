@@ -462,7 +462,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {}
     },
@@ -493,7 +493,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "dataset": "sh600276-financials"
@@ -526,7 +526,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "SELECT key, value FROM dataset_metadata",
@@ -560,7 +560,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "SELECT fiscal_year, report_type, basis, verified FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
@@ -594,7 +594,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "SELECT report_date, disclosed_date FROM disclosure_calendar WHERE fiscal_year BETWEEN 2023 AND 2025",
@@ -897,7 +897,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "SELECT rule_id, rule, tolerance FROM reconciliation_rules",
@@ -931,7 +931,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "/* R01 资产 = 负债 + 所有者权益 */ SELECT report_date, diff FROM check_r01 WHERE fiscal_year BETWEEN 2023 AND 2025",
@@ -965,7 +965,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "/* R02 流动资产 + 非流动资产 = 资产总计 */ SELECT report_date, diff FROM check_r02 WHERE fiscal_year BETWEEN 2023 AND 2025",
@@ -999,7 +999,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "/* R03 流动负债 + 非流动负债 = 负债合计 */ SELECT report_date, diff FROM check_r03 WHERE fiscal_year BETWEEN 2023 AND 2025",
@@ -1033,7 +1033,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "/* R04 营业收入 − 营业成本 − 各项费用 = 营业利润（允许其他收益） */ SELECT report_date, diff FROM check_r04 WHERE fiscal_year BETWEEN 2023 AND 2025",
@@ -1067,7 +1067,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "/* R05 利润总额 − 所得税 = 净利润 */ SELECT report_date, diff FROM check_r05 WHERE fiscal_year BETWEEN 2023 AND 2025",
@@ -1101,7 +1101,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "/* R06 归母净利润 + 少数股东损益 = 净利润 */ SELECT report_date, diff FROM check_r06 WHERE fiscal_year BETWEEN 2023 AND 2025",
@@ -1135,7 +1135,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "/* R07 经营 + 投资 + 筹资现金流 + 汇率影响 = 现金净增加额 */ SELECT report_date, diff FROM check_r07 WHERE fiscal_year BETWEEN 2023 AND 2025",
@@ -1169,7 +1169,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "/* R08 期初现金 + 现金净增加额 = 期末现金 */ SELECT report_date, diff FROM check_r08 WHERE fiscal_year BETWEEN 2023 AND 2025",
@@ -1203,7 +1203,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "/* R09 利润表净利润 = 现金流量表补充资料里的净利润 */ SELECT report_date, diff FROM check_r09 WHERE fiscal_year BETWEEN 2023 AND 2025",
@@ -1506,7 +1506,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "table": "income_statement",
@@ -1540,7 +1540,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "SELECT report_date, basis, operate_income, operate_cost, net_profit FROM income_statement WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
@@ -1574,7 +1574,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "SELECT report_date, basis, total_assets, total_liabilities, total_equity FROM balance_sheet WHERE report_type = '年报' AND fiscal_year BETWEEN 2023 AND 2025",
@@ -1869,7 +1869,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "dataset": "sh600276-financials"
@@ -1902,7 +1902,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "dataset": "sh600276-financials",
@@ -2201,7 +2201,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "dataset": "sh600276-financials"
@@ -2234,7 +2234,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "dataset": "sh600276-financials",
@@ -2529,7 +2529,7 @@
        }
       ]
      },
-     "server": "sunmoon_knowledge",
+     "server": "sunmoon_knowbase",
      "status": "completed",
      "arguments": {
       "sql": "SELECT fiscal_year, item, basis, value, source_report, page FROM official_key_figures WHERE fiscal_year BETWEEN 2023 AND 2025",
