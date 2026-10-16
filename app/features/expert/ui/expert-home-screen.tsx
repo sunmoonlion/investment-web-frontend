@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
+import { CrossAppLink } from '@/components/common/cross-app-link'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { ProjectPicker } from '@/components/workbench/project-picker'
 import { ConnectComputerLink } from '@/components/workbench/connect-computer'
@@ -132,7 +133,17 @@ export function ExpertHomeScreen() {
         ) : null}
 
         <section className={section} aria-label={t('packs')}>
-          <h2 className={heading}>{t('packs')}</h2>
+          <div className="flex items-center justify-between">
+            <h2 className={heading}>{t('packs')}</h2>
+            {/* 自己的分身在 knowmart：去那里选一位，选定后带回这里（SDD 0027 P4） */}
+            <CrossAppLink
+              to="knowmart.knowbots"
+              refValue="expert"
+              className="text-sm underline underline-offset-3"
+            >
+              {t('summonKnowbot')}
+            </CrossAppLink>
+          </div>
           {packs.isPending ? (
             <p className="text-muted-foreground text-sm">{t('loading')}</p>
           ) : (
@@ -144,6 +155,11 @@ export function ExpertHomeScreen() {
                     {pack.status === 'preparing' ? (
                       <span className="bg-muted text-muted-foreground rounded-full px-2 py-0.5 text-[11px] font-normal">
                         {t('preparing')}
+                      </span>
+                    ) : null}
+                    {pack.source === 'knowbot' ? (
+                      <span className="bg-muted text-muted-foreground rounded-full px-2 py-0.5 text-[11px] font-normal">
+                        {t('mine')}
                       </span>
                     ) : null}
                   </h3>

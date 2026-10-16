@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
+import { KnowbotArrival } from '@/components/workbench/knowbot-arrival'
 import { ProjectPicker } from '@/components/workbench/project-picker'
 import { ConnectComputerLink } from '@/components/workbench/connect-computer'
 import { Button } from '@/components/ui/button'
@@ -52,7 +53,8 @@ export function HomeScreen() {
   const [picking, setPicking] = useState(false)
   // 专家：在对话框里直接挑一位（专家市场上线前先用内置的清单，0017 §三）
   const packs = usePacks()
-  const [expert, setExpert] = useState<string | null>(null)
+  // 从 knowmart 请来分身后会带 expert=<这一位> 回到这里，先选好它
+  const [expert, setExpert] = useState<string | null>(query.get('expert'))
   const [askKey] = useState(() => crypto.randomUUID())
   const ask = useAsk()
 
@@ -115,6 +117,7 @@ export function HomeScreen() {
             <ConnectComputerLink />
           </section>
         ) : null}
+        <KnowbotArrival />
         <h1 className="text-center text-2xl font-semibold tracking-tight">{t('title')}</h1>
 
         <section aria-label={t('title')}>

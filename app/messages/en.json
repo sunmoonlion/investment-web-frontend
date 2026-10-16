@@ -296,6 +296,14 @@
       "who": "Which expert",
       "loading": "Loading…",
       "preparing": "Coming soon"
+    },
+    "knowbot": {
+      "checking": "Checking the knowbot you picked in knowmart…",
+      "notFound": "That knowbot was not found: it may not be yours, or it is stopped.",
+      "unavailable": "knowmart is unreachable right now. Please try again later.",
+      "invalid": "This knowbot version cannot run in the workbench. Please contact us.",
+      "failed": "Could not summon it. Please try again.",
+      "again": "Pick again in knowmart"
     }
   },
   "chat": {
@@ -645,7 +653,9 @@
     "pickTitle": "Ask this expert in which project",
     "pickBody": "The expert takes over the whole project: its files and conversations.",
     "noMachine": "No computer registered. Connect one before starting Work or Expert.",
-    "preparing": "Coming soon"
+    "preparing": "Coming soon",
+    "summonKnowbot": "Summon my knowbot",
+    "mine": "My knowbot"
   },
   "askExpert": {
     "title": "Ask an expert",
