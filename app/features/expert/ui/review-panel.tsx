@@ -155,7 +155,7 @@ export function ReviewPanel({
       ) : (
         <div>
           <p className="text-muted-foreground text-xs font-medium">{t('review.choose')}</p>
-          <p className="mt-1 text-[13px]">{pending.question}</p>
+          <p className="mt-1 text-[13px] whitespace-pre-line">{pending.question}</p>
           <ul className="mt-2 space-y-2">
             {pending.options.map((option) => (
               <li key={option.id} className="flex items-start gap-3">
