@@ -146,7 +146,7 @@ function RemoveControl({
 export function Sidebar() {
   const t = useTranslations('shell')
   const tAuth = useTranslations('auth')
-  const { csrfToken, locale } = useWorkbench()
+  const { csrfToken, locale, user } = useWorkbench()
   const pathname = usePathname()
   const search = useSearchParams().toString()
 
@@ -229,6 +229,15 @@ export function Sidebar() {
         >
           <PanelLeftOpenIcon />
         </Button>
+        {user ? (
+          <span
+            aria-label={tAuth('signedInAs', { name: user.name })}
+            title={tAuth('signedInAs', { name: user.name })}
+            className="bg-foreground/10 mt-auto flex size-6 items-center justify-center rounded-full text-xs font-medium"
+          >
+            {[...user.name][0]?.toUpperCase()}
+          </span>
+        ) : null}
       </aside>
     )
   }
@@ -674,7 +683,15 @@ export function Sidebar() {
             </Destination>
           )
         })}
-        <div className="mt-2 px-2">
+        <div className="mt-2 space-y-1 px-2">
+          {user ? (
+            <p
+              className="text-muted-foreground truncate text-xs"
+              title={user.email ?? undefined}
+            >
+              {tAuth('signedInAs', { name: user.name })}
+            </p>
+          ) : null}
           <LogoutButton
             csrfToken={csrfToken}
             locale={locale}

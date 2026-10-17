@@ -2,17 +2,21 @@
 
 import { createContext, useContext } from 'react'
 
-type WorkbenchContext = { csrfToken: string; locale: string }
+// 登录的是谁：侧栏底部显示，免得换了测试账号还以为是自己（所有者 2026-10-17）
+export type SignedInUser = { name: string; email: string | null }
+
+type WorkbenchContext = { csrfToken: string; locale: string; user?: SignedInUser }
 
 const Context = createContext<WorkbenchContext | null>(null)
 
-// 进了工作台之后各功能都要用的两样：改动类请求的 CSRF、当前语言
+// 进了工作台之后各功能都要用的：改动类请求的 CSRF、当前语言、登录的是谁
 export function WorkbenchProvider({
   csrfToken,
   locale,
+  user,
   children,
 }: WorkbenchContext & { children: React.ReactNode }) {
-  return <Context.Provider value={{ csrfToken, locale }}>{children}</Context.Provider>
+  return <Context.Provider value={{ csrfToken, locale, user }}>{children}</Context.Provider>
 }
 
 export function useWorkbench() {

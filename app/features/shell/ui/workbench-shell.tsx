@@ -1,7 +1,7 @@
 'use client'
 
 import { TooltipProvider } from '@/components/ui/tooltip'
-import { WorkbenchProvider } from '@/lib/workbench/context'
+import { type SignedInUser, WorkbenchProvider } from '@/lib/workbench/context'
 
 import { Sidebar } from './sidebar'
 
@@ -9,14 +9,16 @@ import { Sidebar } from './sidebar'
 export function WorkbenchShell({
   csrfToken,
   locale,
+  user,
   children,
 }: {
   csrfToken: string
   locale: string
+  user?: SignedInUser
   children: React.ReactNode
 }) {
   return (
-    <WorkbenchProvider csrfToken={csrfToken} locale={locale}>
+    <WorkbenchProvider csrfToken={csrfToken} locale={locale} user={user}>
       <TooltipProvider>
         <div
           className="bg-background flex h-dvh overflow-hidden"

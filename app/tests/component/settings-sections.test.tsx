@@ -33,13 +33,13 @@ const puts: unknown[] = []
 const localPuts: unknown[] = []
 const posts: unknown[] = []
 
-function page(children: React.ReactNode) {
+function page(children: React.ReactNode, user?: { name: string; email: string | null }) {
   const client = new QueryClient({ defaultOptions: { queries: { retry: false } } })
   return render(children, {
     wrapper: ({ children }) => (
       <NextIntlClientProvider locale="zh-CN" messages={zh} timeZone="Asia/Shanghai">
         <QueryClientProvider client={client}>
-          <WorkbenchProvider csrfToken="csrf-fixture" locale="zh-CN">
+          <WorkbenchProvider csrfToken="csrf-fixture" locale="zh-CN" user={user}>
             {children}
           </WorkbenchProvider>
         </QueryClientProvider>
@@ -236,6 +236,18 @@ describe('设置分三类（0021）', () => {
     expect((await screen.findByRole('complementary', { name: zh.shell.brand })).dataset.state).toBe(
       'open',
     )
+  })
+
+  it('侧边栏底部写着登录的是谁；折叠后是一个头像字，悬停看全名（所有者 2026-10-17）', async () => {
+    const tester = { name: '分身测试', email: 'tester@example.com' }
+    const signedIn = zh.auth.signedInAs.replace('{name}', tester.name)
+    const view = page(<Sidebar />, tester)
+    const line = await screen.findByText(signedIn)
+    expect(line.getAttribute('title')).toBe(tester.email)
+    fireEvent.click(screen.getByRole('button', { name: zh.panes.collapseSidebar }))
+    const avatar = await screen.findByLabelText(signedIn)
+    expect(avatar.textContent).toBe('分')
+    view.unmount()
   })
 
   it('云端与模型：key 可带接入地址；MCP 开关写回偏好', async () => {
