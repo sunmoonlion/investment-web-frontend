@@ -70,7 +70,7 @@ export function Composer({
           aria-label={t('composer.label')}
           placeholder={disabledReason ?? placeholder}
           disabled={disabledReason !== null}
-          className="max-h-48 min-h-12 resize-none border-0 bg-transparent px-2 shadow-none focus-visible:ring-0 dark:bg-transparent"
+          className="max-h-[40vh] min-h-12 resize-none border-0 bg-transparent px-2 shadow-none focus-visible:ring-0 dark:bg-transparent"
         />
         <div className="flex items-center gap-2 px-1 pt-1">
           {children}
