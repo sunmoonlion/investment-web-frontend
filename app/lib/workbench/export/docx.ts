@@ -17,7 +17,10 @@ export async function markdownToDocx(root: Root, title: string): Promise<Blob> {
   const d: Docx = await import('docx')
   let lists = 0
 
-  const runs = (nodes: PhrasingContent[], marks: Marks = {}): (InstanceType<Docx['TextRun']> | InstanceType<Docx['ExternalHyperlink']>)[] =>
+  const runs = (
+    nodes: PhrasingContent[],
+    marks: Marks = {},
+  ): (InstanceType<Docx['TextRun']> | InstanceType<Docx['ExternalHyperlink']>)[] =>
     nodes.flatMap((node) => {
       switch (node.type) {
         case 'text':
@@ -56,7 +59,9 @@ export async function markdownToDocx(root: Root, title: string): Promise<Blob> {
       italics: marks.italics,
       strike: marks.strike,
       font: marks.code ? CODE_FONT : undefined,
-      shading: marks.code ? { type: d.ShadingType.CLEAR, fill: 'F2F2F2', color: 'auto' } : undefined,
+      shading: marks.code
+        ? { type: d.ShadingType.CLEAR, fill: 'F2F2F2', color: 'auto' }
+        : undefined,
     })
 
   const headings = [
@@ -68,7 +73,10 @@ export async function markdownToDocx(root: Root, title: string): Promise<Blob> {
     d.HeadingLevel.HEADING_6,
   ]
 
-  const list = (node: List, level: number): (InstanceType<Docx['Paragraph']> | InstanceType<Docx['Table']>)[] => {
+  const list = (
+    node: List,
+    level: number,
+  ): (InstanceType<Docx['Paragraph']> | InstanceType<Docx['Table']>)[] => {
     const instance = ++lists
     return node.children.flatMap((item) =>
       item.children.flatMap((child, index) => {
@@ -99,7 +107,10 @@ export async function markdownToDocx(root: Root, title: string): Promise<Blob> {
             children: row.children.map(
               (cell, c) =>
                 new d.TableCell({
-                  shading: r === 0 ? { type: d.ShadingType.CLEAR, fill: 'F2F2F2', color: 'auto' } : undefined,
+                  shading:
+                    r === 0
+                      ? { type: d.ShadingType.CLEAR, fill: 'F2F2F2', color: 'auto' }
+                      : undefined,
                   children: [
                     new d.Paragraph({
                       alignment:
@@ -126,7 +137,9 @@ export async function markdownToDocx(root: Root, title: string): Promise<Blob> {
       const left = indent ? { indent: { left: 360 * indent } } : {}
       switch (node.type) {
         case 'heading':
-          return [new d.Paragraph({ heading: headings[node.depth - 1], children: runs(node.children) })]
+          return [
+            new d.Paragraph({ heading: headings[node.depth - 1], children: runs(node.children) }),
+          ]
         case 'paragraph':
           return [new d.Paragraph({ ...left, children: runs(node.children) })]
         case 'list':
@@ -147,7 +160,9 @@ export async function markdownToDocx(root: Root, title: string): Promise<Blob> {
         case 'thematicBreak':
           return [
             new d.Paragraph({
-              border: { bottom: { style: d.BorderStyle.SINGLE, size: 6, color: 'BFBFBF', space: 1 } },
+              border: {
+                bottom: { style: d.BorderStyle.SINGLE, size: 6, color: 'BFBFBF', space: 1 },
+              },
               children: [],
             }),
           ]
@@ -159,7 +174,9 @@ export async function markdownToDocx(root: Root, title: string): Promise<Blob> {
               ...left,
               children: [
                 new d.TextRun({ text: `[${node.label ?? node.identifier}] `, superScript: true }),
-                ...node.children.flatMap((child) => (child.type === 'paragraph' ? runs(child.children) : [])),
+                ...node.children.flatMap((child) =>
+                  child.type === 'paragraph' ? runs(child.children) : [],
+                ),
               ],
             }),
           ]
@@ -173,7 +190,10 @@ export async function markdownToDocx(root: Root, title: string): Promise<Blob> {
     creator: 'SunMoonAI',
     styles: {
       default: {
-        document: { run: { font: BODY_FONT, size: 21 }, paragraph: { spacing: { after: 120, line: 300 } } },
+        document: {
+          run: { font: BODY_FONT, size: 21 },
+          paragraph: { spacing: { after: 120, line: 300 } },
+        },
       },
     },
     numbering: {

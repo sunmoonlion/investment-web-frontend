@@ -9,7 +9,9 @@ const BAD_SHEET_CHARS = /[[\]:*?/\\]/g
 export function sheetNames(names: string[]): string[] {
   const used = new Set<string>()
   return names.map((raw, i) => {
-    const base = (raw.replace(BAD_SHEET_CHARS, ' ').replace(/\s+/g, ' ').trim() || `表 ${i + 1}`).slice(0, 31)
+    const base = (
+      raw.replace(BAD_SHEET_CHARS, ' ').replace(/\s+/g, ' ').trim() || `表 ${i + 1}`
+    ).slice(0, 31)
     let name = base
     for (let n = 2; used.has(name.toLowerCase()); n++) {
       const suffix = `(${n})`
@@ -22,7 +24,10 @@ export function sheetNames(names: string[]): string[] {
 
 /** 列宽按最长的一格估（中文算两格宽），8 到 60 之间。 */
 function widthOf(values: string[]): number {
-  const longest = Math.max(0, ...values.map((v) => [...v].reduce((w, ch) => w + (ch.charCodeAt(0) > 0x2e80 ? 2 : 1), 0)))
+  const longest = Math.max(
+    0,
+    ...values.map((v) => [...v].reduce((w, ch) => w + (ch.charCodeAt(0) > 0x2e80 ? 2 : 1), 0)),
+  )
   return Math.min(60, Math.max(8, longest + 2))
 }
 
@@ -55,7 +60,10 @@ export async function tablesToXlsx(
     }
     const columns = Math.max(table.header.length, ...table.rows.map((r) => r.length))
     for (let c = 0; c < columns; c++) {
-      sheet.getColumn(c + 1).width = widthOf([table.header[c] ?? '', ...table.rows.map((r) => r[c] ?? '')])
+      sheet.getColumn(c + 1).width = widthOf([
+        table.header[c] ?? '',
+        ...table.rows.map((r) => r[c] ?? ''),
+      ])
     }
   })
   const info = book.addWorksheet(names[tables.length])
@@ -67,5 +75,7 @@ export async function tablesToXlsx(
   info.getColumn(1).width = 12
   info.getColumn(2).width = 80
   const buffer = await book.xlsx.writeBuffer()
-  return new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
+  return new Blob([buffer], {
+    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  })
 }

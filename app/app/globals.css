@@ -204,3 +204,10 @@
   #export-print-root blockquote { border-left: 2px solid #999; padding-left: 8pt; color: #444; }
   #export-print-root a { color: inherit; text-decoration: underline; }
 }
+
+/* 拖分割线时（所有者 2026-10-17）：全页不选中文字、光标一直是左右箭头 */
+html.resizing-panes,
+html.resizing-panes * {
+  cursor: col-resize !important;
+  user-select: none !important;
+}

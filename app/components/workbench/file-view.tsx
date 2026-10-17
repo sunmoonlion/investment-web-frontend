@@ -1,6 +1,12 @@
 'use client'
 
-import { ChevronLeftIcon, FileSpreadsheetIcon, FileTextIcon, LoaderIcon, PrinterIcon } from 'lucide-react'
+import {
+  ChevronLeftIcon,
+  FileSpreadsheetIcon,
+  FileTextIcon,
+  LoaderIcon,
+  PrinterIcon,
+} from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { type RefObject, useMemo, useRef, useState } from 'react'
 

@@ -2,6 +2,7 @@
 
 import { create } from 'zustand'
 
+import { usePaneWidths } from './pane-widths'
 import { PREFERENCES_KEY } from './preferences-boot'
 
 // 个人偏好（0021 §二之 1）：语言跟地址走；这里是外观、主题色、侧边栏。只存浏览器本地，不经后端。
@@ -86,6 +87,8 @@ export const usePreferences = create<Store>((set, get) => ({
     set({ preferences, ready: true })
   },
   update: (patch) => {
+    // 在设置里选了侧边栏宽度，就不再用拖出来的宽度
+    if (patch.sidebar) usePaneWidths.getState().set('sidebar', null)
     const preferences = { ...get().preferences, ...patch }
     writePreferences(preferences)
     applyPreferences(preferences)

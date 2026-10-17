@@ -1133,5 +1133,12 @@
     "noComputer": "还没有接入电脑。",
     "noDir": "还没有选本地知识库目录。",
     "goComputer": "去「我的电脑」设"
+  },
+  "panes": {
+    "sidebar": "拖动调整侧边栏宽度",
+    "side": "拖动调整右栏宽度",
+    "hint": "拖动调整宽度，双击恢复默认",
+    "collapseSidebar": "折叠侧边栏",
+    "expandSidebar": "展开侧边栏"
   }
 }

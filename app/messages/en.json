@@ -1133,5 +1133,12 @@
     "noComputer": "No computer is connected yet.",
     "noDir": "No local library directory has been chosen yet.",
     "goComputer": "Set it under My computer"
+  },
+  "panes": {
+    "sidebar": "Drag to resize the sidebar",
+    "side": "Drag to resize the right panel",
+    "hint": "Drag to resize; double-click to reset",
+    "collapseSidebar": "Collapse the sidebar",
+    "expandSidebar": "Expand the sidebar"
   }
 }

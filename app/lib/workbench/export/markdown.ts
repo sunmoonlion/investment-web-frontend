@@ -38,7 +38,8 @@ export function tablesOf(root: Root): ExportTable[] {
 
 function tableOf(table: Table, name: string): ExportTable {
   const [head, ...body] = table.children
-  const cells = (row: Table['children'][number]) => row.children.map((cell) => plainText(cell).trim())
+  const cells = (row: Table['children'][number]) =>
+    row.children.map((cell) => plainText(cell).trim())
   return { name, header: head ? cells(head) : [], rows: body.map(cells) }
 }
 
@@ -47,7 +48,10 @@ function tableOf(table: Table, name: string): ExportTable {
  * 不猜单位，「—」「-」「N/A」与空白都不是数。和 knowlab 读表格的规则一致（0030 §3.1）。
  */
 export function numberOf(raw: string): { value: number; percent: boolean } | null {
-  let text = raw.trim().replace(/[,，\s]/g, '').replace(/[−－]/g, '-')
+  let text = raw
+    .trim()
+    .replace(/[,，\s]/g, '')
+    .replace(/[−－]/g, '-')
   if (!text) return null
   let negative = false
   if (text.startsWith('(') && text.endsWith(')')) {

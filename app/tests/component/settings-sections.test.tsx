@@ -6,6 +6,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { SettingsScreen } from '@/features/settings'
 import { Sidebar } from '@/features/shell/ui/sidebar'
 import { PREFERENCES_KEY } from '@/lib/preferences-boot'
+import { PANE_WIDTHS_KEY, usePaneWidths } from '@/lib/pane-widths'
 import { usePreferences } from '@/lib/preferences'
 import { WorkbenchProvider } from '@/lib/workbench/context'
 import zh from '@/messages/zh-CN.json'
@@ -56,6 +57,11 @@ beforeEach(() => {
   document.documentElement.className = ''
   delete document.documentElement.dataset.accent
   delete document.documentElement.dataset.sidebar
+  usePaneWidths.setState({
+    widths: { sidebar: null, side: null },
+    sidebarCollapsed: false,
+    ready: false,
+  })
   usePreferences.setState({
     ready: false,
     preferences: usePreferences.getInitialState().preferences,
@@ -184,7 +190,52 @@ describe('设置分三类（0021）', () => {
     window.localStorage.setItem(PREFERENCES_KEY, JSON.stringify({ sidebar: 'narrow' }))
     page(<Sidebar />)
     const aside = await screen.findByRole('complementary', { name: zh.shell.brand })
-    await waitFor(() => expect(aside.className).toContain('w-52'))
+    await waitFor(() => expect(aside.style.width).toBe('208px'))
+  })
+
+  it('侧边栏的分割线能拖、能用键盘调、双击复原；拖出来的宽度记住；在设置里选宽度就不再用拖的（所有者 2026-10-17）', async () => {
+    // 宽屏：中间那一栏留够 360px 之后，两边才放得开
+    Object.defineProperty(window, 'innerWidth', { value: 1600, configurable: true })
+    page(<Sidebar />)
+    const aside = await screen.findByRole('complementary', { name: zh.shell.brand })
+    const handle = screen.getByRole('separator', { name: zh.panes.sidebar })
+    expect(aside.style.width).toBe('240px')
+    fireEvent.pointerDown(handle, { button: 0, clientX: 240, pointerId: 1 })
+    expect(document.documentElement.classList.contains('resizing-panes')).toBe(true)
+    fireEvent.pointerMove(handle, { clientX: 340, pointerId: 1 })
+    fireEvent.pointerUp(handle, { clientX: 340, pointerId: 1 })
+    expect(document.documentElement.classList.contains('resizing-panes')).toBe(false)
+    await waitFor(() => expect(aside.style.width).toBe('340px'))
+    expect(JSON.parse(window.localStorage.getItem(PANE_WIDTHS_KEY)!).sidebar).toBe(340)
+    fireEvent.keyDown(handle, { key: 'ArrowLeft' })
+    await waitFor(() => expect(aside.style.width).toBe('324px'))
+    fireEvent.keyDown(handle, { key: 'End' })
+    await waitFor(() => expect(Number.parseInt(aside.style.width)).toBeLessThanOrEqual(480))
+    fireEvent.pointerDown(handle, { button: 0, clientX: 300, pointerId: 1 })
+    fireEvent.pointerMove(handle, { clientX: -500, pointerId: 1 })
+    fireEvent.pointerUp(handle, { pointerId: 1 })
+    await waitFor(() => expect(aside.style.width).toBe('180px'))
+    fireEvent.doubleClick(handle)
+    await waitFor(() => expect(aside.style.width).toBe('240px'))
+    usePaneWidths.getState().set('sidebar', 400)
+    usePreferences.getState().update({ sidebar: 'wide' })
+    await waitFor(() => expect(aside.style.width).toBe('288px'))
+  })
+
+  it('侧边栏能折叠成一条窄栏、再展开；折叠状态记住（所有者 2026-10-17）', async () => {
+    const view = page(<Sidebar />)
+    fireEvent.click(await screen.findByRole('button', { name: zh.panes.collapseSidebar }))
+    const strip = await screen.findByRole('complementary', { name: zh.shell.brand })
+    expect(strip.dataset.state).toBe('collapsed')
+    expect(screen.queryByRole('separator')).toBeNull()
+    expect(JSON.parse(window.localStorage.getItem(PANE_WIDTHS_KEY)!).sidebarCollapsed).toBe(true)
+    view.unmount()
+    usePaneWidths.setState({ ready: false, sidebarCollapsed: false })
+    page(<Sidebar />)
+    fireEvent.click(await screen.findByRole('button', { name: zh.panes.expandSidebar }))
+    expect((await screen.findByRole('complementary', { name: zh.shell.brand })).dataset.state).toBe(
+      'open',
+    )
   })
 
   it('云端与模型：key 可带接入地址；MCP 开关写回偏好', async () => {

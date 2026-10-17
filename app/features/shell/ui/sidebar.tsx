@@ -7,6 +7,8 @@ import {
   FolderIcon,
   GraduationCapIcon,
   MessageSquareIcon,
+  PanelLeftCloseIcon,
+  PanelLeftOpenIcon,
   PlusIcon,
   SettingsIcon,
   Trash2Icon,
@@ -17,6 +19,8 @@ import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
+import { ResizeHandle } from '@/components/common/resize-handle'
+import { Button } from '@/components/ui/button'
 import { LogoutButton } from '@/components/auth/logout-button'
 import { useWorkbench } from '@/lib/workbench/context'
 import {
@@ -28,6 +32,7 @@ import {
   useWorkspaces,
 } from '@/lib/workbench/queries'
 import { usePreferences } from '@/lib/preferences'
+import { clampWidth, PANE_LIMITS, usePaneWidths } from '@/lib/pane-widths'
 import type { WorkbenchError } from '@/lib/workbench/http'
 import { useRemove } from '@/lib/workbench/remove'
 import { MODES, routes } from '@/lib/workbench/routes'
@@ -175,7 +180,13 @@ export function Sidebar() {
   // 个人偏好（0021）：侧边栏宽度与默认展开到哪一级
   const { preferences, restore } = usePreferences()
   useEffect(() => restore(), [restore])
-  const width = { narrow: 'w-52', normal: 'w-60', wide: 'w-72' }[preferences.sidebar]
+  // 拖过分割线就用拖出来的宽度，没拖过按偏好的窄、中、宽（所有者 2026-10-17）
+  const panes = usePaneWidths()
+  const tp = useTranslations('panes')
+  const restorePanes = usePaneWidths((state) => state.restore)
+  useEffect(() => restorePanes(), [restorePanes])
+  const preferred = { narrow: 208, normal: 240, wide: 288 }[preferences.sidebar]
+  const width = panes.widths.sidebar ?? preferred
   // 哪一行正在问「确定删除？」
   const [asking, setAsking] = useState<string | null>(null)
   const remove = useRemove()
@@ -202,14 +213,66 @@ export function Sidebar() {
   const waitingIn = (projectId: string) =>
     (pending.data ?? []).filter((each) => each.where.project?.id === projectId).length
 
+  if (panes.sidebarCollapsed) {
+    return (
+      <aside
+        aria-label={t('brand')}
+        data-state="collapsed"
+        className="bg-muted/40 flex h-full w-10 shrink-0 flex-col items-center gap-1 border-r py-2"
+      >
+        <Button
+          variant="ghost"
+          size="icon-sm"
+          aria-label={tp('expandSidebar')}
+          title={tp('expandSidebar')}
+          onClick={() => panes.collapseSidebar(false)}
+        >
+          <PanelLeftOpenIcon />
+        </Button>
+      </aside>
+    )
+  }
   return (
     <aside
       aria-label={t('brand')}
-      className={cn('bg-muted/40 flex h-full shrink-0 flex-col gap-4 border-r p-3', width)}
+      data-state="open"
+      style={{ width }}
+      className="bg-muted/40 relative flex h-full shrink-0 flex-col gap-4 border-r p-3"
     >
-      <Link href={routes.home(locale)} className="px-2 pt-1 text-sm font-semibold">
-        {t('brand')}
-      </Link>
+      <ResizeHandle
+        edge="right"
+        width={width}
+        min={PANE_LIMITS.sidebar.min}
+        max={PANE_LIMITS.sidebar.max}
+        label={tp('sidebar')}
+        hint={tp('hint')}
+        onResize={(next) =>
+          panes.set(
+            'sidebar',
+            clampWidth(
+              'sidebar',
+              next,
+              window.innerWidth,
+              panes.widths.side ?? PANE_LIMITS.side.fallback,
+            ),
+          )
+        }
+        onReset={() => panes.set('sidebar', null)}
+      />
+      <div className="flex items-center justify-between gap-1">
+        <Link href={routes.home(locale)} className="px-2 pt-1 text-sm font-semibold">
+          {t('brand')}
+        </Link>
+        <Button
+          variant="ghost"
+          size="icon-xs"
+          aria-label={tp('collapseSidebar')}
+          title={tp('collapseSidebar')}
+          onClick={() => panes.collapseSidebar(true)}
+        >
+          <PanelLeftCloseIcon />
+        </Button>
+      </div>
 
       {/* 三个标签就是新建入口：点哪个，中间出哪种对话框（0017）。不再有单独的「新建」钮 */}
       <nav

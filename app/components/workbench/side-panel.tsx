@@ -11,8 +11,10 @@ import {
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
+import { ResizeHandle } from '@/components/common/resize-handle'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { clampWidth, PANE_LIMITS, usePaneWidths } from '@/lib/pane-widths'
 
 import type { FileChanges } from '@/lib/workbench/timeline'
 import { ChangesPanel } from './changes-panel'
@@ -82,6 +84,12 @@ export function WorkSidePanel({
     { key: 'changes', icon: <GitCompareIcon className="size-4" /> },
     { key: 'terminal', icon: <TerminalIcon className="size-4" /> },
   ]
+  // 右栏宽度可拖（所有者 2026-10-17）；没拖过是 384px
+  const panes = usePaneWidths()
+  const tp = useTranslations('panes')
+  const restorePanes = usePaneWidths((state) => state.restore)
+  useEffect(() => restorePanes(), [restorePanes])
+  const sideWidth = panes.widths.side ?? PANE_LIMITS.side.fallback
   if (tab === null) {
     return (
       <aside
@@ -118,8 +126,29 @@ export function WorkSidePanel({
     <aside
       aria-label={tr('title')}
       data-state="open"
-      className="hidden w-96 shrink-0 flex-col border-l lg:flex"
+      style={{ width: sideWidth }}
+      className="relative hidden shrink-0 flex-col border-l lg:flex"
     >
+      <ResizeHandle
+        edge="left"
+        width={sideWidth}
+        min={PANE_LIMITS.side.min}
+        max={PANE_LIMITS.side.max}
+        label={tp('side')}
+        hint={tp('hint')}
+        onResize={(next) =>
+          panes.set(
+            'side',
+            clampWidth(
+              'side',
+              next,
+              window.innerWidth,
+              panes.widths.sidebar ?? PANE_LIMITS.sidebar.fallback,
+            ),
+          )
+        }
+        onReset={() => panes.set('side', null)}
+      />
       <header className="flex h-10 shrink-0 items-center gap-1 border-b px-2">
         {tabs.map((each) => (
           <button

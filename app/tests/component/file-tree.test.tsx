@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { WorkSidePanel } from '@/components/workbench/side-panel'
+import { PANE_WIDTHS_KEY, usePaneWidths } from '@/lib/pane-widths'
 import { WorkbenchProvider } from '@/lib/workbench/context'
 import { forgetTicket } from '@/lib/workbench/local-agent'
 import messages from '@/messages/zh-CN.json'
@@ -193,6 +194,31 @@ describe('右边栏「文件」：直接问本机代理，文件不经云端', (
     }
     await open()
     expect(screen.queryByRole('button', { name: '下载 Word' })).toBeNull()
+  })
+
+  it('右栏的分割线能拖，往左变宽，记住宽度；双击复原（所有者 2026-10-17）', async () => {
+    // 宽屏：中间那一栏留够 360px 之后，两边才放得开
+    Object.defineProperty(window, 'innerWidth', { value: 1600, configurable: true })
+    window.localStorage.clear()
+    usePaneWidths.setState({
+      widths: { sidebar: null, side: null },
+      sidebarCollapsed: false,
+      ready: false,
+    })
+    panel(ENV, 'C:\\r\\恒瑞医药')
+    fireEvent.click(screen.getByRole('button', { name: '文件' }))
+    const handle = await screen.findByRole('separator', { name: messages.panes.side })
+    const aside = handle.closest('aside')!
+    expect(aside.style.width).toBe('384px')
+    fireEvent.pointerDown(handle, { button: 0, clientX: 600, pointerId: 1 })
+    fireEvent.pointerMove(handle, { clientX: 500, pointerId: 1 })
+    fireEvent.pointerUp(handle, { pointerId: 1 })
+    expect(aside.style.width).toBe('484px')
+    expect(JSON.parse(window.localStorage.getItem(PANE_WIDTHS_KEY)!).side).toBe(484)
+    fireEvent.keyDown(handle, { key: 'ArrowLeft' })
+    expect(aside.style.width).toBe('500px')
+    fireEvent.doubleClick(handle)
+    expect(aside.style.width).toBe('384px')
   })
 
   it('这台电脑上没有代理：说明白，不去要票', async () => {
