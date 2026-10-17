@@ -165,3 +165,42 @@
   --primary-foreground: oklch(0.2 0 0);
   --ring: oklch(0.78 0.15 55);
 }
+
+/* 成稿导出 PDF（0031）：打印时只留打印区，用浏览器「另存为 PDF」。样式在本站样式表里，不受 CSP 的内联样式限制 */
+#export-print-root {
+  display: none;
+}
+@media print {
+  html.exporting-print body > *:not(#export-print-root) {
+    display: none !important;
+  }
+  html.exporting-print #export-print-root {
+    display: block;
+    color: #000;
+    font-size: 11pt;
+    line-height: 1.7;
+  }
+  #export-print-root .export-print-title {
+    margin: 0 0 12pt;
+    padding-bottom: 6pt;
+    border-bottom: 1px solid #999;
+    font-size: 9pt;
+    color: #555;
+  }
+  #export-print-root h1 { font-size: 16pt; margin: 14pt 0 8pt; font-weight: 600; }
+  #export-print-root h2 { font-size: 14pt; margin: 12pt 0 6pt; font-weight: 600; }
+  #export-print-root h3 { font-size: 12pt; margin: 10pt 0 4pt; font-weight: 600; }
+  #export-print-root h1, #export-print-root h2, #export-print-root h3 { break-after: avoid; }
+  #export-print-root p { margin: 4pt 0; }
+  #export-print-root ul { list-style: disc; padding-left: 18pt; }
+  #export-print-root ol { list-style: decimal; padding-left: 18pt; }
+  #export-print-root table { width: 100%; border-collapse: collapse; margin: 6pt 0; font-size: 9.5pt; }
+  #export-print-root tr { break-inside: avoid; }
+  #export-print-root thead { display: table-header-group; }
+  #export-print-root th, #export-print-root td { border: 1px solid #999; padding: 2pt 4pt; text-align: left; }
+  #export-print-root th { background: #f2f2f2; font-weight: 600; }
+  #export-print-root code { font-family: Consolas, monospace; font-size: 9pt; }
+  #export-print-root pre { white-space: pre-wrap; background: #f5f5f5; padding: 6pt; }
+  #export-print-root blockquote { border-left: 2px solid #999; padding-left: 8pt; color: #444; }
+  #export-print-root a { color: inherit; text-decoration: underline; }
+}

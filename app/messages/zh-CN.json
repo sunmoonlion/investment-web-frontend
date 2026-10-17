@@ -529,7 +529,16 @@
         "rate_limited": "点得太快，稍等一下。",
         "other": "没有读到。"
       },
-      "noLibrary": "这台电脑还没选本地知识库目录。"
+      "noLibrary": "这台电脑还没选本地知识库目录。",
+      "export": {
+        "word": "下载 Word",
+        "excel": "下载 Excel",
+        "pdf": "导出 PDF",
+        "noTables": "这份文件里没有表格",
+        "failed": "导出没成功，请再试一次。",
+        "sheetSource": "出处",
+        "notes": "按成稿原样导出，数没有改动。"
+      }
     }
   },
   "expert": {

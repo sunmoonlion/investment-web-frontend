@@ -529,7 +529,16 @@
         "rate_limited": "Too fast; wait a moment.",
         "other": "Could not read it."
       },
-      "noLibrary": "This computer has no local library directory yet."
+      "noLibrary": "This computer has no local library directory yet.",
+      "export": {
+        "word": "Download Word",
+        "excel": "Download Excel",
+        "pdf": "Export PDF",
+        "noTables": "This file has no tables",
+        "failed": "Export failed. Please try again.",
+        "sheetSource": "Source",
+        "notes": "Exported as written in the file; no numbers were changed."
+      }
     }
   },
   "expert": {

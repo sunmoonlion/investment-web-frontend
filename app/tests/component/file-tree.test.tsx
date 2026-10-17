@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { fireEvent, render, screen, within } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { NextIntlClientProvider } from 'next-intl'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
@@ -137,6 +137,62 @@ describe('右边栏「文件」：直接问本机代理，文件不经云端', (
     expect(seen.some((each) => each.url.startsWith(`${LOCAL}/local/v1/fs/file?path=`))).toBe(true)
     fireEvent.click(screen.getByRole('button', { name: '返回文件树' }))
     expect(await screen.findByRole('tree', { name: '文件' })).toBeInTheDocument()
+  })
+
+  it('完整读到的 Markdown 能导出 Word、Excel、PDF；没有表格时 Excel 不可点；只读了开头的不给导出（0031）', async () => {
+    const open = async () => {
+      panel(ENV, 'C:\\r\\恒瑞医药')
+      fireEvent.click(screen.getByRole('button', { name: '文件' }))
+      const tree = await screen.findByRole('tree', { name: '文件' })
+      fireEvent.click(await within(tree).findByRole('button', { name: /笔记\.md/ }))
+      await screen.findByRole('heading', { name: '标题' })
+    }
+    answers[`${LOCAL}/local/v1/fs/file`] = {
+      status: 200,
+      raw: true,
+      body: '# 标题\n\n| 科目 | 2024 |\n| --- | --- |\n| 营业收入 | 100 |\n',
+      headers: { 'X-File-Size': '60', 'X-File-Eof': 'true' },
+    }
+    await open()
+    expect(screen.getByRole('button', { name: '下载 Word' })).toBeEnabled()
+    expect(screen.getByRole('button', { name: '下载 Excel' })).toBeEnabled()
+    // PDF：只把渲染好的成稿放进打印区，标题换成文件名，打印框关了复原
+    const print = vi.fn()
+    vi.stubGlobal('print', print)
+    const title = document.title
+    fireEvent.click(screen.getByRole('button', { name: '导出 PDF' }))
+    expect(print).toHaveBeenCalledOnce()
+    const root = document.getElementById('export-print-root')!
+    expect(root.textContent).toContain('营业收入')
+    expect(root.textContent).not.toContain('下载 Word')
+    expect(document.documentElement.classList.contains('exporting-print')).toBe(true)
+    expect(document.title).toBe('笔记')
+    window.dispatchEvent(new Event('afterprint'))
+    expect(document.getElementById('export-print-root')).toBeNull()
+    expect(document.documentElement.classList.contains('exporting-print')).toBe(false)
+    expect(document.title).toBe(title)
+  })
+
+  it('没有表格的 Markdown：Excel 不可点；只读了开头的：不给导出', async () => {
+    const open = async () => {
+      panel(ENV, 'C:\\r\\恒瑞医药')
+      fireEvent.click(screen.getByRole('button', { name: '文件' }))
+      const tree = await screen.findByRole('tree', { name: '文件' })
+      fireEvent.click(await within(tree).findByRole('button', { name: /笔记\.md/ }))
+      await screen.findByRole('heading', { name: '标题' })
+    }
+    await open()
+    expect(screen.getByRole('button', { name: '下载 Excel' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: '下载 Word' })).toBeEnabled()
+    cleanup()
+    answers[`${LOCAL}/local/v1/fs/file`] = {
+      status: 200,
+      raw: true,
+      body: '# 标题\n正文',
+      headers: { 'X-File-Size': '9000000', 'X-File-Eof': 'false' },
+    }
+    await open()
+    expect(screen.queryByRole('button', { name: '下载 Word' })).toBeNull()
   })
 
   it('这台电脑上没有代理：说明白，不去要票', async () => {

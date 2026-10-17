@@ -1,11 +1,12 @@
 'use client'
 
-import { ChevronLeftIcon, LoaderIcon } from 'lucide-react'
+import { ChevronLeftIcon, FileSpreadsheetIcon, FileTextIcon, LoaderIcon, PrinterIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { useMemo } from 'react'
+import { type RefObject, useMemo, useRef, useState } from 'react'
 
 import { Markdown } from '@/components/common/markdown'
 import { Button } from '@/components/ui/button'
+import { exportExcel, exportWord, hasTables, printRendered } from '@/lib/workbench/export/actions'
 import { baseName, decodeText, isMarkdown, sizeText } from '@/lib/workbench/file-tree'
 import type { LocalAgent } from '@/lib/workbench/local-agent'
 import { useLocalFile } from '@/lib/workbench/queries'
@@ -13,6 +14,7 @@ import { useLocalFile } from '@/lib/workbench/queries'
 import { ServiceProblem } from './file-tree'
 
 // 点开一个文件看内容（0022 乙案，直接从本机代理读，不经云端）：≤ 1 MiB 的文本直接看，Markdown 渲染；二进制只给大小。只读。
+// 完整读到的 Markdown 可以导出成 Word、Excel（只含表格）、PDF（0031），都在浏览器里做。
 export function FileView({
   agent,
   path,
@@ -25,6 +27,9 @@ export function FileView({
   const t = useTranslations('work')
   const file = useLocalFile(agent, path)
   const decoded = useMemo(() => (file.data ? decodeText(file.data.bytes) : null), [file.data])
+  const rendered = useRef<HTMLDivElement>(null)
+  const exportable =
+    isMarkdown(path) && file.data?.eof && decoded && !('binary' in decoded) ? decoded.text : null
   return (
     <section aria-label={baseName(path)} className="flex h-full min-h-0 flex-col">
       <header className="mb-2 flex items-center gap-1">
@@ -40,6 +45,7 @@ export function FileView({
           </span>
         ) : null}
       </header>
+      {exportable !== null ? <ExportBar text={exportable} path={path} rendered={rendered} /> : null}
       {file.isPending ? (
         <p className="text-muted-foreground flex items-center gap-2">
           <LoaderIcon className="size-3.5 animate-spin" />
@@ -52,7 +58,9 @@ export function FileView({
       ) : decoded ? (
         <div className="min-h-0 flex-1 overflow-auto">
           {isMarkdown(path) ? (
-            <Markdown>{decoded.text}</Markdown>
+            <div ref={rendered}>
+              <Markdown>{decoded.text}</Markdown>
+            </div>
           ) : (
             <pre className="font-mono text-xs leading-5 whitespace-pre-wrap">{decoded.text}</pre>
           )}
@@ -62,5 +70,60 @@ export function FileView({
         </div>
       ) : null}
     </section>
+  )
+}
+
+function ExportBar({
+  text,
+  path,
+  rendered,
+}: {
+  text: string
+  path: string
+  rendered: RefObject<HTMLDivElement | null>
+}) {
+  const t = useTranslations('work.files.export')
+  const [busy, setBusy] = useState<'word' | 'excel' | null>(null)
+  const [failed, setFailed] = useState(false)
+  const tables = useMemo(() => hasTables(text), [text])
+  const run = async (kind: 'word' | 'excel') => {
+    setBusy(kind)
+    setFailed(false)
+    try {
+      if (kind === 'word') await exportWord(text, path)
+      else await exportExcel(text, path, { sheetSource: t('sheetSource'), notes: t('notes') })
+    } catch {
+      setFailed(true)
+    } finally {
+      setBusy(null)
+    }
+  }
+  return (
+    <div className="mb-2 flex flex-wrap items-center gap-1">
+      <Button variant="outline" size="xs" disabled={busy !== null} onClick={() => run('word')}>
+        {busy === 'word' ? <LoaderIcon className="animate-spin" /> : <FileTextIcon />}
+        {t('word')}
+      </Button>
+      <Button
+        variant="outline"
+        size="xs"
+        disabled={busy !== null || !tables}
+        title={tables ? undefined : t('noTables')}
+        onClick={() => run('excel')}
+      >
+        {busy === 'excel' ? <LoaderIcon className="animate-spin" /> : <FileSpreadsheetIcon />}
+        {t('excel')}
+      </Button>
+      <Button
+        variant="outline"
+        size="xs"
+        disabled={busy !== null}
+        onClick={() => rendered.current && printRendered(rendered.current, path)}
+      >
+        <PrinterIcon />
+        {t('pdf')}
+      </Button>
+      {failed ? <span className="text-destructive text-xs">{t('failed')}</span> : null}
+    </div>
   )
 }
