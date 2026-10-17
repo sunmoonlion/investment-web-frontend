@@ -41,7 +41,7 @@ test('workspace route renders only after the paired backend validates its opaque
 }) => {
   await context.addCookies([
     {
-      name: 'sunmoonai_investment_web_sid',
+      name: 'sunmoonai_knowbench_web_sid',
       value: 'e2e-session',
       domain: '127.0.0.1',
       path: '/',
@@ -65,7 +65,7 @@ test('paired unified Backend contract streams, cites, reconciles and accepts HIT
 }) => {
   await context.addCookies([
     {
-      name: 'sunmoonai_investment_web_sid',
+      name: 'sunmoonai_knowbench_web_sid',
       value: 'e2e-session',
       domain: '127.0.0.1',
       path: '/',
@@ -88,7 +88,7 @@ test('paired unified Backend contract streams, cites, reconciles and accepts HIT
   const anonymousSource = await request.get(sourceHref, { maxRedirects: 0 })
   expect(anonymousSource.status()).toBe(401)
   const sourceResponse = await request.get(sourceHref, {
-    headers: { Cookie: 'sunmoonai_investment_web_sid=e2e-session' },
+    headers: { Cookie: 'sunmoonai_knowbench_web_sid=e2e-session' },
     maxRedirects: 0,
   })
   expect(sourceResponse.status()).toBe(302)

@@ -52,7 +52,7 @@ describe('agent release contract and commands', () => {
     expect(JSON.stringify(decision)).not.toContain('token')
   })
   it('uses the same public contract for a same-origin backend download', () => {
-    const download = { ...release, url: 'https://investment.example/api/workbench/agent/package' }
+    const download = { ...release, url: 'https://knowbench.example/api/workbench/agent/package' }
     expect(agentDownloadSchema.parse({ contract_version: 2, download }).download).toEqual(download)
   })
   for (const patch of [

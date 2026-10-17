@@ -1,4 +1,4 @@
-// 工作台契约 v2：聊天、工作、专家三个功能的页面用的。字段以 investment-backend 的接口为真源。
+// 工作台契约 v2：聊天、工作、专家三个功能的页面用的。字段以 knowbench-backend 的接口为真源。
 // 这些写法由 `tests/unit/workbench-contract-samples.test.ts` 对着预览样例（真后端录下来的返回）逐份检查。
 import { z } from 'zod'
 

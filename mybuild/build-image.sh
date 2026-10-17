@@ -52,7 +52,7 @@ else
 fi
 
 # 镜像配置（从 build.conf 读取）
-TPL_SSR_IMAGE="${TPL_SSR_IMAGE:-investment-web-frontend}"
+TPL_SSR_IMAGE="${TPL_SSR_IMAGE:-knowbench-web-frontend}"
 TPL_SSR_TAG="${TPL_SSR_TAG:-architecture-v2-dev}"
 
 # 镜像仓库配置（从 build.conf 读取）

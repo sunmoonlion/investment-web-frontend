@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "SunmoonAI Investment",
-    "description": "与统一 FastAPI Backend 配对的 Investment 产品前端。",
+    "title": "SunmoonAI Knowbench",
+    "description": "与统一 FastAPI Backend 配对的 Knowbench 产品前端。",
     "loginTitle": "登录",
     "workspaceTitle": "工作区"
   },
@@ -41,7 +41,7 @@
     "errorAuthFailed": "登录没有完成：这次登录已超时或已失效（登录页开得太久、或页面被重复提交都会这样）。请重新登录；反复出现请联系管理员。",
     "errorNoCode": "未收到授权码，请从本页重新点击登录。",
     "errorOAuthGeneric": "授权被拒绝或已取消，请重试。",
-    "dashboardWelcome": "欢迎使用 Investment",
+    "dashboardWelcome": "欢迎使用 Knowbench",
     "signedInAs": "当前用户：{name}",
     "signupSuccessHint": "注册成功。请使用刚才的账号点击下方「登录」进入本站。"
   },
@@ -96,7 +96,7 @@
     }
   },
   "Dashboard": {
-    "dashboardWelcome": "欢迎使用 Investment",
+    "dashboardWelcome": "欢迎使用 Knowbench",
     "title": "控制台"
   },
   "workbench": {

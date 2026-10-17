@@ -23,7 +23,7 @@ if [[ "${1:-}" == "--tag" && -n "${2:-}" ]]; then candidate_tag="$2"; fi
 require_development_tag "$candidate_tag" || exit 1
 source "$SCRIPT_DIR/harbor-cluster.sh"
 
-IMAGE_NAME="${TPL_SSR_IMAGE:-investment-web-frontend}"
+IMAGE_NAME="${TPL_SSR_IMAGE:-knowbench-web-frontend}"
 IMAGE_TAG="${TPL_SSR_TAG:-architecture-v2-dev}"
 IMAGE_REGISTRY="$(resolve_harbor_registry_for_push "${TPL_SSR_IMAGE_REGISTRY:-harbor.sunmoonai.com}")"
 IMAGE_PROJECT="${TPL_SSR_IMAGE_PROJECT:-app-images}"

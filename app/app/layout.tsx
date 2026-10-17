@@ -7,8 +7,8 @@ import { PREFERENCES_BOOT_SCRIPT } from '@/lib/preferences-boot'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'investment App',
-  description: 'investment web application',
+  title: 'knowbench App',
+  description: 'knowbench web application',
 }
 
 export default async function RootLayout({

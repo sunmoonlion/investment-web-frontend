@@ -4,9 +4,9 @@
 
 ```sh
 cd ../../k8s/infrastructure
-make application-source-plan APP=investment COMPONENT=web
-make application-build-web APP=investment
-make application-publish-web APP=investment
+make application-source-plan APP=knowbench COMPONENT=web
+make application-build-web APP=knowbench
+make application-publish-web APP=knowbench
 ```
 
 以上 cd 从本子仓根目录执行。默认国内直连，下载网络失败后自动检查 HTTPS_PROXY 并最多重试一次；不能连通即失败退出，保留 TLS、签名和锁文件完整性校验。构建/运行 Node 基镜像使用同一 libc 系列，版本与摘要由 k8s 物料锁确定。
@@ -15,7 +15,7 @@ make application-publish-web APP=investment
 
 ---
 
-# investment-web-frontend 镜像构建
+# knowbench-web-frontend 镜像构建
 
 该目录构建 Next.js Web standalone 镜像。源码在子模块根的 `app/`，
 构建上下文是子模块根；运行镜像使用 Dockerfile 锁定的 Node LTS 和 standalone 产物。
@@ -32,7 +32,7 @@ bash mybuild/test-release-tag.sh
 或直接构建（直接调用 Docker 时也必须遵守正式标签保护规则）：
 
 ```bash
-docker build -f mybuild/Dockerfile -t investment-web-frontend:architecture-v2-dev .
+docker build -f mybuild/Dockerfile -t knowbench-web-frontend:architecture-v2-dev .
 ```
 
 `build.conf` 的 `TPL_SSR_IMAGE` / `TPL_SSR_TAG` 指定镜像和开发标签；

@@ -1,11 +1,11 @@
-# investment-web-frontend
+# knowbench-web-frontend
 
-SunmoonAI Investment 的 Next Web 实例。它完整继承模板通用能力，并与统一 FastAPI
-`investment-backend`
+SunmoonAI Knowbench 的 Next Web 实例。它完整继承模板通用能力，并与统一 FastAPI
+`knowbench-backend`
 组成发布和验收单元；B5/B6 后默认配对同契约 FastAPI BFF，Nest 作为可选 profile。
 本实例提供 App Router、明确的 public/authenticated 渲染边界、
 next-intl、Tailwind/shadcn UI、同源 `/api` 接入和自托管 standalone 构建。
-本仓库在共同底座之上承载 Investment 的 Research Agent 工作区与交互 DTO。
+本仓库在共同底座之上承载 Knowbench 的 Research Agent 工作区与交互 DTO。
 
 ## 本地开发
 
@@ -57,7 +57,7 @@ Ingress 或受控 Node server 对外提供服务。发布前必须同时记录�
   `REFERENCE_UI_ENABLED=true` 时启用；生产默认关闭，fixture 不代表真实 Run 成功。
 - BFF、session/cookie、SSE cursor/reconcile、Citation DTO 和缓存归属以
   ADR-001/002/004/005/014 为准，不在模板中伪造业务成功。
-- 后续模板同步必须保留 Investment 领域页面，并按迁移前 tag、候选镜像 digest、
+- 后续模板同步必须保留 Knowbench 领域页面，并按迁移前 tag、候选镜像 digest、
   隔离部署和回滚证据串行执行。
 
 ## 参考

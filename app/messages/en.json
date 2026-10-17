@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "SunmoonAI Investment",
-    "description": "The Investment product frontend paired with the unified FastAPI Backend.",
+    "title": "SunmoonAI Knowbench",
+    "description": "The Knowbench product frontend paired with the unified FastAPI Backend.",
     "loginTitle": "Sign in",
     "workspaceTitle": "Workspace"
   },
@@ -41,7 +41,7 @@
     "errorAuthFailed": "Sign-in did not complete: this attempt timed out or is no longer valid (a login page left open too long, or a page submitted twice). Please sign in again; if it keeps happening, contact your administrator.",
     "errorNoCode": "No authorization code was returned. Click Login again from this page.",
     "errorOAuthGeneric": "Authorization was denied or cancelled. Please try again.",
-    "dashboardWelcome": "Welcome to Investment",
+    "dashboardWelcome": "Welcome to Knowbench",
     "signedInAs": "Signed in as {name}",
     "signupSuccessHint": "Sign-up succeeded. Click Login below to enter this app."
   },
@@ -96,7 +96,7 @@
     }
   },
   "Dashboard": {
-    "dashboardWelcome": "Welcome to Investment",
+    "dashboardWelcome": "Welcome to Knowbench",
     "title": "Console"
   },
   "workbench": {
