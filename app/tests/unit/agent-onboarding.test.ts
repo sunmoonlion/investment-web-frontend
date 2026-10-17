@@ -76,7 +76,7 @@ describe('agent release contract and commands', () => {
     expect(command).toContain('--token-prompt')
     expect(command).toContain("--relay 'wss://example/''quoted''' ")
     expect(command).toContain(
-      String.raw`$env:LOCALAPPDATA\Programs\sunmoon-agent\sunmoon-agent.cmd`,
+      String.raw`$env:LOCALAPPDATA\Programs\sunmoon-link\sunmoon-link.cmd`,
     )
   })
 })
